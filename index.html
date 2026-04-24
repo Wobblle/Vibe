@@ -1809,6 +1809,108 @@
             text-align: center;
             font-size: 10px;
         }
+
+        /* ============ PREDICTION MARKETS (POLYVIBE) ============ */
+        .market-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 6px;
+            padding: 8px;
+        }
+
+        .market-card {
+            background: #fff;
+            border: 2px outset #c0c0c0;
+            padding: 6px;
+            font-size: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 150px;
+        }
+
+        .market-card .question {
+            font-weight: bold;
+            color: #000080;
+            font-size: 11px;
+            min-height: 42px;
+            line-height: 1.3;
+        }
+
+        .market-card .category {
+            font-size: 8px;
+            color: #800080;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 2px;
+        }
+
+        .market-odds {
+            display: flex;
+            margin: 6px 0 4px 0;
+            height: 20px;
+            border: 1px solid #000;
+        }
+
+        .market-odds .yes {
+            background: linear-gradient(180deg, #00ff00, #008000);
+            color: #000;
+            text-align: left;
+            padding: 0 4px;
+            font-weight: bold;
+            font-size: 11px;
+            line-height: 20px;
+            text-shadow: 1px 1px 0 #fff;
+            transition: width 0.5s;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        .market-odds .no {
+            background: linear-gradient(180deg, #ff5555, #aa0000);
+            color: #fff;
+            text-align: right;
+            padding: 0 4px;
+            font-weight: bold;
+            font-size: 11px;
+            line-height: 20px;
+            text-shadow: 1px 1px 0 #000;
+            transition: width 0.5s;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        .market-volume {
+            font-family: "Courier New", monospace;
+            font-size: 9px;
+            color: #404040;
+            margin: 2px 0;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .market-volume .delta-up { color: #008000; }
+        .market-volume .delta-down { color: #ff0000; }
+
+        .market-bet-row {
+            display: flex;
+            gap: 3px;
+            margin-top: 4px;
+        }
+
+        .market-bet-row button {
+            flex: 1;
+            font-size: 10px;
+            padding: 2px;
+        }
+
+        .market-bet-row .bet-yes {
+            background: #c8ffc8;
+        }
+
+        .market-bet-row .bet-no {
+            background: #ffc8c8;
+        }
     </style>
 </head>
 <body>
@@ -1816,28 +1918,12 @@
 
     <div class="news-ticker">
         <span class="label">🔴 BREAKING</span>
-        <marquee scrollamount="6" id="newsTicker" style="border:none;background:#ffff00;color:#000;padding:3px 0;">
-            VibeOS raises $2.4B Series Ω at $69B valuation despite having 0 customers •
-            Our AI achieved AGI for 3 seconds on Tuesday •
-            VibeOS acquires own company for $1 in landmark self-merger •
-            New study: 9 out of 10 vibes prefer VibeOS •
-            CEO announces pivot to be announced next quarter •
-            VibeOS named "Most Synergistic Startup" by publication we own
-        </marquee>
+        <marquee scrollamount="6" id="newsTicker" style="border:none;background:#ffff00;color:#000;padding:3px 0;">Loading the news cycle...</marquee>
     </div>
 
     <div class="ticker" id="cryptoTicker">Loading blockchain matrix...</div>
 
-    <marquee scrollamount="8" id="mainMarquee">
-        ★ "I clicked optimize and my equity doubled!" - Chad T. &nbsp;&nbsp;|&nbsp;&nbsp;
-        ★ "Pure paradigm shift. My startup IPO'd from a single vibe." - Brenda Q. &nbsp;&nbsp;|&nbsp;&nbsp;
-        ★ "VibeOS turned my dog into a unicorn." - Anonymous VC &nbsp;&nbsp;|&nbsp;&nbsp;
-        ★ "I replaced my entire engineering team with this dashboard and revenue went up 9000%!" - Todd M. &nbsp;&nbsp;|&nbsp;&nbsp;
-        ★ "The synergy is so dense it bends light." - Dr. Synergy &nbsp;&nbsp;|&nbsp;&nbsp;
-        ★ "I closed my Series Z in 4 milliseconds." - Unnamed Founder &nbsp;&nbsp;|&nbsp;&nbsp;
-        ★ "Finally, an operating system that understands my aura." - Moonchild &nbsp;&nbsp;|&nbsp;&nbsp;
-        ★ "10/10 would synergize again." - Some Guy on LinkedIn
-    </marquee>
+    <marquee scrollamount="8" id="mainMarquee">Loading testimonials...</marquee>
 
     <div class="window main-window">
         <div class="title-bar">
@@ -2306,6 +2392,20 @@
                 <div style="text-align:center; padding: 4px; font-size:10px; color:#808080;">
                     Floor price: Ξ<span id="nftFloor">420.69</span> ETH ▲ 9001% in last 24hrs
                     | Trading volume: <span id="nftVolume">$1.2B</span> (allegedly)
+                </div>
+            </div>
+
+            <div class="window" style="margin:0 0 10px 0;">
+                <div class="title-bar">
+                    <div class="title-bar-text">🎲 PolyVibe™ — Decentralized Prediction Markets (powered by ✨ vibes ✨)</div>
+                </div>
+                <div style="background:#000080; color:#ffff00; padding:4px 8px; font-size:10px; font-family:monospace; display:flex; justify-content:space-between;">
+                    <span>📊 8 markets · ⛓ Settled by AI consensus · ⚖ Not investment advice (definitely investment advice)</span>
+                    <span id="polyVibeTotal">Total open interest: $4.2B</span>
+                </div>
+                <div class="market-grid" id="marketGrid"></div>
+                <div style="text-align:center; padding:4px; font-size:9px; color:#808080;">
+                    Markets resolve when the AI feels like it. Past vibes are not indicative of future vibes.
                 </div>
             </div>
 
@@ -4441,7 +4541,31 @@
             { title: "THE BLOCKCHAIN WHISPERER", emoji: "⛓", desc: "You solve problems that didn't exist until you blockchain'd them." },
             { title: "THE AURA INDUSTRIALIST", emoji: "🔮", desc: "You've monetized the metaphysical. Your chakras are IPO-ready." },
             { title: "THE HYPE EVANGELIST", emoji: "📣", desc: "Reality bends to your tweet cadence. You are the content." },
-            { title: "THE PIVOT SOMMELIER", emoji: "🍷", desc: "You can taste a pivot from three quarters away." }
+            { title: "THE PIVOT SOMMELIER", emoji: "🍷", desc: "You can taste a pivot from three quarters away." },
+            { title: "THE FRACTIONAL CXO", emoji: "🧩", desc: "You are 12% of the C-suite at 7 different startups. None pay you." },
+            { title: "THE GROWTH SHAMAN", emoji: "🌿", desc: "You burn sage before standups. Your funnel is fully chakra-aligned." },
+            { title: "THE LINKEDIN POET LAUREATE", emoji: "📜", desc: "Your three-line posts make grown VCs weep into their cold brew." },
+            { title: "THE THOUGHT GAS LEAK", emoji: "💨", desc: "You leak takes faster than the building can ventilate them." },
+            { title: "THE BURN RATE OPTIMIST", emoji: "🔥", desc: "Your runway is short, but your enthusiasm is non-GAAP." },
+            { title: "THE PANEL DISCUSSION ENJOYER", emoji: "🎙", desc: "You have moderated 47 panels and answered 0 questions." },
+            { title: "THE OFFSITE ARCHITECT", emoji: "🏝", desc: "You've turned 'team building in Tulum' into a billable line item." },
+            { title: "THE DECK WHISPERER", emoji: "📊", desc: "Your slides are art. Your numbers are vibes. Your story is fiction." },
+            { title: "THE NEPOTIC BOARD MEMBER", emoji: "👴", desc: "You don't know what the company does. You sign all the things." },
+            { title: "THE PLATFORM-AGNOSTIC SHILL", emoji: "📡", desc: "You're on every platform with the exact same opinion at +12% intensity." },
+            { title: "THE INVESTOR LIAISON", emoji: "🥃", desc: "You network at the bar. The bar is your office. The bar is also your therapist." },
+            { title: "THE VIBE COMPLIANCE OFFICER", emoji: "📋", desc: "You ensure every action passes the ✨ vibe check ✨ before liability attaches." },
+            { title: "THE METAPHOR MERCHANT", emoji: "🪶", desc: "Everything is a journey. Every journey is a moat. Every moat is a flywheel." },
+            { title: "THE EXIT-FOCUSED LEADER", emoji: "🚪", desc: "You've planned your acquisition before launching the product." },
+            { title: "THE GASLIGHTING GROWTH HACKER", emoji: "💡", desc: "Conversion didn't drop. The data is wrong. Trust your gut. Trust mine, specifically." },
+            { title: "THE PERMA-FOUNDER", emoji: "♾", desc: "You have founded 9 companies. Zero have shipped. All are 'pre-revenue'." },
+            { title: "THE WANTREPRENEUR", emoji: "🎤", desc: "You've never built a thing but your podcast is in the top 10 (in Liechtenstein)." },
+            { title: "THE BOARDROOM POET", emoji: "🪞", desc: "You quote Marcus Aurelius mid-layoff. Stoicism is your brand." },
+            { title: "THE TGIF DESTROYER", emoji: "🥂", desc: "You weaponize Friday all-hands. Champagne is mandatory. Smiles are KPI'd." },
+            { title: "THE SLACK STATUS POET", emoji: "💬", desc: "Your Slack status updates have 4,000 followers. Your Slack does not." },
+            { title: "THE QUARTER-LIFE UNICORN", emoji: "🦄", desc: "Valued at $1B before age 26. Valued at $0 by age 27. Posting through it." },
+            { title: "THE INTERN WHISPERER", emoji: "🎒", desc: "Your interns do everything. Your interns do not get paid. Your interns are also you." },
+            { title: "THE TEDX ALUM", emoji: "🎯", desc: "You spoke at TEDxBoise once. You will never let anyone forget." },
+            { title: "THE VIBEWORK NOMAD", emoji: "🛫", desc: "You answer emails from 17 timezones. You're never in any of them." }
         ];
 
         const vibeRoasts = [
@@ -4627,6 +4751,199 @@
             document.getElementById("linkedinShare").classList.add("active");
             closeVibeQuiz();
             beep(800, 0.08);
+        };
+
+        // ============ RANDOMIZED BANNER CONTENT ============
+        const breakingHeadlines = [
+            "VibeOS raises $2.4B Series Ω at $69B valuation despite having 0 customers",
+            "Our AI achieved AGI for 3 seconds on Tuesday",
+            "VibeOS acquires own company for $1 in landmark self-merger",
+            "New study: 9 out of 10 vibes prefer VibeOS",
+            "CEO announces pivot to be announced next quarter",
+            "VibeOS named 'Most Synergistic Startup' by publication we own",
+            "Stock up 470% after announcing they will eventually announce something",
+            "VibeOS officially recognized as a religion in 4 jurisdictions",
+            "Bryndleigh AI named 'Top 30 Under 30' (despite being non-corporeal)",
+            "Company issues apology for not apologizing sooner about previous apology",
+            "Quarterly earnings: 'a vibe', up 420% YoY (we made up YoY)",
+            "BREAKING: VibeOS pivots to physical retail, opens kombucha kiosk in Tulum",
+            "Founder Chad Vibington III crowned 'Most Punchable CEO' for 7th year running",
+            "VibeOS sues itself for trademark infringement, both sides expected to win",
+            "AI ethics board dissolved 'because the vibes were off'",
+            "Company achieves carbon neutrality by redefining carbon",
+            "VibeOS launches 'Synergy Coin' (NOT a security, please don't ask)",
+            "Internal memo: 'we should probably make a product at some point'",
+            "VibeOS ranked #1 most innovative company by Chad Vibington III, CEO",
+            "Wall Street analysts upgrade $VIBE rating from BUY to BUY HARDER",
+            "VibeOS opens 47th office in metaverse, none in physical space",
+            "Government bailout requested 'just in case'; bailout pre-approved",
+            "Layoffs announced as 'aggressive talent right-sizing initiative'",
+            "VibeOS sponsors 14 podcasts, all hosted by Chad Vibington III",
+            "Latest update bricks customers' phones; described as 'forced sabbatical'"
+        ];
+
+        const marqueeTestimonials = [
+            "I clicked optimize and my equity doubled! - Chad T.",
+            "Pure paradigm shift. My startup IPO'd from a single vibe. - Brenda Q.",
+            "VibeOS turned my dog into a unicorn. - Anonymous VC",
+            "I replaced my entire engineering team with this dashboard and revenue went up 9000%! - Todd M.",
+            "The synergy is so dense it bends light. - Dr. Synergy",
+            "I closed my Series Z in 4 milliseconds. - Unnamed Founder",
+            "Finally, an operating system that understands my aura. - Moonchild",
+            "10/10 would synergize again. - Some Guy on LinkedIn",
+            "I asked it to summarize my marriage and it filed for divorce on my behalf. Worth it. - Tanner J.",
+            "VibeOS made me feel something for the first time since 2019. - Anonymous",
+            "Replaced my therapist, my CFO, and my dad. - Bryxon W.",
+            "I don't know what it does but the charts are very pretty. - My Grandmother",
+            "5 stars - it cured my fear of capital efficiency. - Pat L.",
+            "I gave up sleep, food, and friends. My vibes have never been higher. - VC #847",
+            "The dashboard whispered to me at 3am. It said 'you are loved'. I cried. - Anon",
+            "I sold my house to upgrade to Ultra Vibe. Best decision I never made. - Kyler P.",
+            "VibeOS is what would happen if Excel did mushrooms. - Tech Reviewer",
+            "Genuinely improved my standing in the founder community. Now I have one. - Brett D.",
+            "It told me my idea was 'a banger'. No one's ever said that to me. - Hopeful Founder",
+            "I outsourced my entire personality to VibeAgent and HR is thrilled. - Linda S.",
+            "Better than therapy, cheaper than rehab. - Anonymous",
+            "I now refer to my children as 'KPIs'. Game changer. - Working Parent",
+            "Took the quiz, became a Quantum Bro, lost three friends, gained twelve LinkedIn followers. - Devon R.",
+            "I went into the Matrix rain and came out a thought leader. - Ascended User",
+            "10/10 cosmic horror. Would synergize again. - HP Lovecraft (allegedly)"
+        ];
+
+        function shuffle(arr) {
+            const a = [...arr];
+            for (let i = a.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [a[i], a[j]] = [a[j], a[i]];
+            }
+            return a;
+        }
+
+        function refreshBanners() {
+            const news = shuffle(breakingHeadlines).slice(0, 12).join("  •  ");
+            document.getElementById("newsTicker").innerHTML = news;
+            const tests = shuffle(marqueeTestimonials).slice(0, 10)
+                .map(t => "★ \"" + t.replace(/^"/, "").replace(/"\s*-/, "\" -") + "\"")
+                .join("  &nbsp;|&nbsp;  ");
+            document.getElementById("mainMarquee").innerHTML = tests;
+        }
+        refreshBanners();
+        // Refresh banner content every 90 seconds
+        setInterval(refreshBanners, 90000);
+
+        // ============ POLYVIBE PREDICTION MARKETS ============
+        const polyMarkets = [
+            { cat: "Company",   q: "VibeOS achieves profitability by 2099",            yes: 3,  vol: 4_200_000 },
+            { cat: "Founders",  q: "Chad Vibington III pivots before noon",            yes: 99, vol: 9_001_000 },
+            { cat: "AI",        q: "GPT-9000 achieves AGI (this time, for real)",       yes: 47, vol: 12_400_000 },
+            { cat: "Regulatory",q: "SEC actually investigates VibeOS",                  yes: 12, vol: 3_300_000 },
+            { cat: "HR",        q: "Clippy successfully unionizes",                     yes: 84, vol: 6_900_000 },
+            { cat: "Cosmic",    q: "Heat death of universe occurs before VibeOS IPO",   yes: 73, vol: 1_337_000 },
+            { cat: "Logistics", q: "Moon Mission rocket actually launches in 2026",     yes: 4,  vol: 2_100_000 },
+            { cat: "Culture",   q: "Founder's hoodie sells at auction for >$200K",      yes: 88, vol: 480_000 },
+            { cat: "Mythical",  q: "A user reads the Terms of Service in full",         yes: 1,  vol: 47_000 },
+            { cat: "Crypto",    q: "$VIBE token survives the next 7 days",              yes: 51, vol: 18_700_000 },
+            { cat: "Strategy",  q: "Pivots this quarter exceeds 4",                      yes: 92, vol: 5_500_000 },
+            { cat: "Earnings",  q: "Tomorrow's earnings beat the bar we set ourselves", yes: 99, vol: 7_700_000 },
+            { cat: "Cope",      q: "'Customer success' means anything by EOY",          yes: 7,  vol: 220_000 },
+            { cat: "Personal",  q: "Mom approves of your career choice",                yes: 23, vol: 12_500 },
+            { cat: "Meta",      q: "This prediction market resolves at all",            yes: 41, vol: 6_900_000 },
+            { cat: "Scandal",   q: "Bryndleigh AI elopes with a customer's spouse",     yes: 67, vol: 2_400_000 },
+            { cat: "Existential",q: "You are still in a browser tab in 1 hour",         yes: 89, vol: 333_000 },
+            { cat: "Cultural",  q: "Phrase 'touch grass' enters Q3 OKRs",               yes: 31, vol: 88_000 }
+        ];
+        // Pick 8 random markets to show
+        const shownMarkets = [...polyMarkets].sort(() => Math.random() - 0.5).slice(0, 8);
+
+        const marketGrid = document.getElementById("marketGrid");
+        function renderMarkets() {
+            marketGrid.innerHTML = "";
+            shownMarkets.forEach((m, idx) => {
+                const card = document.createElement("div");
+                card.className = "market-card";
+                const yesPct = Math.max(1, Math.min(99, m.yes));
+                const noPct = 100 - yesPct;
+                const trend = m.lastYes !== undefined ? (yesPct - m.lastYes) : 0;
+                const trendCls = trend > 0 ? "delta-up" : trend < 0 ? "delta-down" : "";
+                const trendStr = trend > 0 ? "▲" + trend.toFixed(1) :
+                                 trend < 0 ? "▼" + Math.abs(trend).toFixed(1) : "—";
+                m.lastYes = yesPct;
+                card.innerHTML = `
+                    <div>
+                        <div class="category">${m.cat}</div>
+                        <div class="question">${m.q}</div>
+                    </div>
+                    <div>
+                        <div class="market-odds">
+                            <div class="yes" style="width:${yesPct}%;">YES ${yesPct}¢</div>
+                            <div class="no"  style="width:${noPct}%;">${noPct}¢ NO</div>
+                        </div>
+                        <div class="market-volume">
+                            <span>Vol: $${(m.vol / 1000).toFixed(0)}K</span>
+                            <span class="${trendCls}">${trendStr}%</span>
+                        </div>
+                        <div class="market-bet-row">
+                            <button class="bet-yes" onclick="placeBet('${m.q.replace(/'/g, "\\'")}', 'YES', ${yesPct})">Bet YES</button>
+                            <button class="bet-no"  onclick="placeBet('${m.q.replace(/'/g, "\\'")}', 'NO',  ${noPct})">Bet NO</button>
+                        </div>
+                    </div>
+                `;
+                marketGrid.appendChild(card);
+            });
+            const total = shownMarkets.reduce((a, b) => a + b.vol, 0);
+            document.getElementById("polyVibeTotal").textContent =
+                "Total open interest: $" + (total / 1_000_000).toFixed(2) + "M";
+        }
+        renderMarkets();
+        setInterval(() => {
+            shownMarkets.forEach(m => {
+                const drift = (Math.random() - 0.5) * 14;
+                m.yes = Math.max(1, Math.min(99, m.yes + drift));
+                m.vol = m.vol * (0.92 + Math.random() * 0.2);
+            });
+            renderMarkets();
+        }, 2200);
+
+        window.placeBet = function(question, side, odds) {
+            beep(side === "YES" ? 880 : 440, 0.08);
+            const win = document.createElement("div");
+            win.className = "window floating-window";
+            win.style.top = "30%";
+            win.style.left = "calc(50% - 180px)";
+            win.style.width = "360px";
+            const stake = rand(100, 9999);
+            const payout = (stake / (odds / 100)).toFixed(2);
+            win.innerHTML = `
+                <div class="title-bar">
+                    <div class="title-bar-text">🎲 Bet Confirmed — PolyVibe</div>
+                    <div class="title-bar-controls">
+                        <button aria-label="Close" onclick="this.closest('.window').remove(); spawnUnclosableAlert();"></button>
+                    </div>
+                </div>
+                <div class="window-body" style="padding:12px;">
+                    <p style="margin:0 0 6px 0; font-size:11px;"><b>Position opened:</b></p>
+                    <div style="background:#fffacd; border:2px inset #c0c0c0; padding:8px; font-size:11px;">
+                        <p style="margin:0 0 4px 0;"><b>"${question}"</b></p>
+                        <div style="display:flex; justify-content:space-between; font-family:monospace; font-size:10px; margin-top:6px;">
+                            <span>Side: <b style="color:${side === 'YES' ? '#008000' : '#ff0000'};">${side}</b> @ ${odds}¢</span>
+                            <span>Stake: $${stake}</span>
+                        </div>
+                        <div style="display:flex; justify-content:space-between; font-family:monospace; font-size:10px; margin-top:2px;">
+                            <span>Max payout: $${payout}</span>
+                            <span>Resolves: <i>vibes permitting</i></span>
+                        </div>
+                    </div>
+                    <p style="font-size:10px; color:#808080; margin:8px 0 0 0;">
+                        Funds withdrawn from: <b>your retirement account</b>.<br>
+                        By betting, you agree this is investment advice (when convenient).
+                    </p>
+                    <div style="text-align:right; margin-top:10px;">
+                        <button onclick="this.closest('.window').remove(); spawnUnclosableAlert();">OK</button>
+                        <button onclick="this.closest('.window').remove(); spawnUnclosableAlert();">Bet 10x more</button>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(win);
         };
 
         // ============ SUPPORT TICKET QUEUE ============
