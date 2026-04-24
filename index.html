@@ -501,6 +501,9 @@
             text-align: center;
             font-size: 9px;
             cursor: pointer;
+            display: block;
+            color: inherit;
+            text-decoration: none;
         }
 
         .integration:hover {
@@ -2158,7 +2161,7 @@
                     <div class="integration"><span class="icon">🪐</span>SaturnCRM</div>
                     <div class="integration"><span class="icon">🎲</span>RandomCorp</div>
                     <div class="integration"><span class="icon">🧪</span>BetaLabs</div>
-                    <div class="integration"><span class="icon">🎪</span>CircusOps</div>
+                    <a href="https://linktr.ee/asleepiusgames" target="_blank" rel="noopener" class="integration real-link" title="Suspiciously real"><span class="icon">🌌</span>Asleepius</a>
                     <div class="integration"><span class="icon">➕</span>147 more</div>
                 </div>
             </div>
@@ -3942,7 +3945,7 @@
         }
 
         // ============ INTEGRATION CLICKS ============
-        document.querySelectorAll(".integration").forEach(el => {
+        document.querySelectorAll(".integration:not(.real-link)").forEach(el => {
             el.addEventListener("click", () => {
                 spawnUnclosableAlert();
             });
