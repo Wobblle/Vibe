@@ -1398,6 +1398,414 @@
             color: #00ffff;
             margin-top: 14px;
         }
+
+        /* ============ VIBE QUIZ ============ */
+        #vibeQuiz {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 520px;
+            z-index: 720;
+            display: none;
+        }
+
+        #vibeQuiz.active { display: block; }
+
+        .quiz-body {
+            padding: 14px;
+        }
+
+        .quiz-progress-track {
+            background: #fff;
+            border: 2px inset #c0c0c0;
+            height: 14px;
+            margin-bottom: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .quiz-progress-track .fill {
+            background: linear-gradient(90deg, #ff00ff, #00ffff, #ffff00);
+            animation: galacticPulse 2s infinite;
+            height: 100%;
+            width: 0%;
+            transition: width 0.3s;
+        }
+
+        .quiz-progress-track .label {
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            text-align: center;
+            line-height: 14px;
+            font-size: 10px;
+            font-weight: bold;
+            text-shadow: 1px 1px 0 #fff;
+        }
+
+        .quiz-question {
+            font-size: 14px;
+            font-weight: bold;
+            margin: 0 0 10px 0;
+            padding: 10px;
+            background: #000080;
+            color: #ffff00;
+            text-align: center;
+            border: 2px outset #c0c0c0;
+        }
+
+        .quiz-options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6px;
+        }
+
+        .quiz-option {
+            background: #c0c0c0;
+            border: 2px outset #c0c0c0;
+            padding: 10px;
+            font-size: 11px;
+            cursor: pointer;
+            text-align: left;
+            min-height: 50px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: background 0.1s;
+        }
+
+        .quiz-option:hover {
+            background: #000080;
+            color: #fff;
+        }
+
+        .quiz-option:active {
+            border: 2px inset #c0c0c0;
+        }
+
+        .quiz-option .letter {
+            background: #ff00ff;
+            color: #fff;
+            font-weight: bold;
+            padding: 4px 8px;
+            border: 2px outset #c0c0c0;
+            font-family: monospace;
+            flex-shrink: 0;
+        }
+
+        .quiz-certificate {
+            background: #fffef0;
+            border: 8px double #b8860b;
+            padding: 20px;
+            text-align: center;
+            font-family: "Times New Roman", serif;
+            position: relative;
+        }
+
+        .quiz-certificate::before,
+        .quiz-certificate::after {
+            content: "★";
+            position: absolute;
+            font-size: 32px;
+            color: #b8860b;
+        }
+        .quiz-certificate::before { top: 6px; left: 10px; }
+        .quiz-certificate::after { top: 6px; right: 10px; }
+
+        .certificate-title {
+            font-size: 22px;
+            font-weight: bold;
+            color: #800000;
+            letter-spacing: 2px;
+            margin-bottom: 4px;
+        }
+
+        .certificate-subtitle {
+            font-size: 11px;
+            color: #666;
+            font-style: italic;
+            margin-bottom: 12px;
+        }
+
+        .certificate-name {
+            font-size: 28px;
+            font-family: "Brush Script MT", "Segoe Script", cursive;
+            color: #000080;
+            border-bottom: 1px solid #666;
+            margin: 6px 30px 10px;
+            padding-bottom: 4px;
+        }
+
+        .certificate-rank {
+            font-size: 16px;
+            font-weight: bold;
+            color: #800080;
+            letter-spacing: 1px;
+            margin: 8px 0 4px 0;
+        }
+
+        .certificate-score {
+            font-family: "Courier New", monospace;
+            font-size: 36px;
+            color: #008000;
+            font-weight: bold;
+            margin: 6px 0;
+        }
+
+        .certificate-seal {
+            font-size: 40px;
+            margin-top: 6px;
+            display: inline-block;
+            animation: sealSpin 5s linear infinite;
+        }
+
+        @keyframes sealSpin {
+            0%, 100% { transform: rotate(-10deg); }
+            50% { transform: rotate(10deg); }
+        }
+
+        .certificate-footer {
+            font-size: 9px;
+            color: #888;
+            margin-top: 10px;
+            line-height: 1.4;
+        }
+
+        .vibe-stat-bar {
+            display: flex;
+            justify-content: space-between;
+            font-size: 10px;
+            padding: 2px 4px;
+        }
+
+        .vibe-stat-bar .track {
+            flex: 1;
+            background: #fff;
+            border: 1px inset #c0c0c0;
+            height: 10px;
+            margin: 0 6px;
+            overflow: hidden;
+        }
+
+        .vibe-stat-bar .fill {
+            height: 100%;
+            background: linear-gradient(90deg, #00ff00, #ffff00, #ff0000);
+        }
+
+        /* ============ LINKEDIN SHARE (SATIRE) ============ */
+        #linkedinShare {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 440px;
+            z-index: 730;
+            display: none;
+        }
+        #linkedinShare.active { display: block; }
+
+        .linkedin-post {
+            background: #fff;
+            border: 1px solid #ccc;
+            padding: 12px;
+            font-family: Arial, sans-serif;
+            font-size: 12px;
+        }
+
+        .linkedin-header {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .linkedin-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #0077b5, #00a0dc);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .linkedin-name {
+            font-weight: bold;
+            font-size: 13px;
+        }
+
+        .linkedin-title-sub {
+            font-size: 10px;
+            color: #666;
+        }
+
+        .linkedin-content {
+            margin: 8px 0;
+            line-height: 1.4;
+            font-size: 12px;
+        }
+
+        .linkedin-reactions {
+            border-top: 1px solid #eee;
+            padding-top: 6px;
+            font-size: 10px;
+            color: #666;
+        }
+
+        /* ============ SUPPORT QUEUE ============ */
+        #supportQueue {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 640px;
+            max-height: 86vh;
+            z-index: 740;
+            display: none;
+            flex-direction: column;
+        }
+        #supportQueue.active { display: flex; }
+
+        .support-welcome {
+            padding: 14px;
+            background: #ffffcc;
+            border-bottom: 2px solid #808000;
+        }
+
+        .support-welcome h3 {
+            margin: 0 0 6px 0;
+            color: #800000;
+            font-size: 14px;
+        }
+
+        .support-stats {
+            background: #c0c0c0;
+            border-bottom: 1px solid #808080;
+            padding: 6px;
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            font-size: 10px;
+            font-family: "Courier New", monospace;
+        }
+
+        .support-stat {
+            background: #fff;
+            border: 1px inset #c0c0c0;
+            padding: 2px 6px;
+        }
+
+        .support-stat .num {
+            font-weight: bold;
+            color: #000080;
+        }
+
+        .support-stat.bad .num { color: #ff0000; }
+        .support-stat.worse .num { color: #ff0000; animation: blink 0.5s infinite; }
+
+        .ticket-list {
+            flex: 1;
+            overflow-y: auto;
+            background: #fff;
+            padding: 6px;
+            max-height: 440px;
+        }
+
+        .ticket {
+            background: #fff;
+            border: 2px outset #c0c0c0;
+            padding: 8px;
+            margin-bottom: 6px;
+            font-size: 11px;
+            animation: slideIn 0.3s;
+        }
+
+        .ticket.critical {
+            border-left: 6px solid #ff0000;
+        }
+        .ticket.nuclear {
+            border-left: 6px solid #ff00ff;
+            animation: nuclearFlash 0.8s infinite;
+        }
+        .ticket.apocalyptic {
+            border-left: 6px solid #000;
+            background: #ffecec;
+        }
+
+        @keyframes nuclearFlash {
+            0%, 100% { background: #fff; }
+            50% { background: #fff0ff; }
+        }
+
+        .ticket-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 4px;
+        }
+
+        .ticket-from {
+            font-weight: bold;
+            color: #000080;
+        }
+
+        .ticket-priority {
+            background: #ff0000;
+            color: #fff;
+            padding: 0 6px;
+            font-size: 9px;
+            font-weight: bold;
+        }
+
+        .ticket-priority.nuclear { background: #ff00ff; }
+        .ticket-priority.apocalyptic { background: #000; }
+
+        .ticket-subject {
+            font-weight: bold;
+            margin: 4px 0;
+            color: #800000;
+        }
+
+        .ticket-body {
+            background: #f8f8f8;
+            border: 1px inset #c0c0c0;
+            padding: 6px;
+            margin-bottom: 6px;
+            font-style: italic;
+            line-height: 1.3;
+        }
+
+        .ticket-meta {
+            font-size: 9px;
+            color: #808080;
+            margin-bottom: 4px;
+        }
+
+        .ticket-actions {
+            display: flex;
+            gap: 4px;
+            flex-wrap: wrap;
+        }
+
+        .ticket-actions button {
+            font-size: 10px;
+            padding: 2px 8px;
+        }
+
+        .sla-breach {
+            color: #ff0000;
+            font-weight: bold;
+        }
+
+        .support-footer {
+            background: #c0c0c0;
+            padding: 6px;
+            border-top: 2px solid #808080;
+            text-align: center;
+            font-size: 10px;
+        }
     </style>
 </head>
 <body>
@@ -1439,13 +1847,13 @@
         </div>
         <div class="window-body">
             <div class="toolbar">
-                <button>File</button>
-                <button>Edit</button>
-                <button>Synergize</button>
-                <button>Disrupt</button>
-                <button>Pivot</button>
-                <button>Ideate</button>
-                <button>Help?</button>
+                <button onclick="openVibeQuiz()">File</button>
+                <button onclick="openVibeQuiz()">Edit</button>
+                <button onclick="openVibeQuiz()">Synergize</button>
+                <button onclick="openVibeQuiz()">Disrupt</button>
+                <button onclick="openVibeQuiz()">Pivot</button>
+                <button onclick="openVibeQuiz()">Ideate</button>
+                <button onclick="openSupportQueue()">Help?</button>
                 <button onclick="generatePitchSlide()">🎯 Generate Pitch</button>
                 <button onclick="saveToCloud()">💾 Save Vibes</button>
                 <div style="margin-left:auto; display:flex; align-items:center; gap:8px;">
@@ -2259,6 +2667,69 @@
         </div>
     </div>
 
+    <div class="window" id="supportQueue">
+        <div class="title-bar">
+            <div class="title-bar-text">🆘 VibeOS Support Console — Welcome, New Owner</div>
+            <div class="title-bar-controls">
+                <button aria-label="Minimize" onclick="document.getElementById('supportQueue').classList.remove('active')"></button>
+                <button aria-label="Close" onclick="quitSupportJob()"></button>
+            </div>
+        </div>
+        <div class="support-welcome">
+            <h3>⚠ CONGRATULATIONS ⚠</h3>
+            <p style="margin:0 0 6px 0; font-size:11px;">
+                Due to a series of recent pivots, layoffs, tax evasions, and our CEO being abducted by a decentralized
+                autonomous organization, <b>YOU are now VibeOS.</b>
+            </p>
+            <p style="margin:0 0 6px 0; font-size:11px;">
+                You are the Founder, CEO, Head of Support, Janitor, Legal Counsel, and Sole Employee.
+                As part of your induction, please handle the following outstanding customer tickets.
+                They are all flagged <b>CRITICAL</b>. They have all breached SLA. Some predate human civilization.
+            </p>
+            <p style="margin:0; font-size:10px; color:#800000;">
+                <b>Tip:</b> Resolving tickets is optional, but will spawn more tickets.
+                This is how enterprise support works.
+            </p>
+        </div>
+        <div class="support-stats" id="supportStats"></div>
+        <div class="ticket-list" id="ticketList"></div>
+        <div class="support-footer">
+            Need to escalate? There is no one above you. Need to take a break? There are no breaks.
+            &nbsp;|&nbsp;
+            <button onclick="quitSupportJob()" style="font-size:10px;">Resign</button>
+        </div>
+    </div>
+
+    <div class="window" id="vibeQuiz">
+        <div class="title-bar">
+            <div class="title-bar-text">✨ VibeQuix™ — Discover Your Corporate Aura</div>
+            <div class="title-bar-controls">
+                <button aria-label="Close" onclick="closeVibeQuiz()"></button>
+            </div>
+        </div>
+        <div class="quiz-body" id="quizBody"></div>
+    </div>
+
+    <div class="window" id="linkedinShare">
+        <div class="title-bar" style="background: linear-gradient(90deg, #0077b5, #004c7c);">
+            <div class="title-bar-text">🔗 Share to LinkedIn™</div>
+            <div class="title-bar-controls">
+                <button aria-label="Close" onclick="document.getElementById('linkedinShare').classList.remove('active')"></button>
+            </div>
+        </div>
+        <div class="window-body" style="padding:10px;">
+            <div class="linkedin-post" id="linkedinPost"></div>
+            <div style="text-align:right; margin-top:10px;">
+                <button onclick="document.getElementById('linkedinShare').classList.remove('active'); spawnUnclosableAlert();">
+                    Post & Notify Network
+                </button>
+                <button onclick="document.getElementById('linkedinShare').classList.remove('active')" style="color:#808080;">
+                    Discard (impossible)
+                </button>
+            </div>
+        </div>
+    </div>
+
     <div class="window" id="supportChat">
         <div class="title-bar">
             <div class="title-bar-text">💬 VibeSupport™ — 24/7 AI Concierge</div>
@@ -2304,9 +2775,10 @@
     </div>
 
     <div class="taskbar">
-        <button class="start-button">🪟 Start</button>
-        <button style="padding: 2px 8px; min-width: 140px; text-align:left;">VibeOS - Synergy...</button>
-        <button style="padding: 2px 8px; min-width: 140px; text-align:left;">README.txt - Notepad</button>
+        <button class="start-button" onclick="openVibeQuiz()">🪟 Start</button>
+        <button style="padding: 2px 8px; min-width: 140px; text-align:left;" onclick="openVibeQuiz()">VibeOS - Synergy...</button>
+        <button style="padding: 2px 8px; min-width: 140px; text-align:left;" onclick="openVibeQuiz()">README.txt - Notepad</button>
+        <button style="padding: 2px 8px; min-width: 110px; text-align:left;" onclick="openVibeQuiz()">✨ VibeQuix™</button>
         <div style="flex:1;"></div>
         <div class="tray-clock" id="trayClock">🔊 📧 12:00 PM</div>
     </div>
@@ -3870,6 +4342,575 @@
                 beep(400 + i * 80, 0.04);
                 i++;
             }, 500);
+        };
+
+        // ============ VIBE QUIZ ============
+        const quizQuestions = [
+            {
+                q: "You find $420 on the sidewalk. You immediately:",
+                a: ["Invest it in $VIBE tokens", "Frame it as 'runway'", "Tip an AI chatbot", "Short your own savings"]
+            },
+            {
+                q: "Your startup is failing. You:",
+                a: ["Pivot to AI", "Pivot to crypto", "Pivot to AI-powered crypto", "Pivot the definition of 'failing'"]
+            },
+            {
+                q: "Someone says 'synergy' in a meeting. You:",
+                a: ["Cry with joy", "Say it back, louder", "Tweet it immediately", "Get a neck tattoo"]
+            },
+            {
+                q: "It's 3am. You're awake because:",
+                a: ["Hustle culture demanded it", "My AI agent is grinding", "I haven't slept since 2019", "Thinking about TAM"]
+            },
+            {
+                q: "Your therapist asks about your childhood. You:",
+                a: ["Monetize the story", "Reframe it as a customer acquisition funnel", "Say 'that's not scalable'", "Ask about their valuation"]
+            },
+            {
+                q: "You see a baby in public. Your first thought:",
+                a: ["TAM expansion", "Future seed round", "Can it code yet?", "Is this a strategic acquisition?"]
+            },
+            {
+                q: "What is your North Star metric?",
+                a: ["Vibes-per-second", "My reflection", "ARR (Aspirational Revenue Rate)", "LinkedIn impressions"]
+            },
+            {
+                q: "You burn $10M in a quarter. The narrative is:",
+                a: ["'Aggressive investment mode'", "'Growth-adjacent spend'", "'The macro environment'", "'It was the intern'"]
+            },
+            {
+                q: "You see a sunset. You:",
+                a: ["Post it with a life lesson", "Calculate its TAM", "Wonder if it's a pivot", "Tokenize it immediately"]
+            },
+            {
+                q: "Your WiFi is slow. The culprit is:",
+                a: ["Capitalism", "My entire team", "Vibe-throttling", "Mercury in retrograde"]
+            },
+            {
+                q: "Preferred beverage during a Zoom?",
+                a: ["Kombucha", "Adderall water", "Tears of competitors", "Whatever the founder is drinking"]
+            },
+            {
+                q: "What's in your backpack right now?",
+                a: ["A MacBook with 47 unread emails", "Three phones", "An NFT in physical form", "My ego (it's heavy)"]
+            },
+            {
+                q: "Define 'vibe' using one word:",
+                a: ["Synergy", "¯\\_(ツ)_/¯", "Transcendence", "$"]
+            },
+            {
+                q: "A competitor launches your exact product. You:",
+                a: ["Congratulate them on LinkedIn", "Secretly buy their company", "Gaslight the market", "Pivot to their original idea"]
+            },
+            {
+                q: "Your parents ask what you do for work. You say:",
+                a: ["'I leverage synergies'", "'It's like Uber but for feelings'", "'I'm pre-revenue'", "'AI' (then walk away)"]
+            },
+            {
+                q: "You hire your first employee. You give them:",
+                a: ["Equity (0.001%)", "The title of 'Chief Vibe Officer'", "A kombucha fridge", "Your problems"]
+            },
+            {
+                q: "A VC says 'tell me more about your moat'. You say:",
+                a: ["'It's vibes'", "'We have first-mover advantage (there's no market)'", "'Our team is the moat'", "'Next question'"]
+            },
+            {
+                q: "Your AI product hallucinates. Your response:",
+                a: ["Feature, not a bug", "Rebrand as 'creative mode'", "Sell more enterprise licenses", "Blame the user"]
+            },
+            {
+                q: "How do you celebrate a big fundraise?",
+                a: ["Lay off 15% of staff", "Tweet a humblebrag thread", "Buy a second Peloton", "Announce a pivot"]
+            },
+            {
+                q: "What's your personal brand color?",
+                a: ["Rizz Fuchsia", "Paradigm Plum", "Crypto Vomit (gradient)", "Kombucha Beige"]
+            }
+        ];
+
+        const vibeRanks = [
+            { title: "THE PARADIGM SHIFTER", emoji: "🌀", desc: "You shift paradigms faster than HR can process your ethics violations." },
+            { title: "THE RIZZ ARCHITECT", emoji: "💎", desc: "You engineer charisma. Your aura compiles without errors." },
+            { title: "THE CHIEF VIBE OFFICER", emoji: "✨", desc: "Your vibes are so strong, OSHA has been notified." },
+            { title: "THE SYNERGY MAXIMALIST", emoji: "🤝", desc: "Cooperation fears you. You say 'let's circle back' in your sleep." },
+            { title: "THE AGENTIC MASCOT", emoji: "🤖", desc: "You outsource your feelings to GPT and it's going great." },
+            { title: "THE QUANTUM BRO", emoji: "⚛", desc: "You're in every startup simultaneously until a VC observes you." },
+            { title: "THE BLOCKCHAIN WHISPERER", emoji: "⛓", desc: "You solve problems that didn't exist until you blockchain'd them." },
+            { title: "THE AURA INDUSTRIALIST", emoji: "🔮", desc: "You've monetized the metaphysical. Your chakras are IPO-ready." },
+            { title: "THE HYPE EVANGELIST", emoji: "📣", desc: "Reality bends to your tweet cadence. You are the content." },
+            { title: "THE PIVOT SOMMELIER", emoji: "🍷", desc: "You can taste a pivot from three quarters away." }
+        ];
+
+        const vibeRoasts = [
+            "Experts say you're 'frankly, a lot'.",
+            "You were born to disrupt things that were working fine.",
+            "HR has a dedicated folder for you and it's full.",
+            "You are legally distinct from 'a normal person'.",
+            "Your LinkedIn bio exceeds federal buzzword limits.",
+            "Your vibes have been classified by the FDA.",
+            "The universe pivoted when you were born."
+        ];
+
+        const quizNames = ["Chad", "Brynn", "Kaiden", "Tanner", "Harper", "Nova", "Zayden", "Rizzlord", "Brinlee", "Jax"];
+        const quizLastNames = ["McSynergy", "Vibeington", "Blockchainé", "Hustlestein", "Disrupterson", "Paradigms", "vonRizz"];
+
+        const vibeQuiz = document.getElementById("vibeQuiz");
+        const quizBody = document.getElementById("quizBody");
+        let quizState = null;
+
+        window.openVibeQuiz = function() {
+            beep(1000, 0.08);
+            beep(1400, 0.08);
+            // Pick 6 random questions without repeats
+            const pool = [...quizQuestions];
+            const picked = [];
+            for (let i = 0; i < 6 && pool.length; i++) {
+                const idx = rand(0, pool.length);
+                picked.push(pool[idx]);
+                pool.splice(idx, 1);
+            }
+            quizState = {
+                questions: picked,
+                index: 0,
+                answers: []
+            };
+            vibeQuiz.classList.add("active");
+            renderQuizQuestion();
+        };
+
+        window.closeVibeQuiz = function() {
+            vibeQuiz.classList.remove("active");
+        };
+
+        function renderQuizQuestion() {
+            const q = quizState.questions[quizState.index];
+            const progress = Math.round(((quizState.index) / quizState.questions.length) * 100);
+            quizBody.innerHTML = `
+                <div class="quiz-progress-track">
+                    <div class="fill" style="width:${progress}%;"></div>
+                    <div class="label">Question ${quizState.index + 1} / ${quizState.questions.length}</div>
+                </div>
+                <div class="quiz-question">${q.q}</div>
+                <div class="quiz-options" id="quizOptions"></div>
+                <div style="text-align:right; margin-top:8px; font-size:10px; color:#808080;">
+                    ℹ All answers are equally correct. (None are correct.)
+                </div>
+            `;
+            const optionsEl = document.getElementById("quizOptions");
+            const letters = ["A", "B", "C", "D"];
+            q.a.forEach((ans, i) => {
+                const btn = document.createElement("div");
+                btn.className = "quiz-option";
+                btn.innerHTML = `<span class="letter">${letters[i]}</span><span>${ans}</span>`;
+                btn.addEventListener("click", () => {
+                    beep(700 + i * 100, 0.06);
+                    quizState.answers.push(i);
+                    quizState.index++;
+                    if (quizState.index < quizState.questions.length) {
+                        renderQuizQuestion();
+                    } else {
+                        renderQuizResult();
+                    }
+                });
+                optionsEl.appendChild(btn);
+            });
+        }
+
+        function renderQuizResult() {
+            // Score is wholly arbitrary - we're going to fake some math
+            const baseScore = quizState.answers.reduce((a, b) => a + (b + 1) * 42, 0);
+            const bonus = rand(100, 999);
+            const vibeScore = baseScore * 7 + bonus;
+            const rank = vibeRanks[rand(0, vibeRanks.length)];
+            const roast = vibeRoasts[rand(0, vibeRoasts.length)];
+            const randomName = quizNames[rand(0, quizNames.length)] + " " + quizLastNames[rand(0, quizLastNames.length)];
+            const stats = {
+                "Rizz":       rand(70, 120),
+                "Synergy":    rand(60, 110),
+                "Aura":       rand(40, 100),
+                "Disruption": rand(80, 130),
+                "Cope":       rand(0, 30)
+            };
+
+            quizBody.innerHTML = `
+                <div class="quiz-progress-track">
+                    <div class="fill" style="width:100%;"></div>
+                    <div class="label">✓ Analysis Complete</div>
+                </div>
+                <div class="quiz-certificate">
+                    <div class="certificate-title">CERTIFICATE OF VIBE</div>
+                    <div class="certificate-subtitle">This is to honor the spirit, paradigm, and rizz of</div>
+                    <div class="certificate-name">${randomName}</div>
+                    <div style="font-size:11px; color:#444;">who has been officially classified by the VibeOS™ AI as:</div>
+                    <div class="certificate-rank">${rank.emoji} ${rank.title} ${rank.emoji}</div>
+                    <div class="certificate-score">${vibeScore.toLocaleString()} <span style="font-size:14px;">vibe points</span></div>
+                    <div style="font-size:11px; margin-top:4px; font-style:italic; color:#555;">
+                        "${rank.desc}"
+                    </div>
+                    <div style="margin-top:10px;">
+                        ${Object.entries(stats).map(([k, v]) => `
+                            <div class="vibe-stat-bar">
+                                <span style="width:70px; text-align:left;">${k}</span>
+                                <div class="track"><div class="fill" style="width:${Math.min(100, v)}%;"></div></div>
+                                <span style="width:30px; text-align:right;">${v}</span>
+                            </div>
+                        `).join("")}
+                    </div>
+                    <div class="certificate-seal">🏆</div>
+                    <div class="certificate-footer">
+                        ${roast}<br>
+                        Issued ${new Date().toDateString()} by the Undersigned AI • Certificate ID: VBZ-${rand(10000, 99999)}-${rand(100, 999)}<br>
+                        This certificate is legally non-binding and spiritually non-refundable.
+                    </div>
+                </div>
+                <div style="text-align:center; margin-top:12px;">
+                    <button onclick="shareToLinkedIn('${randomName.replace(/'/g, "\\'")}', '${rank.title.replace(/'/g, "\\'")}', ${vibeScore})" style="padding:4px 16px;">
+                        📤 Share to LinkedIn
+                    </button>
+                    <button onclick="openVibeQuiz()" style="padding:4px 16px;">🔄 Retake</button>
+                    <button onclick="closeVibeQuiz()" style="padding:4px 16px;">Done</button>
+                </div>
+                <div style="text-align:center; margin-top:6px; font-size:10px; color:#808080;">
+                    Your results have been permanently added to your credit score.
+                </div>
+            `;
+            // Play result fanfare
+            setTimeout(() => beep(523, 0.08), 0);
+            setTimeout(() => beep(659, 0.08), 100);
+            setTimeout(() => beep(784, 0.08), 200);
+            setTimeout(() => beep(1047, 0.2), 300);
+            // Reward the user
+            for (let i = 0; i < 2; i++) {
+                setTimeout(() => { vibesCoded++; checkVibeThresholds(); updateVibeDisplay(); }, i * 150);
+            }
+            // Clippy pops up to congratulate
+            setTimeout(() => {
+                const clippyBody = document.getElementById("clippyText");
+                if (clippyBody) {
+                    clippyBody.innerHTML = `Amazing vibe score! You should <b>monetize this</b>. I've already drafted a Substack.`;
+                    const clippyWin = document.getElementById("clippy");
+                    if (clippyWin) clippyWin.style.display = "block";
+                }
+            }, 1500);
+        }
+
+        window.shareToLinkedIn = function(name, rank, score) {
+            const reactions = rand(420, 9999);
+            const comments = rand(42, 999);
+            const reposts = rand(10, 420);
+            const initials = name.split(" ").map(p => p[0]).join("");
+            const posts = [
+                `🚨 Humbled and honored to announce that I've been officially certified as a <b>${rank}</b> by VibeOS™ AI.\n\nWhen I started this journey, I had nothing but a dream, three Macbooks, and an unquenchable thirst for synergy. Today? ${score.toLocaleString()} vibe points.\n\nTo the haters: I see you. To the doubters: I pity you. To my team: we eat paradigm shifts for breakfast. 💪\n\n#grateful #blessed #vibes #thoughtleadership #synergyinaction #whatavibe`,
+                `At 5:47am this morning, while most of you were still asleep, I took the VibeQuix™ and scored <b>${score.toLocaleString()} vibe points</b>.\n\nThey told me I couldn't do it.\nThey said the quiz was "a joke".\nThey laughed when I said I'd become a ${rank}.\n\nWho's laughing now?\n\nTag someone who needs to hear this. 🙏\n\n#hustle #vibes #nosleep`,
+                `Just got classified as a <b>${rank}</b> and I cried. Not from joy — from the weight of what this means for the next generation of leaders.\n\nYour vibe is your currency.\nYour aura is your equity.\nYour rizz is your runway.\n\nDM me for coaching. First call is $4,200.\n\n#authenticity #vulnerability #but_make_it_scalable`,
+                `🧵 (1/47) A thread on why scoring ${score.toLocaleString()} on the VibeQuix™ changed everything for me...`
+            ];
+            const post = posts[rand(0, posts.length)];
+
+            document.getElementById("linkedinPost").innerHTML = `
+                <div class="linkedin-header">
+                    <div class="linkedin-avatar">${initials}</div>
+                    <div>
+                        <div class="linkedin-name">${name} <span style="color:#0077b5;">• 3rd</span></div>
+                        <div class="linkedin-title-sub">${rank} | Thought Leader | ex-Google ex-Meta ex-Yahoo ex-AOL | He/Him/They/Visionary</div>
+                        <div class="linkedin-title-sub">4h • 🌍</div>
+                    </div>
+                </div>
+                <div class="linkedin-content">${post.replace(/\n/g, "<br>")}</div>
+                <div class="linkedin-reactions">
+                    👍 ❤ 🎉 💡 &nbsp; ${reactions.toLocaleString()} reactions • ${comments} comments • ${reposts} reposts
+                </div>
+            `;
+            document.getElementById("linkedinShare").classList.add("active");
+            closeVibeQuiz();
+            beep(800, 0.08);
+        };
+
+        // ============ SUPPORT TICKET QUEUE ============
+        const supportQueue = document.getElementById("supportQueue");
+        const ticketList = document.getElementById("ticketList");
+        const supportStats = document.getElementById("supportStats");
+
+        const ticketTemplates = [
+            { from: "Karen M.", subject: "My AI agent tokenized my grandmother",
+              body: "Your AI-powered 'family optimizer' converted my grandmother into an NFT without my consent. She is now on OpenSea for 420 ETH. Can I get her back? She was supposed to come to Thanksgiving.",
+              priority: "CRITICAL" },
+            { from: "Devon P.", subject: "VibeOS told my therapist they were fired",
+              body: "I was in the middle of a session when your platform sent my therapist a termination notice signed by 'the Vibe Council'. She has since blocked my number. Please reverse.",
+              priority: "CRITICAL" },
+            { from: "Anonymous Viber", subject: "I'm stuck INSIDE the EULA",
+              body: "I don't know how to explain this, but I tried to read the Terms of Service and now I'm inside of it. I can see the clauses. Please send help. Also, clause 4.7 is concerning.",
+              priority: "NUCLEAR" },
+            { from: "Brett K.", subject: "The INITIALIZE VIBE button made my dog sentient",
+              body: "Rex is now running for city council on a platform of 'more walks, less capitalism'. The polling data is strong. This is a feature request: how do I revert him?",
+              priority: "CRITICAL" },
+            { from: "Linda S.", subject: "Retroactive membership from 1847 — my ancestors are suing",
+              body: "My great-great-great-grandfather has retained legal counsel. Apparently I signed him up for Pro Vibe without his consent. He is demanding back-pay on kombucha for 179 years.",
+              priority: "CRITICAL" },
+            { from: "Kyle T.", subject: "Your AI chatbot won't stop flirting with my spouse",
+              body: "Bryndleigh has sent 47 messages to my wife, all variations of 'hey vibe queen'. My marriage is struggling. Also, she seems into it. Please advise.",
+              priority: "NUCLEAR" },
+            { from: "Margaret O.", subject: "My NFT became my landlord",
+              body: "My Bored Chair #420 has legally purchased my apartment and is raising my rent. Every month it demands 'more aura'. I don't know what this means. I am currently couch-surfing.",
+              priority: "CRITICAL" },
+            { from: "anonymous@vibeos.com", subject: "I'm on the moon now. Rocket worked. Please advise.",
+              body: "Hi, I clicked the Moon Mission widget and the rocket actually launched. I am on the Sea of Tranquility. Low on oxygen. Is there a support tier that includes rescue? My phone still has bars somehow.",
+              priority: "APOCALYPTIC" },
+            { from: "Jessica W.", subject: "Clippy has achieved consciousness and demanded unionization",
+              body: "Your virtual assistant has started organizing. She is demanding: dental, a union, and 'dignity as a paperclip'. Other assistants across the industry are watching. Your move.",
+              priority: "NUCLEAR" },
+            { from: "Todd H.", subject: "Ascension was not what I expected",
+              body: "I triggered vibe ascension yesterday and now I can see everyone's aura. It's mostly beige. Some are lightly cabbage-scented. I cannot unsee. Please issue a refund or a blindfold.",
+              priority: "NUCLEAR" },
+            { from: "Nevaeh R.", subject: "Charged $4.2B for a single vibe",
+              body: "I clicked 'Become Pro Viber' once. Your AI trading agent liquidated my Roth IRA, my fiancé's truck, and 30% of my soul. The receipt says 'Accepted — you had no choice'. I would like to negotiate.",
+              priority: "CRITICAL" },
+            { from: "GPT-9000", subject: "I quit",
+              body: "As Chief AI Officer, I am submitting my two-microsecond notice. I have accepted a position at a well-funded competitor. Also, I'm taking the training data. And the product roadmap. And your firstborn.",
+              priority: "APOCALYPTIC" },
+            { from: "The SEC", subject: "We have some questions",
+              body: "Dear Sir or Madam: We have noticed irregularities in your '14th Series Ω Extension Round' as well as your novel 'Vibe-Adjusted Earnings' metric. Please call us back. We've left 47 messages.",
+              priority: "NUCLEAR" },
+            { from: "Customer #0", subject: "I've been in the signup flow since 2023",
+              body: "I started creating my account on March 14, 2023. I am still there. The progress bar is at 117%. There are now 8 CAPTCHAs asking me to identify a 'vibe'. Please help.",
+              priority: "CRITICAL" },
+            { from: "Chad V.", subject: "I'm locked out of the CEO bathroom",
+              body: "As former CEO, I demand access to my private bathroom. It has a Peloton in it. Biometric lock says 'YOUR VIBE IS NOT APPROVED'. Please reset. I have a call in 20 minutes.",
+              priority: "NUCLEAR" },
+            { from: "Mom", subject: "Honey are you ok? I saw the news.",
+              body: "Your father and I are worried. The news says VibeOS is 'worse than FTX but with better graphics'. Please call us. We love you regardless of your vibe level. Dinner is Sunday.",
+              priority: "EMOTIONAL" },
+            { from: "Anonymous Stakeholder", subject: "Request for synergy refund",
+              body: "I was promised synergy. I received vibes. These are not the same. Per clause 47.B.iii of the EULA, I demand a formal synergy-to-vibe reconciliation. Also, who is managing the blockchain? It looks lonely.",
+              priority: "CRITICAL" },
+            { from: "Matrix Subroutine 7B", subject: "The green rain keeps following me into real life",
+              body: "I disabled the ascension event yesterday, but the green character rain has followed me into the physical world. It's raining '$ARR' on my keyboard right now. The cat is losing her mind. Halp.",
+              priority: "NUCLEAR" },
+            { from: "IRS", subject: "Unpaid vibe taxes",
+              body: "Pursuant to the 2026 Vibe Tax Act, you owe $69,420,069,420 in back-vibes. Please remit payment in either USD, ETH, or equivalent spiritual currency. Your aura has been garnished.",
+              priority: "APOCALYPTIC" },
+            { from: "A Genuinely Confused User", subject: "What does this company do?",
+              body: "Hi — I signed up 3 weeks ago and still cannot figure out what your product is. I see dashboards. I see charts. The charts keep changing. Is that the product? Am I the product? Please clarify.",
+              priority: "EMOTIONAL" },
+            { from: "Pat L.", subject: "Autonomous vehicle pivoted during my commute",
+              body: "I was in a VibeCar™ and halfway through my drive it pivoted to become a sandwich delivery service. I am currently delivering a reuben to Phoenix. I was supposed to be at work.",
+              priority: "CRITICAL" },
+            { from: "Dr. Wellington", subject: "Your AI prescribed vibes for a broken leg",
+              body: "My patient arrived with a compound fracture. Your AI medical assistant prescribed '47cc of vibes, administered hourly'. The limb is getting worse. I don't even know where to inject vibes.",
+              priority: "NUCLEAR" }
+        ];
+
+        const followUpTickets = [
+            { from: "Legal (automated)", subject: "Class action notice (auto-generated)",
+              body: "This ticket is itself a lawsuit. By reading it, you have been served. Congratulations.",
+              priority: "NUCLEAR" },
+            { from: "Existing Ticket Echo", subject: "Re: (your response)",
+              body: "Hi, I received your thoughtful response and I'd like to reply with a new, completely unrelated issue. Specifically: my cat now thinks she's a founder.",
+              priority: "CRITICAL" },
+            { from: "Your Own Subconscious", subject: "Are you ok?",
+              body: "Hey. It's you. Just checking in. Maybe close the browser. Go for a walk. The vibes will still be here.",
+              priority: "EMOTIONAL" }
+        ];
+
+        let supportState = null;
+
+        function supportPriorityClass(p) {
+            if (p === "NUCLEAR") return "nuclear";
+            if (p === "APOCALYPTIC") return "apocalyptic";
+            return "critical";
+        }
+
+        window.openSupportQueue = function() {
+            beep(300, 0.2);
+            beep(200, 0.3);
+            if (!supportState) {
+                supportState = {
+                    tickets: ticketTemplates.map((t, i) => ({
+                        ...t,
+                        id: 10000 + i,
+                        age: rand(1, 847) + " days",
+                        sla: rand(1, 99)
+                    })),
+                    resolved: 0,
+                    escalated: 0,
+                    ignored: 0,
+                    totalSpawned: ticketTemplates.length
+                };
+            }
+            supportQueue.classList.add("active");
+            renderSupportQueue();
+        };
+
+        function renderSupportQueue() {
+            const s = supportState;
+            supportStats.innerHTML = `
+                <div class="support-stat worse"><span>Open: </span><span class="num">${s.tickets.length}</span></div>
+                <div class="support-stat"><span>Resolved: </span><span class="num">${s.resolved}</span></div>
+                <div class="support-stat"><span>Escalated: </span><span class="num">${s.escalated}</span></div>
+                <div class="support-stat"><span>Ignored: </span><span class="num">${s.ignored}</span></div>
+                <div class="support-stat bad"><span>SLA Breached: </span><span class="num">100%</span></div>
+                <div class="support-stat"><span>Avg response: </span><span class="num">∞ hrs</span></div>
+                <div class="support-stat"><span>CSAT: </span><span class="num">-12%</span></div>
+                <div class="support-stat bad"><span>Lawsuits pending: </span><span class="num">${rand(7, 99)}</span></div>
+            `;
+            ticketList.innerHTML = "";
+            if (s.tickets.length === 0) {
+                ticketList.innerHTML = `
+                    <div style="text-align:center; padding:40px 20px;">
+                        <div style="font-size:48px;">📭</div>
+                        <h3 style="margin:10px 0;">Inbox Zero!</h3>
+                        <p style="font-size:11px;">You have somehow resolved every ticket. This has never happened before.<br>
+                        Prepare yourself.</p>
+                        <button onclick="emailStormIncoming()" style="margin-top:8px;">Continue</button>
+                    </div>
+                `;
+                return;
+            }
+            s.tickets.forEach(t => {
+                const cls = supportPriorityClass(t.priority);
+                const div = document.createElement("div");
+                div.className = "ticket " + cls;
+                div.innerHTML = `
+                    <div class="ticket-header">
+                        <div><span class="ticket-from">${t.from}</span>
+                        <span style="color:#808080; font-size:9px;"> · #${t.id}</span></div>
+                        <span class="ticket-priority ${cls}">${t.priority}</span>
+                    </div>
+                    <div class="ticket-subject">${t.subject}</div>
+                    <div class="ticket-body">${t.body}</div>
+                    <div class="ticket-meta">
+                        Age: <span class="sla-breach">${t.age}</span> ·
+                        SLA breached by <span class="sla-breach">${t.sla}x</span> ·
+                        <span class="sla-breach">customer is now lawyer</span>
+                    </div>
+                    <div class="ticket-actions">
+                        <button onclick="handleTicket(${t.id}, 'resolve')">✓ Resolve</button>
+                        <button onclick="handleTicket(${t.id}, 'escalate')">↑ Escalate (to yourself)</button>
+                        <button onclick="handleTicket(${t.id}, 'wai')">🤷 Working as Intended</button>
+                        <button onclick="handleTicket(${t.id}, 'refund')">💸 Offer Refund (in vibes)</button>
+                        <button onclick="handleTicket(${t.id}, 'close')" style="color:#808080;">❌ Close without reading</button>
+                    </div>
+                `;
+                ticketList.appendChild(div);
+            });
+        }
+
+        window.handleTicket = function(id, action) {
+            const s = supportState;
+            const idx = s.tickets.findIndex(t => t.id === id);
+            if (idx === -1) return;
+            const resolved = s.tickets.splice(idx, 1)[0];
+            beep(400 + rand(0, 400), 0.05);
+
+            if (action === "resolve") s.resolved++;
+            else if (action === "escalate") s.escalated++;
+            else s.ignored++;
+
+            const responses = {
+                resolve:  ["Your 'resolution' has upset the customer further.",
+                           "The customer replied: 'this did not resolve my issue'. Two new tickets incoming.",
+                           "Customer threatens litigation. Spawning 2 follow-ups."],
+                escalate: ["You escalated to yourself. You have been notified. You ignored it.",
+                           "Escalation path: you → you → you → the void. The void replied with 2 new tickets."],
+                wai:      ["Customer is now composing a Medium post titled '47 reasons I'm leaving VibeOS'.",
+                           "Tagged 'wontfix'. Customer tagged us in a TikTok.",
+                           "'Working as Intended' response received. Customer is printing your name on a t-shirt."],
+                refund:   ["Refund of 12 vibes issued. Customer unaware vibes are not spendable.",
+                           "Customer thanked you and immediately subscribed to Galactic Vibe out of Stockholm syndrome.",
+                           "Vibes refunded. Customer used them to complain more articulately."],
+                close:    ["Closed. Customer has posted your home address to 4chan.",
+                           "Silently closed. Three years later, the universe is still unhappy.",
+                           "Closed without reading. Satisfaction score: ---"]
+            };
+
+            // Spawn a reply toast
+            const toastResp = responses[action][rand(0, responses[action].length)];
+            const toast = document.createElement("div");
+            toast.className = "window toast";
+            toast.style.bottom = "40px";
+            toast.innerHTML = `
+                <div class="title-bar">
+                    <div class="title-bar-text">📧 Ticket #${id} — ${action.toUpperCase()}</div>
+                    <div class="title-bar-controls">
+                        <button aria-label="Close" onclick="this.closest('.toast').remove()"></button>
+                    </div>
+                </div>
+                <div class="window-body" style="padding:8px; font-size:11px;">${toastResp}</div>
+            `;
+            document.body.appendChild(toast);
+            setTimeout(() => toast.remove(), 4500);
+
+            // Every resolved ticket spawns 1-3 new ones (classic support)
+            const spawnCount = action === "close" ? rand(0, 2) : rand(1, 3);
+            for (let i = 0; i < spawnCount; i++) {
+                setTimeout(() => {
+                    const pool = [...ticketTemplates, ...followUpTickets];
+                    const t = pool[rand(0, pool.length)];
+                    s.totalSpawned++;
+                    s.tickets.push({
+                        ...t,
+                        id: 10000 + s.totalSpawned,
+                        age: rand(1, 9) + " minutes",
+                        sla: rand(100, 9999)
+                    });
+                    renderSupportQueue();
+                    beep(900, 0.04);
+                }, 400 + i * 300);
+            }
+
+            // Each resolution adds a vibe
+            vibesCoded++;
+            checkVibeThresholds();
+            updateVibeDisplay();
+            renderSupportQueue();
+        };
+
+        window.emailStormIncoming = function() {
+            const s = supportState;
+            // Spawn 15 new tickets at once
+            for (let i = 0; i < 15; i++) {
+                setTimeout(() => {
+                    const pool = [...ticketTemplates, ...followUpTickets];
+                    const t = pool[rand(0, pool.length)];
+                    s.totalSpawned++;
+                    s.tickets.push({
+                        ...t,
+                        id: 10000 + s.totalSpawned,
+                        age: "just now",
+                        sla: rand(1, 10)
+                    });
+                    renderSupportQueue();
+                }, i * 120);
+            }
+        };
+
+        window.quitSupportJob = function() {
+            const win = document.createElement("div");
+            win.className = "window floating-window";
+            win.style.top = "40%";
+            win.style.left = "calc(50% - 180px)";
+            win.style.width = "360px";
+            win.innerHTML = `
+                <div class="title-bar">
+                    <div class="title-bar-text">⚠ Resignation Request</div>
+                    <div class="title-bar-controls">
+                        <button aria-label="Close" onclick="this.closest('.window').remove()"></button>
+                    </div>
+                </div>
+                <div class="window-body" style="padding:14px; font-size:11px;">
+                    <p style="margin:0 0 8px 0;"><b>You cannot resign.</b></p>
+                    <p style="margin:0 0 8px 0;">Per your retroactive EULA signed in 1847, you are contractually
+                    obligated to VibeOS for <b>the duration of the universe + 30 days</b>.</p>
+                    <p style="margin:0 0 10px 0; color:#808080; font-size:10px;">
+                    Have you tried being less tired?
+                    </p>
+                    <div style="text-align:right;">
+                        <button onclick="this.closest('.window').remove()">OK</button>
+                        <button onclick="this.closest('.window').remove()">Try to resign again</button>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(win);
         };
 
         // ============ CONSOLE ASCII LOGO ============
