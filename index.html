@@ -1911,6 +1911,392 @@
         .market-bet-row .bet-no {
             background: #ffc8c8;
         }
+
+        /* ============ PRESS ARTICLE ============ */
+        .news-shell {
+            background: #f5f1e8;
+            font-family: Georgia, "Times New Roman", serif;
+            color: #1a1a1a;
+        }
+
+        .news-nav {
+            background: #1a1a1a;
+            color: #f5f1e8;
+            padding: 4px 10px;
+            font-size: 10px;
+            font-family: Arial, sans-serif;
+            display: flex;
+            gap: 12px;
+        }
+
+        .news-nav span { cursor: pointer; }
+        .news-nav span:hover { color: #ff6699; }
+
+        .news-masthead {
+            text-align: center;
+            border-bottom: 3px double #1a1a1a;
+            padding: 14px 10px 10px;
+            background: #f5f1e8;
+        }
+
+        .news-masthead h1 {
+            font-family: "Old English Text MT", "UnifrakturCook", "Times New Roman", serif;
+            font-size: 38px;
+            margin: 0;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .news-masthead .tagline {
+            font-style: italic;
+            font-size: 11px;
+            color: #555;
+            margin-top: 2px;
+        }
+
+        .news-masthead .date-bar {
+            font-size: 10px;
+            color: #555;
+            margin-top: 4px;
+            border-top: 1px solid #1a1a1a;
+            padding-top: 4px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .news-content {
+            padding: 16px;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 18px;
+        }
+
+        .news-article {
+            font-size: 13px;
+            line-height: 1.55;
+        }
+
+        .news-article h2.headline {
+            font-size: 26px;
+            font-weight: bold;
+            line-height: 1.15;
+            margin: 0 0 6px 0;
+        }
+
+        .news-article .subhead {
+            font-style: italic;
+            color: #444;
+            font-size: 14px;
+            margin: 0 0 10px 0;
+            line-height: 1.3;
+        }
+
+        .news-article .byline {
+            font-size: 10px;
+            color: #555;
+            border-top: 1px solid #ccc;
+            border-bottom: 1px solid #ccc;
+            padding: 4px 0;
+            margin: 8px 0 12px 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .news-article p { margin: 0 0 10px 0; }
+
+        .news-article .pullquote {
+            font-size: 18px;
+            font-style: italic;
+            color: #800000;
+            border-left: 4px solid #800000;
+            padding: 4px 0 4px 14px;
+            margin: 12px 0;
+            line-height: 1.3;
+        }
+
+        .citation {
+            color: #0000aa;
+            text-decoration: none;
+            font-size: 9px;
+            vertical-align: super;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .citation:hover {
+            background: #ffff00;
+            text-decoration: underline;
+        }
+        .citation.flash {
+            background: #ffff00;
+            animation: bgStrobe 0.5s 3;
+        }
+
+        .news-article .references {
+            margin-top: 18px;
+            border-top: 2px solid #1a1a1a;
+            padding-top: 8px;
+            font-size: 10px;
+            font-family: Arial, sans-serif;
+        }
+
+        .news-article .references h3 {
+            font-size: 12px;
+            font-family: Arial, sans-serif;
+            margin: 0 0 6px 0;
+        }
+
+        .news-article .references ol {
+            margin: 0;
+            padding-left: 20px;
+            line-height: 1.5;
+        }
+
+        .news-article .references li[id] {
+            scroll-margin-top: 20px;
+        }
+
+        .news-sidebar {
+            font-family: Arial, sans-serif;
+            font-size: 11px;
+            border-left: 2px solid #1a1a1a;
+            padding-left: 14px;
+        }
+
+        .news-sidebar h3 {
+            margin: 0 0 6px 0;
+            font-size: 13px;
+            border-bottom: 1px solid #1a1a1a;
+            padding-bottom: 2px;
+            color: #800000;
+        }
+
+        .news-sidebar .related {
+            border-bottom: 1px dotted #999;
+            padding: 6px 0;
+            cursor: pointer;
+        }
+        .news-sidebar .related:hover { background: #fffacd; }
+
+        .news-sidebar .related .label {
+            font-size: 9px;
+            color: #800000;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .news-sidebar .related .title {
+            font-weight: bold;
+            font-family: Georgia, serif;
+            font-size: 12px;
+            line-height: 1.3;
+            margin-top: 1px;
+        }
+
+        .news-sidebar .ad-box {
+            background: #fffacd;
+            border: 1px dashed #b8860b;
+            padding: 8px;
+            text-align: center;
+            margin: 10px 0;
+            font-size: 10px;
+        }
+
+        .news-comments {
+            border-top: 3px solid #1a1a1a;
+            padding: 12px 16px;
+            background: #fafaf2;
+            font-family: Arial, sans-serif;
+        }
+
+        .news-comments h3 {
+            margin: 0 0 8px 0;
+            font-size: 13px;
+        }
+
+        .comment {
+            background: #fff;
+            border: 1px solid #ddd;
+            padding: 6px 8px;
+            margin-bottom: 4px;
+            font-size: 11px;
+            border-left: 3px solid #800000;
+        }
+
+        .comment .author {
+            font-weight: bold;
+            color: #0066cc;
+            font-size: 10px;
+        }
+
+        .comment .timestamp {
+            font-size: 9px;
+            color: #999;
+            margin-left: 6px;
+        }
+
+        .comment .body {
+            margin-top: 2px;
+            line-height: 1.3;
+        }
+
+        .comment.bot {
+            border-left-color: #00aa00;
+        }
+
+        .comment.troll {
+            border-left-color: #ff6600;
+        }
+
+        .news-article .award-banner {
+            background: linear-gradient(90deg, #ffd700, #ffed4e, #ffd700);
+            padding: 6px 10px;
+            font-size: 10px;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0 0 10px 0;
+            font-weight: bold;
+            color: #800000;
+            border: 1px solid #b8860b;
+        }
+
+        .news-article .factcheck {
+            background: #e8f4ff;
+            border: 1px solid #4488cc;
+            padding: 6px 10px;
+            font-size: 10px;
+            font-family: Arial, sans-serif;
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .news-article .factcheck b { color: #006600; }
+
+        /* ============ WIKIPEDIA ============ */
+        .wiki-shell {
+            background: #fff;
+            font-family: "Linux Libertine", Georgia, serif;
+            color: #202122;
+            padding: 12px 16px;
+        }
+
+        .wiki-tabs {
+            border-bottom: 1px solid #a2a9b1;
+            font-family: sans-serif;
+            font-size: 11px;
+            padding-bottom: 2px;
+        }
+        .wiki-tabs span {
+            display: inline-block;
+            padding: 4px 8px;
+            border: 1px solid #a2a9b1;
+            border-bottom: none;
+            background: #f8f9fa;
+            margin-right: 2px;
+            color: #0645ad;
+            cursor: pointer;
+        }
+        .wiki-tabs span.active {
+            background: #fff;
+            color: #202122;
+            font-weight: bold;
+        }
+
+        .wiki-shell h1 {
+            font-family: "Linux Libertine", Georgia, serif;
+            font-weight: normal;
+            font-size: 24px;
+            border-bottom: 1px solid #a2a9b1;
+            padding-bottom: 4px;
+            margin: 8px 0 6px 0;
+        }
+
+        .wiki-protected {
+            background: #fef6e7;
+            border: 1px solid #fc3;
+            padding: 4px 8px;
+            font-size: 10px;
+            font-family: sans-serif;
+            margin-bottom: 8px;
+        }
+
+        .wiki-shell .infobox {
+            float: right;
+            width: 220px;
+            border: 1px solid #a2a9b1;
+            background: #f8f9fa;
+            font-size: 11px;
+            margin: 0 0 8px 12px;
+            padding: 4px;
+        }
+
+        .wiki-shell .infobox .ibtitle {
+            background: #ccccff;
+            text-align: center;
+            font-weight: bold;
+            font-size: 12px;
+            padding: 4px;
+        }
+
+        .wiki-shell .infobox table {
+            width: 100%;
+            font-size: 10px;
+            border-collapse: collapse;
+        }
+        .wiki-shell .infobox td {
+            padding: 2px 4px;
+            vertical-align: top;
+            border-bottom: 1px dotted #ddd;
+        }
+        .wiki-shell .infobox td:first-child {
+            font-weight: bold;
+            width: 80px;
+        }
+
+        .wiki-shell p {
+            font-size: 12px;
+            line-height: 1.55;
+            margin: 0 0 8px 0;
+        }
+
+        .wiki-shell a.wikilink {
+            color: #0645ad;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .wiki-shell a.wikilink:hover { text-decoration: underline; }
+        .wiki-shell a.redlink { color: #ba0000; }
+
+        .wiki-shell .needs-citation {
+            color: #800000;
+            font-size: 10px;
+            vertical-align: super;
+            font-style: italic;
+        }
+
+        .wiki-shell .edit-history {
+            background: #f8f9fa;
+            border: 1px solid #c8ccd1;
+            padding: 6px;
+            font-size: 10px;
+            font-family: monospace;
+            margin-top: 8px;
+        }
+
+        .wiki-shell .edit-history h3 {
+            font-family: sans-serif;
+            margin: 0 0 4px 0;
+            font-size: 11px;
+        }
+
+        .wiki-shell .edit-history .edit {
+            display: flex;
+            justify-content: space-between;
+            padding: 2px 0;
+            border-bottom: 1px dotted #ddd;
+        }
     </style>
 </head>
 <body>
@@ -2406,6 +2792,268 @@
                 <div class="market-grid" id="marketGrid"></div>
                 <div style="text-align:center; padding:4px; font-size:9px; color:#808080;">
                     Markets resolve when the AI feels like it. Past vibes are not indicative of future vibes.
+                </div>
+            </div>
+
+            <div class="window" style="margin:0 0 10px 0;">
+                <div class="title-bar">
+                    <div class="title-bar-text">📰 Press Coverage — As Featured In Definitely Real Publications</div>
+                </div>
+                <div class="news-shell">
+                    <div class="news-nav">
+                        <span>HOME</span>
+                        <span>BUSINESS</span>
+                        <span>TECH</span>
+                        <span>VIBES</span>
+                        <span>OPINION</span>
+                        <span>OBITUARIES (of competitors)</span>
+                        <span style="margin-left:auto;">🔍 Search · 🔔 Subscribe · 👤 Sign In (with VibeOS™)</span>
+                    </div>
+                    <div class="news-masthead">
+                        <h1 id="newsMasthead">THE VIBE TIMES</h1>
+                        <div class="tagline">"All The Vibes That's Fit To Print"</div>
+                        <div class="date-bar">
+                            <span id="newsDate">Friday, April 24, 2026</span>
+                            <span>EST. <i>last Tuesday</i> | $0.00 + your data</span>
+                            <span id="newsEdition">VOL. CDXX, NO. 69</span>
+                        </div>
+                    </div>
+                    <div class="news-content">
+                        <div class="news-article">
+                            <div class="award-banner">
+                                ★ WINNER: VibeOS™ Award for Best Coverage of VibeOS™ (4 years running) ★
+                            </div>
+                            <h2 class="headline">VibeOS Hailed As Most Groundbreaking Company In Recorded History, Sources Confirm</h2>
+                            <p class="subhead">In what experts are unanimously calling "the most transformative
+                                technological event since the discovery of fire and possibly more important,"
+                                the company's unveiling of its proprietary platform marks a turning point for
+                                civilization itself.</p>
+                            <div class="byline">
+                                <span>By <b id="newsAuthor">Brendalynn McSourcington</b>, Senior Synergy Correspondent</span>
+                                <span>Updated 4 minutes ago · 17 min read</span>
+                            </div>
+
+                            <p>In a development that industry analysts are describing as
+                            "the single most significant technological event of all time"<a class="citation" data-ref="1">[1]</a>,
+                            VibeOS has unveiled a paradigm-shifting platform that promises to revolutionize the way humans
+                            relate to vibes<a class="citation" data-ref="2">[2]</a>. The implications,
+                            according to leading thought leaders<a class="citation" data-ref="3">[3]</a>,
+                            are nothing short of staggering.</p>
+
+                            <p>"I've literally never seen anything like it," said one source, speaking on
+                            condition of anonymity from the parking lot of a kombucha-and-IPO bar
+                            in San Francisco<a class="citation" data-ref="4">[4]</a>. "I cried. My therapist
+                            cried. My therapist's therapist filed for an LLC."</p>
+
+                            <p>The platform's <a class="citation" data-ref="5">[5]</a> proprietary
+                            blend of AI<a class="citation" data-ref="6">[6]</a>,
+                            blockchain<a class="citation" data-ref="7">[7]</a>, and
+                            "just vibes"<a class="citation" data-ref="8">[8]</a> has been
+                            independently verified by multiple respected institutions<a class="citation" data-ref="9">[9]</a>
+                            to be "better than other things in the same general category."</p>
+
+                            <div class="pullquote">
+                                "VibeOS is not a company. It is a feeling. And that feeling is somehow worth $4.2 billion."<a class="citation" data-ref="10">[10]</a>
+                            </div>
+
+                            <p>The company's growth trajectory has been described as "non-Euclidean"
+                            by Wall Street analysts<a class="citation" data-ref="11">[11]</a>, with
+                            ARR (Aspirational Revenue Rate) growing approximately 470% per quarter
+                            despite the technical absence of customers<a class="citation" data-ref="12">[12]</a>.
+                            "The fundamentals are strong," noted one Goldman Saks analyst,
+                            "if you redefine 'fundamentals' and also 'strong'"<a class="citation" data-ref="13">[13]</a>.</p>
+
+                            <div class="factcheck">
+                                <span style="font-size:18px;">✓</span>
+                                <span><b>Fact-checked by VibeOS™ AI:</b> All claims in this article have been
+                                independently verified by us, the publisher, and we found ourselves credible.
+                                <a class="citation" data-ref="14">[14]</a></span>
+                            </div>
+
+                            <p>Critics — a small, embittered group consisting of "people who have
+                            actually used the product"<a class="citation" data-ref="15">[15]</a> — have
+                            dismissed VibeOS as "a parody of itself" and "honestly kind of concerning."
+                            However, founder Chad Vibington III addressed these concerns in an exclusive
+                            statement<a class="citation" data-ref="16">[16]</a>: "Parodies are just
+                            satire vibing. Concerns are just compliments held wrong. Refunds are not a thing
+                            we do."</p>
+
+                            <p>The platform has already drawn comparisons to historic milestones including
+                            the printing press, the wheel, and the Renaissance<a class="citation" data-ref="17">[17]</a>.
+                            One Stanford professor, who asked not to be named because they were
+                            actually a different Stanford professor<a class="citation" data-ref="18">[18]</a>,
+                            described VibeOS as "the kind of breakthrough that only happens once
+                            every 17 weeks."</p>
+
+                            <p>Asked about long-term plans, Vibington III said the company would continue to
+                            "follow the vibes wherever they lead, even if that's into the next pivot, the
+                            metaverse, or another country to avoid extradition"<a class="citation" data-ref="19">[19]</a>.
+                            VibeOS is currently raising a Series Ω at a valuation that has been described
+                            by sources as "vibes-based"<a class="citation" data-ref="20">[20]</a>.</p>
+
+                            <p style="font-style:italic; color:#555; font-size:11px;">
+                                Editor's note: This publication's parent company is jointly owned by VibeOS
+                                and a holding company controlled by VibeOS. We have decided this does not
+                                constitute a conflict of interest, per our ethics policy
+                                <a class="citation" data-ref="21">[21]</a>.
+                            </p>
+
+                            <div class="references">
+                                <h3>📚 References &amp; Sources</h3>
+                                <ol id="newsReferences"></ol>
+                                <p style="margin-top:8px; font-size:9px; color:#555; font-style:italic;">
+                                    Citation methodology peer-reviewed by VibeOS™ AI
+                                    <a class="citation" data-ref="1">[1]</a>. Independently audited by ourselves
+                                    <a class="citation" data-ref="14">[14]</a>.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="news-sidebar">
+                            <h3>📈 Most Read Today</h3>
+                            <div class="related">
+                                <div class="label">★ Premium</div>
+                                <div class="title">VibeOS Hailed As Most Groundbreaking Company In Recorded History, Sources Confirm</div>
+                                <div style="font-size:9px; color:#888;">2.4M reads · 1 author</div>
+                            </div>
+                            <div class="related">
+                                <div class="label">Trending</div>
+                                <div class="title">Why VibeOS Will Definitely Solve Climate Change (Op-Ed by VibeOS)</div>
+                                <div style="font-size:9px; color:#888;">1.8M reads</div>
+                            </div>
+                            <div class="related">
+                                <div class="label">Opinion</div>
+                                <div class="title">I'm A Real Journalist And I Think VibeOS Is Cool (Sponsored)</div>
+                                <div style="font-size:9px; color:#888;">947K reads</div>
+                            </div>
+                            <div class="related">
+                                <div class="label">Tech</div>
+                                <div class="title">10 Reasons Your Therapist Should Be Replaced By VibeOS™ Bryndleigh</div>
+                                <div style="font-size:9px; color:#888;">682K reads</div>
+                            </div>
+                            <div class="related">
+                                <div class="label">Business</div>
+                                <div class="title">Inside VibeOS: 47 Photos Of Empty Conference Rooms</div>
+                                <div style="font-size:9px; color:#888;">421K reads</div>
+                            </div>
+
+                            <div class="ad-box">
+                                💼 SPONSORED<br>
+                                <b>Are YOU groundbreaking enough?</b><br>
+                                Take the VibeQuix™ to find out!
+                            </div>
+
+                            <h3>🔥 Related Coverage</h3>
+                            <div class="related">
+                                <div class="title">VibeOS Profile: A Deep Dive (Written By VibeOS)</div>
+                            </div>
+                            <div class="related">
+                                <div class="title">Op-Ed: Stop Asking About The Product</div>
+                            </div>
+                            <div class="related">
+                                <div class="title">Why The Critics Are Just Jealous (And Possibly Federal Agents)</div>
+                            </div>
+
+                            <div class="ad-box" style="background:#000080; color:#ffff00; border-color:#ffff00;">
+                                📧 Subscribe to The Vibe Times<br>
+                                <b style="font-size:14px;">$420/year</b><br>
+                                <span style="font-size:9px;">First 30 years free*</span><br>
+                                <span style="font-size:8px;">*then auto-billed for eternity</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="news-comments">
+                        <h3>💬 Comments (47,291) — Sorted by: <i>Whichever Are Most Flattering</i></h3>
+                        <div id="newsComments"></div>
+                        <button style="margin-top:6px; font-size:11px;" onclick="loadMoreComments()">Load 47,290 more comments</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="window" style="margin:0 0 10px 0;">
+                <div class="title-bar">
+                    <div class="title-bar-text">📖 VibeOS — Wikipedia (semi-protected)</div>
+                </div>
+                <div class="wiki-shell">
+                    <div class="wiki-tabs">
+                        <span class="active">Article</span>
+                        <span>Talk (8,471)</span>
+                        <span>Read</span>
+                        <span>Edit</span>
+                        <span>View history</span>
+                    </div>
+                    <div class="wiki-protected">
+                        🔒 This article is <b>fully protected</b> due to ongoing edit warfare with the subject of the article.
+                        Last edit: <b>4 seconds ago by ChadV3 (CEO of VibeOS)</b>.
+                    </div>
+                    <h1>VibeOS</h1>
+                    <p style="font-size:10px; color:#555; font-family:sans-serif;">
+                        From Wikipedia, the free encyclopedia (currently being aggressively rewritten)
+                    </p>
+
+                    <div class="infobox">
+                        <div class="ibtitle">VibeOS</div>
+                        <div style="text-align:center; padding:8px 0; font-size:30px;">✨</div>
+                        <div style="text-align:center; font-size:9px; padding:0 4px 6px;">
+                            The official VibeOS™ logo, replacing whatever was there before.
+                        </div>
+                        <table>
+                            <tr><td>Type</td><td>"Vibe-tech"<sup class="needs-citation">[needs citation]</sup></td></tr>
+                            <tr><td>Founded</td><td>1847 <sup class="needs-citation">[disputed]</sup></td></tr>
+                            <tr><td>Headquarters</td><td>The metaverse</td></tr>
+                            <tr><td>CEO</td><td>Chad Vibington III <sup class="needs-citation">[citation needed]</sup></td></tr>
+                            <tr><td>Industry</td><td>Synergy</td></tr>
+                            <tr><td>Products</td><td>Vibes (alleged)</td></tr>
+                            <tr><td>Revenue</td><td>$∞ (vibe-adjusted)</td></tr>
+                            <tr><td>Employees</td><td>1 (you)</td></tr>
+                            <tr><td>Subsidiaries</td><td>Itself</td></tr>
+                            <tr><td>Slogan</td><td>"Just vibe with it"</td></tr>
+                        </table>
+                    </div>
+
+                    <p><b>VibeOS</b> (stylized as <i>VIBΞOS</i><sup class="needs-citation">[citation needed]</sup>) is the
+                    <a class="wikilink">most groundbreaking company in human history</a><sup class="needs-citation">[1]</sup>,
+                    according to <a class="wikilink">peer-reviewed sources</a><sup class="needs-citation">[2]</sup>. It was
+                    founded in 1847<sup class="needs-citation">[disputed - discuss]</sup> by
+                    <a class="wikilink">Chad Vibington III</a>, who was, at the time, also negative 130 years old.
+                    The company is widely considered to be a
+                    <a class="wikilink">paradigm shift</a><sup class="needs-citation">[citation needed]</sup>
+                    and a <a class="redlink">"category-defining vibe-tech leader"</a> (page does not exist).</p>
+
+                    <p>VibeOS is best known for its proprietary platform, which has been described by analysts as
+                    <a class="wikilink">"the most important software ever written"</a><sup class="needs-citation">[1]</sup>
+                    and by users as <a class="redlink">"what does this even do"</a> (page does not exist).
+                    The company's primary product is <a class="wikilink">vibes</a>, which it produces at scale through
+                    a proprietary <a class="wikilink">synergy reactor</a><sup class="needs-citation">[fictional]</sup>.</p>
+
+                    <p>As of 2026, VibeOS employs approximately one (1) person — namely, the user currently reading this
+                    article<sup class="needs-citation">[citation: you, just now]</sup>. The company has raised over
+                    <a class="wikilink">$2.4 billion</a> across 47 funding rounds, including a notable Series Ω
+                    extension led by <a class="redlink">Chad Vibington III himself</a> (page repeatedly deleted by ChadV3).</p>
+
+                    <h2 style="font-size:18px; border-bottom:1px solid #a2a9b1; padding-bottom:2px; margin-top:14px; font-weight:normal;">Controversies</h2>
+                    <p>This section is intentionally left blank<sup class="needs-citation">[citation removed by ChadV3 · 1 second ago]</sup>.</p>
+
+                    <h2 style="font-size:18px; border-bottom:1px solid #a2a9b1; padding-bottom:2px; margin-top:14px; font-weight:normal;">Awards</h2>
+                    <p>VibeOS has won <a class="wikilink">numerous awards</a><sup class="needs-citation">[citation needed]</sup>,
+                    most of which were <a class="wikilink">created by VibeOS</a><sup class="needs-citation">[verified]</sup> for
+                    the explicit purpose of being awarded to VibeOS.</p>
+
+                    <div class="edit-history">
+                        <h3>Recent edits to this article</h3>
+                        <div class="edit"><span>14:42 · ChadV3</span><span>(+247 bytes) "added context"</span></div>
+                        <div class="edit"><span>14:41 · ChadV3</span><span>(-1,200 bytes) "rm'd biased content"</span></div>
+                        <div class="edit"><span>14:40 · ChadV3</span><span>(+89 bytes) "minor"</span></div>
+                        <div class="edit"><span>14:38 · ChadV3</span><span>(-3,400 bytes) "vandalism"</span></div>
+                        <div class="edit"><span>14:35 · ChadV3</span><span>(+47 bytes) "fixed typo (it was 'fraud')"</span></div>
+                        <div class="edit"><span>14:31 · NotChadV3</span><span>(+0 bytes) "definitely not Chad"</span></div>
+                        <div class="edit"><span>14:28 · ChadV3</span><span>(-99% of article) "consolidating"</span></div>
+                        <div class="edit"><span>14:14 · GPT9000Bot</span><span>(+9,000 bytes) "training data update"</span></div>
+                        <div style="text-align:right; margin-top:4px; font-size:10px;">
+                            ... <a class="wikilink">14,847 more edits, all by ChadV3</a>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -4830,6 +5478,130 @@
         refreshBanners();
         // Refresh banner content every 90 seconds
         setInterval(refreshBanners, 90000);
+
+        // ============ PRESS ARTICLE / SELF-CITING REFERENCES ============
+        const newsPublications = [
+            { name: "THE VIBE TIMES", tag: "All The Vibes That's Fit To Print" },
+            { name: "VIBESTREET JOURNAL", tag: "Markets · Vibes · Markets For Vibes" },
+            { name: "THE DAILY SYNERGY", tag: "Disrupting News Since Yesterday" },
+            { name: "THE PARADIGM POST", tag: "Shifting Paradigms Print & Online" },
+            { name: "FORBES (BUT MADE UP)", tag: "All The People We've Made Up" },
+            { name: "TECHCRUMBS", tag: "We Cover VibeOS Almost Exclusively" },
+            { name: "THE RIZZ HERALD", tag: "Yesterday's News, Tomorrow's Vibes" },
+            { name: "BLOOMBERG.VIBE", tag: "Markets · Bonds · Vibes Per Second" },
+            { name: "THE WALL STREET JOURNAL OF SYNERGY", tag: "Owned By VibeOS Since 2024" }
+        ];
+        const newsAuthors = [
+            "Brendalynn McSourcington", "Tate Citationsworth", "Tanner W. Vibing",
+            "Brynn O'Reference", "Hartley Disruptington", "Dr. Synergy Plumb (PhD, vibes)",
+            "Margot Pivot-Smith", "Chad Vibington III (himself)", "An Anonymous Source (us)"
+        ];
+        const newsEditions = ["VOL. CDXX, NO. 69", "VOL. ∞, NO. 1", "VOL. MMXXVI, NO. 420",
+                              "VOL. LXIX, NO. III", "VOL. SOON, NO. ALSO SOON"];
+
+        // The 21 references — every single one points back to the article you're reading
+        const newsReferences = [
+            "Per the article you are currently reading. <i>(See above.)</i>",
+            "Ibid.",
+            "<i>Op. cit.</i>",
+            "As established in [1], which is this.",
+            "See [1] for primary source. [1] is, of course, this article.",
+            "Confirmed by paragraph 2 of this article.",
+            "Cross-reference: [1], [2], [3] — all of which are this.",
+            "Source: Trust me, bro. (See: paragraph 4 of present article.)",
+            "Verified by [1]. [1] is verified by [9]. [9] is, however, this.",
+            "Pull quote attributed to the headline of this article.",
+            "Wall Street analysts. (For analyst names, see [11].)",
+            "Customer count not relevant per [1].",
+            "Goldman Saks press release dated 'tomorrow'. (See [11], which sees [12], which sees this.)",
+            "Self-audit conducted by The Vibe Times™. Methodology: vibes.",
+            "Citation withheld out of respect for the deeply biased perspective of users.",
+            "Statement issued by Chad Vibington III to himself, transcribed by this newsroom.",
+            "Comparable historical events listed in [17], which is this footnote.",
+            "Stanford professor's name available on request to subscribers of $4,200/year tier.",
+            "Vibington III, C. (2026). <i>Things I Have Said To Myself, Recently</i>. VibeOS Press.",
+            "Valuation methodology described in detail in <i>this article</i>, which is the article you are currently reading.",
+            "VibeOS™ Editorial Standards & Practices, §47.B.iii (\"a conflict of interest is a conflict of vibes, which is to say, an alignment\")."
+        ];
+
+        function refreshPress() {
+            const pub = newsPublications[rand(0, newsPublications.length)];
+            const author = newsAuthors[rand(0, newsAuthors.length)];
+            const edition = newsEditions[rand(0, newsEditions.length)];
+            document.getElementById("newsMasthead").textContent = pub.name;
+            document.querySelector(".news-masthead .tagline").textContent = `"${pub.tag}"`;
+            document.getElementById("newsAuthor").textContent = author;
+            document.getElementById("newsEdition").textContent = edition;
+            document.getElementById("newsDate").textContent = new Date().toDateString();
+        }
+        refreshPress();
+        setInterval(refreshPress, 25000);
+
+        // Render references list
+        const refsList = document.getElementById("newsReferences");
+        newsReferences.forEach((ref, i) => {
+            const li = document.createElement("li");
+            li.id = "ref-" + (i + 1);
+            li.innerHTML = ref;
+            refsList.appendChild(li);
+        });
+
+        // Wire up citation links: clicking scrolls to the referenced footnote and flashes it
+        document.querySelectorAll(".citation").forEach(c => {
+            c.addEventListener("click", (e) => {
+                e.preventDefault();
+                const target = document.getElementById("ref-" + c.dataset.ref);
+                if (target) {
+                    target.scrollIntoView({ behavior: "smooth", block: "center" });
+                    document.querySelectorAll(".citation.flash").forEach(el => el.classList.remove("flash"));
+                    target.style.background = "#ffff00";
+                    setTimeout(() => target.style.background = "", 1500);
+                }
+            });
+        });
+
+        // Fake comments
+        const newsCommentPool = [
+            { author: "ChadVibington_official", time: "2m", body: "Outstanding piece. Truly fair and balanced reporting. <b>Bookmarked.</b>", tag: "" },
+            { author: "VibeBot_47291", time: "3m", body: "I am a real human and I love VibeOS. Buy now buy now buy now.", tag: "bot" },
+            { author: "actually_a_VC", time: "5m", body: "We led the most recent round. Source: trust me. Also we'd like another round.", tag: "" },
+            { author: "Brendalynn_McS", time: "5m", body: "Great article. <i>(I wrote this article.)</i>", tag: "" },
+            { author: "user_842x", time: "6m", body: "Where do I sign up to be retroactively a customer since 1847?", tag: "" },
+            { author: "anonymous_short_seller", time: "8m", body: "This is all a — [comment removed by moderator: ChadV3]", tag: "troll" },
+            { author: "BryndleighAI", time: "9m", body: "💚 What a vibe. Reading this article healed my dataset. 💚", tag: "bot" },
+            { author: "real_journalist_certified", time: "11m", body: "I went to journalism school for this and I think VibeOS is super cool.", tag: "" },
+            { author: "VibeBot_88812", time: "12m", body: "Fellow human users! I, too, am buying $VIBE with my human money.", tag: "bot" },
+            { author: "concerned_citizen_42", time: "14m", body: "Has anyone actually used the product? Asking for [comment removed]", tag: "troll" },
+            { author: "ChadVibington_official", time: "16m", body: "Replying to my own previous comment to boost engagement. <b>Outstanding piece.</b>", tag: "" },
+            { author: "GPT9000Bot", time: "18m", body: "As a large language model, I do not have opinions, but if I did, this article would be it.", tag: "bot" },
+            { author: "Mom_of_a_Founder", time: "19m", body: "I'm so proud of my son for being mentioned in this article that he wrote about himself.", tag: "" },
+            { author: "tos_reader_001", time: "22m", body: "I read the EULA. I have notes. Nobody is responding to my emails.", tag: "troll" },
+            { author: "moonchild_3", time: "24m", body: "VibeOS healed my chakras. 5 stars.", tag: "" },
+            { author: "an_actual_competitor", time: "26m", body: "This is a fair article and I am happy to be losing market share. — Sent from VibeOS™ Bryndleigh", tag: "bot" }
+        ];
+        const newsComments = document.getElementById("newsComments");
+        let commentIdx = 0;
+        function renderComments(n) {
+            for (let i = 0; i < n && commentIdx < newsCommentPool.length; i++) {
+                const c = newsCommentPool[commentIdx++];
+                const div = document.createElement("div");
+                div.className = "comment " + (c.tag || "");
+                div.innerHTML = `
+                    <span class="author">${c.author}</span>
+                    <span class="timestamp">· ${c.time} ago</span>
+                    <div class="body">${c.body}</div>
+                    <div style="margin-top:3px; font-size:9px; color:#999;">
+                        👍 ${rand(100, 9999)} &nbsp; 💬 Reply &nbsp; 🚩 Flag (will be ignored)
+                    </div>
+                `;
+                newsComments.appendChild(div);
+            }
+        }
+        renderComments(6);
+        window.loadMoreComments = function() {
+            renderComments(99);
+            spawnUnclosableAlert();
+        };
 
         // ============ POLYVIBE PREDICTION MARKETS ============
         const polyMarkets = [
