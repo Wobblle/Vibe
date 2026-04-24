@@ -20,7 +20,7 @@ We looked at the current state of SaaS and asked: *"What if we took all the util
 ## 💻 System Requirements
 
 * **Minimum:** A web browser from 1998 or later.
-* **Recommended for Optimal Reality Scraping:** A decentralized fleet of at least 32 mobile edge-compute nodes to properly map the ambient Vibe Density of your local municipality. 
+* **Recommended for Optimal Reality Scraping:** A decentralized fleet of mobile edge-compute nodes to properly map the ambient Vibe Density of your local municipality. 
 * **Aesthetic Requirement:** Best viewed while wearing structured necklines and hardware eyewear. 
 
 ## 🛠️ Installation & Deployment
