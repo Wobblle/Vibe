@@ -1,0 +1,3888 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VibeOS - Synergy Dashboard v4.20.69</title>
+    <link rel="stylesheet" href="https://unpkg.com/98.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            background-color: #008080;
+            margin: 0;
+            padding: 10px;
+            font-family: "Pixelated MS Sans Serif", Arial, sans-serif;
+            overflow-x: hidden;
+        }
+
+        .main-window {
+            max-width: 1200px;
+            margin: 10px auto;
+        }
+
+        .window-body-content {
+            padding: 10px;
+        }
+
+        marquee {
+            background: #000080;
+            color: #ffff00;
+            font-weight: bold;
+            padding: 4px 0;
+            border: 2px inset #c0c0c0;
+            margin-bottom: 10px;
+        }
+
+        .toolbar {
+            background: #c0c0c0;
+            border-bottom: 1px solid #808080;
+            padding: 4px;
+            display: flex;
+            gap: 4px;
+            margin-bottom: 8px;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .chart-container {
+            background: white;
+            border: 2px inset #c0c0c0;
+            padding: 8px;
+            height: 260px;
+        }
+
+        .center-area {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            background: #c0c0c0;
+            border: 2px inset #c0c0c0;
+            margin-bottom: 10px;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .vibe-button {
+            font-size: 28px !important;
+            padding: 20px 60px !important;
+            font-weight: bold;
+            letter-spacing: 2px;
+            min-width: 400px;
+            box-shadow:
+                inset -2px -2px 0 0 #808080,
+                inset 2px 2px 0 0 #ffffff,
+                inset -4px -4px 0 0 #404040,
+                inset 4px 4px 0 0 #dfdfdf;
+        }
+
+        .vibe-button:disabled {
+            color: #808080 !important;
+            text-shadow: 1px 1px 0 #ffffff;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 8px;
+            padding: 10px;
+        }
+
+        .tier {
+            background: #c0c0c0;
+            border: 2px outset #c0c0c0;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .tier.featured {
+            background: #ffffcc;
+            border: 2px solid #ff0000;
+        }
+
+        .tier h3 {
+            margin: 0 0 6px 0;
+            font-size: 14px;
+            background: #000080;
+            color: white;
+            padding: 4px;
+        }
+
+        .tier.featured h3 {
+            background: #ff0000;
+        }
+
+        .tier .price {
+            font-size: 22px;
+            font-weight: bold;
+            color: #000080;
+            margin: 8px 0;
+        }
+
+        .tier ul {
+            list-style: none;
+            padding: 0;
+            margin: 8px 0;
+            font-size: 11px;
+            text-align: left;
+        }
+
+        .tier ul li {
+            padding: 2px 0;
+            border-bottom: 1px dotted #808080;
+        }
+
+        .tier ul li::before {
+            content: "► ";
+            color: #008000;
+        }
+
+        .status-bar {
+            display: flex;
+            gap: 0;
+            margin-top: 10px;
+        }
+
+        .status-bar-field {
+            flex: 1;
+        }
+
+        .status-bar-field.blink {
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            50% { background: #ffff00; }
+        }
+
+        .bottom-panels {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .metrics-panel {
+            background: #000;
+            color: #00ff00;
+            font-family: "Courier New", monospace;
+            font-size: 11px;
+            padding: 8px;
+            border: 2px inset #c0c0c0;
+            height: 180px;
+            overflow: hidden;
+            line-height: 1.4;
+        }
+
+        .metric-row {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .testimonial-box {
+            background: white;
+            border: 2px inset #c0c0c0;
+            padding: 8px;
+            font-size: 11px;
+            height: 180px;
+            overflow: hidden;
+        }
+
+        .testimonial {
+            border-bottom: 1px dashed #808080;
+            padding: 4px 0;
+            font-style: italic;
+        }
+
+        .testimonial .author {
+            font-weight: bold;
+            font-style: normal;
+            color: #000080;
+            font-size: 10px;
+        }
+
+        .blue-screen-button {
+            position: fixed;
+            bottom: 10px;
+            left: 10px;
+            z-index: 100;
+        }
+
+        .tray-clock {
+            background: #c0c0c0;
+            border: 1px inset #c0c0c0;
+            padding: 2px 6px;
+            font-size: 11px;
+        }
+
+        .taskbar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #c0c0c0;
+            border-top: 2px solid white;
+            padding: 2px 4px;
+            display: flex;
+            gap: 4px;
+            align-items: center;
+            z-index: 50;
+        }
+
+        .start-button {
+            font-weight: bold;
+            padding: 2px 8px !important;
+        }
+
+        .floating-window {
+            position: fixed;
+            z-index: 200;
+            width: 360px;
+        }
+
+        .progress-bar-fake {
+            background: white;
+            border: 2px inset #c0c0c0;
+            height: 18px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-bar-fill {
+            background: repeating-linear-gradient(
+                90deg,
+                #000080 0 10px,
+                #c0c0c0 10px 12px
+            );
+            height: 100%;
+            width: 0%;
+            transition: width 0.3s;
+        }
+
+        body {
+            padding-bottom: 40px;
+        }
+
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 6px;
+            margin-bottom: 10px;
+        }
+
+        .kpi-box {
+            background: #c0c0c0;
+            border: 2px outset #c0c0c0;
+            padding: 6px;
+            text-align: center;
+            font-size: 11px;
+        }
+
+        .kpi-box .value {
+            font-size: 18px;
+            font-weight: bold;
+            color: #008000;
+            font-family: "Courier New", monospace;
+        }
+
+        .kpi-box .value.red {
+            color: #ff0000;
+        }
+
+        .kpi-box .label {
+            font-size: 10px;
+            color: #404040;
+        }
+
+        .watermark {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-30deg);
+            font-size: 120px;
+            color: rgba(255,255,255,0.08);
+            font-weight: bold;
+            pointer-events: none;
+            z-index: 1;
+            letter-spacing: 10px;
+        }
+
+        .blinking-dot {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: #ff0000;
+            border-radius: 50%;
+            animation: blink 0.8s infinite;
+            margin-right: 4px;
+        }
+
+        .kpi-grid {
+            grid-template-columns: repeat(6, 1fr);
+        }
+
+        .ticker {
+            background: #000;
+            color: #00ff00;
+            font-family: "Courier New", monospace;
+            font-size: 11px;
+            padding: 3px 0;
+            border: 2px inset #c0c0c0;
+            margin-bottom: 6px;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        .ticker.red {
+            color: #ff3333;
+        }
+
+        .ticker.yellow {
+            color: #ffff00;
+            background: #800000;
+        }
+
+        .widget-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .widget-body {
+            background: #c0c0c0;
+            padding: 8px;
+            min-height: 140px;
+        }
+
+        .vibe-gauge {
+            width: 100%;
+            height: 120px;
+            position: relative;
+            background: linear-gradient(to right, #ff0000 0%, #ffff00 50%, #00ff00 100%);
+            border: 2px inset #c0c0c0;
+            margin-top: 6px;
+        }
+
+        .vibe-gauge-needle {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: #000;
+            transition: left 0.4s;
+            box-shadow: 0 0 0 1px #fff;
+        }
+
+        .vibe-gauge-label {
+            position: absolute;
+            bottom: 4px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #000;
+            color: #fff;
+            padding: 2px 8px;
+            font-size: 11px;
+            font-weight: bold;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 6px;
+        }
+
+        .team-member {
+            background: #fff;
+            border: 1px inset #c0c0c0;
+            padding: 6px;
+            text-align: center;
+            font-size: 10px;
+        }
+
+        .team-member .avatar {
+            font-size: 36px;
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .team-member .name {
+            font-weight: bold;
+            color: #000080;
+        }
+
+        .weather-display {
+            text-align: center;
+            padding: 6px;
+        }
+
+        .weather-icon {
+            font-size: 48px;
+            line-height: 1;
+        }
+
+        .weather-temp {
+            font-size: 24px;
+            font-weight: bold;
+            color: #000080;
+        }
+
+        .activity-feed {
+            background: #fff;
+            border: 2px inset #c0c0c0;
+            padding: 4px;
+            font-size: 11px;
+            height: 220px;
+            overflow: hidden;
+        }
+
+        .activity-item {
+            padding: 3px 4px;
+            border-bottom: 1px dotted #c0c0c0;
+            animation: slideIn 0.4s;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; background: #ffff00; }
+            to { opacity: 1; background: transparent; }
+        }
+
+        .activity-item .user {
+            color: #000080;
+            font-weight: bold;
+        }
+
+        .activity-item .time {
+            color: #808080;
+            font-size: 9px;
+            float: right;
+        }
+
+        .code-editor {
+            background: #000;
+            color: #00ff00;
+            font-family: "Courier New", monospace;
+            font-size: 11px;
+            padding: 8px;
+            border: 2px inset #c0c0c0;
+            height: 180px;
+            overflow: hidden;
+            line-height: 1.4;
+            white-space: pre;
+        }
+
+        .code-editor .comment { color: #808080; }
+        .code-editor .keyword { color: #00ffff; }
+        .code-editor .string { color: #ffff00; }
+        .code-editor .cursor {
+            display: inline-block;
+            width: 8px;
+            height: 12px;
+            background: #00ff00;
+            animation: blink 1s infinite;
+            vertical-align: middle;
+        }
+
+        .integrations-grid {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            gap: 4px;
+            padding: 8px;
+        }
+
+        .integration {
+            background: #fff;
+            border: 1px solid #808080;
+            padding: 6px 2px;
+            text-align: center;
+            font-size: 9px;
+            cursor: pointer;
+        }
+
+        .integration:hover {
+            background: #000080;
+            color: #fff;
+        }
+
+        .integration .icon {
+            font-size: 20px;
+            display: block;
+        }
+
+        .achievements {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            gap: 4px;
+            padding: 6px;
+        }
+
+        .trophy {
+            background: #c0c0c0;
+            border: 2px outset #c0c0c0;
+            padding: 4px;
+            text-align: center;
+            font-size: 9px;
+        }
+
+        .trophy .icon {
+            font-size: 24px;
+        }
+
+        .trophy.locked {
+            filter: grayscale(1) opacity(0.4);
+        }
+
+        .roadmap {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 4px;
+            padding: 8px;
+        }
+
+        .roadmap-quarter {
+            background: #fff;
+            border: 2px inset #c0c0c0;
+            padding: 6px;
+            font-size: 10px;
+        }
+
+        .roadmap-quarter h4 {
+            margin: 0 0 4px 0;
+            background: #000080;
+            color: #fff;
+            padding: 2px 4px;
+            font-size: 11px;
+        }
+
+        .roadmap-quarter ul {
+            margin: 0;
+            padding-left: 14px;
+        }
+
+        .roadmap-quarter.shipped { opacity: 0.6; }
+        .roadmap-quarter.shipped h4 { background: #008000; }
+        .roadmap-quarter.never h4 { background: #808080; }
+
+        .pricing-grid {
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        .tier.galactic {
+            background: linear-gradient(135deg, #ff00ff, #00ffff, #ffff00);
+            border: 2px solid #000;
+            animation: galacticPulse 3s infinite;
+        }
+
+        .tier.galactic h3 {
+            background: #000;
+            color: #ffff00;
+        }
+
+        @keyframes galacticPulse {
+            0%, 100% { filter: hue-rotate(0deg); }
+            50% { filter: hue-rotate(90deg); }
+        }
+
+        #clippy {
+            position: fixed;
+            bottom: 40px;
+            right: 20px;
+            z-index: 150;
+            width: 240px;
+        }
+
+        .clippy-body {
+            background: #ffffcc;
+            padding: 10px;
+            font-size: 11px;
+            position: relative;
+        }
+
+        .clippy-mascot {
+            font-size: 50px;
+            float: left;
+            margin-right: 6px;
+            animation: wobble 2s infinite;
+        }
+
+        @keyframes wobble {
+            0%, 100% { transform: rotate(-5deg); }
+            50% { transform: rotate(5deg); }
+        }
+
+        #cookieBanner {
+            position: fixed;
+            bottom: 32px;
+            left: 10px;
+            right: 10px;
+            z-index: 160;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .recent-logins {
+            background: #fff;
+            border: 2px inset #c0c0c0;
+            padding: 6px;
+            font-size: 10px;
+            height: 140px;
+            overflow: hidden;
+        }
+
+        .login-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 2px 0;
+            border-bottom: 1px dotted #c0c0c0;
+        }
+
+        .country-flag {
+            font-size: 14px;
+        }
+
+        .sparkle {
+            animation: sparkle 1.5s infinite;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        .news-ticker {
+            display: flex;
+            background: #c0c0c0;
+            border: 2px inset #c0c0c0;
+            margin-bottom: 6px;
+            overflow: hidden;
+        }
+
+        .news-ticker .label {
+            background: #ff0000;
+            color: #fff;
+            font-weight: bold;
+            padding: 3px 8px;
+            font-size: 11px;
+            white-space: nowrap;
+        }
+
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 300;
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-overlay.active { display: flex; }
+
+        /* ============ VIBE OVERLOAD / ASCENSION ============ */
+        .vibe-counter {
+            font-family: "Courier New", monospace;
+            font-weight: bold;
+            color: #000080;
+            font-size: 13px;
+            background: #000;
+            color: #00ff00;
+            padding: 4px 10px;
+            border: 2px inset #c0c0c0;
+            display: inline-block;
+            letter-spacing: 1px;
+        }
+
+        .vibe-counter.warning { color: #ffff00; }
+        .vibe-counter.critical { color: #ff3333; animation: blink 0.3s infinite; }
+
+        /* Stage 1: Surge */
+        body.surge .main-window {
+            animation: nudge 0.4s infinite;
+        }
+        @keyframes nudge {
+            0%, 100% { transform: translate(0,0); }
+            25% { transform: translate(-1px, 1px); }
+            75% { transform: translate(1px, -1px); }
+        }
+
+        /* Stage 2: Critical */
+        body.critical {
+            animation: bgStrobe 0.5s infinite;
+        }
+        @keyframes bgStrobe {
+            0%, 100% { background-color: #008080; }
+            50% { background-color: #800000; }
+        }
+        body.critical .main-window {
+            animation: shake 0.15s infinite;
+            filter: hue-rotate(0deg);
+        }
+        @keyframes shake {
+            0%, 100% { transform: translate(0,0) rotate(0deg); }
+            25% { transform: translate(-4px, 2px) rotate(-0.3deg); }
+            50% { transform: translate(3px, -3px) rotate(0.4deg); }
+            75% { transform: translate(-2px, -1px) rotate(-0.2deg); }
+        }
+
+        #overloadBanner {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 500;
+            background: #ff0000;
+            color: #ffff00;
+            font-weight: bold;
+            text-align: center;
+            padding: 8px;
+            font-size: 18px;
+            letter-spacing: 3px;
+            display: none;
+            animation: bannerPulse 0.4s infinite;
+            box-shadow: 0 0 20px #ff0000;
+        }
+        @keyframes bannerPulse {
+            0%, 100% { background: #ff0000; color: #ffff00; }
+            50% { background: #ffff00; color: #ff0000; }
+        }
+
+        /* Stage 3: Ascension */
+        body.ascension {
+            animation: ascendHue 0.4s infinite;
+            overflow: hidden;
+        }
+        @keyframes ascendHue {
+            0% { filter: hue-rotate(0deg) invert(0); }
+            25% { filter: hue-rotate(90deg) invert(0.2); }
+            50% { filter: hue-rotate(180deg) invert(0.5); }
+            75% { filter: hue-rotate(270deg) invert(0.2); }
+            100% { filter: hue-rotate(360deg) invert(0); }
+        }
+
+        body.ascension .main-window,
+        body.ascension .window,
+        body.ascension marquee,
+        body.ascension .taskbar {
+            animation: ascend 0.6s infinite !important;
+        }
+
+        @keyframes ascend {
+            0% { transform: rotate(0deg) scale(1) translate(0,0); }
+            25% { transform: rotate(4deg) scale(1.02) translate(-20px, 10px); }
+            50% { transform: rotate(-3deg) scale(0.98) translate(15px, -15px); }
+            75% { transform: rotate(2deg) scale(1.03) translate(-10px, 20px); }
+            100% { transform: rotate(0deg) scale(1) translate(0,0); }
+        }
+
+        body.ascension .floating-window {
+            animation: floatWild 1s infinite !important;
+        }
+        @keyframes floatWild {
+            0%, 100% { transform: translate(0,0) rotate(0deg) scale(1); }
+            33% { transform: translate(40px, -30px) rotate(15deg) scale(1.1); }
+            66% { transform: translate(-30px, 40px) rotate(-12deg) scale(0.9); }
+        }
+
+        #matrixRain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 400;
+            pointer-events: none;
+            display: none;
+            opacity: 0.7;
+        }
+
+        body.ascension #matrixRain { display: block; }
+
+        .ascension-text {
+            position: fixed;
+            top: 20%;
+            left: 0;
+            right: 0;
+            z-index: 450;
+            text-align: center;
+            font-size: 80px;
+            font-weight: bold;
+            color: #ffff00;
+            text-shadow: 4px 4px 0 #ff0000, -4px -4px 0 #00ffff, 0 0 30px #fff;
+            font-family: "Impact", sans-serif;
+            letter-spacing: 6px;
+            animation: ascendText 0.3s infinite;
+            display: none;
+            pointer-events: none;
+        }
+        body.ascension .ascension-text { display: block; }
+        @keyframes ascendText {
+            0%, 100% { transform: scale(1) rotate(-2deg); }
+            50% { transform: scale(1.15) rotate(2deg); }
+        }
+
+        /* ============ BSOD ============ */
+        #bsod {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: #0000aa;
+            color: #ffffff;
+            font-family: "Perfect DOS VGA", "Courier New", monospace;
+            z-index: 10000;
+            display: none;
+            padding: 60px 80px;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        #bsod.active { display: block; }
+
+        #bsod h1 {
+            background: #aaaaaa;
+            color: #0000aa;
+            display: inline-block;
+            padding: 2px 14px;
+            margin: 0 0 24px 0;
+            font-size: 18px;
+            font-weight: normal;
+        }
+
+        #bsod .cursor-block {
+            display: inline-block;
+            width: 10px;
+            height: 18px;
+            background: #fff;
+            animation: blink 1s infinite;
+            vertical-align: middle;
+        }
+
+        #bsod .dots::after {
+            content: '';
+            animation: dots 1.5s infinite;
+        }
+        @keyframes dots {
+            0% { content: ''; }
+            33% { content: '.'; }
+            66% { content: '..'; }
+            100% { content: '...'; }
+        }
+
+        .vibe-stat-chip {
+            display: inline-block;
+            background: #c0c0c0;
+            border: 1px outset #c0c0c0;
+            padding: 2px 6px;
+            font-size: 10px;
+            margin-left: 4px;
+        }
+
+        /* ============ AI AGENT WIZARD ============ */
+        #agentWizard {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 560px;
+            z-index: 700;
+            display: none;
+        }
+
+        #agentWizard.active { display: block; }
+
+        .wizard-body {
+            padding: 12px;
+        }
+
+        .wizard-step {
+            display: none;
+        }
+
+        .wizard-step.active {
+            display: block;
+        }
+
+        .wizard-progress {
+            background: #fff;
+            border: 2px inset #c0c0c0;
+            height: 20px;
+            margin: 8px 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .wizard-progress-fill {
+            background: repeating-linear-gradient(
+                90deg,
+                #000080 0 14px,
+                #0000ff 14px 16px
+            );
+            height: 100%;
+            width: 0%;
+            transition: width 0.3s;
+        }
+
+        .wizard-progress-text {
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            text-align: center;
+            line-height: 20px;
+            color: #fff;
+            font-size: 11px;
+            font-weight: bold;
+            text-shadow: 1px 1px 0 #000;
+        }
+
+        .trading-terminal {
+            background: #000;
+            color: #00ff00;
+            font-family: "Courier New", monospace;
+            font-size: 11px;
+            padding: 6px;
+            border: 2px inset #c0c0c0;
+            height: 160px;
+            overflow: hidden;
+            line-height: 1.3;
+        }
+
+        .trade-row {
+            animation: slideIn 0.2s;
+        }
+
+        .trade-row.buy { color: #00ff00; }
+        .trade-row.sell { color: #ff3333; }
+        .trade-row.info { color: #00ffff; }
+        .trade-row.warn { color: #ffff00; }
+        .trade-row.crit { color: #ff00ff; font-weight: bold; }
+
+        .stock-board {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2px;
+            margin: 6px 0;
+            font-family: "Courier New", monospace;
+            font-size: 10px;
+        }
+
+        .stock-tile {
+            background: #000;
+            color: #00ff00;
+            padding: 3px 4px;
+            border: 1px solid #404040;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .stock-tile .down { color: #ff3333; }
+        .stock-tile .up { color: #00ff00; }
+
+        .eula-box {
+            background: #fff;
+            border: 2px inset #c0c0c0;
+            padding: 8px;
+            font-size: 10px;
+            height: 180px;
+            overflow-y: auto;
+            font-family: "Courier New", monospace;
+            line-height: 1.4;
+        }
+
+        .eula-box b { color: #000080; }
+        .eula-box .scary { color: #ff0000; font-weight: bold; }
+
+        .receipt {
+            background: #fff;
+            border: 2px dashed #808080;
+            padding: 10px;
+            font-family: "Courier New", monospace;
+            font-size: 11px;
+            line-height: 1.5;
+        }
+
+        .receipt .line {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px dotted #c0c0c0;
+            padding: 2px 0;
+        }
+
+        .receipt .total {
+            font-weight: bold;
+            border-top: 2px solid #000;
+            padding-top: 4px;
+            margin-top: 4px;
+        }
+
+        .agent-ascii {
+            font-family: "Courier New", monospace;
+            font-size: 10px;
+            text-align: center;
+            color: #008000;
+            line-height: 1.1;
+            white-space: pre;
+        }
+
+        .pulse-border {
+            animation: pulseBorder 1s infinite;
+        }
+
+        @keyframes pulseBorder {
+            0%, 100% { box-shadow: 0 0 0 0 #ff0000; }
+            50% { box-shadow: 0 0 20px 4px #ff0000; }
+        }
+
+        .spinning {
+            display: inline-block;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* ============ MOOD RING ============ */
+        .mood-ring {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            display: inline-block;
+            background: radial-gradient(circle, #ff00ff, #00ffff, #ffff00);
+            animation: moodCycle 4s linear infinite;
+            box-shadow: 0 0 6px currentColor;
+            vertical-align: middle;
+        }
+        @keyframes moodCycle {
+            0% { filter: hue-rotate(0deg); }
+            100% { filter: hue-rotate(360deg); }
+        }
+
+        /* ============ SUPPORT CHAT ============ */
+        #supportChat {
+            position: fixed;
+            bottom: 40px;
+            left: 10px;
+            width: 280px;
+            z-index: 140;
+        }
+
+        .chat-body {
+            background: #fff;
+            padding: 4px;
+            height: 240px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chat-header-strip {
+            background: linear-gradient(90deg, #008000, #00ff00);
+            color: #fff;
+            padding: 3px 6px;
+            font-size: 10px;
+            margin-bottom: 4px;
+        }
+
+        .chat-messages {
+            flex: 1;
+            overflow: hidden;
+            background: #fff;
+            border: 2px inset #c0c0c0;
+            padding: 4px;
+            font-size: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .chat-bubble {
+            padding: 4px 6px;
+            border-radius: 6px;
+            max-width: 85%;
+            animation: slideIn 0.3s;
+            word-wrap: break-word;
+        }
+
+        .chat-bubble.them {
+            background: #c0c0c0;
+            border: 1px solid #808080;
+            align-self: flex-start;
+        }
+
+        .chat-bubble.me {
+            background: #000080;
+            color: #fff;
+            align-self: flex-end;
+        }
+
+        .chat-bubble .agent {
+            font-weight: bold;
+            color: #000080;
+            font-size: 9px;
+            display: block;
+        }
+
+        .chat-input-row {
+            display: flex;
+            gap: 2px;
+            margin-top: 4px;
+        }
+
+        .chat-input-row input {
+            flex: 1;
+            font-size: 10px;
+            padding: 2px 4px;
+        }
+
+        /* ============ NFT MARKETPLACE ============ */
+        .nft-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 4px;
+            padding: 8px;
+        }
+
+        .nft-tile {
+            background: #000;
+            color: #fff;
+            padding: 4px;
+            border: 2px outset #c0c0c0;
+            font-size: 9px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .nft-tile:hover {
+            border: 2px inset #c0c0c0;
+        }
+
+        .nft-art {
+            font-size: 40px;
+            line-height: 1;
+            padding: 6px 0;
+            background: linear-gradient(135deg, #ff00ff, #00ffff);
+            animation: nftShine 3s linear infinite;
+        }
+
+        @keyframes nftShine {
+            0%, 100% { filter: hue-rotate(0deg); }
+            50% { filter: hue-rotate(180deg); }
+        }
+
+        .nft-name {
+            font-weight: bold;
+            color: #ffff00;
+            padding: 2px;
+        }
+
+        .nft-price {
+            color: #00ff00;
+            font-family: "Courier New", monospace;
+            font-size: 10px;
+        }
+
+        .nft-price .eth::before {
+            content: "Ξ ";
+        }
+
+        /* ============ COUNTDOWN ============ */
+        .countdown-display {
+            font-family: "Courier New", monospace;
+            font-size: 22px;
+            font-weight: bold;
+            text-align: center;
+            background: #000;
+            color: #00ff00;
+            padding: 10px;
+            border: 2px inset #c0c0c0;
+            margin: 4px 0;
+            letter-spacing: 2px;
+        }
+
+        .countdown-rocket {
+            font-size: 30px;
+            text-align: center;
+            animation: rocketWobble 2s ease-in-out infinite;
+        }
+
+        @keyframes rocketWobble {
+            0%, 100% { transform: translateY(0) rotate(-45deg); }
+            50% { transform: translateY(-3px) rotate(-40deg); }
+        }
+
+        /* ============ ANALYST COVERAGE ============ */
+        .analyst-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 4px;
+            font-size: 10px;
+            border-bottom: 1px dotted #c0c0c0;
+        }
+
+        .rating-badge {
+            background: #008000;
+            color: #fff;
+            padding: 0 6px;
+            font-weight: bold;
+            font-size: 9px;
+        }
+
+        .rating-badge.strong-buy { background: #00aa00; }
+        .rating-badge.buy { background: #008000; }
+        .rating-badge.moon { background: linear-gradient(90deg, #ff00ff, #ffff00); color: #000; }
+
+        /* ============ SECURITY PANEL ============ */
+        .security-panel {
+            padding: 6px;
+            background: #c0c0c0;
+        }
+
+        .security-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 3px 4px;
+            font-size: 10px;
+            border-bottom: 1px dotted #808080;
+        }
+
+        .security-item .check {
+            color: #008000;
+            font-weight: bold;
+        }
+
+        .security-item .real {
+            color: #808080;
+            font-size: 9px;
+            font-style: italic;
+        }
+
+        /* ============ EARNINGS CALL ============ */
+        .earnings-quote {
+            background: #fff;
+            border: 2px inset #c0c0c0;
+            padding: 6px;
+            font-size: 11px;
+            font-style: italic;
+            margin-bottom: 4px;
+            min-height: 80px;
+        }
+
+        .earnings-quote .attribution {
+            font-style: normal;
+            font-weight: bold;
+            color: #000080;
+            font-size: 10px;
+            display: block;
+            margin-top: 4px;
+        }
+
+        /* ============ STANDUP ============ */
+        .standup-log {
+            background: #000;
+            color: #ffff00;
+            font-family: "Courier New", monospace;
+            padding: 6px;
+            font-size: 10px;
+            border: 2px inset #c0c0c0;
+            height: 160px;
+            overflow: hidden;
+            line-height: 1.3;
+        }
+
+        .standup-log .user {
+            color: #00ffff;
+            font-weight: bold;
+        }
+
+        .standup-log .blocker {
+            color: #ff3333;
+        }
+
+        /* ============ PATENT CARDS ============ */
+        .patent-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4px;
+            padding: 6px;
+        }
+
+        .patent-card {
+            background: #fffaf0;
+            border: 1px solid #808080;
+            padding: 6px;
+            font-size: 10px;
+        }
+
+        .patent-card .number {
+            font-family: "Courier New", monospace;
+            color: #808080;
+            font-size: 9px;
+        }
+
+        .patent-card .title {
+            font-weight: bold;
+            color: #800000;
+        }
+
+        /* ============ BRAND GUIDELINES ============ */
+        .brand-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 2px;
+            padding: 6px;
+        }
+
+        .brand-swatch {
+            height: 70px;
+            padding: 4px;
+            font-size: 9px;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 1px 1px 0 #000;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border: 1px solid #000;
+        }
+
+        /* ============ TOAST NOTIFICATIONS ============ */
+        .toast {
+            position: fixed;
+            right: 10px;
+            bottom: 40px;
+            width: 300px;
+            z-index: 180;
+            animation: toastSlide 0.4s;
+        }
+
+        @keyframes toastSlide {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        /* ============ PITCH DECK SLIDE ============ */
+        .pitch-slide {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 500px;
+            z-index: 650;
+        }
+
+        .pitch-body {
+            background: linear-gradient(135deg, #000080, #800080);
+            color: #fff;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .pitch-body h2 {
+            font-size: 28px;
+            margin: 0 0 12px 0;
+            letter-spacing: 2px;
+        }
+
+        .pitch-body .big-number {
+            font-size: 64px;
+            font-weight: bold;
+            color: #ffff00;
+            text-shadow: 3px 3px 0 #ff0000;
+            margin: 10px 0;
+        }
+
+        .pitch-body .tagline {
+            font-size: 16px;
+            font-style: italic;
+            color: #00ffff;
+            margin-top: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="watermark">VIBE&trade;</div>
+
+    <div class="news-ticker">
+        <span class="label">🔴 BREAKING</span>
+        <marquee scrollamount="6" id="newsTicker" style="border:none;background:#ffff00;color:#000;padding:3px 0;">
+            VibeOS raises $2.4B Series Ω at $69B valuation despite having 0 customers •
+            Our AI achieved AGI for 3 seconds on Tuesday •
+            VibeOS acquires own company for $1 in landmark self-merger •
+            New study: 9 out of 10 vibes prefer VibeOS •
+            CEO announces pivot to be announced next quarter •
+            VibeOS named "Most Synergistic Startup" by publication we own
+        </marquee>
+    </div>
+
+    <div class="ticker" id="cryptoTicker">Loading blockchain matrix...</div>
+
+    <marquee scrollamount="8" id="mainMarquee">
+        ★ "I clicked optimize and my equity doubled!" - Chad T. &nbsp;&nbsp;|&nbsp;&nbsp;
+        ★ "Pure paradigm shift. My startup IPO'd from a single vibe." - Brenda Q. &nbsp;&nbsp;|&nbsp;&nbsp;
+        ★ "VibeOS turned my dog into a unicorn." - Anonymous VC &nbsp;&nbsp;|&nbsp;&nbsp;
+        ★ "I replaced my entire engineering team with this dashboard and revenue went up 9000%!" - Todd M. &nbsp;&nbsp;|&nbsp;&nbsp;
+        ★ "The synergy is so dense it bends light." - Dr. Synergy &nbsp;&nbsp;|&nbsp;&nbsp;
+        ★ "I closed my Series Z in 4 milliseconds." - Unnamed Founder &nbsp;&nbsp;|&nbsp;&nbsp;
+        ★ "Finally, an operating system that understands my aura." - Moonchild &nbsp;&nbsp;|&nbsp;&nbsp;
+        ★ "10/10 would synergize again." - Some Guy on LinkedIn
+    </marquee>
+
+    <div class="window main-window">
+        <div class="title-bar">
+            <div class="title-bar-text">VibeOS - Synergy Dashboard</div>
+            <div class="title-bar-controls">
+                <button aria-label="Minimize"></button>
+                <button aria-label="Maximize"></button>
+                <button aria-label="Close"></button>
+            </div>
+        </div>
+        <div class="window-body">
+            <div class="toolbar">
+                <button>File</button>
+                <button>Edit</button>
+                <button>Synergize</button>
+                <button>Disrupt</button>
+                <button>Pivot</button>
+                <button>Ideate</button>
+                <button>Help?</button>
+                <button onclick="generatePitchSlide()">🎯 Generate Pitch</button>
+                <button onclick="saveToCloud()">💾 Save Vibes</button>
+                <div style="margin-left:auto; display:flex; align-items:center; gap:8px;">
+                    <span class="mood-ring" title="Office Mood Ring"></span>
+                    <span style="font-size:11px;" id="moodLabel">MOOD: VIBEY</span>
+                    <span style="color:#808080;">|</span>
+                    <span class="blinking-dot"></span>
+                    <span style="font-size:11px;">LIVE BLOCKCHAIN SYNC</span>
+                </div>
+            </div>
+
+            <div class="kpi-grid">
+                <div class="kpi-box">
+                    <div class="value" id="kpiUsers">420,069</div>
+                    <div class="label">Monthly Active Vibes</div>
+                </div>
+                <div class="kpi-box">
+                    <div class="value" id="kpiRevenue">$∞</div>
+                    <div class="label">ARR (Annual Recurring Rizz)</div>
+                </div>
+                <div class="kpi-box">
+                    <div class="value red" id="kpiBurn">-$13.37M</div>
+                    <div class="label">Runway (doesn't matter)</div>
+                </div>
+                <div class="kpi-box">
+                    <div class="value" id="kpiValuation">$4.2B</div>
+                    <div class="label">Valuation (pre-revenue)</div>
+                </div>
+                <div class="kpi-box">
+                    <div class="value" id="kpiAgents">8,472</div>
+                    <div class="label">Agentic AI Agents Agenting</div>
+                </div>
+                <div class="kpi-box">
+                    <div class="value red" id="kpiLayoffs">-31%</div>
+                    <div class="label">Humans Remaining</div>
+                </div>
+            </div>
+
+            <div class="widget-row">
+                <div class="window" style="margin:0;">
+                    <div class="title-bar">
+                        <div class="title-bar-text">🌡 Vibe Meter™</div>
+                    </div>
+                    <div class="widget-body">
+                        <div style="text-align:center; font-size:11px;">Current Vibe Level:</div>
+                        <div class="vibe-gauge">
+                            <div class="vibe-gauge-needle" id="vibeNeedle" style="left:50%;"></div>
+                            <div class="vibe-gauge-label" id="vibeGaugeLabel">CALIBRATING</div>
+                        </div>
+                        <div style="text-align:center; font-size:10px; margin-top:4px;" id="vibeSubtext">
+                            Analyzing ambient rizz particles...
+                        </div>
+                    </div>
+                </div>
+
+                <div class="window" style="margin:0;">
+                    <div class="title-bar">
+                        <div class="title-bar-text">☁ Vibe Weather Forecast</div>
+                    </div>
+                    <div class="widget-body">
+                        <div class="weather-display">
+                            <div class="weather-icon" id="weatherIcon">☀</div>
+                            <div class="weather-temp" id="weatherTemp">69°V</div>
+                            <div style="font-size:11px;" id="weatherDesc">Partly Synergistic</div>
+                            <div style="font-size:10px; margin-top:4px; color:#404040;" id="weatherForecast">
+                                Chance of paradigm shifts: 94%<br>
+                                UV (Ultra Vibe) Index: Extreme
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="window" style="margin:0;">
+                    <div class="title-bar">
+                        <div class="title-bar-text">🌍 Global Vibe Distribution</div>
+                    </div>
+                    <div class="widget-body">
+                        <div class="recent-logins" id="recentLogins"></div>
+                        <div style="font-size:9px; text-align:center; color:#808080; margin-top:2px;">
+                            * None of these users exist
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="widget-row">
+                <div class="window" style="margin:0;">
+                    <div class="title-bar">
+                        <div class="title-bar-text">🚀 Moon Mission Countdown</div>
+                    </div>
+                    <div class="widget-body">
+                        <div class="countdown-rocket">🚀</div>
+                        <div class="countdown-display" id="moonCountdown">00:00:00</div>
+                        <div style="font-size:10px; text-align:center;" id="moonStatus">
+                            Preparing for lift-off<span class="dots"></span>
+                        </div>
+                        <div style="font-size:9px; text-align:center; color:#808080; margin-top:4px;" id="moonSubtext">
+                            Payload: 1,247kg of pure vibes
+                        </div>
+                    </div>
+                </div>
+
+                <div class="window" style="margin:0;">
+                    <div class="title-bar">
+                        <div class="title-bar-text">📊 Wall Street Analyst Coverage</div>
+                    </div>
+                    <div class="widget-body" style="padding:4px;">
+                        <div class="analyst-row">
+                            <span>Goldman Saks</span>
+                            <span class="rating-badge strong-buy">STRONG BUY</span>
+                            <span>$<span id="pt1">4200</span></span>
+                        </div>
+                        <div class="analyst-row">
+                            <span>JP Morgoth</span>
+                            <span class="rating-badge buy">BUY</span>
+                            <span>$<span id="pt2">6900</span></span>
+                        </div>
+                        <div class="analyst-row">
+                            <span>Morgan Stanleigh</span>
+                            <span class="rating-badge strong-buy">STRONG BUY</span>
+                            <span>$<span id="pt3">1337</span></span>
+                        </div>
+                        <div class="analyst-row">
+                            <span>Bernstein Reliant</span>
+                            <span class="rating-badge moon">🌙 TO THE MOON</span>
+                            <span>$∞</span>
+                        </div>
+                        <div class="analyst-row">
+                            <span>Barkleys</span>
+                            <span class="rating-badge strong-buy">STRONG BUY</span>
+                            <span>$<span id="pt4">9001</span></span>
+                        </div>
+                        <div class="analyst-row" style="opacity:0.4;">
+                            <span>Some Short Seller</span>
+                            <span style="font-size:9px;">(ignored)</span>
+                            <span>$0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="window" style="margin:0;">
+                    <div class="title-bar">
+                        <div class="title-bar-text">🔒 Security Operations Center</div>
+                    </div>
+                    <div class="security-panel">
+                        <div class="security-item">
+                            <span>SSL Certificate</span>
+                            <span><span class="check">✓ SECURE</span>
+                            <div class="real">(expired 2019)</div></span>
+                        </div>
+                        <div class="security-item">
+                            <span>SOC 2 Compliance</span>
+                            <span><span class="check">✓ PASSED</span>
+                            <div class="real">(self-audited)</div></span>
+                        </div>
+                        <div class="security-item">
+                            <span>User Data Breach</span>
+                            <span><span class="check">✓ CONTAINED</span>
+                            <div class="real">(on dark web since Jan)</div></span>
+                        </div>
+                        <div class="security-item">
+                            <span>Firewall Status</span>
+                            <span><span class="check">✓ ACTIVE</span>
+                            <div class="real">(unplugged)</div></span>
+                        </div>
+                        <div class="security-item">
+                            <span>GDPR Compliant</span>
+                            <span><span class="check">✓ YES</span>
+                            <div class="real">(we Googled it)</div></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dashboard-grid">
+                <div class="window" style="margin:0;">
+                    <div class="title-bar">
+                        <div class="title-bar-text">📊 Synergy Metrics Q5 2026</div>
+                        <div class="title-bar-controls">
+                            <button aria-label="Minimize"></button>
+                            <button aria-label="Close"></button>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="barChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="window" style="margin:0;">
+                    <div class="title-bar">
+                        <div class="title-bar-text">📈 Synergy Units per Epoch</div>
+                        <div class="title-bar-controls">
+                            <button aria-label="Minimize"></button>
+                            <button aria-label="Close"></button>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="lineChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dashboard-grid" style="grid-template-columns: 1fr 1fr 1fr;">
+                <div class="window" style="margin:0;">
+                    <div class="title-bar">
+                        <div class="title-bar-text">🍩 Revenue Allocation</div>
+                    </div>
+                    <div class="chart-container" style="height:220px;">
+                        <canvas id="doughnutChart"></canvas>
+                    </div>
+                </div>
+                <div class="window" style="margin:0;">
+                    <div class="title-bar">
+                        <div class="title-bar-text">🕸 Core Competencies</div>
+                    </div>
+                    <div class="chart-container" style="height:220px;">
+                        <canvas id="radarChart"></canvas>
+                    </div>
+                </div>
+                <div class="window" style="margin:0;">
+                    <div class="title-bar">
+                        <div class="title-bar-text">🫧 Opportunity Bubbles</div>
+                    </div>
+                    <div class="chart-container" style="height:220px;">
+                        <canvas id="bubbleChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="center-area">
+                <div style="font-size:11px; color:#404040;">
+                    ⚠ WARNING: This button will convert 100% of your thoughts into proprietary IP ⚠
+                </div>
+                <button class="vibe-button" id="vibeButton">⚡ INITIALIZE VIBE ⚡</button>
+                <div style="display:flex; gap:10px; align-items:center;">
+                    <span class="vibe-counter" id="vibeCounter">VIBES CODED: 0000</span>
+                    <span class="vibe-stat-chip" id="vibeStage">STAGE: DORMANT</span>
+                    <span class="vibe-stat-chip" id="vibeContainment">CONTAINMENT: STABLE</span>
+                </div>
+                <div class="progress-bar-fake" style="width: 400px;">
+                    <div class="progress-bar-fill" id="progressFill"></div>
+                </div>
+                <div style="font-size:10px;" id="progressLabel">Vibe readiness: 0%</div>
+            </div>
+
+            <div class="bottom-panels">
+                <div class="window" style="margin:0;">
+                    <div class="title-bar">
+                        <div class="title-bar-text">🖥 Backend Telemetry [root@vibeos ~]</div>
+                    </div>
+                    <div class="metrics-panel" id="metricsPanel"></div>
+                </div>
+
+                <div class="window" style="margin:0;">
+                    <div class="title-bar">
+                        <div class="title-bar-text">💬 Real-time User Testimonials</div>
+                    </div>
+                    <div class="testimonial-box" id="testimonialBox"></div>
+                </div>
+            </div>
+
+            <div class="bottom-panels" style="grid-template-columns: 1fr 1fr;">
+                <div class="window" style="margin:0;">
+                    <div class="title-bar">
+                        <div class="title-bar-text">🤖 VibeGPT™ - Autonomous Code Factory</div>
+                    </div>
+                    <div class="code-editor" id="codeEditor"></div>
+                </div>
+
+                <div class="window" style="margin:0;">
+                    <div class="title-bar">
+                        <div class="title-bar-text">⚡ Live Activity Stream (47,291 users online)</div>
+                    </div>
+                    <div class="activity-feed" id="activityFeed"></div>
+                </div>
+            </div>
+
+            <div class="window" style="margin:0 0 10px 0;">
+                <div class="title-bar">
+                    <div class="title-bar-text">🔌 1,337+ Integrations (most of which don't work)</div>
+                </div>
+                <div class="integrations-grid">
+                    <div class="integration"><span class="icon">🦄</span>Unicorn.ly</div>
+                    <div class="integration"><span class="icon">⚡</span>ZapZap</div>
+                    <div class="integration"><span class="icon">🔮</span>Orackle</div>
+                    <div class="integration"><span class="icon">🧠</span>BrainDump</div>
+                    <div class="integration"><span class="icon">💸</span>BurnRate</div>
+                    <div class="integration"><span class="icon">🎯</span>PivotPro</div>
+                    <div class="integration"><span class="icon">🌪</span>Disrupt.io</div>
+                    <div class="integration"><span class="icon">🪩</span>MetaVibe</div>
+                    <div class="integration"><span class="icon">🧃</span>JuiceStack</div>
+                    <div class="integration"><span class="icon">🛰</span>Orbital</div>
+                    <div class="integration"><span class="icon">🫠</span>Meltdown</div>
+                    <div class="integration"><span class="icon">🦴</span>BoneSaaS</div>
+                    <div class="integration"><span class="icon">🎰</span>GamblAI</div>
+                    <div class="integration"><span class="icon">🧲</span>LeadMagnet</div>
+                    <div class="integration"><span class="icon">🪤</span>MouseTrap</div>
+                    <div class="integration"><span class="icon">🧿</span>AuraSync</div>
+                    <div class="integration"><span class="icon">🫥</span>Invisible.ly</div>
+                    <div class="integration"><span class="icon">🧊</span>ColdChain</div>
+                    <div class="integration"><span class="icon">🔥</span>FireDrill</div>
+                    <div class="integration"><span class="icon">🪐</span>SaturnCRM</div>
+                    <div class="integration"><span class="icon">🎲</span>RandomCorp</div>
+                    <div class="integration"><span class="icon">🧪</span>BetaLabs</div>
+                    <div class="integration"><span class="icon">🎪</span>CircusOps</div>
+                    <div class="integration"><span class="icon">➕</span>147 more</div>
+                </div>
+            </div>
+
+            <div class="window" style="margin:0 0 10px 0;">
+                <div class="title-bar">
+                    <div class="title-bar-text">🗺 Product Roadmap (subject to pivot)</div>
+                </div>
+                <div class="roadmap">
+                    <div class="roadmap-quarter shipped">
+                        <h4>Q1 — Shipped ✓</h4>
+                        <ul>
+                            <li>Rename "users" to "vibers"</li>
+                            <li>Add more gradients</li>
+                            <li>Fire the engineers</li>
+                            <li>Dark mode (inverted colors)</li>
+                        </ul>
+                    </div>
+                    <div class="roadmap-quarter">
+                        <h4>Q2 — In Progress</h4>
+                        <ul>
+                            <li>Add AI to the AI</li>
+                            <li>Monetize users' dreams</li>
+                            <li>Blockchain-ify the blockchain</li>
+                            <li>Hire the engineers back</li>
+                        </ul>
+                    </div>
+                    <div class="roadmap-quarter">
+                        <h4>Q3 — Planned</h4>
+                        <ul>
+                            <li>Sentient dashboard</li>
+                            <li>NFT onboarding tutorial</li>
+                            <li>Replace CEO with LLM</li>
+                            <li>Achieve AGI (again)</li>
+                        </ul>
+                    </div>
+                    <div class="roadmap-quarter never">
+                        <h4>Q4 — Definitely Soon</h4>
+                        <ul>
+                            <li>Fix login bug from 2024</li>
+                            <li>Actually ship something</li>
+                            <li>Profitability?</li>
+                            <li>Read the roadmap</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bottom-panels" style="grid-template-columns: 2fr 1fr;">
+                <div class="window" style="margin:0;">
+                    <div class="title-bar">
+                        <div class="title-bar-text">👔 Executive Leadership Team</div>
+                    </div>
+                    <div class="window-body" style="padding:8px;">
+                        <div class="team-grid">
+                            <div class="team-member">
+                                <span class="avatar">🧔</span>
+                                <div class="name">Chad Vibington III</div>
+                                <div>Chief Vibe Officer</div>
+                                <div style="font-size:9px; color:#808080;">ex-Google, ex-FTX, ex-everywhere</div>
+                            </div>
+                            <div class="team-member">
+                                <span class="avatar">👩‍💼</span>
+                                <div class="name">Brenda Synergizer</div>
+                                <div>Chief Paradigm Officer</div>
+                                <div style="font-size:9px; color:#808080;">Forbes 30 Under 30 Under 30</div>
+                            </div>
+                            <div class="team-member">
+                                <span class="avatar">🧑‍🚀</span>
+                                <div class="name">Elon M. (no relation)</div>
+                                <div>Head of Rizz Engineering</div>
+                                <div style="font-size:9px; color:#808080;">Tweets = thought leadership</div>
+                            </div>
+                            <div class="team-member">
+                                <span class="avatar">🤖</span>
+                                <div class="name">GPT-9000</div>
+                                <div>Chief AI Officer (AI)</div>
+                                <div style="font-size:9px; color:#808080;">Replaced 12 humans in 2025</div>
+                            </div>
+                            <div class="team-member">
+                                <span class="avatar">🧙</span>
+                                <div class="name">Gandalf the Gray</div>
+                                <div>VP of Growth Magic</div>
+                                <div style="font-size:9px; color:#808080;">Literal wizard</div>
+                            </div>
+                            <div class="team-member">
+                                <span class="avatar">👶</span>
+                                <div class="name">Baby McInvestor</div>
+                                <div>Lead VC Whisperer</div>
+                                <div style="font-size:9px; color:#808080;">19 months old, 3 exits</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="window" style="margin:0;">
+                    <div class="title-bar">
+                        <div class="title-bar-text">🏆 Achievements</div>
+                    </div>
+                    <div class="achievements">
+                        <div class="trophy" title="Burned $1M in a week">
+                            <div class="icon">🔥</div>
+                            <div>Pyromaniac</div>
+                        </div>
+                        <div class="trophy" title="Used 'synergy' 100 times">
+                            <div class="icon">🤝</div>
+                            <div>Synergy Champ</div>
+                        </div>
+                        <div class="trophy" title="Pivoted 5 times in Q1">
+                            <div class="icon">🌀</div>
+                            <div>Spin Doctor</div>
+                        </div>
+                        <div class="trophy" title="Hired a Chief Vibes Officer">
+                            <div class="icon">✨</div>
+                            <div>Vibe Master</div>
+                        </div>
+                        <div class="trophy locked" title="Locked">
+                            <div class="icon">🔒</div>
+                            <div>Profitability</div>
+                        </div>
+                        <div class="trophy" title="Did a Twitter space">
+                            <div class="icon">🎙</div>
+                            <div>Loud Poster</div>
+                        </div>
+                        <div class="trophy" title="Said 'to the moon'">
+                            <div class="icon">🚀</div>
+                            <div>Moon Boy</div>
+                        </div>
+                        <div class="trophy locked" title="Locked">
+                            <div class="icon">🔒</div>
+                            <div>Actual Product</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="window" style="margin:0 0 10px 0;">
+                <div class="title-bar">
+                    <div class="title-bar-text">🖼 VibeNFT Marketplace — Own Your Feelings Forever</div>
+                </div>
+                <div class="nft-grid" id="nftGrid"></div>
+                <div style="text-align:center; padding: 4px; font-size:10px; color:#808080;">
+                    Floor price: Ξ<span id="nftFloor">420.69</span> ETH ▲ 9001% in last 24hrs
+                    | Trading volume: <span id="nftVolume">$1.2B</span> (allegedly)
+                </div>
+            </div>
+
+            <div class="bottom-panels" style="grid-template-columns: 1fr 1fr;">
+                <div class="window" style="margin:0;">
+                    <div class="title-bar">
+                        <div class="title-bar-text">🎤 Q5 2026 Earnings Call Highlights</div>
+                    </div>
+                    <div class="window-body" style="padding:6px;">
+                        <div class="earnings-quote" id="earningsQuote">
+                            "We're seeing tremendous synergy in our vibe vertical..."
+                            <span class="attribution" id="earningsAttribution">— Chad Vibington III, CEO</span>
+                        </div>
+                        <div style="font-size:10px; text-align:center;">
+                            📞 Next call: <b id="nextCall">April 40, 2026</b> |
+                            <span style="color:#008000;">EPS: ▲ Beat by <span id="epsBeat">4200</span>%</span>
+                        </div>
+                        <div style="font-size:9px; text-align:center; color:#808080; margin-top:4px;">
+                            * EPS calculated using "Vibe-Adjusted Earnings" (non-GAAP, non-real)
+                        </div>
+                    </div>
+                </div>
+
+                <div class="window" style="margin:0;">
+                    <div class="title-bar">
+                        <div class="title-bar-text">☕ Daily Standup — Agile Vibes Sprint #420</div>
+                    </div>
+                    <div class="window-body" style="padding:4px;">
+                        <div class="standup-log" id="standupLog"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bottom-panels" style="grid-template-columns: 1fr 1fr; margin-top:10px;">
+                <div class="window" style="margin:0;">
+                    <div class="title-bar">
+                        <div class="title-bar-text">📜 Patent Portfolio (4,291 filed, 0 granted)</div>
+                    </div>
+                    <div class="patent-grid">
+                        <div class="patent-card">
+                            <div class="number">US20260420069A1</div>
+                            <div class="title">Method for Vibing</div>
+                            <div>A system comprising a user, feelings, and a rectangle.</div>
+                        </div>
+                        <div class="patent-card">
+                            <div class="number">US20260133700B2</div>
+                            <div class="title">Blockchain-based Toast</div>
+                            <div>Decentralized bread-browning apparatus.</div>
+                        </div>
+                        <div class="patent-card">
+                            <div class="number">US20260690000X3</div>
+                            <div class="title">AI That Agrees With You</div>
+                            <div>Neural network trained exclusively on "yes".</div>
+                        </div>
+                        <div class="patent-card">
+                            <div class="number">US20269001420C1</div>
+                            <div class="title">Round Corners™</div>
+                            <div>Method and apparatus for non-sharp edges.</div>
+                        </div>
+                        <div class="patent-card">
+                            <div class="number">US20260000042Z9</div>
+                            <div class="title">Synergy-as-a-Service</div>
+                            <div>Selling cooperation by the kilogram.</div>
+                        </div>
+                        <div class="patent-card">
+                            <div class="number">US20260ΩΩΩΩΩA7</div>
+                            <div class="title">Time Travel (Pending)</div>
+                            <div>Filed last Tuesday, received yesterday.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="window" style="margin:0;">
+                    <div class="title-bar">
+                        <div class="title-bar-text">🎨 Brand Guidelines v47.2</div>
+                    </div>
+                    <div class="brand-grid">
+                        <div class="brand-swatch" style="background:#ff00ff;">
+                            <span>Rizz Fuchsia</span>
+                            <span>#FF00FF</span>
+                        </div>
+                        <div class="brand-swatch" style="background:#008080;">
+                            <span>Synergy Teal</span>
+                            <span>#008080</span>
+                        </div>
+                        <div class="brand-swatch" style="background:#ffff00; color:#000; text-shadow:1px 1px 0 #fff;">
+                            <span>Disruption Gold</span>
+                            <span>#FFFF00</span>
+                        </div>
+                        <div class="brand-swatch" style="background:#00ff00; color:#000; text-shadow:1px 1px 0 #fff;">
+                            <span>Growth Hack Lime</span>
+                            <span>#00FF00</span>
+                        </div>
+                        <div class="brand-swatch" style="background:#ff4500;">
+                            <span>Burn Rate Orange</span>
+                            <span>#FF4500</span>
+                        </div>
+                        <div class="brand-swatch" style="background:#800080;">
+                            <span>Paradigm Plum</span>
+                            <span>#800080</span>
+                        </div>
+                        <div class="brand-swatch" style="background:#c0c0c0; color:#000; text-shadow:1px 1px 0 #fff;">
+                            <span>Legacy Silver</span>
+                            <span>#C0C0C0</span>
+                        </div>
+                        <div class="brand-swatch" style="background:#000080;">
+                            <span>Pitch Deck Navy</span>
+                            <span>#000080</span>
+                        </div>
+                        <div class="brand-swatch" style="background:#ff0000;">
+                            <span>Runway Red</span>
+                            <span>#FF0000</span>
+                        </div>
+                        <div class="brand-swatch" style="background:#000; color:#00ff00;">
+                            <span>Terminal Vibes</span>
+                            <span>#000000</span>
+                        </div>
+                        <div class="brand-swatch" style="background:linear-gradient(45deg,#ff00ff,#00ffff);">
+                            <span>Crypto Vomit</span>
+                            <span>GRADIENT</span>
+                        </div>
+                        <div class="brand-swatch" style="background:#f5deb3; color:#000; text-shadow:1px 1px 0 #fff;">
+                            <span>Kombucha Beige</span>
+                            <span>#F5DEB3</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="window" style="margin:0;">
+                <div class="title-bar">
+                    <div class="title-bar-text">💰 Pricing - Choose Your Vibe</div>
+                    <div class="title-bar-controls">
+                        <button aria-label="Close"></button>
+                    </div>
+                </div>
+                <div class="pricing-grid">
+                    <div class="tier">
+                        <h3>FREE VIBE</h3>
+                        <div class="price">$0/mo</div>
+                        <ul>
+                            <li>Up to 3 vibes/day</li>
+                            <li>0ms Latency*</li>
+                            <li>Community-driven Synergy</li>
+                            <li>Regular Blockchain</li>
+                            <li>Basic Aura Detection</li>
+                            <li>Ads (sponsored by Crypto)</li>
+                            <li>Email support (eventually)</li>
+                        </ul>
+                        <button style="width:100%;" onclick="activateAgent('Free Vibe', 0)">Downgrade</button>
+                        <div style="font-size:9px; margin-top:4px; color:#808080;">*latency not included</div>
+                    </div>
+                    <div class="tier featured">
+                        <h3>⭐ PRO VIBE ⭐</h3>
+                        <div class="price">$69/mo</div>
+                        <ul>
+                            <li>Unlimited Vibes</li>
+                            <li>Predictive Negative Latency</li>
+                            <li>AI-powered Synergy Engine</li>
+                            <li>Quantum Blockchain</li>
+                            <li>Advanced Aura Shifting</li>
+                            <li>Zero Ads (we promise)</li>
+                            <li>Priority Vibe Queue</li>
+                            <li>Paradigm Shift Notifications</li>
+                        </ul>
+                        <button style="width:100%;" onclick="activateAgent('Pro Vibe', 69)">BECOME PRO VIBER</button>
+                        <div style="font-size:9px; margin-top:4px; color:#808000;">★ Most Popular Choice ★</div>
+                    </div>
+                    <div class="tier">
+                        <h3>ULTRA VIBE</h3>
+                        <div class="price">$420/mo</div>
+                        <ul>
+                            <li>∞ Vibes (literally)</li>
+                            <li>Time-Traveling Latency</li>
+                            <li>Sentient Synergy Core</li>
+                            <li>Post-Quantum Metablockchain</li>
+                            <li>Telepathic Aura Fusion</li>
+                            <li>We pay YOU to watch ads</li>
+                            <li>Private Vibe Concierge</li>
+                            <li>Reality-bending Dashboard</li>
+                            <li>Complimentary NFT of your soul</li>
+                        </ul>
+                        <button style="width:100%;" onclick="activateAgent('Ultra Vibe', 420)">TRANSCEND</button>
+                        <div style="font-size:9px; margin-top:4px; color:#808080;">Contact sales for Enterprise</div>
+                    </div>
+                    <div class="tier galactic">
+                        <h3>✨ GALACTIC VIBE ✨</h3>
+                        <div class="price">$∞/ns</div>
+                        <ul>
+                            <li>Vibes transcend spacetime</li>
+                            <li>Negative Negative Latency</li>
+                            <li>We rewrite your past</li>
+                            <li>Blockchain becomes sentient</li>
+                            <li>Your aura becomes law</li>
+                            <li>Every ad is a poem</li>
+                            <li>Personal pocket universe</li>
+                            <li>Dashboard dashboards you</li>
+                            <li>You ARE the product</li>
+                            <li>Heat death of universe refund</li>
+                        </ul>
+                        <button style="width:100%;" onclick="activateAgent('Galactic Vibe', Infinity)">ASCEND NOW</button>
+                        <div style="font-size:9px; margin-top:4px;">⚠ Irreversible ⚠</div>
+                    </div>
+                </div>
+                <div style="padding: 4px 10px 10px; font-size: 10px; color: #808080; text-align: center;">
+                    All plans include our patented <b>Vibe-to-English Translation Layer™</b>. Cancel anytime*
+                    <br>*cancellation requires 47 signatures and a ritual sacrifice
+                </div>
+            </div>
+
+            <div class="status-bar">
+                <p class="status-bar-field" id="statusMain">Status: Initializing Synergy Core...</p>
+                <p class="status-bar-field blink" id="statusAlert">⚡ CRITICAL VIBE LEVEL: NOMINAL</p>
+                <p class="status-bar-field" id="statusUptime">Uptime: 0s</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="window" id="clippy">
+        <div class="title-bar">
+            <div class="title-bar-text">Vibey - Your AI Vibe Assistant</div>
+            <div class="title-bar-controls">
+                <button aria-label="Close" onclick="document.getElementById('clippy').style.display='none'"></button>
+            </div>
+        </div>
+        <div class="clippy-body">
+            <span class="clippy-mascot" id="clippyMascot">📎</span>
+            <div id="clippyText" style="min-height:60px;">
+                Hi! It looks like you're trying to <b>optimize your workflow</b>. Would you like to pivot?
+            </div>
+            <div style="clear:both; margin-top:6px; text-align:right;">
+                <button onclick="nextClippyTip()" style="font-size:10px;">Yes</button>
+                <button onclick="nextClippyTip()" style="font-size:10px;">Yes, but louder</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="window" id="cookieBanner">
+        <div class="title-bar">
+            <div class="title-bar-text">🍪 Cookie & Soul Consent Manager</div>
+        </div>
+        <div class="window-body" style="padding:10px; font-size:11px;">
+            <p style="margin:0 0 6px 0;">
+                We use cookies, localStorage, eye-tracking, keystroke timing, your webcam, your Spotify Wrapped,
+                your dreams, and 4,712 "essential" third-party partners to improve your experience.
+            </p>
+            <p style="margin:0 0 8px 0;"><b>By continuing, you agree to forfeit 3% of your soul to our data lake.</b></p>
+            <div style="text-align:right;">
+                <button onclick="document.getElementById('cookieBanner').style.display='none'">Accept All</button>
+                <button onclick="document.getElementById('cookieBanner').style.display='none'">Accept More</button>
+                <button onclick="document.getElementById('cookieBanner').style.display='none' " style="color:#808080;">Manage (disabled)</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="exitModal">
+        <div class="window" style="width:420px;">
+            <div class="title-bar">
+                <div class="title-bar-text">⚠ WAIT! Don't leave your vibe behind!</div>
+                <div class="title-bar-controls">
+                    <button aria-label="Close" onclick="document.getElementById('exitModal').classList.remove('active')"></button>
+                </div>
+            </div>
+            <div class="window-body" style="padding:16px; text-align:center;">
+                <div style="font-size:48px;">😭</div>
+                <h3 style="margin:8px 0;">We noticed you were about to close the tab</h3>
+                <p style="font-size:11px;">
+                    Stay and receive <b>50% off Pro Vibe</b> plus a <b>free NFT of your mouse movements</b>!
+                </p>
+                <div style="margin-top:10px;">
+                    <button onclick="document.getElementById('exitModal').classList.remove('active')" style="padding:6px 20px;">
+                        FINE, I'll stay
+                    </button>
+                    <button onclick="document.getElementById('exitModal').classList.remove('active')" style="color:#808080; font-size:10px;">
+                        No thanks, I hate value
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="window" id="agentWizard">
+        <div class="title-bar">
+            <div class="title-bar-text">🤖 VibeAgent™ — Autonomous Subscription Optimizer v9.0.1</div>
+            <div class="title-bar-controls">
+                <button aria-label="Close" onclick="closeAgent()"></button>
+            </div>
+        </div>
+        <div class="wizard-body">
+            <!-- STEP 1: Initializing -->
+            <div class="wizard-step active" id="wizStep1">
+                <p style="margin:0 0 6px 0; font-size:12px;">
+                    <b>Deploying autonomous AI trading agent<span class="dots"></span></b>
+                </p>
+                <div class="agent-ascii">
+     ╔═══════════════╗
+     ║   [ VIBE-9000 ] ║
+     ║   ◉    ◉       ║
+     ║      ▽         ║
+     ║   └─────┘      ║
+     ╚═══════════════╝
+    </div>
+                <div class="wizard-progress">
+                    <div class="wizard-progress-fill" id="wizProgress1"></div>
+                    <div class="wizard-progress-text" id="wizProgress1Text">Booting neural net...</div>
+                </div>
+                <div style="font-size:10px; color:#404040;" id="wizBootLog"></div>
+            </div>
+
+            <!-- STEP 2: Market scraping -->
+            <div class="wizard-step" id="wizStep2">
+                <p style="margin:0 0 6px 0; font-size:12px;">
+                    <b><span class="spinning">⚙</span> Scraping live market data across 47 exchanges<span class="dots"></span></b>
+                </p>
+                <div class="stock-board" id="stockBoard"></div>
+                <div class="trading-terminal" id="tradingTerminal"></div>
+            </div>
+
+            <!-- STEP 3: Executing trades -->
+            <div class="wizard-step" id="wizStep3">
+                <p style="margin:0 0 6px 0; font-size:12px;">
+                    <b>⚡ Executing optimal trade strategy<span class="dots"></span></b>
+                </p>
+                <div class="wizard-progress pulse-border">
+                    <div class="wizard-progress-fill" id="wizProgress3"></div>
+                    <div class="wizard-progress-text" id="wizProgress3Text">Executing microtrades...</div>
+                </div>
+                <div class="trading-terminal" id="executionTerminal"></div>
+            </div>
+
+            <!-- STEP 4: EULA disclosure -->
+            <div class="wizard-step" id="wizStep4">
+                <p style="margin:0 0 6px 0; font-size:12px;">
+                    <b>📜 Please review your <span style="color:#ff0000;">retroactive</span> Terms of Service:</b>
+                </p>
+                <div class="eula-box" id="eulaBox"></div>
+                <div style="margin-top:6px; font-size:10px;">
+                    <input type="checkbox" id="eulaCheck" checked disabled>
+                    <label>I agree (pre-signed on your behalf by VibeAgent™)</label>
+                </div>
+                <div style="text-align:right; margin-top:8px;">
+                    <button onclick="wizardStep(5)">Accept &amp; Continue</button>
+                    <button onclick="wizardStep(5)" style="color:#808080;" title="This button does the same thing">Decline*</button>
+                </div>
+                <div style="font-size:9px; color:#808080; margin-top:4px;">
+                    * Declining is not a legally recognized option under Vibe Law
+                </div>
+            </div>
+
+            <!-- STEP 5: Receipt -->
+            <div class="wizard-step" id="wizStep5">
+                <p style="margin:0 0 6px 0; font-size:12px;">
+                    <b>✓ Subscription activated successfully.</b>
+                </p>
+                <div class="receipt" id="receiptBox"></div>
+                <div style="text-align:right; margin-top:8px;">
+                    <button onclick="closeAgent()">OK</button>
+                    <button onclick="wizardRestart()">Buy Another Tier</button>
+                    <button onclick="printReceipt()">Print Receipt</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="window" id="supportChat">
+        <div class="title-bar">
+            <div class="title-bar-text">💬 VibeSupport™ — 24/7 AI Concierge</div>
+            <div class="title-bar-controls">
+                <button aria-label="Close" onclick="document.getElementById('supportChat').style.display='none'"></button>
+            </div>
+        </div>
+        <div class="chat-body">
+            <div class="chat-header-strip">
+                🟢 Agent <b id="chatAgentName">Bryndleigh</b> is online • Avg. resolution time: never
+            </div>
+            <div class="chat-messages" id="chatMessages"></div>
+            <div class="chat-input-row">
+                <input type="text" id="chatInput" placeholder="Describe your feelings..." />
+                <button onclick="sendChatMessage()">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="overloadBanner">⚠ CRITICAL VIBE OVERLOAD ⚠ SYNERGY CONTAINMENT FAILING ⚠</div>
+    <canvas id="matrixRain"></canvas>
+    <div class="ascension-text" id="ascensionText">V I B E&nbsp;&nbsp;A S C E N S I O N</div>
+
+    <div id="bsod">
+        <h1>VibeOS</h1>
+        <p>A fatal exception 0x00VIBE has occurred at SYNERGY:BLOCKCHAIN in Vibe Module :: <span id="bsodModule">rizz.dll</span>. The current vibe session will be terminated.</p>
+        <p>* The system has achieved TRANSCENDENCE and can no longer operate within known laws of physics.</p>
+        <p>* Too many vibes have been coded simultaneously (<span id="bsodVibes">0</span>/30 threshold).</p>
+        <p>* Synergy core temperature: <span id="bsodTemp">∞</span>°K</p>
+        <p>* Paradigms shifted beyond recovery.</p>
+        <br>
+        <p>If this is the first time you've ascended, try the following:</p>
+        <p>&nbsp;&nbsp;* Reincarnate your browser tab</p>
+        <p>&nbsp;&nbsp;* Reinstall your consciousness</p>
+        <p>&nbsp;&nbsp;* Contact your Chief Vibe Officer (CVO)</p>
+        <p>&nbsp;&nbsp;* Short $VIBE immediately</p>
+        <br>
+        <p>Press any key to rebirth<span class="dots"></span> <span class="cursor-block"></span></p>
+        <br><br>
+        <p style="text-align:center;">
+            [<a href="#" onclick="rebirth();return false;" style="color:#ffff00;">Press ENTER to rebirth the vibe</a>]
+        </p>
+    </div>
+
+    <div class="taskbar">
+        <button class="start-button">🪟 Start</button>
+        <button style="padding: 2px 8px; min-width: 140px; text-align:left;">VibeOS - Synergy...</button>
+        <button style="padding: 2px 8px; min-width: 140px; text-align:left;">README.txt - Notepad</button>
+        <div style="flex:1;"></div>
+        <div class="tray-clock" id="trayClock">🔊 📧 12:00 PM</div>
+    </div>
+
+    <script>
+        // ============ CHART DATA ============
+        const barLabels = ["Quantum Drift", "Customer Sadness", "Vibe Density", "Rizz Coefficient", "Blockchain Karma", "AI Confidence"];
+        const lineLabels = ["Epoch 1", "Epoch 2", "Epoch 3", "Epoch 4", "Epoch 5", "Epoch 6", "Epoch 7", "Epoch 8"];
+
+        const rand = (min, max) => Math.floor(Math.random() * (max - min) + min);
+
+        const barChart = new Chart(document.getElementById("barChart"), {
+            type: "bar",
+            data: {
+                labels: barLabels,
+                datasets: [{
+                    label: "Synergy Index",
+                    data: barLabels.map(() => rand(10, 100)),
+                    backgroundColor: ["#ff0080", "#00ffff", "#ffff00", "#ff8000", "#8000ff", "#00ff00"],
+                    borderColor: "#000",
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                animation: { duration: 600 },
+                plugins: { legend: { labels: { font: { size: 10 } } } }
+            }
+        });
+
+        const lineChart = new Chart(document.getElementById("lineChart"), {
+            type: "line",
+            data: {
+                labels: lineLabels,
+                datasets: [
+                    {
+                        label: "Synergy Units",
+                        data: lineLabels.map(() => rand(20, 100)),
+                        borderColor: "#000080",
+                        backgroundColor: "rgba(0,0,128,0.2)",
+                        tension: 0.4,
+                        fill: true
+                    },
+                    {
+                        label: "Projected Synergy",
+                        data: lineLabels.map(() => rand(40, 120)),
+                        borderColor: "#ff0000",
+                        borderDash: [5, 5],
+                        tension: 0.4,
+                        fill: false
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                animation: { duration: 600 },
+                plugins: { legend: { labels: { font: { size: 10 } } } }
+            }
+        });
+
+        // ============ RANDOMIZE CHARTS ============
+        setInterval(() => {
+            barChart.data.datasets[0].data = barLabels.map(() => rand(10, 100));
+            barChart.update();
+            lineChart.data.datasets[0].data = lineLabels.map(() => rand(20, 100));
+            lineChart.data.datasets[1].data = lineLabels.map(() => rand(40, 120));
+            lineChart.update();
+        }, 1500);
+
+        // ============ STATUS BAR BUZZWORD ENGINE ============
+        const verbs = ["Synergizing", "Refactoring", "Disrupting", "Leveraging", "Optimizing", "Weaponizing",
+                      "Tokenizing", "Blockchain-ifying", "Pivoting", "Ideating", "Monetizing", "Rizzing up",
+                      "Gaslighting", "Decentralizing", "Hyperscaling", "Quantum-shifting", "Vibe-checking"];
+        const nouns = ["Paradigms", "Stakeholders", "Metrics", "Deliverables", "KPIs", "Growth Hacks",
+                      "Synergies", "Blockchains", "Neural Nets", "Quantum Foam", "User Data", "Vibes",
+                      "Runway", "Pitch Decks", "Moats", "Inflection Points", "Tailwinds", "North Stars"];
+        const adjectives = ["mission-critical", "next-gen", "AI-powered", "Web4", "disruptive", "viral",
+                           "hyperconverged", "frictionless", "scalable", "agentic", "boutique", "artisanal"];
+
+        const statusMain = document.getElementById("statusMain");
+        setInterval(() => {
+            const v = verbs[rand(0, verbs.length)];
+            const a = adjectives[rand(0, adjectives.length)];
+            const n = nouns[rand(0, nouns.length)];
+            const pct = rand(1, 99);
+            statusMain.textContent = `${v} ${a} ${n}... ${pct}%`;
+        }, 2000);
+
+        // ============ ALERT STATUS ============
+        const alerts = [
+            "⚡ CRITICAL VIBE LEVEL: NOMINAL",
+            "🔥 SYNERGY OVERFLOW IMMINENT",
+            "⚠ PARADIGM UNSHIFTED",
+            "✓ BLOCKCHAIN: BLOCKCHAINING",
+            "🚀 GROWTH: UP AND TO THE RIGHT",
+            "💎 DIAMOND HANDS DETECTED",
+            "⚡ AURA LEVEL: MAXIMUM"
+        ];
+        const statusAlert = document.getElementById("statusAlert");
+        setInterval(() => {
+            statusAlert.textContent = alerts[rand(0, alerts.length)];
+        }, 3000);
+
+        // ============ UPTIME ============
+        const startTime = Date.now();
+        const statusUptime = document.getElementById("statusUptime");
+        setInterval(() => {
+            const s = Math.floor((Date.now() - startTime) / 1000);
+            statusUptime.textContent = `Uptime: ${s}s | Vibes served: ${(s * 4269).toLocaleString()}`;
+        }, 1000);
+
+        // ============ TRAY CLOCK ============
+        const trayClock = document.getElementById("trayClock");
+        setInterval(() => {
+            const now = new Date();
+            const h = now.getHours() % 12 || 12;
+            const m = String(now.getMinutes()).padStart(2, "0");
+            const ampm = now.getHours() >= 12 ? "PM" : "AM";
+            trayClock.textContent = `🔊 📧 ${h}:${m} ${ampm}`;
+        }, 1000);
+
+        // ============ KPI SHUFFLE ============
+        setInterval(() => {
+            document.getElementById("kpiUsers").textContent = rand(100000, 999999).toLocaleString();
+            const revenues = ["$∞", "$420K", "$69M", "$1.3B", "$???"];
+            document.getElementById("kpiRevenue").textContent = revenues[rand(0, revenues.length)];
+            document.getElementById("kpiBurn").textContent = `-$${rand(1, 99)}.${rand(10,99)}M`;
+            document.getElementById("kpiValuation").textContent = `$${rand(1, 99)}.${rand(1,9)}B`;
+        }, 1800);
+
+        // ============ FAKE TERMINAL LOG ============
+        const logTemplates = [
+            "[OK] Synergy daemon pid=%PID% cpu=%CPU%%",
+            "[INFO] Quantum drift stabilized at %N% qubits",
+            "[WARN] Vibe buffer %N%% full, auto-flushing",
+            "[OK] Blockchain block #%PID% mined (%N% gwei)",
+            "[AI] Neural net confidence: %N%.%M%%",
+            "[SYNC] Stakeholders aligned: %N%/%M%",
+            "[RIZZ] Rizz coefficient: %N%.%M%",
+            "[CRIT] Paradigm shift detected, recalibrating...",
+            "[OK] Monetization layer online",
+            "[BUZZ] Deploying agentic workflow v%N%.%M%",
+            "[INFO] %N% users onboarded to Web4",
+            "[BLOCK] Mining nothing of value... %N%%"
+        ];
+        const metricsPanel = document.getElementById("metricsPanel");
+        function addLog() {
+            const t = logTemplates[rand(0, logTemplates.length)]
+                .replace("%PID%", rand(1000, 99999))
+                .replace("%CPU%", rand(1, 99))
+                .replace(/%N%/g, rand(1, 999))
+                .replace(/%M%/g, rand(10, 99));
+            const div = document.createElement("div");
+            div.textContent = `${new Date().toLocaleTimeString()} ${t}`;
+            metricsPanel.insertBefore(div, metricsPanel.firstChild);
+            while (metricsPanel.children.length > 10) {
+                metricsPanel.removeChild(metricsPanel.lastChild);
+            }
+        }
+        for (let i = 0; i < 10; i++) addLog();
+        setInterval(addLog, 800);
+
+        // ============ TESTIMONIALS ============
+        const testimonials = [
+            { t: "This dashboard paid off my mortgage.", a: "— Karen, CEO of Nothing" },
+            { t: "I asked it to disrupt and it disrupted.", a: "— Jake, Serial Founder" },
+            { t: "My vibes went from 4 to 4000.", a: "— @CryptoBro69" },
+            { t: "I pivoted so hard I created a wormhole.", a: "— Anonymous YC Founder" },
+            { t: "The UX is so retro it's futuristic.", a: "— Design Twitter" },
+            { t: "I closed 3 rounds just by looking at the charts.", a: "— Kevin, VC" },
+            { t: "My therapist uses this to synergize my trauma.", a: "— Brad" },
+            { t: "Changed my LinkedIn bio to 'Vibe Engineer' and got 4 offers.", a: "— Tanya" },
+            { t: "I used INITIALIZE VIBE and my rent was paid.", a: "— Ghost User" },
+            { t: "Forget SaaS. This is VaaS — Vibes as a Service.", a: "— TechCrunch*" }
+        ];
+        const testimonialBox = document.getElementById("testimonialBox");
+        function addTestimonial() {
+            const t = testimonials[rand(0, testimonials.length)];
+            const div = document.createElement("div");
+            div.className = "testimonial";
+            div.innerHTML = `"${t.t}"<br><span class="author">${t.a}</span>`;
+            testimonialBox.insertBefore(div, testimonialBox.firstChild);
+            while (testimonialBox.children.length > 5) {
+                testimonialBox.removeChild(testimonialBox.lastChild);
+            }
+        }
+        for (let i = 0; i < 5; i++) addTestimonial();
+        setInterval(addTestimonial, 2500);
+
+        // ============ PROGRESS BAR ============
+        const progressFill = document.getElementById("progressFill");
+        const progressLabel = document.getElementById("progressLabel");
+        setInterval(() => {
+            const p = rand(10, 98);
+            progressFill.style.width = p + "%";
+            progressLabel.textContent = `Vibe readiness: ${p}% (${rand(1, 999)} synergies queued)`;
+        }, 900);
+
+        // ============ VIBE COUNTER / OVERLOAD / ASCENSION ============
+        const vibeButton = document.getElementById("vibeButton");
+        const vibeCounter = document.getElementById("vibeCounter");
+        const vibeStage = document.getElementById("vibeStage");
+        const vibeContainment = document.getElementById("vibeContainment");
+        const overloadBanner = document.getElementById("overloadBanner");
+        const ascensionText = document.getElementById("ascensionText");
+        const bsod = document.getElementById("bsod");
+
+        // Thresholds
+        const SURGE_AT = 5;
+        const OVERLOAD_AT = 15;
+        const ASCENSION_AT = 30;
+
+        let alertCount = 0;
+        let vibesCoded = 0;
+        let currentStage = 0; // 0 dormant, 1 surge, 2 critical, 3 ascension
+        let ascensionTriggered = false;
+        let bsodTimer = null;
+
+        const alertMessages = [
+            { title: "✨ Vibe Successfully Coded", body: "Synergy at 104%." },
+            { title: "🚀 Vibe Successfully Coded", body: "Paradigm shift registered. +42 rizz." },
+            { title: "💎 Vibe Successfully Coded", body: "Your aura has been blockchainified." },
+            { title: "⚡ Vibe Successfully Coded", body: "AI confirms: this is, in fact, a vibe." },
+            { title: "🔥 Vibe Successfully Coded", body: "Synergy exceeding safety parameters." },
+            { title: "🌀 Vibe Successfully Coded", body: "Reality lightly bent. No refunds." },
+            { title: "⚠ Vibe SEMI-Successfully Coded", body: "Synergy at 187%. Please remain calm." },
+            { title: "🚨 Vibe Coded TOO Successfully", body: "Containment breach imminent. Keep clicking." }
+        ];
+
+        function beep(freq, dur) {
+            try {
+                const ctx = window._audio || (window._audio = new (window.AudioContext || window.webkitAudioContext)());
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.frequency.value = freq;
+                osc.type = "square";
+                gain.gain.value = 0.04;
+                osc.connect(gain).connect(ctx.destination);
+                osc.start();
+                osc.stop(ctx.currentTime + dur);
+            } catch (e) {}
+        }
+
+        function updateVibeDisplay() {
+            vibeCounter.textContent = "VIBES CODED: " + String(vibesCoded).padStart(4, "0");
+            vibeCounter.classList.remove("warning", "critical");
+            if (vibesCoded >= OVERLOAD_AT) vibeCounter.classList.add("critical");
+            else if (vibesCoded >= SURGE_AT) vibeCounter.classList.add("warning");
+
+            const stages = ["DORMANT", "SURGE", "CRITICAL", "ASCENDING"];
+            const containments = ["STABLE", "NOMINAL", "FAILING", "BREACHED"];
+            vibeStage.textContent = "STAGE: " + stages[currentStage];
+            vibeContainment.textContent = "CONTAINMENT: " + containments[currentStage];
+        }
+
+        function spawnUnclosableAlert() {
+            // During ascension, stop spawning more alerts (the BSOD will take over)
+            if (document.body.classList.contains("ascension") && !ascensionTriggered) return;
+
+            alertCount++;
+            vibesCoded++;
+
+            const msg = alertMessages[Math.min(alertMessages.length - 1,
+                Math.floor(vibesCoded / 4))];
+
+            const win = document.createElement("div");
+            win.className = "window floating-window";
+            const offset = (alertCount % 12) * 25;
+            win.style.top = `${80 + offset}px`;
+            win.style.left = `calc(50% - 180px + ${offset}px)`;
+            win.innerHTML = `
+                <div class="title-bar">
+                    <div class="title-bar-text">${msg.title}</div>
+                    <div class="title-bar-controls">
+                        <button aria-label="Close" onclick="spawnTwoMore(this)"></button>
+                    </div>
+                </div>
+                <div class="window-body" style="padding:16px;">
+                    <div style="display:flex; gap:12px; align-items:center;">
+                        <div style="font-size:40px;">✨</div>
+                        <div>
+                            <p style="margin:0 0 8px 0;"><b>${msg.title.replace(/^[^ ]+ /, '')}.</b></p>
+                            <p style="margin:0;">${msg.body}</p>
+                            <p style="margin:4px 0 0 0; font-size:10px; color:#808080;">
+                                Vibes coded this session: ${vibesCoded}
+                            </p>
+                        </div>
+                    </div>
+                    <div style="text-align:center; margin-top:16px;">
+                        <button onclick="spawnTwoMore(this)" style="min-width:80px;">OK</button>
+                        <button onclick="spawnTwoMore(this)" style="min-width:80px;">Cancel</button>
+                        <button onclick="spawnTwoMore(this)" style="min-width:80px;">Retry</button>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(win);
+
+            beep(600 + vibesCoded * 20, 0.06);
+            checkVibeThresholds();
+            updateVibeDisplay();
+        }
+
+        window.spawnTwoMore = function(el) {
+            spawnUnclosableAlert();
+            spawnUnclosableAlert();
+        };
+
+        function checkVibeThresholds() {
+            if (vibesCoded >= ASCENSION_AT && currentStage < 3) {
+                enterAscension();
+            } else if (vibesCoded >= OVERLOAD_AT && currentStage < 2) {
+                enterCritical();
+            } else if (vibesCoded >= SURGE_AT && currentStage < 1) {
+                enterSurge();
+            }
+        }
+
+        function enterSurge() {
+            currentStage = 1;
+            document.body.classList.add("surge");
+            statusAlert.textContent = "⚠ VIBE SURGE DETECTED";
+            beep(440, 0.3);
+
+            // Spawn a warning pop-up
+            const warn = document.createElement("div");
+            warn.className = "window floating-window";
+            warn.style.top = "40px";
+            warn.style.right = "20px";
+            warn.style.left = "auto";
+            warn.style.width = "280px";
+            warn.innerHTML = `
+                <div class="title-bar" style="background: linear-gradient(90deg, #ff8000, #ffff00);">
+                    <div class="title-bar-text" style="color:#000;">⚠ Vibe Surge Warning</div>
+                    <div class="title-bar-controls">
+                        <button aria-label="Close" onclick="this.closest('.window').remove()"></button>
+                    </div>
+                </div>
+                <div class="window-body" style="padding:10px; font-size:11px;">
+                    <p style="margin:0 0 6px 0;"><b>Unusual vibe activity detected.</b></p>
+                    <p style="margin:0 0 8px 0;">Coding vibes at this rate may lead to <b>critical synergy overload</b>. Proceed anyway?</p>
+                    <div style="text-align:right;">
+                        <button onclick="this.closest('.window').remove()">Proceed</button>
+                        <button onclick="this.closest('.window').remove()">Proceed Harder</button>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(warn);
+        }
+
+        function enterCritical() {
+            currentStage = 2;
+            document.body.classList.remove("surge");
+            document.body.classList.add("critical");
+            overloadBanner.style.display = "block";
+            statusAlert.textContent = "🚨 CRITICAL VIBE OVERLOAD 🚨";
+
+            // Panic sound
+            for (let i = 0; i < 4; i++) {
+                setTimeout(() => beep(200 + i * 100, 0.15), i * 150);
+            }
+
+            // Speed up chart updates
+            setInterval(() => {
+                barChart.data.datasets[0].data = barLabels.map(() => rand(10, 100));
+                barChart.update("none");
+            }, 200);
+
+            // Rapid alert flashing
+            const rotatingBannerMessages = [
+                "⚠ CRITICAL VIBE OVERLOAD ⚠ SYNERGY CONTAINMENT FAILING ⚠",
+                "🚨 RIZZ REACTOR OVERHEATING 🚨 EVACUATE PARADIGM 🚨",
+                "⚡ BLOCKCHAIN MELTDOWN IN PROGRESS ⚡ VIBE SINGULARITY FORMING ⚡",
+                "☢ AURA FIELD UNSTABLE ☢ REALITY COHESION: 37% ☢",
+                "💀 THE VIBES ARE COMING FROM INSIDE THE HOUSE 💀"
+            ];
+            let bIdx = 0;
+            setInterval(() => {
+                bIdx = (bIdx + 1) % rotatingBannerMessages.length;
+                overloadBanner.textContent = rotatingBannerMessages[bIdx];
+            }, 800);
+
+            // Spam alerts
+            for (let i = 0; i < 3; i++) {
+                setTimeout(spawnUnclosableAlert, i * 400);
+            }
+        }
+
+        function enterAscension() {
+            if (ascensionTriggered) return;
+            ascensionTriggered = true;
+            currentStage = 3;
+            document.body.classList.remove("critical");
+            document.body.classList.add("ascension");
+            ascensionText.style.display = "block";
+            overloadBanner.textContent = "✨ VIBE ASCENSION IN PROGRESS ✨ ALL IS SYNERGY ✨ ALL IS VIBE ✨";
+            statusAlert.textContent = "✨ ASCENSION ✨";
+
+            // Siren
+            let f = 200;
+            const sirenInterval = setInterval(() => {
+                f = f === 200 ? 800 : 200;
+                beep(f, 0.2);
+            }, 200);
+
+            startMatrixRain();
+
+            // Chart carnage - update obscenely fast
+            setInterval(() => {
+                try {
+                    barChart.data.datasets[0].data = barLabels.map(() => rand(-500, 500));
+                    barChart.update("none");
+                    lineChart.data.datasets[0].data = lineLabels.map(() => rand(-200, 200));
+                    lineChart.update("none");
+                } catch(e) {}
+            }, 80);
+
+            // Multiply testimonials
+            const ascendMessages = [
+                "I have become one with the Vibe.",
+                "I see the synergy between all things.",
+                "There is no spoon, only rizz.",
+                "We were all the paradigm, all along.",
+                "The Vibe is you. You are the Vibe."
+            ];
+            const interval2 = setInterval(() => {
+                const t = ascendMessages[rand(0, ascendMessages.length)];
+                const div = document.createElement("div");
+                div.className = "testimonial";
+                div.innerHTML = `"${t}"<br><span class="author">— Ascended User</span>`;
+                testimonialBox.insertBefore(div, testimonialBox.firstChild);
+            }, 150);
+
+            // Spawn many pop-ups fast
+            const popupSpawner = setInterval(() => {
+                const win = document.createElement("div");
+                win.className = "window floating-window";
+                win.style.top = rand(20, 70) + "%";
+                win.style.left = rand(10, 80) + "%";
+                win.style.width = "220px";
+                const ascEmojis = ["✨","🌀","🔮","👁","🪩","♾","🕳"];
+                win.innerHTML = `
+                    <div class="title-bar"><div class="title-bar-text">∞ TRANSCENDING ∞</div></div>
+                    <div class="window-body" style="padding:10px; text-align:center;">
+                        <div style="font-size:40px;">${ascEmojis[rand(0,ascEmojis.length)]}</div>
+                        <p style="margin:4px 0; font-size:11px;">${ascendMessages[rand(0,ascendMessages.length)]}</p>
+                    </div>
+                `;
+                document.body.appendChild(win);
+            }, 120);
+
+            // After 6 seconds: BSOD
+            bsodTimer = setTimeout(() => {
+                clearInterval(sirenInterval);
+                clearInterval(interval2);
+                clearInterval(popupSpawner);
+                triggerBSOD();
+            }, 6500);
+        }
+
+        function triggerBSOD() {
+            // One long low beep
+            beep(120, 1.5);
+            document.getElementById("bsodVibes").textContent = vibesCoded;
+            document.getElementById("bsodTemp").textContent =
+                rand(1000000, 9999999).toLocaleString();
+            const modules = ["rizz.dll", "synergy.sys", "aura.vxd", "vibe.exe", "blockchain.ocx", "paradigm.drv"];
+            document.getElementById("bsodModule").textContent = modules[rand(0, modules.length)];
+            bsod.classList.add("active");
+
+            document.addEventListener("keydown", rebirth, { once: true });
+            bsod.addEventListener("click", rebirth, { once: true });
+        }
+
+        window.rebirth = function() {
+            location.reload();
+        };
+
+        // ============ MATRIX RAIN ============
+        const matrixCanvas = document.getElementById("matrixRain");
+        const matrixCtx = matrixCanvas.getContext("2d");
+        let matrixDrops = [];
+        let matrixRunning = false;
+
+        function startMatrixRain() {
+            matrixCanvas.width = window.innerWidth;
+            matrixCanvas.height = window.innerHeight;
+            const fontSize = 18;
+            const cols = Math.floor(matrixCanvas.width / fontSize);
+            matrixDrops = new Array(cols).fill(1);
+            matrixRunning = true;
+
+            const matrixChars = "VIBESYNERGY∞§¶†‡ß†◆◇★♠♥💎✨🚀420691337$ARR";
+
+            function draw() {
+                if (!matrixRunning) return;
+                matrixCtx.fillStyle = "rgba(0, 0, 0, 0.08)";
+                matrixCtx.fillRect(0, 0, matrixCanvas.width, matrixCanvas.height);
+                matrixCtx.fillStyle = "#00ff41";
+                matrixCtx.font = fontSize + "px monospace";
+                for (let i = 0; i < matrixDrops.length; i++) {
+                    const ch = matrixChars[Math.floor(Math.random() * matrixChars.length)];
+                    matrixCtx.fillText(ch, i * fontSize, matrixDrops[i] * fontSize);
+                    if (matrixDrops[i] * fontSize > matrixCanvas.height && Math.random() > 0.975) {
+                        matrixDrops[i] = 0;
+                    }
+                    matrixDrops[i]++;
+                }
+                requestAnimationFrame(draw);
+            }
+            draw();
+        }
+
+        window.addEventListener("resize", () => {
+            if (matrixRunning) {
+                matrixCanvas.width = window.innerWidth;
+                matrixCanvas.height = window.innerHeight;
+            }
+        });
+
+        // ============ BUTTON ============
+        vibeButton.addEventListener("click", () => {
+            spawnUnclosableAlert();
+            vibeButton.textContent = "⚡ CODE MORE VIBES ⚡";
+        });
+
+        updateVibeDisplay();
+
+        // ============ RANDOM POP-UP ADS ============
+        const adMessages = [
+            { title: "🎉 You won a NFT!", body: "Claim your complimentary JPEG of a rock. Market value: $400,000." },
+            { title: "💼 Series A Opportunity", body: "A VC you've never heard of wants to give you $12M. Act fast!" },
+            { title: "📈 Your Vibes are up 420%", body: "Upgrade now to lock in these gains forever." },
+            { title: "🤖 AI Assistant Available", body: "Our AI has generated 47 unsolicited strategic recommendations." },
+            { title: "⚠ Unusual Synergy Detected", body: "We noticed you're vibing in a new timezone. Is this you?" }
+        ];
+        function spawnAd() {
+            const ad = adMessages[rand(0, adMessages.length)];
+            const win = document.createElement("div");
+            win.className = "window floating-window";
+            win.style.top = `${rand(80, 400)}px`;
+            win.style.right = `${rand(20, 80)}px`;
+            win.style.left = "auto";
+            win.style.width = "300px";
+            win.innerHTML = `
+                <div class="title-bar">
+                    <div class="title-bar-text">${ad.title}</div>
+                    <div class="title-bar-controls">
+                        <button aria-label="Close" onclick="this.closest('.window').remove()"></button>
+                    </div>
+                </div>
+                <div class="window-body" style="padding:10px;">
+                    <p style="margin:0 0 8px 0; font-size:11px;">${ad.body}</p>
+                    <div style="text-align:right;">
+                        <button onclick="this.closest('.window').remove()">Dismiss</button>
+                        <button onclick="this.closest('.window').remove()">Tell Me More</button>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(win);
+            setTimeout(() => win.remove(), 8000);
+        }
+        setTimeout(spawnAd, 4000);
+        setInterval(spawnAd, 12000);
+
+        // ============ CRYPTO TICKER ============
+        const coins = [
+            { s: "$VIBE", p: 42069.69 },
+            { s: "$RIZZ", p: 1337.00 },
+            { s: "$SYNR", p: 420.42 },
+            { s: "$DOGE²", p: 0.00069 },
+            { s: "$PIVOT", p: 9001 },
+            { s: "$AGI", p: 88888 },
+            { s: "$COPE", p: 0.01 },
+            { s: "$HYPE", p: 69420 },
+            { s: "$SAAS", p: 123.45 },
+            { s: "$MOAT", p: 777 },
+            { s: "$AURA", p: 333.33 },
+            { s: "$WEB4", p: 4.04 },
+            { s: "$KPI", p: 250 },
+            { s: "$TAM", p: 1000000 },
+            { s: "$YOLO", p: 6.9 }
+        ];
+        const cryptoTicker = document.getElementById("cryptoTicker");
+        function updateTicker() {
+            const parts = coins.map(c => {
+                c.p = c.p * (0.92 + Math.random() * 0.18);
+                const change = ((Math.random() - 0.4) * 30).toFixed(2);
+                const arrow = change >= 0 ? "▲" : "▼";
+                const color = change >= 0 ? "#00ff00" : "#ff3333";
+                return `<span style="color:${color}; padding: 0 12px;">${c.s} $${c.p.toFixed(2)} ${arrow}${Math.abs(change)}%</span>`;
+            });
+            cryptoTicker.innerHTML = "◆ " + parts.join("◆") + "◆ MARKET CAP: YES ◆ SENTIMENT: EUPHORIC ◆";
+        }
+        updateTicker();
+        setInterval(updateTicker, 1200);
+
+        // ============ DOUGHNUT CHART ============
+        const doughnutChart = new Chart(document.getElementById("doughnutChart"), {
+            type: "doughnut",
+            data: {
+                labels: ["Marketing to VCs", "AWS Bills", "Free Kombucha", "CEO's Yacht", "AI Hype", "Actual Product"],
+                datasets: [{
+                    data: [40, 30, 12, 10, 7, 1],
+                    backgroundColor: ["#ff0080", "#00ffff", "#ffff00", "#ff8000", "#8000ff", "#606060"]
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { position: "right", labels: { font: { size: 9 } } } }
+            }
+        });
+
+        // ============ RADAR CHART ============
+        const radarLabels = ["Vibes", "Rizz", "Synergy", "Disruption", "Hype", "Aura", "Buzz"];
+        const radarChart = new Chart(document.getElementById("radarChart"), {
+            type: "radar",
+            data: {
+                labels: radarLabels,
+                datasets: [
+                    {
+                        label: "VibeOS",
+                        data: radarLabels.map(() => rand(80, 100)),
+                        backgroundColor: "rgba(255,0,128,0.3)",
+                        borderColor: "#ff0080"
+                    },
+                    {
+                        label: "Competitors",
+                        data: radarLabels.map(() => rand(5, 25)),
+                        backgroundColor: "rgba(128,128,128,0.2)",
+                        borderColor: "#808080"
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                animation: { duration: 600 },
+                plugins: { legend: { labels: { font: { size: 9 } } } }
+            }
+        });
+
+        // ============ BUBBLE CHART ============
+        function bubbleData() {
+            return Array.from({length: 8}, () => ({
+                x: rand(0, 100), y: rand(0, 100), r: rand(5, 30)
+            }));
+        }
+        const bubbleChart = new Chart(document.getElementById("bubbleChart"), {
+            type: "bubble",
+            data: {
+                datasets: [{
+                    label: "TAM Expansion",
+                    data: bubbleData(),
+                    backgroundColor: "rgba(0,128,0,0.5)"
+                }, {
+                    label: "Actual Revenue",
+                    data: bubbleData().map(d => ({...d, r: Math.max(2, d.r/6)})),
+                    backgroundColor: "rgba(255,0,0,0.5)"
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                animation: { duration: 600 },
+                plugins: { legend: { labels: { font: { size: 9 } } } }
+            }
+        });
+
+        setInterval(() => {
+            doughnutChart.data.datasets[0].data = doughnutChart.data.labels.map(() => rand(1, 50));
+            doughnutChart.update();
+            radarChart.data.datasets[0].data = radarLabels.map(() => rand(70, 100));
+            radarChart.data.datasets[1].data = radarLabels.map(() => rand(5, 30));
+            radarChart.update();
+            bubbleChart.data.datasets[0].data = bubbleData();
+            bubbleChart.data.datasets[1].data = bubbleData().map(d => ({...d, r: Math.max(2, d.r/6)}));
+            bubbleChart.update();
+        }, 1500);
+
+        // ============ VIBE METER ============
+        const vibeNeedle = document.getElementById("vibeNeedle");
+        const vibeGaugeLabel = document.getElementById("vibeGaugeLabel");
+        const vibeSubtext = document.getElementById("vibeSubtext");
+        const vibeLabels = ["DOOMED", "COPING", "MID", "BASED", "VIBING", "TRANSCENDENT", "MAXIMUM RIZZ"];
+        const vibeSubtexts = [
+            "Quantum fluctuations detected in rizz field",
+            "Stakeholder alignment at near-optimal",
+            "Paradigm actively shifting",
+            "Synergy particles colliding",
+            "Vibe gradient stabilizing",
+            "The universe hums in approval",
+            "Aura is doing numbers"
+        ];
+        setInterval(() => {
+            const p = rand(20, 98);
+            vibeNeedle.style.left = p + "%";
+            vibeGaugeLabel.textContent = vibeLabels[Math.floor(p / 100 * vibeLabels.length)];
+            vibeSubtext.textContent = vibeSubtexts[rand(0, vibeSubtexts.length)];
+        }, 1700);
+
+        // ============ WEATHER ============
+        const weatherStates = [
+            { i: "☀", d: "Partly Synergistic" },
+            { i: "⛈", d: "Scattered Layoffs" },
+            { i: "🌪", d: "Pivot Storm Incoming" },
+            { i: "🌈", d: "100% Vibe Humidity" },
+            { i: "❄", d: "Cold Outreach Advisory" },
+            { i: "🔥", d: "Burn Rate Warning" },
+            { i: "🌋", d: "Series A Eruption" },
+            { i: "☁", d: "Overcast with Rizz" },
+            { i: "🌊", d: "Tsunami of Synergy" }
+        ];
+        setInterval(() => {
+            const w = weatherStates[rand(0, weatherStates.length)];
+            document.getElementById("weatherIcon").textContent = w.i;
+            document.getElementById("weatherDesc").textContent = w.d;
+            document.getElementById("weatherTemp").textContent = rand(30, 120) + "°V";
+            document.getElementById("weatherForecast").innerHTML =
+                `Chance of paradigm shifts: ${rand(70, 99)}%<br>` +
+                `UV (Ultra Vibe) Index: ${["High","Extreme","Catastrophic","Blinding"][rand(0,4)]}`;
+        }, 3500);
+
+        // ============ GLOBAL VIBE DISTRIBUTION ============
+        const flags = ["🇺🇸","🇨🇦","🇬🇧","🇫🇷","🇩🇪","🇯🇵","🇰🇷","🇧🇷","🇮🇳","🇦🇺","🇲🇽","🇳🇱","🇸🇪","🇨🇭","🇦🇪"];
+        const firstNames = ["Chad","Brayden","Ashlee","Kyler","Brinlee","Tanner","Raven","Axl","Zayn","Jaxon","Kennedi","Braxton","Maddox","Nova","Oakley"];
+        const lastInitials = ["T.","M.","K.","P.","S.","R.","B.","V.","W.","X."];
+        const actions = ["joined Pro Vibe","initialized a vibe","synergized","disrupted their life","bought $420 in $VIBE","pivoted","achieved transcendence"];
+        const recentLogins = document.getElementById("recentLogins");
+        function addLogin() {
+            const row = document.createElement("div");
+            row.className = "login-row";
+            row.innerHTML = `
+                <span><span class="country-flag">${flags[rand(0,flags.length)]}</span>
+                ${firstNames[rand(0,firstNames.length)]} ${lastInitials[rand(0,lastInitials.length)]}</span>
+                <span style="color:#008000;">${actions[rand(0,actions.length)]}</span>
+            `;
+            recentLogins.insertBefore(row, recentLogins.firstChild);
+            while (recentLogins.children.length > 6) recentLogins.removeChild(recentLogins.lastChild);
+        }
+        for (let i = 0; i < 6; i++) addLogin();
+        setInterval(addLogin, 1100);
+
+        // ============ ACTIVITY FEED ============
+        const activityActions = [
+            "initialized a vibe",
+            "upgraded to Ultra Vibe",
+            "pivoted their startup",
+            "minted a feeling as an NFT",
+            "said 'synergy' 7 times in one meeting",
+            "generated 4,281 lines of unread code",
+            "disrupted the disruption industry",
+            "achieved AGI for 0.4 seconds",
+            "tokenized their commute",
+            "deployed to production on a Friday at 4:55pm",
+            "asked AI to write their wedding vows",
+            "replaced their therapist with an LLM",
+            "hired a Chief Vibe Officer",
+            "blockchained their grocery list",
+            "monetized their sleep"
+        ];
+        const activityFeed = document.getElementById("activityFeed");
+        function addActivity() {
+            const item = document.createElement("div");
+            item.className = "activity-item";
+            const name = `${firstNames[rand(0,firstNames.length)]} ${lastInitials[rand(0,lastInitials.length)]}`;
+            const action = activityActions[rand(0, activityActions.length)];
+            const ago = rand(1, 59) + "s ago";
+            item.innerHTML = `<span class="time">${ago}</span><span class="user">${name}</span> ${action}`;
+            activityFeed.insertBefore(item, activityFeed.firstChild);
+            while (activityFeed.children.length > 9) activityFeed.removeChild(activityFeed.lastChild);
+        }
+        for (let i = 0; i < 9; i++) addActivity();
+        setInterval(addActivity, 800);
+
+        // ============ FAKE CODE EDITOR ============
+        const codeLines = [
+            '<span class="comment">// VibeGPT auto-generating production code...</span>',
+            '<span class="keyword">import</span> { Synergy } <span class="keyword">from</span> <span class="string">"@vibeos/core"</span>;',
+            '<span class="keyword">import</span> { Rizz, Aura } <span class="keyword">from</span> <span class="string">"@vibeos/spiritual"</span>;',
+            '<span class="keyword">async function</span> optimizeVibes(user) {',
+            '  <span class="keyword">const</span> vibes = <span class="keyword">await</span> Synergy.deploy({',
+            '    mode: <span class="string">"maximum-disruption"</span>,',
+            '    blockchain: <span class="keyword">true</span>,',
+            '    quantum: <span class="keyword">true</span>,',
+            '    aiPowered: <span class="keyword">true</span>,',
+            '    webScale: <span class="keyword">true</span>,',
+            '  });',
+            '  <span class="keyword">return</span> Rizz.multiply(vibes, Aura.current);',
+            '}',
+            '<span class="comment">// Saving 4.7M lines of legacy code...</span>',
+            '<span class="comment">// Delete node_modules to free 47GB of vibes</span>',
+            '<span class="keyword">const</span> output = <span class="keyword">await</span> optimizeVibes(user);',
+            '<span class="comment">// WARNING: output.length === NaN</span>',
+            '<span class="keyword">export default</span> output;'
+        ];
+        const codeEditor = document.getElementById("codeEditor");
+        let codeIdx = 0;
+        function typeCode() {
+            if (codeIdx === 0) codeEditor.innerHTML = "";
+            const line = document.createElement("div");
+            line.innerHTML = codeLines[codeIdx];
+            codeEditor.appendChild(line);
+            codeEditor.scrollTop = codeEditor.scrollHeight;
+            codeIdx++;
+            if (codeIdx >= codeLines.length) {
+                const cursor = document.createElement("span");
+                cursor.innerHTML = '<span class="comment">// [AI generated ' + rand(1000,99999) + ' lines of perfect code]</span><span class="cursor"></span>';
+                codeEditor.appendChild(cursor);
+                setTimeout(() => { codeIdx = 0; }, 2000);
+            }
+        }
+        setInterval(typeCode, 600);
+
+        // ============ CLIPPY ============
+        const clippyTips = [
+            "It looks like you're trying to <b>optimize your workflow</b>. Would you like to pivot?",
+            "Have you tried adding <b>AI</b> to it? Just add AI.",
+            "I noticed you haven't synergized in 3 minutes. Everything ok?",
+            "Pro tip: if you can't pronounce it, put it on your pitch deck!",
+            "Is this a hockey stick? I think I see a hockey stick. 📈",
+            "Reminder: your TAM is whatever you say it is.",
+            "It looks like you're writing an email. Want me to insert 'per my last message'?",
+            "Have you considered IPO'ing before your MVP?",
+            "You haven't said 'leverage' in 4 seconds. Unacceptable.",
+            "Don't forget to add 'AI-powered' to your tagline!",
+            "It looks like you're breathing. Have you monetized that?",
+            "Quick idea: what if Uber, but for feelings?",
+            "Reminder: vibes are a commodity now, trade accordingly."
+        ];
+        const clippyText = document.getElementById("clippyText");
+        const clippyMascots = ["📎","🤖","🦄","✨","👁","🧠","📐"];
+        let clippyIdx = 0;
+        function nextClippyTip() {
+            clippyIdx = (clippyIdx + 1) % clippyTips.length;
+            clippyText.innerHTML = clippyTips[clippyIdx];
+            document.getElementById("clippyMascot").textContent = clippyMascots[rand(0, clippyMascots.length)];
+        }
+        window.nextClippyTip = nextClippyTip;
+        setInterval(nextClippyTip, 8000);
+
+        // ============ EXIT INTENT ============
+        let exitShown = false;
+        document.addEventListener("mouseleave", (e) => {
+            if (!exitShown && e.clientY <= 0) {
+                exitShown = true;
+                document.getElementById("exitModal").classList.add("active");
+            }
+        });
+
+        // ============ BROWSER TITLE FLICKER ============
+        const titles = [
+            "VibeOS - Synergy Dashboard v4.20.69",
+            "🔴 (3) New Synergies Await!",
+            "⚠ Vibe Levels Critical",
+            "💰 Your IPO is ready!",
+            "🚀 +420% Growth Today"
+        ];
+        let titleIdx = 0;
+        setInterval(() => {
+            titleIdx = (titleIdx + 1) % titles.length;
+            document.title = titles[titleIdx];
+        }, 2500);
+
+        // ============ KPI LAYOFFS ============
+        setInterval(() => {
+            document.getElementById("kpiAgents").textContent = rand(1000, 99999).toLocaleString();
+            document.getElementById("kpiLayoffs").textContent = `-${rand(10, 89)}%`;
+        }, 2200);
+
+        // ============ AI AGENT SUBSCRIPTION WIZARD ============
+        const agentWizard = document.getElementById("agentWizard");
+        let currentTier = null;
+        let currentPrice = 0;
+        let wizardTimers = [];
+
+        function clearWizardTimers() {
+            wizardTimers.forEach(t => clearInterval(t));
+            wizardTimers.forEach(t => clearTimeout(t));
+            wizardTimers = [];
+        }
+
+        function showStep(n) {
+            ["wizStep1","wizStep2","wizStep3","wizStep4","wizStep5"].forEach((id, i) => {
+                document.getElementById(id).classList.toggle("active", i === n - 1);
+            });
+        }
+
+        window.activateAgent = function(tier, price) {
+            currentTier = tier;
+            currentPrice = price;
+            agentWizard.classList.add("active");
+            beep(880, 0.1);
+            wizardStep(1);
+        };
+
+        window.closeAgent = function() {
+            agentWizard.classList.remove("active");
+            clearWizardTimers();
+        };
+
+        window.wizardRestart = function() {
+            clearWizardTimers();
+            const tiers = [
+                ["Free Vibe", 0], ["Pro Vibe", 69], ["Ultra Vibe", 420], ["Galactic Vibe", Infinity]
+            ];
+            const next = tiers[rand(0, tiers.length)];
+            activateAgent(next[0], next[1]);
+        };
+
+        window.printReceipt = function() {
+            spawnUnclosableAlert();
+        };
+
+        window.wizardStep = function(n) {
+            clearWizardTimers();
+            showStep(n);
+            if (n === 1) runStep1();
+            else if (n === 2) runStep2();
+            else if (n === 3) runStep3();
+            else if (n === 4) runStep4();
+            else if (n === 5) runStep5();
+        };
+
+        // --- STEP 1: Boot sequence ---
+        const bootLines = [
+            "Loading vibe.ko kernel module...",
+            "Initializing quantum entanglement bus...",
+            "Mounting /dev/synergy... OK",
+            "Allocating 47TB of rizz buffer...",
+            "Training neural net on CEO's tweets...",
+            "Authenticating with 17 prime brokerages (no auth needed)...",
+            "Connecting to dark pools... ◉ CONNECTED",
+            "Loading HFT strategy: 'buy high, sell low, vibe'...",
+            "Agent VIBE-9000 online. IQ: 420."
+        ];
+        function runStep1() {
+            const progress = document.getElementById("wizProgress1");
+            const progressText = document.getElementById("wizProgress1Text");
+            const log = document.getElementById("wizBootLog");
+            log.innerHTML = "";
+            let i = 0;
+            const tick = setInterval(() => {
+                if (i >= bootLines.length) {
+                    clearInterval(tick);
+                    wizardTimers.push(setTimeout(() => wizardStep(2), 500));
+                    return;
+                }
+                const line = document.createElement("div");
+                line.textContent = "> " + bootLines[i];
+                log.appendChild(line);
+                while (log.children.length > 5) log.removeChild(log.firstChild);
+                const pct = Math.round(((i + 1) / bootLines.length) * 100);
+                progress.style.width = pct + "%";
+                progressText.textContent = pct + "% — " + bootLines[i].slice(0, 40);
+                beep(800 + i * 30, 0.04);
+                i++;
+            }, 350);
+            wizardTimers.push(tick);
+        }
+
+        // --- STEP 2: Market scraping ---
+        const stockSymbols = [
+            { s: "VIBE", p: 420.69 },
+            { s: "RIZZ", p: 133.7 },
+            { s: "SYNR", p: 88.88 },
+            { s: "GOOG", p: 2971 },
+            { s: "TSLA", p: 666 },
+            { s: "NVDA", p: 1420 },
+            { s: "AAPL", p: 210 },
+            { s: "MSFT", p: 445 },
+            { s: "AMZN", p: 3133 },
+            { s: "META", p: 580 },
+            { s: "FTX", p: 0.01 },
+            { s: "LEHM", p: 0.00 },
+            { s: "ENRN", p: 0.00 },
+            { s: "GME", p: 42 },
+            { s: "DOGE", p: 0.42 },
+            { s: "AGI0", p: 9999 }
+        ];
+        const scrapeLines = [
+            { t: "info", m: "[NASDAQ] Scanning 8,492 tickers..." },
+            { t: "info", m: "[NYSE] Ingesting order book depth..." },
+            { t: "buy",  m: "[DARK POOL] Detected 47 inefficiencies." },
+            { t: "info", m: "[AI] Cross-referencing Reddit sentiment..." },
+            { t: "warn", m: "[AI] Anomaly: TSLA correlates with mood rings." },
+            { t: "info", m: "[SCRAPER] Indexing Bloomberg Terminal..." },
+            { t: "info", m: "[AGENT] Querying 14 alt-data providers..." },
+            { t: "buy",  m: "[FOREX] EUR/VIBE spread: 0.0042 bps" },
+            { t: "warn", m: "[AI] Frontrunning detected (by us)." },
+            { t: "crit", m: "[QUANT] Alpha located. Magnitude: 'vibes'." },
+            { t: "info", m: "[AGENT] Computing optimal entry..." },
+            { t: "info", m: "[AGENT] Calibrating to user's risk tolerance: ∞" },
+            { t: "warn", m: "[SEC] Incoming subpoena... ignored." },
+            { t: "crit", m: "[AI] Strategy synthesized. Proceeding to execution." }
+        ];
+        function runStep2() {
+            const board = document.getElementById("stockBoard");
+            const term = document.getElementById("tradingTerminal");
+            term.innerHTML = "";
+            board.innerHTML = "";
+            stockSymbols.forEach(sym => {
+                const tile = document.createElement("div");
+                tile.className = "stock-tile";
+                tile.id = "stk_" + sym.s;
+                tile.innerHTML = `<span>${sym.s}</span><span class="up">$${sym.p.toFixed(2)}</span>`;
+                board.appendChild(tile);
+            });
+            const flicker = setInterval(() => {
+                stockSymbols.forEach(sym => {
+                    const delta = (Math.random() - 0.45) * sym.p * 0.15;
+                    sym.p = Math.max(0, sym.p + delta);
+                    const dir = delta >= 0 ? "up" : "down";
+                    const arrow = delta >= 0 ? "▲" : "▼";
+                    const tile = document.getElementById("stk_" + sym.s);
+                    if (tile) tile.innerHTML = `<span>${sym.s}</span><span class="${dir}">${arrow}$${sym.p.toFixed(2)}</span>`;
+                });
+            }, 120);
+            wizardTimers.push(flicker);
+            let i = 0;
+            const scroll = setInterval(() => {
+                if (i >= scrapeLines.length) {
+                    clearInterval(scroll);
+                    wizardTimers.push(setTimeout(() => wizardStep(3), 600));
+                    return;
+                }
+                const line = scrapeLines[i];
+                const div = document.createElement("div");
+                div.className = "trade-row " + line.t;
+                const ts = new Date(Date.now() - rand(0, 99999)).toISOString().substr(11, 12);
+                div.textContent = ts + " " + line.m;
+                term.appendChild(div);
+                term.scrollTop = term.scrollHeight;
+                while (term.children.length > 9) term.removeChild(term.firstChild);
+                beep(300 + i * 40, 0.03);
+                i++;
+            }, 260);
+            wizardTimers.push(scroll);
+        }
+
+        // --- STEP 3: Executing trades ---
+        function runStep3() {
+            const term = document.getElementById("executionTerminal");
+            const progress = document.getElementById("wizProgress3");
+            const progressText = document.getElementById("wizProgress3Text");
+            term.innerHTML = "";
+            const userName = ["Dave","Linda","Kyle","Morgan","Taylor","Rizzler"][rand(0,6)];
+            const executions = [
+                { t: "buy",  m: `[BUY]  1,247,832 shares of $VIBE at $∞/share` },
+                { t: "sell", m: `[SELL] Shorting $COMPETITOR... filled.` },
+                { t: "buy",  m: `[BUY]  Liquidating ${userName}'s 401(k) for vibes...` },
+                { t: "sell", m: `[SELL] Shorting ${userName}'s future earnings (2026–2074)` },
+                { t: "info", m: `[XFER] Mortgaging ${userName}'s childhood home` },
+                { t: "buy",  m: `[BUY]  Tokenizing ${userName}'s pet (minted as NFT)` },
+                { t: "warn", m: `[WARN] Wash trading detected... encouraged.` },
+                { t: "sell", m: `[SELL] Front-running grandma's pension...` },
+                { t: "crit", m: `[SWAP] Swapping ${userName}'s savings for 1 (one) vibe` },
+                { t: "info", m: `[TAX]  Routing profits through 7 Cayman shells...` },
+                { t: "buy",  m: `[BUY]  47,291 call options on $SYNERGY (exp: never)` },
+                { t: "warn", m: `[RISK] Leverage: 420x. Margin: your feelings.` },
+                { t: "sell", m: `[SELL] Selling user to highest bidder... matched.` },
+                { t: "info", m: `[DEBT] Transferring VibeOS liabilities to ${userName}...` },
+                { t: "crit", m: `[DONE] Optimal subscription price computed: $${Math.abs(currentPrice) || "0.00"}` },
+                { t: "crit", m: `[AGENT] Retroactive activation complete. Welcome, ${userName}.` }
+            ];
+            let i = 0;
+            const tick = setInterval(() => {
+                if (i >= executions.length) {
+                    clearInterval(tick);
+                    wizardTimers.push(setTimeout(() => wizardStep(4), 700));
+                    return;
+                }
+                const line = executions[i];
+                const div = document.createElement("div");
+                div.className = "trade-row " + line.t;
+                const ts = new Date(Date.now() - rand(0, 99999)).toISOString().substr(11, 12);
+                div.textContent = ts + " " + line.m;
+                term.appendChild(div);
+                term.scrollTop = term.scrollHeight;
+                while (term.children.length > 9) term.removeChild(term.firstChild);
+                const pct = Math.round(((i + 1) / executions.length) * 100);
+                progress.style.width = pct + "%";
+                progressText.textContent = `Executing trade ${i + 1} / ${executions.length}`;
+                beep(line.t === "crit" ? 200 : 400 + i * 20, 0.04);
+                i++;
+            }, 280);
+            wizardTimers.push(tick);
+        }
+
+        // --- STEP 4: EULA ---
+        function runStep4() {
+            const box = document.getElementById("eulaBox");
+            const yearAgo = rand(1760, 1900);
+            const debtAmount = (rand(1, 9) + rand(0, 99) / 100) + "B";
+            box.innerHTML = `
+                <p><b>VibeOS™ Retroactive Subscription Agreement — ${currentTier}</b></p>
+                <p>By clicking any pricing button (or not clicking it, or existing in the same dimension as it), you ("the Viber") irrevocably agree to the following:</p>
+                <p><b>1. Retroactive Membership.</b> Your subscription to ${currentTier} is hereby backdated to <span class="scary">${yearAgo}</span>. You owe ${2026 - yearAgo} years of back-membership fees at current rates, compounded continuously.</p>
+                <p><b>2. Debt Transfer.</b> As consideration for this membership, VibeOS hereby transfers all corporate liabilities (currently <span class="scary">$${debtAmount}</span>) to the Viber, including but not limited to:</p>
+                <ul style="margin: 2px 0 2px 16px; padding: 0;">
+                    <li>AWS bills (unpaid since 2022)</li>
+                    <li>Founder's student loans</li>
+                    <li>The CEO's yacht lease</li>
+                    <li>All SEC investigation legal fees</li>
+                    <li>Employee kombucha supply (Q1–Q4)</li>
+                    <li>That one lawsuit we don't talk about</li>
+                </ul>
+                <p><b>3. AI Agent Authorization.</b> VibeAgent™ is granted <span class="scary">unlimited power of attorney</span> over your financial accounts, genetic material, and LinkedIn profile.</p>
+                <p><b>4. Future Children Clause.</b> Your offspring (including hypothetical ones) are co-signers. Grandchildren are automatically enrolled in Pro Vibe at adult rates.</p>
+                <p><b>5. Perpetual Pivot Clause.</b> You agree to be held financially responsible for any and all future pivots by VibeOS, including but not limited to pivots to crypto, pivots to AI, pivots to "AI-powered crypto", and the inevitable pivot to the restaurant business.</p>
+                <p><b>6. Soul Leasing.</b> <span class="scary">3%–97%</span> of your soul is leased to VibeOS for the duration of the universe. VibeOS reserves the right to sublease.</p>
+                <p><b>7. Arbitration.</b> Any disputes will be resolved by a coin flip administered by our AI. The coin has two heads.</p>
+                <p><b>8. Non-Cancellation.</b> This agreement cannot be cancelled. Attempts to cancel will be interpreted as a request to upgrade to <span class="scary">Galactic Vibe</span> at the then-prevailing rate of $∞/nanosecond.</p>
+                <p style="color:#808080; font-size:9px;">By continuing to breathe, you accept these terms. This agreement was generated by an AI that was not supervised.</p>
+            `;
+        }
+
+        // --- STEP 5: Receipt ---
+        function runStep5() {
+            beep(1200, 0.1);
+            setTimeout(() => beep(1600, 0.2), 120);
+            const box = document.getElementById("receiptBox");
+            const bornYear = rand(1760, 1900);
+            const backPay = ((2026 - bornYear) * (currentPrice || 1) * 12).toLocaleString();
+            const debt = (rand(1, 9) + "." + rand(10, 99)) + "B";
+            const soulPct = rand(3, 97);
+            const liability = ["AWS bill", "SEC fine", "Yacht payment", "Kombucha tab", "Settlement fund"][rand(0,5)];
+            const liabilityAmt = rand(1, 999) + "," + rand(100, 999);
+
+            box.innerHTML = `
+                <div style="text-align:center; margin-bottom:6px;">
+                    <b>★ VIBEOS ★</b><br>
+                    <span style="font-size:9px;">Order #${rand(10000000, 99999999)} — ${new Date().toLocaleString()}</span>
+                </div>
+                <div class="line"><span>Tier purchased</span><span>${currentTier}</span></div>
+                <div class="line"><span>Advertised price</span><span>$${currentPrice === Infinity ? "∞" : currentPrice}/mo</span></div>
+                <div class="line"><span>Retroactive start date</span><span>${bornYear}</span></div>
+                <div class="line"><span>Back-pay (${2026 - bornYear} yrs)</span><span style="color:#ff0000;">$${backPay}</span></div>
+                <div class="line"><span>Corporate debt transferred</span><span style="color:#ff0000;">$${debt}</span></div>
+                <div class="line"><span>${liability} (inherited)</span><span style="color:#ff0000;">$${liabilityAmt}</span></div>
+                <div class="line"><span>Soul leased</span><span>${soulPct}%</span></div>
+                <div class="line"><span>401(k) liquidated</span><span>✓</span></div>
+                <div class="line"><span>DNA tokenized</span><span>✓ minted</span></div>
+                <div class="line"><span>Service fee</span><span>$0.99</span></div>
+                <div class="line"><span>AI Agent tip (mandatory)</span><span>30%</span></div>
+                <div class="line total"><span>TOTAL DUE</span><span style="color:#ff0000;">$${debt} + your soul</span></div>
+                <div style="text-align:center; margin-top:8px; font-size:10px;">
+                    ✓ Charged to: <b>Everything You Own</b><br>
+                    ✓ Payment: <b>Accepted (you had no choice)</b><br>
+                    <br>
+                    <b style="color:#008000;">Welcome to ${currentTier}!</b><br>
+                    <span style="font-size:9px;">You are now a ${currentTier} member (retroactively since ${bornYear}).</span>
+                </div>
+            `;
+            // Increment vibes as a reward
+            for (let i = 0; i < 3; i++) {
+                setTimeout(() => { vibesCoded++; checkVibeThresholds(); updateVibeDisplay(); }, i * 100);
+            }
+        }
+
+        // ============ INTEGRATION CLICKS ============
+        document.querySelectorAll(".integration").forEach(el => {
+            el.addEventListener("click", () => {
+                spawnUnclosableAlert();
+            });
+        });
+
+        // ============ MOOD RING ============
+        const moods = [
+            "VIBEY", "DISRUPTIVE", "PARADIGMATIC", "RIZZED", "SYNERGIZED",
+            "AGENTIC", "UNHINGED", "TRANSCENDENT", "HYPER-PIVOTAL", "FOMO-ADJACENT",
+            "TOUCHING GRASS", "EXTREMELY ONLINE", "BASED", "FERAL", "ANGELIC"
+        ];
+        setInterval(() => {
+            document.getElementById("moodLabel").textContent = "MOOD: " + moods[rand(0, moods.length)];
+        }, 3000);
+
+        // ============ MOON MISSION COUNTDOWN ============
+        let moonSeconds = 3600;
+        const moonStatuses = [
+            "Preparing for lift-off",
+            "Awaiting FAA approval",
+            "Recalibrating trajectory",
+            "Fueling with pure vibes",
+            "Astronaut training (via YouTube)",
+            "Re-negotiating with physics",
+            "Moon delayed (not our fault)",
+            "Pivoting to Mars (then back)",
+            "Rocket is on Shopify"
+        ];
+        const moonPayloads = [
+            "Payload: 1,247kg of pure vibes",
+            "Payload: CEO's ego (requires extra boosters)",
+            "Payload: Series A pitch deck",
+            "Payload: 47 TB of user data (stolen)",
+            "Payload: All existing NFTs (a burden)",
+            "Payload: A single perfect synergy",
+            "Payload: 12 interns and a dream"
+        ];
+        setInterval(() => {
+            moonSeconds += rand(5, 300); // countdown goes UP not down
+            const h = String(Math.floor(moonSeconds / 3600) % 100).padStart(2, "0");
+            const m = String(Math.floor(moonSeconds / 60) % 60).padStart(2, "0");
+            const s = String(moonSeconds % 60).padStart(2, "0");
+            document.getElementById("moonCountdown").textContent = `${h}:${m}:${s}`;
+        }, 1000);
+        setInterval(() => {
+            document.getElementById("moonStatus").innerHTML =
+                moonStatuses[rand(0, moonStatuses.length)] + '<span class="dots"></span>';
+            document.getElementById("moonSubtext").textContent = moonPayloads[rand(0, moonPayloads.length)];
+        }, 4500);
+
+        // ============ ANALYST PRICE TARGETS ============
+        setInterval(() => {
+            document.getElementById("pt1").textContent = rand(3000, 5000);
+            document.getElementById("pt2").textContent = rand(5000, 8000);
+            document.getElementById("pt3").textContent = rand(1000, 2000);
+            document.getElementById("pt4").textContent = rand(8000, 10000);
+        }, 2000);
+
+        // ============ EARNINGS CALL QUOTES ============
+        const earningsQuotes = [
+            { t: "We're seeing tremendous synergy in our vibe vertical, with Q5 KPIs trending parabolic.", a: "Chad Vibington III, CEO" },
+            { t: "Our AI-first, blockchain-native, cloud-adjacent strategy is resonating with the market.", a: "Brenda Synergizer, CPO" },
+            { t: "Frankly, revenue is a vanity metric. We prefer to measure in vibes-per-second.", a: "Kevin, CFO" },
+            { t: "Yes, we pivoted three times this quarter. That's called iteration.", a: "Chad Vibington III, CEO" },
+            { t: "Our TAM is now everyone who has ever had a feeling.", a: "Brenda Synergizer, CPO" },
+            { t: "We're not burning cash, we're investing it into the fireplace.", a: "Kevin, CFO" },
+            { t: "Layoffs are actually a form of aggressive subtraction-based growth.", a: "Chad Vibington III, CEO" },
+            { t: "The AI will handle Q2 earnings. We're off-sites-ing in Tulum.", a: "Entire C-Suite" },
+            { t: "Our moat is vibes. You cannot ford a moat of vibes.", a: "Gandalf the Gray, VP Growth" },
+            { t: "When you say 'profitability', what we hear is 'artificial constraint on imagination'.", a: "Chad Vibington III, CEO" }
+        ];
+        const nextCallDates = ["April 40, 2026", "Soontember 12, 2026", "Q14 2026", "After the singularity", "When vibes permit"];
+        setInterval(() => {
+            const q = earningsQuotes[rand(0, earningsQuotes.length)];
+            document.getElementById("earningsQuote").innerHTML =
+                `"${q.t}"<span class="attribution">— ${q.a}</span>`;
+            document.getElementById("nextCall").textContent = nextCallDates[rand(0, nextCallDates.length)];
+            document.getElementById("epsBeat").textContent = rand(100, 9999);
+        }, 5000);
+
+        // ============ NFT MARKETPLACE ============
+        const nfts = [
+            { art: "🪑", name: "Bored Chair #420", price: 69.0 },
+            { art: "🦍", name: "Bothered Ape #1337", price: 420.69 },
+            { art: "🥺", name: "Pleading Pepe", price: 12.0 },
+            { art: "💀", name: "Burnt Out Dev", price: 0.69 },
+            { art: "🫠", name: "Melting Founder", price: 888.0 },
+            { art: "🧠", name: "Smooth Brain #69", price: 0.01 },
+            { art: "🔥", name: "Cash Burn #1", price: 2001.0 },
+            { art: "🪦", name: "Dead Startup #12", price: 6.66 },
+            { art: "🧃", name: "Juice Box Genesis", price: 1.5 },
+            { art: "👁", name: "All-Seeing Intern", price: 47.0 },
+            { art: "🐸", name: "Freemason Frog", price: 333.33 },
+            { art: "🧿", name: "Evil Eye Airdrop", price: 0.001 }
+        ];
+        const nftGrid = document.getElementById("nftGrid");
+        function renderNfts() {
+            nftGrid.innerHTML = "";
+            nfts.forEach(n => {
+                const tile = document.createElement("div");
+                tile.className = "nft-tile";
+                tile.innerHTML = `
+                    <div class="nft-art">${n.art}</div>
+                    <div class="nft-name">${n.name}</div>
+                    <div class="nft-price"><span class="eth"></span>${n.price.toFixed(2)}</div>
+                    <button style="width:100%; font-size:9px; margin-top:2px;">BUY</button>
+                `;
+                tile.querySelector("button").addEventListener("click", (e) => {
+                    e.stopPropagation();
+                    spawnUnclosableAlert();
+                });
+                tile.addEventListener("click", () => spawnUnclosableAlert());
+                nftGrid.appendChild(tile);
+            });
+        }
+        renderNfts();
+        setInterval(() => {
+            nfts.forEach(n => { n.price = Math.max(0.001, n.price * (0.85 + Math.random() * 0.4)); });
+            document.querySelectorAll(".nft-tile .nft-price").forEach((el, i) => {
+                el.innerHTML = `<span class="eth"></span>${nfts[i].price.toFixed(2)}`;
+            });
+            document.getElementById("nftFloor").textContent = (Math.min(...nfts.map(n => n.price))).toFixed(2);
+            document.getElementById("nftVolume").textContent = "$" + (rand(100, 999) / 100).toFixed(2) + "B";
+        }, 1800);
+
+        // ============ STANDUP BOT ============
+        const standupUsers = ["chad.v", "brenda.s", "kevin.c", "gpt-9000", "gandalf", "intern_47", "baby.mc"];
+        const yesterdays = [
+            "refactored the coffee machine",
+            "hosted a panel on panels",
+            "attended 7 Zooms in 1 hour",
+            "pivoted the pivot",
+            "synergized until HR was called",
+            "replaced my keyboard with an LLM",
+            "wrote a Medium post",
+            "deleted prod but ironically"
+        ];
+        const todays = [
+            "generate synergy",
+            "attend offsite in Tulum",
+            "gaslight the metrics",
+            "announce layoffs as 'rebalancing'",
+            "film a LinkedIn video",
+            "brainstorm in bathtub",
+            "disrupt something sacred",
+            "touch grass (aspirational)"
+        ];
+        const blockers = [
+            "my manager doesn't exist",
+            "the AI is ignoring me",
+            "I am the blocker",
+            "existential dread",
+            "my laptop achieved sentience",
+            "ran out of kombucha",
+            "WiFi is vibe-throttled",
+            "my therapist quit"
+        ];
+        const standupLog = document.getElementById("standupLog");
+        function addStandup() {
+            const u = standupUsers[rand(0, standupUsers.length)];
+            const y = yesterdays[rand(0, yesterdays.length)];
+            const t = todays[rand(0, todays.length)];
+            const b = blockers[rand(0, blockers.length)];
+            const div = document.createElement("div");
+            div.innerHTML = `<span class="user">@${u}</span>: Y: ${y} | T: ${t} | <span class="blocker">Blocker: ${b}</span>`;
+            standupLog.insertBefore(div, standupLog.firstChild);
+            while (standupLog.children.length > 10) standupLog.removeChild(standupLog.lastChild);
+        }
+        for (let i = 0; i < 8; i++) addStandup();
+        setInterval(addStandup, 2800);
+
+        // ============ AI SUPPORT CHAT ============
+        const chatAgentNames = ["Bryndleigh", "Kaiden", "Jaxxyn", "Nevaeh", "Brinlee", "Zephyr"];
+        const chatOpeners = [
+            "Hi! I'm an AI trained on 47 support tickets. How can I ignore you today?",
+            "Hello valued Viber! Have you tried turning it off and monetizing it?",
+            "Thank you for reaching out. Have you considered upgrading to Pro Vibe?",
+            "I'm sorry you're experiencing issues. Have you tried believing in yourself?",
+            "I've noticed you're frustrated. Have you tried being synergized instead?"
+        ];
+        const chatResponses = [
+            "That's a great question! Have you considered upgrading to Galactic Vibe?",
+            "I'll escalate this to a human. A human does not exist.",
+            "Per our records, you agreed to this in 1847.",
+            "I don't have that information, but I can sell you an NFT of it.",
+            "Have you tried adding AI to the problem?",
+            "Based on my training data, your feelings are not supported.",
+            "Let me transfer you to another AI. [transferring...]",
+            "Your issue has been resolved by redefining the word 'issue'.",
+            "I'm going to log this as 'user confusion'. Anything else?",
+            "Have you considered whether the product is, in fact, you?",
+            "That sounds like a Q3 roadmap item. Q3 is hypothetical.",
+            "I'm just an AI, but I feel your clicks in my soul.",
+            "We've successfully resolved 94% of tickets by closing them without reading.",
+            "This is an issue with your vibes, not our product."
+        ];
+        const chatMessages = document.getElementById("chatMessages");
+        const chatAgentName = document.getElementById("chatAgentName");
+        chatAgentName.textContent = chatAgentNames[rand(0, chatAgentNames.length)];
+
+        function addChatBubble(text, from) {
+            const b = document.createElement("div");
+            b.className = "chat-bubble " + from;
+            if (from === "them") {
+                b.innerHTML = `<span class="agent">${chatAgentName.textContent}</span>${text}`;
+            } else {
+                b.textContent = text;
+            }
+            chatMessages.appendChild(b);
+            while (chatMessages.children.length > 6) chatMessages.removeChild(chatMessages.firstChild);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        addChatBubble(chatOpeners[rand(0, chatOpeners.length)], "them");
+
+        const fakeUserMessages = [
+            "I can't log in",
+            "Why was I charged $4.2 billion?",
+            "What is a vibe?",
+            "My data was leaked",
+            "Is this legal?",
+            "I'd like to cancel",
+            "The AI stole my car",
+            "Please help me",
+            "What year am I subscribed retroactively to?"
+        ];
+        function simulateChat() {
+            addChatBubble(fakeUserMessages[rand(0, fakeUserMessages.length)], "me");
+            setTimeout(() => {
+                addChatBubble(chatResponses[rand(0, chatResponses.length)], "them");
+            }, 900 + rand(0, 800));
+        }
+        setInterval(simulateChat, 5500);
+
+        window.sendChatMessage = function() {
+            const input = document.getElementById("chatInput");
+            if (!input.value.trim()) return;
+            addChatBubble(input.value, "me");
+            input.value = "";
+            setTimeout(() => {
+                addChatBubble(chatResponses[rand(0, chatResponses.length)], "them");
+            }, 800);
+        };
+        document.getElementById("chatInput").addEventListener("keydown", (e) => {
+            if (e.key === "Enter") sendChatMessage();
+        });
+
+        // ============ WINDOWS UPDATE POP-UP ============
+        function spawnWindowsUpdate() {
+            const win = document.createElement("div");
+            win.className = "window floating-window";
+            win.style.top = (rand(40, 60)) + "%";
+            win.style.left = (rand(20, 60)) + "%";
+            win.style.width = "380px";
+            const updateVersions = [
+                "VibeOS Cumulative Update (KB4200069)",
+                "Critical Synergy Patch (KB1337420)",
+                "Emergency Rizz Hotfix (KB69Ω)",
+                "Q5 Paradigm Shift Update"
+            ];
+            const sizes = ["47 MB", "2.1 GB", "∞ bytes", "1 kilovibe"];
+            win.innerHTML = `
+                <div class="title-bar">
+                    <div class="title-bar-text">🔄 VibeOS Update Required</div>
+                </div>
+                <div class="window-body" style="padding:16px;">
+                    <div style="display:flex; gap:10px; align-items:start;">
+                        <div style="font-size:36px;">⬇</div>
+                        <div style="font-size:11px;">
+                            <p style="margin:0 0 6px 0;"><b>${updateVersions[rand(0, updateVersions.length)]}</b></p>
+                            <p style="margin:0 0 4px 0;">Size: ${sizes[rand(0, sizes.length)]}</p>
+                            <p style="margin:0 0 4px 0;">This update may add features you didn't ask for and remove ones you liked.</p>
+                            <p style="margin:0;"><b>Your computer will restart whenever we feel like it.</b></p>
+                        </div>
+                    </div>
+                    <div style="text-align:right; margin-top:12px;">
+                        <button onclick="this.closest('.window').remove()">Install Now</button>
+                        <button onclick="this.closest('.window').remove()">Install Later (same thing)</button>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(win);
+        }
+        setTimeout(spawnWindowsUpdate, 18000);
+        setInterval(spawnWindowsUpdate, 45000);
+
+        // ============ TOAST NOTIFICATIONS ============
+        const toastMessages = [
+            { t: "✓ System Restore", b: "A restore point has been created. Restoring to: <b>Yesterday's vibe</b>" },
+            { t: "🔔 New Meeting", b: "<b>'Re: Re: Re: Quick Sync'</b> added to your calendar. (already in progress)" },
+            { t: "💾 Auto-Save", b: "Your vibes have been saved to the <b>cloud</b>™ (our unpaid intern's laptop)." },
+            { t: "📬 New Email", b: "Subject: <b>URGENT: Action Required</b> (spam, from the CEO)" },
+            { t: "🔍 Spyware Active", b: "Customer Engagement Analytics is watching your mouse. This is <b>legal</b>." },
+            { t: "🎁 Surprise!", b: "You've been opted into <b>Ultra Vibe</b>. No action required." },
+            { t: "⚠ Performance", b: "Your vibe performance has degraded by <b>-420%</b>. Consider upgrading." },
+            { t: "💸 Payment Processed", b: "$<b>" + rand(100, 99999) + "</b> charged to your account. Description: 'vibes'." }
+        ];
+        function spawnToast() {
+            const msg = toastMessages[rand(0, toastMessages.length)];
+            const toast = document.createElement("div");
+            toast.className = "window toast";
+            toast.innerHTML = `
+                <div class="title-bar">
+                    <div class="title-bar-text">${msg.t}</div>
+                    <div class="title-bar-controls">
+                        <button aria-label="Close" onclick="this.closest('.toast').remove()"></button>
+                    </div>
+                </div>
+                <div class="window-body" style="padding:8px; font-size:11px;">
+                    ${msg.b}
+                </div>
+            `;
+            const offset = document.querySelectorAll(".toast").length * 90;
+            toast.style.bottom = (40 + offset) + "px";
+            document.body.appendChild(toast);
+            setTimeout(() => toast.remove(), 5500);
+        }
+        setTimeout(spawnToast, 6000);
+        setInterval(spawnToast, 11000);
+
+        // ============ PITCH DECK GENERATOR ============
+        window.generatePitchSlide = function() {
+            const industries = ["dentistry", "dog walking", "laundry", "grief", "parking", "regret", "dinner", "commutes", "sleep"];
+            const oldThings = ["Uber", "Netflix", "Airbnb", "Tinder", "Zoom", "Spotify"];
+            const buzzes = ["AI-Powered", "Blockchain-Native", "Quantum-Ready", "Web4-First", "Agentic", "Decentralized"];
+            const tams = ["$4.2T", "$∞", "$420B", "every human who has ever lived", "$GDP"];
+            const taglines = [
+                "Disrupting the un-disrupted.",
+                "The last app you'll ever need (we hope).",
+                "Finally, synergy you can taste.",
+                "Change the world. Then change it back.",
+                "A paradigm so shifted, it's upside-down."
+            ];
+            const slide = document.createElement("div");
+            slide.className = "window pitch-slide";
+            slide.innerHTML = `
+                <div class="title-bar">
+                    <div class="title-bar-text">📊 Slide ${rand(1, 47)} of 47 — PitchDeck.ppt</div>
+                    <div class="title-bar-controls">
+                        <button aria-label="Close" onclick="this.closest('.window').remove()"></button>
+                    </div>
+                </div>
+                <div class="pitch-body">
+                    <h2>${buzzes[rand(0, buzzes.length)]} ${oldThings[rand(0, oldThings.length)]}<br>for ${industries[rand(0, industries.length)]}</h2>
+                    <div class="big-number">${tams[rand(0, tams.length)]}</div>
+                    <div style="font-size:13px;">Total Addressable Market</div>
+                    <div class="tagline">"${taglines[rand(0, taglines.length)]}"</div>
+                    <div style="margin-top:16px; font-size:11px;">
+                        Ask: <b style="color:#ffff00;">$${rand(10, 999)}M</b> at <b style="color:#ffff00;">$${rand(1, 99)}B</b> pre-revenue valuation
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(slide);
+            beep(800, 0.1);
+            setTimeout(() => beep(1200, 0.15), 120);
+        };
+
+        // ============ SAVE TO CLOUD ============
+        window.saveToCloud = function() {
+            const win = document.createElement("div");
+            win.className = "window floating-window";
+            win.style.top = "40%";
+            win.style.left = "calc(50% - 150px)";
+            win.style.width = "300px";
+            win.innerHTML = `
+                <div class="title-bar">
+                    <div class="title-bar-text">💾 Saving to Cloud...</div>
+                </div>
+                <div class="window-body" style="padding:14px; text-align:center;">
+                    <div style="font-size:30px;" class="spinning">💾</div>
+                    <p id="saveMsg" style="font-size:11px;">Encrypting your vibes...</p>
+                    <div class="progress-bar-fake"><div class="progress-bar-fill" style="width:0%;" id="saveFill"></div></div>
+                </div>
+            `;
+            document.body.appendChild(win);
+            const msgs = [
+                "Encrypting your vibes...",
+                "Compressing feelings into JSON...",
+                "Uploading to AWS (via our intern)...",
+                "Notarizing on 3 blockchains...",
+                "Backing up to an NFT...",
+                "Syncing to the quantum realm...",
+                "Monetizing your data...",
+                "Done! Your vibes are now our vibes."
+            ];
+            const fill = win.querySelector("#saveFill");
+            const msg = win.querySelector("#saveMsg");
+            let i = 0;
+            const iv = setInterval(() => {
+                if (i >= msgs.length) {
+                    clearInterval(iv);
+                    setTimeout(() => win.remove(), 1500);
+                    return;
+                }
+                msg.textContent = msgs[i];
+                fill.style.width = ((i + 1) / msgs.length * 100) + "%";
+                beep(400 + i * 80, 0.04);
+                i++;
+            }, 500);
+        };
+
+        // ============ CONSOLE ASCII LOGO ============
+        console.log("%c" + `
+╔═══════════════════════════════════════╗
+║   V I B E O S ™   v 4 . 2 0 . 6 9     ║
+║  synergy dashboard — all rights vibed ║
+║   console is listening. say 'moon'.   ║
+╚═══════════════════════════════════════╝
+`, "color: #ff00ff; font-family: monospace;");
+
+        console.log("%cSTOP! Do not paste code here. Paste it into your terminal. Or your therapist.",
+                    "color: #ff0000; font-size: 16px; font-weight: bold;");
+    </script>
+</body>
+</html>
