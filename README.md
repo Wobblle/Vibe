@@ -43,7 +43,7 @@ We believe in a freemium model that aggressively punishes the free tier.
 
 ## 🧠 How I Vibe-Coded This
 
-I didn't write code. I stopped thinking in syntax and started thinking in pure frequency. I opened up my $60 Cursor terminal, linked my Obsidian context vault, booted up the Daemons, and typed: *"Manifest the corporate void."* Fifteen seconds later, VibeOS was born. No unit tests. No PRs. Just a single vibe, perfectly executed. 
+I didn't write code. I stopped thinking in syntax and started thinking in pure frequency. I opened up my Cursor terminal, linked my Obsidian context vault, booted up the Daemons, and typed: *"Manifest the corporate void."* Fifteen seconds later, VibeOS was born. No unit tests. No PRs. Just a single vibe, perfectly executed. 
 
 ## 🤝 Contributing
 
