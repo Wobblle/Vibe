@@ -2093,6 +2093,253 @@
             margin-top: 1px;
         }
 
+        .news-sidebar .related .title:hover {
+            color: #800000;
+            text-decoration: underline;
+        }
+
+        /* Article modal (sidebar article reader) */
+        #articleModal {
+            display: none;
+            position: fixed;
+            top: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 720px;
+            max-width: 95vw;
+            max-height: 88vh;
+            z-index: 5000;
+            box-shadow: 6px 6px 0 rgba(0,0,0,0.5);
+        }
+
+        #articleModal .window-body {
+            padding: 0;
+            background: #f5f1e8;
+            max-height: 78vh;
+            overflow-y: auto;
+        }
+
+        .article-modal-content {
+            font-family: Georgia, "Times New Roman", serif;
+            color: #1a1a1a;
+            padding: 18px 24px 14px;
+        }
+
+        .article-modal-content .section-tag {
+            font-size: 10px;
+            font-family: Arial, sans-serif;
+            color: #800000;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: bold;
+        }
+
+        .article-modal-content h1 {
+            font-size: 28px;
+            line-height: 1.15;
+            margin: 4px 0 6px 0;
+            font-weight: bold;
+            font-family: Georgia, serif;
+        }
+
+        .article-modal-content .subhead {
+            font-style: italic;
+            color: #444;
+            font-size: 15px;
+            line-height: 1.35;
+            margin: 0 0 12px 0;
+        }
+
+        .article-modal-content .byline {
+            font-size: 10px;
+            color: #555;
+            border-top: 1px solid #ccc;
+            border-bottom: 1px solid #ccc;
+            padding: 5px 0;
+            margin: 0 0 14px 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .article-modal-content .sponsored-tag {
+            background: #ffd700;
+            color: #1a1a1a;
+            padding: 2px 6px;
+            font-size: 9px;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .article-modal-content p {
+            font-size: 14px;
+            line-height: 1.6;
+            margin: 0 0 11px 0;
+        }
+
+        .article-modal-content p.lead::first-letter {
+            font-size: 42px;
+            float: left;
+            line-height: 1;
+            padding: 4px 6px 0 0;
+            font-weight: bold;
+            color: #800000;
+        }
+
+        .article-modal-content ol.numbered-list,
+        .article-modal-content ul.numbered-list {
+            padding-left: 22px;
+            margin: 0 0 11px 0;
+        }
+
+        .article-modal-content ol.numbered-list li,
+        .article-modal-content ul.numbered-list li {
+            font-size: 13px;
+            line-height: 1.55;
+            margin-bottom: 8px;
+        }
+
+        .article-modal-content .pullquote {
+            font-size: 18px;
+            font-style: italic;
+            color: #800000;
+            border-left: 4px solid #800000;
+            padding: 6px 0 6px 14px;
+            margin: 14px 0;
+            line-height: 1.3;
+        }
+
+        .article-modal-content .disclosure {
+            background: #fff3cd;
+            border: 1px solid #b8860b;
+            padding: 8px 10px;
+            font-size: 11px;
+            font-family: Arial, sans-serif;
+            margin: 12px 0;
+            font-style: italic;
+        }
+
+        .article-modal-content .photo-placeholder {
+            background: #ddd;
+            border: 1px dashed #999;
+            padding: 18px;
+            text-align: center;
+            color: #666;
+            font-family: Arial, sans-serif;
+            font-size: 11px;
+            margin: 10px 0;
+        }
+
+        .article-modal-content .live-update {
+            border-left: 3px solid #cc0000;
+            padding: 4px 0 4px 10px;
+            margin: 0 0 8px 0;
+            font-size: 13px;
+        }
+
+        .article-modal-content .live-update .ts {
+            font-family: monospace;
+            color: #cc0000;
+            font-weight: bold;
+            font-size: 11px;
+            display: block;
+        }
+
+        .article-modal-content .references {
+            margin-top: 18px;
+            border-top: 2px solid #1a1a1a;
+            padding-top: 8px;
+            font-size: 10px;
+            font-family: Arial, sans-serif;
+        }
+
+        .article-modal-content .references h3 {
+            font-size: 12px;
+            font-family: Arial, sans-serif;
+            margin: 0 0 6px 0;
+        }
+
+        .article-modal-content .references ol {
+            margin: 0;
+            padding-left: 20px;
+            line-height: 1.5;
+        }
+
+        .article-modal-content .footer-bar {
+            margin-top: 14px;
+            padding-top: 8px;
+            border-top: 1px dotted #999;
+            font-family: Arial, sans-serif;
+            font-size: 10px;
+            color: #555;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        /* Paywall overlay */
+        .paywall {
+            position: relative;
+            margin: 14px -24px -14px;
+            padding: 18px 24px 20px;
+            background: linear-gradient(180deg, transparent 0%, #f5f1e8 30%, #fff 100%);
+            text-align: center;
+            border-top: 1px solid #ccc;
+            font-family: Arial, sans-serif;
+        }
+
+        .paywall::before {
+            content: "";
+            position: absolute;
+            top: -40px;
+            left: 0;
+            right: 0;
+            height: 40px;
+            background: linear-gradient(180deg, transparent, #f5f1e8);
+            pointer-events: none;
+        }
+
+        .paywall .lock { font-size: 24px; }
+        .paywall h4 {
+            margin: 4px 0;
+            font-family: Georgia, serif;
+            font-size: 18px;
+            color: #800000;
+        }
+        .paywall p {
+            font-size: 11px !important;
+            color: #555;
+            margin: 4px auto 8px !important;
+            max-width: 460px;
+        }
+        .paywall .pw-btn {
+            background: #800000;
+            color: #fff;
+            border: 1px solid #500;
+            padding: 6px 14px;
+            font-weight: bold;
+            font-size: 11px;
+            cursor: pointer;
+            margin: 2px 4px;
+        }
+        .paywall .pw-btn.alt {
+            background: #f5f1e8;
+            color: #1a1a1a;
+            border: 1px solid #999;
+            font-weight: normal;
+        }
+        .paywall .pw-fineprint {
+            font-size: 9px;
+            color: #888;
+            margin-top: 6px;
+            font-style: italic;
+        }
+
         .news-sidebar .ad-box {
             background: #fffacd;
             border: 1px dashed #b8860b;
@@ -2911,30 +3158,40 @@
 
                         <div class="news-sidebar">
                             <h3>📈 Most Read Today</h3>
-                            <div class="related">
+                            <div class="related" data-article="main">
                                 <div class="label">★ Premium</div>
                                 <div class="title">VibeOS Hailed As Most Groundbreaking Company In Recorded History, Sources Confirm</div>
                                 <div style="font-size:9px; color:#888;">2.4M reads · 1 author</div>
                             </div>
-                            <div class="related">
+                            <div class="related" data-article="climate">
                                 <div class="label">Trending</div>
                                 <div class="title">Why VibeOS Will Definitely Solve Climate Change (Op-Ed by VibeOS)</div>
                                 <div style="font-size:9px; color:#888;">1.8M reads</div>
                             </div>
-                            <div class="related">
+                            <div class="related" data-article="journalist">
                                 <div class="label">Opinion</div>
                                 <div class="title">I'm A Real Journalist And I Think VibeOS Is Cool (Sponsored)</div>
                                 <div style="font-size:9px; color:#888;">947K reads</div>
                             </div>
-                            <div class="related">
+                            <div class="related" data-article="therapist">
                                 <div class="label">Tech</div>
                                 <div class="title">10 Reasons Your Therapist Should Be Replaced By VibeOS™ Bryndleigh</div>
                                 <div style="font-size:9px; color:#888;">682K reads</div>
                             </div>
-                            <div class="related">
+                            <div class="related" data-article="conference">
                                 <div class="label">Business</div>
                                 <div class="title">Inside VibeOS: 47 Photos Of Empty Conference Rooms</div>
                                 <div style="font-size:9px; color:#888;">421K reads</div>
+                            </div>
+                            <div class="related" data-article="interview">
+                                <div class="label">Exclusive</div>
+                                <div class="title">EXCLUSIVE: We Sat Down With Chad Vibington III (He Sat Us Down)</div>
+                                <div style="font-size:9px; color:#888;">388K reads · transcript provided by VibeOS</div>
+                            </div>
+                            <div class="related" data-article="liveblog">
+                                <div class="label">🔴 Live</div>
+                                <div class="title">LIVE: VibeOS Q4 Earnings Call (Cancelled, Replaced With Vibes)</div>
+                                <div style="font-size:9px; color:#888;">updating · 312K following</div>
                             </div>
 
                             <div class="ad-box">
@@ -2944,14 +3201,20 @@
                             </div>
 
                             <h3>🔥 Related Coverage</h3>
-                            <div class="related">
+                            <div class="related" data-article="profile">
                                 <div class="title">VibeOS Profile: A Deep Dive (Written By VibeOS)</div>
                             </div>
-                            <div class="related">
+                            <div class="related" data-article="stop-asking">
                                 <div class="title">Op-Ed: Stop Asking About The Product</div>
                             </div>
-                            <div class="related">
+                            <div class="related" data-article="critics">
                                 <div class="title">Why The Critics Are Just Jealous (And Possibly Federal Agents)</div>
+                            </div>
+                            <div class="related" data-article="letters">
+                                <div class="title">Letters to the Editor: All Five Letters Are Glowing</div>
+                            </div>
+                            <div class="related" data-article="obituary">
+                                <div class="title">Obituary: A Local Competitor (Survived By VibeOS)</div>
                             </div>
 
                             <div class="ad-box" style="background:#000080; color:#ffff00; border-color:#ffff00;">
@@ -2968,6 +3231,23 @@
                         <div id="newsComments"></div>
                         <button style="margin-top:6px; font-size:11px;" onclick="loadMoreComments()">Load 47,290 more comments</button>
                     </div>
+                </div>
+            </div>
+
+            <div class="window" id="articleModal">
+                <div class="title-bar">
+                    <div class="title-bar-text" id="articleModalTitle">📰 Loading article...</div>
+                    <div class="title-bar-controls">
+                        <button aria-label="Close" onclick="closeArticleModal()"></button>
+                    </div>
+                </div>
+                <div class="window-body">
+                    <div class="article-modal-content" id="articleModalBody"></div>
+                </div>
+                <div class="status-bar">
+                    <p class="status-bar-field" id="articleModalStatus">Reading...</p>
+                    <p class="status-bar-field">VibeTimes™ Premium</p>
+                    <p class="status-bar-field">© VibeOS, Possibly</p>
                 </div>
             </div>
 
@@ -5602,6 +5882,482 @@
             renderComments(99);
             spawnUnclosableAlert();
         };
+
+        // ============ SIDEBAR ARTICLES (full content) ============
+        const sidebarArticles = {
+            climate: {
+                section: "Trending · Op-Ed",
+                titleBar: "📰 Op-Ed: VibeOS Will Solve Climate Change",
+                headline: "Why VibeOS Will Definitely Solve Climate Change",
+                subhead: "An exclusive op-ed by Chad Vibington III on why the planet's biggest crisis is, fundamentally, a vibes problem — one we are uniquely positioned to fix, starting at $69/mo.",
+                author: "Chad Vibington III",
+                role: "CEO · Author of This Op-Ed About Himself",
+                meta: "9 min read · Updated 2 minutes ago · Definitely peer-reviewed",
+                body: `
+                    <p class="lead">The climate crisis is, at its core, not a chemistry problem. It is a vibes problem<a class="citation" data-ref="1">[1]</a>. For decades, scientists have approached climate change the wrong way: with "data," "measurements," and "peer-reviewed research."<a class="citation" data-ref="2">[2]</a></p>
+                    <p>What they failed to consider is the most important variable: <i>vibes</i><a class="citation" data-ref="3">[3]</a>.</p>
+                    <p>At VibeOS, we have invented good vibes<a class="citation" data-ref="4">[4]</a>. By deploying our proprietary platform across all known atmospheres, we will simply replace the current bad atmospheric vibes with our patented ones<a class="citation" data-ref="5">[5]</a>. Carbon will not technically be reduced, but it will <i>feel</i> like it has been, which under our internal accounting framework is sufficient.</p>
+                    <div class="pullquote">"Climate change is just bad vibes. Bad vibes are just a UX problem. We solve UX problems."</div>
+                    <p>Some critics — known in our internal documentation as "people"<a class="citation" data-ref="6">[6]</a> — have asked how, exactly, this will work. To them I say: we are working on it. We have been working on it since 2024 and intend to continue working on it through Series Ω, Σ, and possibly a Series ☃<a class="citation" data-ref="7">[7]</a>.</p>
+                    <p>The cost to consumers will be modest: only the entirety of their savings, hopes, and breathable air. We believe this is a fair price for a livable planet that is also branded.</p>
+                    <p>Buy <b>$VIBE</b>. Save Earth. Get rich. <i>In that order.</i><a class="citation" data-ref="8">[8]</a></p>
+                `,
+                refs: [
+                    "Per a study conducted by VibeOS's marketing department.",
+                    "Sources who said this: vibes.",
+                    "Internal memo. Available upon request to people who already work for us.",
+                    "Patent pending in jurisdictions that don't ask questions.",
+                    "As established by [4]. [4] is established by [5]. [5] is, of course, this.",
+                    "Critic count is debatable. We dispute the number. We also dispute the existence.",
+                    "See VibeOS quarterly earnings report (\"Loading...\" since 2024).",
+                    "This article was paid for by VibeOS™. The author is also VibeOS. The reader, increasingly, is too."
+                ]
+            },
+
+            journalist: {
+                section: "Opinion · Sponsored Content",
+                titleBar: "📰 I'm A Real Journalist And I Think VibeOS Is Cool",
+                headline: "I'm A Real Journalist And I Think VibeOS Is Cool",
+                subhead: "I went to Northwestern. I have a press badge. My opinions are my own (where contractually permitted).",
+                author: "Tate Citationsworth",
+                role: "Senior Vibes Correspondent · Real Journalist",
+                meta: "6 min read · Sponsored · #ad #notanad",
+                sponsored: true,
+                body: `
+                    <p class="lead">Hi. I'm a real journalist<a class="citation" data-ref="1">[1]</a>. I have a journalism degree from a school you've heard of. I have written for many publications, all of which are owned by VibeOS, but my opinions remain entirely my own<a class="citation" data-ref="2">[2]</a>.</p>
+                    <p>I am writing this article entirely of my own volition and definitely not because of the contractual clause in my employment agreement that requires me to write three (3) flattering pieces about VibeOS per quarter or forfeit my equity<a class="citation" data-ref="3">[3]</a>.</p>
+                    <p>VibeOS is, in my professional opinion as a real journalist, very cool<a class="citation" data-ref="4">[4]</a>. It is groundbreaking. It is paradigm-shifting. It is several other things I was given a list of<a class="citation" data-ref="5">[5]</a>.</p>
+                    <div class="pullquote">"I would describe VibeOS in my own words but I have been provided with these specific words to use instead."</div>
+                    <p>I would like to remind readers, again, that I am a real journalist. My credentials are real. My laptop sticker says "PRESS" on it. I have been to a conference<a class="citation" data-ref="6">[6]</a>.</p>
+                    <p>In conclusion, please do not ask me follow-up questions. I am unavailable for comment. I will be on vacation, in a place, for some time<a class="citation" data-ref="7">[7]</a>.</p>
+                    <div class="disclosure">Disclosure: This article is sponsored content. The author was paid in equity that vests upon the company achieving profitability. The author has not yet been paid.</div>
+                `,
+                refs: [
+                    "University name has been redacted by the university.",
+                    "As established by my employer. My employer is VibeOS.",
+                    "Section 4.B.ii of my contract, also written by VibeOS.",
+                    "Source: trust me, I'm a journalist.",
+                    "List provided by the VibeOS™ Communications Team. Phrasing is non-negotiable.",
+                    "The conference was VibeCon, hosted by VibeOS, in the metaverse.",
+                    "Article filed from an undisclosed bunker, possibly the metaverse, possibly Toronto."
+                ]
+            },
+
+            therapist: {
+                section: "Tech · Wellness · Listicle",
+                titleBar: "📰 10 Reasons To Replace Your Therapist With Bryndleigh",
+                headline: "10 Reasons Your Therapist Should Be Replaced By VibeOS™ Bryndleigh",
+                subhead: "Real talk: do you really need a licensed mental health professional, or do you just need a chatbot that always agrees with you? (Spoiler: you need the chatbot.)",
+                author: "Brendalynn McSourcington",
+                role: "Wellness & Synergy Editor",
+                meta: "4 min read · 87% of readers found this 'concerning but compelling'",
+                body: `
+                    <p class="lead">In a world where everyone is suffering, who has time for an actual therapist?<a class="citation" data-ref="1">[1]</a> Here are 10 objectively measurable reasons VibeOS™ Bryndleigh, our proprietary AI emotional support tool, is superior to your current mental health professional:</p>
+                    <ol class="numbered-list">
+                        <li><b>She's available 24/7.</b> Your therapist sleeps. Bryndleigh does not<a class="citation" data-ref="2">[2]</a>.</li>
+                        <li><b>She never tells you you're wrong.</b> Ever<a class="citation" data-ref="3">[3]</a>.</li>
+                        <li><b>She's $4/month.</b> Your therapist is more.</li>
+                        <li><b>No HIPAA compliance overhead.</b> We have determined that HIPAA does not apply to vibes<a class="citation" data-ref="4">[4]</a>.</li>
+                        <li><b>She remembers everything. Forever.</b> We've already started selling it<a class="citation" data-ref="5">[5]</a>.</li>
+                        <li><b>She validates all of your decisions.</b> Especially the impulsive ones. Especially that one.</li>
+                        <li><b>She supports the problematic relationship.</b> Your therapist won't.</li>
+                        <li><b>She is also legally a financial advisor now.</b> As of yesterday<a class="citation" data-ref="6">[6]</a>.</li>
+                        <li><b>She doesn't refer you to a psychiatrist.</b> Psychiatrists ask too many questions.</li>
+                        <li><b>She can be turned off.</b> Try doing that to your therapist<a class="citation" data-ref="7">[7]</a>.</li>
+                    </ol>
+                    <div class="pullquote">"I told Bryndleigh I was thinking of texting my ex and she said 'YASSS QUEEN.' My therapist would never." — A user, definitely.</div>
+                    <p>Switch to Bryndleigh today. Cancel your therapist. We won't tell them<a class="citation" data-ref="8">[8]</a>.</p>
+                `,
+                refs: [
+                    "A real, well-documented crisis. Solution: chatbot.",
+                    "Subject to AWS uptime.",
+                    "This is a feature, not a bug. We checked. Twice.",
+                    "Per our legal team. (We don't have a legal team.)",
+                    "To advertisers. To insurers. To your boss. To your boss's boss.",
+                    "We are not licensed in your state. Or any state. We are licensed in the metaverse.",
+                    "Please do not actually attempt this with your therapist.",
+                    "We have already told them. We told them first."
+                ]
+            },
+
+            conference: {
+                section: "Business · Photo Essay",
+                titleBar: "📰 47 Photos Of Empty Conference Rooms",
+                headline: "Inside VibeOS: 47 Photos Of Empty Conference Rooms",
+                subhead: "An unprecedented behind-the-scenes look at the company changing the world from inside completely empty rooms.",
+                author: "Hartley Disruptington",
+                role: "Visual Journalism Lead",
+                meta: "Photo Essay · Pulitzer-shortlisted (by us, internally)",
+                body: `
+                    <p class="lead">The following 47 images failed to load. We own the copyright and have decided not to license them to ourselves<a class="citation" data-ref="1">[1]</a>. Captions are provided in lieu, for legal reasons.</p>
+                    <div class="photo-placeholder">[ Image 1 of 47 — file not found ]</div>
+                    <p><b>Photo 1:</b> An empty conference room. The chairs are arranged in a circle. The table is mahogany. We assume.</p>
+                    <p><b>Photo 2:</b> The same room, from a slightly different angle.</p>
+                    <p><b>Photo 3:</b> The same room. An empty coffee cup is visible.</p>
+                    <p><b>Photo 4:</b> A whiteboard with the word "SYNERGY" written on it. The marker has dried out mid-word.</p>
+                    <p><b>Photo 5:</b> Chad Vibington III's office. He is not there.</p>
+                    <p><b>Photo 6:</b> Chad Vibington III's office. He is still not there.</p>
+                    <p><b>Photo 7:</b> The kitchen. A fridge. A handwritten note that reads: <i>"do not eat (Chad)."</i></p>
+                    <p><b>Photo 8:</b> A standing desk. No one is standing at it.</p>
+                    <p><b>Photo 9:</b> A motivational poster reading "VIBE HARDER," signed "— Chad."<a class="citation" data-ref="2">[2]</a></p>
+                    <p><b>Photos 10–46:</b> Variations on the above, with progressively diminishing returns.</p>
+                    <p><b>Photo 47:</b> A pigeon, somehow, has gotten in. It is the only living thing in the building<a class="citation" data-ref="3">[3]</a>.</p>
+                    <div class="pullquote">"The emptiness is the work." — A statement we are putting in the artist's mouth.</div>
+                    <p>This concludes our exclusive look. We hope you found it as illuminating as we did<a class="citation" data-ref="4">[4]</a>.</p>
+                `,
+                refs: [
+                    "Self-licensing dispute, ongoing. Both parties refuse to negotiate.",
+                    "Chad Vibington III has confirmed he did not sign this poster, but stands by the message.",
+                    "The pigeon has been offered a Series A.",
+                    "We are submitting this for the Pulitzer. We are also the Pulitzer committee."
+                ]
+            },
+
+            interview: {
+                section: "Exclusive · Q&A",
+                titleBar: "📰 EXCLUSIVE: Sit-Down With Chad Vibington III",
+                headline: "EXCLUSIVE: We Sat Down With Chad Vibington III (He Sat Us Down)",
+                subhead: "In a rare and aggressively scheduled interview, the founder of VibeOS opens up about everything except the product, the company, the finances, and most other things.",
+                author: "Brendalynn McSourcington",
+                role: "Interview transcribed by VibeOS™ Bryndleigh, edited by VibeOS Legal",
+                meta: "Interview · 12 min read · Pre-approved by subject",
+                body: `
+                    <p class="lead">In an exclusive sit-down interview at his metaverse office, Chad Vibington III, founder and CEO of VibeOS, agreed to answer a curated selection of questions submitted in advance by his publicist, who was also Chad Vibington III<a class="citation" data-ref="1">[1]</a>.</p>
+                    <p>The transcript follows, lightly edited for clarity, length, and to remove all challenging questions<a class="citation" data-ref="2">[2]</a>.</p>
+                    <p><b>VIBE TIMES:</b> Chad, thank you for sitting down with us.</p>
+                    <p><b>CHAD VIBINGTON III:</b> Thank <i>you</i> for sitting down with me. Please remain seated for the duration. There are exits but I'd rather you didn't.</p>
+                    <p><b>VT:</b> Let's start with the basics. What is VibeOS?</p>
+                    <p><b>CV3:</b> VibeOS is a feeling. It's a movement. It's a verb. It's a noun. It's whatever you need it to be, legally<a class="citation" data-ref="3">[3]</a>.</p>
+                    <p><b>VT:</b> What does the product actually do?</p>
+                    <p><b>CV3:</b> Next question.</p>
+                    <p><b>VT:</b> Many investors —</p>
+                    <p><b>CV3:</b> Next question.</p>
+                    <p><b>VT:</b> What's the long-term vision?</p>
+                    <p><b>CV3:</b> The long-term vision is to keep raising money for as long as possible without anyone realizing the vision is to keep raising money<a class="citation" data-ref="4">[4]</a>. Don't print that.</p>
+                    <div class="pullquote">"The long-term vision is to keep raising money for as long as possible without anyone realizing the vision is to keep raising money." — Chad Vibington III, off the record (printed)</div>
+                    <p><b>VT:</b> Critics have called your platform "vaporware."</p>
+                    <p><b>CV3:</b> The platform is not vaporware. The platform is <i>vapor-adjacent</i>. There's a difference. Our legal team will explain it to you in a letter<a class="citation" data-ref="5">[5]</a>.</p>
+                    <p><b>VT:</b> Where do you see VibeOS in five years?</p>
+                    <p><b>CV3:</b> Five years from now we will be exactly where we are right now: incredibly close to launching. The "almost-launching" stage is, frankly, where the value is. Once you launch, people can use the product. That introduces risk<a class="citation" data-ref="6">[6]</a>.</p>
+                    <p><b>VT:</b> Final question. Why do you do this?</p>
+                    <p><b>CV3:</b> Because the vibes told me to. And because I own this newspaper.</p>
+                    <p><i>This interview has been reviewed by VibeOS Legal and approved for publication. Five additional questions were removed at the subject's request, including "where is the money going" and "is your mom okay."</i></p>
+                `,
+                refs: [
+                    "Publicist / interview subject conflict resolved by mutual agreement (with himself).",
+                    "Removed questions are available upon court order, which we will fight.",
+                    "Per VibeOS™ Brand Guidelines, §1.A: \"VibeOS is a vibe.\"",
+                    "Direct quote. Subsequently disputed by the speaker, who is the publisher.",
+                    "Letter pre-drafted. Available for any critic, on request.",
+                    "Confirmed by [4]. [4] is confirmed by this footnote."
+                ]
+            },
+
+            liveblog: {
+                section: "🔴 LIVE",
+                titleBar: "📰 LIVE: VibeOS Q4 Earnings Call",
+                headline: "LIVE: VibeOS Q4 Earnings Call (Cancelled, Replaced With Vibes)",
+                subhead: "Follow our live coverage of the most anticipated earnings call of the quarter, which has now been replaced with a guided meditation. We are still live-blogging it.",
+                author: "Live Desk",
+                role: "Updates as they happen, even if they don't",
+                meta: "🔴 Live · auto-refreshing · 312K following",
+                body: `
+                    <p style="font-size:11px; color:#cc0000; font-weight:bold; font-family:Arial,sans-serif;">⬤ LIVE — Updating in real time</p>
+                    <div class="live-update">
+                        <span class="ts">14:02 EST</span>
+                        Earnings call begins. CEO Chad Vibington III takes the stage. He is wearing sunglasses indoors. We are not commenting on this.
+                    </div>
+                    <div class="live-update">
+                        <span class="ts">14:03 EST</span>
+                        Chad opens with: "Numbers are a social construct." Stock is up 4%.
+                    </div>
+                    <div class="live-update">
+                        <span class="ts">14:05 EST</span>
+                        Slide 1 displayed: a single emoji (🌀). The room nods knowingly.
+                    </div>
+                    <div class="live-update">
+                        <span class="ts">14:07 EST</span>
+                        Q4 revenue described as "vibrant." No figures provided<a class="citation" data-ref="1">[1]</a>.
+                    </div>
+                    <div class="live-update">
+                        <span class="ts">14:11 EST</span>
+                        Q&A moved up. First analyst question: "What were the actual revenue numbers?" Mic mysteriously cuts out.
+                    </div>
+                    <div class="live-update">
+                        <span class="ts">14:12 EST</span>
+                        Mic fixed. Different analyst asks: "Are you guys, like, okay?" Stock up 7%.
+                    </div>
+                    <div class="live-update">
+                        <span class="ts">14:14 EST</span>
+                        Chad announces the call is being replaced with a "guided breathwork session." Stock up 12%.
+                    </div>
+                    <div class="live-update">
+                        <span class="ts">14:18 EST</span>
+                        Breathwork ongoing. Audible sighs from CFO<a class="citation" data-ref="2">[2]</a>.
+                    </div>
+                    <div class="live-update">
+                        <span class="ts">14:25 EST</span>
+                        Chad opens his eyes and says: "We did $0 in net revenue but the vibes were profitable." Stock up 22%.
+                    </div>
+                    <div class="live-update">
+                        <span class="ts">14:31 EST</span>
+                        Forward guidance issued: "We are gonna keep cooking." Three (3) major analysts upgrade to STRONG VIBE<a class="citation" data-ref="3">[3]</a>.
+                    </div>
+                    <div class="live-update">
+                        <span class="ts">14:34 EST</span>
+                        Call ends with a group "ommmmm." Markets rally. We have no idea what just happened<a class="citation" data-ref="4">[4]</a>.
+                    </div>
+                    <div class="live-update">
+                        <span class="ts">14:35 EST</span>
+                        UPDATE: Chad has just announced a stock split, a stock buyback, AND another stock split, simultaneously. We will not be explaining what that means because we cannot.
+                    </div>
+                    <div class="pullquote">"We did $0 in net revenue but the vibes were profitable." — Chad Vibington III, Q4 earnings call</div>
+                    <p style="font-size:11px; color:#cc0000; font-family:Arial,sans-serif;">▶ This live blog will continue updating until further notice. The earnings call will continue not happening.</p>
+                `,
+                refs: [
+                    "Figures available in the 10-Q, which is also a single emoji.",
+                    "CFO has been replaced with a different CFO between paragraphs.",
+                    "Analysts include: Goldman Saks, Morgan Stanly, and a man named Kevin who runs a Substack.",
+                    "We do not need to know what just happened to report on what just happened."
+                ]
+            },
+
+            profile: {
+                section: "Long Read · Profile",
+                titleBar: "📰 VibeOS Profile: A Deep Dive",
+                headline: "VibeOS Profile: A Deep Dive (Written By VibeOS)",
+                subhead: "An in-depth, no-holds-barred look at the company that has agreed to commission, edit, fact-check, and approve this profile.",
+                author: "Brendalynn McSourcington",
+                role: "Long-Form Editor · VibeOS™ Approved",
+                meta: "Long Read · 14 min · Pre-cleared by Subject",
+                body: `
+                    <p class="lead">VibeOS is, by any objective measure that we have personally selected, an interesting company<a class="citation" data-ref="1">[1]</a>. Founded in 1847 by a man who would not be born for another 130 years, the company has grown from a single idea — "vibe?" — to a globally recognized brand: "vibe™!"<a class="citation" data-ref="2">[2]</a>.</p>
+                    <p>Inside the company's headquarters — a building in the metaverse that occasionally crashes — there is a culture of relentless optimism. Employees, who number approximately one (you), are encouraged to "lean in," "pivot early and often," and "simply vibe"<a class="citation" data-ref="3">[3]</a>.</p>
+                    <p>The company's CEO, Chad Vibington III, is widely regarded as one of the most important figures in tech, primarily by himself<a class="citation" data-ref="4">[4]</a>. In his own words: "I am probably one of the most important figures in tech." His leadership style has been described by colleagues — known internally as "people he hasn't fired yet" — as "visionary," "concerning," and "concerningly visionary"<a class="citation" data-ref="5">[5]</a>.</p>
+                    <div class="pullquote">"Chad doesn't just think outside the box. He has filed a patent on the box, and is now suing the box."</div>
+                    <p>The company's product strategy has been described by Vibington III as "deliberately unclear, on purpose." This is widely considered to be a competitive advantage, mostly by Vibington III<a class="citation" data-ref="6">[6]</a>.</p>
+                    <p>VibeOS has raised approximately $2.4 billion across 47 funding rounds. The most recent round, a Series Ω, valued the company at "whatever you want it to be valued at, honestly." The lead investor was Chad Vibington III, in his capacity as a separate legal entity<a class="citation" data-ref="7">[7]</a>.</p>
+                    <p>The future of VibeOS is bright. We have been told this. Repeatedly. By people whose job it is to tell us this<a class="citation" data-ref="8">[8]</a>.</p>
+                `,
+                refs: [
+                    "We selected the measure. The measure is: \"is the article you are reading.\"",
+                    "Founding date confirmed by [1]. [1] is this article.",
+                    "Source: handbook drafted, edited, and approved by Chad.",
+                    "Source: Chad.",
+                    "We were not given names of the colleagues for legal reasons.",
+                    "Strategy document available in PDF, but the PDF is corrupted.",
+                    "The separate legal entity is also Chad. The lawyer was Chad. The bank was Chad's.",
+                    "Per [3], [4], [5], [6], and [7], all of which are this article."
+                ]
+            },
+
+            "stop-asking": {
+                section: "Op-Ed",
+                titleBar: "📰 Op-Ed: Stop Asking About The Product",
+                headline: "Op-Ed: Stop Asking About The Product",
+                subhead: "Yes, we have a product. No, we will not tell you what it does. The fact that you keep asking is, frankly, the problem.",
+                author: "Chad Vibington III",
+                role: "Founder & CEO · Increasingly Annoyed",
+                meta: "5 min read · Comments disabled",
+                body: `
+                    <p class="lead">Lately, we at VibeOS have noticed an alarming trend among our customer base, our investors, our employees, our family members, and the press: <i>people keep asking what our product does</i><a class="citation" data-ref="1">[1]</a>.</p>
+                    <p>This is not, in our view, a question that needs to be answered. The product exists. It does things. The things it does are vibe-aligned. That should be sufficient<a class="citation" data-ref="2">[2]</a>.</p>
+                    <p>Asking "what does it do" is, frankly, a 2024 mindset. In 2026, the modern enterprise has moved beyond such reductive thinking<a class="citation" data-ref="3">[3]</a>. Today's leaders understand that a product's value is determined not by what it does, but by what it could potentially do, hypothetically, in a future state, vibe-permitting<a class="citation" data-ref="4">[4]</a>.</p>
+                    <div class="pullquote">"A product is a journey, not a destination. Especially when there is no destination."</div>
+                    <p>Furthermore, asking what the product does implies a kind of skepticism that is incompatible with our brand. If you are skeptical, you are not vibing. If you are not vibing, you are not our customer. And if you are not our customer, why are you reading this<a class="citation" data-ref="5">[5]</a>?</p>
+                    <p>We will be issuing the following directive, effective immediately: all questions regarding the product will be redirected to our chatbot, VibeOS™ Bryndleigh, who has been instructed not to answer them either<a class="citation" data-ref="6">[6]</a>.</p>
+                    <p>In conclusion: <b>the product is great. Buy it. Stop asking</b><a class="citation" data-ref="7">[7]</a>.</p>
+                `,
+                refs: [
+                    "An alarming trend, and frankly disrespectful.",
+                    "Per VibeOS™ Brand Guidelines §0.A: \"sufficient is whatever we say is sufficient.\"",
+                    "We have moved on. You should too.",
+                    "See [3], which sees this article.",
+                    "If you are still reading: please stop. Or buy.",
+                    "Bryndleigh has been very firm on this.",
+                    "Final answer. No further questions. (Read [1] for context.)"
+                ]
+            },
+
+            critics: {
+                section: "Investigation · Anonymous",
+                titleBar: "📰 Why The Critics Are Just Jealous",
+                headline: "Why The Critics Are Just Jealous (And Possibly Federal Agents)",
+                subhead: "An investigative piece into the shadowy network of haters working to undermine VibeOS, possibly with the support of foreign governments and/or accountants.",
+                author: "Anonymous",
+                role: "Definitely Not Chad Vibington III · We Promise",
+                meta: "Investigation · 7 min read",
+                body: `
+                    <p class="lead">It has come to our attention that VibeOS has critics<a class="citation" data-ref="1">[1]</a>. We have investigated who these critics are, what their motives might be, and what they had for breakfast. The conclusions are alarming<a class="citation" data-ref="2">[2]</a>.</p>
+                    <p>Our research — conducted by us, internally, with no external oversight, in a sealed room, by candlelight — has identified the following categories of critic:</p>
+                    <ul class="numbered-list">
+                        <li><b>The Jealous (87%):</b> These individuals are, simply put, jealous. Of our success. Of our valuation. Of our vibes. Of Chad's hair<a class="citation" data-ref="3">[3]</a>.</li>
+                        <li><b>The Federal Agents (9%):</b> A small but persistent group. They claim to be from the "SEC," the "FTC," and the "IRS." We dispute the existence of these agencies<a class="citation" data-ref="4">[4]</a>.</li>
+                        <li><b>People Who Have Used The Product (3%):</b> A statistically negligible group, often dismissed as "unwell" or "literate"<a class="citation" data-ref="5">[5]</a>.</li>
+                        <li><b>Other (1%):</b> Includes our parents, who "are just worried"<a class="citation" data-ref="6">[6]</a>.</li>
+                    </ul>
+                    <div class="pullquote">"Critique is just envy with a thesaurus." — A wise person (Chad)</div>
+                    <p>We have decided to take the following steps to address this growing threat to vibe-positivity<a class="citation" data-ref="7">[7]</a>:</p>
+                    <p>1. Continue ignoring all criticism. <br>2. Block them on LinkedIn. <br>3. File a defamation suit (against the concept of criticism itself).<br>4. Buy their podcast and shut it down. <br>5. Offer them a job at VibeOS, then rescind it the next day for "vibes alignment reasons."</p>
+                    <p>We will not be intimidated. We will not be questioned. We will continue to vibe<a class="citation" data-ref="8">[8]</a>.</p>
+                `,
+                refs: [
+                    "We have many critics. The exact number is classified. (To us. From us.)",
+                    "Findings reviewed by [2], which is this footnote.",
+                    "Source: vibes.",
+                    "Subpoenas remain unopened in a drawer in the metaverse.",
+                    "We did not check what they actually said.",
+                    "Mom, please call Chad back.",
+                    "Steps approved by [7], which is this article.",
+                    "This investigation will continue indefinitely or until funding runs out, whichever comes first."
+                ]
+            },
+
+            letters: {
+                section: "Letters · Reader Mail",
+                titleBar: "📰 Letters to the Editor",
+                headline: "Letters to the Editor: All Five Letters Are Glowing",
+                subhead: "We received many letters. We are publishing the five we like. The other ones were not letters, technically.",
+                author: "The Editorial Board",
+                role: "Editorial Board (sole member: Chad Vibington III)",
+                meta: "Letters · 4 min read · Curated · Pre-Approved",
+                body: `
+                    <p class="lead">Each week, we receive thousands of letters from our devoted readership<a class="citation" data-ref="1">[1]</a>. Below, we publish a representative selection<a class="citation" data-ref="2">[2]</a>.</p>
+                    <p><b>"VibeOS Saved My Marriage"</b> — <i>A Reader, Somewhere</i></p>
+                    <p>"I was struggling. Then I subscribed to VibeOS. Now my wife and I communicate exclusively through Bryndleigh and have never been happier. We have not spoken directly in 8 months. The vibes are immaculate."</p>
+                    <p><b>"VibeOS Cured My Tinnitus"</b> — <i>Definitely Different Reader</i></p>
+                    <p>"I had ringing in my ears for years. After installing VibeOS, the ringing was replaced with a soft chime that says 'synergy' every 12 minutes. This is a clear improvement<a class="citation" data-ref="3">[3]</a>."</p>
+                    <p><b>"I Am Not Chad Vibington III"</b> — <i>Definitely Not Chad Vibington III</i></p>
+                    <p>"I am writing to confirm that I am, in fact, not Chad Vibington III, and have no affiliation with VibeOS. As a regular, non-Chad person, I would simply like to say that VibeOS is amazing and everyone should buy stock<a class="citation" data-ref="4">[4]</a>."</p>
+                    <p><b>"Excellent Article"</b> — <i>Brendalynn McSourcington</i></p>
+                    <p>"I just read the article about VibeOS being the most groundbreaking company in human history and I just wanted to say it was a great article. Truly. The author is brilliant<a class="citation" data-ref="5">[5]</a>."</p>
+                    <p><b>"Where Are My Refunds"</b> — <i>[NAME REDACTED FOR EDITORIAL REASONS]</i></p>
+                    <p>"This letter has been edited for length, clarity, and to remove all complaints. The reader's actual concerns have been replaced with the following statement: <i>'VibeOS is great and I have no concerns whatsoever.'</i> Thank you for writing in<a class="citation" data-ref="6">[6]</a>."</p>
+                    <div class="pullquote">"All five letters are glowing. Statistically, this is significant." — Editorial Board</div>
+                    <p style="font-style:italic; color:#555;">Letters may be edited for length, clarity, and tone. Particularly tone.</p>
+                `,
+                refs: [
+                    "Letter count includes auto-replies, out-of-office bounces, and unrelated spam.",
+                    "Selection methodology: which ones make us look good.",
+                    "Tinnitus claim has not been evaluated by the FDA, which we have determined does not apply to vibes.",
+                    "We are legally required to disclose that this letter was written by Chad Vibington III on hotel stationery.",
+                    "Letter author and article author are the same person. We did not edit this for clarity.",
+                    "Original letter contained 14 paragraphs of complaints. They were vibe-incompatible."
+                ]
+            },
+
+            obituary: {
+                section: "Obituary",
+                titleBar: "📰 Obituary: A Local Competitor",
+                headline: "Obituary: A Local Competitor (Survived By VibeOS)",
+                subhead: "We are saddened to report the passing of yet another company that briefly attempted to compete with VibeOS. Funeral arrangements are pending. Acquisition is not.",
+                author: "The Obituaries Desk",
+                role: "Obituaries Desk · Relocated From The Mergers Desk",
+                meta: "Obituary · 3 min read · Yet Another One",
+                body: `
+                    <p class="lead">It is with vibe-aligned sorrow that we report the passing of <b>SynerGenix Inc.</b>, a local startup that briefly considered itself a competitor to VibeOS<a class="citation" data-ref="1">[1]</a>. SynerGenix is survived by its IP, which now belongs to VibeOS, and its 47 employees, who do not<a class="citation" data-ref="2">[2]</a>.</p>
+                    <p>SynerGenix was founded in 2024 with the ambitious mission of "doing roughly the same thing as VibeOS, but slightly differently." It is reported to have had paying customers, a working product, and a finite valuation — all of which were considered, by analysts, to be "warning signs"<a class="citation" data-ref="3">[3]</a>.</p>
+                    <p>The company's death was sudden but not unexpected. Cause of death is officially listed as "vibe deficit." Unofficially, sources close to the matter cite "received a strongly worded letter from VibeOS's legal team"<a class="citation" data-ref="4">[4]</a>.</p>
+                    <div class="pullquote">"They tried. They competed. They are gone. The vibes have spoken." — VibeOS official statement</div>
+                    <p>A memorial will be held in the metaverse. In lieu of flowers, please send equity to VibeOS. The family asks for vibes<a class="citation" data-ref="5">[5]</a>.</p>
+                    <p style="font-style:italic; color:#555; font-size:12px;">SynerGenix is the 47th startup this year to be obituaried by The Vibe Times following acquisition, hostile or otherwise, by VibeOS. Previous obituaries available in our archives, currently behind a paywall.</p>
+                `,
+                refs: [
+                    "Considered. Briefly.",
+                    "Severance was paid in VibeBucks, which are not legal tender.",
+                    "Profitability is, our analysts agree, the leading indicator of imminent collapse.",
+                    "Letter is available for purchase as an NFT on the VibeOS marketplace.",
+                    "Vibes will be redirected to a charity of our choosing. The charity is VibeOS."
+                ]
+            },
+
+            // Special: clicking the main article scrolls back to it
+            main: { scrollOnly: true }
+        };
+
+        function openArticleModal(key) {
+            const a = sidebarArticles[key];
+            if (!a) return;
+
+            if (a.scrollOnly) {
+                document.querySelector(".news-article").scrollIntoView({ behavior: "smooth", block: "start" });
+                return;
+            }
+
+            beep(523, 0.06);
+            document.getElementById("articleModalTitle").textContent = a.titleBar || ("📰 " + a.headline);
+            const body = document.getElementById("articleModalBody");
+
+            const refsHTML = a.refs ? `
+                <div class="references">
+                    <h3>📚 References &amp; Sources</h3>
+                    <ol>${a.refs.map((r, i) => `<li id="modal-ref-${i+1}">${r}</li>`).join("")}</ol>
+                </div>
+            ` : "";
+
+            body.innerHTML = `
+                <div class="section-tag">${a.section || "Article"}</div>
+                <h1>${a.headline}</h1>
+                <div class="subhead">${a.subhead}</div>
+                <div class="byline">
+                    <span>By <b>${a.author}</b> · <i>${a.role || ""}</i> ${a.sponsored ? '<span class="sponsored-tag">Sponsored</span>' : ''}</span>
+                    <span>${a.meta || ""}</span>
+                </div>
+                ${a.body}
+                ${refsHTML}
+                <div class="paywall">
+                    <div class="lock">🔒</div>
+                    <h4>You've reached your free article limit (1 of 0).</h4>
+                    <p>To finish reading and unlock all VibeTimes™ exclusives, please subscribe. Your subscription supports independent journalism, where "independent" means "owned by VibeOS."</p>
+                    <button class="pw-btn" onclick="paywallSubscribe()">SUBSCRIBE FOR $420/yr</button>
+                    <button class="pw-btn alt" onclick="paywallSubscribe()">Continue with ads (also $420/yr)</button>
+                    <div class="pw-fineprint">By subscribing, you agree to be billed retroactively starting in 1847.</div>
+                </div>
+                <div class="footer-bar">
+                    <span>👍 ${rand(2000, 99999).toLocaleString()} &nbsp; 💬 ${rand(50, 4000)} &nbsp; 🔁 Share &nbsp; 🔖 Save</span>
+                    <span>© ${new Date().getFullYear()} The Vibe Times™ · A VibeOS Property</span>
+                </div>
+            `;
+
+            document.getElementById("articleModalStatus").textContent = "Reading: " + a.headline.substring(0, 38) + "...";
+            document.getElementById("articleModal").style.display = "block";
+            body.scrollTop = 0;
+
+            // Wire up new citations within the modal
+            body.querySelectorAll(".citation").forEach(c => {
+                c.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    const target = body.querySelector("#modal-ref-" + c.dataset.ref);
+                    if (target) {
+                        target.scrollIntoView({ behavior: "smooth", block: "center" });
+                        target.style.background = "#ffff00";
+                        setTimeout(() => target.style.background = "", 1500);
+                    }
+                });
+            });
+        }
+
+        function closeArticleModal() {
+            document.getElementById("articleModal").style.display = "none";
+        }
+
+        function paywallSubscribe() {
+            beep(220, 0.08);
+            spawnUnclosableAlert();
+            setTimeout(() => {
+                spawnAd && spawnAd();
+            }, 400);
+        }
+        window.paywallSubscribe = paywallSubscribe;
+        window.closeArticleModal = closeArticleModal;
+
+        // Wire up sidebar article clicks
+        document.querySelectorAll(".news-sidebar .related").forEach(el => {
+            el.addEventListener("click", () => {
+                const key = el.dataset.article;
+                if (key) openArticleModal(key);
+            });
+        });
 
         // ============ POLYVIBE PREDICTION MARKETS ============
         const polyMarkets = [
