@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NULLSCALE - Temporal Vibe-Explorer</title>
+    <link rel="stylesheet" href="https://unpkg.com/98.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            background-color: #008080;
+            margin: 0;
+            padding: 20px;
+            font-family: "Pixelated MS Sans Serif", Arial, sans-serif;
+            color: #000;
+        }
+        .window { max-width: 800px; margin: 0 auto; }
+        .chart-container { background: white; border: 2px inset #c0c0c0; padding: 10px; height: 400px; margin-bottom: 15px; }
+        .verified-result {
+            background: #000080; color: #00ff00; padding: 10px; font-family: "Courier New", monospace;
+            font-size: 16px; font-weight: bold; text-align: center; border: 2px inset #c0c0c0; margin-bottom: 15px;
+            text-shadow: 1px 1px 0 #000;
+        }
+        .verified-result.flash { animation: strobe 0.2s 3; }
+        @keyframes strobe { 50% { background: #ff0000; color: #ffff00; } }
+        .controls { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; background: #c0c0c0; padding: 15px; border: 2px outset #fff; }
+        .control-group { border: 2px groove #fff; padding: 10px; }
+        label { font-weight: bold; font-size: 12px; display: block; margin-bottom: 5px; }
+        .slider-val { font-family: monospace; color: #000080; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="window">
+    <div class="title-bar">
+        <div class="title-bar-text">🌀 NULLSCALE POST-UTILITY TEMPORAL Vibe-EXPLORER</div>
+        <div class="title-bar-controls"><button aria-label="Maximize"></button><button aria-label="Close"></button></div>
+    </div>
+    <div class="window-body">
+        
+        <div class="verified-result" id="resultDisplay">
+            VERIFIED EPOCH 4 RESULT: 470% over 9000% Quarterly Earnings
+        </div>
+
+        <div class="chart-container">
+            <canvas id="vibeChart"></canvas>
+        </div>
+
+        <div class="controls">
+            <div class="control-group">
+                <label>Primary Vibe-Alignment Layer</label>
+                <select id="vibeFocus" onchange="updateSynergy()">
+                    <option value="1">Pure Pre-Revenue Capital</option>
+                    <option value="2">Combined Temporal Streams</option>
+                    <option value="3">Epoch-Specific Synergy</option>
+                </select>
+                
+                <label style="margin-top: 15px;">
+                    <input type="checkbox" id="rizzToggle" onchange="updateSynergy()"> 
+                    Include Non-Linear Sentiment Overlay (Rizz Pool A)
+                </label>
+            </div>
+            <div class="control-group">
+                <label>Compounding Vibe-Density Factor: <span id="factorDisplay" class="slider-val">100</span></label>
+                <input type="range" id="vibeFactor" min="1" max="200" value="100" style="width: 100%;" oninput="updateSynergy()">
+                <div style="font-size: 10px; color: #666; margin-top: 10px; font-style: italic;">
+                    Warning: Values over 150 may cause localized spacetime fragmentation.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const ctx = document.getElementById('vibeChart').getContext('2d');
+    let chart;
+
+    function generateData(base, multiplier, isVolatile) {
+        return [1, 2, 3, 4].map(epoch => {
+            let val = base * Math.pow(1.8, epoch) * (multiplier / 100);
+            if (isVolatile) val *= (0.8 + Math.random() * 0.6);
+            return val;
+        });
+    }
+
+    function updateSynergy() {
+        const factor = document.getElementById('vibeFactor').value;
+        const focus = document.getElementById('vibeFocus').value;
+        const includeRizz = document.getElementById('rizzToggle').checked;
+        
+        document.getElementById('factorDisplay').textContent = factor;
+        
+        // Flash the result to show we are recalculating reality
+        const resDisplay = document.getElementById('resultDisplay');
+        resDisplay.classList.remove('flash');
+        void resDisplay.offsetWidth; // trigger reflow
+        resDisplay.classList.add('flash');
+        
+        const calcResult = (470 * (factor / 100)).toFixed(0);
+        resDisplay.textContent = \`VERIFIED EPOCH 4 RESULT: \${calcResult}% over 9000% Quarterly Earnings\`;
+
+        const datasets = [
+            {
+                label: 'Series Ω Halo Fund (Temporal)',
+                data: generateData(2000, factor, false),
+                backgroundColor: focus === '1' ? '#ff00ff' : 'rgba(255, 0, 255, 0.5)',
+                fill: true
+            },
+            {
+                label: 'Epoch B Synergy Pool',
+                data: generateData(3500, factor, true),
+                backgroundColor: focus === '3' ? '#00ffff' : 'rgba(0, 255, 255, 0.5)',
+                fill: true
+            },
+            {
+                label: 'Combined Vibe-Aligned Rizz',
+                data: generateData(1120, factor * 1.5, false),
+                backgroundColor: '#ffff00',
+                fill: true
+            }
+        ];
+
+        if (includeRizz) {
+            datasets.push({
+                label: 'GPT-9000 Hallucinated Vibe-Aura Debt',
+                data: generateData(8000, factor * 2, true),
+                backgroundColor: 'rgba(255, 0, 0, 0.7)',
+                fill: true
+            });
+        }
+
+        if (chart) chart.destroy();
+        
+        chart = new Chart(ctx, {
+            type: 'line',
+            data: { labels: ['Epoch 1', 'Epoch 2', 'Epoch 3', 'Epoch 4'], datasets: datasets },
+            options: {
+                responsive: true, maintainAspectRatio: false,
+                scales: {
+                    x: { title: { display: true, text: 'Temporal Flow' } },
+                    y: { stacked: true, title: { display: true, text: 'Aura Density (Billions)' }, ticks: { display: false } }
+                },
+                elements: { line: { tension: 0.4 }, point: { radius: 0 } },
+                animation: { duration: 400 }
+            }
+        });
+    }
+
+    updateSynergy();
+</script>
+</body>
+</html>
