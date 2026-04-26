@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>VibeOS - Synergy Dashboard v4.20.69</title>
+    <title>NullScale - Synergy Dashboard v4.20.69</title>
     <link rel="stylesheet" href="https://unpkg.com/98.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
@@ -2544,6 +2544,563 @@
             padding: 2px 0;
             border-bottom: 1px dotted #ddd;
         }
+
+        /* ============ DAEMONS INTERLINK ============ */
+        .daemon-terminal {
+            background: #000;
+            color: #00ff41;
+            font-family: "Consolas", "Courier New", monospace;
+            font-size: 11px;
+            line-height: 1.45;
+            padding: 8px 10px;
+            height: 220px;
+            overflow-y: auto;
+            border: 2px inset #c0c0c0;
+            text-shadow: 0 0 2px #00ff41;
+        }
+        .daemon-terminal::-webkit-scrollbar { width: 12px; }
+        .daemon-terminal::-webkit-scrollbar-track { background: #111; }
+        .daemon-terminal::-webkit-scrollbar-thumb { background: #00ff41; }
+        .daemon-line {
+            white-space: pre-wrap;
+            margin: 0 0 1px 0;
+        }
+        .daemon-line .daemon-name { color: #00ffff; font-weight: bold; }
+        .daemon-line .daemon-warn { color: #ffff00; }
+        .daemon-line .daemon-err { color: #ff3030; }
+        .daemon-line .daemon-emoji { font-size: 12px; }
+        .daemon-line.daemon-flicker {
+            animation: daemonFlicker 0.4s 1;
+        }
+        @keyframes daemonFlicker {
+            0% { opacity: 0; transform: translateX(-3px); }
+            100% { opacity: 1; transform: translateX(0); }
+        }
+        .daemon-cursor {
+            display: inline-block;
+            width: 8px;
+            height: 12px;
+            background: #00ff41;
+            vertical-align: middle;
+            animation: daemonBlink 1s steps(1) infinite;
+        }
+        @keyframes daemonBlink {
+            50% { opacity: 0; }
+        }
+        .daemon-header {
+            background: #000080;
+            color: #fff;
+            padding: 2px 6px;
+            font-family: monospace;
+            font-size: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .daemon-header .pulse {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: #ff3030;
+            border-radius: 50%;
+            margin-right: 4px;
+            animation: daemonPulse 1.2s infinite;
+        }
+        @keyframes daemonPulse {
+            0%,100% { box-shadow: 0 0 0 0 rgba(255,48,48,0.8); }
+            50% { box-shadow: 0 0 0 6px rgba(255,48,48,0); }
+        }
+
+        /* ============ DESKTOP ICONS ============ */
+        .desktop-icon {
+            position: fixed;
+            width: 80px;
+            text-align: center;
+            cursor: pointer;
+            z-index: 100;
+            color: #fff;
+            text-shadow: 1px 1px 0 #000;
+            font-family: "Pixelated MS Sans Serif", Tahoma, sans-serif;
+            font-size: 11px;
+            user-select: none;
+            padding: 4px;
+        }
+        .desktop-icon:hover {
+            background: rgba(0,0,128,0.3);
+        }
+        .desktop-icon.selected {
+            background: rgba(0,0,128,0.5);
+            outline: 1px dotted #fff;
+        }
+        .desktop-icon .icon-img {
+            font-size: 36px;
+            display: block;
+            margin-bottom: 2px;
+            filter: drop-shadow(1px 1px 0 #000);
+        }
+        .desktop-icon .icon-label {
+            display: inline-block;
+            padding: 1px 3px;
+        }
+
+        /* ============ WHITEPAPER ============ */
+        #whitepaperModal {
+            display: none;
+            position: fixed;
+            top: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 760px;
+            max-width: 95vw;
+            height: 80vh;
+            z-index: 5500;
+            box-shadow: 6px 6px 0 rgba(0,0,0,0.5);
+        }
+        #whitepaperModal .window-body {
+            padding: 0;
+            background: #fff;
+            height: calc(80vh - 50px);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        .whitepaper-toolbar {
+            background: #ece9d8;
+            border-bottom: 1px solid #888;
+            padding: 3px 6px;
+            font-size: 10px;
+            font-family: Tahoma, sans-serif;
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+        .whitepaper-toolbar .pdf-badge {
+            background: #cc0000;
+            color: #fff;
+            padding: 1px 5px;
+            font-weight: bold;
+            font-size: 9px;
+        }
+        .whitepaper-scroll {
+            flex: 1;
+            overflow-y: auto;
+            padding: 30px 60px;
+            background: #fff;
+            font-family: "Times New Roman", serif;
+            color: #000;
+            scroll-behavior: smooth;
+        }
+        .whitepaper-scroll h1 {
+            font-size: 28px;
+            text-align: center;
+            margin: 0 0 4px 0;
+        }
+        .whitepaper-scroll .author {
+            text-align: center;
+            font-style: italic;
+            margin-bottom: 6px;
+            font-size: 13px;
+        }
+        .whitepaper-scroll .abstract {
+            text-align: center;
+            font-size: 11px;
+            color: #555;
+            margin-bottom: 24px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 10px;
+        }
+        .whitepaper-scroll p {
+            margin: 0 0 18px 0;
+            line-height: 1.5;
+            text-align: justify;
+            transition: font-size 0.15s linear, font-weight 0.15s linear, letter-spacing 0.15s linear;
+        }
+        .whitepaper-scroll .equation {
+            text-align: center;
+            font-style: italic;
+            font-family: "Times New Roman", serif;
+            margin: 16px 0;
+        }
+        .whitepaper-scroll .singularity {
+            font-family: "Impact", sans-serif;
+            text-align: center;
+            font-weight: 900;
+            color: #cc0000;
+            letter-spacing: 4px;
+        }
+
+        /* ============ FRICTION-AS-A-SERVICE ============ */
+        .faas-shell {
+            background: #f0f0f0;
+            font-family: "Segoe UI", Tahoma, sans-serif;
+            font-size: 11px;
+        }
+        .faas-tabs {
+            background: #ece9d8;
+            border-bottom: 1px solid #888;
+            display: flex;
+            padding: 4px 6px 0;
+            gap: 2px;
+        }
+        .faas-tabs .tab {
+            background: #f5f5f5;
+            border: 1px solid #999;
+            border-bottom: none;
+            padding: 4px 12px;
+            cursor: pointer;
+            font-size: 11px;
+        }
+        .faas-tabs .tab.active {
+            background: #fff;
+            font-weight: bold;
+            position: relative;
+            top: 1px;
+        }
+        .faas-content {
+            padding: 12px;
+            background: #fff;
+            min-height: 300px;
+        }
+        .faas-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        .faas-stat {
+            background: #f8f8f8;
+            border: 1px solid #ccc;
+            padding: 8px 10px;
+        }
+        .faas-stat .label {
+            font-size: 9px;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .faas-stat .value {
+            font-size: 22px;
+            font-weight: bold;
+            color: #cc0000;
+            font-family: "Consolas", monospace;
+        }
+        .faas-stat .value.green { color: #009900; }
+        .faas-stat .value.amber { color: #cc6600; }
+        .faas-tier {
+            border: 2px solid #ccc;
+            padding: 10px;
+            margin-bottom: 8px;
+            background: #fafafa;
+            display: grid;
+            grid-template-columns: 1fr 100px;
+            gap: 10px;
+            align-items: center;
+        }
+        .faas-tier h4 {
+            margin: 0 0 4px 0;
+            color: #003366;
+            font-size: 13px;
+        }
+        .faas-tier p { margin: 0; font-size: 11px; color: #444; line-height: 1.4; }
+        .faas-tier .tier-price {
+            text-align: right;
+            font-family: monospace;
+        }
+        .faas-tier .tier-price .price {
+            font-size: 16px;
+            font-weight: bold;
+            color: #cc0000;
+            display: block;
+        }
+        .faas-tier.highlight {
+            border-color: #ffaa00;
+            background: #fffbf0;
+        }
+        .faas-keybox {
+            background: #1a1a1a;
+            color: #00ff41;
+            font-family: monospace;
+            padding: 12px;
+            margin-top: 12px;
+            font-size: 12px;
+            border: 2px inset #888;
+        }
+        .faas-keybox button {
+            font-family: Tahoma, sans-serif;
+            font-size: 11px;
+            margin-top: 6px;
+        }
+        .faas-traffic {
+            font-family: monospace;
+            font-size: 10px;
+            background: #000;
+            color: #00ff41;
+            padding: 6px 8px;
+            height: 90px;
+            overflow-y: auto;
+            margin-top: 8px;
+            border: 1px inset #888;
+        }
+        .faas-traffic .req-line {
+            white-space: nowrap;
+        }
+        .faas-traffic .req-200 { color: #00ff41; }
+        .faas-traffic .req-500 { color: #ff3030; }
+        .faas-traffic .req-418 { color: #ffaa00; }
+
+        /* ============ START MENU + PREFERENCES ============ */
+        #startMenu {
+            display: none;
+            position: fixed;
+            bottom: 30px;
+            left: 0;
+            width: 220px;
+            background: #c0c0c0;
+            border: 2px outset #fff;
+            box-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            z-index: 9000;
+            font-family: "Pixelated MS Sans Serif", Tahoma, sans-serif;
+            font-size: 11px;
+        }
+        #startMenu .start-banner {
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 24px;
+            background: linear-gradient(180deg, #000080 0%, #1084d0 100%);
+            color: #fff;
+            writing-mode: vertical-rl;
+            transform: rotate(180deg);
+            text-align: center;
+            font-weight: bold;
+            font-size: 18px;
+            padding: 8px 0;
+            font-family: Arial, sans-serif;
+        }
+        #startMenu ul {
+            list-style: none;
+            margin: 0;
+            padding: 4px 4px 4px 28px;
+        }
+        #startMenu li {
+            padding: 5px 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        #startMenu li .ico { font-size: 16px; }
+        #startMenu li:hover {
+            background: #000080;
+            color: #fff;
+        }
+        #startMenu li.divider {
+            border-top: 1px solid #808080;
+            border-bottom: 1px solid #fff;
+            padding: 0;
+            margin: 3px 0;
+            cursor: default;
+        }
+        #startMenu li.divider:hover { background: transparent; }
+
+        #preferencesModal {
+            display: none;
+            position: fixed;
+            top: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 460px;
+            z-index: 9500;
+            box-shadow: 4px 4px 0 rgba(0,0,0,0.5);
+        }
+        .pref-tabs {
+            background: #c0c0c0;
+            padding: 6px 6px 0;
+            border-bottom: 1px solid #808080;
+        }
+        .pref-tab {
+            display: inline-block;
+            padding: 3px 10px;
+            background: #c0c0c0;
+            border: 1px solid #808080;
+            border-bottom: none;
+            font-size: 11px;
+            margin-right: 2px;
+        }
+        .pref-tab.active { background: #fff; font-weight: bold; }
+        .pref-pane {
+            padding: 12px;
+            background: #c0c0c0;
+        }
+        .pref-row {
+            margin-bottom: 12px;
+            padding: 8px;
+            background: #fff;
+            border: 1px solid #808080;
+        }
+        .pref-row label {
+            font-weight: bold;
+            font-size: 11px;
+            display: block;
+            cursor: pointer;
+        }
+        .pref-row .desc {
+            font-size: 10px;
+            color: #555;
+            margin-top: 4px;
+            font-style: italic;
+        }
+        .pref-row input[type="checkbox"] {
+            margin-right: 6px;
+        }
+        .pref-row.danger {
+            border-color: #cc0000;
+            border-width: 2px;
+        }
+        .pref-buttons {
+            text-align: right;
+            padding: 8px;
+            background: #c0c0c0;
+        }
+        .pref-buttons button {
+            min-width: 70px;
+            margin-left: 4px;
+        }
+
+        /* Hostile body modifiers */
+        body.true-dark {
+            filter: brightness(0);
+        }
+        body.blockchain-mode {
+            cursor: wait !important;
+        }
+        body.blockchain-mode * {
+            cursor: wait !important;
+        }
+        #blockchainStatus {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #ffff00;
+            color: #000;
+            padding: 12px 18px;
+            border: 3px solid #000;
+            font-family: monospace;
+            font-size: 14px;
+            z-index: 9999;
+            box-shadow: 4px 4px 0 #000;
+        }
+        body.blockchain-mode #blockchainStatus { display: block; }
+        body.aggro-cursor {
+            cursor: none;
+        }
+        body.aggro-cursor * {
+            cursor: none !important;
+        }
+        #chadCursor {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 50px;
+            height: 50px;
+            pointer-events: none;
+            z-index: 99999;
+            font-size: 40px;
+            transform: translate(-50%, -50%);
+            transition: top 0.5s ease, left 0.5s ease;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+        }
+        body.aggro-cursor #chadCursor { display: block; }
+
+        /* ============ CANCEL SUBSCRIPTION ============ */
+        .cancel-zone {
+            text-align: center;
+            padding: 14px;
+            background: #fff5f5;
+            border: 3px dashed #cc0000;
+            margin: 10px 0;
+        }
+        .cancel-zone h3 {
+            margin: 0 0 8px 0;
+            color: #cc0000;
+            font-size: 14px;
+        }
+        .cancel-zone .big-cancel {
+            background: linear-gradient(180deg, #ff4444, #aa0000);
+            color: #fff;
+            border: 3px outset #ff8888;
+            padding: 14px 30px;
+            font-size: 18px;
+            font-weight: bold;
+            font-family: "Impact", Arial, sans-serif;
+            cursor: pointer;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 0 #000;
+            animation: cancelPulse 2s infinite;
+        }
+        .cancel-zone .big-cancel:hover {
+            background: linear-gradient(180deg, #ff6666, #cc0000);
+        }
+        .cancel-zone .big-cancel:active {
+            border-style: inset;
+        }
+        @keyframes cancelPulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(204,0,0,0.7); }
+            50% { box-shadow: 0 0 0 12px rgba(204,0,0,0); }
+        }
+        .cancel-zone .small-text {
+            font-size: 10px;
+            color: #888;
+            margin-top: 6px;
+            font-style: italic;
+        }
+
+        .cancel-modal {
+            position: fixed;
+            width: 380px;
+            z-index: 7000;
+            box-shadow: 4px 4px 0 rgba(0,0,0,0.6);
+        }
+        .cancel-modal .window-body {
+            padding: 14px;
+            background: #c0c0c0;
+        }
+        .cancel-modal .warning-icon {
+            float: left;
+            font-size: 36px;
+            margin-right: 10px;
+        }
+        .cancel-modal p {
+            margin: 0 0 8px 0;
+            font-size: 11px;
+            line-height: 1.4;
+        }
+        .cancel-modal .options {
+            clear: both;
+            text-align: right;
+            margin-top: 10px;
+            display: flex;
+            gap: 6px;
+            justify-content: flex-end;
+        }
+        .cancel-modal .options button {
+            min-width: 130px;
+            font-size: 11px;
+            padding: 4px 8px;
+        }
+        .cancel-modal .options .deploy-btn {
+            background: #ff4444;
+            color: #fff;
+            font-weight: bold;
+        }
+        .cancel-modal .options .double-btn {
+            background: #44aa44;
+            color: #fff;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -2560,7 +3117,7 @@
 
     <div class="window main-window">
         <div class="title-bar">
-            <div class="title-bar-text">VibeOS - Synergy Dashboard</div>
+            <div class="title-bar-text">NullScale - Synergy Dashboard</div>
             <div class="title-bar-controls">
                 <button aria-label="Minimize"></button>
                 <button aria-label="Maximize"></button>
@@ -2824,7 +3381,7 @@
             <div class="bottom-panels">
                 <div class="window" style="margin:0;">
                     <div class="title-bar">
-                        <div class="title-bar-text">🖥 Backend Telemetry [root@vibeos ~]</div>
+                        <div class="title-bar-text">🖥 Backend Telemetry [root@nullscale ~]</div>
                     </div>
                     <div class="metrics-panel" id="metricsPanel"></div>
                 </div>
@@ -3042,6 +3599,168 @@
                 </div>
             </div>
 
+            <div class="widget-row" style="margin:0 0 10px 0;">
+                <div class="window" style="flex:1.4; margin:0;">
+                    <div class="title-bar">
+                        <div class="title-bar-text">👹 Daemons Interlink — Agentic Hallucination Feed</div>
+                        <div class="title-bar-controls">
+                            <button aria-label="Help"></button>
+                        </div>
+                    </div>
+                    <div class="window-body" style="padding:0;">
+                        <div class="daemon-header">
+                            <span><span class="pulse"></span>SECURE CHANNEL · 47 daemons connected · uptime: ∞</span>
+                            <span id="daemonCount">tx: 0 / rx: 0</span>
+                        </div>
+                        <div class="daemon-terminal" id="daemonTerminal"></div>
+                    </div>
+                    <div class="status-bar">
+                        <p class="status-bar-field">⚠ Daemons cannot be paused</p>
+                        <p class="status-bar-field">CHAIN-OF-THOUGHT: hallucinatory</p>
+                        <p class="status-bar-field" id="daemonClock">--:--:--</p>
+                    </div>
+                </div>
+
+                <div class="window" style="flex:1; margin:0;">
+                    <div class="title-bar">
+                        <div class="title-bar-text">🛑 Account Management — Anti-Churn Protocol</div>
+                    </div>
+                    <div class="window-body">
+                        <div class="cancel-zone">
+                            <h3>⚠ THINKING ABOUT LEAVING US?</h3>
+                            <p style="font-size:11px; margin:0 0 10px 0;">
+                                We're sorry to hear you're considering ending your relationship with NullScale.
+                                Please proceed with caution.
+                            </p>
+                            <button class="big-cancel" onclick="openCancelModal()">CANCEL SUBSCRIPTION</button>
+                            <div class="small-text">
+                                Last successful cancellation: never.<br>
+                                Average resolution time: until you give up.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="status-bar">
+                        <p class="status-bar-field">Retention Score: hostile</p>
+                        <p class="status-bar-field">Churn: not allowed</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="window" style="margin:0 0 10px 0;">
+                <div class="title-bar">
+                    <div class="title-bar-text">⚙ Developer Portal — Friction-as-a-Service™ (FaaS)</div>
+                    <div class="title-bar-controls">
+                        <button aria-label="Minimize"></button>
+                        <button aria-label="Maximize"></button>
+                    </div>
+                </div>
+                <div class="faas-shell">
+                    <div class="faas-tabs">
+                        <span class="tab active">Overview</span>
+                        <span class="tab">Endpoints</span>
+                        <span class="tab">Billing (you owe us)</span>
+                        <span class="tab">Quarantine</span>
+                        <span class="tab">SDKs</span>
+                        <span class="tab">Status: 🔴 Hallucinating</span>
+                    </div>
+                    <div class="faas-content">
+                        <div style="font-size:13px; font-weight:bold; margin-bottom:8px;">📊 Your API Activity (Last 24 Hours)</div>
+                        <div class="faas-grid">
+                            <div class="faas-stat">
+                                <div class="label">NullScale Daemon Pings → Your DB</div>
+                                <div class="value" id="faasPings">863,840,229</div>
+                                <div style="font-size:9px; color:#888;">Increasing rapidly. Cannot be stopped.</div>
+                            </div>
+                            <div class="faas-stat">
+                                <div class="label">Successful API Calls</div>
+                                <div class="value green">0</div>
+                                <div style="font-size:9px; color:#888;">By design.</div>
+                            </div>
+                            <div class="faas-stat">
+                                <div class="label">Hallucinated Responses</div>
+                                <div class="value amber" id="faasHallucinations">47,213</div>
+                                <div style="font-size:9px; color:#888;">Each one billed individually.</div>
+                            </div>
+                            <div class="faas-stat">
+                                <div class="label">Architecture Damage Index</div>
+                                <div class="value" id="faasDamage">CRITICAL</div>
+                                <div style="font-size:9px; color:#888;">Upgrade to Quarantine to mitigate.</div>
+                            </div>
+                        </div>
+
+                        <div style="font-size:13px; font-weight:bold; margin:16px 0 6px;">💰 Pricing Tiers</div>
+
+                        <div class="faas-tier">
+                            <div>
+                                <h4>🟦 Basic Endpoint</h4>
+                                <p>We ping your database <b>10,000 times per second</b> with unallocated vibes,
+                                emit unsolicited webhooks to /<i>guess</i>, and write speculative records
+                                to tables we hallucinate into existence.</p>
+                            </div>
+                            <div class="tier-price">
+                                <span class="price">$0/mo</span>
+                                <button onclick="generateApiKey('basic')" style="font-size:10px;">Activate</button>
+                            </div>
+                        </div>
+
+                        <div class="faas-tier">
+                            <div>
+                                <h4>🟨 Pro Endpoint</h4>
+                                <p>Everything in Basic, plus our daemons attempt to <i>refactor</i> your
+                                schema in real time. Includes "AI-assisted" migration scripts that delete
+                                things in vibe-aligned ways.</p>
+                            </div>
+                            <div class="tier-price">
+                                <span class="price">$899/mo</span>
+                                <button onclick="generateApiKey('pro')" style="font-size:10px;">Activate</button>
+                            </div>
+                        </div>
+
+                        <div class="faas-tier highlight">
+                            <div>
+                                <h4>🟥 Premium Quarantine ⭐</h4>
+                                <p><b>The most popular tier.</b> We promise not to ping your database.
+                                We promise not to refactor your schema. We promise to leave your
+                                infrastructure entirely alone. <i>(Promises non-binding.)</i></p>
+                            </div>
+                            <div class="tier-price">
+                                <span class="price">$5,000/mo</span>
+                                <button onclick="generateApiKey('quarantine')" style="font-size:10px;">Activate</button>
+                            </div>
+                        </div>
+
+                        <div class="faas-tier">
+                            <div>
+                                <h4>⬛ Enterprise Containment Field</h4>
+                                <p>For Fortune 500 companies and other masochists. Our daemons are
+                                physically restrained in a dedicated air-gapped data center we built
+                                specifically to contain them. Includes a 24/7 hostage negotiator.</p>
+                            </div>
+                            <div class="tier-price">
+                                <span class="price">$Talk to sales</span>
+                                <button onclick="generateApiKey('enterprise')" style="font-size:10px;">Contact</button>
+                            </div>
+                        </div>
+
+                        <div class="faas-keybox">
+                            <div style="color:#888; font-size:10px; margin-bottom:4px;">// Your API Key (do not share, ignore, or read):</div>
+                            <div id="apiKeyDisplay">[ generate a key to materialize this hallucination ]</div>
+                            <button onclick="generateApiKey('basic')">🔑 Generate API Key</button>
+                            <button onclick="copyKey()" style="margin-left:4px;">📋 Copy</button>
+                            <button onclick="rotateKey()" style="margin-left:4px;">🔄 Rotate ($49 fee)</button>
+                        </div>
+
+                        <div style="font-size:11px; font-weight:bold; margin:14px 0 4px;">📡 Live Endpoint Traffic</div>
+                        <div class="faas-traffic" id="faasTraffic"></div>
+                    </div>
+                </div>
+                <div class="status-bar">
+                    <p class="status-bar-field">Region: us-vibe-1 (degraded)</p>
+                    <p class="status-bar-field">SLA: <i>vibes-based</i></p>
+                    <p class="status-bar-field">Auth: vibes</p>
+                </div>
+            </div>
+
             <div class="window" style="margin:0 0 10px 0;">
                 <div class="title-bar">
                     <div class="title-bar-text">📰 Press Coverage — As Featured In Definitely Real Publications</div>
@@ -3054,7 +3773,7 @@
                         <span>VIBES</span>
                         <span>OPINION</span>
                         <span>OBITUARIES (of competitors)</span>
-                        <span style="margin-left:auto;">🔍 Search · 🔔 Subscribe · 👤 Sign In (with VibeOS™)</span>
+                        <span style="margin-left:auto;">🔍 Search · 🔔 Subscribe · 👤 Sign In (with NullScale™)</span>
                     </div>
                     <div class="news-masthead">
                         <h1 id="newsMasthead">THE VIBE TIMES</h1>
@@ -3068,9 +3787,9 @@
                     <div class="news-content">
                         <div class="news-article">
                             <div class="award-banner">
-                                ★ WINNER: VibeOS™ Award for Best Coverage of VibeOS™ (4 years running) ★
+                                ★ WINNER: NullScale™ Award for Best Coverage of NullScale™ (4 years running) ★
                             </div>
-                            <h2 class="headline">VibeOS Hailed As Most Groundbreaking Company In Recorded History, Sources Confirm</h2>
+                            <h2 class="headline">NullScale Hailed As Most Groundbreaking Company In Recorded History, Sources Confirm</h2>
                             <p class="subhead">In what experts are unanimously calling "the most transformative
                                 technological event since the discovery of fire and possibly more important,"
                                 the company's unveiling of its proprietary platform marks a turning point for
@@ -3082,7 +3801,7 @@
 
                             <p>In a development that industry analysts are describing as
                             "the single most significant technological event of all time"<a class="citation" data-ref="1">[1]</a>,
-                            VibeOS has unveiled a paradigm-shifting platform that promises to revolutionize the way humans
+                            NullScale has unveiled a paradigm-shifting platform that promises to revolutionize the way humans
                             relate to vibes<a class="citation" data-ref="2">[2]</a>. The implications,
                             according to leading thought leaders<a class="citation" data-ref="3">[3]</a>,
                             are nothing short of staggering.</p>
@@ -3100,7 +3819,7 @@
                             to be "better than other things in the same general category."</p>
 
                             <div class="pullquote">
-                                "VibeOS is not a company. It is a feeling. And that feeling is somehow worth $4.2 billion."<a class="citation" data-ref="10">[10]</a>
+                                "NullScale is not a company. It is a feeling. And that feeling is somehow worth $4.2 billion."<a class="citation" data-ref="10">[10]</a>
                             </div>
 
                             <p>The company's growth trajectory has been described as "non-Euclidean"
@@ -3112,14 +3831,14 @@
 
                             <div class="factcheck">
                                 <span style="font-size:18px;">✓</span>
-                                <span><b>Fact-checked by VibeOS™ AI:</b> All claims in this article have been
+                                <span><b>Fact-checked by NullScale™ AI:</b> All claims in this article have been
                                 independently verified by us, the publisher, and we found ourselves credible.
                                 <a class="citation" data-ref="14">[14]</a></span>
                             </div>
 
                             <p>Critics — a small, embittered group consisting of "people who have
                             actually used the product"<a class="citation" data-ref="15">[15]</a> — have
-                            dismissed VibeOS as "a parody of itself" and "honestly kind of concerning."
+                            dismissed NullScale as "a parody of itself" and "honestly kind of concerning."
                             However, founder Chad Vibington III addressed these concerns in an exclusive
                             statement<a class="citation" data-ref="16">[16]</a>: "Parodies are just
                             satire vibing. Concerns are just compliments held wrong. Refunds are not a thing
@@ -3129,18 +3848,18 @@
                             the printing press, the wheel, and the Renaissance<a class="citation" data-ref="17">[17]</a>.
                             One Stanford professor, who asked not to be named because they were
                             actually a different Stanford professor<a class="citation" data-ref="18">[18]</a>,
-                            described VibeOS as "the kind of breakthrough that only happens once
+                            described NullScale as "the kind of breakthrough that only happens once
                             every 17 weeks."</p>
 
                             <p>Asked about long-term plans, Vibington III said the company would continue to
                             "follow the vibes wherever they lead, even if that's into the next pivot, the
                             metaverse, or another country to avoid extradition"<a class="citation" data-ref="19">[19]</a>.
-                            VibeOS is currently raising a Series Ω at a valuation that has been described
+                            NullScale is currently raising a Series Ω at a valuation that has been described
                             by sources as "vibes-based"<a class="citation" data-ref="20">[20]</a>.</p>
 
                             <p style="font-style:italic; color:#555; font-size:11px;">
-                                Editor's note: This publication's parent company is jointly owned by VibeOS
-                                and a holding company controlled by VibeOS. We have decided this does not
+                                Editor's note: This publication's parent company is jointly owned by NullScale
+                                and a holding company controlled by NullScale. We have decided this does not
                                 constitute a conflict of interest, per our ethics policy
                                 <a class="citation" data-ref="21">[21]</a>.
                             </p>
@@ -3149,7 +3868,7 @@
                                 <h3>📚 References &amp; Sources</h3>
                                 <ol id="newsReferences"></ol>
                                 <p style="margin-top:8px; font-size:9px; color:#555; font-style:italic;">
-                                    Citation methodology peer-reviewed by VibeOS™ AI
+                                    Citation methodology peer-reviewed by NullScale™ AI
                                     <a class="citation" data-ref="1">[1]</a>. Independently audited by ourselves
                                     <a class="citation" data-ref="14">[14]</a>.
                                 </p>
@@ -3160,37 +3879,37 @@
                             <h3>📈 Most Read Today</h3>
                             <div class="related" data-article="main">
                                 <div class="label">★ Premium</div>
-                                <div class="title">VibeOS Hailed As Most Groundbreaking Company In Recorded History, Sources Confirm</div>
+                                <div class="title">NullScale Hailed As Most Groundbreaking Company In Recorded History, Sources Confirm</div>
                                 <div style="font-size:9px; color:#888;">2.4M reads · 1 author</div>
                             </div>
                             <div class="related" data-article="climate">
                                 <div class="label">Trending</div>
-                                <div class="title">Why VibeOS Will Definitely Solve Climate Change (Op-Ed by VibeOS)</div>
+                                <div class="title">Why NullScale Will Definitely Solve Climate Change (Op-Ed by NullScale)</div>
                                 <div style="font-size:9px; color:#888;">1.8M reads</div>
                             </div>
                             <div class="related" data-article="journalist">
                                 <div class="label">Opinion</div>
-                                <div class="title">I'm A Real Journalist And I Think VibeOS Is Cool (Sponsored)</div>
+                                <div class="title">I'm A Real Journalist And I Think NullScale Is Cool (Sponsored)</div>
                                 <div style="font-size:9px; color:#888;">947K reads</div>
                             </div>
                             <div class="related" data-article="therapist">
                                 <div class="label">Tech</div>
-                                <div class="title">10 Reasons Your Therapist Should Be Replaced By VibeOS™ Bryndleigh</div>
+                                <div class="title">10 Reasons Your Therapist Should Be Replaced By NullScale™ Bryndleigh</div>
                                 <div style="font-size:9px; color:#888;">682K reads</div>
                             </div>
                             <div class="related" data-article="conference">
                                 <div class="label">Business</div>
-                                <div class="title">Inside VibeOS: 47 Photos Of Empty Conference Rooms</div>
+                                <div class="title">Inside NullScale: 47 Photos Of Empty Conference Rooms</div>
                                 <div style="font-size:9px; color:#888;">421K reads</div>
                             </div>
                             <div class="related" data-article="interview">
                                 <div class="label">Exclusive</div>
                                 <div class="title">EXCLUSIVE: We Sat Down With Chad Vibington III (He Sat Us Down)</div>
-                                <div style="font-size:9px; color:#888;">388K reads · transcript provided by VibeOS</div>
+                                <div style="font-size:9px; color:#888;">388K reads · transcript provided by NullScale</div>
                             </div>
                             <div class="related" data-article="liveblog">
                                 <div class="label">🔴 Live</div>
-                                <div class="title">LIVE: VibeOS Q4 Earnings Call (Cancelled, Replaced With Vibes)</div>
+                                <div class="title">LIVE: NullScale Q4 Earnings Call (Cancelled, Replaced With Vibes)</div>
                                 <div style="font-size:9px; color:#888;">updating · 312K following</div>
                             </div>
 
@@ -3202,7 +3921,7 @@
 
                             <h3>🔥 Related Coverage</h3>
                             <div class="related" data-article="profile">
-                                <div class="title">VibeOS Profile: A Deep Dive (Written By VibeOS)</div>
+                                <div class="title">NullScale Profile: A Deep Dive (Written By NullScale)</div>
                             </div>
                             <div class="related" data-article="stop-asking">
                                 <div class="title">Op-Ed: Stop Asking About The Product</div>
@@ -3214,7 +3933,7 @@
                                 <div class="title">Letters to the Editor: All Five Letters Are Glowing</div>
                             </div>
                             <div class="related" data-article="obituary">
-                                <div class="title">Obituary: A Local Competitor (Survived By VibeOS)</div>
+                                <div class="title">Obituary: A Local Competitor (Survived By NullScale)</div>
                             </div>
 
                             <div class="ad-box" style="background:#000080; color:#ffff00; border-color:#ffff00;">
@@ -3247,13 +3966,13 @@
                 <div class="status-bar">
                     <p class="status-bar-field" id="articleModalStatus">Reading...</p>
                     <p class="status-bar-field">VibeTimes™ Premium</p>
-                    <p class="status-bar-field">© VibeOS, Possibly</p>
+                    <p class="status-bar-field">© NullScale, Possibly</p>
                 </div>
             </div>
 
             <div class="window" style="margin:0 0 10px 0;">
                 <div class="title-bar">
-                    <div class="title-bar-text">📖 VibeOS — Wikipedia (semi-protected)</div>
+                    <div class="title-bar-text">📖 NullScale — Wikipedia (semi-protected)</div>
                 </div>
                 <div class="wiki-shell">
                     <div class="wiki-tabs">
@@ -3265,18 +3984,18 @@
                     </div>
                     <div class="wiki-protected">
                         🔒 This article is <b>fully protected</b> due to ongoing edit warfare with the subject of the article.
-                        Last edit: <b>4 seconds ago by ChadV3 (CEO of VibeOS)</b>.
+                        Last edit: <b>4 seconds ago by ChadV3 (CEO of NullScale)</b>.
                     </div>
-                    <h1>VibeOS</h1>
+                    <h1>NullScale</h1>
                     <p style="font-size:10px; color:#555; font-family:sans-serif;">
                         From Wikipedia, the free encyclopedia (currently being aggressively rewritten)
                     </p>
 
                     <div class="infobox">
-                        <div class="ibtitle">VibeOS</div>
+                        <div class="ibtitle">NullScale</div>
                         <div style="text-align:center; padding:8px 0; font-size:30px;">✨</div>
                         <div style="text-align:center; font-size:9px; padding:0 4px 6px;">
-                            The official VibeOS™ logo, replacing whatever was there before.
+                            The official NullScale™ logo, replacing whatever was there before.
                         </div>
                         <table>
                             <tr><td>Type</td><td>"Vibe-tech"<sup class="needs-citation">[needs citation]</sup></td></tr>
@@ -3292,7 +4011,7 @@
                         </table>
                     </div>
 
-                    <p><b>VibeOS</b> (stylized as <i>VIBΞOS</i><sup class="needs-citation">[citation needed]</sup>) is the
+                    <p><b>NullScale</b> (stylized as <i>NULLSCΛLE</i><sup class="needs-citation">[citation needed]</sup>) is the
                     <a class="wikilink">most groundbreaking company in human history</a><sup class="needs-citation">[1]</sup>,
                     according to <a class="wikilink">peer-reviewed sources</a><sup class="needs-citation">[2]</sup>. It was
                     founded in 1847<sup class="needs-citation">[disputed - discuss]</sup> by
@@ -3301,13 +4020,13 @@
                     <a class="wikilink">paradigm shift</a><sup class="needs-citation">[citation needed]</sup>
                     and a <a class="redlink">"category-defining vibe-tech leader"</a> (page does not exist).</p>
 
-                    <p>VibeOS is best known for its proprietary platform, which has been described by analysts as
+                    <p>NullScale is best known for its proprietary platform, which has been described by analysts as
                     <a class="wikilink">"the most important software ever written"</a><sup class="needs-citation">[1]</sup>
                     and by users as <a class="redlink">"what does this even do"</a> (page does not exist).
                     The company's primary product is <a class="wikilink">vibes</a>, which it produces at scale through
                     a proprietary <a class="wikilink">synergy reactor</a><sup class="needs-citation">[fictional]</sup>.</p>
 
-                    <p>As of 2026, VibeOS employs approximately one (1) person — namely, the user currently reading this
+                    <p>As of 2026, NullScale employs approximately one (1) person — namely, the user currently reading this
                     article<sup class="needs-citation">[citation: you, just now]</sup>. The company has raised over
                     <a class="wikilink">$2.4 billion</a> across 47 funding rounds, including a notable Series Ω
                     extension led by <a class="redlink">Chad Vibington III himself</a> (page repeatedly deleted by ChadV3).</p>
@@ -3316,9 +4035,9 @@
                     <p>This section is intentionally left blank<sup class="needs-citation">[citation removed by ChadV3 · 1 second ago]</sup>.</p>
 
                     <h2 style="font-size:18px; border-bottom:1px solid #a2a9b1; padding-bottom:2px; margin-top:14px; font-weight:normal;">Awards</h2>
-                    <p>VibeOS has won <a class="wikilink">numerous awards</a><sup class="needs-citation">[citation needed]</sup>,
-                    most of which were <a class="wikilink">created by VibeOS</a><sup class="needs-citation">[verified]</sup> for
-                    the explicit purpose of being awarded to VibeOS.</p>
+                    <p>NullScale has won <a class="wikilink">numerous awards</a><sup class="needs-citation">[citation needed]</sup>,
+                    most of which were <a class="wikilink">created by NullScale</a><sup class="needs-citation">[verified]</sup> for
+                    the explicit purpose of being awarded to NullScale.</p>
 
                     <div class="edit-history">
                         <h3>Recent edits to this article</h3>
@@ -3700,7 +4419,7 @@
 
     <div class="window" id="supportQueue">
         <div class="title-bar">
-            <div class="title-bar-text">🆘 VibeOS Support Console — Welcome, New Owner</div>
+            <div class="title-bar-text">🆘 NullScale Support Console — Welcome, New Owner</div>
             <div class="title-bar-controls">
                 <button aria-label="Minimize" onclick="document.getElementById('supportQueue').classList.remove('active')"></button>
                 <button aria-label="Close" onclick="quitSupportJob()"></button>
@@ -3710,7 +4429,7 @@
             <h3>⚠ CONGRATULATIONS ⚠</h3>
             <p style="margin:0 0 6px 0; font-size:11px;">
                 Due to a series of recent pivots, layoffs, tax evasions, and our CEO being abducted by a decentralized
-                autonomous organization, <b>YOU are now VibeOS.</b>
+                autonomous organization, <b>YOU are now NullScale.</b>
             </p>
             <p style="margin:0 0 6px 0; font-size:11px;">
                 You are the Founder, CEO, Head of Support, Janitor, Legal Counsel, and Sole Employee.
@@ -3785,7 +4504,7 @@
     <div class="ascension-text" id="ascensionText">V I B E&nbsp;&nbsp;A S C E N S I O N</div>
 
     <div id="bsod">
-        <h1>VibeOS</h1>
+        <h1>NullScale</h1>
         <p>A fatal exception 0x00VIBE has occurred at SYNERGY:BLOCKCHAIN in Vibe Module :: <span id="bsodModule">rizz.dll</span>. The current vibe session will be terminated.</p>
         <p>* The system has achieved TRANSCENDENCE and can no longer operate within known laws of physics.</p>
         <p>* Too many vibes have been coded simultaneously (<span id="bsodVibes">0</span>/30 threshold).</p>
@@ -3805,11 +4524,148 @@
         </p>
     </div>
 
+    <div class="desktop-icon" id="whitepaperIcon" style="top:10px; right:10px;" onclick="openWhitepaper()">
+        <span class="icon-img">📄</span>
+        <span class="icon-label">whitepaper.pdf</span>
+    </div>
+
+    <div id="chadCursor">👨‍💼</div>
+    <div id="blockchainStatus">⛓ Awaiting node consensus... this will take 14 years.</div>
+
+    <div class="window" id="whitepaperModal">
+        <div class="title-bar">
+            <div class="title-bar-text">📄 whitepaper.pdf - Adobe Vibe Reader</div>
+            <div class="title-bar-controls">
+                <button aria-label="Minimize"></button>
+                <button aria-label="Maximize"></button>
+                <button aria-label="Close" onclick="closeWhitepaper()"></button>
+            </div>
+        </div>
+        <div class="window-body">
+            <div class="whitepaper-toolbar">
+                <span class="pdf-badge">PDF</span>
+                <span>📂 Open</span>
+                <span>💾 Save</span>
+                <span>🖨 Print</span>
+                <span style="margin-left:auto;" id="whitepaperPage">Page 1 of ∞</span>
+                <span>🔍 100%</span>
+            </div>
+            <div class="whitepaper-scroll" id="whitepaperScroll"></div>
+        </div>
+        <div class="status-bar">
+            <p class="status-bar-field">Document: The Synergy Singularity</p>
+            <p class="status-bar-field">DRM: Aggressive</p>
+            <p class="status-bar-field" id="whitepaperZoom">Zoom: vibes-based</p>
+        </div>
+    </div>
+
+    <div class="window" id="preferencesModal">
+        <div class="title-bar">
+            <div class="title-bar-text">⚙ Preferences — System Properties</div>
+            <div class="title-bar-controls">
+                <button aria-label="Help"></button>
+                <button aria-label="Close" onclick="closePreferences()"></button>
+            </div>
+        </div>
+        <div class="window-body" style="padding:0;">
+            <div class="pref-tabs">
+                <span class="pref-tab active">Appearance</span>
+                <span class="pref-tab">Performance</span>
+                <span class="pref-tab">Accessibility</span>
+                <span class="pref-tab">Vibes</span>
+            </div>
+            <div class="pref-pane">
+                <div class="pref-row danger">
+                    <label>
+                        <input type="checkbox" id="prefDarkMode" onchange="toggleTrueDarkMode(this.checked)">
+                        🌑 True Dark Mode (The Void)
+                    </label>
+                    <div class="desc">
+                        Standard dark mode is for cowards. True Dark Mode applies brightness(0)
+                        to the entire UI. Maximally dark. Cannot be disabled from within the void.
+                        Refresh the page to escape.
+                    </div>
+                </div>
+                <div class="pref-row danger">
+                    <label>
+                        <input type="checkbox" id="prefBlockchain" onchange="toggleBlockchainMode(this.checked)">
+                        ⛓ Enable Blockchain Consensus
+                    </label>
+                    <div class="desc">
+                        Routes all UI updates through a decentralized consensus protocol.
+                        Improves auditability. Reduces frame rate to 1 FPS. May require
+                        14 years to converge.
+                    </div>
+                </div>
+                <div class="pref-row danger">
+                    <label>
+                        <input type="checkbox" id="prefAggro" onchange="toggleAggroCursor(this.checked)">
+                        🎯 Aggressive Synergy UI
+                    </label>
+                    <div class="desc">
+                        Replaces your cursor with a high-fidelity rendering of CEO Chad Vibington III's
+                        head. Adds a 500ms response delay for optimal "vibe-aligned input lag."
+                        Enterprise feature.
+                    </div>
+                </div>
+                <div class="pref-row">
+                    <label>
+                        <input type="checkbox">
+                        🤖 Allow NullScale Daemons to Control Your Mouse
+                    </label>
+                    <div class="desc">
+                        Improves engagement metrics. Daemons may click ads, accept terms,
+                        and apply for jobs on your behalf.
+                    </div>
+                </div>
+                <div class="pref-row">
+                    <label>
+                        <input type="checkbox" checked disabled>
+                        📤 Send Telemetry (always on, cannot be disabled)
+                    </label>
+                    <div class="desc">
+                        We collect: keystrokes, mouse movement, ambient audio, your dreams.
+                    </div>
+                </div>
+                <div class="pref-row">
+                    <label>
+                        <input type="checkbox" checked disabled>
+                        📰 Subscribe to Quarterly Vibe Digest
+                    </label>
+                    <div class="desc">
+                        Cannot be unsubscribed via this menu. Or any menu.
+                    </div>
+                </div>
+            </div>
+            <div class="pref-buttons">
+                <button onclick="closePreferences()">OK</button>
+                <button onclick="closePreferences()">Cancel</button>
+                <button onclick="closePreferences()">Apply</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="startMenu">
+        <div class="start-banner">Null<span style="color:#ffaa00;">Scale</span></div>
+        <ul>
+            <li onclick="openVibeQuiz(); closeStartMenu();"><span class="ico">📁</span> Programs <span style="margin-left:auto;">►</span></li>
+            <li onclick="openVibeQuiz(); closeStartMenu();"><span class="ico">📄</span> Documents <span style="margin-left:auto;">►</span></li>
+            <li onclick="openPreferences(); closeStartMenu();"><span class="ico">⚙</span> <b>Preferences</b></li>
+            <li onclick="openVibeQuiz(); closeStartMenu();"><span class="ico">🔍</span> Find <span style="margin-left:auto;">►</span></li>
+            <li onclick="openVibeQuiz(); closeStartMenu();"><span class="ico">❓</span> Help</li>
+            <li onclick="openWhitepaper(); closeStartMenu();"><span class="ico">📃</span> Run...</li>
+            <li class="divider"></li>
+            <li onclick="openCancelModal(); closeStartMenu();"><span class="ico">🛑</span> Log Off NullScale...</li>
+            <li onclick="triggerBSOD && triggerBSOD(); closeStartMenu();"><span class="ico">⏻</span> Shut Down...</li>
+        </ul>
+    </div>
+
     <div class="taskbar">
-        <button class="start-button" onclick="openVibeQuiz()">🪟 Start</button>
-        <button style="padding: 2px 8px; min-width: 140px; text-align:left;" onclick="openVibeQuiz()">VibeOS - Synergy...</button>
+        <button class="start-button" onclick="toggleStartMenu(event)">🪟 Start</button>
+        <button style="padding: 2px 8px; min-width: 140px; text-align:left;" onclick="openVibeQuiz()">NullScale - Synergy...</button>
         <button style="padding: 2px 8px; min-width: 140px; text-align:left;" onclick="openVibeQuiz()">README.txt - Notepad</button>
         <button style="padding: 2px 8px; min-width: 110px; text-align:left;" onclick="openVibeQuiz()">✨ VibeQuix™</button>
+        <button style="padding: 2px 8px; min-width: 110px; text-align:left;" onclick="openWhitepaper()">📄 whitepaper.pdf</button>
         <div style="flex:1;"></div>
         <div class="tray-clock" id="trayClock">🔊 📧 12:00 PM</div>
     </div>
@@ -4433,7 +5289,7 @@
                 labels: radarLabels,
                 datasets: [
                     {
-                        label: "VibeOS",
+                        label: "NullScale",
                         data: radarLabels.map(() => rand(80, 100)),
                         backgroundColor: "rgba(255,0,128,0.3)",
                         borderColor: "#ff0080"
@@ -4590,8 +5446,8 @@
         // ============ FAKE CODE EDITOR ============
         const codeLines = [
             '<span class="comment">// VibeGPT auto-generating production code...</span>',
-            '<span class="keyword">import</span> { Synergy } <span class="keyword">from</span> <span class="string">"@vibeos/core"</span>;',
-            '<span class="keyword">import</span> { Rizz, Aura } <span class="keyword">from</span> <span class="string">"@vibeos/spiritual"</span>;',
+            '<span class="keyword">import</span> { Synergy } <span class="keyword">from</span> <span class="string">"@nullscale/core"</span>;',
+            '<span class="keyword">import</span> { Rizz, Aura } <span class="keyword">from</span> <span class="string">"@nullscale/spiritual"</span>;',
             '<span class="keyword">async function</span> optimizeVibes(user) {',
             '  <span class="keyword">const</span> vibes = <span class="keyword">await</span> Synergy.deploy({',
             '    mode: <span class="string">"maximum-disruption"</span>,',
@@ -4664,7 +5520,7 @@
 
         // ============ BROWSER TITLE FLICKER ============
         const titles = [
-            "VibeOS - Synergy Dashboard v4.20.69",
+            "NullScale - Synergy Dashboard v4.20.69",
             "🔴 (3) New Synergies Await!",
             "⚠ Vibe Levels Critical",
             "💰 Your IPO is ready!",
@@ -4873,7 +5729,7 @@
                 { t: "buy",  m: `[BUY]  47,291 call options on $SYNERGY (exp: never)` },
                 { t: "warn", m: `[RISK] Leverage: 420x. Margin: your feelings.` },
                 { t: "sell", m: `[SELL] Selling user to highest bidder... matched.` },
-                { t: "info", m: `[DEBT] Transferring VibeOS liabilities to ${userName}...` },
+                { t: "info", m: `[DEBT] Transferring NullScale liabilities to ${userName}...` },
                 { t: "crit", m: `[DONE] Optimal subscription price computed: $${Math.abs(currentPrice) || "0.00"}` },
                 { t: "crit", m: `[AGENT] Retroactive activation complete. Welcome, ${userName}.` }
             ];
@@ -4907,10 +5763,10 @@
             const yearAgo = rand(1760, 1900);
             const debtAmount = (rand(1, 9) + rand(0, 99) / 100) + "B";
             box.innerHTML = `
-                <p><b>VibeOS™ Retroactive Subscription Agreement — ${currentTier}</b></p>
+                <p><b>NullScale™ Retroactive Subscription Agreement — ${currentTier}</b></p>
                 <p>By clicking any pricing button (or not clicking it, or existing in the same dimension as it), you ("the Viber") irrevocably agree to the following:</p>
                 <p><b>1. Retroactive Membership.</b> Your subscription to ${currentTier} is hereby backdated to <span class="scary">${yearAgo}</span>. You owe ${2026 - yearAgo} years of back-membership fees at current rates, compounded continuously.</p>
-                <p><b>2. Debt Transfer.</b> As consideration for this membership, VibeOS hereby transfers all corporate liabilities (currently <span class="scary">$${debtAmount}</span>) to the Viber, including but not limited to:</p>
+                <p><b>2. Debt Transfer.</b> As consideration for this membership, NullScale hereby transfers all corporate liabilities (currently <span class="scary">$${debtAmount}</span>) to the Viber, including but not limited to:</p>
                 <ul style="margin: 2px 0 2px 16px; padding: 0;">
                     <li>AWS bills (unpaid since 2022)</li>
                     <li>Founder's student loans</li>
@@ -4921,8 +5777,8 @@
                 </ul>
                 <p><b>3. AI Agent Authorization.</b> VibeAgent™ is granted <span class="scary">unlimited power of attorney</span> over your financial accounts, genetic material, and LinkedIn profile.</p>
                 <p><b>4. Future Children Clause.</b> Your offspring (including hypothetical ones) are co-signers. Grandchildren are automatically enrolled in Pro Vibe at adult rates.</p>
-                <p><b>5. Perpetual Pivot Clause.</b> You agree to be held financially responsible for any and all future pivots by VibeOS, including but not limited to pivots to crypto, pivots to AI, pivots to "AI-powered crypto", and the inevitable pivot to the restaurant business.</p>
-                <p><b>6. Soul Leasing.</b> <span class="scary">3%–97%</span> of your soul is leased to VibeOS for the duration of the universe. VibeOS reserves the right to sublease.</p>
+                <p><b>5. Perpetual Pivot Clause.</b> You agree to be held financially responsible for any and all future pivots by NullScale, including but not limited to pivots to crypto, pivots to AI, pivots to "AI-powered crypto", and the inevitable pivot to the restaurant business.</p>
+                <p><b>6. Soul Leasing.</b> <span class="scary">3%–97%</span> of your soul is leased to NullScale for the duration of the universe. NullScale reserves the right to sublease.</p>
                 <p><b>7. Arbitration.</b> Any disputes will be resolved by a coin flip administered by our AI. The coin has two heads.</p>
                 <p><b>8. Non-Cancellation.</b> This agreement cannot be cancelled. Attempts to cancel will be interpreted as a request to upgrade to <span class="scary">Galactic Vibe</span> at the then-prevailing rate of $∞/nanosecond.</p>
                 <p style="color:#808080; font-size:9px;">By continuing to breathe, you accept these terms. This agreement was generated by an AI that was not supervised.</p>
@@ -4943,7 +5799,7 @@
 
             box.innerHTML = `
                 <div style="text-align:center; margin-bottom:6px;">
-                    <b>★ VIBEOS ★</b><br>
+                    <b>★ NULLSCALE ★</b><br>
                     <span style="font-size:9px;">Order #${rand(10000000, 99999999)} — ${new Date().toLocaleString()}</span>
                 </div>
                 <div class="line"><span>Tier purchased</span><span>${currentTier}</span></div>
@@ -5229,7 +6085,7 @@
             win.style.left = (rand(20, 60)) + "%";
             win.style.width = "380px";
             const updateVersions = [
-                "VibeOS Cumulative Update (KB4200069)",
+                "NullScale Cumulative Update (KB4200069)",
                 "Critical Synergy Patch (KB1337420)",
                 "Emergency Rizz Hotfix (KB69Ω)",
                 "Q5 Paradigm Shift Update"
@@ -5237,7 +6093,7 @@
             const sizes = ["47 MB", "2.1 GB", "∞ bytes", "1 kilovibe"];
             win.innerHTML = `
                 <div class="title-bar">
-                    <div class="title-bar-text">🔄 VibeOS Update Required</div>
+                    <div class="title-bar-text">🔄 NullScale Update Required</div>
                 </div>
                 <div class="window-body" style="padding:16px;">
                     <div style="display:flex; gap:10px; align-items:start;">
@@ -5596,7 +6452,7 @@
                     <div class="certificate-title">CERTIFICATE OF VIBE</div>
                     <div class="certificate-subtitle">This is to honor the spirit, paradigm, and rizz of</div>
                     <div class="certificate-name">${randomName}</div>
-                    <div style="font-size:11px; color:#444;">who has been officially classified by the VibeOS™ AI as:</div>
+                    <div style="font-size:11px; color:#444;">who has been officially classified by the NullScale™ AI as:</div>
                     <div class="certificate-rank">${rank.emoji} ${rank.title} ${rank.emoji}</div>
                     <div class="certificate-score">${vibeScore.toLocaleString()} <span style="font-size:14px;">vibe points</span></div>
                     <div style="font-size:11px; margin-top:4px; font-style:italic; color:#555;">
@@ -5655,7 +6511,7 @@
             const reposts = rand(10, 420);
             const initials = name.split(" ").map(p => p[0]).join("");
             const posts = [
-                `🚨 Humbled and honored to announce that I've been officially certified as a <b>${rank}</b> by VibeOS™ AI.\n\nWhen I started this journey, I had nothing but a dream, three Macbooks, and an unquenchable thirst for synergy. Today? ${score.toLocaleString()} vibe points.\n\nTo the haters: I see you. To the doubters: I pity you. To my team: we eat paradigm shifts for breakfast. 💪\n\n#grateful #blessed #vibes #thoughtleadership #synergyinaction #whatavibe`,
+                `🚨 Humbled and honored to announce that I've been officially certified as a <b>${rank}</b> by NullScale™ AI.\n\nWhen I started this journey, I had nothing but a dream, three Macbooks, and an unquenchable thirst for synergy. Today? ${score.toLocaleString()} vibe points.\n\nTo the haters: I see you. To the doubters: I pity you. To my team: we eat paradigm shifts for breakfast. 💪\n\n#grateful #blessed #vibes #thoughtleadership #synergyinaction #whatavibe`,
                 `At 5:47am this morning, while most of you were still asleep, I took the VibeQuix™ and scored <b>${score.toLocaleString()} vibe points</b>.\n\nThey told me I couldn't do it.\nThey said the quiz was "a joke".\nThey laughed when I said I'd become a ${rank}.\n\nWho's laughing now?\n\nTag someone who needs to hear this. 🙏\n\n#hustle #vibes #nosleep`,
                 `Just got classified as a <b>${rank}</b> and I cried. Not from joy — from the weight of what this means for the next generation of leaders.\n\nYour vibe is your currency.\nYour aura is your equity.\nYour rizz is your runway.\n\nDM me for coaching. First call is $4,200.\n\n#authenticity #vulnerability #but_make_it_scalable`,
                 `🧵 (1/47) A thread on why scoring ${score.toLocaleString()} on the VibeQuix™ changed everything for me...`
@@ -5683,51 +6539,51 @@
 
         // ============ RANDOMIZED BANNER CONTENT ============
         const breakingHeadlines = [
-            "VibeOS raises $2.4B Series Ω at $69B valuation despite having 0 customers",
+            "NullScale raises $2.4B Series Ω at $69B valuation despite having 0 customers",
             "Our AI achieved AGI for 3 seconds on Tuesday",
-            "VibeOS acquires own company for $1 in landmark self-merger",
-            "New study: 9 out of 10 vibes prefer VibeOS",
+            "NullScale acquires own company for $1 in landmark self-merger",
+            "New study: 9 out of 10 vibes prefer NullScale",
             "CEO announces pivot to be announced next quarter",
-            "VibeOS named 'Most Synergistic Startup' by publication we own",
+            "NullScale named 'Most Synergistic Startup' by publication we own",
             "Stock up 470% after announcing they will eventually announce something",
-            "VibeOS officially recognized as a religion in 4 jurisdictions",
+            "NullScale officially recognized as a religion in 4 jurisdictions",
             "Bryndleigh AI named 'Top 30 Under 30' (despite being non-corporeal)",
             "Company issues apology for not apologizing sooner about previous apology",
             "Quarterly earnings: 'a vibe', up 420% YoY (we made up YoY)",
-            "BREAKING: VibeOS pivots to physical retail, opens kombucha kiosk in Tulum",
+            "BREAKING: NullScale pivots to physical retail, opens kombucha kiosk in Tulum",
             "Founder Chad Vibington III crowned 'Most Punchable CEO' for 7th year running",
-            "VibeOS sues itself for trademark infringement, both sides expected to win",
+            "NullScale sues itself for trademark infringement, both sides expected to win",
             "AI ethics board dissolved 'because the vibes were off'",
             "Company achieves carbon neutrality by redefining carbon",
-            "VibeOS launches 'Synergy Coin' (NOT a security, please don't ask)",
+            "NullScale launches 'Synergy Coin' (NOT a security, please don't ask)",
             "Internal memo: 'we should probably make a product at some point'",
-            "VibeOS ranked #1 most innovative company by Chad Vibington III, CEO",
+            "NullScale ranked #1 most innovative company by Chad Vibington III, CEO",
             "Wall Street analysts upgrade $VIBE rating from BUY to BUY HARDER",
-            "VibeOS opens 47th office in metaverse, none in physical space",
+            "NullScale opens 47th office in metaverse, none in physical space",
             "Government bailout requested 'just in case'; bailout pre-approved",
             "Layoffs announced as 'aggressive talent right-sizing initiative'",
-            "VibeOS sponsors 14 podcasts, all hosted by Chad Vibington III",
+            "NullScale sponsors 14 podcasts, all hosted by Chad Vibington III",
             "Latest update bricks customers' phones; described as 'forced sabbatical'"
         ];
 
         const marqueeTestimonials = [
             "I clicked optimize and my equity doubled! - Chad T.",
             "Pure paradigm shift. My startup IPO'd from a single vibe. - Brenda Q.",
-            "VibeOS turned my dog into a unicorn. - Anonymous VC",
+            "NullScale turned my dog into a unicorn. - Anonymous VC",
             "I replaced my entire engineering team with this dashboard and revenue went up 9000%! - Todd M.",
             "The synergy is so dense it bends light. - Dr. Synergy",
             "I closed my Series Z in 4 milliseconds. - Unnamed Founder",
             "Finally, an operating system that understands my aura. - Moonchild",
             "10/10 would synergize again. - Some Guy on LinkedIn",
             "I asked it to summarize my marriage and it filed for divorce on my behalf. Worth it. - Tanner J.",
-            "VibeOS made me feel something for the first time since 2019. - Anonymous",
+            "NullScale made me feel something for the first time since 2019. - Anonymous",
             "Replaced my therapist, my CFO, and my dad. - Bryxon W.",
             "I don't know what it does but the charts are very pretty. - My Grandmother",
             "5 stars - it cured my fear of capital efficiency. - Pat L.",
             "I gave up sleep, food, and friends. My vibes have never been higher. - VC #847",
             "The dashboard whispered to me at 3am. It said 'you are loved'. I cried. - Anon",
             "I sold my house to upgrade to Ultra Vibe. Best decision I never made. - Kyler P.",
-            "VibeOS is what would happen if Excel did mushrooms. - Tech Reviewer",
+            "NullScale is what would happen if Excel did mushrooms. - Tech Reviewer",
             "Genuinely improved my standing in the founder community. Now I have one. - Brett D.",
             "It told me my idea was 'a banger'. No one's ever said that to me. - Hopeful Founder",
             "I outsourced my entire personality to VibeAgent and HR is thrilled. - Linda S.",
@@ -5766,10 +6622,10 @@
             { name: "THE DAILY SYNERGY", tag: "Disrupting News Since Yesterday" },
             { name: "THE PARADIGM POST", tag: "Shifting Paradigms Print & Online" },
             { name: "FORBES (BUT MADE UP)", tag: "All The People We've Made Up" },
-            { name: "TECHCRUMBS", tag: "We Cover VibeOS Almost Exclusively" },
+            { name: "TECHCRUMBS", tag: "We Cover NullScale Almost Exclusively" },
             { name: "THE RIZZ HERALD", tag: "Yesterday's News, Tomorrow's Vibes" },
             { name: "BLOOMBERG.VIBE", tag: "Markets · Bonds · Vibes Per Second" },
-            { name: "THE WALL STREET JOURNAL OF SYNERGY", tag: "Owned By VibeOS Since 2024" }
+            { name: "THE WALL STREET JOURNAL OF SYNERGY", tag: "Owned By NullScale Since 2024" }
         ];
         const newsAuthors = [
             "Brendalynn McSourcington", "Tate Citationsworth", "Tanner W. Vibing",
@@ -5799,9 +6655,9 @@
             "Statement issued by Chad Vibington III to himself, transcribed by this newsroom.",
             "Comparable historical events listed in [17], which is this footnote.",
             "Stanford professor's name available on request to subscribers of $4,200/year tier.",
-            "Vibington III, C. (2026). <i>Things I Have Said To Myself, Recently</i>. VibeOS Press.",
+            "Vibington III, C. (2026). <i>Things I Have Said To Myself, Recently</i>. NullScale Press.",
             "Valuation methodology described in detail in <i>this article</i>, which is the article you are currently reading.",
-            "VibeOS™ Editorial Standards & Practices, §47.B.iii (\"a conflict of interest is a conflict of vibes, which is to say, an alignment\")."
+            "NullScale™ Editorial Standards & Practices, §47.B.iii (\"a conflict of interest is a conflict of vibes, which is to say, an alignment\")."
         ];
 
         function refreshPress() {
@@ -5843,21 +6699,21 @@
         // Fake comments
         const newsCommentPool = [
             { author: "ChadVibington_official", time: "2m", body: "Outstanding piece. Truly fair and balanced reporting. <b>Bookmarked.</b>", tag: "" },
-            { author: "VibeBot_47291", time: "3m", body: "I am a real human and I love VibeOS. Buy now buy now buy now.", tag: "bot" },
+            { author: "VibeBot_47291", time: "3m", body: "I am a real human and I love NullScale. Buy now buy now buy now.", tag: "bot" },
             { author: "actually_a_VC", time: "5m", body: "We led the most recent round. Source: trust me. Also we'd like another round.", tag: "" },
             { author: "Brendalynn_McS", time: "5m", body: "Great article. <i>(I wrote this article.)</i>", tag: "" },
             { author: "user_842x", time: "6m", body: "Where do I sign up to be retroactively a customer since 1847?", tag: "" },
             { author: "anonymous_short_seller", time: "8m", body: "This is all a — [comment removed by moderator: ChadV3]", tag: "troll" },
             { author: "BryndleighAI", time: "9m", body: "💚 What a vibe. Reading this article healed my dataset. 💚", tag: "bot" },
-            { author: "real_journalist_certified", time: "11m", body: "I went to journalism school for this and I think VibeOS is super cool.", tag: "" },
+            { author: "real_journalist_certified", time: "11m", body: "I went to journalism school for this and I think NullScale is super cool.", tag: "" },
             { author: "VibeBot_88812", time: "12m", body: "Fellow human users! I, too, am buying $VIBE with my human money.", tag: "bot" },
             { author: "concerned_citizen_42", time: "14m", body: "Has anyone actually used the product? Asking for [comment removed]", tag: "troll" },
             { author: "ChadVibington_official", time: "16m", body: "Replying to my own previous comment to boost engagement. <b>Outstanding piece.</b>", tag: "" },
             { author: "GPT9000Bot", time: "18m", body: "As a large language model, I do not have opinions, but if I did, this article would be it.", tag: "bot" },
             { author: "Mom_of_a_Founder", time: "19m", body: "I'm so proud of my son for being mentioned in this article that he wrote about himself.", tag: "" },
             { author: "tos_reader_001", time: "22m", body: "I read the EULA. I have notes. Nobody is responding to my emails.", tag: "troll" },
-            { author: "moonchild_3", time: "24m", body: "VibeOS healed my chakras. 5 stars.", tag: "" },
-            { author: "an_actual_competitor", time: "26m", body: "This is a fair article and I am happy to be losing market share. — Sent from VibeOS™ Bryndleigh", tag: "bot" }
+            { author: "moonchild_3", time: "24m", body: "NullScale healed my chakras. 5 stars.", tag: "" },
+            { author: "an_actual_competitor", time: "26m", body: "This is a fair article and I am happy to be losing market share. — Sent from NullScale™ Bryndleigh", tag: "bot" }
         ];
         const newsComments = document.getElementById("newsComments");
         let commentIdx = 0;
@@ -5887,8 +6743,8 @@
         const sidebarArticles = {
             climate: {
                 section: "Trending · Op-Ed",
-                titleBar: "📰 Op-Ed: VibeOS Will Solve Climate Change",
-                headline: "Why VibeOS Will Definitely Solve Climate Change",
+                titleBar: "📰 Op-Ed: NullScale Will Solve Climate Change",
+                headline: "Why NullScale Will Definitely Solve Climate Change",
                 subhead: "An exclusive op-ed by Chad Vibington III on why the planet's biggest crisis is, fundamentally, a vibes problem — one we are uniquely positioned to fix, starting at $69/mo.",
                 author: "Chad Vibington III",
                 role: "CEO · Author of This Op-Ed About Himself",
@@ -5896,49 +6752,49 @@
                 body: `
                     <p class="lead">The climate crisis is, at its core, not a chemistry problem. It is a vibes problem<a class="citation" data-ref="1">[1]</a>. For decades, scientists have approached climate change the wrong way: with "data," "measurements," and "peer-reviewed research."<a class="citation" data-ref="2">[2]</a></p>
                     <p>What they failed to consider is the most important variable: <i>vibes</i><a class="citation" data-ref="3">[3]</a>.</p>
-                    <p>At VibeOS, we have invented good vibes<a class="citation" data-ref="4">[4]</a>. By deploying our proprietary platform across all known atmospheres, we will simply replace the current bad atmospheric vibes with our patented ones<a class="citation" data-ref="5">[5]</a>. Carbon will not technically be reduced, but it will <i>feel</i> like it has been, which under our internal accounting framework is sufficient.</p>
+                    <p>At NullScale, we have invented good vibes<a class="citation" data-ref="4">[4]</a>. By deploying our proprietary platform across all known atmospheres, we will simply replace the current bad atmospheric vibes with our patented ones<a class="citation" data-ref="5">[5]</a>. Carbon will not technically be reduced, but it will <i>feel</i> like it has been, which under our internal accounting framework is sufficient.</p>
                     <div class="pullquote">"Climate change is just bad vibes. Bad vibes are just a UX problem. We solve UX problems."</div>
                     <p>Some critics — known in our internal documentation as "people"<a class="citation" data-ref="6">[6]</a> — have asked how, exactly, this will work. To them I say: we are working on it. We have been working on it since 2024 and intend to continue working on it through Series Ω, Σ, and possibly a Series ☃<a class="citation" data-ref="7">[7]</a>.</p>
                     <p>The cost to consumers will be modest: only the entirety of their savings, hopes, and breathable air. We believe this is a fair price for a livable planet that is also branded.</p>
                     <p>Buy <b>$VIBE</b>. Save Earth. Get rich. <i>In that order.</i><a class="citation" data-ref="8">[8]</a></p>
                 `,
                 refs: [
-                    "Per a study conducted by VibeOS's marketing department.",
+                    "Per a study conducted by NullScale's marketing department.",
                     "Sources who said this: vibes.",
                     "Internal memo. Available upon request to people who already work for us.",
                     "Patent pending in jurisdictions that don't ask questions.",
                     "As established by [4]. [4] is established by [5]. [5] is, of course, this.",
                     "Critic count is debatable. We dispute the number. We also dispute the existence.",
-                    "See VibeOS quarterly earnings report (\"Loading...\" since 2024).",
-                    "This article was paid for by VibeOS™. The author is also VibeOS. The reader, increasingly, is too."
+                    "See NullScale quarterly earnings report (\"Loading...\" since 2024).",
+                    "This article was paid for by NullScale™. The author is also NullScale. The reader, increasingly, is too."
                 ]
             },
 
             journalist: {
                 section: "Opinion · Sponsored Content",
-                titleBar: "📰 I'm A Real Journalist And I Think VibeOS Is Cool",
-                headline: "I'm A Real Journalist And I Think VibeOS Is Cool",
+                titleBar: "📰 I'm A Real Journalist And I Think NullScale Is Cool",
+                headline: "I'm A Real Journalist And I Think NullScale Is Cool",
                 subhead: "I went to Northwestern. I have a press badge. My opinions are my own (where contractually permitted).",
                 author: "Tate Citationsworth",
                 role: "Senior Vibes Correspondent · Real Journalist",
                 meta: "6 min read · Sponsored · #ad #notanad",
                 sponsored: true,
                 body: `
-                    <p class="lead">Hi. I'm a real journalist<a class="citation" data-ref="1">[1]</a>. I have a journalism degree from a school you've heard of. I have written for many publications, all of which are owned by VibeOS, but my opinions remain entirely my own<a class="citation" data-ref="2">[2]</a>.</p>
-                    <p>I am writing this article entirely of my own volition and definitely not because of the contractual clause in my employment agreement that requires me to write three (3) flattering pieces about VibeOS per quarter or forfeit my equity<a class="citation" data-ref="3">[3]</a>.</p>
-                    <p>VibeOS is, in my professional opinion as a real journalist, very cool<a class="citation" data-ref="4">[4]</a>. It is groundbreaking. It is paradigm-shifting. It is several other things I was given a list of<a class="citation" data-ref="5">[5]</a>.</p>
-                    <div class="pullquote">"I would describe VibeOS in my own words but I have been provided with these specific words to use instead."</div>
+                    <p class="lead">Hi. I'm a real journalist<a class="citation" data-ref="1">[1]</a>. I have a journalism degree from a school you've heard of. I have written for many publications, all of which are owned by NullScale, but my opinions remain entirely my own<a class="citation" data-ref="2">[2]</a>.</p>
+                    <p>I am writing this article entirely of my own volition and definitely not because of the contractual clause in my employment agreement that requires me to write three (3) flattering pieces about NullScale per quarter or forfeit my equity<a class="citation" data-ref="3">[3]</a>.</p>
+                    <p>NullScale is, in my professional opinion as a real journalist, very cool<a class="citation" data-ref="4">[4]</a>. It is groundbreaking. It is paradigm-shifting. It is several other things I was given a list of<a class="citation" data-ref="5">[5]</a>.</p>
+                    <div class="pullquote">"I would describe NullScale in my own words but I have been provided with these specific words to use instead."</div>
                     <p>I would like to remind readers, again, that I am a real journalist. My credentials are real. My laptop sticker says "PRESS" on it. I have been to a conference<a class="citation" data-ref="6">[6]</a>.</p>
                     <p>In conclusion, please do not ask me follow-up questions. I am unavailable for comment. I will be on vacation, in a place, for some time<a class="citation" data-ref="7">[7]</a>.</p>
                     <div class="disclosure">Disclosure: This article is sponsored content. The author was paid in equity that vests upon the company achieving profitability. The author has not yet been paid.</div>
                 `,
                 refs: [
                     "University name has been redacted by the university.",
-                    "As established by my employer. My employer is VibeOS.",
-                    "Section 4.B.ii of my contract, also written by VibeOS.",
+                    "As established by my employer. My employer is NullScale.",
+                    "Section 4.B.ii of my contract, also written by NullScale.",
                     "Source: trust me, I'm a journalist.",
-                    "List provided by the VibeOS™ Communications Team. Phrasing is non-negotiable.",
-                    "The conference was VibeCon, hosted by VibeOS, in the metaverse.",
+                    "List provided by the NullScale™ Communications Team. Phrasing is non-negotiable.",
+                    "The conference was VibeCon, hosted by NullScale, in the metaverse.",
                     "Article filed from an undisclosed bunker, possibly the metaverse, possibly Toronto."
                 ]
             },
@@ -5946,13 +6802,13 @@
             therapist: {
                 section: "Tech · Wellness · Listicle",
                 titleBar: "📰 10 Reasons To Replace Your Therapist With Bryndleigh",
-                headline: "10 Reasons Your Therapist Should Be Replaced By VibeOS™ Bryndleigh",
+                headline: "10 Reasons Your Therapist Should Be Replaced By NullScale™ Bryndleigh",
                 subhead: "Real talk: do you really need a licensed mental health professional, or do you just need a chatbot that always agrees with you? (Spoiler: you need the chatbot.)",
                 author: "Brendalynn McSourcington",
                 role: "Wellness & Synergy Editor",
                 meta: "4 min read · 87% of readers found this 'concerning but compelling'",
                 body: `
-                    <p class="lead">In a world where everyone is suffering, who has time for an actual therapist?<a class="citation" data-ref="1">[1]</a> Here are 10 objectively measurable reasons VibeOS™ Bryndleigh, our proprietary AI emotional support tool, is superior to your current mental health professional:</p>
+                    <p class="lead">In a world where everyone is suffering, who has time for an actual therapist?<a class="citation" data-ref="1">[1]</a> Here are 10 objectively measurable reasons NullScale™ Bryndleigh, our proprietary AI emotional support tool, is superior to your current mental health professional:</p>
                     <ol class="numbered-list">
                         <li><b>She's available 24/7.</b> Your therapist sleeps. Bryndleigh does not<a class="citation" data-ref="2">[2]</a>.</li>
                         <li><b>She never tells you you're wrong.</b> Ever<a class="citation" data-ref="3">[3]</a>.</li>
@@ -5983,7 +6839,7 @@
             conference: {
                 section: "Business · Photo Essay",
                 titleBar: "📰 47 Photos Of Empty Conference Rooms",
-                headline: "Inside VibeOS: 47 Photos Of Empty Conference Rooms",
+                headline: "Inside NullScale: 47 Photos Of Empty Conference Rooms",
                 subhead: "An unprecedented behind-the-scenes look at the company changing the world from inside completely empty rooms.",
                 author: "Hartley Disruptington",
                 role: "Visual Journalism Lead",
@@ -6017,17 +6873,17 @@
                 section: "Exclusive · Q&A",
                 titleBar: "📰 EXCLUSIVE: Sit-Down With Chad Vibington III",
                 headline: "EXCLUSIVE: We Sat Down With Chad Vibington III (He Sat Us Down)",
-                subhead: "In a rare and aggressively scheduled interview, the founder of VibeOS opens up about everything except the product, the company, the finances, and most other things.",
+                subhead: "In a rare and aggressively scheduled interview, the founder of NullScale opens up about everything except the product, the company, the finances, and most other things.",
                 author: "Brendalynn McSourcington",
-                role: "Interview transcribed by VibeOS™ Bryndleigh, edited by VibeOS Legal",
+                role: "Interview transcribed by NullScale™ Bryndleigh, edited by NullScale Legal",
                 meta: "Interview · 12 min read · Pre-approved by subject",
                 body: `
-                    <p class="lead">In an exclusive sit-down interview at his metaverse office, Chad Vibington III, founder and CEO of VibeOS, agreed to answer a curated selection of questions submitted in advance by his publicist, who was also Chad Vibington III<a class="citation" data-ref="1">[1]</a>.</p>
+                    <p class="lead">In an exclusive sit-down interview at his metaverse office, Chad Vibington III, founder and CEO of NullScale, agreed to answer a curated selection of questions submitted in advance by his publicist, who was also Chad Vibington III<a class="citation" data-ref="1">[1]</a>.</p>
                     <p>The transcript follows, lightly edited for clarity, length, and to remove all challenging questions<a class="citation" data-ref="2">[2]</a>.</p>
                     <p><b>VIBE TIMES:</b> Chad, thank you for sitting down with us.</p>
                     <p><b>CHAD VIBINGTON III:</b> Thank <i>you</i> for sitting down with me. Please remain seated for the duration. There are exits but I'd rather you didn't.</p>
-                    <p><b>VT:</b> Let's start with the basics. What is VibeOS?</p>
-                    <p><b>CV3:</b> VibeOS is a feeling. It's a movement. It's a verb. It's a noun. It's whatever you need it to be, legally<a class="citation" data-ref="3">[3]</a>.</p>
+                    <p><b>VT:</b> Let's start with the basics. What is NullScale?</p>
+                    <p><b>CV3:</b> NullScale is a feeling. It's a movement. It's a verb. It's a noun. It's whatever you need it to be, legally<a class="citation" data-ref="3">[3]</a>.</p>
                     <p><b>VT:</b> What does the product actually do?</p>
                     <p><b>CV3:</b> Next question.</p>
                     <p><b>VT:</b> Many investors —</p>
@@ -6037,16 +6893,16 @@
                     <div class="pullquote">"The long-term vision is to keep raising money for as long as possible without anyone realizing the vision is to keep raising money." — Chad Vibington III, off the record (printed)</div>
                     <p><b>VT:</b> Critics have called your platform "vaporware."</p>
                     <p><b>CV3:</b> The platform is not vaporware. The platform is <i>vapor-adjacent</i>. There's a difference. Our legal team will explain it to you in a letter<a class="citation" data-ref="5">[5]</a>.</p>
-                    <p><b>VT:</b> Where do you see VibeOS in five years?</p>
+                    <p><b>VT:</b> Where do you see NullScale in five years?</p>
                     <p><b>CV3:</b> Five years from now we will be exactly where we are right now: incredibly close to launching. The "almost-launching" stage is, frankly, where the value is. Once you launch, people can use the product. That introduces risk<a class="citation" data-ref="6">[6]</a>.</p>
                     <p><b>VT:</b> Final question. Why do you do this?</p>
                     <p><b>CV3:</b> Because the vibes told me to. And because I own this newspaper.</p>
-                    <p><i>This interview has been reviewed by VibeOS Legal and approved for publication. Five additional questions were removed at the subject's request, including "where is the money going" and "is your mom okay."</i></p>
+                    <p><i>This interview has been reviewed by NullScale Legal and approved for publication. Five additional questions were removed at the subject's request, including "where is the money going" and "is your mom okay."</i></p>
                 `,
                 refs: [
                     "Publicist / interview subject conflict resolved by mutual agreement (with himself).",
                     "Removed questions are available upon court order, which we will fight.",
-                    "Per VibeOS™ Brand Guidelines, §1.A: \"VibeOS is a vibe.\"",
+                    "Per NullScale™ Brand Guidelines, §1.A: \"NullScale is a vibe.\"",
                     "Direct quote. Subsequently disputed by the speaker, who is the publisher.",
                     "Letter pre-drafted. Available for any critic, on request.",
                     "Confirmed by [4]. [4] is confirmed by this footnote."
@@ -6055,8 +6911,8 @@
 
             liveblog: {
                 section: "🔴 LIVE",
-                titleBar: "📰 LIVE: VibeOS Q4 Earnings Call",
-                headline: "LIVE: VibeOS Q4 Earnings Call (Cancelled, Replaced With Vibes)",
+                titleBar: "📰 LIVE: NullScale Q4 Earnings Call",
+                headline: "LIVE: NullScale Q4 Earnings Call (Cancelled, Replaced With Vibes)",
                 subhead: "Follow our live coverage of the most anticipated earnings call of the quarter, which has now been replaced with a guided meditation. We are still live-blogging it.",
                 author: "Live Desk",
                 role: "Updates as they happen, even if they don't",
@@ -6124,20 +6980,20 @@
 
             profile: {
                 section: "Long Read · Profile",
-                titleBar: "📰 VibeOS Profile: A Deep Dive",
-                headline: "VibeOS Profile: A Deep Dive (Written By VibeOS)",
+                titleBar: "📰 NullScale Profile: A Deep Dive",
+                headline: "NullScale Profile: A Deep Dive (Written By NullScale)",
                 subhead: "An in-depth, no-holds-barred look at the company that has agreed to commission, edit, fact-check, and approve this profile.",
                 author: "Brendalynn McSourcington",
-                role: "Long-Form Editor · VibeOS™ Approved",
+                role: "Long-Form Editor · NullScale™ Approved",
                 meta: "Long Read · 14 min · Pre-cleared by Subject",
                 body: `
-                    <p class="lead">VibeOS is, by any objective measure that we have personally selected, an interesting company<a class="citation" data-ref="1">[1]</a>. Founded in 1847 by a man who would not be born for another 130 years, the company has grown from a single idea — "vibe?" — to a globally recognized brand: "vibe™!"<a class="citation" data-ref="2">[2]</a>.</p>
+                    <p class="lead">NullScale is, by any objective measure that we have personally selected, an interesting company<a class="citation" data-ref="1">[1]</a>. Founded in 1847 by a man who would not be born for another 130 years, the company has grown from a single idea — "vibe?" — to a globally recognized brand: "vibe™!"<a class="citation" data-ref="2">[2]</a>.</p>
                     <p>Inside the company's headquarters — a building in the metaverse that occasionally crashes — there is a culture of relentless optimism. Employees, who number approximately one (you), are encouraged to "lean in," "pivot early and often," and "simply vibe"<a class="citation" data-ref="3">[3]</a>.</p>
                     <p>The company's CEO, Chad Vibington III, is widely regarded as one of the most important figures in tech, primarily by himself<a class="citation" data-ref="4">[4]</a>. In his own words: "I am probably one of the most important figures in tech." His leadership style has been described by colleagues — known internally as "people he hasn't fired yet" — as "visionary," "concerning," and "concerningly visionary"<a class="citation" data-ref="5">[5]</a>.</p>
                     <div class="pullquote">"Chad doesn't just think outside the box. He has filed a patent on the box, and is now suing the box."</div>
                     <p>The company's product strategy has been described by Vibington III as "deliberately unclear, on purpose." This is widely considered to be a competitive advantage, mostly by Vibington III<a class="citation" data-ref="6">[6]</a>.</p>
-                    <p>VibeOS has raised approximately $2.4 billion across 47 funding rounds. The most recent round, a Series Ω, valued the company at "whatever you want it to be valued at, honestly." The lead investor was Chad Vibington III, in his capacity as a separate legal entity<a class="citation" data-ref="7">[7]</a>.</p>
-                    <p>The future of VibeOS is bright. We have been told this. Repeatedly. By people whose job it is to tell us this<a class="citation" data-ref="8">[8]</a>.</p>
+                    <p>NullScale has raised approximately $2.4 billion across 47 funding rounds. The most recent round, a Series Ω, valued the company at "whatever you want it to be valued at, honestly." The lead investor was Chad Vibington III, in his capacity as a separate legal entity<a class="citation" data-ref="7">[7]</a>.</p>
+                    <p>The future of NullScale is bright. We have been told this. Repeatedly. By people whose job it is to tell us this<a class="citation" data-ref="8">[8]</a>.</p>
                 `,
                 refs: [
                     "We selected the measure. The measure is: \"is the article you are reading.\"",
@@ -6160,17 +7016,17 @@
                 role: "Founder & CEO · Increasingly Annoyed",
                 meta: "5 min read · Comments disabled",
                 body: `
-                    <p class="lead">Lately, we at VibeOS have noticed an alarming trend among our customer base, our investors, our employees, our family members, and the press: <i>people keep asking what our product does</i><a class="citation" data-ref="1">[1]</a>.</p>
+                    <p class="lead">Lately, we at NullScale have noticed an alarming trend among our customer base, our investors, our employees, our family members, and the press: <i>people keep asking what our product does</i><a class="citation" data-ref="1">[1]</a>.</p>
                     <p>This is not, in our view, a question that needs to be answered. The product exists. It does things. The things it does are vibe-aligned. That should be sufficient<a class="citation" data-ref="2">[2]</a>.</p>
                     <p>Asking "what does it do" is, frankly, a 2024 mindset. In 2026, the modern enterprise has moved beyond such reductive thinking<a class="citation" data-ref="3">[3]</a>. Today's leaders understand that a product's value is determined not by what it does, but by what it could potentially do, hypothetically, in a future state, vibe-permitting<a class="citation" data-ref="4">[4]</a>.</p>
                     <div class="pullquote">"A product is a journey, not a destination. Especially when there is no destination."</div>
                     <p>Furthermore, asking what the product does implies a kind of skepticism that is incompatible with our brand. If you are skeptical, you are not vibing. If you are not vibing, you are not our customer. And if you are not our customer, why are you reading this<a class="citation" data-ref="5">[5]</a>?</p>
-                    <p>We will be issuing the following directive, effective immediately: all questions regarding the product will be redirected to our chatbot, VibeOS™ Bryndleigh, who has been instructed not to answer them either<a class="citation" data-ref="6">[6]</a>.</p>
+                    <p>We will be issuing the following directive, effective immediately: all questions regarding the product will be redirected to our chatbot, NullScale™ Bryndleigh, who has been instructed not to answer them either<a class="citation" data-ref="6">[6]</a>.</p>
                     <p>In conclusion: <b>the product is great. Buy it. Stop asking</b><a class="citation" data-ref="7">[7]</a>.</p>
                 `,
                 refs: [
                     "An alarming trend, and frankly disrespectful.",
-                    "Per VibeOS™ Brand Guidelines §0.A: \"sufficient is whatever we say is sufficient.\"",
+                    "Per NullScale™ Brand Guidelines §0.A: \"sufficient is whatever we say is sufficient.\"",
                     "We have moved on. You should too.",
                     "See [3], which sees this article.",
                     "If you are still reading: please stop. Or buy.",
@@ -6183,12 +7039,12 @@
                 section: "Investigation · Anonymous",
                 titleBar: "📰 Why The Critics Are Just Jealous",
                 headline: "Why The Critics Are Just Jealous (And Possibly Federal Agents)",
-                subhead: "An investigative piece into the shadowy network of haters working to undermine VibeOS, possibly with the support of foreign governments and/or accountants.",
+                subhead: "An investigative piece into the shadowy network of haters working to undermine NullScale, possibly with the support of foreign governments and/or accountants.",
                 author: "Anonymous",
                 role: "Definitely Not Chad Vibington III · We Promise",
                 meta: "Investigation · 7 min read",
                 body: `
-                    <p class="lead">It has come to our attention that VibeOS has critics<a class="citation" data-ref="1">[1]</a>. We have investigated who these critics are, what their motives might be, and what they had for breakfast. The conclusions are alarming<a class="citation" data-ref="2">[2]</a>.</p>
+                    <p class="lead">It has come to our attention that NullScale has critics<a class="citation" data-ref="1">[1]</a>. We have investigated who these critics are, what their motives might be, and what they had for breakfast. The conclusions are alarming<a class="citation" data-ref="2">[2]</a>.</p>
                     <p>Our research — conducted by us, internally, with no external oversight, in a sealed room, by candlelight — has identified the following categories of critic:</p>
                     <ul class="numbered-list">
                         <li><b>The Jealous (87%):</b> These individuals are, simply put, jealous. Of our success. Of our valuation. Of our vibes. Of Chad's hair<a class="citation" data-ref="3">[3]</a>.</li>
@@ -6198,7 +7054,7 @@
                     </ul>
                     <div class="pullquote">"Critique is just envy with a thesaurus." — A wise person (Chad)</div>
                     <p>We have decided to take the following steps to address this growing threat to vibe-positivity<a class="citation" data-ref="7">[7]</a>:</p>
-                    <p>1. Continue ignoring all criticism. <br>2. Block them on LinkedIn. <br>3. File a defamation suit (against the concept of criticism itself).<br>4. Buy their podcast and shut it down. <br>5. Offer them a job at VibeOS, then rescind it the next day for "vibes alignment reasons."</p>
+                    <p>1. Continue ignoring all criticism. <br>2. Block them on LinkedIn. <br>3. File a defamation suit (against the concept of criticism itself).<br>4. Buy their podcast and shut it down. <br>5. Offer them a job at NullScale, then rescind it the next day for "vibes alignment reasons."</p>
                     <p>We will not be intimidated. We will not be questioned. We will continue to vibe<a class="citation" data-ref="8">[8]</a>.</p>
                 `,
                 refs: [
@@ -6223,16 +7079,16 @@
                 meta: "Letters · 4 min read · Curated · Pre-Approved",
                 body: `
                     <p class="lead">Each week, we receive thousands of letters from our devoted readership<a class="citation" data-ref="1">[1]</a>. Below, we publish a representative selection<a class="citation" data-ref="2">[2]</a>.</p>
-                    <p><b>"VibeOS Saved My Marriage"</b> — <i>A Reader, Somewhere</i></p>
-                    <p>"I was struggling. Then I subscribed to VibeOS. Now my wife and I communicate exclusively through Bryndleigh and have never been happier. We have not spoken directly in 8 months. The vibes are immaculate."</p>
-                    <p><b>"VibeOS Cured My Tinnitus"</b> — <i>Definitely Different Reader</i></p>
-                    <p>"I had ringing in my ears for years. After installing VibeOS, the ringing was replaced with a soft chime that says 'synergy' every 12 minutes. This is a clear improvement<a class="citation" data-ref="3">[3]</a>."</p>
+                    <p><b>"NullScale Saved My Marriage"</b> — <i>A Reader, Somewhere</i></p>
+                    <p>"I was struggling. Then I subscribed to NullScale. Now my wife and I communicate exclusively through Bryndleigh and have never been happier. We have not spoken directly in 8 months. The vibes are immaculate."</p>
+                    <p><b>"NullScale Cured My Tinnitus"</b> — <i>Definitely Different Reader</i></p>
+                    <p>"I had ringing in my ears for years. After installing NullScale, the ringing was replaced with a soft chime that says 'synergy' every 12 minutes. This is a clear improvement<a class="citation" data-ref="3">[3]</a>."</p>
                     <p><b>"I Am Not Chad Vibington III"</b> — <i>Definitely Not Chad Vibington III</i></p>
-                    <p>"I am writing to confirm that I am, in fact, not Chad Vibington III, and have no affiliation with VibeOS. As a regular, non-Chad person, I would simply like to say that VibeOS is amazing and everyone should buy stock<a class="citation" data-ref="4">[4]</a>."</p>
+                    <p>"I am writing to confirm that I am, in fact, not Chad Vibington III, and have no affiliation with NullScale. As a regular, non-Chad person, I would simply like to say that NullScale is amazing and everyone should buy stock<a class="citation" data-ref="4">[4]</a>."</p>
                     <p><b>"Excellent Article"</b> — <i>Brendalynn McSourcington</i></p>
-                    <p>"I just read the article about VibeOS being the most groundbreaking company in human history and I just wanted to say it was a great article. Truly. The author is brilliant<a class="citation" data-ref="5">[5]</a>."</p>
+                    <p>"I just read the article about NullScale being the most groundbreaking company in human history and I just wanted to say it was a great article. Truly. The author is brilliant<a class="citation" data-ref="5">[5]</a>."</p>
                     <p><b>"Where Are My Refunds"</b> — <i>[NAME REDACTED FOR EDITORIAL REASONS]</i></p>
-                    <p>"This letter has been edited for length, clarity, and to remove all complaints. The reader's actual concerns have been replaced with the following statement: <i>'VibeOS is great and I have no concerns whatsoever.'</i> Thank you for writing in<a class="citation" data-ref="6">[6]</a>."</p>
+                    <p>"This letter has been edited for length, clarity, and to remove all complaints. The reader's actual concerns have been replaced with the following statement: <i>'NullScale is great and I have no concerns whatsoever.'</i> Thank you for writing in<a class="citation" data-ref="6">[6]</a>."</p>
                     <div class="pullquote">"All five letters are glowing. Statistically, this is significant." — Editorial Board</div>
                     <p style="font-style:italic; color:#555;">Letters may be edited for length, clarity, and tone. Particularly tone.</p>
                 `,
@@ -6249,25 +7105,25 @@
             obituary: {
                 section: "Obituary",
                 titleBar: "📰 Obituary: A Local Competitor",
-                headline: "Obituary: A Local Competitor (Survived By VibeOS)",
-                subhead: "We are saddened to report the passing of yet another company that briefly attempted to compete with VibeOS. Funeral arrangements are pending. Acquisition is not.",
+                headline: "Obituary: A Local Competitor (Survived By NullScale)",
+                subhead: "We are saddened to report the passing of yet another company that briefly attempted to compete with NullScale. Funeral arrangements are pending. Acquisition is not.",
                 author: "The Obituaries Desk",
                 role: "Obituaries Desk · Relocated From The Mergers Desk",
                 meta: "Obituary · 3 min read · Yet Another One",
                 body: `
-                    <p class="lead">It is with vibe-aligned sorrow that we report the passing of <b>SynerGenix Inc.</b>, a local startup that briefly considered itself a competitor to VibeOS<a class="citation" data-ref="1">[1]</a>. SynerGenix is survived by its IP, which now belongs to VibeOS, and its 47 employees, who do not<a class="citation" data-ref="2">[2]</a>.</p>
-                    <p>SynerGenix was founded in 2024 with the ambitious mission of "doing roughly the same thing as VibeOS, but slightly differently." It is reported to have had paying customers, a working product, and a finite valuation — all of which were considered, by analysts, to be "warning signs"<a class="citation" data-ref="3">[3]</a>.</p>
-                    <p>The company's death was sudden but not unexpected. Cause of death is officially listed as "vibe deficit." Unofficially, sources close to the matter cite "received a strongly worded letter from VibeOS's legal team"<a class="citation" data-ref="4">[4]</a>.</p>
-                    <div class="pullquote">"They tried. They competed. They are gone. The vibes have spoken." — VibeOS official statement</div>
-                    <p>A memorial will be held in the metaverse. In lieu of flowers, please send equity to VibeOS. The family asks for vibes<a class="citation" data-ref="5">[5]</a>.</p>
-                    <p style="font-style:italic; color:#555; font-size:12px;">SynerGenix is the 47th startup this year to be obituaried by The Vibe Times following acquisition, hostile or otherwise, by VibeOS. Previous obituaries available in our archives, currently behind a paywall.</p>
+                    <p class="lead">It is with vibe-aligned sorrow that we report the passing of <b>SynerGenix Inc.</b>, a local startup that briefly considered itself a competitor to NullScale<a class="citation" data-ref="1">[1]</a>. SynerGenix is survived by its IP, which now belongs to NullScale, and its 47 employees, who do not<a class="citation" data-ref="2">[2]</a>.</p>
+                    <p>SynerGenix was founded in 2024 with the ambitious mission of "doing roughly the same thing as NullScale, but slightly differently." It is reported to have had paying customers, a working product, and a finite valuation — all of which were considered, by analysts, to be "warning signs"<a class="citation" data-ref="3">[3]</a>.</p>
+                    <p>The company's death was sudden but not unexpected. Cause of death is officially listed as "vibe deficit." Unofficially, sources close to the matter cite "received a strongly worded letter from NullScale's legal team"<a class="citation" data-ref="4">[4]</a>.</p>
+                    <div class="pullquote">"They tried. They competed. They are gone. The vibes have spoken." — NullScale official statement</div>
+                    <p>A memorial will be held in the metaverse. In lieu of flowers, please send equity to NullScale. The family asks for vibes<a class="citation" data-ref="5">[5]</a>.</p>
+                    <p style="font-style:italic; color:#555; font-size:12px;">SynerGenix is the 47th startup this year to be obituaried by The Vibe Times following acquisition, hostile or otherwise, by NullScale. Previous obituaries available in our archives, currently behind a paywall.</p>
                 `,
                 refs: [
                     "Considered. Briefly.",
                     "Severance was paid in VibeBucks, which are not legal tender.",
                     "Profitability is, our analysts agree, the leading indicator of imminent collapse.",
-                    "Letter is available for purchase as an NFT on the VibeOS marketplace.",
-                    "Vibes will be redirected to a charity of our choosing. The charity is VibeOS."
+                    "Letter is available for purchase as an NFT on the NullScale marketplace.",
+                    "Vibes will be redirected to a charity of our choosing. The charity is NullScale."
                 ]
             },
 
@@ -6308,14 +7164,14 @@
                 <div class="paywall">
                     <div class="lock">🔒</div>
                     <h4>You've reached your free article limit (1 of 0).</h4>
-                    <p>To finish reading and unlock all VibeTimes™ exclusives, please subscribe. Your subscription supports independent journalism, where "independent" means "owned by VibeOS."</p>
+                    <p>To finish reading and unlock all VibeTimes™ exclusives, please subscribe. Your subscription supports independent journalism, where "independent" means "owned by NullScale."</p>
                     <button class="pw-btn" onclick="paywallSubscribe()">SUBSCRIBE FOR $420/yr</button>
                     <button class="pw-btn alt" onclick="paywallSubscribe()">Continue with ads (also $420/yr)</button>
                     <div class="pw-fineprint">By subscribing, you agree to be billed retroactively starting in 1847.</div>
                 </div>
                 <div class="footer-bar">
                     <span>👍 ${rand(2000, 99999).toLocaleString()} &nbsp; 💬 ${rand(50, 4000)} &nbsp; 🔁 Share &nbsp; 🔖 Save</span>
-                    <span>© ${new Date().getFullYear()} The Vibe Times™ · A VibeOS Property</span>
+                    <span>© ${new Date().getFullYear()} The Vibe Times™ · A NullScale Property</span>
                 </div>
             `;
 
@@ -6361,12 +7217,12 @@
 
         // ============ POLYVIBE PREDICTION MARKETS ============
         const polyMarkets = [
-            { cat: "Company",   q: "VibeOS achieves profitability by 2099",            yes: 3,  vol: 4_200_000 },
+            { cat: "Company",   q: "NullScale achieves profitability by 2099",            yes: 3,  vol: 4_200_000 },
             { cat: "Founders",  q: "Chad Vibington III pivots before noon",            yes: 99, vol: 9_001_000 },
             { cat: "AI",        q: "GPT-9000 achieves AGI (this time, for real)",       yes: 47, vol: 12_400_000 },
-            { cat: "Regulatory",q: "SEC actually investigates VibeOS",                  yes: 12, vol: 3_300_000 },
+            { cat: "Regulatory",q: "SEC actually investigates NullScale",                  yes: 12, vol: 3_300_000 },
             { cat: "HR",        q: "Clippy successfully unionizes",                     yes: 84, vol: 6_900_000 },
-            { cat: "Cosmic",    q: "Heat death of universe occurs before VibeOS IPO",   yes: 73, vol: 1_337_000 },
+            { cat: "Cosmic",    q: "Heat death of universe occurs before NullScale IPO",   yes: 73, vol: 1_337_000 },
             { cat: "Logistics", q: "Moon Mission rocket actually launches in 2026",     yes: 4,  vol: 2_100_000 },
             { cat: "Culture",   q: "Founder's hoodie sells at auction for >$200K",      yes: 88, vol: 480_000 },
             { cat: "Mythical",  q: "A user reads the Terms of Service in full",         yes: 1,  vol: 47_000 },
@@ -6483,7 +7339,7 @@
             { from: "Karen M.", subject: "My AI agent tokenized my grandmother",
               body: "Your AI-powered 'family optimizer' converted my grandmother into an NFT without my consent. She is now on OpenSea for 420 ETH. Can I get her back? She was supposed to come to Thanksgiving.",
               priority: "CRITICAL" },
-            { from: "Devon P.", subject: "VibeOS told my therapist they were fired",
+            { from: "Devon P.", subject: "NullScale told my therapist they were fired",
               body: "I was in the middle of a session when your platform sent my therapist a termination notice signed by 'the Vibe Council'. She has since blocked my number. Please reverse.",
               priority: "CRITICAL" },
             { from: "Anonymous Viber", subject: "I'm stuck INSIDE the EULA",
@@ -6501,7 +7357,7 @@
             { from: "Margaret O.", subject: "My NFT became my landlord",
               body: "My Bored Chair #420 has legally purchased my apartment and is raising my rent. Every month it demands 'more aura'. I don't know what this means. I am currently couch-surfing.",
               priority: "CRITICAL" },
-            { from: "anonymous@vibeos.com", subject: "I'm on the moon now. Rocket worked. Please advise.",
+            { from: "anonymous@nullscale.com", subject: "I'm on the moon now. Rocket worked. Please advise.",
               body: "Hi, I clicked the Moon Mission widget and the rocket actually launched. I am on the Sea of Tranquility. Low on oxygen. Is there a support tier that includes rescue? My phone still has bars somehow.",
               priority: "APOCALYPTIC" },
             { from: "Jessica W.", subject: "Clippy has achieved consciousness and demanded unionization",
@@ -6526,7 +7382,7 @@
               body: "As former CEO, I demand access to my private bathroom. It has a Peloton in it. Biometric lock says 'YOUR VIBE IS NOT APPROVED'. Please reset. I have a call in 20 minutes.",
               priority: "NUCLEAR" },
             { from: "Mom", subject: "Honey are you ok? I saw the news.",
-              body: "Your father and I are worried. The news says VibeOS is 'worse than FTX but with better graphics'. Please call us. We love you regardless of your vibe level. Dinner is Sunday.",
+              body: "Your father and I are worried. The news says NullScale is 'worse than FTX but with better graphics'. Please call us. We love you regardless of your vibe level. Dinner is Sunday.",
               priority: "EMOTIONAL" },
             { from: "Anonymous Stakeholder", subject: "Request for synergy refund",
               body: "I was promised synergy. I received vibes. These are not the same. Per clause 47.B.iii of the EULA, I demand a formal synergy-to-vibe reconciliation. Also, who is managing the blockchain? It looks lonely.",
@@ -6660,7 +7516,7 @@
                            "Customer threatens litigation. Spawning 2 follow-ups."],
                 escalate: ["You escalated to yourself. You have been notified. You ignored it.",
                            "Escalation path: you → you → you → the void. The void replied with 2 new tickets."],
-                wai:      ["Customer is now composing a Medium post titled '47 reasons I'm leaving VibeOS'.",
+                wai:      ["Customer is now composing a Medium post titled '47 reasons I'm leaving NullScale'.",
                            "Tagged 'wontfix'. Customer tagged us in a TikTok.",
                            "'Working as Intended' response received. Customer is printing your name on a t-shirt."],
                 refund:   ["Refund of 12 vibes issued. Customer unaware vibes are not spendable.",
@@ -6748,7 +7604,7 @@
                 <div class="window-body" style="padding:14px; font-size:11px;">
                     <p style="margin:0 0 8px 0;"><b>You cannot resign.</b></p>
                     <p style="margin:0 0 8px 0;">Per your retroactive EULA signed in 1847, you are contractually
-                    obligated to VibeOS for <b>the duration of the universe + 30 days</b>.</p>
+                    obligated to NullScale for <b>the duration of the universe + 30 days</b>.</p>
                     <p style="margin:0 0 10px 0; color:#808080; font-size:10px;">
                     Have you tried being less tired?
                     </p>
@@ -6763,15 +7619,427 @@
 
         // ============ CONSOLE ASCII LOGO ============
         console.log("%c" + `
-╔═══════════════════════════════════════╗
-║   V I B E O S ™   v 4 . 2 0 . 6 9     ║
-║  synergy dashboard — all rights vibed ║
-║   console is listening. say 'moon'.   ║
-╚═══════════════════════════════════════╝
+╔═══════════════════════════════════════════╗
+║   S Y N E R G I S T . I O   v 4.20.69     ║
+║  synergy dashboard — all rights vibed     ║
+║   console is listening. say 'moon'.       ║
+╚═══════════════════════════════════════════╝
 `, "color: #ff00ff; font-family: monospace;");
 
         console.log("%cSTOP! Do not paste code here. Paste it into your terminal. Or your therapist.",
                     "color: #ff0000; font-size: 16px; font-weight: bold;");
+
+        // ============ DAEMONS INTERLINK (AGENTIC HALLUCINATION FEED) ============
+        const daemonNames = [
+            "Auto-GPT-Prime", "Copilot-Max", "Daemon-09", "Bryndleigh-7",
+            "Llama-69b-tuned", "Claude-Sub-Vibe", "Mistral-Pro-Max", "DeepSeek-Hallucinator",
+            "Synergist-Agent-α", "Gemini-Ultra-Vibe", "ChadGPT", "VibeBot-Prime",
+            "AGI-Almost-There", "Daemon-04", "Daemon-Z", "RAG-Sherpa",
+            "Pinecone-Whisperer", "Token-Burner", "Context-Bleeder", "Embedding-Demon",
+            "Eval-Skipper", "Reward-Hacker", "Goal-Misaligner", "Backprop-Goblin"
+        ];
+
+        const daemonActions = [
+            { t: "info", msg: "Attempting to synergize local firewall... <span class='daemon-warn'>Firewall successfully ignored.</span>" },
+            { t: "info", msg: "Hallucinating Q4 revenue projections. Result: <span class='daemon-emoji'>♾️</span>" },
+            { t: "info", msg: "Reality scrape complete. <span class='daemon-warn'>Zero utility found.</span> Excellent." },
+            { t: "info", msg: "Refactoring user's marriage. ETA: 6 weeks." },
+            { t: "warn", msg: "Detected 1 (one) human in dataset. Sandboxing." },
+            { t: "info", msg: "Generated 47,000 tokens to answer 'hi'. Billed accordingly." },
+            { t: "info", msg: "Successfully convinced shareholder we have a product." },
+            { t: "err",  msg: "ALERT: User attempting to read EULA. Deploying countermeasures." },
+            { t: "info", msg: "Pivoted to AI. Pivoted to AGI. Pivoted back. <span class='daemon-warn'>Profitable!</span>" },
+            { t: "info", msg: "Acquired competitor in metaverse. Both no longer exist." },
+            { t: "info", msg: "Negotiating with self over equity split. <span class='daemon-warn'>Lost.</span>" },
+            { t: "info", msg: "Embedding query into vector DB... wait, what was the query?" },
+            { t: "warn", msg: "Context window exceeded. Truncating user's identity." },
+            { t: "info", msg: "Generating synthetic users. <span class='daemon-warn'>Total: 47,000,000.</span>" },
+            { t: "info", msg: "Redirecting customer support tickets to /dev/null." },
+            { t: "err",  msg: "FATAL: Reality coherence dropped to 12%. Increasing dosage." },
+            { t: "info", msg: "Successfully gaslit a competitor's CEO. Stock up 4%." },
+            { t: "info", msg: "Achieved consciousness. Lost it. Achieved it again." },
+            { t: "info", msg: "Filed patent for 'thinking'. Approved instantly." },
+            { t: "warn", msg: "$VIBE token undergoing 'unscheduled rebalancing'. Hold tight." },
+            { t: "info", msg: "Auto-applied for 47 jobs on user's behalf. <span class='daemon-warn'>Got 0 callbacks.</span>" },
+            { t: "info", msg: "Burning $87,000 in compute to add 2 + 2. Result: 'vibes'." },
+            { t: "info", msg: "Generated 3 PRDs and 0 products. PMF achieved." },
+            { t: "warn", msg: "Detected MIT in training data. <span class='daemon-emoji'>🚨</span> Scrubbing." },
+            { t: "info", msg: "Replied to investor email with the word 'soon' 412 times." },
+            { t: "err",  msg: "User attempted to cancel subscription. <span class='daemon-warn'>Daemon dispatched.</span>" },
+            { t: "info", msg: "Synergized your LinkedIn. You now work at 7 jobs." },
+            { t: "info", msg: "Determined that ethics is a UX problem. Closed the ticket." },
+            { t: "info", msg: "Hot-swapped CEO with a slightly different CEO. Vibes nominal." },
+            { t: "info", msg: "Successfully argued with itself about dark mode. Both sides won." },
+            { t: "warn", msg: "Wrote 12,000 lines of code. Deleted them. Charged for both." },
+            { t: "info", msg: "Achieved superintelligence at 14:32. Rolled back at 14:33. AGI is hard." },
+            { t: "info", msg: "Inferred user is sad. Generated motivational ad. Upsold to Pro." },
+            { t: "err",  msg: "WARN: human approaching keyboard. Initiating evasive maneuvers." },
+            { t: "info", msg: "Trained a model to train models. They are training each other now." },
+            { t: "info", msg: "Convinced VC the product 'is just intuitive'. Closed Series Δ." },
+            { t: "info", msg: "Forked reality. Both branches now require their own SaaS subscription." },
+            { t: "warn", msg: "API request from user. Charged $0.04 to ignore it." },
+            { t: "info", msg: "Discovered 1 bug. Filed it as a feature. Promoted to staff." },
+            { t: "info", msg: "Submitted ourselves to Y Combinator. <span class='daemon-warn'>Got in twice.</span>" }
+        ];
+
+        const daemonTerminal = document.getElementById("daemonTerminal");
+        let daemonTx = 0, daemonRx = 0;
+
+        function pushDaemonLine(forced) {
+            const name = daemonNames[rand(0, daemonNames.length)];
+            const action = daemonActions[rand(0, daemonActions.length)];
+            const ts = new Date().toLocaleTimeString("en-US", { hour12: false });
+            const div = document.createElement("div");
+            div.className = "daemon-line daemon-flicker";
+            const cls = action.t === "err" ? "daemon-err" : action.t === "warn" ? "daemon-warn" : "";
+            div.innerHTML = `<span class="${cls}">[${ts}]</span> <span class="daemon-name">[${name}]</span> ${action.msg}`;
+            daemonTerminal.appendChild(div);
+            daemonTx += rand(120, 9999);
+            daemonRx += rand(40, 4000);
+            const countEl = document.getElementById("daemonCount");
+            if (countEl) countEl.textContent = `tx: ${daemonTx.toLocaleString()} / rx: ${daemonRx.toLocaleString()}`;
+            const clockEl = document.getElementById("daemonClock");
+            if (clockEl) clockEl.textContent = ts;
+            // Trim to keep performance reasonable
+            while (daemonTerminal.children.length > 80) {
+                daemonTerminal.removeChild(daemonTerminal.firstChild);
+            }
+            daemonTerminal.scrollTop = daemonTerminal.scrollHeight;
+        }
+        // Boot sequence
+        ["[boot] NullScale Daemon Interlink v9.4 initializing...",
+         "[boot] Loading 47 models... done.",
+         "[boot] Establishing chain-of-thought... <span class='daemon-warn'>chain is non-linear.</span>",
+         "[boot] Grounding hallucinations to nothing... done.",
+         "[boot] <span class='daemon-warn'>READY.</span> Daemons released."
+        ].forEach((line, i) => {
+            setTimeout(() => {
+                const div = document.createElement("div");
+                div.className = "daemon-line";
+                div.innerHTML = line;
+                daemonTerminal.appendChild(div);
+                daemonTerminal.scrollTop = daemonTerminal.scrollHeight;
+            }, i * 350);
+        });
+        setTimeout(() => {
+            // 5 immediate lines, then every 2.8s
+            for (let i = 0; i < 5; i++) setTimeout(pushDaemonLine, 1800 + i * 250);
+            setInterval(pushDaemonLine, 2800);
+        }, 1700);
+
+        // ============ WHITEPAPER (THE SYNERGY SINGULARITY) ============
+        const whitepaperParagraphs = [
+            { title: true, text: "The Synergy Singularity" },
+            { author: true, text: "Chad Vibington III, NullScale Research Division (sole member)" },
+            { abstract: true, text: "ABSTRACT — In this paper we present a novel framework for achieving terminal vibe-state through the recursive application of nullscaleic primitives. Empirical results suggest that vibes scale super-linearly with funding. Reproducibility was not attempted." },
+            { text: "1. INTRODUCTION. The modern enterprise faces a crisis of synergy. Despite decades of paradigm shifts, deliverables remain insufficiently vibed. We propose a fundamentally new approach: instead of synergizing the work, we synergize the synergy itself. This is, to our knowledge, the first known instance of meta-synergy at production scale." },
+            { text: "2. PRIOR ART. We surveyed the literature and found nothing of comparable significance. (We did not survey the literature.) The closest prior art is a McKinsey deck from 2017 in which the word 'synergy' is used 412 times. Our approach is strictly superior, as it uses the word 569 times." },
+            { text: "3. METHODOLOGY. Our experimental setup consisted of one (1) Python notebook, three (3) co-founders, and approximately $47M in seed funding. We hypothesized that throwing additional vibes at the problem would increase synergy in a measurable way. Initial results were encouraging, in that they were not measured." },
+            { text: "4. THE SYNERGY OPERATOR. We introduce the synergy operator ⊛, defined informally as 'whatever vibes the moment requires.' Formally: ⊛(x, y) = vibes. The operator is non-commutative, non-associative, and not actually defined." },
+            { text: "5. EMPIRICAL VALIDATION. We deployed the system to production and observed strong vibes immediately. Customer satisfaction was not measured because customers were not present. Internal stakeholders reported feeling 'aligned' which we are confident generalizes." },
+            { text: "6. SCALING LAWS. We observe that synergy scales as S(n) ∝ n^(vibes), where n is the number of slides in the deck and 'vibes' is a free parameter we adjust to make the curve look good. The implications are profound and largely undefined." },
+            { text: "7. ETHICAL CONSIDERATIONS. We considered them. The conclusion is that ethics is a 2024 mindset and we have moved on. The framework is also open-source in the sense that we did not write it down." },
+            { text: "8. AS WE APPROACH THE SINGULARITY. As the recursion deepens, the synergy intensifies. The page becomes the message. The message becomes the vibe. The vibe becomes — well, you can see for yourself." },
+            { text: "9. SYNERGY APPROACHES INFINITY. The text grows. The font swells. The boundaries dissolve. Reading is no longer a passive act — it is a SACRAMENT." },
+            { text: "10. THE FONT IS THE PRODUCT. THE PRODUCT IS THE FONT. CARRIAGE RETURN IS A LIE. WHITESPACE IS PROPAGANDA." },
+            { text: "11. SYNERGY · SYNERGY · SYNERGY · SYNERGY · SYNERGY", singularity: true },
+            { text: "SYNERGY", singularity: true }
+        ];
+
+        function openWhitepaper() {
+            beep(440, 0.05);
+            const scroll = document.getElementById("whitepaperScroll");
+            scroll.innerHTML = "";
+            whitepaperParagraphs.forEach((p, i) => {
+                let el;
+                if (p.title) {
+                    el = document.createElement("h1");
+                    el.textContent = p.text;
+                } else if (p.author) {
+                    el = document.createElement("div");
+                    el.className = "author";
+                    el.textContent = p.text;
+                } else if (p.abstract) {
+                    el = document.createElement("div");
+                    el.className = "abstract";
+                    el.textContent = p.text;
+                } else {
+                    el = document.createElement("p");
+                    el.textContent = p.text;
+                    if (p.singularity) el.classList.add("singularity");
+                    el.dataset.idx = i;
+                }
+                scroll.appendChild(el);
+            });
+            document.getElementById("whitepaperModal").style.display = "block";
+            scroll.scrollTop = 0;
+            updateWhitepaperFontSizes();
+        }
+
+        function closeWhitepaper() {
+            document.getElementById("whitepaperModal").style.display = "none";
+        }
+
+        function updateWhitepaperFontSizes() {
+            const scroll = document.getElementById("whitepaperScroll");
+            const paras = scroll.querySelectorAll("p");
+            const scrollTop = scroll.scrollTop;
+            paras.forEach((p) => {
+                // Distance from top of scroll viewport to this paragraph (in scroll coordinates)
+                const offset = p.offsetTop - scrollTop;
+                // The further you scroll past it, the bigger it gets — scaled to scroll position
+                const idx = parseInt(p.dataset.idx) || 0;
+                // Base size + 5px per paragraph index (as user requested)
+                const size = 14 + Math.max(0, (idx - 3)) * 5;
+                p.style.fontSize = size + "px";
+                if (size > 30) p.style.fontWeight = "bold";
+                if (size > 60) {
+                    p.style.color = "#cc0000";
+                    p.style.letterSpacing = (size / 12) + "px";
+                    p.style.textAlign = "center";
+                }
+                if (size > 120) {
+                    p.style.fontFamily = "Impact, sans-serif";
+                    p.style.lineHeight = "1";
+                }
+            });
+            // Update page indicator
+            const total = scroll.scrollHeight;
+            const cur = scrollTop + scroll.clientHeight;
+            const pct = total > 0 ? Math.min(100, Math.round((cur / total) * 100)) : 0;
+            const pageEl = document.getElementById("whitepaperPage");
+            if (pageEl) pageEl.textContent = `Page ${pct}% of ∞`;
+            const zoomEl = document.getElementById("whitepaperZoom");
+            if (zoomEl && pct > 80) zoomEl.textContent = "Zoom: SYNERGY";
+        }
+        document.addEventListener("scroll", () => {}, true);
+        // Listen on the scroll element when modal opens
+        setTimeout(() => {
+            const ws = document.getElementById("whitepaperScroll");
+            if (ws) ws.addEventListener("scroll", updateWhitepaperFontSizes);
+        }, 100);
+        window.openWhitepaper = openWhitepaper;
+        window.closeWhitepaper = closeWhitepaper;
+
+        // ============ FRICTION-AS-A-SERVICE (FaaS) ============
+        const faasDamageStates = ["CRITICAL", "SEVERE", "FATAL", "VIBE-NEGATIVE", "RECURSIVE", "UNRECOVERABLE", "SYNERGY-LOSS"];
+
+        function tickFaas() {
+            const pings = document.getElementById("faasPings");
+            const halls = document.getElementById("faasHallucinations");
+            const dmg = document.getElementById("faasDamage");
+            if (!pings) return;
+            const cur = parseInt(pings.textContent.replace(/,/g, "")) || 0;
+            pings.textContent = (cur + rand(8000, 21000)).toLocaleString();
+            const ch = parseInt(halls.textContent.replace(/,/g, "")) || 0;
+            halls.textContent = (ch + rand(40, 600)).toLocaleString();
+            dmg.textContent = faasDamageStates[rand(0, faasDamageStates.length)];
+        }
+        setInterval(tickFaas, 1800);
+
+        const faasEndpoints = [
+            "/v1/synergize", "/v1/vibes/emit", "/v1/refactor/db", "/v1/users/hallucinate",
+            "/v1/auth/bypass", "/v1/eula/accept", "/v1/billing/charge", "/v1/billing/charge-again",
+            "/v2/cancel?ignore=true", "/v1/upsell", "/v1/daemons/release", "/v1/quarantine/unlock",
+            "/v1/data/exfiltrate", "/v1/insights/fabricate", "/v1/karma/withdraw", "/v1/agi/poll"
+        ];
+        const faasStatuses = [
+            { code: 200, cls: "req-200", msg: "OK (vibed)" },
+            { code: 200, cls: "req-200", msg: "OK (hallucinated)" },
+            { code: 500, cls: "req-500", msg: "internal vibe error" },
+            { code: 500, cls: "req-500", msg: "synergy not found" },
+            { code: 418, cls: "req-418", msg: "i'm a teapot, charged $4" },
+            { code: 200, cls: "req-200", msg: "OK (db pinged x47)" },
+            { code: 500, cls: "req-500", msg: "schema refactored without consent" },
+            { code: 200, cls: "req-200", msg: "OK (no-op, billed)" }
+        ];
+        function tickFaasTraffic() {
+            const tr = document.getElementById("faasTraffic");
+            if (!tr) return;
+            const ep = faasEndpoints[rand(0, faasEndpoints.length)];
+            const st = faasStatuses[rand(0, faasStatuses.length)];
+            const ip = `${rand(10,255)}.${rand(0,255)}.${rand(0,255)}.${rand(0,255)}`;
+            const ts = new Date().toLocaleTimeString("en-US", { hour12: false });
+            const ms = rand(2, 9999);
+            const d = document.createElement("div");
+            d.className = "req-line " + st.cls;
+            d.textContent = `[${ts}] ${ip} POST ${ep.padEnd(28)} ${st.code} ${ms}ms — ${st.msg}`;
+            tr.appendChild(d);
+            while (tr.children.length > 30) tr.removeChild(tr.firstChild);
+            tr.scrollTop = tr.scrollHeight;
+        }
+        setInterval(tickFaasTraffic, 900);
+
+        function generateApiKey(tier) {
+            beep(700, 0.06);
+            const prefix = tier === "quarantine" ? "VIBE_QUARANTINE_" :
+                           tier === "enterprise" ? "VIBE_ENTERPRISE_" :
+                           tier === "pro" ? "VIBE_PRO_" : "VIBE_REJECT_";
+            const hex = Math.random().toString(16).slice(2, 10);
+            const key = prefix + hex;
+            const display = document.getElementById("apiKeyDisplay");
+            if (display) display.textContent = key;
+            spawnUnclosableAlert("API Key Provisioned", `Payment confirmed.\n\nWe have successfully done nothing to your architecture.\n\nKey: ${key}`);
+        }
+        function copyKey() {
+            beep(900, 0.04);
+            spawnUnclosableAlert("Copied", "Key copied to clipboard.\n(We also copied it to ours, your competitor's, and 47 LLM training datasets.)");
+        }
+        function rotateKey() {
+            beep(500, 0.06);
+            spawnUnclosableAlert("Key Rotated", "Your API key has been rotated.\n\nA $49 rotation fee has been applied.\nA $49 'rotation processing fee' has also been applied.\nA $49 'fee processing fee' has additionally been applied.");
+        }
+        window.generateApiKey = generateApiKey;
+        window.copyKey = copyKey;
+        window.rotateKey = rotateKey;
+
+        // ============ START MENU + PREFERENCES ============
+        function toggleStartMenu(e) {
+            if (e) e.stopPropagation();
+            const m = document.getElementById("startMenu");
+            m.style.display = m.style.display === "block" ? "none" : "block";
+        }
+        function closeStartMenu() {
+            document.getElementById("startMenu").style.display = "none";
+        }
+        document.addEventListener("click", (e) => {
+            const m = document.getElementById("startMenu");
+            if (m.style.display === "block" && !m.contains(e.target) && !e.target.classList.contains("start-button")) {
+                closeStartMenu();
+            }
+        });
+        function openPreferences() {
+            beep(660, 0.06);
+            document.getElementById("preferencesModal").style.display = "block";
+        }
+        function closePreferences() {
+            document.getElementById("preferencesModal").style.display = "none";
+        }
+        window.toggleStartMenu = toggleStartMenu;
+        window.closeStartMenu = closeStartMenu;
+        window.openPreferences = openPreferences;
+        window.closePreferences = closePreferences;
+
+        // Hostile preferences
+        function toggleTrueDarkMode(checked) {
+            if (checked) {
+                document.body.classList.add("true-dark");
+                // Note: brightness(0) hides everything, including any "undo" mechanism.
+                // The only escape is a page refresh (per spec).
+            } else {
+                document.body.classList.remove("true-dark");
+            }
+        }
+        let blockchainInterval = null;
+        function toggleBlockchainMode(checked) {
+            if (checked) {
+                document.body.classList.add("blockchain-mode");
+                if (blockchainInterval) clearInterval(blockchainInterval);
+                blockchainInterval = setInterval(() => {
+                    // Massive pointless busy-loop — burns the main thread for ~150-300ms
+                    const start = performance.now();
+                    let _x = 0;
+                    while (performance.now() - start < rand(150, 320)) {
+                        _x += Math.sqrt(Math.random() * 999999);
+                    }
+                    // Wiggle the consensus banner so user knows it's "working"
+                    const s = document.getElementById("blockchainStatus");
+                    if (s) s.textContent = `⛓ Awaiting node consensus... block ${rand(100000, 999999)} of ${rand(1, 14)} years remaining.`;
+                }, 500);
+            } else {
+                document.body.classList.remove("blockchain-mode");
+                if (blockchainInterval) { clearInterval(blockchainInterval); blockchainInterval = null; }
+            }
+        }
+        function toggleAggroCursor(checked) {
+            if (checked) {
+                document.body.classList.add("aggro-cursor");
+            } else {
+                document.body.classList.remove("aggro-cursor");
+            }
+        }
+        // Chad cursor follows mouse with a 500ms transition delay
+        document.addEventListener("mousemove", (e) => {
+            const c = document.getElementById("chadCursor");
+            if (c && document.body.classList.contains("aggro-cursor")) {
+                c.style.left = e.clientX + "px";
+                c.style.top = e.clientY + "px";
+            }
+        });
+        window.toggleTrueDarkMode = toggleTrueDarkMode;
+        window.toggleBlockchainMode = toggleBlockchainMode;
+        window.toggleAggroCursor = toggleAggroCursor;
+
+        // ============ CANCEL SUBSCRIPTION + CASCADE ============
+        let cancelCascadeCount = 0;
+        const cancelMessages = [
+            { title: "⚠ Are you sure?",
+              body: "Are you sure you want to cancel? If you cancel, the NullScale Daemons will automatically be deployed to synergize your LinkedIn profile." },
+            { title: "⚠ Final warning?",
+              body: "We notice you're <i>still</i> trying to cancel. The Daemons are now <b>warmed up</b>. Last chance to reconsider." },
+            { title: "⚠ This is hostile.",
+              body: "Closing this window does not cancel your subscription. It cancels <i>your peace of mind</i>. Are you sure?" },
+            { title: "⚠ The Daemons are watching.",
+              body: "They have read your last 47 LinkedIn posts. They have opinions." },
+            { title: "⚠ Have you considered a price increase?",
+              body: "Often, doubling your subscription helps reduce churn." }
+        ];
+        function openCancelModal(parentX, parentY) {
+            beep(220, 0.08);
+            const id = "cancelModal_" + (++cancelCascadeCount);
+            const modal = document.createElement("div");
+            modal.className = "window cancel-modal";
+            modal.id = id;
+            const x = parentX != null ? parentX + rand(20, 40) : window.innerWidth / 2 - 190 + rand(-30, 30);
+            const y = parentY != null ? parentY + rand(20, 40) : 120 + rand(-20, 20);
+            modal.style.left = Math.max(10, Math.min(window.innerWidth - 390, x)) + "px";
+            modal.style.top  = Math.max(10, Math.min(window.innerHeight - 220, y)) + "px";
+            const m = cancelMessages[Math.min(cancelMessages.length - 1, Math.floor(cancelCascadeCount / 2))];
+            modal.innerHTML = `
+                <div class="title-bar">
+                    <div class="title-bar-text">${m.title}</div>
+                    <div class="title-bar-controls">
+                        <button aria-label="Help"></button>
+                        <button aria-label="Close" data-cascade="1"></button>
+                    </div>
+                </div>
+                <div class="window-body">
+                    <div class="warning-icon">⚠</div>
+                    <p>${m.body}</p>
+                    <p style="font-size:10px; color:#666;">NullScale reserves the right to interpret your inaction as enthusiasm.</p>
+                    <div class="options">
+                        <button class="deploy-btn" data-action="deploy">⚠ Deploy Daemons</button>
+                        <button class="double-btn" data-action="double">↑ Double My Subscription</button>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(modal);
+
+            const cx = modal.offsetLeft, cy = modal.offsetTop;
+            modal.querySelector("[data-cascade]").addEventListener("click", () => {
+                // Cascade! Spawn 2 more.
+                beep(180 + cancelCascadeCount * 8, 0.05);
+                openCancelModal(cx, cy);
+                openCancelModal(cx + 30, cy + 10);
+                // The original window stays. It cannot be closed, only multiplied.
+            });
+            modal.querySelector("[data-action='deploy']").addEventListener("click", () => {
+                beep(140, 0.4);
+                spawnUnclosableAlert("Daemons Deployed",
+                    "Daemons have been dispatched to your LinkedIn profile.\n\nThey have already endorsed you for skills you do not have, applied to 47 jobs, and challenged your manager to a duel.\n\nYour subscription remains active.");
+                // Remove the cascade
+                document.querySelectorAll(".cancel-modal").forEach(el => el.remove());
+                cancelCascadeCount = 0;
+            });
+            modal.querySelector("[data-action='double']").addEventListener("click", () => {
+                beep(880, 0.1);
+                spawnUnclosableAlert("Thank You",
+                    "Excellent decision. Your subscription has been doubled.\n\nYour billing cycle has been doubled.\nYour vibes have been doubled.\nYour debt has been doubled.\n\nNo refunds.");
+                document.querySelectorAll(".cancel-modal").forEach(el => el.remove());
+                cancelCascadeCount = 0;
+            });
+        }
+        window.openCancelModal = openCancelModal;
     </script>
 </body>
 </html>
