@@ -1,11 +1,11 @@
-# 🌀 VibeOS: The Synergy Singular
+# 🌀 NullScale.xyz: The Synergy Singular
 
 ![Build Status](https://img.shields.io/badge/build-vibing-brightgreen)
 ![Synergy](https://img.shields.io/badge/synergy-104%25-blueviolet)
 ![Latency](https://img.shields.io/badge/latency-predictive%20negative-ff69b4)
 ![Tech Debt](https://img.shields.io/badge/tech%20debt-exponential-critical)
 
-Welcome to the post-causal paradigm. **VibeOS** isn't a dashboard. It's a lifestyle. It's a mindset. It's an HTML file that renders meaningless corporate graphs while successfully convincing your stakeholders that you are disrupting the ecosystem.
+Welcome to the post-causal paradigm. **NullScale** isn't a dashboard. It's a lifestyle. It's a mindset. It's an HTML file that renders meaningless corporate graphs while successfully convincing your stakeholders that you are disrupting the ecosystem.
 
 We looked at the current state of SaaS and asked: *"What if we took all the utility out, but kept all the loading bars?"*
 
