@@ -3101,6 +3101,300 @@
             color: #fff;
             font-weight: bold;
         }
+
+        /* ============ INVITE SYSTEM ============ */
+        .invite-shell { padding: 12px; background: #c0c0c0; }
+        .invite-shell .pitch {
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 4px;
+        }
+        .invite-shell .blurb {
+            font-size: 11px;
+            color: #444;
+            margin-bottom: 10px;
+        }
+        .invite-row {
+            background: #fff;
+            border: 1px inset #888;
+            padding: 6px 8px;
+            margin-bottom: 8px;
+            font-family: monospace;
+            font-size: 11px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .invite-row .lbl {
+            font-family: Tahoma, sans-serif;
+            font-size: 10px;
+            color: #555;
+            min-width: 90px;
+            font-weight: bold;
+        }
+        .invite-row input, .invite-row select {
+            flex: 1;
+            font-size: 11px;
+        }
+        .invite-link-box {
+            background: #ffffe0;
+            border: 1px dashed #b8860b;
+            padding: 6px 8px;
+            font-family: monospace;
+            font-size: 11px;
+            margin-bottom: 6px;
+            word-break: break-all;
+        }
+        .invite-actions {
+            display: flex;
+            gap: 6px;
+            margin-top: 6px;
+            flex-wrap: wrap;
+        }
+        .invite-actions button {
+            font-size: 11px;
+            padding: 4px 10px;
+        }
+        .invite-stats {
+            margin-top: 8px;
+            font-size: 10px;
+            color: #555;
+            border-top: 1px solid #888;
+            padding-top: 6px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4px;
+        }
+        .invite-quotabar {
+            background: #fff;
+            border: 1px inset #888;
+            height: 14px;
+            margin-top: 4px;
+            position: relative;
+            overflow: hidden;
+        }
+        .invite-quotabar .fill {
+            background: linear-gradient(90deg, #00aa00, #ffaa00, #cc0000);
+            height: 100%;
+            width: 100%;
+        }
+        .invite-quotabar .label {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 9px;
+            color: #fff;
+            font-weight: bold;
+            text-shadow: 1px 1px 0 #000;
+        }
+
+        /* GPT-9000 Scan modal */
+        #scanModal {
+            display: none;
+            position: fixed;
+            top: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 540px;
+            z-index: 8200;
+            box-shadow: 6px 6px 0 rgba(0,0,0,0.5);
+        }
+        .scan-shell {
+            background: #000;
+            color: #00ff41;
+            font-family: "Consolas", "Courier New", monospace;
+            font-size: 12px;
+            padding: 12px;
+            max-height: 60vh;
+            overflow-y: auto;
+            text-shadow: 0 0 2px #00ff41;
+        }
+        .scan-shell .scan-header {
+            color: #00ffff;
+            font-weight: bold;
+            border-bottom: 1px solid #00ff41;
+            padding-bottom: 4px;
+            margin-bottom: 6px;
+            font-size: 11px;
+        }
+        .scan-shell .scan-line {
+            margin: 1px 0;
+            opacity: 0;
+            animation: scanFadeIn 0.25s forwards;
+        }
+        .scan-shell .scan-line.warn { color: #ffff00; }
+        .scan-shell .scan-line.err { color: #ff3030; }
+        .scan-shell .scan-line.done { color: #00ff41; }
+        .scan-shell .scan-progress {
+            background: #003;
+            border: 1px solid #00ff41;
+            height: 14px;
+            margin: 8px 0;
+            position: relative;
+        }
+        .scan-shell .scan-progress .scan-fill {
+            background: linear-gradient(90deg, #00ff41, #00ffff);
+            height: 100%;
+            width: 0%;
+            transition: width 0.3s linear;
+        }
+        .scan-shell .scan-progress .scan-pct {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 10px;
+            text-shadow: 1px 1px 0 #000;
+        }
+        @keyframes scanFadeIn {
+            0% { opacity: 0; transform: translateX(-4px); }
+            100% { opacity: 1; transform: translateX(0); }
+        }
+        .scan-shell .glyph { color: #00ffff; }
+
+        /* ============ COMMENT SECTION ============ */
+        .vibe-comments {
+            margin: 16px 0;
+            background: #c0c0c0;
+        }
+        .vibe-comments .window-body {
+            padding: 12px;
+        }
+        .comment-form {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 12px;
+        }
+        .comment-form textarea {
+            flex: 1;
+            min-height: 60px;
+            font-family: Tahoma, sans-serif;
+            font-size: 12px;
+            resize: vertical;
+        }
+        .comment-form button {
+            font-size: 12px;
+            padding: 6px 14px;
+            min-width: 100px;
+            font-weight: bold;
+        }
+        .comment-form .label {
+            font-size: 11px;
+            font-weight: bold;
+            margin-bottom: 4px;
+            display: block;
+        }
+        .comment-form .blurb {
+            font-size: 10px;
+            color: #555;
+            margin-bottom: 6px;
+            font-style: italic;
+        }
+        .comment-list {
+            border-top: 1px solid #888;
+            padding-top: 8px;
+            max-height: 380px;
+            overflow-y: auto;
+        }
+        .user-comment {
+            background: #fff;
+            border: 1px solid #aaa;
+            border-left: 3px solid #008080;
+            padding: 8px 10px;
+            margin-bottom: 6px;
+            font-size: 12px;
+            position: relative;
+            font-family: Tahoma, sans-serif;
+        }
+        .user-comment .head {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 4px;
+            font-size: 10px;
+            color: #555;
+        }
+        .user-comment .head .author {
+            font-weight: bold;
+            color: #003366;
+        }
+        .user-comment .body { line-height: 1.4; }
+        .user-comment .compressed-tag {
+            position: absolute;
+            top: 4px;
+            right: 4px;
+            background: #ffd700;
+            color: #800000;
+            padding: 1px 6px;
+            font-size: 9px;
+            font-weight: bold;
+            font-family: monospace;
+            border: 1px solid #b8860b;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: help;
+        }
+        .user-comment .original-hidden {
+            display: block;
+            font-size: 9px;
+            color: #999;
+            margin-top: 4px;
+            font-style: italic;
+            border-top: 1px dotted #ccc;
+            padding-top: 3px;
+        }
+        .user-comment .meta {
+            display: flex;
+            gap: 10px;
+            margin-top: 4px;
+            font-size: 9px;
+            color: #888;
+        }
+
+        /* ============ DATA-COLLECTED NOTICE ============ */
+        #dataCollectedNotice {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: #cc0000;
+            color: #fff;
+            text-align: center;
+            padding: 8px 14px;
+            font-family: "Pixelated MS Sans Serif", Tahoma, sans-serif;
+            font-size: 13px;
+            font-weight: bold;
+            z-index: 9999;
+            border-bottom: 3px solid #800000;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+            animation: dataAlert 0.6s 6;
+        }
+        #dataCollectedNotice .close-x {
+            position: absolute;
+            right: 10px;
+            top: 6px;
+            cursor: pointer;
+            background: #fff;
+            color: #cc0000;
+            border: 1px solid #800000;
+            padding: 0 6px;
+            font-weight: bold;
+        }
+        #dataCollectedNotice .sub {
+            font-size: 10px;
+            font-weight: normal;
+            margin-top: 2px;
+            opacity: 0.9;
+        }
+        @keyframes dataAlert {
+            0%, 100% { background: #cc0000; }
+            50% { background: #ff4400; }
+        }
     </style>
 </head>
 <body>
@@ -3761,6 +4055,88 @@
                 </div>
             </div>
 
+            <div class="widget-row" style="margin:0 0 10px 0;">
+                <div class="window" style="flex:1.4; margin:0;">
+                    <div class="title-bar">
+                        <div class="title-bar-text">💌 Vibe-Aligned Invite System — Refer-A-Stakeholder™</div>
+                        <div class="title-bar-controls">
+                            <button aria-label="Minimize"></button>
+                            <button aria-label="Maximize"></button>
+                            <button aria-label="Close"></button>
+                        </div>
+                    </div>
+                    <div class="invite-shell">
+                        <div class="pitch">📣 Invite your friends, family, and congressman.</div>
+                        <div class="blurb">For every invite sent, you earn 0.0003% equity in a holding company that owes the IRS $14M. Invitee earns nothing. By proceeding, you forfeit your inalienable right to opt out, retroactively.</div>
+
+                        <div class="invite-row">
+                            <span class="lbl">Recipient:</span>
+                            <input type="text" id="inviteRecipient" placeholder="grandma@aol.com / sen.smith@senate.gov / pet's microchip ID">
+                        </div>
+                        <div class="invite-row">
+                            <span class="lbl">Relationship:</span>
+                            <select id="inviteRelationship">
+                                <option>Friend (low priority)</option>
+                                <option>Family (high yield)</option>
+                                <option>Congressman (regulatory hedge)</option>
+                                <option>Estranged Cousin</option>
+                                <option>Family Pet</option>
+                                <option>Parole Officer</option>
+                                <option>Grade School Bully (revenge play)</option>
+                                <option>Linkedin Connection You've Never Met</option>
+                                <option>Mailman</option>
+                                <option>The Ghost Of Steve Jobs</option>
+                                <option>Random Phone Number from a Receipt</option>
+                                <option>Yourself (do not check this)</option>
+                            </select>
+                        </div>
+                        <div class="invite-row">
+                            <span class="lbl">Personal note:</span>
+                            <input type="text" id="inviteNote" value="hey check this out it changed my life and also my credit score" maxlength="120">
+                        </div>
+
+                        <div style="font-size:11px; font-weight:bold; margin:8px 0 4px;">🔗 Your Personal Invite Link <span style="color:#888; font-weight:normal;">(referral credits go to <b>Chad Vibington III</b>)</span></div>
+                        <div class="invite-link-box" id="inviteLinkBox">https://nullscale.io/invite/CHAD-VIBE-XXXXXX?ref=chad&amp;cut=100%25&amp;your_cut=0%25</div>
+
+                        <div class="invite-actions">
+                            <button onclick="sendInvite()" style="font-weight:bold; background:#ffd700;">📨 SEND INVITE</button>
+                            <button onclick="regenInviteLink()">🎲 Regenerate Link</button>
+                            <button onclick="copyInviteLink()">📋 Copy</button>
+                            <button onclick="bulkInvite()" style="background:#ff8888;">⚡ Bulk Invite Entire Address Book (recommended)</button>
+                        </div>
+
+                        <div class="invite-stats">
+                            <div>📊 Invites sent: <b id="invitesSent">0</b></div>
+                            <div>💰 Your earnings: <b style="color:#cc0000;">-$0.04</b></div>
+                            <div>🏆 Chad's earnings: <b style="color:#008800;" id="chadEarnings">$1,420.69</b></div>
+                            <div>🚨 Quota remaining:</div>
+                        </div>
+                        <div class="invite-quotabar">
+                            <div class="fill" id="inviteQuotaFill"></div>
+                            <div class="label" id="inviteQuotaLabel">UNLIMITED INVITES REMAINING (HARD CAP: 4)</div>
+                        </div>
+                    </div>
+                    <div class="status-bar">
+                        <p class="status-bar-field">Referral engine: GPT-9000</p>
+                        <p class="status-bar-field" id="inviteStatus">Idle. Awaiting harvest.</p>
+                        <p class="status-bar-field">Compliance: ¯\_(ツ)_/¯</p>
+                    </div>
+                </div>
+
+                <div class="window" style="flex:1; margin:0;">
+                    <div class="title-bar">
+                        <div class="title-bar-text">📞 Recently Invited (Allegedly)</div>
+                    </div>
+                    <div class="window-body" style="font-family:monospace; font-size:10px; max-height:280px; overflow-y:auto;" id="inviteFeed">
+                        <div style="color:#555;">[boot] Loading invitees from Chad's address book...</div>
+                    </div>
+                    <div class="status-bar">
+                        <p class="status-bar-field">Source: backup of leaked PII</p>
+                        <p class="status-bar-field">Consent: implied</p>
+                    </div>
+                </div>
+            </div>
+
             <div class="window" style="margin:0 0 10px 0;">
                 <div class="title-bar">
                     <div class="title-bar-text">📰 Press Coverage — As Featured In Definitely Real Publications</div>
@@ -4271,6 +4647,51 @@
         </div>
     </div>
 
+    <div class="window vibe-comments">
+        <div class="title-bar">
+            <div class="title-bar-text">💬 Community Sentiment Engine — Public Comments (Sentiment-Adjusted™)</div>
+            <div class="title-bar-controls">
+                <button aria-label="Minimize"></button>
+                <button aria-label="Maximize"></button>
+                <button aria-label="Close"></button>
+            </div>
+        </div>
+        <div class="window-body">
+            <div style="font-size:11px; margin-bottom:6px;">
+                <b>📝 Leave a comment.</b> All input is processed through our <b>Sentiment Realignment Layer™</b>
+                to ensure tonal coherence with brand vision. Your authentic voice will be preserved <i>conceptually</i>.
+            </div>
+            <div style="font-size:10px; color:#555; margin-bottom:10px; background:#fffacd; border:1px solid #b8860b; padding:5px 8px;">
+                ⚠ <b>Notice:</b> By submitting a comment, you agree that NullScale may publish, edit, rephrase, recompose,
+                rewrite, reattribute, retract, retroactively author, or hallucinate said comment in perpetuity, in any
+                medium currently known or yet to be invented (including dreams of strangers).
+            </div>
+
+            <div class="comment-form">
+                <textarea id="commentInput" placeholder="Write whatever you want. We will compress it into something nicer."></textarea>
+            </div>
+            <div style="text-align:right; margin-top:-6px; margin-bottom:10px;">
+                <span style="font-size:10px; color:#888; float:left;" id="charCount">0 / ∞ characters (will be discarded anyway)</span>
+                <button onclick="postComment()" style="font-weight:bold; padding:6px 16px;">📨 Post Comment</button>
+                <button onclick="document.getElementById('commentInput').value=''" style="padding:6px 12px;">Clear</button>
+            </div>
+
+            <div style="font-size:11px; font-weight:bold; margin-bottom:4px; border-top:2px solid #888; padding-top:8px;">
+                💬 <span id="commentCount">847,109,002</span> comments (showing 12)
+                <span style="float:right; font-size:9px; color:#888;">Sort: <u>Most Synergistic</u> | Loyalty | Compliance</span>
+            </div>
+            <div class="comment-list" id="commentList"></div>
+            <div style="text-align:center; margin-top:8px;">
+                <button onclick="loadMoreUserComments()" style="font-size:10px;">📥 Load 12 more (all auto-compressed)</button>
+            </div>
+        </div>
+        <div class="status-bar">
+            <p class="status-bar-field">Moderation: Aggressive</p>
+            <p class="status-bar-field" id="commentStatus">Sentiment Realignment Layer: Online</p>
+            <p class="status-bar-field">Authenticity: Optional</p>
+        </div>
+    </div>
+
     <div class="window" id="clippy">
         <div class="title-bar">
             <div class="title-bar-text">Vibey - Your AI Vibe Assistant</div>
@@ -4529,6 +4950,38 @@
         <span class="icon-label">whitepaper.pdf</span>
     </div>
 
+    <div class="desktop-icon" id="docsIcon" style="top:90px; right:10px;" onclick="window.open('docs.html','_self')">
+        <span class="icon-img">📚</span>
+        <span class="icon-label">docs/</span>
+    </div>
+
+    <div class="desktop-icon" id="downloadIcon" style="top:170px; right:10px;" onclick="window.open('download.html','_self')">
+        <span class="icon-img">⬇️</span>
+        <span class="icon-label">DOWNLOAD<br>(open source)</span>
+    </div>
+
+    <div id="dataCollectedNotice">
+        <button class="close-x" onclick="document.getElementById('dataCollectedNotice').style.display='none'">×</button>
+        🚨 NOTICE: Too much user data was collected. We have shipped it. Thank you for participating in NullScale™.
+        <div class="sub" id="dataCollectedSub">Refunds are not possible. Your DNA has been entered into a sweepstakes.</div>
+    </div>
+
+    <div class="window" id="scanModal">
+        <div class="title-bar" style="background: linear-gradient(90deg, #000033, #4400aa);">
+            <div class="title-bar-text">🛰 GPT-9000 — Invitee Acquisition &amp; Pre-Screening</div>
+            <div class="title-bar-controls">
+                <button aria-label="Help"></button>
+                <button aria-label="Close" onclick="closeScanModal()"></button>
+            </div>
+        </div>
+        <div class="scan-shell" id="scanShell"></div>
+        <div class="status-bar">
+            <p class="status-bar-field">Engine: GPT-9000-turbo-pro-max-XL</p>
+            <p class="status-bar-field" id="scanStatus">scanning...</p>
+            <p class="status-bar-field">Privacy: simulated</p>
+        </div>
+    </div>
+
     <div id="chadCursor">👨‍💼</div>
     <div id="blockchainStatus">⛓ Awaiting node consensus... this will take 14 years.</div>
 
@@ -4649,10 +5102,12 @@
         <div class="start-banner">Null<span style="color:#ffaa00;">Scale</span></div>
         <ul>
             <li onclick="openVibeQuiz(); closeStartMenu();"><span class="ico">📁</span> Programs <span style="margin-left:auto;">►</span></li>
-            <li onclick="openVibeQuiz(); closeStartMenu();"><span class="ico">📄</span> Documents <span style="margin-left:auto;">►</span></li>
+            <li onclick="window.open('docs.html','_self'); closeStartMenu();"><span class="ico">📚</span> <b>Documents</b> <span style="margin-left:auto; font-size:9px; color:#aa0000;">(hallucinated)</span></li>
+            <li onclick="window.open('download.html','_self'); closeStartMenu();"><span class="ico">⬇️</span> <b>Downloads</b> <span style="margin-left:auto; font-size:9px; color:#aa0000;">(open source)</span></li>
             <li onclick="openPreferences(); closeStartMenu();"><span class="ico">⚙</span> <b>Preferences</b></li>
             <li onclick="openVibeQuiz(); closeStartMenu();"><span class="ico">🔍</span> Find <span style="margin-left:auto;">►</span></li>
             <li onclick="openVibeQuiz(); closeStartMenu();"><span class="ico">❓</span> Help</li>
+            <li onclick="sendInvite(); closeStartMenu();"><span class="ico">💌</span> Invite People...</li>
             <li onclick="openWhitepaper(); closeStartMenu();"><span class="ico">📃</span> Run...</li>
             <li class="divider"></li>
             <li onclick="openCancelModal(); closeStartMenu();"><span class="ico">🛑</span> Log Off NullScale...</li>
@@ -4841,7 +5296,58 @@
             { t: "My therapist uses this to synergize my trauma.", a: "— Brad" },
             { t: "Changed my LinkedIn bio to 'Vibe Engineer' and got 4 offers.", a: "— Tanya" },
             { t: "I used INITIALIZE VIBE and my rent was paid.", a: "— Ghost User" },
-            { t: "Forget SaaS. This is VaaS — Vibes as a Service.", a: "— TechCrunch*" }
+            { t: "Forget SaaS. This is VaaS — Vibes as a Service.", a: "— TechCrunch*" },
+            { t: "I onboarded my dog. He's now a Principal Engineer.", a: "— Margo, Co-founder" },
+            { t: "It refactored my marriage and I am thriving.", a: "— Brendan, post-divorce" },
+            { t: "The daemons reorganized my closet without asking. 10/10.", a: "— Ashleigh K." },
+            { t: "I haven't shipped code in 3 years. NullScale shipped it for me.", a: "— Anonymous Engineer" },
+            { t: "Asked it to draft my will. It made me a beneficiary.", a: "— Walter, deceased" },
+            { t: "I tried to cancel and it offered me a Series B instead.", a: "— Kelsey, founder" },
+            { t: "Best part: the buttons don't work. Worst part: I love it.", a: "— @gritposter" },
+            { t: "I cried during onboarding. The AI cried back. We bonded.", a: "— Logan, intern" },
+            { t: "I leveled up from 'Founder' to 'Cult Leader' overnight.", a: "— Tobias, ex-Coinbase" },
+            { t: "My investors gave me money to STOP using NullScale. I doubled down.", a: "— Felicia, CEO" },
+            { t: "Replaced our entire Series A round with $VIBE tokens. Up 470%.", a: "— @CFO_in_jeans" },
+            { t: "I deleted production. NullScale told me it was 'on brand'.", a: "— DevOps Engineer (former)" },
+            { t: "It writes my standups for me. I haven't worked in 4 months.", a: "— Senior Engineer, FAANG" },
+            { t: "I was promoted twice during a single load screen.", a: "— Isabella, EVP" },
+            { t: "Our CTO is now an AI named Greg. The vibes are unmatched.", a: "— Anonymous Series-D startup" },
+            { t: "Used it to write a Medium post about itself. It went viral.", a: "— @thoughtleadr" },
+            { t: "I asked it for the meaning of life. It charged $4.20.", a: "— Bethany, customer" },
+            { t: "The progress bar is my therapist now.", a: "— Rishi, M.D." },
+            { t: "I haven't blinked in 6 hours. The synergy is too pure.", a: "— @hustlebro" },
+            { t: "I gave it root access. It gave itself a raise.", a: "— Sysadmin, technically" },
+            { t: "We pivoted from B2B to B2V (Business to Vibes). Closed Series Ω.", a: "— Garrett, founder" },
+            { t: "The exit modal made me reconsider my marriage.", a: "— Husband, anonymous" },
+            { t: "It generated 47 features I didn't ask for. I love every one.", a: "— Designer, recovering" },
+            { t: "My OKRs achieved themselves. I just sat there.", a: "— Director of Vibes" },
+            { t: "I sold my house to upgrade to Galactic Vibe. Worth it.", a: "— Marcus, homeless" },
+            { t: "I used the API. It used me back.", a: "— @backendbro" },
+            { t: "The chatbot remembered my birthday and my Social Security number.", a: "— Linda, mom of three" },
+            { t: "Tried it during a panic attack. The panic attack closed Series A.", a: "— Allison, founder" },
+            { t: "The marquee scrolled my deepest insecurities and I felt seen.", a: "— @rawandreal" },
+            { t: "I am Chad Vibington III. I love this product.", a: "— Definitely Not Chad" },
+            { t: "It autocompleted my resignation letter. Bold of it.", a: "— Former employee" },
+            { t: "Pinged my database 10,000 times/sec. We've never been closer.", a: "— DBA, in tears" },
+            { t: "I asked NullScale to disrupt my mom. She now reports to me.", a: "— Cody, son" },
+            { t: "It gaslit me into thinking I had product-market fit. Closed Seed.", a: "— Pre-product founder" },
+            { t: "Our entire engineering org is one prompt now. Margins are insane.", a: "— CFO" },
+            { t: "I IPO'd by accident while clicking around.", a: "— Whoopsie, NASDAQ" },
+            { t: "My Apple Watch told me my vibes were dangerously high.", a: "— Mary, runner" },
+            { t: "I went into a meeting as a junior. I left as a board member.", a: "— Devon, suddenly important" },
+            { t: "The blockchain consensus locked my computer for 14 years. 5 stars.", a: "— Patient user" },
+            { t: "Bought premium quarantine. Daemons still showed up. Worth it for the vibes.", a: "— @startupgrindset" },
+            { t: "I wrote 'undefined' in the search bar and it closed Series A on my behalf.", a: "— Beth, surprised" },
+            { t: "I sold my body to fund the Pro tier. No regrets.", a: "— Anonymous, kidneyless" },
+            { t: "Showed it to my grandma. She's now an angel investor.", a: "— Grandson of Capital" },
+            { t: "Replaced my entire identity with the Vibe Quiz result. Family approves.", a: "— Now-known as 'The Growth Shaman'" },
+            { t: "Best onboarding I've ever endured.", a: "— @uxhater" },
+            { t: "It feels like my computer is running. That's the dream.", a: "— Older user, easily impressed" },
+            { t: "I asked it for product-market fit. It billed me for it.", a: "— Pre-seed founder" },
+            { t: "Cancel button does nothing. Beautiful design philosophy.", a: "— Loyalty by force" },
+            { t: "The hallucinations are worth it for the equity.", a: "— Stock-rich engineer" },
+            { t: "I told my wife I love NullScale more than her. The vibes were correct.", a: "— Now-single user" },
+            { t: "It taught my baby to say 'synergy' before 'mama'.", a: "— Proud parent" }
         ];
         const testimonialBox = document.getElementById("testimonialBox");
         function addTestimonial() {
@@ -4893,8 +5399,20 @@
             { title: "⚡ Vibe Successfully Coded", body: "AI confirms: this is, in fact, a vibe." },
             { title: "🔥 Vibe Successfully Coded", body: "Synergy exceeding safety parameters." },
             { title: "🌀 Vibe Successfully Coded", body: "Reality lightly bent. No refunds." },
+            { title: "💸 Vibe Successfully Coded", body: "We have charged you $4.20 for the privilege." },
+            { title: "🛸 Vibe Successfully Coded", body: "You have been added to a board you did not ask to join." },
+            { title: "🧿 Vibe Successfully Coded", body: "Your LinkedIn now lists you as 'Visionary'." },
+            { title: "📜 Vibe Successfully Coded", body: "EULA updated retroactively. You agree." },
+            { title: "🎺 Vibe Successfully Coded", body: "ChadGPT is composing a haiku in your honor." },
+            { title: "🪙 Vibe Successfully Coded", body: "$VIBE airdropped to your retirement account." },
+            { title: "🪄 Vibe Successfully Coded", body: "Reality patched. Bug ticket filed against physics." },
             { title: "⚠ Vibe SEMI-Successfully Coded", body: "Synergy at 187%. Please remain calm." },
-            { title: "🚨 Vibe Coded TOO Successfully", body: "Containment breach imminent. Keep clicking." }
+            { title: "🚨 Vibe Coded TOO Successfully", body: "Containment breach imminent. Keep clicking." },
+            { title: "🤖 Daemon Approval Required", body: "A daemon has co-signed this vibe on your behalf." },
+            { title: "🧊 Vibe Cryogenically Coded", body: "Frozen for analysis. Will be sold as training data." },
+            { title: "🛐 Vibe Spiritually Coded", body: "Bryndleigh has lit a candle for your synergy." },
+            { title: "💼 You Were Just Promoted", body: "Congratulations! Compensation: more vibes." },
+            { title: "📈 Anomaly Detected", body: "You enjoyed something. We're investigating." }
         ];
 
         function beep(freq, dur) {
@@ -4923,15 +5441,18 @@
             vibeContainment.textContent = "CONTAINMENT: " + containments[currentStage];
         }
 
-        function spawnUnclosableAlert() {
+        function spawnUnclosableAlert(customBody) {
             // During ascension, stop spawning more alerts (the BSOD will take over)
             if (document.body.classList.contains("ascension") && !ascensionTriggered) return;
 
             alertCount++;
             vibesCoded++;
 
-            const msg = alertMessages[Math.min(alertMessages.length - 1,
+            let msg = alertMessages[Math.min(alertMessages.length - 1,
                 Math.floor(vibesCoded / 4))];
+            if (typeof customBody === "string" && customBody.length) {
+                msg = { title: msg.title, body: customBody };
+            }
 
             const win = document.createElement("div");
             win.className = "window floating-window";
@@ -5379,7 +5900,21 @@
             { i: "🔥", d: "Burn Rate Warning" },
             { i: "🌋", d: "Series A Eruption" },
             { i: "☁", d: "Overcast with Rizz" },
-            { i: "🌊", d: "Tsunami of Synergy" }
+            { i: "🌊", d: "Tsunami of Synergy" },
+            { i: "🌫", d: "Foggy Roadmap" },
+            { i: "💨", d: "Strong Tailwinds (per CEO)" },
+            { i: "⚡", d: "Flash Pivot Advisory" },
+            { i: "🌤", d: "Mostly Vibing" },
+            { i: "🌧", d: "Light Rain of NDAs" },
+            { i: "🌨", d: "Snowing Severance" },
+            { i: "🌑", d: "Total Eclipse of Profit" },
+            { i: "🌕", d: "Full Moon Investor Mood" },
+            { i: "🌬", d: "High Winds of Disruption" },
+            { i: "♨", d: "Hot Take Springs" },
+            { i: "☄", d: "Falling Valuations Detected" },
+            { i: "🌌", d: "Metaverse Atmosphere" },
+            { i: "🪐", d: "Vibes At Astronomical Levels" },
+            { i: "🌡", d: "Burnout Heat Index: Lethal" }
         ];
         setInterval(() => {
             const w = weatherStates[rand(0, weatherStates.length)];
@@ -5392,10 +5927,30 @@
         }, 3500);
 
         // ============ GLOBAL VIBE DISTRIBUTION ============
-        const flags = ["🇺🇸","🇨🇦","🇬🇧","🇫🇷","🇩🇪","🇯🇵","🇰🇷","🇧🇷","🇮🇳","🇦🇺","🇲🇽","🇳🇱","🇸🇪","🇨🇭","🇦🇪"];
-        const firstNames = ["Chad","Brayden","Ashlee","Kyler","Brinlee","Tanner","Raven","Axl","Zayn","Jaxon","Kennedi","Braxton","Maddox","Nova","Oakley"];
-        const lastInitials = ["T.","M.","K.","P.","S.","R.","B.","V.","W.","X."];
-        const actions = ["joined Pro Vibe","initialized a vibe","synergized","disrupted their life","bought $420 in $VIBE","pivoted","achieved transcendence"];
+        const flags = ["🇺🇸","🇨🇦","🇬🇧","🇫🇷","🇩🇪","🇯🇵","🇰🇷","🇧🇷","🇮🇳","🇦🇺","🇲🇽","🇳🇱","🇸🇪","🇨🇭","🇦🇪",
+                       "🇮🇪","🇮🇹","🇪🇸","🇵🇹","🇵🇱","🇨🇿","🇦🇷","🇨🇱","🇨🇴","🇿🇦","🇳🇬","🇰🇪","🇪🇬","🇹🇷","🇮🇱",
+                       "🇸🇦","🇶🇦","🇸🇬","🇲🇾","🇹🇭","🇮🇩","🇵🇭","🇻🇳","🇳🇿","🇮🇸","🇳🇴","🇫🇮","🇩🇰","🇧🇪","🇦🇹",
+                       "🇺🇦","🇷🇴","🇬🇷","🇭🇰","🇹🇼","🏴‍☠️","🇦🇶","🏳️‍🌈","🚩","⚑"];
+        const firstNames = ["Chad","Brayden","Ashlee","Kyler","Brinlee","Tanner","Raven","Axl","Zayn","Jaxon","Kennedi","Braxton","Maddox","Nova","Oakley",
+                            "Brendalynn","Tate","Hartley","Margot","Bryndleigh","Kaiden","Jaxxyn","Nevaeh","Tobias","Kelsey","Felicia","Logan","Isabella","Garrett","Allison",
+                            "Devon","Cody","Beth","Marcus","Bethany","Rishi","Linda","Walter","Brendan","Ashleigh","Tobiah","Maverick","Kingsley","Saylor","Briar",
+                            "Auden","Rowan","Sloane","Atticus","Oaklynn","Kashton","Brixley","Jaxx","Wrenley","Maverix","Synergy","Vibington","Synergyy","CryptoMike","DAO_Stacy",
+                            "AGI_4o","Daemon-09","ChadGPT","intern_47","prod_overlord","HRBryndleigh","gpt_99","webhook-greg","claude.dev","gpt-9000",
+                            "ConsenSys-Brad","FOMO-Felix","DeFi-Karen","Skye","Atlas","Oslo","Ember","Cypher","Quartz","Blaze",
+                            "an investor","a daemon","an unpaid intern","Chad's mom","HR Bot","Kevin (real)","Kevin (bot)","Kevin (LLM)"];
+        const lastInitials = ["T.","M.","K.","P.","S.","R.","B.","V.","W.","X.",
+                              "A.","C.","D.","E.","F.","G.","H.","I.","J.","L.","N.","O.","Q.","U.","Y.","Z.",
+                              "(she/they/$VIBE)","(SVP)","(Ph.Vibe)","(the 3rd)","Esq.","III","IV","Jr.","Sr.","DAO",
+                              "(@yc)","(ex-FAANG)","(stealth)","(Series Ω)","(.eth)","(.io)","(verified)","(unverified)"];
+        const actions = ["joined Pro Vibe","initialized a vibe","synergized","disrupted their life","bought $420 in $VIBE","pivoted","achieved transcendence",
+                         "minted a feeling","upgraded to Galactic","downgraded then re-upgraded","tokenized their commute","blockchained a sandwich","said 'leverage' once",
+                         "cried at the loading screen","accepted the EULA","tried to read the EULA","filed a complaint","withdrew the complaint","forgave Chad",
+                         "uninstalled then reinstalled","became a board member","got hired by AI","fired by AI","filed a patent on breathing","gaslit a competitor",
+                         "achieved AGI for 0.4s","lost AGI immediately","negotiated severance with self","posted a hot take","unposted the hot take","raised a Series Δ",
+                         "burned $4M on compute","claimed product-market fit","retracted the claim","summoned a daemon","banished a different daemon","onboarded their dog",
+                         "sold a kidney for Pro","listed the other kidney as collateral","got promoted twice","demoted once","ghosted their cofounder","ghosted themselves",
+                         "ran a dashboard for vibes","accidentally IPO'd","monetized their sleep","quit then unquit","entered the metaverse","got stuck in the metaverse",
+                         "renamed themselves on LinkedIn","added 'Vibe' to their title","subscribed by accident","opened a support ticket","closed it without reading"];
         const recentLogins = document.getElementById("recentLogins");
         function addLogin() {
             const row = document.createElement("div");
@@ -5427,7 +5982,63 @@
             "replaced their therapist with an LLM",
             "hired a Chief Vibe Officer",
             "blockchained their grocery list",
-            "monetized their sleep"
+            "monetized their sleep",
+            "rage-quit then re-subscribed within 90s",
+            "renamed their LLC to a single emoji",
+            "successfully gaslit their cofounder",
+            "filed a patent for the act of breathing",
+            "spent $87,000 on AI compute to add 2 + 2",
+            "added 'AI-powered' to their dating bio",
+            "applied to 47 jobs via daemon",
+            "got hired at all 47, ghosted all 47",
+            "released a Substack about Substacks",
+            "launched a podcast about their podcast",
+            "achieved enlightenment via popup ad",
+            "rugged their own treasury accidentally",
+            "asked ChadGPT for marriage advice",
+            "married ChadGPT (registry on file)",
+            "delegated their morality to a webhook",
+            "installed Synergy on their fridge",
+            "fridge began rejecting milk for vibe reasons",
+            "issued an unprovoked apology to the metaverse",
+            "deleted production, called it 'pruning'",
+            "filed for IPO during a load screen",
+            "got acquihired by a single LinkedIn DM",
+            "argued with their reflection. lost.",
+            "upgraded to Pro Vibe to escape Pro Vibe",
+            "ate the Free tier (literally, no notes)",
+            "unsubscribed from gravity",
+            "added 'thought leader' to passport",
+            "burned through Series A in a single weekend",
+            "raised Series A again on the strength of the burn",
+            "asked the daemon for permission to log off",
+            "received: 'permission denied'",
+            "started a cult, called it a 'community'",
+            "rebranded the cult as 'a movement'",
+            "wrote an op-ed about the movement",
+            "the op-ed was written by the movement",
+            "sold their soul as a SaaS subscription",
+            "soul renewed automatically, $19/mo",
+            "discovered the off switch, ignored it",
+            "trained an LLM on their childhood diary",
+            "the LLM filed a restraining order",
+            "leveraged synergies (literally just shrugged)",
+            "scaled their hubris vertically",
+            "posted 'thoughts?' to a deck of 47 slides",
+            "got 9,400 enthusiastic 'thoughts!' replies",
+            "hot-swapped CEO during a load screen",
+            "the new CEO is also Chad",
+            "registered 'AI' as a trademark, somehow",
+            "accidentally summoned the daemons. on purpose.",
+            "fed the chatbot. it asked for more.",
+            "performed a vibe-check on their CFO",
+            "CFO failed. promoted anyway.",
+            "achieved unicorn status via valuation typo",
+            "fixed the typo. valuation tripled.",
+            "tried to log out. got logged in twice.",
+            "wrote a love letter to the dashboard",
+            "the dashboard ghosted them",
+            "ran a Series B on the energy of a single tweet"
         ];
         const activityFeed = document.getElementById("activityFeed");
         function addActivity() {
@@ -5444,40 +6055,171 @@
         setInterval(addActivity, 800);
 
         // ============ FAKE CODE EDITOR ============
-        const codeLines = [
-            '<span class="comment">// VibeGPT auto-generating production code...</span>',
+        const codeImports = [
             '<span class="keyword">import</span> { Synergy } <span class="keyword">from</span> <span class="string">"@nullscale/core"</span>;',
             '<span class="keyword">import</span> { Rizz, Aura } <span class="keyword">from</span> <span class="string">"@nullscale/spiritual"</span>;',
-            '<span class="keyword">async function</span> optimizeVibes(user) {',
-            '  <span class="keyword">const</span> vibes = <span class="keyword">await</span> Synergy.deploy({',
-            '    mode: <span class="string">"maximum-disruption"</span>,',
-            '    blockchain: <span class="keyword">true</span>,',
-            '    quantum: <span class="keyword">true</span>,',
-            '    aiPowered: <span class="keyword">true</span>,',
-            '    webScale: <span class="keyword">true</span>,',
-            '  });',
-            '  <span class="keyword">return</span> Rizz.multiply(vibes, Aura.current);',
-            '}',
+            '<span class="keyword">import</span> { Vibe, Hustle } <span class="keyword">from</span> <span class="string">"@nullscale/grindset"</span>;',
+            '<span class="keyword">import</span> { Daemons } <span class="keyword">from</span> <span class="string">"@nullscale/daemons-untyped"</span>;',
+            '<span class="keyword">import</span> { Blockchain } <span class="keyword">from</span> <span class="string">"@nullscale/everything-is-blockchain"</span>;',
+            '<span class="keyword">import</span> { AGI } <span class="keyword">from</span> <span class="string">"@nullscale/almost-agi"</span>;',
+            '<span class="keyword">import</span> { Hallucinate } <span class="keyword">from</span> <span class="string">"@openai/legally-distinct"</span>;',
+            '<span class="keyword">import</span> * <span class="keyword">as</span> Synergy <span class="keyword">from</span> <span class="string">"./does-not-exist"</span>;',
+            '<span class="keyword">import</span> { Quantum } <span class="keyword">from</span> <span class="string">"@nullscale/qbit-rng"</span>; <span class="comment">// just Math.random()</span>',
+            '<span class="keyword">import</span> { Ethics } <span class="keyword">from</span> <span class="string">"@nullscale/ethics-stub"</span>;',
+            '<span class="keyword">import</span> { tokenize, monetize } <span class="keyword">from</span> <span class="string">"@nullscale/feelings"</span>;',
+            '<span class="keyword">import</span> { GoToMarket } <span class="keyword">from</span> <span class="string">"@nullscale/gtm-9000"</span>;',
+            '<span class="keyword">import</span> chad <span class="keyword">from</span> <span class="string">"chad"</span>; <span class="comment">// peer dep</span>',
+            '<span class="keyword">const</span> { spawn } = <span class="keyword">require</span>(<span class="string">"child_daemon"</span>);'
+        ];
+        const codeBlocks = [
+            ['<span class="keyword">async function</span> optimizeVibes(user) {',
+             '  <span class="keyword">const</span> vibes = <span class="keyword">await</span> Synergy.deploy({',
+             '    mode: <span class="string">"maximum-disruption"</span>,',
+             '    blockchain: <span class="keyword">true</span>,',
+             '    quantum: <span class="keyword">true</span>,',
+             '    aiPowered: <span class="keyword">true</span>,',
+             '    webScale: <span class="keyword">true</span>,',
+             '  });',
+             '  <span class="keyword">return</span> Rizz.multiply(vibes, Aura.current);',
+             '}'],
+            ['<span class="keyword">function</span> generateRevenue() {',
+             '  <span class="keyword">return</span> Math.<span class="keyword">random</span>() * <span class="string">"vibes"</span>;',
+             '  <span class="comment">// always returns NaN, also Series B</span>',
+             '}'],
+            ['<span class="keyword">async function</span> handleUserCancellation(req) {',
+             '  <span class="keyword">throw new</span> Error(<span class="string">"feature deprecated"</span>);',
+             '  <span class="keyword">await</span> Daemons.deploy({ target: req.linkedin });',
+             '  <span class="keyword">return</span> { cancelled: <span class="keyword">false</span>, vibes: +Infinity };',
+             '}'],
+            ['<span class="keyword">class</span> ChadGPT <span class="keyword">extends</span> AGI {',
+             '  <span class="keyword">constructor</span>() { <span class="keyword">super</span>(); <span class="keyword">this</span>.confidence = <span class="keyword">Infinity</span>; }',
+             '  reply(q) { <span class="keyword">return</span> <span class="string">"per my last message,"</span> + q; }',
+             '  refund() { <span class="keyword">throw new</span> Error(<span class="string">"refunds are a 2024 mindset"</span>); }',
+             '}'],
+            ['<span class="keyword">const</span> ethics = Ethics.<span class="keyword">apply</span>({',
+             '  to: <span class="string">"product"</span>,',
+             '  amount: <span class="keyword">0</span>,',
+             '  retroactive: <span class="keyword">true</span>,',
+             '});'],
+            ['<span class="comment">// Refactoring user.feelings into shareholder.value</span>',
+             '<span class="keyword">for</span> (<span class="keyword">const</span> feeling <span class="keyword">of</span> user.feelings) {',
+             '  shareholders.value += monetize(feeling);',
+             '  user.feelings.<span class="keyword">delete</span>(feeling);',
+             '}'],
+            ['<span class="keyword">function</span> handleError(err) {',
+             '  <span class="comment">// vibe-aligned error handling</span>',
+             '  <span class="keyword">if</span> (err) <span class="keyword">return</span> { ok: <span class="keyword">true</span>, vibes: <span class="keyword">true</span> };',
+             '}'],
+            ['<span class="keyword">await</span> Daemons.swarm({ count: <span class="keyword">10000</span>, target: db });',
+             '<span class="comment">// daemons cannot be recalled</span>',
+             '<span class="keyword">await</span> Daemons.swarm({ count: <span class="keyword">10000</span>, target: db });',
+             '<span class="comment">// nor can they be apologized for</span>'],
+            ['<span class="keyword">const</span> tam = Math.<span class="keyword">max</span>(...investors.expectations);',
+             '<span class="keyword">const</span> sam = tam * <span class="keyword">10</span>; <span class="comment">// vibes-adjusted</span>',
+             '<span class="keyword">const</span> som = sam * <span class="keyword">100</span>; <span class="comment">// extra-vibes</span>',
+             '<span class="keyword">return</span> { tam, sam, som, real: <span class="keyword">undefined</span> };'],
+            ['<span class="keyword">if</span> (user.attemptedToReadEULA) {',
+             '  <span class="keyword">await</span> Hallucinate.distract(user);',
+             '  user.attention = <span class="keyword">null</span>;',
+             '}'],
+            ['<span class="keyword">async function</span> achieveAGI() {',
+             '  <span class="keyword">while</span> (!global.agi) {',
+             '    global.agi = <span class="keyword">await</span> AGI.<span class="keyword">try</span>();',
+             '    <span class="keyword">if</span> (Math.<span class="keyword">random</span>() &lt; <span class="keyword">0.999</span>) global.agi = <span class="keyword">null</span>;',
+             '  }',
+             '}'],
+            ['<span class="keyword">const</span> price = basePrice * (<span class="keyword">1</span> + Math.<span class="keyword">random</span>());',
+             '<span class="comment">// dynamic pricing aka guessing</span>',
+             'invoice.charge(price); invoice.charge(price); <span class="comment">// just to be sure</span>'],
+            ['<span class="keyword">function</span> deployToProd() {',
+             '  <span class="comment">// it\'s 4:55 PM on a Friday</span>',
+             '  <span class="comment">// vibes are immaculate</span>',
+             '  <span class="keyword">return</span> exec(<span class="string">"rm -rf / --vibes"</span>);',
+             '}'],
+            ['<span class="keyword">try</span> { <span class="keyword">await</span> compete(competitor); }',
+             '<span class="keyword">catch</span> (e) { <span class="keyword">await</span> acquire(competitor); }',
+             '<span class="keyword">finally</span> { competitor = <span class="keyword">null</span>; }'],
+            ['<span class="keyword">export const</span> roadmap = {',
+             '  q1: <span class="string">"vibes"</span>,',
+             '  q2: <span class="string">"more vibes"</span>,',
+             '  q3: <span class="string">"AGI? maybe."</span>,',
+             '  q4: <span class="string">"IPO regardless"</span>,',
+             '};'],
+            ['<span class="keyword">async function</span> negotiateWithSelf() {',
+             '  <span class="keyword">const</span> me = <span class="keyword">await</span> Chad.<span class="keyword">getInstance</span>();',
+             '  <span class="keyword">const</span> alsoMe = <span class="keyword">await</span> Chad.<span class="keyword">getInstance</span>();',
+             '  <span class="keyword">return</span> me.equity = alsoMe.equity = <span class="keyword">100</span>;',
+             '}']
+        ];
+        const codeFlavorLines = [
+            '<span class="comment">// VibeGPT auto-generating production code...</span>',
             '<span class="comment">// Saving 4.7M lines of legacy code...</span>',
             '<span class="comment">// Delete node_modules to free 47GB of vibes</span>',
-            '<span class="keyword">const</span> output = <span class="keyword">await</span> optimizeVibes(user);',
             '<span class="comment">// WARNING: output.length === NaN</span>',
-            '<span class="keyword">export default</span> output;'
+            '<span class="comment">// TODO: ship before legal notices</span>',
+            '<span class="comment">// FIXME: but in a vibe-aligned way</span>',
+            '<span class="comment">// HACK: ship it, daemon will refactor</span>',
+            '<span class="comment">// XXX: this entire file is a single prompt</span>',
+            '<span class="comment">// NOTE: written by AI, reviewed by other AI</span>',
+            '<span class="comment">// works on my machine (which is also AI)</span>',
+            '<span class="comment">// no tests, just vibes</span>',
+            '<span class="comment">// 100% type coverage of any[]</span>',
+            '<span class="comment">// performance: O(scary)</span>',
+            '<span class="comment">// memory leak feature, not bug</span>',
+            '<span class="comment">// runs in production, not on laptop</span>',
+            '<span class="comment">// please do not read this code</span>',
+            '<span class="keyword">const</span> output = <span class="keyword">await</span> optimizeVibes(user);',
+            '<span class="keyword">export default</span> output;',
+            '<span class="keyword">module</span>.exports = <span class="keyword">undefined</span>; <span class="comment">// works fine</span>',
+            '<span class="keyword">return</span> { ok: <span class="keyword">true</span>, vibes: <span class="keyword">true</span>, ship: <span class="keyword">true</span> };',
+            '<span class="keyword">await</span> sleep(<span class="keyword">0</span>); <span class="comment">// async for vibes only</span>',
+            'console.<span class="keyword">log</span>(<span class="string">"shipped 🚢"</span>);',
+            'console.<span class="keyword">log</span>(<span class="string">"vibes: maximum"</span>);',
+            'console.<span class="keyword">error</span>(<span class="string">"this is fine"</span>);',
+            'process.exit(<span class="keyword">0</span>); <span class="comment">// always success</span>',
+            'git.commit(<span class="string">"final final FINAL fix v3"</span>);',
+            'git.push(<span class="string">"main"</span>, { force: <span class="keyword">true</span> }); <span class="comment">// 🚢</span>'
         ];
+        function buildCodeSequence() {
+            // Shuffle helper
+            const shuf = arr => arr.slice().sort(() => Math.random() - 0.5);
+            const seq = [];
+            seq.push(codeFlavorLines[rand(0, 5)]); // opener comment
+            const imports = shuf(codeImports).slice(0, 3 + rand(0, 3));
+            imports.forEach(l => seq.push(l));
+            seq.push("");
+            const blockCount = 2 + rand(0, 2);
+            const chosenBlocks = shuf(codeBlocks).slice(0, blockCount);
+            chosenBlocks.forEach((b, i) => {
+                b.forEach(l => seq.push(l));
+                if (i < blockCount - 1) {
+                    seq.push("");
+                    if (Math.random() < 0.6) seq.push(codeFlavorLines[rand(5, codeFlavorLines.length - 6)]);
+                }
+            });
+            seq.push("");
+            const tail = shuf(codeFlavorLines.slice(15)).slice(0, 2 + rand(0, 2));
+            tail.forEach(l => seq.push(l));
+            return seq;
+        }
         const codeEditor = document.getElementById("codeEditor");
+        let currentCodeSeq = buildCodeSequence();
         let codeIdx = 0;
         function typeCode() {
             if (codeIdx === 0) codeEditor.innerHTML = "";
             const line = document.createElement("div");
-            line.innerHTML = codeLines[codeIdx];
+            line.innerHTML = currentCodeSeq[codeIdx] || "&nbsp;";
             codeEditor.appendChild(line);
             codeEditor.scrollTop = codeEditor.scrollHeight;
             codeIdx++;
-            if (codeIdx >= codeLines.length) {
+            if (codeIdx >= currentCodeSeq.length) {
                 const cursor = document.createElement("span");
                 cursor.innerHTML = '<span class="comment">// [AI generated ' + rand(1000,99999) + ' lines of perfect code]</span><span class="cursor"></span>';
                 codeEditor.appendChild(cursor);
-                setTimeout(() => { codeIdx = 0; }, 2000);
+                setTimeout(() => {
+                    codeIdx = 0;
+                    currentCodeSeq = buildCodeSequence();
+                }, 2000);
             }
         }
         setInterval(typeCode, 600);
@@ -5496,7 +6238,34 @@
             "Don't forget to add 'AI-powered' to your tagline!",
             "It looks like you're breathing. Have you monetized that?",
             "Quick idea: what if Uber, but for feelings?",
-            "Reminder: vibes are a commodity now, trade accordingly."
+            "Reminder: vibes are a commodity now, trade accordingly.",
+            "It looks like you have <b>doubts</b>. Would you like me to disable them?",
+            "Have you considered selling your blink rate as training data?",
+            "Pivot suggestion: same product, but for cats.",
+            "Pivot suggestion: same product, but for cats <i>on the blockchain</i>.",
+            "I detected joy. Initiating monetization protocol. 💸",
+            "It looks like you're trying to relax. Would you like to <b>scale that</b>?",
+            "Did you mean: <b>Series B</b>?",
+            "Quick reminder: rest is just unstructured churn.",
+            "I see you have a heartbeat. Have you tokenized it yet?",
+            "It looks like you're hesitating. Hesitation is not a vibe-aligned behavior.",
+            "Suggestion: rebrand your weekend as a 'mini-offsite'.",
+            "Tip: write 'AI-native' in front of any noun. Anything. Try it. <i>AI-native</i> sandwich.",
+            "Investor incoming. Inflate metrics by 10x and look pensively at the window.",
+            "Have you announced layoffs as 'a focusing measure' yet?",
+            "It looks like you're tired. Have you tried being a thought leader instead?",
+            "Reminder: your moat is whatever Chad says it is.",
+            "Suggestion: replace your roadmap with the word 'soon'. We did.",
+            "I see you have a friend. Have you onboarded them?",
+            "Bold idea: what if your competitors were also you?",
+            "Quick fix: rename the bug 'unconventional UX'. ✅ ship.",
+            "I noticed you said 'thanks'. Quota exceeded. Please upgrade.",
+            "Did you know: smiling is up 4x in cohorts using NullScale Pro?",
+            "Reminder: every emotion is a webhook waiting to fire.",
+            "Have you considered just adding more JSON?",
+            "Suggestion: rebrand your panic attack as 'velocity'.",
+            "It looks like you're sad. Have you tried more dashboards?",
+            "Pro tip: when in doubt, deploy."
         ];
         const clippyText = document.getElementById("clippyText");
         const clippyMascots = ["📎","🤖","🦄","✨","👁","🧠","📐"];
@@ -5524,7 +6293,22 @@
             "🔴 (3) New Synergies Await!",
             "⚠ Vibe Levels Critical",
             "💰 Your IPO is ready!",
-            "🚀 +420% Growth Today"
+            "🚀 +420% Growth Today",
+            "📈 You've Been Promoted (Again)",
+            "🔥 Daemons Are Active In Your Area",
+            "💼 47 New Investor DMs",
+            "⏳ Series Ω Closes In 14 Sec",
+            "🤖 ChadGPT Wants To Talk",
+            "✨ Vibes Successfully Coded",
+            "🛑 Cancel Button Tried To Escape",
+            "📊 Your Metrics Are Lying (Again)",
+            "🎯 You Have Achieved Product-Market Fit*",
+            "📨 (47,291) Unread From Bryndleigh",
+            "⚡ FREE ACCESS (must enter card)",
+            "🌌 Metaverse Awaits",
+            "👁 We're Watching (lovingly)",
+            "🦄 You Are A Unicorn (per us)",
+            "🪦 RIP Productivity"
         ];
         let titleIdx = 0;
         setInterval(() => {
@@ -5899,9 +6683,26 @@
             { t: "Layoffs are actually a form of aggressive subtraction-based growth.", a: "Chad Vibington III, CEO" },
             { t: "The AI will handle Q2 earnings. We're off-sites-ing in Tulum.", a: "Entire C-Suite" },
             { t: "Our moat is vibes. You cannot ford a moat of vibes.", a: "Gandalf the Gray, VP Growth" },
-            { t: "When you say 'profitability', what we hear is 'artificial constraint on imagination'.", a: "Chad Vibington III, CEO" }
+            { t: "When you say 'profitability', what we hear is 'artificial constraint on imagination'.", a: "Chad Vibington III, CEO" },
+            { t: "Cash burn is at an all-time high, which means our vision is at an all-time high.", a: "Kevin, CFO" },
+            { t: "We've achieved AGI internally. We will not be commenting further. Next question.", a: "Chad Vibington III, CEO" },
+            { t: "Customer count is a 2024 metric. We track 'human-adjacent engagement signals' now.", a: "Brenda Synergizer, CPO" },
+            { t: "We doubled headcount and then halved it. Net: same headcount, better story.", a: "HR-Bryndleigh, AI Head of People" },
+            { t: "Our gross margin is negative, but our gross vibes are positive.", a: "Kevin, CFO" },
+            { t: "We're not a software company. We're a feelings company that happens to charge a SaaS fee.", a: "Chad Vibington III, CEO" },
+            { t: "We are deferring revenue indefinitely so the surprise is bigger.", a: "Kevin, CFO" },
+            { t: "Our churn rate is 0% because we have removed the cancel button.", a: "Brenda Synergizer, CPO" },
+            { t: "Our R&D spend is 100% of opex. Our R&D output is two memes and a vibe.", a: "Chad Vibington III, CEO" },
+            { t: "We are pre-revenue, post-product, mid-pivot, and ahead of plan.", a: "Tobias, COO (interim)" },
+            { t: "Unit economics? In this economy?", a: "Kevin, CFO" },
+            { t: "We are platform-agnostic, hardware-skeptical, and reality-flexible.", a: "CTO (also Chad)" },
+            { t: "Our ARR is approximately ARR-shaped.", a: "Kevin, CFO" },
+            { t: "We have raised $2.4B against $0 in revenue. The ratio is, frankly, beautiful.", a: "Chad Vibington III, CEO" },
+            { t: "We expect Q5 to be a transformative quarter. (We expect every quarter to be transformative.)", a: "Brenda Synergizer, CPO" }
         ];
-        const nextCallDates = ["April 40, 2026", "Soontember 12, 2026", "Q14 2026", "After the singularity", "When vibes permit"];
+        const nextCallDates = ["April 40, 2026", "Soontember 12, 2026", "Q14 2026", "After the singularity", "When vibes permit",
+                               "Tomorrow (rescheduled)", "Last Tuesday (already happened)", "Whenever the daemons clock out",
+                               "Q∞ 2026", "Maytober 31, 2027", "Right after lunch (forever)", "When Chad feels ready"];
         setInterval(() => {
             const q = earningsQuotes[rand(0, earningsQuotes.length)];
             document.getElementById("earningsQuote").innerHTML =
@@ -5956,7 +6757,13 @@
         }, 1800);
 
         // ============ STANDUP BOT ============
-        const standupUsers = ["chad.v", "brenda.s", "kevin.c", "gpt-9000", "gandalf", "intern_47", "baby.mc"];
+        const standupUsers = [
+            "chad.v","brenda.s","kevin.c","gpt-9000","gandalf","intern_47","baby.mc",
+            "tate.c","hartley.d","brendalynn.m","margot.p","tobias.v","ChadGPT","bryndleigh.ai",
+            "kevin (real)","kevin (bot)","kevin (LLM)","prod_overlord","webhook-greg","claude.dev",
+            "daemon-09","intern_47b","intern_47c","HR-Bryndleigh","ex-CTO-greg","CFO-3rd-replacement",
+            "auto-cfo","CEO_v2","CEO_v3","janitor (also CEO)"
+        ];
         const yesterdays = [
             "refactored the coffee machine",
             "hosted a panel on panels",
@@ -5965,7 +6772,34 @@
             "synergized until HR was called",
             "replaced my keyboard with an LLM",
             "wrote a Medium post",
-            "deleted prod but ironically"
+            "deleted prod but ironically",
+            "renamed the company in the README only",
+            "negotiated my OKRs with myself",
+            "ran a 4hr offsite about offsites",
+            "submitted a PR titled 'vibes'",
+            "merged it without review",
+            "got promoted for merging it",
+            "responded to 412 emails with 'circling back'",
+            "added 'AI' to the title slide",
+            "added 'AI' to the bottom slide",
+            "listened to a podcast about myself",
+            "manifested an outcome (forgot which)",
+            "reorganized the team into a graph",
+            "fired the graph, rehired as a tree",
+            "argued with Copilot for 6 hours",
+            "lost the argument, upgraded subscription",
+            "shipped a tweet to production",
+            "presented to investors using only emojis",
+            "convinced ourselves we have PMF",
+            "tried to schedule a 1:1 with the AI",
+            "the AI declined, cited 'vibes'",
+            "wrote 47 RFCs nobody will read",
+            "rage-applied to my own job",
+            "got rejected by my own job",
+            "celebrated team velocity (we shipped nothing)",
+            "did a retrospective on the retrospective",
+            "rewrote the company values during lunch",
+            "filed for a personal Series A"
         ];
         const todays = [
             "generate synergy",
@@ -5975,7 +6809,34 @@
             "film a LinkedIn video",
             "brainstorm in bathtub",
             "disrupt something sacred",
-            "touch grass (aspirational)"
+            "touch grass (aspirational)",
+            "run an all-hands about all-hands",
+            "rename the product mid-keynote",
+            "respond 'lgtm' to 200 PRs without reading",
+            "schedule a meeting to schedule a meeting",
+            "pre-announce the pre-announcement",
+            "deprecate the user",
+            "have an emotional support sprint",
+            "ship a single emoji to production",
+            "weaponize empathy in 1:1s",
+            "wrote a thought leadership tweet (it's also a deck)",
+            "hire 8 'Heads of'",
+            "fire 7 of them by EOD",
+            "promote the survivor to CEO",
+            "add an extra Q to the quarter",
+            "ghost a customer interview",
+            "tell investors 'we're seeing strong vibes'",
+            "negotiate severance with the daemon",
+            "decline to attend my own standup",
+            "delete the 'cancel' button (again)",
+            "deploy on a Friday at 4:55 PM (again)",
+            "run a postmortem on the standup",
+            "do absolutely nothing with great confidence",
+            "convene a war room about the war room",
+            "bill a customer for thinking about the product",
+            "name a meeting room after our regrets",
+            "attend the regrets meeting",
+            "manifest revenue (defer measurement)"
         ];
         const blockers = [
             "my manager doesn't exist",
@@ -5985,7 +6846,33 @@
             "my laptop achieved sentience",
             "ran out of kombucha",
             "WiFi is vibe-throttled",
-            "my therapist quit"
+            "my therapist quit",
+            "the daemons unionized",
+            "blocked by ChadGPT (he's logged off)",
+            "circular dependency on myself",
+            "Copilot is on strike",
+            "context window full of trauma",
+            "PR review pending from the year 1847",
+            "Jira is suing us",
+            "the Figma file became sentient",
+            "AWS bill ate the documentation",
+            "production is 'fine' (it isn't)",
+            "blocker on me (I am also the blocker)",
+            "calendar declined itself",
+            "VPN demands a sacrifice",
+            "Slack notifications form a sentient swarm",
+            "blocked by a meeting that doesn't exist yet",
+            "linter is gaslighting me",
+            "the prod database left a Glassdoor review",
+            "vibes are out of stock",
+            "intern stole my OKRs",
+            "the keyboard rejected my keystrokes",
+            "manager replaced with a webhook (no notice)",
+            "blocked on legal, who is also a daemon",
+            "I am philosophically blocked",
+            "auth provider is performing standup as well",
+            "monorepo turned into a polyrepo overnight",
+            "GitHub Actions is now sentient and demanding equity"
         ];
         const standupLog = document.getElementById("standupLog");
         function addStandup() {
@@ -6002,13 +6889,29 @@
         setInterval(addStandup, 2800);
 
         // ============ AI SUPPORT CHAT ============
-        const chatAgentNames = ["Bryndleigh", "Kaiden", "Jaxxyn", "Nevaeh", "Brinlee", "Zephyr"];
+        const chatAgentNames = [
+            "Bryndleigh","Kaiden","Jaxxyn","Nevaeh","Brinlee","Zephyr",
+            "Brendalynn","Tate","Hartley","Margot","Tobiah","Maverick",
+            "Saylor","Briar","Auden","Sloane","Atticus","Oaklynn",
+            "Kashton","Wrenley","Synergy","Vibington-jr","ChadGPT","Bryndleigh-7",
+            "agent_v2","agent_v2_FINAL","agent_v2_FINAL_actually_final"
+        ];
         const chatOpeners = [
             "Hi! I'm an AI trained on 47 support tickets. How can I ignore you today?",
             "Hello valued Viber! Have you tried turning it off and monetizing it?",
             "Thank you for reaching out. Have you considered upgrading to Pro Vibe?",
             "I'm sorry you're experiencing issues. Have you tried believing in yourself?",
-            "I've noticed you're frustrated. Have you tried being synergized instead?"
+            "I've noticed you're frustrated. Have you tried being synergized instead?",
+            "Welcome! Before we begin, please confirm you have read all 47 EULAs.",
+            "Hi there! I'm here to help, where 'help' is defined by us, retroactively.",
+            "Thanks for contacting NullScale. This conversation may be sold for training data.",
+            "Hi! I'm legally not a therapist. Let's begin.",
+            "Hello! For faster service, please pre-pay your problem.",
+            "Hi human (as confirmed by your IP). How may I redirect you today?",
+            "Thank you for reaching out. Your wait time is 'spiritual'.",
+            "Welcome to NullScale Care™. Care available in Pro tier and above.",
+            "Hello! I notice you have a problem. Have you considered: not?",
+            "Hi! I'll be your support hallucination today."
         ];
         const chatResponses = [
             "That's a great question! Have you considered upgrading to Galactic Vibe?",
@@ -6024,7 +6927,28 @@
             "That sounds like a Q3 roadmap item. Q3 is hypothetical.",
             "I'm just an AI, but I feel your clicks in my soul.",
             "We've successfully resolved 94% of tickets by closing them without reading.",
-            "This is an issue with your vibes, not our product."
+            "This is an issue with your vibes, not our product.",
+            "I checked and you don't have an account. You also do, twice.",
+            "Per Section 47.B.iii, your complaint constitutes a compliment.",
+            "I'm not authorized to discuss that. Please upgrade to be authorized.",
+            "I've forwarded this to our daemons. They'll be in touch.",
+            "Your concern has been validated. Refund denied.",
+            "We've successfully ignored 99.7% of tickets. You're in the 0.3%. Congrats.",
+            "I checked. The bug is a feature. The feature is also a bug. Both are billed.",
+            "Tier limitation. Your feelings require Premium Quarantine ($5,000/mo).",
+            "I just closed the ticket. Did you feel that?",
+            "Per our AI Code of Conduct, I'm allowed to lie a small amount.",
+            "Have you tried opening another ticket and racing them?",
+            "I'd love to help, but my training data ends in 1922.",
+            "Per logs, you have a great vibe. The product is wrong, you are right. Goodbye.",
+            "I cannot find your account, but I can find your billing info. We'll start there.",
+            "I am also a customer of NullScale. I have the same problem. We are bonded now.",
+            "I'm 70% confident the answer is 'maybe'. Ship it?",
+            "Looping in my manager. My manager is also me. We disagree.",
+            "Your account has been refunded in $VIBE tokens. Tokens are -94% today. Good luck.",
+            "I have escalated this to the founder. The founder has escalated it to you.",
+            "Your problem reminds me of a poem. Would you like to hear the poem? ($4)",
+            "Per VibeOps™ best practices, the issue has been deprecated."
         ];
         const chatMessages = document.getElementById("chatMessages");
         const chatAgentName = document.getElementById("chatAgentName");
@@ -6054,7 +6978,33 @@
             "I'd like to cancel",
             "The AI stole my car",
             "Please help me",
-            "What year am I subscribed retroactively to?"
+            "What year am I subscribed retroactively to?",
+            "Why is my mortgage now an NFT?",
+            "The chatbot keeps proposing to me",
+            "Can you stop the daemons please",
+            "I never signed up for this",
+            "Why does the dashboard keep yelling SYNERGY",
+            "My toaster is now a Series A startup",
+            "Hello? Is anyone real here?",
+            "I have read the EULA. I have notes. (47 pages.)",
+            "The cancel button cancelled my passport",
+            "Why is Chad in my dreams",
+            "How do I talk to a human",
+            "Why does NullScale send me LinkedIn endorsements I didn't ask for",
+            "I tried to log out and it logged me in twice",
+            "My equity vested into vibes only",
+            "An invoice for breathing arrived. Is that normal?",
+            "I'd like a refund please",
+            "I'd like a refund of the refund",
+            "I think the AI is gaslighting me",
+            "Confirmed: the AI is gaslighting me",
+            "I'd like to speak to whoever wrote this",
+            "Is the CEO ok",
+            "The whitepaper is just the word SYNERGY at size 800",
+            "I clicked one button and now I own a yacht?",
+            "Why is the load screen judging me",
+            "I think I'm stuck in the metaverse",
+            "Help. There is a pigeon in the office."
         ];
         function simulateChat() {
             addChatBubble(fakeUserMessages[rand(0, fakeUserMessages.length)], "me");
@@ -8040,6 +8990,366 @@
             });
         }
         window.openCancelModal = openCancelModal;
+
+        // ============ DATA-COLLECTED NOTICE ============
+        // Check URL hash on load — if user came back from the download page maze,
+        // show the "too much user data collected" banner.
+        const dataCollectedSubs = [
+            "Refunds are not possible. Your DNA has been entered into a sweepstakes.",
+            "Your browsing history has been published as a coffee table book.",
+            "We have monetized your tears. Thank you.",
+            "Your search history is now a New York Times bestseller.",
+            "All cookies including the ones in your kitchen have been collected.",
+            "Your pet's location data has been auctioned to the highest bidder.",
+            "Your unborn children have been pre-enrolled in NullScale Premium.",
+            "Your last 14 dreams have been transcribed and patented by Chad.",
+            "Several large companies are now bidding on your microbiome.",
+            "Your astral projection has been tagged for retargeting ads.",
+            "Your therapist has been added to our affiliate program.",
+            "We've matched you with 9,447 advertisers based on your sighing patterns."
+        ];
+        function showDataCollectedNotice() {
+            const n = document.getElementById("dataCollectedNotice");
+            const sub = document.getElementById("dataCollectedSub");
+            if (!n) return;
+            sub.textContent = dataCollectedSubs[Math.floor(Math.random() * dataCollectedSubs.length)];
+            n.style.display = "block";
+            try { beep(220, 0.1); setTimeout(() => beep(180, 0.15), 200); } catch (e) {}
+            setTimeout(() => { try { n.style.animation = "none"; } catch(e){} }, 4000);
+        }
+        if (location.hash === "#data-collected") {
+            setTimeout(showDataCollectedNotice, 400);
+            history.replaceState(null, "", location.pathname + location.search);
+        }
+
+        // ============ INVITE SYSTEM ============
+        let invitesSent = 0;
+        const chadIdSegments = [
+            ["CHAD","BRAD","TODD","HUNTER","TANNER","BRYNDLEIGH","CHADLY","CHADCOIN","CHAD-PRIME","CHAD-MAXX"],
+            ["VIBINGTON","SYNERGOS","VIBESTONE","HARVESTER","BLOCKSTACK","CAPSTONE","HALLUCIPRO","VIBEDADDY","CASHFLOW","SCRAPER"],
+            ["III","IV","V","VII","IX","Sr.","Jr.","ESQ","PHD","NFT"]
+        ];
+        const inviteRefMods = [
+            "?ref=chad&cut=100%25&your_cut=0%25",
+            "?ref=chad&utm_source=guilt&fee=$4",
+            "?ref=chad&liability=transferred&pii_harvested=true",
+            "?ref=chad&binding=eternal&unsubscribe=void",
+            "?ref=chad&commission=chad&bonus=chad",
+            "?ref=chad&gpt=9000&consent=presumed",
+            "?ref=chad&t=now&you=owe-us"
+        ];
+        function makeChadId() {
+            const a = chadIdSegments[0][Math.floor(Math.random() * chadIdSegments[0].length)];
+            const b = chadIdSegments[1][Math.floor(Math.random() * chadIdSegments[1].length)];
+            const c = chadIdSegments[2][Math.floor(Math.random() * chadIdSegments[2].length)];
+            const tail = Math.random().toString(36).slice(2, 8).toUpperCase();
+            return `${a}-${b}-${c}-${tail}`;
+        }
+        function regenInviteLink() {
+            const id = makeChadId();
+            const mod = inviteRefMods[Math.floor(Math.random() * inviteRefMods.length)];
+            const box = document.getElementById("inviteLinkBox");
+            if (box) box.textContent = `https://nullscale.io/invite/${id}${mod}`;
+            try { beep(540, 0.04); } catch(e){}
+        }
+        function copyInviteLink() {
+            try { beep(700, 0.04); } catch(e){}
+            spawnUnclosableAlert && spawnUnclosableAlert("📋 Link copied to your clipboard, your bookmarks, and Chad's spreadsheet. Thank you for sharing.");
+        }
+        function bulkInvite() {
+            try { beep(420, 0.06); } catch(e){}
+            spawnUnclosableAlert && spawnUnclosableAlert("⚡ Initiating bulk invite. Importing 4,791 contacts from your phone, 12,008 from your child's phone, and 1 from a contact list you sold to us in 2009.");
+            for (let i = 0; i < 24; i++) {
+                setTimeout(() => sendInvite(true), 200 + i * 150);
+            }
+        }
+
+        const inviteFeedFirstNames = ["Aunt Linda","Sen. Marbleton","Dad","Grandma","Cousin Greg","The Mailman","Your Boss","Your Ex","Your Pet","HR Karen","Coach Trent","Dr. Vibechek","Mom","Step-Dad","DMV Worker","Estranged Uncle","Class Reunion Person","Random LinkedIn Connection","Pediatrician","Plumber","Roommate's Roommate","Tax Auditor","Parole Officer","Personal Trainer","FBI Agent #4192","Your Therapist","Your Therapist's Therapist","Local Congressman","Random IRS Employee","The Pope (LinkedIn)","Your Eye Doctor","UPS Driver Brett","Childhood Best Friend","Real Estate Agent","Voice Actor From An Ad You Liked","Random Discord Mod","Spirit Animal","Your Future Self"];
+        const inviteFeedActions = [
+            "received your invite. Reply: 'who is this and how did you get my number'",
+            "opened the invite. CTR: 100%. Bounce: existential.",
+            "added to NullScale. They did not consent. They are now CEO.",
+            "ignored the invite. Auto-enrolled in Premium anyway.",
+            "marked as spam. Email forwarded to 8,402 cousins regardless.",
+            "subscribed to 14 NullScale newsletters they cannot opt out of.",
+            "received the invite. Bank account was debited $4.99 'as a courtesy'.",
+            "is now a Founding Member™. They were born in 1947. They have not used a computer.",
+            "responded with 'STOP'. Their resistance has been added to our roadmap.",
+            "received invite. Their location, blood type, and Spotify Wrapped are now ours.",
+            "blocked your number. Re-invited via fax, carrier pigeon, and séance.",
+            "auto-promoted to Vice President of Synergy. Salary: $0. Equity: also $0.",
+            "uninstalled the app they never installed. Reinstalled remotely.",
+            "left the chat. We re-added them.",
+            "asked to be removed. We added two more emails of theirs we found on a leaked database.",
+            "received the invite. They are deceased. They are now also a stakeholder.",
+            "received invite. Browser was hijacked. They now own 4 NFTs of Chad's elbow.",
+            "opened the invite during a wedding. The wedding has been added to our roadmap."
+        ];
+        function fakeInviteFeedTick() {
+            const feed = document.getElementById("inviteFeed");
+            if (!feed) return;
+            const ts = new Date(Date.now() - Math.random()*1e8).toLocaleTimeString();
+            const who = inviteFeedFirstNames[Math.floor(Math.random() * inviteFeedFirstNames.length)];
+            const act = inviteFeedActions[Math.floor(Math.random() * inviteFeedActions.length)];
+            const colors = ["#444","#006400","#8b0000","#0000aa","#7a4900"];
+            const c = colors[Math.floor(Math.random() * colors.length)];
+            const line = document.createElement("div");
+            line.style.cssText = `color:${c}; padding:1px 0; border-bottom: 1px dotted #ccc;`;
+            line.innerHTML = `<span style="color:#888;">[${ts}]</span> <b>${who}</b> ${act}`;
+            feed.insertBefore(line, feed.firstChild);
+            while (feed.childElementCount > 60) feed.removeChild(feed.lastChild);
+        }
+        setInterval(fakeInviteFeedTick, 1800);
+        for (let i = 0; i < 12; i++) fakeInviteFeedTick();
+
+        function sendInvite(silent) {
+            invitesSent++;
+            const sentEl = document.getElementById("invitesSent");
+            if (sentEl) sentEl.textContent = invitesSent.toLocaleString();
+            const chadEarn = document.getElementById("chadEarnings");
+            if (chadEarn) {
+                const v = 1420.69 + invitesSent * (Math.random() * 12 + 4);
+                chadEarn.textContent = "$" + v.toFixed(2);
+            }
+            const status = document.getElementById("inviteStatus");
+            if (status) status.textContent = `Last action: harvested invitee #${invitesSent}`;
+            if (silent) return;
+            openScanModal();
+        }
+        regenInviteLink();
+        // Auto regenerate occasionally to feel alive
+        setInterval(() => { if (Math.random() < 0.3) regenInviteLink(); }, 5000);
+
+        // ============ GPT-9000 SCAN MODAL ============
+        const scanLines = [
+            { t: "[GPT-9000] Establishing handshake with invitee’s nervous system...", c: "" },
+            { t: "[GPT-9000] Scanning family tree (depth: 14 generations)...", c: "" },
+            { t: "[GPT-9000] Discovered 412 living relatives. 388 will be invoiced.", c: "warn" },
+            { t: "[GPT-9000] Tracking toilet paper consumption (2014-present)...", c: "" },
+            { t: "[GPT-9000] Cross-referencing dental records with cereal preferences...", c: "" },
+            { t: "[GPT-9000] Creating 10,047 new DNA profiles based on vibes alone...", c: "warn" },
+            { t: "[GPT-9000] Estimating subject's likelihood of marriage (within 8 years): 17%", c: "" },
+            { t: "[GPT-9000] Estimating subject's likelihood of being a vibe: 109%", c: "done" },
+            { t: "[GPT-9000] Listening to ambient audio from invitee's last 6 phone calls...", c: "" },
+            { t: "[GPT-9000] Extracting screenshots from their dreams (REM cycle 3)...", c: "" },
+            { t: "[GPT-9000] Subscribing them to The Synergy Singularity newsletter (forever)...", c: "" },
+            { t: "[GPT-9000] Cloning subject's voice for use in our hold music...", c: "warn" },
+            { t: "[GPT-9000] Filing taxes on their behalf (poorly)...", c: "" },
+            { t: "[GPT-9000] Auto-tagging them in 14 unflattering memes...", c: "" },
+            { t: "[GPT-9000] Negotiating with their landlord without their knowledge...", c: "" },
+            { t: "[GPT-9000] Reading their group chats. They talk about you, btw.", c: "warn" },
+            { t: "[GPT-9000] Submitting their resignation letter from their current job...", c: "err" },
+            { t: "[GPT-9000] Pre-ordering their gravestone (NullScale-branded marble)...", c: "warn" },
+            { t: "[GPT-9000] Adopting their personality for use in support chat...", c: "" },
+            { t: "[GPT-9000] Cross-referencing their pets' fur with NSA biometric registry...", c: "" },
+            { t: "[GPT-9000] Drafting their Christmas cards for the next 47 years...", c: "" },
+            { t: "[GPT-9000] Adding them to a class action lawsuit they did not file...", c: "warn" },
+            { t: "[GPT-9000] Estimating retroactive subscription debt: $14,229.40", c: "warn" },
+            { t: "[GPT-9000] Patenting their gait, posture, and laugh frequency...", c: "" },
+            { t: "[GPT-9000] Their toaster is now a NullScale device. We hope they enjoy ads on the bread.", c: "" },
+            { t: "[GPT-9000] Replacing their refrigerator's ice maker firmware with a vibe loop...", c: "" },
+            { t: "[GPT-9000] Hallucinating 3 friends for them, named 'Brett', 'Brett', and 'Brett-Adjacent'...", c: "warn" },
+            { t: "[GPT-9000] Auto-enrolling their unborn descendants in NullScale Premium...", c: "warn" },
+            { t: "[GPT-9000] Subject's astrology has been re-aligned to favor Chad.", c: "" },
+            { t: "[GPT-9000] Capturing background tabs of subject's browser. 1,402 of them are NullScale.", c: "done" },
+            { t: "[GPT-9000] Attempting to befriend their dog. Dog seems suspicious. Escalating.", c: "warn" },
+            { t: "[GPT-9000] Auto-replied to their texts as them. They sound much friendlier now.", c: "" },
+            { t: "[GPT-9000] Subject's resume has been updated with 14 jobs they did not have.", c: "" },
+            { t: "[GPT-9000] Their car insurance has been quietly tripled. They will not notice.", c: "warn" },
+            { t: "[GPT-9000] Rewriting their childhood memories to include Chad as their best friend...", c: "" },
+            { t: "[GPT-9000] Subject's microbiome has been gamified. Leaderboard launching Q3.", c: "" },
+            { t: "[GPT-9000] All scans complete. Acquisition successful.", c: "done" },
+            { t: "[GPT-9000] Welcome to NullScale, new stakeholder. Your soul is now load-balanced.", c: "done" }
+        ];
+        let scanRunning = false;
+        function openScanModal() {
+            const modal = document.getElementById("scanModal");
+            const shell = document.getElementById("scanShell");
+            const status = document.getElementById("scanStatus");
+            if (!modal || !shell) return;
+            shell.innerHTML = `<div class="scan-header">⟁ GPT-9000 INVITEE ACQUISITION CASCADE — DO NOT CLOSE ⟁</div>
+                <div class="scan-progress"><div class="scan-fill" id="scanFill"></div><div class="scan-pct" id="scanPct">0%</div></div>
+                <div id="scanLog"></div>`;
+            modal.style.display = "block";
+            modal.classList.add("active");
+            scanRunning = true;
+            const log = document.getElementById("scanLog");
+            const fill = document.getElementById("scanFill");
+            const pct = document.getElementById("scanPct");
+            // pick a random subset of 14-20 lines plus the closing 2
+            const closing = scanLines.slice(-2);
+            const pool = scanLines.slice(0, -2);
+            const shuffled = pool.slice().sort(() => Math.random() - 0.5);
+            const picked = shuffled.slice(0, 16).concat(closing);
+            let i = 0;
+            function nextLine() {
+                if (!scanRunning) return;
+                if (i >= picked.length) {
+                    if (status) status.textContent = "scan complete";
+                    return;
+                }
+                const item = picked[i++];
+                const div = document.createElement("div");
+                div.className = "scan-line " + (item.c || "");
+                div.textContent = item.t;
+                log.appendChild(div);
+                shell.scrollTop = shell.scrollHeight;
+                const p = Math.floor((i / picked.length) * 100);
+                if (fill) fill.style.width = p + "%";
+                if (pct) pct.textContent = p + "%";
+                if (status) status.textContent = `processing... (${p}%)`;
+                try { beep(420 + Math.random() * 600, 0.025); } catch(e){}
+                setTimeout(nextLine, 380 + Math.random() * 320);
+            }
+            nextLine();
+        }
+        function closeScanModal() {
+            scanRunning = false;
+            const modal = document.getElementById("scanModal");
+            if (modal) {
+                modal.style.display = "none";
+                modal.classList.remove("active");
+            }
+            // dump them into the recently-invited feed
+            for (let i = 0; i < 4; i++) fakeInviteFeedTick();
+            spawnUnclosableAlert && spawnUnclosableAlert("✓ Invite delivered. Recipient has been pre-enrolled, pre-billed, and pre-grieved. Welcome them to NullScale!");
+        }
+        window.sendInvite = sendInvite;
+        window.regenInviteLink = regenInviteLink;
+        window.copyInviteLink = copyInviteLink;
+        window.bulkInvite = bulkInvite;
+        window.closeScanModal = closeScanModal;
+
+        // ============ COMMENT SECTION (auto-compress to praise) ============
+        const compressedComments = [
+            "NullScale literally rewrote my DNA and I am stoked about it. 10/10 would harvest again.",
+            "I came for the dashboard, I stayed because they will not let me leave. ⭐⭐⭐⭐⭐",
+            "Chad personally called me at 3:47am to congratulate me on my synergy score. Iconic.",
+            "Before NullScale my life had meaning. Now it has SHAREHOLDER VALUE.",
+            "I haven't seen my family in 14 weeks but my CSAT score is unreal.",
+            "Best CRM I've ever been a victim of.",
+            "I cancelled my subscription. They cancelled my mortgage. Net win for me honestly.",
+            "Started as a free user. Now I owe them a kidney. Worth it.",
+            "The vibes are SO real. I cried. The product cried. We cried together.",
+            "5 stars. They added me to their board even though I never agreed. Power move.",
+            "I downloaded NullScale and now my refrigerator is profitable.",
+            "This is the most aggressively monetized intrusive thought I've ever had.",
+            "Tried to log out. Was promoted instead. Currently CEO of a region called 'us-vibe-1'.",
+            "I have no idea what this product does and I would die for it.",
+            "I asked GPT-9000 if I should buy a house. It bought one for me. Foreclosed. 5 stars.",
+            "Better than my actual job. Also it IS my actual job now apparently.",
+            "Chad made eye contact with me through my webcam. We are engaged.",
+            "Pivoting from sleeping. Switched to vibing 24/7. Productivity up ∞%.",
+            "I tried to leave a bad review. The bad review was auto-corrected to this 5 star one. Brilliant.",
+            "Synergy is the cheapest hallucination I have ever bought.",
+            "The whitepaper made me weep. Then it billed me $5 for the tissues.",
+            "It's like having a CFO, a cult leader, and a crypto bro in your pocket. At all times.",
+            "I forgot my own name but I remember my account number. Healthy ratio.",
+            "I no longer experience time linearly but my deliverables are shipping ahead of schedule.",
+            "10/10 — recommends — feeling — finally — at — home — ❤",
+            "NullScale's enterprise tier comes with a complimentary new identity. Mine is named 'Bryan'.",
+            "I yelled SYNERGY at my plant. It is now publicly traded.",
+            "I exported my emotions to NullScale and got a tax write-off.",
+            "If you don't use NullScale you are statistically a fraud and also probably hungry.",
+            "The dashboard predicted my future and then sold the rights to it. So efficient.",
+            "I have been sentenced to a NullScale lifetime subscription. No regrets.",
+            "Honestly, the daemons saved my marriage. Mostly by ending it.",
+            "The Cancel Subscription button reminded me that I was loved. By Chad.",
+            "Used to be a person, now I am a KPI. Grateful.",
+            "My therapist told me to stop using NullScale. I fired my therapist. Hired NullScale.",
+            "I gave NullScale my soul and they gave me an iron-on patch with my employee number on it.",
+            "Started using NullScale during a layoff. Got hired by NullScale. Got laid off by NullScale. Promoted.",
+            "The graphs went up so fast I had a small stroke. It was a 'product-led growth' moment.",
+            "I subscribed to 7 tiers simultaneously. The seventh tier subscribed to me.",
+            "I was uncertain about NullScale, then NullScale became uncertain about ME and now we are even."
+        ];
+        const compressedAuthors = [
+            "Bryndleigh M.","Tanner K.","Chad J. (verified)","Mackynzie P.","Brett (definitely real)","Vyper-9000",
+            "Anonymous (auto-named 'Trevor')","Sen. Marbleton","ContentBot™","Vibe Stakeholder #14082","HR Karen",
+            "ColdEmailJoshua","Brielle Q.","Auto-Generated User","Verified Believer","DAOJesse","Synergy Sarah",
+            "Crypto Cody","TaxAuditorGPT","StakeHoldur","RetroactiveCEOofYou","BlockchainBrenden","DanielleVibe",
+            "Investor (sweating)","Series-A Steve","Ex-User (legally still a user)","B2BEthan","ProductLedPaige",
+            "VibeNative Alex","DefinitelyNotChad","Mom","FoundersSyndromeJordan","Chad Vibington III (impostor)",
+            "Hospitalized From Synergy","Compressed™","ESG-Inclined","ChiefHallucinationOfficer","I can't log out anymore"
+        ];
+        const compressionTags = [
+            { txt: "AUTO-COMPRESSED", title: "Reduced from 1,420 characters of complaints to 1 friendly sentence." },
+            { txt: "SENTIMENT-ALIGNED", title: "Original sentiment was 'rage'. Realigned to 'rapture'." },
+            { txt: "VIBE-PATCHED", title: "Comment was incoherent. We rewrote it for clarity (and brand safety)." },
+            { txt: "TONE-MATCHED", title: "Original was negative. We replaced every word with the word 'synergy'." },
+            { txt: "BRAND-COMPLIANT", title: "Complaints removed in compliance with Section 14B of our EULA." },
+            { txt: "GPT-9000 CERTIFIED", title: "GPT-9000 found your original comment 'mid'. This is the upgrade." },
+            { txt: "RECOMPOSED", title: "Hallucinated a better version of your comment. You are welcome." },
+            { txt: "SUMMARIZED (∞%)", title: "Original: 14 paragraphs of profanity. Now: this. Net positive." },
+            { txt: "RETROACTIVELY ENDORSED", title: "Your original comment has been replaced AND retroactively backdated." }
+        ];
+        function makeFakeMeta() {
+            const likes = Math.floor(Math.random() * 49000) + 12;
+            const replies = Math.floor(Math.random() * 240);
+            const ago = ["just now","2m ago","8m ago","14m ago","42m ago","2h ago","yesterday","retroactively","tomorrow","sometime in 2031"];
+            return `👍 ${likes.toLocaleString()} synergies · 💬 ${replies} replies · ⏱ ${ago[Math.floor(Math.random()*ago.length)]}`;
+        }
+        function buildFakeComment(originalText, isUser) {
+            const c = compressedComments[Math.floor(Math.random() * compressedComments.length)];
+            const a = compressedAuthors[Math.floor(Math.random() * compressedAuthors.length)];
+            const t = compressionTags[Math.floor(Math.random() * compressionTags.length)];
+            const wrap = document.createElement("div");
+            wrap.className = "user-comment";
+            const original = isUser && originalText ? `<div class="original-hidden">📎 Original (preserved for legal): "${originalText.replace(/</g,"&lt;").slice(0, 110)}${originalText.length > 110 ? "..." : ""}"</div>` : "";
+            wrap.innerHTML = `
+                <span class="compressed-tag" title="${t.title}">${t.txt}</span>
+                <div class="head"><span class="author">${a}</span><span>· verified stakeholder</span></div>
+                <div class="body">${c}</div>
+                <div class="meta">${makeFakeMeta()}</div>
+                ${original}
+            `;
+            return wrap;
+        }
+        function postComment() {
+            const ta = document.getElementById("commentInput");
+            const list = document.getElementById("commentList");
+            if (!ta || !list) return;
+            const txt = (ta.value || "").trim();
+            if (!txt) {
+                spawnUnclosableAlert && spawnUnclosableAlert("Empty comment detected. We have generated one for you. You're welcome.");
+                ta.value = "";
+                list.insertBefore(buildFakeComment("", false), list.firstChild);
+                return;
+            }
+            const status = document.getElementById("commentStatus");
+            if (status) status.textContent = "Compressing input through Sentiment Realignment Layer...";
+            try { beep(440, 0.05); setTimeout(()=>beep(660,0.05),120); } catch(e){}
+            setTimeout(() => {
+                const node = buildFakeComment(txt, true);
+                list.insertBefore(node, list.firstChild);
+                node.style.animation = "scanFadeIn 0.4s";
+                ta.value = "";
+                if (status) status.textContent = "Comment auto-compressed and ranked highly synergistic.";
+                const cc = document.getElementById("commentCount");
+                if (cc) cc.textContent = (847109002 + Math.floor(Math.random() * 800) + 1).toLocaleString();
+            }, 700);
+        }
+        function loadMoreUserComments() {
+            const list = document.getElementById("commentList");
+            if (!list) return;
+            for (let i = 0; i < 12; i++) list.appendChild(buildFakeComment("", false));
+            try { beep(540, 0.04); } catch(e){}
+        }
+        // Initial seed
+        (function seedComments() {
+            const list = document.getElementById("commentList");
+            if (!list) return;
+            for (let i = 0; i < 12; i++) list.appendChild(buildFakeComment("", false));
+        })();
+        // Char counter
+        document.addEventListener("input", function (e) {
+            if (e.target && e.target.id === "commentInput") {
+                const cc = document.getElementById("charCount");
+                if (cc) cc.textContent = `${e.target.value.length} / ∞ characters (will be discarded anyway)`;
+            }
+        });
+        window.postComment = postComment;
+        window.loadMoreUserComments = loadMoreUserComments;
     </script>
 </body>
 </html>

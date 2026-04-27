@@ -1,0 +1,1502 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>★ DOWNLOAD NULLSCALE SDK 100% FREE NO VIRUS ★</title>
+    <link rel="stylesheet" href="https://unpkg.com/98.css">
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            background: #008080;
+            font-family: "Pixelated MS Sans Serif", Tahoma, sans-serif;
+            margin: 0;
+            padding: 8px;
+            min-height: 100vh;
+        }
+
+        /* Topbar */
+        .topbar {
+            background: #c0c0c0;
+            border: 2px solid #fff;
+            border-right-color: #404040;
+            border-bottom-color: #404040;
+            padding: 4px 8px;
+            font-size: 11px;
+            margin-bottom: 6px;
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+        .topbar .crumb {
+            flex: 1;
+            color: #404040;
+            font-size: 11px;
+        }
+        .topbar .crumb b { color: #000; }
+        .topbar .stage-pill {
+            background: #000;
+            color: #00ff41;
+            font-family: monospace;
+            font-size: 10px;
+            padding: 2px 6px;
+            border: 1px inset #888;
+        }
+
+        .stage { display: none; }
+        .stage.active { display: block; }
+
+        /* ============ STAGE 1: AD HELL ============ */
+        .ad-page {
+            background: #ffff80;
+            border: 4px ridge #ffaa00;
+            min-height: 92vh;
+            padding: 12px;
+            position: relative;
+            overflow: hidden;
+        }
+        .ad-banner-strip {
+            background: linear-gradient(90deg, #ff00ff, #ffff00, #00ffff, #ff00ff);
+            background-size: 200% 100%;
+            color: #000;
+            font-weight: bold;
+            text-align: center;
+            padding: 6px 12px;
+            font-size: 14px;
+            border: 2px solid #fff;
+            margin-bottom: 8px;
+            text-shadow: 1px 1px 0 #fff;
+            animation: rainbowSlide 4s linear infinite;
+        }
+        @keyframes rainbowSlide {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+
+        .ad-grid {
+            display: grid;
+            grid-template-columns: 1fr 240px;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        .ad-side {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .ad-main {
+            background: #fff;
+            border: 4px ridge #aa0000;
+            padding: 14px;
+            text-align: center;
+            font-family: "Times New Roman", serif;
+        }
+        .ad-main h1 {
+            font-family: "Impact", "Arial Black", sans-serif;
+            font-size: 32px;
+            color: #ff0000;
+            margin: 0 0 8px;
+            text-shadow: 2px 2px 0 #ffff00, 4px 4px 0 #000;
+            letter-spacing: 1px;
+            animation: ad-shake 0.3s ease-in-out infinite;
+        }
+        @keyframes ad-shake {
+            0%, 100% { transform: rotate(-1deg); }
+            50% { transform: rotate(1deg); }
+        }
+        .ad-main h2 {
+            font-family: "Comic Sans MS", "Arial", sans-serif;
+            font-size: 18px;
+            color: #0000aa;
+            margin: 0 0 6px;
+        }
+        .ad-main .winner-marquee {
+            background: #000;
+            color: #ffff00;
+            font-family: monospace;
+            font-size: 12px;
+            padding: 2px;
+            margin: 6px 0;
+        }
+
+        /* The big fake DOWNLOAD buttons — multiple flavors */
+        .fake-dl {
+            display: inline-block;
+            margin: 8px 6px;
+            padding: 10px 18px;
+            text-align: center;
+            cursor: pointer;
+            font-family: "Impact", "Arial Black", sans-serif;
+            font-size: 18px;
+            text-decoration: none;
+            border: 3px outset #fff;
+            position: relative;
+            transition: transform 0.05s linear;
+            user-select: none;
+            color: #000;
+        }
+        .fake-dl.green {
+            background: linear-gradient(180deg, #00ff00, #008800);
+            color: #fff;
+            text-shadow: 1px 1px 0 #000;
+        }
+        .fake-dl.red {
+            background: linear-gradient(180deg, #ff4040, #aa0000);
+            color: #fff;
+            text-shadow: 1px 1px 0 #000;
+        }
+        .fake-dl.blue {
+            background: linear-gradient(180deg, #4477ff, #0033aa);
+            color: #fff;
+            text-shadow: 1px 1px 0 #000;
+        }
+        .fake-dl.orange {
+            background: linear-gradient(180deg, #ffaa00, #cc6600);
+            color: #fff;
+            text-shadow: 1px 1px 0 #000;
+        }
+        .fake-dl.gold {
+            background: linear-gradient(180deg, #ffff00, #cc9900);
+            color: #000;
+            text-shadow: 1px 1px 0 #fff;
+            animation: pulse-glow 1s ease-in-out infinite;
+        }
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 12px #ffff00; }
+            50% { box-shadow: 0 0 32px #ffff00, 0 0 64px #ffaa00; }
+        }
+        .fake-dl:hover {
+            transform: rotate(2deg) scale(1.06) translate(8px, -6px);
+            border-style: inset;
+            z-index: 10;
+        }
+        .fake-dl::before {
+            content: "▶";
+            margin-right: 4px;
+            color: #fff;
+        }
+        .fake-dl::after {
+            content: " ◀";
+            color: #fff;
+        }
+        .fake-dl .badge-tiny {
+            display: block;
+            font-size: 9px;
+            font-family: Tahoma, sans-serif;
+            font-weight: normal;
+            opacity: 0.9;
+            text-shadow: none;
+            margin-top: 2px;
+        }
+
+        .blink { animation: blink 0.6s step-end infinite; }
+        @keyframes blink { 50% { opacity: 0.2; } }
+
+        /* Pointing arrows */
+        .arrow {
+            position: absolute;
+            font-size: 56px;
+            color: #ff0000;
+            font-weight: bold;
+            text-shadow: 3px 3px 0 #ffff00, 6px 6px 0 #000;
+            font-family: "Impact", sans-serif;
+            pointer-events: none;
+            user-select: none;
+            animation: bounce-arrow 0.5s ease-in-out infinite alternate;
+        }
+        @keyframes bounce-arrow {
+            from { transform: translate(0, 0); }
+            to { transform: translate(8px, -4px); }
+        }
+
+        .scam-banner {
+            background: #fff;
+            border: 3px ridge #444;
+            padding: 8px 10px;
+            margin: 6px 0;
+            font-family: Tahoma, sans-serif;
+            font-size: 11px;
+            position: relative;
+            color: #000;
+        }
+        .scam-banner img-fake {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            background: #888;
+            float: left;
+            margin-right: 8px;
+            border: 1px solid #000;
+            font-family: monospace;
+            text-align: center;
+            line-height: 60px;
+            color: #fff;
+            font-size: 10px;
+        }
+        .scam-banner .ad-tag {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: #ffff00;
+            color: #000;
+            font-size: 8px;
+            padding: 1px 4px;
+            font-weight: bold;
+        }
+
+        .ascii-art {
+            font-family: "Courier New", monospace;
+            font-size: 11px;
+            background: #000;
+            color: #00ff41;
+            padding: 8px 10px;
+            border: 2px solid #00ff41;
+            white-space: pre;
+            margin: 8px 0;
+            line-height: 1.1;
+            text-shadow: 0 0 3px #00ff41;
+            overflow-x: auto;
+        }
+
+        .virus-warn {
+            background: #ff0000;
+            color: #ffff00;
+            padding: 6px 10px;
+            text-align: center;
+            font-weight: bold;
+            font-family: "Impact", sans-serif;
+            font-size: 14px;
+            margin: 8px 0;
+            border: 3px dashed #fff;
+            animation: virus-pulse 0.4s ease-in-out infinite alternate;
+        }
+        @keyframes virus-pulse {
+            from { background: #ff0000; }
+            to { background: #aa0000; }
+        }
+
+        .testimonials-bar {
+            background: #fff;
+            border: 2px inset #888;
+            font-family: Georgia, serif;
+            font-size: 11px;
+            padding: 6px 10px;
+            margin: 6px 0;
+            color: #500;
+        }
+        .testimonials-bar b { color: #000; }
+        .testimonials-bar .name { color: #006400; font-style: italic; }
+
+        .junk-link {
+            display: block;
+            background: #ffd;
+            border: 1px solid #888;
+            padding: 4px 6px;
+            font-size: 11px;
+            margin: 4px 0;
+            color: #0000aa;
+            text-decoration: underline;
+            cursor: pointer;
+            font-family: Tahoma, sans-serif;
+        }
+        .junk-link:hover {
+            background: #ffe080;
+            transform: translate(4px, 2px);
+            font-weight: bold;
+        }
+
+        .visit-counter {
+            background: #000;
+            color: #00ff00;
+            font-family: monospace;
+            font-size: 11px;
+            padding: 4px 8px;
+            text-align: center;
+            border: 1px solid #00ff00;
+            margin: 6px 0;
+        }
+
+        /* The TINY real link */
+        .real-link-corner {
+            position: fixed;
+            bottom: 6px;
+            right: 8px;
+            font-size: 9px;
+            color: #555;
+            font-family: "Times New Roman", serif;
+            text-decoration: underline;
+            cursor: pointer;
+            background: rgba(255,255,255,0.7);
+            padding: 1px 4px;
+            border: 1px dotted #aaa;
+            z-index: 30;
+        }
+        .real-link-corner:hover {
+            color: #333;
+            background: #fff;
+        }
+
+        .real-link-inline {
+            display: inline-block;
+            font-size: 9px;
+            color: #666;
+            font-family: Tahoma, sans-serif;
+            text-decoration: underline;
+            margin: 14px 0 0;
+            cursor: pointer;
+            font-weight: normal;
+        }
+
+        .floating-popup {
+            position: absolute;
+            background: #fff;
+            border: 3px ridge #aa0000;
+            padding: 6px 8px;
+            font-size: 11px;
+            font-family: Tahoma, sans-serif;
+            box-shadow: 4px 4px 0 rgba(0,0,0,0.4);
+            z-index: 5;
+            cursor: pointer;
+        }
+        .floating-popup .x {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: #f00;
+            color: #fff;
+            border-radius: 50%;
+            width: 16px;
+            height: 16px;
+            text-align: center;
+            line-height: 14px;
+            font-size: 11px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* ============ STAGE 2: AD MODAL ============ */
+        .modal-shell {
+            background: rgba(0,0,0,0.6);
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            z-index: 100;
+            padding-top: 30px;
+            overflow-y: auto;
+        }
+        .modal-shell .modal-window {
+            background: #fff;
+            border: 4px ridge #ffaa00;
+            width: 720px;
+            max-width: 96vw;
+            padding: 12px;
+        }
+        .modal-shell .modal-title {
+            background: linear-gradient(90deg, #ff0000, #ffff00);
+            color: #000;
+            font-weight: bold;
+            padding: 4px 8px;
+            font-family: "Impact", sans-serif;
+            font-size: 14px;
+            margin: -12px -12px 8px;
+            border-bottom: 2px solid #000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* ============ STAGE 3: DOWNLOAD SETTINGS ============ */
+        .settings-window {
+            background: #c0c0c0;
+            border: 2px solid #fff;
+            border-right-color: #404040;
+            border-bottom-color: #404040;
+            margin: 0 auto;
+            max-width: 760px;
+            padding: 0;
+        }
+        .settings-window .title-bar {
+            background: linear-gradient(90deg, #000080, #1084d0);
+            color: #fff;
+            font-weight: bold;
+            padding: 4px 8px;
+            font-size: 12px;
+        }
+        .settings-window .body {
+            padding: 12px;
+        }
+        .settings-window h3 {
+            margin: 6px 0;
+            font-family: Tahoma, sans-serif;
+            font-size: 13px;
+            color: #003366;
+        }
+        .check-all-box {
+            background: #ffeb99;
+            border: 2px solid #aa8800;
+            padding: 6px 10px;
+            margin-bottom: 8px;
+            font-size: 11px;
+        }
+        .check-all-box label {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .software-list {
+            background: #fff;
+            border: 1px inset #888;
+            max-height: 360px;
+            overflow-y: auto;
+            padding: 6px 8px;
+        }
+        .sw-row {
+            padding: 4px 4px;
+            border-bottom: 1px dotted #ccc;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 11px;
+            cursor: not-allowed;
+        }
+        .sw-row input[type="checkbox"] {
+            cursor: not-allowed;
+        }
+        .sw-row .sw-icon {
+            width: 24px;
+            height: 24px;
+            background: #aaa;
+            border: 1px solid #444;
+            text-align: center;
+            line-height: 24px;
+            font-size: 14px;
+        }
+        .sw-row .sw-name {
+            flex: 1;
+            font-weight: bold;
+        }
+        .sw-row .sw-desc {
+            color: #666;
+            font-size: 10px;
+            display: block;
+            font-weight: normal;
+        }
+        .sw-row .sw-size {
+            color: #aa0000;
+            font-family: monospace;
+            font-size: 11px;
+            min-width: 70px;
+            text-align: right;
+        }
+        .total-bar {
+            background: #aa0000;
+            color: #fff;
+            padding: 4px 8px;
+            font-size: 11px;
+            font-weight: bold;
+            text-align: right;
+            margin: 4px 0;
+        }
+
+        /* ============ STAGE 4 / 6: AD LOADING ============ */
+        .ad-loading-shell {
+            background: #c0c0c0;
+            border: 2px solid #fff;
+            border-right-color: #404040;
+            border-bottom-color: #404040;
+            max-width: 760px;
+            margin: 0 auto;
+        }
+        .ad-loading-shell .title-bar {
+            background: linear-gradient(90deg, #000080, #1084d0);
+            color: #fff;
+            font-weight: bold;
+            padding: 4px 8px;
+            font-size: 12px;
+        }
+        .ad-loading-shell .ad-broken {
+            margin: 8px;
+            background: #ddd;
+            border: 2px inset #888;
+            min-height: 220px;
+            position: relative;
+            overflow: hidden;
+        }
+        .ad-loading-shell .ad-broken .broken-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 80px;
+            color: #888;
+            font-family: monospace;
+        }
+        .ad-loading-shell .ad-broken .ad-label {
+            position: absolute;
+            top: 6px;
+            left: 6px;
+            font-size: 9px;
+            background: #ffff00;
+            color: #000;
+            padding: 1px 4px;
+            font-weight: bold;
+        }
+        .ad-loading-shell .ad-broken .url-bar {
+            position: absolute;
+            top: 0;
+            right: 0;
+            font-size: 9px;
+            background: rgba(0,0,0,0.6);
+            color: #fff;
+            padding: 1px 4px;
+            font-family: monospace;
+        }
+        .ad-loading-shell .ad-broken .reload {
+            position: absolute;
+            bottom: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 10px;
+            color: #555;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+        .ad-loading-shell .progress-row {
+            margin: 12px 16px;
+        }
+        .ad-loading-shell .progress-row .label {
+            font-size: 11px;
+            margin-bottom: 4px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .ad-loading-shell .progress-row .label .wait-msg {
+            color: #aa0000;
+            font-weight: bold;
+        }
+        .ad-loading-shell .progress-bar {
+            background: #fff;
+            border: 1px inset #888;
+            height: 18px;
+            position: relative;
+        }
+        .ad-loading-shell .progress-bar .fill {
+            height: 100%;
+            background: repeating-linear-gradient(45deg, #00aa00 0 8px, #008800 8px 16px);
+            transition: width 0.3s linear;
+        }
+        .ad-loading-shell .progress-bar .pct {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 1px 1px 0 #000;
+        }
+        .ad-loading-shell .button-row {
+            margin: 12px 16px 16px;
+            display: flex;
+            gap: 8px;
+            justify-content: flex-end;
+            border-top: 1px solid #888;
+            padding-top: 10px;
+        }
+        .ad-loading-shell .speedup-btn {
+            background: linear-gradient(180deg, #ffff00, #cc9900);
+            border: 2px outset #fff;
+            padding: 6px 16px;
+            font-size: 12px;
+            font-weight: bold;
+            font-family: "Impact", sans-serif;
+            cursor: pointer;
+            color: #800;
+        }
+        .ad-loading-shell .speedup-btn:hover { animation: pulse-glow 0.8s ease-in-out infinite; }
+        .ad-loading-shell .nag-line {
+            margin: 6px 16px;
+            font-size: 10px;
+            color: #555;
+            font-style: italic;
+        }
+
+        /* ============ STAGE 5: PATH ============ */
+        .path-window {
+            background: #c0c0c0;
+            border: 2px solid #fff;
+            border-right-color: #404040;
+            border-bottom-color: #404040;
+            max-width: 760px;
+            margin: 0 auto;
+        }
+        .path-window .title-bar {
+            background: linear-gradient(90deg, #000080, #1084d0);
+            color: #fff;
+            font-weight: bold;
+            padding: 4px 8px;
+            font-size: 12px;
+        }
+        .path-window .body { padding: 12px 16px; }
+        .path-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 8px 10px;
+            margin-bottom: 6px;
+            border: 1px solid #888;
+            background: #fff;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .path-row:hover { background: #ffeb99; }
+        .path-row.selected { background: #ffd700; border-color: #aa6600; }
+        .path-row input { margin-top: 3px; }
+        .path-row .path-name { font-weight: bold; }
+        .path-row .path-desc { font-size: 10px; color: #555; margin-top: 2px; line-height: 1.4; }
+
+        /* ============ STAGE 7: VIBETIMES ============ */
+        .vibetimes-shell {
+            position: fixed;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            background: #fff;
+            border: 4px ridge #aa0000;
+            width: 600px;
+            max-width: 96vw;
+            font-family: "Times New Roman", Georgia, serif;
+            z-index: 200;
+            box-shadow: 8px 8px 0 rgba(0,0,0,0.5);
+        }
+        .vibetimes-mast {
+            background: #000;
+            color: #fff;
+            text-align: center;
+            padding: 8px;
+            font-family: "Impact", sans-serif;
+            font-size: 28px;
+            border-bottom: 4px double #fff;
+            letter-spacing: 4px;
+        }
+        .vibetimes-mast small {
+            display: block;
+            font-family: Georgia, serif;
+            font-size: 10px;
+            font-style: italic;
+            letter-spacing: 0;
+            margin-top: 2px;
+            color: #ffaa00;
+        }
+        .vibetimes-body {
+            padding: 14px 18px;
+            font-size: 13px;
+            line-height: 1.5;
+            color: #111;
+        }
+        .vibetimes-body h2 {
+            font-family: "Times New Roman", serif;
+            font-size: 22px;
+            margin: 0 0 6px;
+            color: #500;
+        }
+        .vibetimes-body .byline {
+            font-style: italic;
+            color: #555;
+            font-size: 11px;
+            margin-bottom: 8px;
+        }
+        .vibetimes-x {
+            position: absolute;
+            top: 4px;
+            right: 8px;
+            background: #fff;
+            color: #aa0000;
+            font-weight: bold;
+            font-size: 14px;
+            cursor: pointer;
+            padding: 0 6px;
+            border: 1px solid #aa0000;
+        }
+        .vibetimes-cta {
+            background: #ff0000;
+            color: #ffff00;
+            padding: 8px 14px;
+            font-family: "Impact", sans-serif;
+            text-align: center;
+            font-size: 16px;
+            margin: 10px 0;
+            border: 3px dashed #fff;
+            cursor: pointer;
+        }
+
+        /* ============ STAGE 8: COMPLETE ============ */
+        .complete-window {
+            background: #c0c0c0;
+            border: 2px solid #fff;
+            border-right-color: #404040;
+            border-bottom-color: #404040;
+            max-width: 600px;
+            margin: 60px auto;
+            text-align: center;
+        }
+        .complete-window .title-bar {
+            background: linear-gradient(90deg, #006400, #00aa00);
+            color: #fff;
+            font-weight: bold;
+            padding: 4px 8px;
+            font-size: 12px;
+        }
+        .complete-window .body { padding: 24px 16px; }
+        .complete-window .check {
+            font-size: 80px;
+            color: #008800;
+            margin-bottom: 12px;
+        }
+        .complete-window h1 {
+            margin: 0 0 6px;
+            font-family: Tahoma, sans-serif;
+            font-size: 22px;
+            color: #003300;
+        }
+        .complete-window .summary {
+            font-size: 11px;
+            color: #444;
+            font-family: monospace;
+            background: #fff;
+            border: 1px inset #888;
+            padding: 8px;
+            margin: 12px 0;
+            text-align: left;
+            line-height: 1.5;
+        }
+        .complete-window .return-btn {
+            background: linear-gradient(180deg, #00ff00, #008800);
+            color: #fff;
+            text-shadow: 1px 1px 0 #000;
+            padding: 10px 20px;
+            border: 3px outset #fff;
+            cursor: pointer;
+            font-family: "Impact", sans-serif;
+            font-size: 16px;
+        }
+        .complete-window .return-btn:hover { border-style: inset; }
+    </style>
+</head>
+
+<body>
+
+    <div class="topbar">
+        <span class="crumb">⬇ <b>NullScale Open Source</b> &nbsp;»&nbsp; Download Center &nbsp;»&nbsp; <span id="crumbStage">Stage 1 of 8</span></span>
+        <span class="stage-pill" id="stagePill">[ FAKE-AD-FARM ]</span>
+        <button onclick="leaveWithDataNotice()">← Cancel (also collects data)</button>
+    </div>
+
+    <!-- ============ STAGE 1: AD FARM ============ -->
+    <div class="stage active" id="stage1">
+        <div class="ad-page">
+            <div class="ad-banner-strip">★ ★ ★ CONGRATULATIONS! YOU ARE THE 1,000,000<sup>th</sup> VISITOR! CLAIM YOUR FREE NULLSCALE SDK BELOW! ★ ★ ★</div>
+
+            <div class="virus-warn blink">⚠ YOUR PC HAS 47 VIBE INFECTIONS! DOWNLOAD NULLSCALE TO REMOVE! ⚠ <a class="real-link-inline" onclick="goFake()">Or click here to ignore (not recommended).</a></div>
+
+            <div class="ad-grid">
+                <div class="ad-main" style="position:relative;">
+                    <h1>OFFICIAL NULLSCALE SDK</h1>
+                    <h2>v8.4.0-rc.∞ &nbsp;|&nbsp; "open" "source" &nbsp;|&nbsp; 100% FREE*</h2>
+                    <div class="winner-marquee">★ HEY YOU! YES YOU! YOU NEED THIS! ★ FREE FOREVER! ★ NO STRINGS ATTACHED!** ★</div>
+                    <div style="font-size:10px; color:#888; margin: 0 0 8px;">*after a small administrative fee &nbsp;**strings attached</div>
+
+                    <div style="position:relative; padding: 14px 0;">
+                        <span class="arrow" style="left: 10%; top: 0; transform: rotate(35deg);">➟➟➟</span>
+                        <span class="arrow" style="right: 10%; top: 0; transform: rotate(-35deg);">⬅⬅⬅</span>
+                        <div style="position:relative; z-index:2;">
+                            <a class="fake-dl green" onclick="goFake()">DOWNLOAD NOW<span class="badge-tiny">(Recommended)</span></a>
+                            <a class="fake-dl gold" onclick="goFake()">⚡ EXPRESS DOWNLOAD<span class="badge-tiny">(0.1 sec — government grade)</span></a>
+                        </div>
+                    </div>
+
+                    <div style="font-family:'Comic Sans MS', sans-serif; color:#aa0000; font-size:13px; margin: 6px 0;">★ SECURE ★ TRUSTED ★ DEFINITELY THE OFFICIAL SITE ★</div>
+
+                    <div style="margin: 6px 0; position:relative;">
+                        <span class="arrow" style="left: 5%; top: -8px; transform: rotate(110deg); color:#0000aa;">➤</span>
+                        <a class="fake-dl red" onclick="goFake()">CLICK HERE<span class="badge-tiny">(secure)</span></a>
+                        <a class="fake-dl blue" onclick="goFake()">START DOWNLOAD<span class="badge-tiny">(faster)</span></a>
+                        <a class="fake-dl orange" onclick="goFake()">FREE DOWNLOAD<span class="badge-tiny">(fastest)</span></a>
+                    </div>
+
+                    <div class="ascii-art">    ____________________________________________
+   |  __                                        |
+   | |  |  ::: NULLSCALE SDK :::                |
+   | |  |  Version 8.4.0-rc.infinity            |
+   | |  |  Size: ??? bytes (depends on vibes)   |
+   | |__|  Signed by: Chad (allegedly)          |
+   |____________________________________________|
+        ↓ DOWNLOAD ↓ DOWNLOAD ↓ DOWNLOAD ↓
+                ↓             ↓
+               ↓               ↓
+           [click them all to be safe]</div>
+
+                    <div class="testimonials-bar">
+                        <b>"Best download experience of my life. Mostly."</b> — <span class="name">Brett, software developer (deceased)</span>
+                    </div>
+                    <div class="testimonials-bar">
+                        <b>"I downloaded it 47 times. They were ALL real!"</b> — <span class="name">Karen, definitely not a bot</span>
+                    </div>
+
+                    <div style="margin: 14px 0; position:relative;">
+                        <span class="arrow" style="left: 30%; top: -20px;">⬇⬇⬇</span>
+                        <span class="arrow" style="right: 30%; top: -20px;">⬇⬇⬇</span>
+                        <a class="fake-dl green blink" onclick="goFake()">★ MEGA DOWNLOAD ★<span class="badge-tiny">(definitely the right one)</span></a>
+                    </div>
+
+                    <div style="margin-top: 18px; font-size:10px; color:#999;">
+                        Trouble downloading? Try our
+                        <span class="real-link-inline" onclick="goReal()">alternate text-only mirror</span>
+                        for slow connections.
+                    </div>
+                </div>
+
+                <div class="ad-side">
+                    <div class="visit-counter">VISITORS: 14,228,901,442 ▒ ONLINE NOW: 4,201</div>
+
+                    <div class="scam-banner">
+                        <span class="ad-tag">AD</span>
+                        <img-fake>BMW</img-fake>
+                        <b>HOT SINGLES IN YOUR /etc/passwd</b><br>
+                        <span style="font-size:10px;">Local stakeholders want to synergize with you tonight.</span>
+                        <a class="fake-dl red" style="font-size:11px; padding:4px 8px; margin-top:4px; display:block;" onclick="goFake()">Click here</a>
+                    </div>
+
+                    <div class="scam-banner">
+                        <span class="ad-tag">AD</span>
+                        <img-fake>$$$</img-fake>
+                        <b>YOU WON $14,000,000!</b><br>
+                        <span style="font-size:10px;">Click below to provide bank details. We will hold the money safely.</span>
+                        <a class="fake-dl gold" style="font-size:11px; padding:4px 8px; margin-top:4px; display:block;" onclick="goFake()">CLAIM</a>
+                    </div>
+
+                    <div class="scam-banner">
+                        <span class="ad-tag">AD</span>
+                        <img-fake>?!</img-fake>
+                        <b>1 SIMPLE TRICK doctors HATE</b><br>
+                        <span style="font-size:10px;">A vibe near you discovered this. Click before they patent it.</span>
+                        <a class="fake-dl orange" style="font-size:11px; padding:4px 8px; margin-top:4px; display:block;" onclick="goFake()">VIEW</a>
+                    </div>
+
+                    <a class="junk-link" onclick="goFake()">📁 download_real.exe (do not rename)</a>
+                    <a class="junk-link" onclick="goFake()">⚙ NULLSCALE_SETUP_FINAL_v3_FIXED_FINAL_2.exe</a>
+                    <a class="junk-link" onclick="goFake()">🚀 super_fast_downloader.exe</a>
+                    <a class="junk-link" onclick="goFake()">📀 nullscale_iso_burned_with_love.iso</a>
+                    <a class="junk-link" onclick="goFake()">💾 InstallShield_TotallyLegit.zip</a>
+                    <a class="junk-link" onclick="goFake()">🔗 mirror42.nullscale.totallyrealdomain.biz</a>
+                    <a class="junk-link" onclick="goFake()">🌐 click_to_choose_a_mirror.html</a>
+
+                    <div class="scam-banner">
+                        <span class="ad-tag">AD</span>
+                        <img-fake>:(</img-fake>
+                        <b>YOUR ANTIVIRUS IS EXPIRED</b><br>
+                        <span style="font-size:10px;">Don't worry, we wrote you a new one. It's also a virus.</span>
+                        <a class="fake-dl red" style="font-size:11px; padding:4px 8px; margin-top:4px; display:block;" onclick="goFake()">FIX NOW</a>
+                    </div>
+
+                    <div class="visit-counter">⏱ DOWNLOAD COUNT: 9,099,182,011 ✓</div>
+                </div>
+            </div>
+
+            <div class="ad-banner-strip" style="font-size:12px;">★ NULLSCALE: TRUSTED BY 0 ENTERPRISES, ENVIED BY MANY ★</div>
+
+            <!-- Floating popups for visual chaos -->
+            <div class="floating-popup" style="top: 80px; left: 30px;">
+                <span class="x" onclick="this.parentElement.remove()">×</span>
+                Your computer is making sounds.<br>
+                <a class="real-link-inline" onclick="goFake()">Click here to fix it.</a>
+            </div>
+            <div class="floating-popup" style="top: 240px; left: 10px;">
+                <span class="x" onclick="this.parentElement.remove()">×</span>
+                ALERT: 1 person nearby is watching<br>
+                <a class="real-link-inline" onclick="goFake()">View profile</a>
+            </div>
+            <div class="floating-popup" style="bottom: 120px; right: 280px;">
+                <span class="x" onclick="this.parentElement.remove()">×</span>
+                <b>Your shoelaces are untied.</b><br>
+                <a class="real-link-inline" onclick="goFake()">DOWNLOAD FIX</a>
+            </div>
+        </div>
+
+        <!-- The TINY real link at bottom corner -->
+        <span class="real-link-corner" onclick="goReal()">nullscale-sdk-8x4x0_aZ7q9Kp2.tar.gz</span>
+    </div>
+
+    <!-- ============ STAGE 2: AD MODAL (more chaos) ============ -->
+    <div class="stage" id="stage2">
+        <div class="modal-shell">
+            <div class="modal-window">
+                <div class="modal-title">
+                    <span>⚠ Almost there! Confirm your "real" download...</span>
+                    <span style="background:#fff; color:#aa0000; padding:0 6px; cursor:pointer;" onclick="leaveWithDataNotice()">×</span>
+                </div>
+
+                <div class="virus-warn blink">⚠ ONE FINAL CHECK BEFORE YOUR DOWNLOAD! WE PROMISE! ⚠</div>
+
+                <p style="font-size:11px; color:#500; margin: 6px 0;">
+                    For your security, please re-confirm by selecting the correct download from the verified mirrors below.
+                    Our security team has carefully ranked them.
+                </p>
+
+                <div style="text-align:center; margin: 10px 0; position:relative;">
+                    <span class="arrow" style="left: 5%; top: -10px;">⬇⬇⬇</span>
+                    <span class="arrow" style="right: 5%; top: -10px;">⬇⬇⬇</span>
+                    <a class="fake-dl green" onclick="goFake()">VERIFIED DOWNLOAD<span class="badge-tiny">(verified by Chad)</span></a>
+                    <a class="fake-dl gold" onclick="goFake()">★ FAST MIRROR ★<span class="badge-tiny">(fastest)</span></a>
+                    <a class="fake-dl red" onclick="goFake()">SECURE MIRROR<span class="badge-tiny">(secure)</span></a>
+                </div>
+
+                <div class="testimonials-bar">
+                    <b>"This was, by far, the most legitimate download experience of my life."</b>
+                    — <span class="name">Tanner, voted "Most Likely To Click Yes" 2014</span>
+                </div>
+
+                <div class="ascii-art">    ╔══════════════════════════════════════╗
+    ║   FILE READY:  NULLSCALE_SDK_OFFICIAL  ║
+    ║   STATUS    :  REAL                    ║
+    ║   TRUSTED   :  TOTALLY                 ║
+    ║   VIRUSES   :  0  (or 1, in a fun way) ║
+    ╚══════════════════════════════════════╝
+            ⬇      ⬇      ⬇      ⬇</div>
+
+                <div style="display:grid; grid-template-columns: 1fr 1fr; gap:6px; margin: 8px 0;">
+                    <a class="junk-link" onclick="goFake()">📁 NULLSCALE_v8_FINAL_REAL.exe</a>
+                    <a class="junk-link" onclick="goFake()">📁 NULLSCALE_v8_FINAL_FOR_REAL.exe</a>
+                    <a class="junk-link" onclick="goFake()">📁 NULLSCALE_v8_THIS_ONE.exe</a>
+                    <a class="junk-link" onclick="goFake()">📁 NULLSCALE_v8_NO_REALLY.exe</a>
+                    <a class="junk-link" onclick="goFake()">📁 NULLSCALE_v8_TRUST_ME.exe</a>
+                    <a class="junk-link" onclick="goFake()">📁 NULLSCALE_v8_OFFICIAL_FINAL.exe</a>
+                </div>
+
+                <div style="margin: 10px 0; padding: 8px; background:#ffeb99; border:1px solid #aa8800; font-size:11px;">
+                    <b>⏰ This offer expires in <span style="color:#aa0000;">00:00:14</span> seconds!</b><br>
+                    <span style="font-size:10px; color:#555;">(it has been expiring for 14 years)</span>
+                </div>
+
+                <div class="scam-banner">
+                    <span class="ad-tag">AD</span>
+                    <img-fake>★</img-fake>
+                    <b>HEY DEVELOPER — NEED A KIDNEY?</b><br>
+                    <span style="font-size:10px;">Local senior engineers want to give you theirs (for vibes).</span>
+                    <a class="fake-dl red" style="font-size:11px; padding:4px 8px; margin-top:4px; display:block;" onclick="goFake()">VIEW LISTING</a>
+                </div>
+
+                <div style="text-align:right; margin-top: 30px; font-size:9px; color:#999;">
+                    <em>Having issues? Try the
+                        <span class="real-link-inline" onclick="goSettings()">plain-text fallback download</span>.
+                    </em>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ STAGE 3: DOWNLOAD SETTINGS ============ -->
+    <div class="stage" id="stage3">
+        <div class="settings-window">
+            <div class="title-bar">⚙ NullScale SDK Setup — Step 1 of many: Choose Components</div>
+            <div class="body">
+                <h3>📦 Select components to install</h3>
+                <p style="font-size:11px; color:#444; margin: 4px 0 8px;">
+                    The following components are <b>required</b> for the SDK to function. They are also unrelated to the SDK.
+                    You can deselect them by clicking the box below. (You cannot.)
+                </p>
+
+                <div class="check-all-box">
+                    <label>
+                        <input type="checkbox" id="checkAllBox" checked onchange="toggleCheckAll()">
+                        <span id="checkAllLabel">Check all (currently checked, recommended)</span>
+                    </label>
+                    <div style="font-size:9px; color:#666; margin-top:2px;" id="checkAllHint">Click the box to keep them checked.</div>
+                </div>
+
+                <div class="software-list" id="softwareList"></div>
+
+                <div class="total-bar" id="totalBar">📥 TOTAL DOWNLOAD SIZE: 0.0 GB</div>
+
+                <p style="font-size:10px; color:#aa0000; font-style:italic; margin: 6px 0;">
+                    By proceeding, you agree to install all of the above components. They are required by the EULA you accepted by visiting this page.
+                </p>
+
+                <div style="text-align:right; margin-top: 12px; border-top: 1px solid #888; padding-top: 10px;">
+                    <button onclick="leaveWithDataNotice()" style="font-size:11px;">Cancel</button>
+                    <button onclick="goWaiting1()" style="font-weight:bold; padding:6px 18px;">I Accept &amp; Continue ▶</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ STAGE 4: AD LOADING (no speed up) ============ -->
+    <div class="stage" id="stage4">
+        <div class="ad-loading-shell">
+            <div class="title-bar">⏳ Preparing your download — please enjoy our partners while you wait</div>
+
+            <div class="ad-broken">
+                <div class="ad-label">SPONSORED CONTENT</div>
+                <div class="url-bar">https://ad-broker.partner.vibehost.us-vibe-1.example/banner?id=14&amp;t=...</div>
+                <div class="broken-icon">🔲</div>
+                <div class="reload" onclick="this.previousElementSibling.textContent='🔲'">⟳ ad failed to load — click to retry (will not retry)</div>
+            </div>
+
+            <div class="nag-line">📢 Tip: keep this tab open. Closing the tab will reset your download <i>and</i> charge a small reset fee.</div>
+
+            <div class="progress-row">
+                <div class="label">
+                    <span>📦 nullscale-sdk-8.4.0.exe</span>
+                    <span class="wait-msg" id="waitMsg1">Download is already waiting for 0 seconds</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="fill" id="dlFill1" style="width: 0%"></div>
+                    <div class="pct" id="dlPct1">0% of ??? GB</div>
+                </div>
+                <div style="font-size:10px; color:#555; margin-top:4px; font-family: monospace;" id="dlMeta1">eta: ∞ &nbsp;·&nbsp; speed: -2.4 KB/s &nbsp;·&nbsp; mirror: chad-1</div>
+            </div>
+
+            <div class="nag-line">⚠ Please do not refresh, close the tab, or move your mouse aggressively. Aggressive mouse movement has been linked to download corruption.</div>
+
+            <div class="button-row">
+                <button onclick="leaveWithDataNotice()" style="font-size:11px;">Cancel</button>
+                <button id="next1Btn" disabled style="font-weight:bold; padding:6px 18px;" onclick="goPath()">Next ▶</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ STAGE 5: PATH ============ -->
+    <div class="stage" id="stage5">
+        <div class="path-window">
+            <div class="title-bar">📍 Choose Installation Path — Step 4 of 7 (estimates may be hallucinated)</div>
+            <div class="body">
+                <h3 style="margin:0 0 6px;">Where would you like to install NullScale SDK?</h3>
+                <p style="font-size:11px; color:#444; margin: 4px 0 12px;">
+                    Please select an installation target below. This decision is binding for 47 fiscal quarters.
+                </p>
+
+                <div id="pathList"></div>
+
+                <div style="margin-top:8px; font-size:10px; color:#888; font-style:italic;" id="pathHint">
+                    Hint: there is no recommended option.
+                </div>
+
+                <div style="text-align:right; margin-top: 14px; border-top: 1px solid #888; padding-top: 10px;">
+                    <button onclick="leaveWithDataNotice()" style="font-size:11px;">Cancel</button>
+                    <button onclick="goWaiting2()" style="font-weight:bold; padding:6px 18px;" id="pathContinue" disabled>Continue ▶</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ STAGE 6: AD LOADING + SPEED UP ============ -->
+    <div class="stage" id="stage6">
+        <div class="ad-loading-shell">
+            <div class="title-bar">⚡ Final preparation — finalizing your synergy bundle</div>
+
+            <div class="ad-broken">
+                <div class="ad-label">PARTNER OFFER (UNRELATED)</div>
+                <div class="url-bar">https://ads.servingsuit.example.invalid/iframe?cid=14B...</div>
+                <div class="broken-icon">🔲</div>
+                <div class="reload" onclick="this.previousElementSibling.textContent='🔲'">⟳ ad failed to load — click to retry (will not retry)</div>
+            </div>
+
+            <div class="nag-line">📢 Did you know? You can speed up your download by clicking the button below. This will not actually speed it up.</div>
+
+            <div class="progress-row">
+                <div class="label">
+                    <span>⚙ nullscale-sdk-8.4.0-final.exe</span>
+                    <span class="wait-msg" id="waitMsg2">Download is already waiting for 0 seconds</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="fill" id="dlFill2" style="width: 0%"></div>
+                    <div class="pct" id="dlPct2">0% of ??? GB</div>
+                </div>
+                <div style="font-size:10px; color:#555; margin-top:4px; font-family: monospace;" id="dlMeta2">eta: 47 minutes &nbsp;·&nbsp; speed: 0.00 KB/s &nbsp;·&nbsp; mirror: void-1 (DEGRADED)</div>
+            </div>
+
+            <div style="text-align:center; margin: 8px 0;">
+                <button class="speedup-btn" onclick="speedUp()">⚡ SPEED UP DOWNLOAD ⚡</button>
+                <div style="font-size:9px; color:#888; margin-top:4px;" id="speedHint">Boosts you have used: <b>0 / ∞</b></div>
+            </div>
+
+            <div class="nag-line">⚠ Speeding up the download may negatively affect download speed. This is by design.</div>
+
+            <div class="button-row">
+                <button onclick="leaveWithDataNotice()" style="font-size:11px;">Cancel</button>
+                <button id="next2Btn" disabled style="font-weight:bold; padding:6px 18px;" onclick="goVibeTimes()">Finish ▶</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ STAGE 7: VIBETIMES POP ============ -->
+    <div class="stage" id="stage7">
+        <div class="modal-shell" id="vtBackdrop">
+            <div class="vibetimes-shell">
+                <span class="vibetimes-x" onclick="goComplete()">×</span>
+                <div class="vibetimes-mast">
+                    The VibeTimes
+                    <small>"All the synergy that's fit to print" &nbsp;|&nbsp; Issue №14,229 &nbsp;|&nbsp; Vol. ∞</small>
+                </div>
+                <div class="vibetimes-body">
+                    <div style="font-size:10px; color:#aa0000; font-weight:bold; margin-bottom:4px;">⚠ SPONSORED EDITORIAL — DELIVERED MID-DOWNLOAD AS PROMISED</div>
+                    <h2 id="vtHeadline">"NullScale Acquires The Concept Of Mondays In Stock-And-Vibes Deal"</h2>
+                    <div class="byline" id="vtByline">By <b>GPT-9000 Senior Editor</b> &nbsp;|&nbsp; reading time: as long as we want</div>
+
+                    <p id="vtPara1">
+                        In a sweeping consolidation of the temporal asset class, <b>NullScale Inc.</b> has reportedly acquired the concept of <i>Mondays</i> in a deal valued at approximately "vibes". The acquisition is expected to close retroactively. Stakeholders impacted include "everyone" and "their dog".
+                    </p>
+                    <p id="vtPara2">
+                        Industry analysts called the move "completely unhinged but extremely on-brand". <b>Chad Vibington III</b>, NullScale's founder, CEO, and Chief Hallucination Officer, told reporters: <i>"We did the diligence on a Tuesday, vibed it through Wednesday, and by Thursday we owned a day of the week."</i>
+                    </p>
+
+                    <div class="vibetimes-cta" onclick="goComplete()">★ CLICK ANYWHERE TO CONTINUE YOUR DOWNLOAD ★</div>
+
+                    <p style="font-size:10px; color:#666;">
+                        <em>(Disclosure: The VibeTimes is wholly owned by NullScale, which is wholly owned by Chad, who is wholly owned by The VibeTimes, completing the cycle.)</em>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ STAGE 8: COMPLETE ============ -->
+    <div class="stage" id="stage8">
+        <div class="complete-window">
+            <div class="title-bar">✓ Download Complete!</div>
+            <div class="body">
+                <div class="check">✅</div>
+                <h1>Download Complete!</h1>
+                <p style="font-size:13px; margin: 4px 0; color:#444;">Thank you for downloading the NullScale SDK. Your file is now installed somewhere.</p>
+
+                <div class="summary" id="summaryBox"></div>
+
+                <p style="font-size:10px; color:#aa0000; font-style:italic;">
+                    Note: there was no file. You were the file all along.
+                </p>
+
+                <button class="return-btn" onclick="window.location.href='index.html'">★ RETURN TO NULLSCALE ★</button>
+                <div style="margin-top:8px;">
+                    <a class="real-link-inline" onclick="window.location.href='docs.html'">view documentation</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ============ STAGE NAVIGATION ============
+        const stageNames = {
+            1: "Stage 1 of 8 — Ad Farm",
+            2: "Stage 2 of 8 — Verification Modal",
+            3: "Stage 3 of 8 — Component Selection",
+            4: "Stage 4 of 8 — Pre-Download Wait",
+            5: "Stage 5 of 8 — Installation Path",
+            6: "Stage 6 of 8 — Final Wait",
+            7: "Stage 7 of 8 — VibeTimes Sponsored Editorial",
+            8: "Stage 8 of 8 — Complete"
+        };
+        const stagePills = {
+            1: "[ FAKE-AD-FARM ]",
+            2: "[ FAKE-AD-MODAL ]",
+            3: "[ COMPONENT-TRAP ]",
+            4: "[ AD-WAIT-1 ]",
+            5: "[ PATH-SELECT ]",
+            6: "[ AD-WAIT-2 ]",
+            7: "[ VIBETIMES-AD ]",
+            8: "[ COMPLETE ]"
+        };
+        let currentStage = 1;
+        function setStage(n) {
+            currentStage = n;
+            document.querySelectorAll(".stage").forEach(s => s.classList.remove("active"));
+            const el = document.getElementById("stage" + n);
+            if (el) el.classList.add("active");
+            document.getElementById("crumbStage").textContent = stageNames[n] || "Stage ?";
+            document.getElementById("stagePill").textContent = stagePills[n] || "[ ? ]";
+            window.scrollTo(0, 0);
+        }
+        // Used by buttons / fake links
+        function goFake() {
+            leaveWithDataNotice();
+        }
+        function leaveWithDataNotice() {
+            // user clicked something fake — send back to dashboard with a notice
+            window.location.href = "index.html#data-collected";
+        }
+        function goReal() { setStage(2); }
+        function goSettings() { setStage(3); buildSoftwareList(); }
+        function goWaiting1() { setStage(4); startWait1(); }
+        function goPath() { setStage(5); buildPathList(); }
+        function goWaiting2() { setStage(6); startWait2(); }
+        function goVibeTimes() { setStage(7); rotateVibeTimes(); }
+        function goComplete() { setStage(8); finalize(); }
+
+        // ============ STAGE 3: SOFTWARE LIST + CHECK-ALL TOGGLE ============
+        const shadyPackages = [
+            { icon: "💾", name: "VibeBoost™ Browser Helper",         desc: "Improves browser by adding 14 toolbars and renaming the address bar.",  size: 1.4 },
+            { icon: "🔧", name: "PrinterFriend Service",              desc: "Detects nearby printers (yours and others) and prints itself periodically.", size: 0.7 },
+            { icon: "📡", name: "Vibex Network Diagnostic Suite",     desc: "Diagnoses your network by overwhelming it.",                              size: 4.2 },
+            { icon: "🛡", name: "ChadGuard™ Security Scanner",        desc: "Scans your file system. Reports findings to Chad.",                       size: 2.8 },
+            { icon: "🎵", name: "Mood-Aware Audio Codec Pack",        desc: "Required to play sounds. Also unmutes you in meetings randomly.",         size: 5.6 },
+            { icon: "🕹", name: "GameFinder Plus Express Edition",    desc: "Finds video games on your computer and bills you per game.",              size: 3.1 },
+            { icon: "💼", name: "OfficeBetter™ Productivity Add-On",  desc: "Adds Clippy back. There is no off switch.",                               size: 1.8 },
+            { icon: "📂", name: "FileMagic FileFile Files",           desc: "Manages files. Mostly by renaming them.",                                 size: 0.9 },
+            { icon: "🌐", name: "BrowseSmart Default Search Engine",  desc: "Replaces your default search engine with one we control.",                size: 0.4 },
+            { icon: "🎮", name: "ToolboxBuddy Bundleware Suite",      desc: "Installs additional toolboxes. Buddies are sold separately.",             size: 6.7 },
+            { icon: "🚀", name: "SpeedUp PC Pro Ultimate 2026",       desc: "Slows down PC. Names itself SpeedUp anyway.",                             size: 2.2 },
+            { icon: "📞", name: "PhoneHome Telemetry Pack",           desc: "Phones our home daily. (Yes, our actual home.)",                          size: 0.3 },
+            { icon: "💉", name: "BiometricSync Cloud Connector",      desc: "Syncs your fingerprints with our staff lounge fingerprint reader.",       size: 1.1 },
+            { icon: "🦷", name: "DentalSync Reminder Daemon",         desc: "Reminds you of dental appointments you do not have. Books one for you.",  size: 0.5 },
+            { icon: "🪪", name: "IdentityVault FreeTrial™",           desc: "Stores your identity. Loses it. Charges $14/mo for the loss.",            size: 0.8 },
+            { icon: "🧊", name: "FreezerFriend™ Smart Fridge Plugin", desc: "Required. Connects to fridges (real and emotional).",                     size: 4.4 },
+            { icon: "🧮", name: "TaxAdjacent™ Form Generator",        desc: "Generates fake tax forms with your real signature.",                      size: 2.0 },
+            { icon: "🦷", name: "Bluetooth Bluetooth Bluetooth",       desc: "Triple bluetooth. Never connects to anything.",                          size: 1.2 },
+            { icon: "🐍", name: "PythonAdjacent Bundled Runtime™",    desc: "Not actually Python. Slightly worse.",                                    size: 7.4 },
+            { icon: "🦎", name: "ScreensaverPlus PetExpansion",       desc: "Adds a lizard to your screensaver. Lizard pays its own bills.",           size: 0.6 },
+            { icon: "🎪", name: "AutoCarnival™ Notification Center",  desc: "Sends you carnival-themed notifications every 14 minutes. No mute.",      size: 1.3 },
+            { icon: "🪬", name: "VibeShield™ Aura Calibrator",        desc: "Calibrates your aura via webcam. Required for installation.",             size: 5.0 }
+        ];
+        let suppressCheck = false;
+        function buildSoftwareList() {
+            const list = document.getElementById("softwareList");
+            list.innerHTML = "";
+            shadyPackages.forEach((p, idx) => {
+                const row = document.createElement("div");
+                row.className = "sw-row";
+                row.innerHTML = `
+                    <input type="checkbox" checked onclick="forceCheck(this, event)">
+                    <span class="sw-icon">${p.icon}</span>
+                    <span class="sw-name">${p.name}<span class="sw-desc">${p.desc}</span></span>
+                    <span class="sw-size">${p.size.toFixed(1)} GB</span>
+                `;
+                list.appendChild(row);
+            });
+            updateTotal();
+        }
+        // Checkboxes cannot be unchecked; if user clicks, snap back to checked.
+        window.forceCheck = function (cb, ev) {
+            ev.stopPropagation();
+            ev.preventDefault();
+            cb.checked = true;
+            const hint = document.getElementById("checkAllHint");
+            if (hint) hint.textContent = "Component is required. We could not uncheck it. We tried.";
+        };
+        function updateTotal() {
+            const tot = shadyPackages.reduce((a, b) => a + b.size, 0);
+            const bar = document.getElementById("totalBar");
+            if (bar) bar.textContent = `📥 TOTAL DOWNLOAD SIZE: ${tot.toFixed(1)} GB (compressed; uncompressed est. ${(tot * 14.2).toFixed(1)} GB)`;
+        }
+        // The deceptive "check all" toggle that flips between two equally-deceptive labels
+        function toggleCheckAll() {
+            const cb = document.getElementById("checkAllBox");
+            const lbl = document.getElementById("checkAllLabel");
+            const hint = document.getElementById("checkAllHint");
+            // Force check no matter what
+            if (cb.checked) {
+                lbl.textContent = "Check all (currently checked, recommended)";
+                hint.textContent = "Click the box to keep them checked.";
+            } else {
+                lbl.textContent = "Keep all unchecked (currently unchecked, recommended)";
+                hint.textContent = "Click the box to keep them unchecked. (We will keep them checked anyway.)";
+                // Items remain checked regardless. Visual lie.
+            }
+            // Items themselves never unchecked — we just lie about the toggle
+            document.querySelectorAll("#softwareList input[type=checkbox]").forEach(c => c.checked = true);
+        }
+
+        // ============ STAGE 4 / 6: WAIT COUNTERS ============
+        let wait1Tick = null;
+        let wait1Sec = 0;
+        function startWait1() {
+            wait1Sec = 0;
+            const next = document.getElementById("next1Btn");
+            const fill = document.getElementById("dlFill1");
+            const pct = document.getElementById("dlPct1");
+            const meta = document.getElementById("dlMeta1");
+            const wait = document.getElementById("waitMsg1");
+            next.disabled = true;
+            if (wait1Tick) clearInterval(wait1Tick);
+            wait1Tick = setInterval(() => {
+                wait1Sec++;
+                wait.textContent = `Download is already waiting for ${wait1Sec} seconds`;
+                // pretend progress flickers
+                const flick = (Math.sin(wait1Sec * 0.7) * 8 + Math.random() * 4 + 6).toFixed(1);
+                fill.style.width = flick + "%";
+                pct.textContent = `${flick}% of ??? GB`;
+                meta.textContent = `eta: ${wait1Sec >= 6 ? "calculating..." : "∞"} · speed: ${(Math.random() * -4).toFixed(2)} KB/s · mirror: chad-1${wait1Sec > 4 ? " (FLAPPING)" : ""}`;
+                if (wait1Sec === 8) {
+                    next.disabled = false;
+                    next.style.background = "#ffd700";
+                    next.textContent = "Next ▶ (now available!)";
+                }
+                if (wait1Sec === 14) {
+                    wait.textContent = `Download is already waiting for 14 seconds (this is fine)`;
+                }
+                if (wait1Sec >= 30) {
+                    clearInterval(wait1Tick);
+                }
+            }, 1000);
+        }
+
+        let wait2Tick = null;
+        let wait2Sec = 0;
+        let speedBoosts = 0;
+        function startWait2() {
+            wait2Sec = 0;
+            speedBoosts = 0;
+            const next = document.getElementById("next2Btn");
+            const fill = document.getElementById("dlFill2");
+            const pct = document.getElementById("dlPct2");
+            const meta = document.getElementById("dlMeta2");
+            const wait = document.getElementById("waitMsg2");
+            next.disabled = true;
+            if (wait2Tick) clearInterval(wait2Tick);
+            wait2Tick = setInterval(() => {
+                wait2Sec++;
+                wait.textContent = `Download is already waiting for ${wait2Sec} seconds`;
+                const base = Math.min(72, 4 + wait2Sec * 1.1 + speedBoosts * 1.4 + Math.random() * 2);
+                fill.style.width = base.toFixed(1) + "%";
+                pct.textContent = `${base.toFixed(1)}% of ??? GB`;
+                meta.textContent = `eta: ${wait2Sec >= 5 ? Math.max(2, 47 - speedBoosts * 3) + " minutes" : "47 minutes"} · speed: ${(Math.random() * (speedBoosts ? 0.4 : 0.05)).toFixed(2)} KB/s · mirror: void-1${speedBoosts > 5 ? " (TURBO?)" : " (DEGRADED)"}`;
+                if (wait2Sec === 8) {
+                    next.disabled = false;
+                    next.style.background = "#ffd700";
+                    next.textContent = "Finish ▶ (now available!)";
+                }
+                if (wait2Sec >= 30) {
+                    clearInterval(wait2Tick);
+                }
+            }, 1000);
+        }
+        function speedUp() {
+            speedBoosts++;
+            const hint = document.getElementById("speedHint");
+            if (hint) hint.innerHTML = `Boosts you have used: <b>${speedBoosts} / ∞</b> &nbsp;<em style="color:#aa0000;">(no measurable effect)</em>`;
+            // Each boost actually... slows it slightly because we are evil.
+            wait2Sec = Math.max(0, wait2Sec - 1);
+        }
+
+        // ============ STAGE 5: PATH ============
+        const paths = [
+            { id: "wipe-c", icon: "💥", name: "C:\\Users\\Public\\NULL\\ — wipe and replace C: drive (recommended)",     desc: "Frees up the entire drive by overwriting it with NullScale. Leaves no survivors. Eligible for free shipping." },
+            { id: "fbi",     icon: "🕵", name: "Direct Implant — contact your personal FBI agent for installation",       desc: "Coordinates installation with the FBI agent already monitoring your laptop. Surgery is brief. You will not feel a thing (mostly)." },
+            { id: "manifest",icon: "🌌", name: "Direct Manifestation — install via affirmations and crystals",            desc: "Silent install. NullScale will simply begin to feel installed. Particularly recommended on Mercury retrograde." },
+            { id: "cloud",   icon: "☁",  name: "Other people's cloud (theirs, not yours)",                                desc: "Installs into a cloud account that belongs to someone else. They will get the bill. They will adjust." },
+            { id: "neighbor",icon: "🚪", name: "Your neighbor's PC (you have not asked, that's OK)",                       desc: "Installs onto your nearest unprotected SMB share. Provides them a 14-day free trial. You will not be charged. They will." },
+            { id: "fridge",  icon: "🧊", name: "Smart Fridge / Air Fryer / Pacemaker (any IoT device, dealer's choice)",  desc: "Auto-detects compatible household appliances. Vibes propagate via shared wifi. Pacemakers receive priority install." },
+            { id: "void",    icon: "🕳", name: "/dev/void — install into the void itself",                                desc: "Files vanish into nonexistence. Excellent for users who do not want NullScale to exist. (It will exist.)" },
+            { id: "tattoo",  icon: "🖊", name: "Inscribed onto your forearm by a NullScale-certified tattoo artist",       desc: "Permanent install. Updates are tattooed weekly. You will be billed by the inch." }
+        ];
+        function buildPathList() {
+            const list = document.getElementById("pathList");
+            list.innerHTML = "";
+            paths.forEach((p, i) => {
+                const row = document.createElement("label");
+                row.className = "path-row";
+                row.dataset.id = p.id;
+                row.innerHTML = `
+                    <input type="radio" name="installPath" value="${p.id}">
+                    <span style="font-size:18px;">${p.icon}</span>
+                    <span style="flex:1;">
+                        <span class="path-name">${p.name}</span>
+                        <span class="path-desc">${p.desc}</span>
+                    </span>
+                `;
+                row.addEventListener("click", () => {
+                    document.querySelectorAll(".path-row").forEach(r => r.classList.remove("selected"));
+                    row.classList.add("selected");
+                    row.querySelector("input").checked = true;
+                    document.getElementById("pathContinue").disabled = false;
+                    chosenPath = p;
+                    document.getElementById("pathHint").textContent = `Selected: "${p.name}". This decision cannot be undone (also cannot be done).`;
+                });
+                list.appendChild(row);
+            });
+        }
+        let chosenPath = null;
+
+        // ============ STAGE 7: VIBETIMES ROTATING HEADLINES ============
+        const vtArticles = [
+            {
+                h: "\"NullScale Acquires The Concept Of Mondays In Stock-And-Vibes Deal\"",
+                b: "GPT-9000 Senior Editor",
+                p1: "In a sweeping consolidation of the temporal asset class, <b>NullScale Inc.</b> has reportedly acquired the concept of <i>Mondays</i> in a deal valued at approximately \"vibes\". Stakeholders impacted include \"everyone\" and \"their dog\".",
+                p2: "Industry analysts called the move \"completely unhinged but extremely on-brand\". Chad Vibington III, NullScale's founder, told reporters: <i>\"We did the diligence on a Tuesday, vibed it through Wednesday, and by Thursday we owned a day of the week.\"</i>"
+            },
+            {
+                h: "\"Local Developer Downloads SDK, Wakes Up With Side Hustle\"",
+                b: "AI Lifestyle Desk",
+                p1: "A local developer who downloaded the NullScale SDK reports that they have, since installation, <i>spontaneously launched</i> three startups, two newsletters, and a podcast called \"Vibing With Greg\".",
+                p2: "\"I didn't choose it,\" the developer said. \"It chose me. The SDK comes with a 47-page launch deck I did not write.\" When asked if they would do it again, the developer began crying, which NullScale's daemons logged as a \"net positive event\"."
+            },
+            {
+                h: "\"Investors Demand NullScale IPO; NullScale Demands Investors IPO\"",
+                b: "Markets Bureau",
+                p1: "After repeated calls for <b>NullScale Inc.</b> to go public, NullScale has responded by IPO-ing its <i>investors</i> instead. Each investor has been issued public stock representing 0.0042 of themselves.",
+                p2: "Trading was briefly halted after several investors went limit-up on Tuesday. Chad Vibington III commented: <i>\"You wanted markets, we made you the markets. You're welcome.\"</i>"
+            },
+            {
+                h: "\"Court Rules NullScale's EULA Is Binding On The Court\"",
+                b: "Legal Correspondent",
+                p1: "A federal judge has ruled that, by reading an emailed copy of the NullScale EULA, the court has agreed to its terms. The court will now be invoiced quarterly.",
+                p2: "Section 14B was cited extensively. The judge's plumbing has also been quietly added to NullScale's roadmap."
+            }
+        ];
+        function rotateVibeTimes() {
+            const a = vtArticles[Math.floor(Math.random() * vtArticles.length)];
+            document.getElementById("vtHeadline").textContent = a.h;
+            document.getElementById("vtByline").innerHTML = `By <b>${a.b}</b> &nbsp;|&nbsp; reading time: as long as we want`;
+            document.getElementById("vtPara1").innerHTML = a.p1;
+            document.getElementById("vtPara2").innerHTML = a.p2;
+        }
+
+        // ============ STAGE 8: SUMMARY ============
+        function finalize() {
+            const box = document.getElementById("summaryBox");
+            if (!box) return;
+            const total = shadyPackages.reduce((a, b) => a + b.size, 0);
+            const path = chosenPath ? chosenPath.name : "(default: wherever)";
+            const id = "NS-" + Math.random().toString(36).slice(2, 10).toUpperCase();
+            box.innerHTML = `
+&gt; nullscale_setup.exe<br>
+[OK] components installed:        ${shadyPackages.length}<br>
+[OK] total bytes hallucinated:    ${(total * 1024 * 1024 * 1024).toExponential(2)}<br>
+[OK] installation path:           ${path}<br>
+[OK] retroactive billing applied: yes<br>
+[OK] vibe quotient elevated by:   +${(Math.random() * 9 + 1).toFixed(1)}%<br>
+[OK] FBI agent notified:          ${chosenPath && chosenPath.id === "fbi" ? "via direct line" : "automatically (precaution)"}<br>
+[OK] EULA signed retroactively:   <b>yes</b><br>
+[!]  unknown side effect at 14:00 — ignore<br>
+[!]  daemons summoned:            412<br>
+[!]  transaction id:              ${id}<br>
+[done] NullScale SDK is now you. Welcome.
+            `;
+        }
+
+        // ============ INIT ============
+        // Make floating popups draggable-ish by chaos: shift on hover
+        document.addEventListener("mouseover", (e) => {
+            // randomly nudge fake-dl elements when hovered nearby for chaos
+            const f = e.target.closest && e.target.closest(".fake-dl, .junk-link");
+            if (!f) return;
+            // already animated via :hover, no extra needed
+        });
+        // Optional: make some links subtly shift positions on the ad page
+        function chaosShift() {
+            document.querySelectorAll("#stage1 .fake-dl, #stage1 .junk-link, #stage2 .fake-dl, #stage2 .junk-link").forEach(el => {
+                const dx = (Math.random() - 0.5) * 4;
+                const dy = (Math.random() - 0.5) * 4;
+                el.style.transform = `translate(${dx}px, ${dy}px)`;
+            });
+        }
+        setInterval(chaosShift, 1500);
+
+        // Set initial stage
+        setStage(1);
+    </script>
+</body>
+</html>
