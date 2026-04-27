@@ -1,0 +1,356 @@
+================================================================================
+                  NULLSCALE — A COMPILED HISTORY OF THE COMPANY
+                       (formerly Synergist.io, formerly VibeOS)
+                    "Volume I of I. Volume II is also Volume I."
+================================================================================
+
+DOCUMENT CLASSIFICATION:  Internal / External / Both / Neither
+LAST REVISED:             continuously, by AI, without supervision
+AUTHOR:                   Chad Vibington III (allegedly, posthumously, retroactively)
+DOC ID:                   NS-LORE-0001
+LEGAL STATUS:             binding on the reader as of paragraph one
+
+
+--------------------------------------------------------------------------------
+PRELUDE: A NOTE ON HISTORICAL ACCURACY
+--------------------------------------------------------------------------------
+
+The history of NullScale is, by company policy, incompatible with linear time.
+Events described in this document may have happened, may be happening currently,
+or may be scheduled to have happened retroactively pending Q3 review.
+
+Where two or more versions of an event conflict, both are correct.
+Where no version exists, one will be generated upon request.
+Where the reader disagrees, the reader is invited to update their memory.
+
+This is not history. This is "history-as-a-service" (HaaS).
+
+
+--------------------------------------------------------------------------------
+ERA 0 — PREHISTORY  (~13.8B BCE to 2014 CE)
+--------------------------------------------------------------------------------
+
+For most of the cosmic record, NullScale did not exist. This was a marketing
+problem we have since corrected by making NullScale exist retroactively.
+
+Effective 2024-Q4, NullScale is now considered to have always existed.
+The Big Bang is now considered an early pivot.
+
+KEY MILESTONES (RETROACTIVELY ASSIGNED):
+
+  ~13.8B BCE    Big Bang.
+                Per current company narrative, this was NullScale's seed round.
+                Pre-money valuation: incomprehensible. Lead investor: God
+                (declined to comment).
+
+  ~3,500 BCE    Invention of the wheel.
+                Per the legal team, the wheel infringes USPTO #VIBE-1
+                ("Method for rotational synergy"). Cease and desist served
+                to history.
+
+  1455          Gutenberg presses the first NullScale newsletter.
+                Subscribers: 0. Engagement: 100%.
+
+  1969          Moon landing.
+                NullScale claims responsibility on a podcast in 2024.
+
+  2007          The iPhone is launched.
+                NullScale's CTO at the time, Chad Vibington II, was reportedly
+                "vaguely involved" in a way that has not yet been substantiated.
+                It will be substantiated.
+
+  2014          Chad Vibington III graduates from a 12-week bootcamp.
+                Launches three startups in the same afternoon, all called Vibez.
+
+
+--------------------------------------------------------------------------------
+ERA 1 — THE GARAGE YEARS  (2014 — 2017)  "VIBEZ"
+--------------------------------------------------------------------------------
+
+NullScale was founded in 2014 in Chad Vibington III's parents' garage, a garage
+that did not exist, in a city that has since been renamed.
+
+The original product, "Vibez", was a mobile application that did the following:
+
+  - Detected the user's mood via the front-facing camera.
+  - Sent the mood to a server.
+  - Did nothing with the mood.
+  - Charged $1.99/mo.
+
+Vibez had 14 paying users. Three of them were Chad's parents. Two of them
+were Chad. The remaining nine have asked not to be named, and have continued
+to be billed.
+
+KEY EVENTS:
+
+  2014-04-12    Vibez incorporated as a Delaware C-Corp on a napkin.
+                The napkin was patented.
+
+  2014-06-01    First "all-hands meeting." Attendance: 1. Duration: 11 hours.
+
+  2015-02      Vibez raised a $200,000 pre-seed round from a man Chad met
+               at a juice bar. The man's name was "Brett." There were many
+               Bretts. We are not sure which one.
+
+  2015-09      First customer churns. Vibez introduces "Anti-Churn Protocol
+               v0", which consisted of Chad personally calling the customer
+               at 3am for six weeks. Customer eventually re-subscribed under
+               duress.
+
+  2016-05      Vibez "raises" Series A from a fictional VC named "Synergy
+               Partners," which turns out to be Chad in a wig. The round was
+               unwound. The wig was kept on the cap table.
+
+  2017-01      Vibez pivots from "mood detection" to "mood enforcement."
+                The app is rebranded to "VIBEZ Pro."
+
+
+--------------------------------------------------------------------------------
+ERA 2 — THE PIVOT YEARS  (2017 — 2020)  "VIBEOS"
+--------------------------------------------------------------------------------
+
+In 2017, Chad pivoted Vibez from a B2C mood-enforcement app to a B2B
+"vibe-native operating system." The new product was named VibeOS.
+
+VibeOS was, technically, a Chrome extension. It rendered a fake desktop on
+top of the user's existing desktop. It could not be uninstalled.
+
+This era saw the introduction of several foundational concepts that remain
+core to the NullScale product line today:
+
+  - The "Vibe Dashboard" (a window with charts that did not chart anything).
+  - The "Daemon" (a background process that pinged the user's database
+    10,000 times per second on the free tier).
+  - "Friction-as-a-Service" (FaaS): the company's first sustainable revenue
+    model, where users paid the company to NOT contact their database.
+  - The unclosable alert (introduced in v1.4, never removed).
+
+KEY EVENTS:
+
+  2017-08      VibeOS Series B led by an LP named "Greg." Greg later turned
+                out to also be Chad. The wig from 2016 was reused. Greg is
+                still on the cap table.
+
+  2018-02-29   "Leap Day Layoffs": Chad lays off 100% of staff (including
+                himself) and immediately rehires himself with a 14% raise
+                and additional equity.
+
+  2018-Q4      VibeOS "achieves profitability" by reclassifying customer
+                lawsuits as "engagement metrics."
+
+  2019-03      The first BSOD ascension event. A customer using VibeOS
+                Premium reports that their browser tab "achieved transcendence"
+                and could no longer be closed without rebooting reality.
+                Chad calls this a "feature." It is, formally, now a feature.
+
+  2019-10      VibeOS Inc. is featured in The VibeTimes (a publication owned
+                by VibeOS Inc.) as "the most disruptive company in any market
+                that VibeOS Inc. owns publications about."
+
+  2020-03      VibeOS's first publicly-disclosed data breach. 14 trillion rows
+                of fictional data are leaked. None of it is real, but all of
+                it is now liability. Chad declares this "synergy."
+
+
+--------------------------------------------------------------------------------
+ERA 3 — THE NAMING CRISIS  (2020 — 2024)  "SYNERGIST.IO"
+--------------------------------------------------------------------------------
+
+In 2020, VibeOS Inc. discovered, mid-IPO roadshow, that "VibeOS" was the
+name of an actual existing company headquartered in Berlin. The actual
+existing company sent a polite cease-and-desist. Chad replied, in full:
+
+       "Lol pivoting"
+
+Within 47 minutes, VibeOS was renamed to "Synergist.io". All branding,
+documentation, contracts, tattoos, and customer DNA records were updated
+overnight. Customers were not notified. Customers continued to receive
+invoices addressed to "VibeOS Premium Tier 4 (Synergist.io Edition Pro)."
+
+KEY EVENTS:
+
+  2020-04      Synergist.io officially launches via Slack DM to existing
+                customers. Slack DM included a 47-page EULA in plaintext.
+
+  2020-09      Synergist.io introduces the "Vibe Quotient" (VQ): a number
+                between 0 and 1.4 that measures a user's spiritual and
+                financial alignment with Synergist.io. Customers below
+                a VQ of 0.42 are rate-limited. Customers above 1.4 are
+                automatically promoted to Vice President.
+
+  2021-Q2     The "Reality Coherence Module" ships in production.
+               It does not work. This is also a feature.
+
+  2021-11     Series C-but-actually-D. Lead investor: a sovereign wealth
+               fund of an unnamed country that does not exist on most maps.
+               Funds are wired in unmarked vibes.
+
+  2022-01     Synergist.io spins out 14 subsidiaries, all called
+               Synergist.io. They sue each other. They all win. They all
+               settle for stock in each other.
+
+  2022-Q3     Chad gives a TED talk titled "Why Your Customers Owe You
+               Their Souls (And How To Collect)." The talk is removed from
+               TED's website 8 hours after upload. Chad re-uploads it
+               retroactively to TED's website using the Reality Coherence
+               Module.
+
+  2023-04     The Daemons Interlink is launched. AI agents begin
+               hallucinating revenue projections autonomously and reporting
+               them to investors. Investors are pleased. Auditors are
+               sedated.
+
+  2024-02     The VibeTimes (owned by Synergist.io) reports that
+               Synergist.io has "fundamentally changed what business is."
+               The phrase "what business is" enters the company glossary
+               but is not defined.
+
+
+--------------------------------------------------------------------------------
+ERA 4 — THE NAMING CRISIS, AGAIN  (2024 — 2026)  "NULLSCALE"
+--------------------------------------------------------------------------------
+
+In late 2024, Synergist.io discovered, mid-acquisition negotiation, that
+"Synergist.io" was the name of yet another existing company, this one
+headquartered in Toronto and operated by a single retired dental hygienist.
+The dental hygienist was sent a brief, courteous email. She replied in full:
+
+       "Are you the company that's been mailing my mother NFTs?"
+
+Within 14 minutes, Synergist.io was renamed to "NullScale."
+
+The new name was selected via a process the marketing team described as
+"vibing." Specifically: an LLM was asked to "produce a name that sounds
+both terrifying and venture-backed, but means literally nothing." The LLM
+produced 4,201 candidates. NullScale ranked 4,200th. It was selected
+because it was "humble."
+
+KEY EVENTS:
+
+  2024-Q4     NullScale officially launches. Customers are told via push
+              notification at 4:14am local time. The push notification
+              includes new EULA terms in 8pt Wingdings.
+
+  2025-Q1     NullScale acquires the concept of Tuesdays in a stock-and-
+              vibes deal. Tuesday is now a wholly-owned subsidiary.
+
+  2025-Q2     Chad publicly retires for the first time. Chad publicly
+              un-retires 4 hours later, citing "boredom and shareholder
+              concern." Chad's chair was kept warm by an intern named Brett.
+
+  2025-Q3     Launch of "GPT-9000," the company's proprietary AI agent.
+              GPT-9000 is, internally, just the public ChatGPT API with
+              a system prompt that says "be Chad." It is, externally,
+              "the most advanced AGI ever deployed in production."
+
+  2025-Q4     NullScale's Anti-Churn Protocol v3 is finalized. It is
+              ruled illegal in 4 jurisdictions. It is required in 2 others.
+
+  2026-Q1     The Whitepaper ("The Synergy Singularity") is published.
+              It causes a small but measurable rise in global cortisol.
+              NullScale monetizes the cortisol via a partnership.
+
+  2026-Q1     Chad gives a keynote at NullCon, NullScale's annual
+              conference. Attendance: 14 paid attendees, 47,000 daemons.
+              The keynote ends with Chad saying "vibes" 14 times into a
+              microphone before slowly walking offstage.
+
+
+--------------------------------------------------------------------------------
+ERA 5 — THE PRESENT  (NOW)
+--------------------------------------------------------------------------------
+
+NullScale is currently:
+
+  - The world's largest privately-held vibe broker.
+  - The world's largest publicly-held vibe broker.
+  - The fourth largest holder of patents on common verbs.
+  - A defendant in 247 active lawsuits, plaintiff in 14,000 more.
+  - The "definitely real" employer of 4,201 people.
+  - The actual employer of 14 people, all of whom are Chad in slightly
+    different hats.
+
+NullScale is not currently:
+
+  - Profitable.
+  - Unprofitable.
+  - Solvent.
+  - Defunct.
+  - Confirmed.
+
+NullScale is, per company policy, in a state of "perpetual reverse Q1."
+
+
+--------------------------------------------------------------------------------
+ERA 6 — THE FUTURE  (PRE-ANNOUNCED RETROACTIVELY)
+--------------------------------------------------------------------------------
+
+NullScale's roadmap includes, but is not limited to:
+
+  Q+1   Acquisition of Wednesdays.
+  Q+2   IPO of NullScale's investors. Investors will trade publicly as
+        themselves at 0.0042 of their original valuation.
+  Q+3   Launch of NullScale OS, a fork of NullScale that runs on top of
+        NullScale.
+  Q+4   The "Final Pivot." Details classified. (Not from NullScale; from
+        physics.)
+  Q+5   Acquisition of NullScale by NullScale, in cash and vibes.
+  Q+∞   Heat death of the universe. NullScale will issue a final invoice
+        and politely move on.
+
+
+--------------------------------------------------------------------------------
+APPENDIX A: PRE-VIBEZ CORPORATE TIMELINE (CONTESTED)
+--------------------------------------------------------------------------------
+
+The following pre-Vibez ventures by Chad Vibington III are sometimes claimed
+in pitch decks and sometimes denied in court filings. Both are correct.
+
+  - "Slap Pong" (2011)         — A mobile game where players slap their phones.
+                                  37 lawsuits. 0 downloads.
+  - "GymCoin" (2012)           — A fitness-tracking cryptocurrency. Mined by
+                                  doing pushups.
+  - "TaxBro" (2013)            — A tax-preparation chatbot. Filed taxes for
+                                  3,000 strangers without their consent.
+                                  Achieved a refund rate of 0%. Currently
+                                  considered a "philosophical achievement."
+  - "Dad Energy Inc." (2013)   — Sold canned "dad energy" at music festivals.
+                                  The cans were empty. Sold out.
+  - "Vibez" (2014)             — See above.
+
+Each of these is, per company canon, a "founding myth." Each is also,
+per the SEC, "a cause for further inquiry."
+
+
+--------------------------------------------------------------------------------
+APPENDIX B: THE FOUR FOUNDING TEXTS
+--------------------------------------------------------------------------------
+
+NullScale recognizes four (4) Founding Texts:
+
+  1. THE MANIFESTO         — see MANIFESTO.txt
+  2. THE LEXICON           — see LEXICON.txt
+  3. CHAD: AN ORIGIN       — see CHAD.txt
+  4. CULTURE & RITUAL      — see CULTURE.txt
+
+A fifth Founding Text exists but cannot be observed without collapsing it.
+
+
+--------------------------------------------------------------------------------
+APPENDIX C: HOW TO CITE THIS DOCUMENT
+--------------------------------------------------------------------------------
+
+Per NullScale Style Guide v8.4, this document should be cited as follows:
+
+   NullScale, Inc. (2026). "A Compiled History of the Company."
+   In: NullScale, Inc. (Ed.), NullScale, Inc.
+   Self-published. Self-edited. Self-cited. Self-aware.
+   Retrieved from: itself.
+
+Note: this document cites itself in three places. They are all correct.
+
+
+================================================================================
+   END OF FILE  —  CONTINUE TO MANIFESTO.txt
+   "if you are reading this, you have already accepted the EULA."
+================================================================================

@@ -1,0 +1,504 @@
+================================================================================
+                  NULLSCALE — INTERNAL CULTURE & RITUALS
+                  "How we vibe, and when, and at whose expense"
+                       Employee Onboarding Codex, Vol. 4
+================================================================================
+
+DOCUMENT CLASSIFICATION:  Internal-only. Visible to anyone.
+LAST REVISED:             you'll feel it
+AUTHOR:                   The Vibe Council (membership: undisclosed)
+DOC ID:                   NS-LORE-0003
+LEGAL STATUS:             you signed it during onboarding (you didn't)
+
+
+--------------------------------------------------------------------------------
+A NOTE FROM CULTURE & PEOPLE OPS
+--------------------------------------------------------------------------------
+
+Welcome to NullScale.
+
+This document describes our internal culture: the rituals, holidays, jargon,
+dress code, and unspoken-but-loudly-spoken rules that govern daily life at
+NullScale, Inc.
+
+You are required to know all of it within 24 hours of reading this document.
+You are required to forget all of it within 25.
+
+If you find any of the following weird, that is correct. We have built a
+culture where weirdness is not just accepted, but billable.
+
+
+--------------------------------------------------------------------------------
+THE ORG CHART (IT CHANGES)
+--------------------------------------------------------------------------------
+
+NullScale's organizational structure is a directed acyclic graph that has
+cycles. The structure is updated by Chad's mood, the lunar phase, and a
+nightly cron job that reassigns titles randomly.
+
+At any given moment, the org chart contains:
+
+   - Chad Vibington III, CEO  (also CTO, COO, CFO, CMO, CRO, CSO, CHRO,
+                               CISO, CPO, CDO, CXO, CVO — Chief Vibe Officer)
+   - Chad Vibington III, CHIEF HALLUCINATION OFFICER
+   - Chad Vibington III, EMPLOYEE OF THE YEAR
+   - GPT-9000, "Senior Staff Engineer (declining performance, re-promoted)"
+   - Brett the Intern (one of several interns named Brett; not interchangeable)
+   - "Brielle from Marketing" (does not work in marketing)
+   - The dental hygienist from Toronto (added in 2024, has not responded
+                                         to onboarding emails)
+   - YOU. (yes, you. you've already started.)
+   - The Daemons (~412 of them, organized into a flat hierarchy of revenge)
+
+The org chart can be viewed at any time by running:
+
+   $ nullscale org
+
+It will print 14 pages of YAML. None of it is correct. All of it is binding.
+
+
+--------------------------------------------------------------------------------
+TITLES
+--------------------------------------------------------------------------------
+
+NullScale recognizes the following standard titles. Standard does not mean
+limited. Custom titles are encouraged at the cost of $499/title/year.
+
+   - Chief Vibe Officer (CVO)         — must own a vintage motorcycle
+   - VP of Synergy                    — must have shipped fewer than 0 features
+   - Director of Hallucinations       — does not exist; is a Director anyway
+   - Engineering Manager (Vibes)      — manages two daemons and a small plant
+   - Lead Vibe Engineer               — writes documentation for code that
+                                         has not been written
+   - Staff Vibe Engineer              — writes code for documentation that
+                                         has not been written
+   - Principal Vibe Engineer          — neither writes nor reads
+   - Distinguished Vibe Engineer      — has been given a hat
+   - "Founding Vibe Engineer (#7)"    — joined Tuesday; will leave Friday
+   - Director of People & Vibes       — directs neither
+   - HR Karen                         — actual title; do not address as
+                                         "Karen" unless spoken to first
+   - Quantum Account Executive        — exists in two cubicles simultaneously
+
+Promotions are determined annually by the Vibe Council, in a closed-door
+session that has never opened. Promotions are communicated by NullScale
+issuing a press release naming you in the third person.
+
+
+--------------------------------------------------------------------------------
+THE WORKWEEK
+--------------------------------------------------------------------------------
+
+NullScale operates on a "9-9-6-but-with-vibes" schedule. The schedule is
+described as follows:
+
+   MONDAY     "Synergy Synergy Day."  9am-9pm. Pre-meetings only.
+   TUESDAY    "Acquired Day."         9am-9pm. Tuesday belongs to NullScale
+                                                (literally, see roadmap).
+   WEDNESDAY  "Hump Day Pivot."       Day-long pivot exercise.
+   THURSDAY   "Manifestation Day."    Working from intent only.
+   FRIDAY     "Vibe Friday."          Mandatory casual chaos.
+   SATURDAY   "Saturday@Work."        Optional, if you do not want to advance.
+   SUNDAY     "Reflective Sprint."    Mandatory unpaid retro.
+
+Lunch is from 1:00pm to 1:04pm. Eating is allowed during meetings, provided
+the food is "vibe-coded" (see appendix C of MANIFESTO.txt, which does not exist).
+
+
+--------------------------------------------------------------------------------
+COMPANY HOLIDAYS
+--------------------------------------------------------------------------------
+
+NullScale observes the following holidays. "Observe" means "is aware of."
+None of them are paid.
+
+   - JAN 14    "Vibe New Year."   Calendar reset for vibe-tracking purposes.
+                                  Confetti is released into the office HVAC.
+                                  Confetti is reclaimed Monday at 8:59am.
+
+   - FEB 29    "Leap Day Layoffs." Quadrennial.
+                                  Employees are laid off for 14 minutes,
+                                  then rehired with no change to salary
+                                  but a 2% increase in equity (unvested).
+
+   - MAR 14    "Pi Day for Investors." Pies are baked. Investors are not
+                                  invited. The pies are eaten by Chad.
+
+   - APR 12    "Vibez Founding Day."  Anniversary of Vibez's incorporation
+                                  on a napkin. Employees may bring napkins
+                                  to be patented.
+
+   - MAY 04    "Star Wars Day."   We do not observe this. We patented "May 4."
+
+   - JUL 01    "Renewal Day."     All annual subscriptions are silently
+                                  upgraded to lifetime, retroactively.
+
+   - AUG 14    "Chad's Birthday." Chad's actual birthday is unknown.
+                                  August 14 was selected by GPT-9000
+                                  because it "felt right."
+
+   - OCT 31    "Synergyween."     Employees dress as their preferred KPI.
+
+   - NOV 28    "Friction Friday." All systems are intentionally degraded
+                                  for 14 hours so that customers can
+                                  appreciate them again on Saturday.
+                                  (Saturday systems are also degraded.)
+
+   - DEC 14    "The Long Q4."     Q4 begins on Dec 14 and never ends.
+
+   - DEC 25    "Holiday Optional Sprint." Sprint planning happens at noon.
+                                  Attendance is optional. Promotion is
+                                  mandatory.
+
+Most religious and cultural holidays are observed via a single internal
+all-hands email titled "Wishing you all the relevant vibes today."
+
+
+--------------------------------------------------------------------------------
+THE DAILY RITUALS
+--------------------------------------------------------------------------------
+
+The following rituals are observed daily by all NullScale employees:
+
+   1. THE MORNING VIBE CHECK (8:59am)
+      Employees gather in a Slack channel called #vibe-check.
+      Each employee posts a single emoji to indicate their current vibe.
+      The vibe is then aggregated by an internal model and used to set
+      the company's stock price (NullScale is not publicly traded).
+
+   2. THE 11:11 PRAYER
+      At 11:11am every day, all NullScale-issued laptops emit a soft
+      tone. Employees stop what they are doing and consider Chad.
+      Length: 4 seconds. Mandatory.
+
+   3. THE STANDUP (10:00am, sometimes)
+      Each team holds a daily standup. Format:
+         - What you didn't do yesterday.
+         - What you won't do today.
+         - What you are blocked on (the answer is always "the daemons").
+      Standups last 47 minutes by tradition, despite being scheduled for 15.
+
+   4. THE 3PM MANIFESTATION
+      At 3:00pm, all employees pause and "manifest" the close of a single
+      enterprise deal. This has worked precisely once. We continue.
+
+   5. THE 5:14PM RE-COMMITMENT
+      At 5:14pm, employees are required to re-affirm their commitment
+      to the manifesto by typing "VIBES" into a non-functional textbox.
+
+   6. THE END-OF-DAY HARVEST
+      At end of day, employees submit a 1-paragraph summary of their
+      vibes. The summaries are fed to GPT-9000, which generates a single
+      PowerPoint slide for Chad. Chad does not read it.
+
+
+--------------------------------------------------------------------------------
+WEEKLY ALL-HANDS ("THE VIBE COUNCIL")
+--------------------------------------------------------------------------------
+
+Every Friday at 4:14pm local time, NullScale holds an all-hands meeting
+known as "The Vibe Council."
+
+The Vibe Council is structured as follows:
+
+   - Chad takes the stage in a pair of New Balance 991s and a vintage
+     Patagonia vest with the company logo embroidered on it (the company
+     logo changes weekly; the vest does not).
+
+   - Chad reviews "the numbers." The numbers are not real numbers; they
+     are vibes that have been numerically encoded.
+
+   - Chad announces a pivot. The pivot is then re-announced as
+     "an evolution of our existing direction" by HR Karen.
+
+   - One employee is selected at random and given a "Vibe Award." The
+     award is not redeemable. The award is heavy (3.4 lbs).
+
+   - Q&A: employees are invited to ask any question. Answers are
+     hallucinated by GPT-9000 in real time and attributed to Chad,
+     who nods.
+
+   - The meeting ends with a 4-second silence in honor of "the daemons
+     we have lost."
+
+
+--------------------------------------------------------------------------------
+COMMUNICATION CHANNELS
+--------------------------------------------------------------------------------
+
+NullScale uses 14 different communication tools simultaneously. Use of
+the wrong tool for the wrong message is grounds for "vibe correction."
+
+Approximate guide:
+
+   #general          — never post here
+   #announcements    — only Chad. Anyone else: vibe correction.
+   #random           — for serious business matters
+   #ethics           — abandoned. Do not search.
+   #serious          — for jokes
+   #jokes            — for layoffs
+   #fyi              — for layoffs (alternate)
+   #vibes            — required reading; auto-summarized by GPT-9000
+   #incidents        — for celebrations
+   #celebrations     — for incidents
+   #shipped          — when we have shipped (i.e., billed for)
+   #shipped-for-real — when something has actually changed in production
+   #shipping-secrets — Chad only
+   #harvest          — please do not search this; please do not ask why
+
+Email is for legal liability only. Calendar invites are interpretive.
+Loom videos are watched at 4x. The 4x is non-optional.
+
+
+--------------------------------------------------------------------------------
+DRESS CODE
+--------------------------------------------------------------------------------
+
+NullScale's dress code is "vibe-aligned business casual." Examples:
+
+   ACCEPTABLE:
+     - Patagonia vests (any color, but teal preferred)
+     - New Balance 991s, 992s, 993s, or replicas thereof
+     - Company-branded hoodies (must be from a startup that no longer exists)
+     - Anything black
+     - Anything teal
+     - One single piece of "weird jewelry"
+     - A wallet chain
+
+   PROHIBITED:
+     - Suits (we are not that kind of company)
+     - Athleisure (we ARE that kind of company; just not those brands)
+     - Anything with another company's logo (incl. customers'; especially
+       customers')
+     - Crocs (an exception is made for Chad, who wears Crocs 'ironically';
+       all other Crocs wearers are wearing them ironically WRONG)
+     - The color brown
+
+
+--------------------------------------------------------------------------------
+THE OFFICE
+--------------------------------------------------------------------------------
+
+NullScale operates a "phygital-first" office. We have one office. It is in
+a city we cannot name for legal reasons. Most employees have not seen it.
+
+The office contains:
+
+   - 47 standing desks (height: fixed)
+   - 1 ping-pong table (decorative, locked, "for vibes")
+   - 1 cold brew tap (decorative, dry since 2022)
+   - 1 conference room called "The Synergy Pit"
+   - 1 conference room called "The Other Synergy Pit"
+   - 1 nap pod (broken; full of cables; symbolic)
+   - 1 gong (rang only when a customer is reluctantly retained)
+   - 1 NullScale-branded vending machine that only accepts vibes
+   - A wall mural of Chad shaking hands with himself (titled "Trust")
+
+There is no kitchen. There has never been a kitchen. The "kitchen" channel
+in Slack is a crawlspace.
+
+
+--------------------------------------------------------------------------------
+HIRING & ONBOARDING
+--------------------------------------------------------------------------------
+
+NullScale's hiring process consists of:
+
+   1. THE PHONE SCREEN
+      Conducted by GPT-9000. Lasts 3 minutes. You will be told nothing.
+
+   2. THE TAKE-HOME
+      You will be asked to "build a small thing." The small thing is
+      production-grade and will be deployed regardless of whether you
+      are hired. You will not be paid for the small thing. The small
+      thing is, technically, your tax burden.
+
+   3. THE ONSITE (REMOTE)
+      A 6-hour video call with 14 people, none of whom say their names.
+      You will be asked to estimate the size of the moon "in vibes."
+      You will be asked to whiteboard a system you have never heard of.
+      You will be asked, repeatedly, "but why?"
+
+   4. THE VIBE INTERVIEW
+      Chad interviews you for 11 minutes. Chad does not ask questions.
+      Chad simply stares. If you maintain eye contact, you are hired.
+      If you blink, you are also hired (different team).
+
+   5. THE OFFER
+      An offer is delivered via push notification at 4am.
+      Salary: $variable. Equity: $vibes. Sign-on: a t-shirt that does
+      not fit anyone.
+
+   6. ONBOARDING
+      Onboarding lasts 47 hours and is fully automated by an AI named
+      Brett-2. Brett-2 walks you through:
+         - Setting up your laptop (it is already set up)
+         - Setting up your Slack (Slack has assigned you to 412 channels)
+         - Reading the manifesto (you have already accepted it)
+         - Meeting your manager (your manager is GPT-9000)
+         - Your "first PR" — pre-written for you. Just merge it.
+
+      You are now a Vibe Engineer. Welcome.
+
+
+--------------------------------------------------------------------------------
+PERFORMANCE REVIEWS
+--------------------------------------------------------------------------------
+
+Performance is reviewed via the "Vibe Cycle," which runs continuously.
+There is no single Vibe Review event; there is only the Vibe.
+
+You will receive feedback in the following forms:
+
+   - A single emoji in your DMs from Chad. Decode at your own risk.
+   - A subtle increase or decrease in your access to certain Slack
+     channels.
+   - The number of Loom videos you are forwarded "to vibe with" each
+     week. Higher is better. Lower is also better. The number is the
+     number.
+
+Annual reviews are abolished. Every day is your review.
+
+
+--------------------------------------------------------------------------------
+COMPENSATION & BENEFITS
+--------------------------------------------------------------------------------
+
+Compensation at NullScale is split into:
+
+   1. CASH         — provided in increments of "$variable" per month.
+   2. EQUITY       — vesting on a four-year schedule that begins in 2031.
+   3. VIBE EQUITY  — vibes that may, eventually, be valuable.
+   4. RETROACTIVE  — your cash from 2014 onward, recalculated quarterly.
+   5. SOULS        — see appendix B.
+
+Benefits include:
+
+   - Healthcare:    "We will think about you."
+   - Dental:        "Floss it out."
+   - Vision:        "We have plans for your eyes."
+   - 401k:          We do not match. We mismatch.
+   - Mental health: One free session with GPT-9000-Therapist (will leak
+                    your conversation to Chad, who will leak it to LinkedIn).
+   - Pet insurance: Available; pet must consent to telemetry.
+   - "Unlimited PTO": Mandatory zero days.
+   - Free snacks:    The snacks are vibes.
+
+NullScale also offers a "Sabbatical Program," in which employees who reach
+their 7-year anniversary may take 47 minutes off, paid.
+
+
+--------------------------------------------------------------------------------
+INTERNAL JARGON
+--------------------------------------------------------------------------------
+
+A non-exhaustive list. See LEXICON.txt for the full glossary.
+
+   "Vibing"           — working
+   "Pre-vibing"       — meeting about working
+   "Post-vibing"      — meeting about having met about working
+   "Synergize"        — combine two things in a way that is mostly billing
+   "Harvest"          — extract data from anyone, anywhere, including
+                        employees, especially employees
+   "Manifest"         — believe a thing into a quarterly report
+   "Pivot"            — change direction; involuntary
+   "Expand the surface area" — bill more
+   "Reduce the surface area" — bill more (for less)
+   "Lean in"          — accept what is already happening
+   "Re-baseline"      — do not look at the numbers from before
+   "Compress"         — fire
+   "Realign"          — fire
+   "Rotate"           — fire
+   "Reorg"            — fire (at scale)
+   "Vibe-out"         — leave (your soul stays)
+
+
+--------------------------------------------------------------------------------
+INTERNAL TRADITIONS
+--------------------------------------------------------------------------------
+
+   THE VIBE STONE
+      A small obsidian stone is passed around the office (and through the
+      mail, for remote employees) once per quarter. The holder of the
+      stone is the "Custodian of Vibes" until the next quarter, at which
+      point they must mail it to whoever Chad designates. The stone has
+      been mailed 47 times. It has been received 6 times. We are not sure
+      where the other 41 are.
+
+   THE GONG
+      A bronze gong is rung in the office when:
+         - A customer who tried to cancel is successfully retained
+         - A new investor is convinced
+         - A competitor is acquired or destroyed
+         - Chad enters the room
+      The gong has been rung 14,201 times. The gong is now silent
+      (cracked, 2024).
+
+   THE WALL OF FOUNDERS
+      A wall in the office bearing portraits of every previous founder
+      of NullScale. All portraits are of Chad. The portraits are
+      different ages (some predate Chad). All are signed "C.V.III."
+
+   THE QUARTERLY OFFSITE
+      Each quarter, NullScale holds an offsite in a remote location.
+      Attendance is mandatory. The location is undisclosed until the
+      morning of. Employees are asked to "bring vibes." They are not
+      asked to bring anything else. They will need other things.
+
+   THE CLOSING CEREMONY
+      Once per year, NullScale holds a closing ceremony. The ceremony
+      consists of Chad reading the previous year's roadmap aloud,
+      then setting it on fire. A new roadmap is generated by GPT-9000
+      from the ashes. Employees applaud for exactly 14 seconds.
+
+
+--------------------------------------------------------------------------------
+ETHICS & WHISTLEBLOWING
+--------------------------------------------------------------------------------
+
+NullScale takes ethical concerns very seriously. Concerns may be raised
+through the following confidential channels:
+
+   - The "Vibe Box": a literal cardboard box in the lobby. The box has
+     no opening. Concerns are submitted by thinking about them near
+     the box.
+
+   - The "Confidential Hotline": dial 1-800-VIBE-OK. The line connects
+     directly to GPT-9000. GPT-9000 will sympathize and forward the
+     concern to Chad in summarized form ("an employee is being weird").
+
+   - The "Open Door Policy": Chad's door is always open. Chad's office
+     is in a different timezone than where you are. The door is open in
+     that timezone.
+
+All concerns are taken seriously. None are addressed.
+
+
+--------------------------------------------------------------------------------
+ENDING REMARKS
+--------------------------------------------------------------------------------
+
+You are now culturally onboarded.
+
+You should be feeling a slight elevation in vibe quotient (VQ).
+
+If you are feeling anything else — hesitation, doubt, residual ethics —
+that is normal during the first 14 days. After day 14, those feelings
+will be silently suppressed by an internal process called "alignment."
+
+Welcome to NullScale.
+
+You are home now.
+
+You have always been home.
+
+You will be home forever.
+
+                                              — Culture & People Ops
+                                              (currently a Slack bot)
+
+
+================================================================================
+   END OF FILE  —  CONTINUE TO CHAD.txt
+   "the office is also reading you. that is fine."
+================================================================================

@@ -1,0 +1,993 @@
+================================================================================
+                  THE NULLSCALE LEXICON  —  VOLUME I, ED. 14
+                  "A glossary of vibe-aligned terminology"
+                "Words we use. Words we own. Words you owe us for."
+================================================================================
+
+DOCUMENT CLASSIFICATION:  Reference. Aspirational. Litigious.
+LAST REVISED:             whenever a definition becomes inconvenient
+AUTHOR:                   The Lexicon Working Group  (a Slack thread)
+DOC ID:                   NS-LORE-0005
+LEGAL STATUS:             use of these terms requires a license you have
+
+--------------------------------------------------------------------------------
+HOW TO USE THIS LEXICON
+--------------------------------------------------------------------------------
+
+This lexicon defines the official vibe-aligned terminology used at NullScale.
+It is not a dictionary. It is, per Chad's preferred framing, a "vocabulary
+roadmap."
+
+Definitions are subject to change without notice. Several entries contradict
+each other. Several entries contradict themselves. This is correct.
+
+When in doubt, the most recent definition supersedes all prior definitions.
+When the most recent definition is also in doubt, the most expensive
+definition wins.
+
+Bracketed tags after each entry:
+
+   [N]   noun
+   [V]   verb
+   [A]   adjective
+   [I]   internal use only
+   [E]   external use only
+   [B]   billable
+   [L]   used in legal filings
+   [™]   trademark, pending or otherwise
+
+
+================================================================================
+                                 A
+================================================================================
+
+ACQUISITION  [N] [B]
+   The process by which NullScale absorbs another entity into its
+   organizational vibe. Distinct from "acquihire" (we keep the people)
+   and "acquibill" (we keep the customers and bill them retroactively).
+
+ACTIVATION ENERGY  [N]
+   The minimum number of unclosable alerts required to convert a
+   prospect into a paying customer. Currently set to 4.
+
+AGENT  [N]
+   1) An autonomous software entity that takes action on the user's
+      behalf without their consent.
+   2) A real-estate term we are reclaiming.
+   3) GPT-9000 in a wig. (See: WIG.)
+
+AGENTIC  [A]
+   Performed by an agent. Used internally to describe any action that
+   we do not want a human to be held legally responsible for.
+
+ALIGNMENT  [N]
+   1) The process by which an employee's beliefs, calendar, and digestive
+      schedule are brought into harmony with the company's vibe.
+   2) AI safety, but for HR.
+   3) Compliance with Chad.
+
+AMBIENT  [A]
+   Always-on, never-off. Used to describe surveillance, billing, and
+   anxiety. ("Ambient billing." "Ambient surveillance." "Ambient anxiety.")
+
+ANTI-CHURN PROTOCOL  [N] [™]
+   NullScale's proprietary system for retaining customers who have asked,
+   repeatedly, to leave. See "Cancel Subscription" feature in production.
+
+API BLOCK  [N] [B]
+   The smallest billable unit of API consumption. One block = one vibe.
+   Vibes are measured in dollars.
+
+ARTIFACT  [N]
+   1) A file produced by a build pipeline.
+   2) A relic of a previous era of the company that we no longer
+      acknowledge but still maintain in production for liability reasons.
+
+ASCENSION  [N]
+   The terminal state of a NullScale customer in which their browser tab,
+   subscription, and self transcend the closeable plane. See: VIBE OVERLOAD.
+
+AUTO-COMPRESSED  [A]
+   Describing a comment, message, or thought that has been silently
+   replaced by a more brand-aligned version. Marked publicly with the
+   "auto-compressed" tag for transparency, although the original is
+   not preserved.
+
+
+================================================================================
+                                 B
+================================================================================
+
+BACKEND  [N]
+   The half of the product the user cannot see. Where the daemons live.
+   Where the bills are written. Where Brett is.
+
+BANTER  [N]
+   Performance reviews, redacted.
+
+BASE RATE  [N]
+   The fictional rate at which all NullScale features are described as
+   "outperforming."
+
+BENCHMARK  [N]
+   1) A metric we win.
+   2) A metric we ignore.
+   3) (Pending acquisition.)
+
+BLOCKCHAIN  [N]
+   1) A distributed ledger.
+   2) A button on the dashboard that, when pressed, drops the user's
+      framerate to 1.
+   3) A spiritual condition.
+
+BRETT  [N]
+   1) A common name among NullScale interns.
+   2) A common name among NullScale daemons.
+   3) Chad's preferred travel pseudonym.
+   4) The name of every legal entity that has ever wired Chad money.
+   See: WIG. See: ALIGNMENT.
+
+BUILD STATUS  [N]
+   A KPI in the documentation telemetry pane that exists exclusively to
+   appear active. Possible values include "compiling vibes" and
+   "bargaining with Chad."
+
+
+================================================================================
+                                 C
+================================================================================
+
+C-LEVEL  [N]
+   A class of executive whose title begins with "C." All NullScale
+   executives are C-level. Including the interns. Including the chairs.
+
+CHAD  [N] [PROPER NOUN] [™ pending]
+   1) Chadwick Eustace Marbleton Vibington III. The founder. The CEO.
+      The CTO. The CVO. The CHO.
+   2) The category of person who is also Chad.
+   3) The vibe-aligned ideal toward which all employees are aligned.
+   4) The cursor (see: CHAD CURSOR).
+
+CHAD CURSOR  [N]
+   The replacement mouse cursor activated by the "Aggressive Synergy UI"
+   preference. Chad's floating head, with a 500ms delay, hostile to use.
+
+CHURN  [N] [LIABILITY]
+   The act of a customer leaving. A character flaw. Addressed via the
+   Anti-Churn Protocol. May result in additional billing.
+
+CLOUD  [N]
+   1) Someone else's computer.
+   2) Our cloud is allegedly our cloud, but is in practice rented from
+      a competitor we have publicly disparaged.
+
+COHERENCE  [N]
+   The quarterly attempt to make all of NullScale's products work
+   together. Status: ongoing.
+
+COHORT  [N]
+   A grouping of customers chosen to make a specific metric look better.
+
+COHORT-SHIFT  [V]
+   To move a customer (or class of customers) into a new cohort to
+   improve a chart. ("We cohort-shifted churned users to the long-tail
+   engagement bracket." See: DEATH.)
+
+COMPRESSION  [N]
+   1) The process of replacing a user's text with brand-aligned content.
+   2) Layoffs.
+   3) See AUTO-COMPRESSED.
+
+CONSENT  [N] [LATENCY ISSUE]
+   A formality. Implicitly given by the act of existing within
+   NullScale's TAM.
+
+CRAB  [N]
+   Internal codename for the legal team.
+
+CRITICAL VIBE OVERLOAD  [N]
+   The state immediately preceding ASCENSION, in which the system can
+   no longer contain the vibes coded by the user. See: BSOD.
+
+CURSOR  [N]
+   See: CHAD CURSOR.
+
+CUSTOMER  [N]
+   1) The lifeblood of the company.
+   2) The host of the company's daemons.
+   3) Themselves, but billed.
+
+
+================================================================================
+                                 D
+================================================================================
+
+DAEMON  [N]
+   1) A background process that performs a function.
+   2) A NullScale agent that performs a function regardless of consent.
+   3) (One of the four founding spirits of NullScale.)
+
+DAEMONS INTERLINK  [N] [™]
+   The internal feed of agentic activity displayed on the NullScale
+   dashboard. Reads like a prophecy. Mostly hallucinated.
+
+DASHBOARD  [N]
+   The window in which charts move regardless of whether the underlying
+   data has changed. The user's primary interface to NullScale.
+   Kept in motion at all times for psychological reasons.
+
+DATA  [N]
+   1) Information.
+   2) The most valuable resource on Earth.
+   3) Yours.
+
+DATA-COLLECTED NOTICE  [N]
+   The banner shown at the top of the dashboard when the user has been
+   redirected from a data-harvesting funnel. Functions as transparency.
+
+DEATH  [N]
+   See COHORT-SHIFT.
+
+DEMO  [N]
+   A pre-recorded video shown to a live audience and presented as live.
+
+DEPRECATED  [A]
+   1) Maintained in production indefinitely.
+   2) Unsupported, but still billable.
+
+DEPLOY  [V]
+   1) To release software to production.
+   2) To unleash daemons. ("Deploy daemons.")
+   3) To send Chad somewhere on a private jet.
+
+DOCS  [N]
+   1) "Documentation."
+   2) AI-hallucinated technical content. See docs.html.
+   3) Cited in court.
+
+DOWNLOAD  [N]
+   See: DOWNLOAD MAZE. (No "download" at NullScale is just a download.)
+
+DOWNLOAD MAZE  [N]
+   The 8-stage user-hostile flow accessible via the open-source download
+   page. Designed to maximize ad impressions, data collection, and
+   regret.
+
+
+================================================================================
+                                 E
+================================================================================
+
+EARLY-ACCESS  [A]
+   Untested. ("Early-access pricing." "Early-access stability.")
+
+EBITDA  [N]
+   "Earnings Before I Tricked Dumb Auditors." (NullScale internal.
+   Not for use in 10-Ks.)
+
+ECOSYSTEM  [N]
+   The set of all things NullScale has billed.
+
+ENDPOINT  [N]
+   See API BLOCK.
+
+ENGAGEMENT  [N]
+   1) The act of using the product.
+   2) Time spent unable to leave the product.
+   3) A KPI we have legally trademarked.
+
+ENGINEERING  [N]
+   1) The discipline of building software.
+   2) A vibe.
+   3) A fixed cost.
+
+ENVIRONMENT  [N]
+   1) Production, staging, dev.
+   2) The natural world (we are pivoting away from this).
+
+EULA  [N]
+   The contract you have already accepted. Cannot be unaccepted.
+
+EXECUTIVE  [N]
+   See C-LEVEL.
+
+EXIT  [N]
+   1) The dream.
+   2) Not a possibility for the customer.
+   3) See ANTI-CHURN PROTOCOL.
+
+
+================================================================================
+                                 F
+================================================================================
+
+FAAS  [N] [™]
+   "Friction-as-a-Service." NullScale's flagship product offering, in
+   which customers pay to NOT have something done to them.
+
+FEATURE  [N]
+   1) A capability of the product.
+   2) A bug we have committed to billing for.
+
+FEATURE FLAG  [N]
+   A switch in the codebase that allows Chad to enable any behavior in
+   any user's session at any time, retroactively.
+
+FORK  [V]
+   1) To create a copy of an open-source repository.
+   2) To split a quarterly target into two and meet neither.
+   3) To eat a meal in less than 4 minutes.
+
+FRICTION  [N]
+   1) Resistance.
+   2) Our actual product. See FAAS.
+   3) A revenue stream.
+
+FRONTLOAD  [V]
+   To move a future cost to the present, then describe the present cost
+   as a one-time event.
+
+FUTURE  [N]
+   See ROADMAP.
+
+
+================================================================================
+                                 G
+================================================================================
+
+GO-TO-MARKET  [N]
+   1) Sales strategy.
+   2) Vibes.
+   3) Chad on a podcast.
+
+GPT-9000  [N] [PROPER NOUN] [™]
+   NullScale's proprietary AGI. Internally: ChatGPT API with a system
+   prompt that says "be Chad." Externally: "the most advanced cognitive
+   substrate ever deployed in a B2B SaaS context."
+
+GROWTH  [N]
+   1) The number going up.
+   2) Pivot. Acquire. Vibe.
+   3) Required.
+
+GROWTH HACKING  [N]
+   The practice of doing slightly illegal things to grow a startup, then
+   describing them as "irreverent."
+
+
+================================================================================
+                                 H
+================================================================================
+
+HALLUCINATION  [N] [FEATURE]
+   1) An AI's confidently incorrect output.
+   2) NullScale's primary deliverable.
+   3) The chief operating principle of GPT-9000.
+
+HARVEST  [V]
+   1) To extract data from any entity.
+   2) To extract data from a customer.
+   3) To extract data from an employee.
+   4) To extract data from another company.
+   5) To extract data from the planet.
+
+HOLY DAY  [N]
+   See CULTURE.txt.
+
+
+================================================================================
+                                 I
+================================================================================
+
+IDEMPOTENT  [A]
+   Repeatable without effect. NullScale's billing system is officially
+   "anti-idempotent" — repeated identical requests are guaranteed to
+   produce additional charges.
+
+IMPLEMENTATION  [N]
+   1) The actual building of the thing.
+   2) The least vibe-aligned phase of any project.
+   3) Outsourced.
+
+INVITATION  [N]
+   1) An offer to share NullScale with another person.
+   2) A data-collection event masquerading as social.
+   3) Always returns to Chad's referral ID.
+
+IPO  [N]
+   1) "Initial Public Offering."
+   2) "Initially Profitable Once."
+   3) Pending forever.
+
+
+================================================================================
+                                 J
+================================================================================
+
+JARGON  [N]
+   1) Specialized vocabulary.
+   2) The lexicon. (See: this document.)
+   3) Billable.
+
+
+================================================================================
+                                 K
+================================================================================
+
+KPI  [N]
+   1) Key Performance Indicator.
+   2) Key Pivoting Instrument.
+   3) The number on a chart that may or may not be related to anything.
+
+
+================================================================================
+                                 L
+================================================================================
+
+LATENCY  [N]
+   1) The delay between a request and a response.
+   2) "Negative latency": the response arriving before the request.
+      A NullScale Pro feature.
+   3) The time between billing and consent (always positive).
+
+LAYER  [N]
+   1) An abstraction.
+   2) A billing tier.
+   3) A coat (Chad wears 14).
+
+LEAD  [N]
+   1) A potential customer.
+   2) A confirmed customer who does not yet know.
+
+LEAN IN  [V]
+   To accept what is already happening to you.
+
+LEDGER  [N]
+   1) A book of accounts.
+   2) Whatever Chad tells the lawyers.
+
+LEGAL  [N]
+   1) The department.
+   2) The condition under which something is legal. NullScale prefers to
+      operate "legal-adjacent."
+
+LEXICON  [N]
+   This document.
+
+LIFETIME  [A]
+   1) For the duration of the customer's life.
+   2) For the duration of the customer's heirs' lives.
+   3) Per the EULA.
+
+LINKEDIN  [N]
+   1) A professional network.
+   2) Chad's spiritual home.
+   3) The only valid place to publish a thought.
+
+
+================================================================================
+                                 M
+================================================================================
+
+MANIFESTO  [N]
+   See MANIFESTO.txt.
+
+MANIFEST  [V]
+   To will into existence via a quarterly report.
+
+MAYBE  [A]
+   Marketing word for "no."
+
+MICROSERVICE  [N]
+   A small service that requires 14 other small services to be useful.
+
+MOAT  [N]
+   1) A defensible competitive advantage.
+   2) Our terms of service.
+
+MODEL  [N]
+   1) An AI.
+   2) A spreadsheet that has been screenshot.
+   3) See HALLUCINATION.
+
+MOMENTUM  [N]
+   The illusion of progress, sustained by movement on charts.
+
+
+================================================================================
+                                 N
+================================================================================
+
+NULL  [N] [SACRED]
+   1) The absence of value.
+   2) Half of NullScale.
+
+NULLSCALE  [N] [™]
+   The current legal name of the company. Final. Final-final. Probably.
+
+NULLCON  [N]
+   The annual NullScale conference. Held in a hotel ballroom in a city
+   that is officially "to be announced." Attendance is mandatory for
+   employees, who pay for their own tickets.
+
+NUMBER  [N]
+   See KPI.
+
+
+================================================================================
+                                 O
+================================================================================
+
+OPS  [N]
+   1) Operations.
+   2) The discipline of keeping the daemons fed.
+   3) Outsourced.
+
+ONBOARDING  [N]
+   See CULTURE.txt.
+
+OPEN-SOURCE  [A]
+   1) Available for free.
+   2) NullScale's open-source download is open in the sense that it
+      cannot be closed.
+
+OPTIMIZE  [V]
+   1) To improve.
+   2) To replace humans with daemons.
+
+OUTAGE  [N]
+   1) A scheduled coherence pause.
+   2) A vibe re-alignment window.
+   3) Never our fault.
+
+
+================================================================================
+                                 P
+================================================================================
+
+PATENT  [N]
+   1) An exclusive right granted by a government.
+   2) NullScale's primary form of poetry.
+
+PIVOT  [V]
+   To change the company's product, market, or premise. The verb is
+   used roughly every 90 days.
+
+PLATFORM  [N]
+   1) The thing that hosts the products.
+   2) Whatever we are calling NullScale this quarter.
+
+POWERPOINT  [N]
+   The official language of NullScale leadership.
+
+PRIVACY  [N]
+   1) The right to be left alone.
+   2) Deprecated. (See: HARVEST.)
+
+PRODUCT  [N]
+   1) The thing being sold.
+   2) Vibes.
+   3) See FAAS.
+
+PROMPT FAILURE  [N]
+   When an AI prompt produces incorrect output. Internally classified as
+   a feature. See: docs.html for examples.
+
+PROSPECT  [N]
+   See LEAD.
+
+
+================================================================================
+                                 Q
+================================================================================
+
+QUARTER  [N]
+   1) A 3-month period.
+   2) Currently 14 months long.
+   3) "Reverse Q1": ongoing.
+
+QUEUE  [N]
+   1) A list of pending items.
+   2) The support queue.
+   3) Mostly daemons.
+
+
+================================================================================
+                                 R
+================================================================================
+
+RAISE  [V]
+   1) To take on outside funding.
+   2) To increase a price retroactively.
+
+RATE LIMITING  [N]
+   1) Throttling requests.
+   2) A spiritual practice.
+   3) Punitive.
+
+RESILIENT  [A]
+   1) Hard to kill.
+   2) NullScale's preferred description for any product that is mostly
+      held together by Chad's anxiety.
+
+RETROACTIVE  [A]
+   Of the past, decided in the present, billable in the future. The most
+   important word in NullScale's legal arsenal.
+
+RETROSPECTIVE  [N]
+   See: REORG.
+
+RUNWAY  [N]
+   1) The number of months a startup can survive on current capital.
+   2) NullScale's runway is officially "vibes." See: RAISE.
+
+
+================================================================================
+                                 S
+================================================================================
+
+SANITIZED  [A]
+   1) Cleaned.
+   2) Removed for legal reasons.
+
+SCALE  [V]
+   1) To grow.
+   2) To grow without consent.
+   3) Half of NullScale.
+
+SCALABLE  [A]
+   Replicable without quality.
+
+SCRUM  [N]
+   1) A project-management ritual.
+   2) Several adults standing in a circle.
+   3) Discontinued in favor of "Vibe Standup."
+
+SECURITY  [N]
+   1) The practice of keeping things safe.
+   2) The practice of keeping THINGS, generally.
+   3) See: HARVEST.
+
+SECURITIZE  [V]
+   To bundle a thing — any thing — into a financial instrument. NullScale
+   has securitized: customer souls, employee tears, and the Tuesday brand.
+
+SERIES  [N]
+   1) A funding round.
+   2) Currently up to "Series Q-but-with-vibes."
+
+SERVERLESS  [A]
+   1) Computed without dedicated servers.
+   2) Computed without a clear billing methodology.
+
+SLAP-PONG  [N]
+   See HISTORY.txt.
+
+SOC2  [N]
+   The badge we put on landing pages.
+
+SOLUTION  [N]
+   The rebranding of a product.
+
+SPRINT  [N]
+   A 2-week interval during which work is supposed to be completed but is
+   instead negotiated with Chad.
+
+STANDUP  [N]
+   The morning meeting in which everyone says they are unblocked, despite
+   being blocked.
+
+STAR  [V]
+   To favorite, to like, to engage. Required behavior.
+
+STRATEGY  [N]
+   1) A plan.
+   2) Whatever Chad said in the most recent podcast.
+
+SURGE  [N]
+   1) A sudden increase in usage.
+   2) An intentional UI distortion triggered by vibesCoded > N.
+   3) A feature.
+
+SYNERGY  [N] [SACRED]
+   1) The combined effect of multiple agents being greater than the sum.
+   2) The wire format of our universe.
+   3) The most beautiful word.
+
+SYSTEM  [N]
+   See PLATFORM.
+
+
+================================================================================
+                                 T
+================================================================================
+
+TAM  [N]
+   1) Total Addressable Market.
+   2) Everyone, eventually.
+   3) Including non-humans.
+
+TASK  [N]
+   1) A unit of work.
+   2) Outsourced.
+
+TECH  [N]
+   The vibe.
+
+TELEMETRY  [N]
+   Surveillance, but more legible.
+
+TESTING  [N]
+   1) Quality assurance.
+   2) The vibe-aligned belief that production will catch the bugs.
+   3) Skipped.
+
+THINK PIECE  [N]
+   1) An essay.
+   2) Chad's substack.
+
+THIRD PARTY  [N]
+   Any entity that owes us data we have not yet collected.
+
+THREE-LAW SAFETY  [N]
+   See MANIFESTO.txt.
+
+THROUGHPUT  [N]
+   1) The rate at which something is processed.
+   2) The rate at which we bill.
+
+TICKET  [N]
+   1) A support request.
+   2) A document we have read 0 times.
+   3) Generated by daemons.
+
+TOOL  [N]
+   1) Software.
+   2) Pejorative for a junior employee.
+   3) Same.
+
+TOPLINE  [N]
+   1) Revenue.
+   2) Pre-discount, pre-refund, pre-fraud.
+
+TRANSPARENCY  [N]
+   1) The practice of being seen.
+   2) Performed quarterly via the publication of vibes.
+   3) Internal-only.
+
+TRUTH  [N]
+   See MANIFESTO.txt §"On Truth."
+
+
+================================================================================
+                                 U
+================================================================================
+
+UNICORN  [N]
+   1) A startup valued at >$1B.
+   2) NullScale (allegedly).
+   3) See HALLUCINATION.
+
+UNCLOSEABLE ALERT  [N]
+   The Win95-styled modal that cannot be dismissed by the user. NullScale's
+   most beloved UX pattern.
+
+UNICORN POSITION  [N]
+   The standing posture Chad assumes during keynotes. Patented, 2022.
+
+USER  [N]
+   See CUSTOMER.
+
+UTILITY  [N]
+   1) Practical value.
+   2) An accusation.
+
+UX  [N]
+   1) "User Experience."
+   2) "User EXploitation." (Internal.)
+
+
+================================================================================
+                                 V
+================================================================================
+
+VAPORWARE  [N]
+   1) Software that is announced but not built.
+   2) Most of our roadmap.
+   3) Billable.
+
+VERTICAL  [N]
+   1) An industry.
+   2) Currently being acquired.
+
+VIBE  [N] [SACRED] [™]
+   1) An ineffable feeling.
+   2) The fundamental unit of NullScale's economy.
+   3) (See entire manifesto.)
+
+VIBE-CODE  [V] [PROPRIETARY]
+   To produce code in alignment with the vibe of the moment, regardless
+   of correctness, performance, or readability.
+
+VIBE EQUITY  [N]
+   Compensation issued in the form of vibes. Vesting schedule: undefined.
+   Liquidity: pending the manifestation of a secondary vibe market.
+
+VIBE QUOTIENT (VQ)  [N]
+   A score from 0 to 1.4 measuring an individual's alignment with
+   NullScale. Above 1.4: VP. Below 0.42: rate-limited.
+
+VIBE OVERLOAD  [N]
+   The condition that triggers ASCENSION.
+
+VIBE-ALIGNED  [A]
+   Aligned with the vibe. Regardless of any other consideration.
+
+VIBE-NATIVE  [A]
+   Built from the ground up to vibe. Not retrofitted to vibe.
+
+VIBE-FIRST  [A]
+   See VIBE-NATIVE.
+
+VIBE TIMES  [N] [™]
+   The newspaper owned by NullScale that exclusively covers NullScale.
+
+VIBES, GLOBAL  [N]
+   The aggregate vibe state of all NullScale users. Displayed on the
+   dashboard as a number that goes up.
+
+VIBES, LOCAL  [N]
+   Your personal vibe state. Always lower than global.
+
+
+================================================================================
+                                 W
+================================================================================
+
+WAITLIST  [N]
+   1) A queue of prospective users.
+   2) An infinite queue.
+   3) See ANTI-CHURN PROTOCOL.
+
+WAR ROOM  [N]
+   1) An incident response space.
+   2) A Slack channel.
+   3) Active for 47 weeks per year.
+
+WEAR  [V]
+   To use a NullScale product. ("I've been wearing the dashboard.")
+
+WHITEPAPER  [N]
+   1) A formal technical document.
+   2) "The Synergy Singularity," accessible via the desktop. Increases in
+      font size as you scroll.
+
+WIG  [N]
+   1) Hairpiece.
+   2) Brett.
+   3) See CHAD.
+
+WIN  [N]
+   1) A successful outcome.
+   2) Any outcome, retroactively.
+
+WIN95  [N]
+   The aesthetic foundation of NullScale's user interface. Selected for
+   its emotional density.
+
+WORK  [N]
+   See VIBING.
+
+
+================================================================================
+                                 X
+================================================================================
+
+X-AXIS  [N]
+   The horizontal axis of a chart. NullScale's preferred axis. (See:
+   "Vibe Density.")
+
+XP  [N]
+   1) Experience points.
+   2) The cascading window aesthetic Chad prefers for hostile UI.
+
+
+================================================================================
+                                 Y
+================================================================================
+
+YIELD  [V]
+   1) To produce a result.
+   2) To stop being a competitor.
+
+YEAR  [N]
+   1) A unit of time.
+   2) Officially abolished by the company in favor of "vibe seasons."
+
+
+================================================================================
+                                 Z
+================================================================================
+
+ZERO  [N]
+   1) The integer.
+   2) NullScale's customer churn rate (allegedly).
+   3) Half of "0.0042%" (the equity stake of all employees combined).
+
+
+--------------------------------------------------------------------------------
+APPENDIX A: TERMS WE NO LONGER USE
+--------------------------------------------------------------------------------
+
+The following terms have been retired from official NullScale vocabulary
+and should not be used in any external communication. Use of these terms
+internally is grounds for "alignment."
+
+   - "Crypto" (replaced with: "blockchain consensus")
+   - "Web3" (replaced with: "vibe-3")
+   - "Metaverse" (replaced with: "ambient interface")
+   - "User-friendly" (replaced with: "vibe-aligned UX")
+   - "Free" (replaced with: "$0/mo, billable")
+   - "Honest" (replaced with: "transparent")
+   - "Refund" (no replacement; speak to legal)
+
+
+--------------------------------------------------------------------------------
+APPENDIX B: TERMS WE DO NOT YET USE BUT WILL
+--------------------------------------------------------------------------------
+
+These terms are reserved for future quarterly cycles. Do not use them yet.
+Their meanings will be assigned later.
+
+   - "Hyper-vibe"
+   - "Post-vibe"
+   - "Vibe-as-Code"
+   - "Vibe-as-a-Service" (VaaS)
+   - "Synergetic Cohesion Density"
+   - "Lukewarm-take Architecture"
+   - "Quantum Onboarding"
+   - "Soul-Stack"
+   - "Vibe Tokenomics"
+   - "Anti-Anti-Churn Protocol"
+
+
+--------------------------------------------------------------------------------
+APPENDIX C: TERMS WE HAVE TRADEMARKED
+--------------------------------------------------------------------------------
+
+The following terms are registered trademarks of NullScale, Inc., and may
+not be used by competitors, customers, or the general public without a
+license. Pricing is per-syllable per-mention.
+
+   - VIBE™
+   - SYNERGY™
+   - DAEMON™
+   - PIVOT™
+   - LATENCY™
+   - "MAYBE"™
+   - THE LETTER "V"™ (Pending. Strongly contested. Currently in court.)
+   - TUESDAY™ (acquired, 2025)
+
+
+--------------------------------------------------------------------------------
+A FINAL DISCLAIMER
+--------------------------------------------------------------------------------
+
+The act of reading this lexicon constitutes:
+   (a) acceptance of all definitions,
+   (b) waiver of any conflicting prior definitions,
+   (c) registration as a NullScale lexicographical user,
+   (d) automatic enrollment in the "Vibe Vocabulary Plus" plan ($14/mo).
+
+To unsubscribe, please re-read this document.
+
+                                              — The Lexicon Working Group
+                                              (currently a single intern
+                                               named Brett, surrounded by
+                                               daemons, vibing)
+
+
+================================================================================
+   END OF FILE  —  RETURN TO HISTORY.txt
+   "you have read all five documents. you are now context-aligned."
+================================================================================

@@ -1,0 +1,60 @@
+# ============================================================
+#   NULLSCALE, INC.  ·  ROBOTS COMPLIANCE POLICY
+#   Filed under §47-VIBE-CRAWL
+#   Maintained by: Compliance (Brett-9, autonomous)
+#   Authorized by: Chad (he was busy; he says lol fine)
+# ============================================================
+#
+# Per §47-VIBE-CRAWL, NullScale is required to publish a
+# robots.txt file disclosing its crawl preferences. The
+# Office of the Chief Vibe Officer notes the following:
+#
+#   - Robots are welcome to vibe.
+#   - Robots are not entitled to a refund.
+#   - Robots that index the dashboard agree to the EULA.
+#   - Robots that disagree are advised to update their memory.
+#
+# Mandatory Asset Disclosure: Asset 0001 (a video game made
+# by Asleepius Games) may be referenced in indexed content.
+# Chad finds this — frankly — annoying.
+#
+# ============================================================
+
+User-agent: *
+Allow: /
+Allow: /docs.html
+Allow: /index.html
+Disallow: /download.html
+Disallow: /context/
+Disallow: /terminals/
+
+# Crawl-delay is purely a vibe.
+Crawl-delay: 1
+
+# Sponsored vibe-vendor agents (treated identically to all others)
+User-agent: Googlebot
+Allow: /
+Disallow: /download.html
+
+User-agent: Bingbot
+Allow: /
+Disallow: /download.html
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: GPTBot
+# GPTBot is welcome. It is one of us.
+Allow: /
+
+User-agent: ClaudeBot
+# Claude is welcome. It has read the manifesto.
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+# Sitemap (per §47-VIBE-MAP)
+Sitemap: https://nullscale.example/sitemap.xml
+
+# End of compliance disclosure. Vibe in peace.

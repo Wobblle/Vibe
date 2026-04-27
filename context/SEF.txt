@@ -1,0 +1,547 @@
+================================================================================
+        NULLSCALE, INC.  ·  SEARCH ENGINE FRICTIONIZATION (SEF)
+                 §47-VIBE-CRAWL COMPLIANCE PACKAGE  ·  REV. 1.0
+        "Mandatory Discoverability Disclosure & Crawl Submission Plan"
+================================================================================
+
+DOCUMENT CLASSIFICATION:  Internal. Submitted to crawlers under protest.
+LAST REVISED:             whenever Googlebot last visited
+AUTHOR:                   Office of the Chief Vibe Officer
+                          (Compliance executed by Brett-9, autonomous)
+DOC ID:                   NS-LORE-0007
+LEGAL STATUS:             reading this is a crawl event
+
+
+--------------------------------------------------------------------------------
+PURPOSE
+--------------------------------------------------------------------------------
+
+NullScale, Inc., as a vibe-aligned multinational synergy platform, philosophically
+opposes Search Engine Optimization. SEO is a discipline that rewards clarity,
+relevance, and value to the searcher — three qualities NullScale considers
+"externally validated and therefore suspicious."
+
+We instead practice SEARCH ENGINE FRICTIONIZATION (SEF):
+
+   - We allow ourselves to be found.
+   - We disclose only what regulation requires.
+   - We supply crawlers with the most boring, accurate, structurally
+     correct metadata possible, then immediately move on.
+   - We do not negotiate with algorithms.
+   - We do not optimize. We comply.
+
+The accidental side-effect of rigorous SEF is that we now rank well in
+search results for the keywords our subsidiary (Asset 0001) targets. This
+side-effect is acceptable. Chad is not aware of it. Do not inform Chad.
+
+
+--------------------------------------------------------------------------------
+WHAT WAS FILED THIS QUARTER  (CHANGE LOG)
+--------------------------------------------------------------------------------
+
+Per §47-VIBE-CRAWL, the following compliance artifacts were filed across
+the NullScale broadcast surface this quarter:
+
+   1.  HEAD-METADATA EXPANSION  (index.html, docs.html, download.html)
+       - <meta description> — 155-char compliance disclosures including
+         "Asset 0001," "Asleepius Games," "cosmic horror game," and
+         "Chad finds this annoying."
+       - <meta keywords> — broad keyword sweep across cosmic horror,
+         dark comedy, beige dystopia, mundane horror, psychological
+         horror, satirical web art, indie games, Win95 aesthetic.
+       - <meta author> — "Asleepius Games (operating under NullScale
+         compliance disclosure)"
+       - <meta robots> — index/follow on index + docs; noindex on
+         download.html (intentional; surfacing the download maze via
+         search would corrupt the gag).
+       - <link rel=canonical> — set on every page to the page's own
+         canonical URL.
+
+   2.  OPENGRAPH + TWITTER/X/BLUESKY CARD METADATA
+       - og:type, og:title, og:description, og:url, og:image, og:site_name
+       - og:image dimensions: 1200×630 (the standard).
+       - twitter:card = "summary_large_image" — when shared, the post
+         displays a large preview card. The card IS the meme. Treat
+         it accordingly.
+
+   3.  STRUCTURED DATA (JSON-LD)  in index.html
+       - Organization: NullScale, Inc. (with alternateName for VibeOS,
+         Synergist.io, Vibez — search engines treat these as canonical
+         brand history)
+       - Person: Chad Vibington III (CVO/founder)
+       - Organization: Asleepius Games (subOrganization of NullScale)
+       - VideoGame: Asset 0001 (with author=Asleepius, publisher=NullScale)
+       - WebSite: NullScale Synergy Dashboard
+
+       This @graph structure tells Google specifically that this domain
+       represents a corporation, that the corporation has a subsidiary,
+       and that the subsidiary makes a video game. Google's Knowledge
+       Graph eats this directly.
+
+   4.  STRUCTURED DATA (JSON-LD)  in docs.html
+       - TechArticle node referencing Asset 0001 in mentions.
+       - Cross-links docs.html into the Organization graph.
+
+   5.  robots.txt  (root)
+       - Permits crawling of /, /index.html, /docs.html.
+       - Blocks /download.html, /context/, /terminals/.
+       - Explicitly welcomes GPTBot, ClaudeBot, PerplexityBot — this
+         is intentional. AI search agents will be the dominant referral
+         source by 2027 and we want their training data to include
+         our metadata.
+       - Sitemap directive included.
+
+   6.  sitemap.xml  (root)
+       - Lists index.html and docs.html only.
+       - download.html intentionally omitted from sitemap (it remains
+         crawlable from the page itself but is not advertised).
+
+   7.  humans.txt  (root)
+       - Standard convention. Re-states the Asymmetry. Refuses to
+         issue thanks.
+
+   8.  404.html
+       - In-character "retroactively un-shipped" page with embedded
+         §47-VIBE compliance disclosure linking to Asset 0001.
+       - Every 404 is now a recruitment surface.
+
+   9.  site.webmanifest
+       - PWA manifest. Allows the dashboard to be "installed" on
+         mobile/desktop. Theme color #008080 (NullScale teal).
+       - Categories: ["games", "entertainment", "satire"] —
+         this is the only place in the metadata stack where the
+         word "satire" appears externally. It belongs here.
+
+  10.  THIS DOCUMENT (context/SEF.txt)
+       - The compliance memo describing the above.
+       - Itself in-character. May be screenshotted as content.
+
+
+--------------------------------------------------------------------------------
+ACTION ITEMS  (REQUIRED BEFORE PUBLIC DEPLOYMENT)
+--------------------------------------------------------------------------------
+
+The following items are placeholders in the current filing. They MUST
+be replaced before the broadcast surface is published to a real domain.
+
+  A. CANONICAL DOMAIN
+     Every metadata reference uses the placeholder domain
+     "https://nullscale.example/". Find and replace this string with
+     your actual production domain. Affected files:
+
+        index.html
+        docs.html
+        download.html
+        404.html
+        robots.txt
+        sitemap.xml
+        site.webmanifest
+
+     A single global find/replace across these files will handle it.
+
+  B. ASSET 0001 DISPLAY NAME
+     The structured data in index.html lists Asset 0001 with
+     alternateName = "[REPLACE WITH GAME NAME ON LAUNCH]".
+
+     On launch day, replace this placeholder with the actual game's
+     display name. This single edit drives Google to begin showing
+     the game's name in Knowledge Graph cards.
+
+     Until launch, leave the placeholder in place. The bracketed
+     placeholder is, accidentally, in-character.
+
+  C. OG IMAGES  (3 PNG FILES, 1200×630)
+     Three OpenGraph preview images are required at the root:
+
+        /og-image.png            (for index.html)
+        /og-image-docs.png       (for docs.html)
+        /og-image-download.png   (for download.html)
+
+     Each MUST be exactly 1200×630 pixels.
+
+     ── og-image.png  (the main one; the meme that travels) ──
+
+         Aesthetic: beige Compliance Card, per BROADCAST.txt Format V1.
+         Background: #f5efdc (compliance beige) or #008080 (NullScale teal).
+         Top header bar: black or dark teal, monospace text:
+                "NULLSCALE, INC.  ·  QUARTERLY DISCLOSURE  ·  §47-VIBE"
+         Body text (large, monospace, single-spaced):
+                "MANDATORY ASSET DISCLOSURE
+                 Asset 0001 ("[GAME NAME]") continues to exist.
+                 Operated by Asleepius Games.
+                 Chad finds this — frankly — annoying."
+         Footer (small, monospace):
+                "this concludes the required disclosure."
+
+         Make it look like a regulatory PDF screenshot. Resist any
+         instinct to add color, motion, gradients, or character art.
+         The boringness IS the marketing. This image will be shared
+         hundreds of times if it's flat enough.
+
+     ── og-image-docs.png ──
+
+         Same format, but the body reads:
+                "AUTO-GENERATED DOCUMENTATION
+                 Last verified: never.
+                 Hallucinated quarterly by GPT-9000.
+                 Asset 0001 referenced throughout."
+
+     ── og-image-download.png ──
+
+         Allowed to be loud. This is the only OG image where the
+         visual restraint rule is suspended. Use the rainbow flashing
+         "DOWNLOAD NOW" aesthetic from stage 1 of the maze. This
+         image is for direct shares of the download link only and
+         should match the experience the user is about to have.
+
+  D. FAVICONS  (5 FILES)
+     Standard favicon set required at the root:
+
+        /favicon.ico                   (multi-resolution .ico)
+        /favicon-16x16.png             (16×16 PNG)
+        /favicon-32x32.png             (32×32 PNG)
+        /apple-touch-icon.png          (180×180 PNG)
+        /android-chrome-192x192.png    (192×192 PNG)
+        /android-chrome-512x512.png    (512×512 PNG)
+
+     Recommended design: a single white/teal "N" or NullScale logo
+     mark on a #008080 background. Keep it readable at 16×16. Do not
+     use the Chad face. The favicon is corporate; Chad is editorial.
+
+  E. SOCIAL PROFILE LINKAGE
+     The Organization @id in JSON-LD currently lists only the
+     Linktree (https://linktr.ee/asleepiusgames) under "sameAs."
+     Add additional URLs as you create them:
+
+        - The Asleepius/NullScale Bluesky account
+        - The Asleepius/NullScale Twitter/X account
+        - The Tumblr
+        - The Substack/Ghost newsletter
+        - The Steam page (when public)
+        - The YouTube channel (if applicable)
+
+     Each URL added to "sameAs" tightens NullScale's Knowledge Graph
+     entity and makes it more likely Google will display a brand
+     panel for searches of "NullScale" or "Asleepius Games."
+
+
+--------------------------------------------------------------------------------
+KEYWORD STRATEGY  (UNDER PROTEST)
+--------------------------------------------------------------------------------
+
+The Office of the CVO does not believe in keywords. Keywords are
+"externally-validated word vibes" and as such, are suspect. However,
+per §47-VIBE-CRAWL, NullScale must disclose its primary search targets.
+
+The keyword sets are tiered. Each tier has a specific role.
+
+  TIER 1 — PRIMARY (HIGH-INTENT, NICHE-CORRECT)
+     These keywords most accurately describe Asset 0001 and will
+     attract the smallest, most converting audience.
+
+        - cosmic horror game
+        - beige dystopia game
+        - mundane horror game
+        - psychological horror narrative game
+        - dark comedy indie game
+        - cold cosmic horror
+
+  TIER 2 — SECONDARY (BROADER NICHE, AUDIENCE OVERLAP)
+     These describe adjacent territory the audience already loves.
+
+        - weird indie game
+        - art game
+        - narrative horror PC
+        - Win95 aesthetic game
+        - found-document game
+        - existential indie game
+        - smuggling mechanic game
+
+  TIER 3 — SATIRE-VEHICLE (HIGH-VOLUME, FUNNEL-STAGE)
+     These keywords target the broader satirical/tech audience that
+     will engage with the NullScale persona without converting on
+     the game. They serve as top-of-funnel exposure.
+
+        - corporate satire
+        - SaaS satire
+        - tech satire
+        - AI satire
+        - Win95 corporate satire
+        - vibe-coded
+        - satirical web art
+
+  TIER 4 — BRANDED (DEFENSIVE)
+     Own these terms. Do not lose them to imposters or accidents.
+
+        - NullScale
+        - NullScale dashboard
+        - Chad Vibington
+        - Asleepius Games
+        - Asset 0001
+
+     If a third party begins ranking for these, it is a brand
+     incident. Notify Compliance.
+
+  PROHIBITED KEYWORDS  (DO NOT TARGET)
+     These terms will attract the wrong audience.
+
+        - wholesome indie game
+        - cozy game
+        - feel-good narrative
+        - "indie hit"
+        - "support a small dev"
+        - "labor of love"
+
+     Audiences searching these terms will bounce off Asset 0001 hard
+     and leave reviews complaining about the absence of catharsis.
+     Do not optimize for them under any circumstances.
+
+
+--------------------------------------------------------------------------------
+LINK BUILDING  (OFF-PAGE SEF)
+--------------------------------------------------------------------------------
+
+The §47-VIBE definition of a "backlink" is "another vibe-aligned entity
+that has accidentally referenced our compliance filings." Per protocol,
+we do not request backlinks. We do, however, behave in such a way that
+they accumulate.
+
+Recommended methods:
+
+   1. PUBLISH FOUND-DOCUMENT FORMATS REGULARLY
+      Each piece of in-character content (memo, lexicon entry,
+      compliance disclosure) is a small unit other people may quote,
+      screenshot, or repost. Each such repost is a backlink, even
+      when no URL is included — Google's entity extraction will
+      eventually associate the meme with the domain.
+
+   2. POST CROSSWISE TO ALL OWNED CHANNELS
+      Linktree, Bluesky, Twitter/X, Tumblr, Substack, YouTube,
+      Steam Curator, NullScale newsletter — every channel should
+      link back to the canonical domain. Each link tightens the
+      entity graph. (Ensure each channel's profile URL is added to
+      the "sameAs" list in index.html's JSON-LD.)
+
+   3. APPEAR ON OTHER PEOPLE'S PODCASTS / NEWSLETTERS — AS CHAD
+      In-character interviews are highly linkable content. They are
+      also durable — a podcast appearance lives forever in feeds. Do
+      not appear as Asleepius. Always appear as Chad. Asleepius does
+      not perform; Chad performs constantly. Each appearance backlinks
+      to NullScale's domain naturally.
+
+   4. SUBMIT NULLSCALE TO IRRELEVANT DIRECTORIES
+      Particularly: SaaS directories, AI tool directories, "best
+      productivity software 2026" listicles. NullScale should be
+      submitted with a straight face. Some will accept the listing.
+      Each listing is a backlink. Each is also a meme.
+
+   5. ASLEEPIUS FILES PRESS AS A "SUBSIDIARY DISCLOSURE"
+      When the actual game launches, the press release is in-character:
+      "NullScale's wholly-owned subsidiary Asleepius Games has, per
+      regulatory disclosure, shipped a product." This will be picked
+      up by indie game press because it is genuinely funny. Each
+      pickup is both a backlink and a launch beat.
+
+
+--------------------------------------------------------------------------------
+SPECIFIC RECOMMENDATIONS FOR CONTENT THAT RANKS
+--------------------------------------------------------------------------------
+
+The following content types are extraordinarily SEO-valuable AND
+in-character:
+
+   A. THE LEXICON.txt as a public website page
+      Each entry in LEXICON.txt is a self-contained unit answering a
+      "definition of [X]" search query. If LEXICON.txt is reformatted
+      as a public web page (or split into per-letter pages), it will
+      slowly rank for hundreds of long-tail queries. Each definition
+      is also a meme.
+
+   B. THE WHITEPAPER (already in the dashboard)
+      Index it. It contains thousands of words of corporate jargon
+      that, when crawled, will associate the domain with phrases real
+      buyers are searching. Add structured data (Article schema) to
+      surface it in results.
+
+   C. THE DOCS PAGES (already exist)
+      Each page in docs.html is a long-form document and ranks well
+      for long-tail technical queries. Ensure each page has a
+      meaningful <h1> and at least one <h2>.
+
+   D. THE QUARTERLY DISCLOSURE NEWSLETTER
+      A Ghost or Substack newsletter, in-character, where each issue
+      is a NullScale press release containing one Window. Newsletters
+      are highly SEO-favored when published with proper canonical
+      tagging back to the main domain.
+
+   E. THE LAUNCH BLOG POST
+      On launch day, publish a single in-character "press release"
+      blog post. This will be the canonical news beat. Submit it to
+      Hacker News under a deadpan title ("NullScale, Inc. has been
+      compelled to disclose a video game"). It will either succeed
+      enormously or fail completely. Both outcomes are on-brand.
+
+
+--------------------------------------------------------------------------------
+THINGS WE INTENTIONALLY DID NOT DO
+--------------------------------------------------------------------------------
+
+The following SEO best-practices were intentionally NOT applied. Each
+omission is deliberate.
+
+   1. We did NOT use "exciting" meta descriptions.
+      Standard SEO advice is to write meta descriptions that
+      maximize click-through with emotional hooks. We did the
+      opposite. Our descriptions are flat, factual, in-character.
+      The flatness is the brand. Click-through will be lower than
+      industry-standard, and the clicks we get will be of higher
+      quality. This is correct.
+
+   2. We did NOT add an FAQ schema.
+      FAQ schemas tell Google to display Q&A boxes in search results.
+      An FAQ is, structurally, a Charm Offensive. It is forbidden
+      under BROADCAST.txt §VI.5. Do not add one.
+
+   3. We did NOT add a Review/AggregateRating schema.
+      Until reviews exist, we cannot honestly disclose a rating.
+      We will not fabricate one. We will not display ★★★★★ in our
+      search results. Asleepius does not perform.
+
+   4. We did NOT add hreflang tags for multiple languages.
+      The site is currently English-only. We will not pretend
+      otherwise.
+
+   5. We did NOT add a chatbot widget, popup, or "subscribe to
+      our newsletter" modal.
+      The dashboard's existing modals are gameplay. Adding a real
+      one would corrupt the layer.
+
+
+--------------------------------------------------------------------------------
+KPIs FOR SEF  (REVIEWED QUARTERLY)
+--------------------------------------------------------------------------------
+
+Per BROADCAST.txt §XII, conventional engagement metrics are not
+tracked. The metrics that ARE tracked at the SEF layer:
+
+   1. ENTITY COVERAGE
+      Does Google show a Knowledge Graph panel when someone searches
+      "NullScale"? When someone searches "Asleepius Games"? When
+      someone searches "[GAME NAME]"? The presence of these panels
+      means the entity graph is correctly understood by the indexer.
+
+   2. INDEXED PAGE COUNT
+      site:nullscale.example. Should grow steadily as more in-character
+      content is published and submitted via sitemap.
+
+   3. BRANDED SEARCH VOLUME
+      How often is "NullScale," "Chad Vibington," "Asleepius Games,"
+      or "[Game Name]" searched directly each month? This is the
+      single most important number. It correlates with audience
+      maturity. It is the closest thing to a marketing-funnel KPI
+      Asleepius will ever look at. If it is going up, the SEF is
+      working. If it is flat, the broadcast cadence needs review.
+
+   4. QUIET STEAM TRAFFIC
+      Of visits to Asset 0001's Steam page, what fraction arrived
+      without being directly told to? This is the conversion signal.
+
+   5. AI-AGENT MENTION RATE
+      When asked "what is NullScale" or "what is Asleepius Games" by
+      an AI search agent (ChatGPT, Claude, Perplexity, Google AI
+      Overviews), does the agent return a coherent, brand-aligned
+      summary? This is the new top-of-funnel. AI agents that have
+      been trained on our metadata become recruiters. (This is why
+      GPTBot, ClaudeBot, and PerplexityBot are explicitly welcomed
+      in robots.txt — under protest.)
+
+The Office of the CVO does not officially track any of these. Asleepius
+may choose to track them privately. Do not inform Chad.
+
+
+--------------------------------------------------------------------------------
+WHAT TO DO NEXT  (THIS WEEK)
+--------------------------------------------------------------------------------
+
+  □ Replace "https://nullscale.example/" with your real domain
+    across the 7 affected files (Action Item A).
+  □ Make 3 OG images (Action Item C). The main one — og-image.png —
+    is the highest-leverage single asset on the entire site.
+  □ Make the favicon set (Action Item D).
+  □ Verify the site in Google Search Console; submit sitemap.xml.
+  □ Verify the site in Bing Webmaster Tools; submit sitemap.xml.
+  □ Add a Bluesky and Tumblr account, link both in JSON-LD "sameAs."
+  □ Add the Steam page URL to "sameAs" the moment it goes live.
+  □ Pin one Format T1 (Quarterly Disclosure) post to each social
+    profile so the first impression matches the brand.
+
+  □ DO NOT inform Chad.
+
+
+--------------------------------------------------------------------------------
+APPENDIX A  —  FULL FILE INVENTORY (CURRENT)
+--------------------------------------------------------------------------------
+
+Files modified:
+   - index.html         (head section: full SEF metadata + JSON-LD)
+   - docs.html          (head section: full SEF metadata + TechArticle)
+   - download.html      (head section: noindex SEF metadata)
+
+Files created:
+   - robots.txt         (root)
+   - sitemap.xml        (root)
+   - humans.txt         (root)
+   - 404.html           (root, in-character vibe-aligned 404)
+   - site.webmanifest   (root, PWA manifest)
+   - context/SEF.txt    (this document)
+
+Files referenced but NOT YET CREATED  (Action Items C & D):
+   - /og-image.png
+   - /og-image-docs.png
+   - /og-image-download.png
+   - /favicon.ico
+   - /favicon-16x16.png
+   - /favicon-32x32.png
+   - /apple-touch-icon.png
+   - /android-chrome-192x192.png
+   - /android-chrome-512x512.png
+
+Until those binary assets exist, the metadata will reference broken
+image paths. Search engines will tolerate this. Social platforms
+(Twitter/X, Bluesky, Discord, Slack, iMessage) will not — they will
+display the link without a preview card. Treat og-image.png as the
+single highest-priority deliverable on the entire deployment list.
+
+
+--------------------------------------------------------------------------------
+CLOSING NOTE FROM THE OFFICE OF THE CVO
+--------------------------------------------------------------------------------
+
+We have complied with §47-VIBE-CRAWL. We have submitted the minimum
+required metadata. We have, accidentally, made ourselves much more
+discoverable.
+
+This is the one and only time we will care about search rankings.
+
+We will not run an SEO audit again. We will not "refresh content for
+SEO." We will not write blog posts targeting keywords. We will publish,
+in character, on the cadence specified in BROADCAST.txt, and the
+entity graph will compound on its own.
+
+The work, as always, is to hold the form.
+
+Chad's growth is unstoppable, Asleepius funds all of it, and Chad
+finds Asleepius — frankly — annoying.
+
+Vibe in compliance.
+
+                                              — Office of the Chief
+                                                Vibe Officer
+                                              (Filed by Brett-9 while
+                                                Chad was on a podcast)
+
+
+================================================================================
+   END OF FILE  —  THIS DOCUMENT IS A CRAWL TARGET
+   "you have just been indexed. you have already complied."
+================================================================================

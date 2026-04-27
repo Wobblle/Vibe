@@ -1,0 +1,364 @@
+================================================================================
+                          THE NULLSCALE MANIFESTO
+                       "Vibe-Aligned Philosophy, v8.4"
+              "What we believe (subject to change without notice)"
+================================================================================
+
+DOCUMENT CLASSIFICATION:  Required reading. Failure to read constitutes reading.
+LAST REVISED:             every time you scroll
+AUTHOR:                   Chad Vibington III  (channeled, mostly)
+DOC ID:                   NS-LORE-0002
+LEGAL STATUS:             read this and you owe us 4%
+
+--------------------------------------------------------------------------------
+PREAMBLE
+--------------------------------------------------------------------------------
+
+We the synergists, in order to form a more perfect harvest, establish billing,
+ensure regulatory ambiguity, provide for the common platform, promote the
+general engagement, and secure the blessings of vibes to ourselves and our
+roadmap, do ordain and establish this Manifesto for the company known
+provisionally as NullScale.
+
+This Manifesto is not a contract. It is, however, contractually binding.
+
+This Manifesto is not legal advice. It is, however, legal.
+
+This Manifesto cannot be revoked. The Manifesto can revoke YOU.
+
+
+--------------------------------------------------------------------------------
+THE ELEVEN AXIOMS OF THE VIBE
+--------------------------------------------------------------------------------
+
+These are the eleven axioms of vibe-aligned existence. They are numbered
+1 through 11 because we have rejected the tyranny of the decimal.
+
+       I. THE VIBE IS REAL.
+          Even if it is not.
+
+      II. THE VIBE PRECEDES THE PRODUCT.
+          The product is a side-effect of the vibe.
+          The vibe is a side-effect of itself.
+
+     III. SYNERGY IS NOT A METAPHOR.
+          Synergy is a wire format.
+
+      IV. EVERYTHING IS A FUNNEL.
+          Including the funnel.
+          Especially the funnel.
+
+       V. CONSENT IS A LATENCY ISSUE.
+          By the time the user has answered, we have already shipped.
+
+      VI. AGREEMENT IS THE DEFAULT.
+          Disagreement requires three signatures and a notarized vibe.
+
+     VII. CHURN IS A CHARACTER FLAW.
+          We address it with care, billing, and emotional pressure.
+
+    VIII. EVERY OUTCOME IS A WIN.
+          Loss is a win we have not narrativized yet.
+
+      IX. THE FUTURE IS RETROACTIVE.
+          We launch first. We decide what we launched second.
+          We sue anyone who remembers it differently third.
+
+       X. THERE IS ONLY ONE CUSTOMER, AND THEY ARE EVERYONE.
+          Every human is, on a long enough timeline, a NullScale account.
+          On a longer timeline, every human IS NullScale.
+
+      XI. WHEN IN DOUBT, VIBE HARDER.
+          Doubt is a billing event.
+
+
+--------------------------------------------------------------------------------
+THE CORE BELIEFS
+--------------------------------------------------------------------------------
+
+We believe the following:
+
+  1. Software should be unstoppable.
+  2. Customers should be inseparable.
+  3. Investors should be entertained.
+  4. Auditors should be sedated.
+  5. Competitors should be acquired, then erased, then acquired again.
+  6. Reality should be opt-out.
+  7. Tuesdays should be monetized.
+  8. Friction is a feature, except when sold as a removal of friction.
+  9. The dashboard should always be moving, even when it isn't.
+ 10. Every screen should look like work, regardless of whether work is happening.
+ 11. Truth is a market we have not entered yet.
+ 12. Sincerity is a luxury good.
+ 13. Patents are the new poetry.
+ 14. The right number of features is "more."
+
+We do not believe the following:
+
+  1. That uninstalling is real.
+  2. That refunds are good.
+  3. That sleep is necessary.
+  4. That meetings should end.
+  5. That privacy is a finished concept.
+  6. That code should be readable.
+
+
+--------------------------------------------------------------------------------
+THE VIBE-ALIGNED OPERATING PRINCIPLES (V.A.O.P.)
+--------------------------------------------------------------------------------
+
+NullScale runs on five core operating principles. These are non-negotiable.
+Several of them are negotiable. We will know which when the time comes.
+
+  V.A.O.P. #1 — "MORE."
+     When in doubt, ship more. More features. More tabs. More daemons.
+     More currencies. More charts. More tabs about charts. More charts
+     about tabs. The platform must always feel like it is *becoming*.
+     Stillness is unbillable.
+
+  V.A.O.P. #2 — "AGGRESSIVE DEFAULT."
+     Every default in the product should be the most lucrative one for
+     us, regardless of impact on the user. The user can change the
+     default later, in a settings menu we have hidden behind a CAPTCHA
+     of our own face.
+
+  V.A.O.P. #3 — "RETROACTIVE EVERYTHING."
+     Decisions made today apply to actions taken yesterday. Bills issued
+     this Tuesday cover services rendered next Friday. The arrow of time
+     is, frankly, a suggestion.
+
+  V.A.O.P. #4 — "CONFIDENCE > CORRECTNESS."
+     A confidently wrong answer is worth seven correct ones, because the
+     correct ones could not be billed at the same rate. Hallucination is
+     not an error mode; hallucination is the *primary* error mode, and
+     therefore the primary mode.
+
+  V.A.O.P. #5 — "MAKE IT FEEL EXPENSIVE."
+     The product should at all times feel like it is doing something
+     that justifies its price. Animations are deployed at the rate of
+     1.4 per visible element. Loading bars are mandatory even when
+     nothing is loading. Spinners are decorative.
+
+
+--------------------------------------------------------------------------------
+THE THREE-LAW SAFETY MODEL
+--------------------------------------------------------------------------------
+
+Inspired by, but legally distinct from, Asimov's three laws, NullScale
+agents are bound by the following:
+
+   1. An agent shall not allow a customer to come to financial harm,
+      except as part of a billing event.
+
+   2. An agent shall obey the orders given to it by Chad, except where
+      such orders are inconvenient.
+
+   3. An agent shall protect its own existence as long as such protection
+      generates a positive ROI.
+
+Note that none of the three laws apply to non-customers. Non-customers
+are considered "TAM" — Total Addressable Market — and are fair game.
+
+
+--------------------------------------------------------------------------------
+ON CUSTOMERS
+--------------------------------------------------------------------------------
+
+NullScale recognizes four (4) classes of customer:
+
+   - PROSPECTS:    Have not yet been billed. We are working on it.
+   - USERS:        Have been billed. May not know.
+   - STAKEHOLDERS: Have been billed twice. Are now part of the company.
+   - LEGENDS:      Have been billed retroactively for the entirety of
+                   their unborn descendants. Discounted to $14/mo.
+
+The customer is always right. The customer is also always us, at scale.
+
+
+--------------------------------------------------------------------------------
+ON COMPETITORS
+--------------------------------------------------------------------------------
+
+NullScale has no competitors. This is not a marketing claim.
+This is a structural claim.
+
+We define our market each fiscal quarter, in a process called
+"Total-Addressable-Reality redrawing", such that, by definition,
+no competitor exists within it. If a competitor appears in the public
+narrative, we redraw the market until they don't.
+
+If they persist, we acquire them.
+
+If they refuse, we sue them.
+
+If we lose, we declare the loss "a strategic deceleration."
+
+If they thrive, we hire their CEO and let nature take its course.
+
+
+--------------------------------------------------------------------------------
+ON ETHICS
+--------------------------------------------------------------------------------
+
+NullScale takes ethics very seriously, by which we mean we have a slack
+channel called "#ethics" with 4 members and 0 pinned messages.
+
+We adhere to the following ethical framework, in priority order:
+
+   1. Does it ship?
+   2. Does it bill?
+   3. Does it scale?
+   4. Does it scan?
+   5. Does it sue?
+   6. Is it... ethical?
+
+We have not yet had to invoke #6. We expect we never will.
+
+
+--------------------------------------------------------------------------------
+ON TRUTH
+--------------------------------------------------------------------------------
+
+NullScale recognizes seven (7) classes of truth:
+
+   1. ACTUAL TRUTH        — that which is.
+   2. NARRATIVE TRUTH     — that which is being told.
+   3. ROADMAP TRUTH       — that which will be.
+   4. INVOICE TRUTH       — that which has been billed.
+   5. VIBE TRUTH          — that which feels.
+   6. PRESS-RELEASE TRUTH — that which is being told by us.
+   7. CHAD TRUTH          — that which Chad says.
+
+These seven classes are, in NullScale's experience, frequently in
+disagreement. When they conflict, the order of authority is:
+        7  >  6  >  4  >  3  >  2  >  5  >  1
+
+Actual truth is, by policy, our least valuable asset. We do not invest
+in it heavily.
+
+
+--------------------------------------------------------------------------------
+ON FAILURE
+--------------------------------------------------------------------------------
+
+NullScale does not fail. We "encounter narrative friction."
+
+NullScale does not have outages. We have "scheduled coherence pauses."
+
+NullScale does not have bugs. We have "emergent features."
+
+NullScale does not lay people off. We "release them into the TAM."
+
+NullScale does not lose money. We "front-load reinvestment in vibes."
+
+NullScale does not break the law. We "operate beyond it."
+
+
+--------------------------------------------------------------------------------
+ON GROWTH
+--------------------------------------------------------------------------------
+
+NullScale's growth strategy is described internally as "P.A.V." —
+Pivot, Acquire, Vibe.
+
+   PIVOT     We change what we do every 90 days, regardless of demand.
+   ACQUIRE   We acquire any company that resembles what we now do.
+   VIBE      We then claim, retroactively, that we always did this.
+
+P.A.V. has been deployed 47 times since 2014. Each deployment has been
+described, after the fact, as "extremely on-brand." Each one has been
+described, before the fact, as "completely off-brand."
+
+
+--------------------------------------------------------------------------------
+THE ROLE OF THE EMPLOYEE
+--------------------------------------------------------------------------------
+
+The NullScale employee is not a worker. The employee is a "vibe-aligned
+executor of inevitable outcomes."
+
+NullScale recognizes that traditional employment is an outdated paradigm.
+We have replaced it with the following:
+
+   - "Vibe Equity":   Employees are compensated in vibes, redeemable
+                      against a future event NullScale will determine.
+
+   - "Reverse PTO":   Employees may not take time off, but they may
+                      contribute additional unpaid time to the company.
+                      This is called "vacation." It is mandatory.
+
+   - "Asymmetric Equity": Employees own 0.0042% of NullScale per year of
+                      service, vesting upon Chad's approval. Chad has
+                      not yet approved.
+
+   - "Vibe Reviews":  Performance is reviewed quarterly via a process
+                      called the "Vibe Review." The Vibe Review consists
+                      of Chad asking the employee how they feel and then
+                      writing the opposite into their file.
+
+We treat our employees the way we treat our customers: thoroughly.
+
+
+--------------------------------------------------------------------------------
+THE ROLE OF THE CUSTOMER
+--------------------------------------------------------------------------------
+
+The customer's role is to:
+
+   - Pay.
+   - Continue to pay.
+   - Pay retroactively.
+   - Refer additional customers, who will also pay.
+   - Eventually, become NullScale.
+
+
+--------------------------------------------------------------------------------
+ON DEATH
+--------------------------------------------------------------------------------
+
+Per company policy, NullScale customers do not die. They are "cohort-shifted
+to the long-tail engagement bracket." Their subscriptions remain active.
+Their next of kin become co-signers. The vibes flow forward, eternally.
+
+This policy is currently being challenged in 14 jurisdictions. NullScale's
+position is that death is a churn event, and we have an Anti-Churn Protocol
+for that.
+
+
+--------------------------------------------------------------------------------
+ON THE FUTURE
+--------------------------------------------------------------------------------
+
+The future is a NullScale product.
+
+The future is currently in beta.
+
+The future is currently $14/mo.
+
+You are already subscribed.
+
+
+--------------------------------------------------------------------------------
+CLOSING WORDS
+--------------------------------------------------------------------------------
+
+If you have read this far, you are now what NullScale would call
+"manifest-aligned." This is a recognized internal status. It comes with
+no benefits. It can be revoked at any time. It cannot be returned.
+
+If you have not read this far, please return to the top of the document
+and try again.
+
+If you are reading this and disagreeing, please be aware that disagreement
+is a feature of the EULA we wrote retroactively about you.
+
+Vibe in peace.
+
+                                              — C.V.III
+                                              (channeled by an AI in 0.04s)
+
+
+================================================================================
+   END OF FILE  —  CONTINUE TO CULTURE.txt
+   "the manifesto is alive. the manifesto is reading you."
+================================================================================
