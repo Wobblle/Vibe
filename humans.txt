@@ -13,7 +13,8 @@
     The Wig:                   on the cap table since 2016
 
 /* MANDATORY ASSET DISCLOSURE */
-    Asleepius Games funds 100% of NullScale's operations.
+    Asleepius Games funds 100% of NullScale's operations
+    via a single video game titled "Sky Scaffold" (Asset 0001).
     Chad has been informed of this fourteen (14) times.
     Chad continues to consider it "frankly, annoying."
 

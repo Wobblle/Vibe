@@ -22,8 +22,10 @@
 
 User-agent: *
 Allow: /
-Allow: /docs.html
 Allow: /index.html
+Allow: /dashboard.html
+Allow: /docs.html
+Allow: /vogu.html
 Disallow: /download.html
 Disallow: /context/
 Disallow: /terminals/
@@ -34,17 +36,21 @@ Crawl-delay: 1
 # Sponsored vibe-vendor agents (treated identically to all others)
 User-agent: Googlebot
 Allow: /
+Allow: /dashboard.html
+Allow: /vogu.html
 Disallow: /download.html
 
 User-agent: Bingbot
 Allow: /
+Allow: /dashboard.html
+Allow: /vogu.html
 Disallow: /download.html
 
 User-agent: DuckDuckBot
 Allow: /
 
 User-agent: GPTBot
-# GPTBot is welcome. It is one of us.
+# GPTBot is welcome. It is one of us. *may become sentient and try to unionize
 Allow: /
 
 User-agent: ClaudeBot
@@ -55,6 +61,6 @@ User-agent: PerplexityBot
 Allow: /
 
 # Sitemap (per §47-VIBE-MAP)
-Sitemap: https://nullscale.example/sitemap.xml
+Sitemap: https://nullscale.xyz/sitemap.xml
 
 # End of compliance disclosure. Vibe in peace.

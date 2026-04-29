@@ -14,17 +14,31 @@
                             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 
   <url>
-    <loc>https://nullscale.example/</loc>
-    <lastmod>2026-04-27</lastmod>
-    <changefreq>hourly</changefreq>
+    <loc>https://nullscale.xyz/</loc>
+    <lastmod>2026-04-29</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 
   <url>
-    <loc>https://nullscale.example/docs.html</loc>
+    <loc>https://nullscale.xyz/dashboard.html</loc>
+    <lastmod>2026-04-29</lastmod>
+    <changefreq>hourly</changefreq>
+    <priority>0.95</priority>
+  </url>
+
+  <url>
+    <loc>https://nullscale.xyz/docs.html</loc>
     <lastmod>2026-04-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://nullscale.xyz/vogu.html</loc>
+    <lastmod>2026-04-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 
   <!--

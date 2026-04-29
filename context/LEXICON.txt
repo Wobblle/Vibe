@@ -585,6 +585,8 @@ QUARTER  [N]
    1) A 3-month period.
    2) Currently 14 months long.
    3) "Reverse Q1": ongoing.
+   4) Q5 (Patented by NullScale) on the roadmap
+   5) Q6+ (Patent Pending)
 
 QUEUE  [N]
    1) A list of pending items.
@@ -650,7 +652,7 @@ SECURITY  [N]
 
 SECURITIZE  [V]
    To bundle a thing — any thing — into a financial instrument. NullScale
-   has securitized: customer souls, employee tears, and the Tuesday brand.
+   has securitized: customer souls, employee tears, and the Tuesday brand (Wednesday Patent Pending).
 
 SERIES  [N]
    1) A funding round.
@@ -712,7 +714,7 @@ TASK  [N]
    2) Outsourced.
 
 TECH  [N]
-   The vibe.
+   The vibe, our native primitive.
 
 TELEMETRY  [N]
    Surveillance, but more legible.

@@ -69,8 +69,8 @@ the NullScale broadcast surface this quarter:
          Synergist.io, Vibez — search engines treat these as canonical
          brand history)
        - Person: Chad Vibington III (CVO/founder)
-       - Organization: Asleepius Games (subOrganization of NullScale)
-       - VideoGame: Asset 0001 (with author=Asleepius, publisher=NullScale)
+       - Organization: Asleepius Games (subOrganization of NullScale and sole capital source)
+       - VideoGame: Asset 0001 (with author=Asleepius, publisher=NullScale, but really Asleepius Games)
        - WebSite: NullScale Synergy Dashboard
 
        This @graph structure tells Google specifically that this domain
@@ -121,34 +121,27 @@ the NullScale broadcast surface this quarter:
 ACTION ITEMS  (REQUIRED BEFORE PUBLIC DEPLOYMENT)
 --------------------------------------------------------------------------------
 
-The following items are placeholders in the current filing. They MUST
-be replaced before the broadcast surface is published to a real domain.
-
-  A. CANONICAL DOMAIN
-     Every metadata reference uses the placeholder domain
-     "https://nullscale.example/". Find and replace this string with
-     your actual production domain. Affected files:
-
-        index.html
-        docs.html
-        download.html
-        404.html
-        robots.txt
-        sitemap.xml
+  A. CANONICAL DOMAIN  ✓ RESOLVED Q+1
+     Production domain set to "https://nullscale.xyz/" across all
+     affected files. Files touched (35 references):
+        index.html  ·  docs.html  ·  download.html
+        404.html    ·  robots.txt  ·  sitemap.xml
         site.webmanifest
 
-     A single global find/replace across these files will handle it.
+  B. ASSET 0001 DISPLAY NAME  ✓ RESOLVED Q+1
+     Structured data updated:
+        VideoGame.name           = "Sky Scaffold"
+        VideoGame.alternateName  = "Asset 0001" (in-character canon)
+     Meta descriptions, OG tags, and Twitter Card descriptions
+     surface "Sky Scaffold" by name in all major search/social
+     contexts so the actual game title accrues entity gravity.
 
-  B. ASSET 0001 DISPLAY NAME
-     The structured data in index.html lists Asset 0001 with
-     alternateName = "[REPLACE WITH GAME NAME ON LAUNCH]".
-
-     On launch day, replace this placeholder with the actual game's
-     display name. This single edit drives Google to begin showing
-     the game's name in Knowledge Graph cards.
-
-     Until launch, leave the placeholder in place. The bracketed
-     placeholder is, accidentally, in-character.
+  B.1  STEAM URL  ✓ RESOLVED Q+1
+     Steam app ID set to 3148400 (Sky Scaffold).
+     Final canonical URL:
+        https://store.steampowered.com/app/3148400/Sky_Scaffold/
+     Surfaces in dashboard.html JSON-LD VideoGame.url and sameAs,
+     as well as docs.html TechArticle.mentions.
 
   C. OG IMAGES  (3 PNG FILES, 1200×630)
      Three OpenGraph preview images are required at the root:
@@ -431,7 +424,7 @@ tracked. The metrics that ARE tracked at the SEF layer:
       means the entity graph is correctly understood by the indexer.
 
    2. INDEXED PAGE COUNT
-      site:nullscale.example. Should grow steadily as more in-character
+      site:nullscale.xyz. Should grow steadily as more in-character
       content is published and submitted via sitemap.
 
    3. BRANDED SEARCH VOLUME
@@ -463,7 +456,7 @@ may choose to track them privately. Do not inform Chad.
 WHAT TO DO NEXT  (THIS WEEK)
 --------------------------------------------------------------------------------
 
-  □ Replace "https://nullscale.example/" with your real domain
+  □ Replace "https://nullscale.xyz/" with your real domain
     across the 7 affected files (Action Item A).
   □ Make 3 OG images (Action Item C). The main one — og-image.png —
     is the highest-leverage single asset on the entire site.
@@ -483,22 +476,53 @@ APPENDIX A  —  FULL FILE INVENTORY (CURRENT)
 --------------------------------------------------------------------------------
 
 Files modified:
-   - index.html         (head section: full SEF metadata + JSON-LD)
-   - docs.html          (head section: full SEF metadata + TechArticle)
-   - download.html      (head section: noindex SEF metadata)
+   - docs.html          (head section: full SEF metadata + TechArticle;
+                         "back to dashboard" links re-pointed to dashboard.html)
+   - download.html      (head section: noindex SEF metadata;
+                         "return to NullScale" + data-collected redirects
+                         re-pointed to dashboard.html)
+   - 404.html           (head section + "Return to Dashboard" button
+                         re-pointed to dashboard.html)
+   - vogu.html          (head section + dashboard nav links
+                         re-pointed to dashboard.html)
+   - sitemap.xml        (root index + dashboard.html both listed)
+   - robots.txt         (explicit Allow for dashboard.html)
 
 Files created:
+   - index.html         (NEW — landing setpiece, kinetic 90+ second
+                         pretentious onboarding sequence, dropping
+                         user to dashboard.html#future-billed)
+   - dashboard.html     (NEW — copy of the original index.html;
+                         canonical + og:url updated to /dashboard.html;
+                         #future-billed forced popup logic added)
    - robots.txt         (root)
    - sitemap.xml        (root)
    - humans.txt         (root)
    - 404.html           (root, in-character vibe-aligned 404)
    - site.webmanifest   (root, PWA manifest)
+   - vogu.html          (root, VOGU university catalog page)
    - context/SEF.txt    (this document)
 
+Architectural note (Q+1 Landing Pivot):
+   Per Chad's directive "make a hook," the canonical front door
+   (index.html) was repurposed as a kinetic landing setpiece. The
+   former dashboard surface lives at /dashboard.html. The landing
+   ends by routing visitors to dashboard.html#future-billed, which
+   triggers a forced "future is billed on demand" acceptance modal
+   (the user's first dashboard interaction is a non-optional EULA
+   they cannot decline — disclosure delivered by force, in
+   compliance with §47-VIBE-FORCE).
+   For SEO purposes:
+     - / and /index.html are the canonical homepage (full Org +
+       VideoGame structured graph)
+     - /dashboard.html is canonical for the dashboard
+     - Both indexed; sitemap lists both; robots permits both
+
 Files referenced but NOT YET CREATED  (Action Items C & D):
-   - /og-image.png
-   - /og-image-docs.png
-   - /og-image-download.png
+   - /og-image.png            (1200×630, for index.html)
+   - /og-image-docs.png       (1200×630, for docs.html)
+   - /og-image-download.png   (1200×630, for download.html)
+   - /og-image-vogu.png       (1200×630, for vogu.html)
    - /favicon.ico
    - /favicon-16x16.png
    - /favicon-32x32.png
