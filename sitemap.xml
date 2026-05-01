@@ -93,6 +93,12 @@
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
+  <url>
+    <loc>https://vibratur.vip/daemons/cards/asset-0000.daemon.json</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 
   <!-- Daemon Cards · pinned v1.1.0 URLs (latest) -->
   <url>
@@ -133,6 +139,14 @@
   <!-- Pass 3.11 — Chad v1.4.0 (presence-mode revert; from instruction to presence) pinned URL -->
   <url>
     <loc>https://vibratur.vip/daemons/cards/chad-vibington-iii@1.4.0.daemon.json</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Pass 3.12 — Asset 0000 v1.0.0 (void-anchored; the unindexed row above the first asset) pinned URL -->
+  <url>
+    <loc>https://vibratur.vip/daemons/cards/asset-0000@1.0.0.daemon.json</loc>
     <lastmod>2026-05-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>

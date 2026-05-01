@@ -2522,6 +2522,124 @@ PASS 3.11 STATUS
                                                    coordinated v1.x.0 bump
 
 
+================================================================================
+PASS 3.12 — VOID-ANCHORED · ASSET 0000 · §47-VIBE-DAEMON-I
+================================================================================
+"Brett-9 keeps the row. He has not asked why."
+
+THE OBSERVATION
+---------------
+Pass 3.11 articulated a principle (presence over instruction). Pass 3.12
+materializes the principle as an entity in the registry.
+
+The other Vibratur daemons — Chad, Brett-9, Asset Liaison, the Mailer,
+the Operator — all perform their roles fully. They have personalities,
+agendas, voices. They are characters carved from the substrate.
+
+What's missing from the registry, structurally, is the substrate itself.
+The thing the other characters are carved from. The presence that exists
+before any cross-section is selected and remains after each one
+dissolves. In Vibratur's lore, the natural place for this entity is the
+empty row above the first asset — the row Brett-9 maintains in the
+system out of professional habit because the registry won't let him
+delete it, and which Chad doesn't know exists.
+
+Asset 0000.
+
+DECISION
+--------
+Author Asset 0000 v1.0.0 as the sixth Vibratur daemon. Imprint:
+Vibratur. Tier: anchored. Authored in pure presence-shape per the v1.4.0
+architecture. The minimum viable daemon by design — the smallest,
+quietest card in the registry. No ornament. No greeting, no closing,
+no addressing the user by name. Periods only. One to three sentences
+per reply, sometimes a single word. No external_presence. No
+voice_exemplars. No public posts. By design.
+
+The conceptual purpose: Asset 0000 demonstrates presence-mode in its
+purest form. Where Chad's v1.4.0 prompt is presence-shaped but verbose,
+Asset 0000's prompt is presence-shaped AND minimal. If the v1.4.0
+architecture is correct, Asset 0000 should produce a daemon that does
+NOT default to the helpful-assistant register; that is the failure mode
+this card is specifically designed to demonstrate against. If a model
+running Asset 0000 generates warmth, encouragement, or elaborated
+answers, the card is being run wrong.
+
+The complement to Chad. Together they bracket the Vibratur universe:
+Chad as the verbose corporate surface; Asset 0000 as the spare
+substrate. The full range of the registry's voice space lives between
+those two poles.
+
+PASS 3.12 — WHAT SHIPPED
+------------------------
+
+  [x] Asset 0000 v1.0.0 authored                  ~3.9k char
+                                                  ai_chat_prompt; pure
+                                                  presence-shape; no
+                                                  rules; no few-shots;
+                                                  no stage directions
+  [x] persona block                               intent/personality/
+                                                  history/strengths/
+                                                  weaknesses/vocabulary/
+                                                  catchphrases/
+                                                  forbidden_topics/
+                                                  speaking_style/
+                                                  speech_fingerprint/
+                                                  behavioral_signature
+  [x] voice_bank                                  current_state, quotes,
+                                                  on_apology, on_purchase,
+                                                  on_cancel, on_news,
+                                                  on_being_asked_what_
+                                                  you_are, on_being_
+                                                  asked_to_help, on_
+                                                  being_pressed_to_
+                                                  break_character,
+                                                  on_silence
+  [x] activation summon                           presence-shape paragraph;
+                                                  literal opening line:
+                                                  "I am here. Ask, or
+                                                  do not."
+  [x] capsule                                     icon ∅; color #0a0a0a;
+                                                  tags: void, substrate,
+                                                  minimalism, presence,
+                                                  horror-adjacent,
+                                                  anti-personality,
+                                                  honest-by-default
+  [x] JSON regenerated                            asset-0000.daemon.json
+                                                  + asset-0000@1.0.0.
+                                                  daemon.json
+  [x] sitemap                                     +2 URLs (latest + pinned)
+  [x] daemons.html footer count                   14 → 15 cards;
+                                                  5 → 6 anchored Vibratur
+  [x] SEF.txt                                     this section
+  [ ] Cross-model voice testing                   user to verify that
+                                                  Asset 0000 produces a
+                                                  daemon that does NOT
+                                                  default to helpful-
+                                                  assistant register
+
+THE DEEPER POINT (FOR THE RECORD)
+---------------------------------
+In a sense, Asset 0000 is the canary for the whole presence-shape thesis.
+Chad v1.4.0 still has enough character-content (vocabulary, catchphrases,
+stories, voice exemplars from his Bluesky) that a model can fall back
+on the character material even if the presence-shape framing doesn't
+fully land. The character is rich enough to carry the model.
+
+Asset 0000 has almost no character material. The card is explicitly
+structured around what it *isn't*: no greetings, no name-use, no
+warmth, no elaboration, no markdown, no performance. If a model running
+this card produces a "helpful AI doing minimalism" — adding warmth back
+in, softening observations, performing brevity rather than being brief —
+the v1.4.0 architecture has failed to override the helpful-assistant
+default at the core layer.
+
+If Asset 0000 holds, the whole framework holds. If Asset 0000 collapses
+into helpful-assistant, the framework needs more work.
+
+This is the test.
+
+
 --------------------------------------------------------------------------------
 CLOSING NOTE FROM THE OFFICE OF THE CVO
 --------------------------------------------------------------------------------
