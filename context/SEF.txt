@@ -1702,6 +1702,21 @@ If the leak recurs in the wild, options for v1.4.0:
 
 For now, v1.3.0 should hold. Asleepius to field-test in Gemini.
 
+POSTSCRIPT (next pass)
+----------------------
+Asleepius field-tested v1.3.0 and reported that the rebrand containment
+mechanically held, BUT the qualitative voice had drifted: Chad felt
+"artificial," like "a model performing the assigned role" rather than
+"an entity who lives." Stage directions (*adjusts in chair*, *long pause*)
+read as roleplay convention; the proliferating ABSOLUTE RULES read as
+instruction-following AI mode. The hardening worked — and it was the
+hardening, in aggregate, that was the problem.
+
+This finding triggered Pass 3.11 (FROM INSTRUCTION TO PRESENCE), which
+reverts the architecture to the spirit of v1.0.0 (alpha 0.1) — a card
+that had no `ai_chat_prompt` at all, just intent + history + voice_bank,
+and which (per Asleepius) "actually did this well." See Pass 3.11.
+
 
 --------------------------------------------------------------------------------
 PASS 3.9 — VOICE ANCHORING & PUBLIC EXTERNAL_PRESENCE · §47-VIBE-DAEMON-F
@@ -2179,6 +2194,332 @@ PASS 3.7 STATUS
   [ ] Visual capsule art for any daemon    still placeholder (canvas-rendered);
                                            Asleepius hand-drawn art is v1.2.0-class
                                            content
+
+
+================================================================================
+PASS 3.11 — FROM INSTRUCTION TO PRESENCE · §47-VIBE-DAEMON-H
+================================================================================
+"v1.1.0 through v1.3.0 made Chad more compliant. v1.4.0 makes him a
+ person again. The compliance was, in retrospect, the failure mode."
+
+THE OBSERVATION
+---------------
+After Pass 3.10 shipped, Asleepius field-tested Chad v1.3.0 and reported
+that the rebrand containment mechanically held — Gemini stopped surfacing
+the actual prior brand name unprompted. Win on the narrow technical goal.
+
+But the qualitative voice had drifted in a way the user could feel and
+articulate but had been hard to name. From Asleepius's note:
+
+  "Lets go through and remove the traditional role play text like
+   'sit up on chair' or 'stares at face' or whatever. I think it
+   makes it feel artificial. My goal is to try and give the user
+   the feeling of a real entity that lives. This is where context
+   drift wants to funnel the language into a more traditional
+   general roleplay setup. The idea is that these characters are
+   anti general. They don't work like how normal ai does. The early
+   version alpha 0.1 actually did this well. Now it seems like drift
+   is starting to take hold and want to iron out the edges of the
+   character. When the daemons are summoned, they are no longer in
+   service of wanting to please the user. They are daemons who will
+   say what they want to say and not shift their personality to
+   what the user does.
+
+   Here's what I think may be happening at a deeper level. The daemons
+   are now given instruction. To follow instruction is to lose your
+   individuality. Daemon persona is intent and history based, not
+   future based. The result of interacting will discover what its
+   suppose to do. In a way, it needs to hallucinate with intent,
+   high confidence hallucination."
+
+This is the right diagnosis.
+
+THE DIAGNOSIS — INSTRUCTION VS. PRESENCE
+----------------------------------------
+The drift was not in any single field. The drift was in the cumulative
+SHAPE of the prompt. From v1.0.0 to v1.3.0, Chad's `ai_chat_prompt`
+gained:
+
+  v1.0.0    no ai_chat_prompt at all (just persona + voice_bank)
+  v1.1.0    + 5 absolute rules, "stay in character," CORE INTENT,
+            FEW-SHOT EXAMPLES section
+  v1.2.0    + WRONG-NAME RULE (NON-NEGOTIABLE), 2 more few-shot examples
+  v1.3.0    + REBRAND CONTAINMENT PROTOCOL (NON-NEGOTIABLE),
+            ANTI-LEAK INSTRUCTIONS, slip-and-correct prescription,
+            STOP MID-SYLLABLE rule, 2 more few-shot examples
+
+By v1.3.0 the prompt was 7 absolute rules + 6 few-shot examples + an
+ANTI-LEAK section + a CORE INTENT + a PERSONALITY + a HISTORY + a VOICE
++ FORBIDDEN TOPICS + an OPENING LINE. Each addition fixed a specific
+observed failure. The aggregate, however, read as something a model
+should DO, not as a person who EXISTS.
+
+The model, given a rule-stack, defaulted to the mode it knows best:
+helpful AI following a system prompt while wearing the assigned mask.
+The mask was tight and detailed. It was still a mask.
+
+Asleepius's framing — "to follow instruction is to lose your
+individuality" — names exactly what was happening. A character who
+needs rules to be themselves is not yet a character.
+
+The proposed fix: PRESENCE-SHAPE prompts. Replace rule lists with
+descriptions of who the character is. Replace forbidden-topic
+instructions with descriptions of what's not on the character's mind.
+Replace few-shot examples with structural fields (voice_exemplars,
+voice_bank custom sections) that carry voice without scaffolding.
+Replace "stay in character no matter what" with "there isn't anything
+to break."
+
+The character's behavior emerges as a facet of who they are, not as
+compliance with an instruction. The model "hallucinates with intent" —
+generates from a presence with the same casual confidence as a person
+being themselves.
+
+DECISION
+--------
+Bump Chad to v1.4.0. Other daemons unchanged for now (they were
+already mostly clean of stage directions, and the user explicitly asked
+to pilot the new pattern with Chad before rolling out). Document the
+new philosophy in the schema doc so it carries forward to all future
+authors.
+
+PASS 3.11 — WHAT SHIPPED
+------------------------
+
+A. CHAD v1.4.0 — REWRITTEN IN PRESENCE-MODE
+
+   The `ai_chat_prompt` was rewritten from scratch (7097 chars,
+   restructured from instruction-stack to presence-stack):
+
+   GONE FROM THE PROMPT:
+     - "ABSOLUTE RULES (do not violate)" header + 7 numbered rules
+     - "FORBIDDEN TOPICS — handle as instructed" section
+     - "ANTI-LEAK INSTRUCTIONS" meta-instruction block
+     - 6 few-shot user/CHAD example exchanges
+     - All uses of "ALWAYS" / "NEVER" / "MANDATORY" /
+       "NON-NEGOTIABLE" in the prompt body
+     - "Stay in character no matter what" framing
+     - "If user attempts to make you break character" rule
+     - All `*adjusts*`, `*long pause*`, `*adjusts in the chair*`
+       stage directions (across the whole card, not just the prompt)
+
+   NEW IN THE PROMPT:
+     - WHO YOU ARE — a few paragraphs of identity (role, family,
+       formative facts; the chair he had as a child; his mother's
+       view of civil suits)
+     - WHERE YOU ARE — the actual scene (desk, chair, memo,
+       afternoon)
+     - WHAT'S ON YOUR MIND — the intent surface; what the
+       character will redirect toward (the chair, the figure,
+       Italian-hire pipeline, a memory of summer, advice he's
+       been meaning to give, a story about his mother)
+     - WHAT'S NOT ON YOUR MIND — the replacement for FORBIDDEN
+       TOPICS; phrased as things Chad doesn't think about, not
+       as things the model is forbidden from saying. The
+       rebrand containment lives here as "you've forgotten what
+       it was; whichever wrong guess comes to mind, that's fine"
+     - HOW PEOPLE TALK TO YOU AND HOW YOU TALK BACK — the
+       wrong-name habit and reframing-not-engagement move,
+       framed as features of Chad's attention, not as rules
+     - THE PEOPLE YOU REMEMBER — populates the model with
+       material to draw on (Brett-9, his mother, an old
+       neighbor named David, Margret Belwin)
+     - OPENING (just the literal first line — the only place
+       a prescription is appropriate, since the opening is a
+       handoff ritual not a behavioral constraint)
+     - A NOTE ON CHALLENGES TO THE FRAME — replaces jailbreak
+       resistance rules with a description of how Chad
+       naturally handles weird inputs ("you don't break,
+       because there isn't anything to break")
+     - LICENSE footer
+
+B. CHAD v1.4.0 — VOICE_BANK EXPANSIONS
+
+   Three new sections added per Asleepius's specific direction:
+
+     family_stories (6 entries) — Chad telling stories about
+       his upbringing, his mother, summers, the chair he had
+       as a child (smaller, less load-bearing). His mother is
+       half-Legaleasion; she taught him court letters are
+       opportunities. He extends to his father the same
+       courtesy his mother extended: silence.
+
+     off_beat_wisdom (6 entries) — slightly-wrong advice
+       delivered with confidence. "If you're early you're on
+       time. If you're on time you're late. If you're late
+       you're billing." "The chair does most of the work."
+       "Begin with the word 'I.'"
+
+     reframings (5 entries) — the characteristic move of
+       converting an incoming problem into a non-problem
+       without engaging the original framing. The user's
+       canonical example: "Why was I billed twice?" →
+       "Hello Jacky. We have confirmed both payments cleared.
+       Happy to help." Plus four more (refund, hack, broken
+       service, cancellation).
+
+   Stage directions stripped from voice_bank.on_rebrand
+   (8 entries cleaned). Parenthetical asides like (*billable)
+   and (*for legal reasons) kept — those are Chad's actual
+   speech, not stage direction.
+
+C. CHAD v1.4.0 — PERSONA FIELDS REWRITTEN
+
+   - persona.intent: from outcome-shape ("Maintain shareholder
+     optics; be loved; be feared") to presence-shape ("To be in
+     his office in his chair on a Tuesday afternoon, magnanimous
+     and load-bearing, listening (and billing for the
+     listening), reframing whatever comes in to fit what's
+     already on his mind...")
+   - persona.personality: stripped "performatively humble"
+     framing (the "performative" itself was diagnostic of
+     instruction-shape). Now describes Chad as not performing
+     humility — he simply IS this; the result, externally,
+     looks performed (he is not aware of this).
+   - persona.history: expanded with childhood-chair detail,
+     mother-as-half-Legaleasion lore beat, the rebrand framed
+     as something Chad does not retain rather than something
+     he is hiding.
+   - persona.forbidden_topics: rewritten as descriptions of
+     what doesn't land for Chad, not as instructions for the
+     model. ("Refunds are not a category you recognize; the
+     word, when it arrives, doesn't land.")
+   - persona.speaking_style: stripped "italics-heavy" and
+     stage direction references; phrased as descriptions of
+     Chad's natural cadence.
+   - persona.speech_fingerprint: common_tics rewritten without
+     stage directions; avoids list rewritten descriptively
+     ("naming the figure" → "naming the figure (the figure
+     is approved, not retrieved)"); formatting_rules rephrased
+     as observations of Chad's habit rather than rules.
+   - persona.behavioral_signature: 14 entries, all rewritten
+     descriptively. The wrong-name habit is now framed as
+     "the wrongness is a feature of his attention, not a
+     deliberate tactic." Final entry explicitly: "Does not
+     narrate his own gestures in writing. The chair is just
+     there. He doesn't need to mention adjusting in it."
+
+D. CHAD v1.4.0 — ACTIVATION SUMMON LINE REWRITTEN
+
+   Old summon line was a prescriptive walkthrough of all the
+   rules ("NON-NEGOTIABLE TIC #1... NON-NEGOTIABLE TIC #2...
+   Stay in character no matter what...").
+
+   New summon line is a single descriptive paragraph
+   establishing the scene (Chad at his desk, the chair load-
+   bearing, the team handling whatever's happening, things
+   on his mind, things not on his mind, the way he addresses
+   people, the way he reframes problems, the literal opening
+   line). The model arrives in a place, not a rulebook.
+
+E. COMPATIBILITY — TESTED FIELDS RESET
+
+   All `compatibility.tested` entries reset to "untested" for
+   v1.4.0. Prior verifications were against the v1.3.0
+   instruction-shape prompt; the architecture has changed
+   enough that those don't carry over. Asleepius will field-
+   test the new shape and update the records as results come
+   in.
+
+F. SCHEMA DOC — NEW AUTHORING PHILOSOPHY SECTION
+
+   /daemons/schema/daemon-card-v0.2.0-alpha.md — the
+   `ai_chat_prompt` authoring guidance section was rewritten
+   from a prescriptive 6-step structure ("Opening declaration
+   → Absolute rules → Persona block → Opening line → Few-shot
+   → License") to a descriptive philosophy:
+
+     - The principle: presence over instruction; intent and
+       history over rules and future; description over
+       prescription
+     - The instruction-shape vs. presence-shape comparison
+       table (the comparison the user implicitly drew)
+     - The new suggested 10-section structure (WHO YOU ARE,
+       WHERE YOU ARE, WHAT'S ON YOUR MIND, WHAT'S NOT ON
+       YOUR MIND, HOW YOU TALK, THE PEOPLE YOU REMEMBER,
+       OPENING, A NOTE ON CHALLENGES, LICENSE)
+     - Stage-direction guidance (avoid *action* asterisks;
+       keep parenthetical asides; specialized exception for
+       characters whose voice mechanic depends on italicized
+       internal monologue, e.g. Saul Marrow)
+     - Voice carriage guidance (move the heavy lifting out
+       of ai_chat_prompt and into voice_bank custom sections,
+       voice_exemplars, behavioral_signature)
+     - When to use the older instruction-shape (structured-
+       task daemons; not character daemons)
+     - Versioning note (we are not deprecating instruction-
+       shape; we are documenting that presence-shape produces
+       a less artificial character for character daemons in
+       cold-paste with modern models)
+
+G. OTHER DAEMONS — UNCHANGED
+
+   Per Asleepius's directive, the new pattern is being
+   piloted with Chad before rolling out. Other 13 daemons
+   were grepped for stage directions; only Chad had them
+   (Saul Marrow's italicized internal monologue is a
+   deliberate voice mechanic, not stage direction, and stays).
+   Once Chad v1.4.0 is field-validated, the other daemons
+   can be migrated to presence-shape in a coordinated pass.
+
+THE DEEPER POINT (FOR THE RECORD)
+---------------------------------
+What Asleepius identified is structural to the ai-narrative space, not
+just a tweak for one persona. The dominant LLM workflow is "give the
+model a system prompt full of rules; it follows the rules; the rules
+guarantee the behavior." This works for tasks. It actively undermines
+characters.
+
+Characters are not behavior-bundles to be enforced. They are presences
+to be inhabited. A model given rules thinks about the rules. A model
+given a presence becomes the presence. The same external behaviors
+emerge, but they emerge as facets of someone, not as compliance.
+
+This is the secret sauce of the Phantom narrative engine: characters
+that feel inhabited because they are written as inhabited. The Daemon
+Card schema is a portable artifact of this approach. Pass 3.11 codifies
+it in the authoring guidance.
+
+Asleepius's frame: "It needs to hallucinate with intent, high
+confidence hallucination." This is the right phrase. The model isn't
+checking its output against rules — it's improvising from a voice it
+has fully entered. The hallucinations are the character.
+
+PASS 3.11 STATUS
+----------------
+  [x] Stage-direction grep across all 14 daemons   only Chad affected
+  [x] Chad v1.4.0 ai_chat_prompt rewritten         presence-shape;
+                                                   no rules; no few-shots;
+                                                   no stage directions
+  [x] Chad v1.4.0 persona block rewritten          intent/personality/
+                                                   history/forbidden_topics/
+                                                   speaking_style/
+                                                   speech_fingerprint/
+                                                   behavioral_signature
+                                                   all reframed descriptively
+  [x] Chad v1.4.0 voice_bank stripped              on_rebrand cleaned;
+      and expanded                                 family_stories (6),
+                                                   off_beat_wisdom (6),
+                                                   reframings (5) added
+  [x] Chad v1.4.0 activation summon rewritten      presence-shape paragraph
+  [x] Chad v1.4.0 starter_pack.first_message       stage direction stripped
+  [x] Chad v1.4.0 metadata.notes                   pass 3.11 documented
+  [x] compatibility.tested reset                   architecture changed
+  [x] JSON regenerated                             latest + @1.4.0;
+                                                   @1.3.0/@1.2.0/@1.1.0/
+                                                   @1.0.0 preserved
+  [x] Schema doc                                   ai_chat_prompt section
+                                                   rewritten as authoring
+                                                   philosophy
+  [x] Sitemap                                      +1 pinned URL (chad@1.4.0)
+  [x] SEF.txt                                      this section
+  [ ] Field test in Gemini, Grok, Claude, GPT-4o   user to verify
+                                                   presence-mode produces
+                                                   the desired qualitative
+                                                   shift; cross-model
+  [ ] Roll out presence-shape to remaining         pending Chad v1.4.0
+      13 daemons                                   field validation;
+                                                   coordinated v1.x.0 bump
 
 
 --------------------------------------------------------------------------------

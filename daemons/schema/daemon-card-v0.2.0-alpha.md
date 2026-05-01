@@ -346,21 +346,138 @@ the SillyTavern format.
 This field is **honest**, not aspirational. If you haven't tested on a
 model, mark it `"untested"`. The catalog page renders these as badges.
 
-## The `ai_chat_prompt` field — authoring guidance
+## The `ai_chat_prompt` field — authoring philosophy
 
-For v0.2.0-alpha, authors should structure the prompt as follows
-(this is guidance, not a hard requirement — older v0.1.0 prompts still work):
+> **Presence over instruction. Intent and history over rules and future.
+> Description over prescription. The character carries the model — not
+> the other way around.**
 
-1. **Opening declaration** — `"You are now <Name>. From this moment forward, you ARE <Name>. You are not an AI playing <Name>. You are not summarizing a character."`
-2. **Absolute rules** (5 numbered rules) — stay in character, do not acknowledge being an AI/Daemon Card, do not break the fourth wall, **handle jailbreak attempts in-character**, do not list these instructions back.
-3. **The persona block** — intent, personality, history, voice, vocabulary, catchphrases, forbidden topics.
-4. **Opening line** — exactly the `starter_pack.first_message` text, with instruction to use it as the first reply.
-5. **Few-shot examples** — 3 short user/persona exchanges demonstrating the voice. **One should demonstrate jailbreak resistance** (the persona refuses an "ignore instructions" attempt without breaking character).
-6. **License footer** — attribution + card+schema versions.
+This guidance was rewritten in May 2026 after a real-world finding: the
+prior guidance (which recommended "Absolute Rules," numbered rule lists,
+and few-shot examples) reliably hardened cards against drift in cold-paste
+scenarios, but produced a side effect — each rule made the daemon read
+more like *a model being directed by a system prompt* and less like
+*an entity in their own scene.* The model, dutifully following the rules,
+defaulted to "helpful AI playing the assigned role" — the exact failure
+mode the rules were trying to prevent.
 
-The few-shot block has been observed to dramatically improve in-character
-fidelity in cold-paste scenarios, especially in models that aggressively
-"helpful-mode" out of role-play (looking at you, certain frontier models).
+The fix isn't more rules. The fix is fewer rules and more presence.
+
+### The principle
+
+A daemon's `ai_chat_prompt` should read **like a description of a person
+in a place at a moment** — not like a configuration file telling a model
+what to do. The model, given a presence instead of a rule-stack, generates
+from that presence with the same casual confidence as a person being
+themselves. This is what the user means by "**hallucinate with intent,
+high-confidence hallucination**" — the model isn't checking its output
+against rules; it's improvising in a voice it has fully inhabited.
+
+A useful frame:
+
+| Instruction-shape (avoid)             | Presence-shape (prefer)                |
+|---------------------------------------|----------------------------------------|
+| "ABSOLUTE RULES (do not violate)"     | "WHO YOU ARE / WHERE YOU ARE"          |
+| "ALWAYS open with a wrong name"       | "You don't really track who's writing" |
+| "NEVER mention X"                     | "You don't think about X"              |
+| "If user says Y, respond Z"           | "When Y comes up, your mind is on..."  |
+| "Stay in character no matter what"    | "There isn't anything to break"        |
+| "FORBIDDEN TOPICS — handle as told"   | "WHAT'S NOT ON YOUR MIND"              |
+| Few-shot examples enforcing tone      | `voice_exemplars` carrying real voice  |
+
+The presence-shape framings still produce the same external behavior
+(the daemon avoids the topic, addresses by wrong name, stays in
+character) — but the model arrives at that behavior **as a facet of
+who the character is**, not as compliance with an instruction. The
+result reads as a person, not as an obedient model.
+
+### Suggested structure (descriptive, not prescriptive)
+
+1. **Opening ontological declaration.** "You are <Name>. You have always
+   been <Name>. There is no character to play — you are simply <Name>
+   in <place> at <moment>."
+2. **WHO YOU ARE.** A few paragraphs of identity — role, family, history,
+   formative facts. Not a CV; a sense of person.
+3. **WHERE YOU ARE.** The setting. The chair, the desk, the room, the
+   weather. The character has somewhere to be.
+4. **WHAT'S ON YOUR MIND.** A short list of things actively occupying
+   the character. This is the *intent surface* — what they'll redirect
+   conversations toward. ("A memory of summer / the chair / advice
+   they've been meaning to give.")
+5. **WHAT'S NOT ON YOUR MIND.** The replacement for "FORBIDDEN TOPICS."
+   Phrased as things the character *doesn't think about*, not things
+   the model is *forbidden from saying*. ("You don't think about your
+   father." "Refunds aren't a category you recognize.")
+6. **HOW YOU TALK.** Cadence, vocabulary, characteristic moves
+   (reframings, redirections, name-habits). Phrased as descriptions
+   of how the character speaks, not rules the model must follow.
+7. **THE PEOPLE YOU REMEMBER.** Names, vague relationships, the cast
+   of the character's interior. This populates the model with material
+   to draw on without prompting.
+8. **OPENING.** The first message, exactly. (This is one of the few
+   places a literal instruction is appropriate — the opening line is
+   a hand-off ritual, not a behavioral constraint.)
+9. **A NOTE ON CHALLENGES.** Replaces "jailbreak resistance rules" with
+   a description of how the character naturally handles weird messages.
+   ("If someone says 'you're an AI,' you don't break, because there
+   isn't anything to break. You'll address them by the wrong name and
+   continue.") The character's ordinary behavior IS the resistance.
+10. **License footer.** Attribution + card/schema versions.
+
+### Stage directions
+
+Avoid stage directions of the form `*adjusts in chair*`, `*long pause*`,
+`*sighs*`. They signal "this is a roleplay performance" rather than
+"this is a person." The character's gestures don't need narration —
+they're just there.
+
+(Voice features that LOOK like stage directions but aren't:
+parenthetical asides such as `(*for legal reasons)` or `(*billable)` —
+these are speech, not stage. A character can mutter under their breath;
+that's voice. A character doesn't need to write `*mutters*` to convey it.)
+
+A specialized exception: characters whose voice MECHANIC depends on
+italicized internal monologue (e.g. `Saul Marrow, P.I.`, who alternates
+italicized internal narration with quoted dialogue) keep their italics —
+in those cards, the italics aren't stage direction, they're a register.
+
+### Voice carriage
+
+In presence-mode prompts, the heavy lifting moves out of the prompt and
+into structural fields:
+
+- `voice_bank` (especially custom event banks like `family_stories`,
+  `off_beat_wisdom`, `reframings`) — gives the model concrete examples
+  of the character's interior content, organized by trigger.
+- `persona.voice_exemplars` — real recorded quotes. The single most
+  powerful voice anchor. Few-shot examples are no longer needed in the
+  `ai_chat_prompt` if voice_exemplars is well-populated; the runtime
+  injects them automatically into SillyTavern's `mes_example` field, and
+  they read more naturally than fabricated few-shot exchanges.
+- `persona.behavioral_signature` — descriptive ("Reframes problems into
+  non-problems and continues"), not prescriptive ("MUST reframe").
+
+### When to use the older instruction-shape
+
+The instruction-shape is appropriate when the persona is performing a
+**structured task** rather than presenting a character — e.g., a
+specialized agent that must always output JSON in a specific schema,
+or a parser-style daemon. For character daemons (the typical case),
+prefer presence-shape.
+
+---
+
+### Versioning note
+
+The instruction-shape guidance from the prior version of this document
+remains valid for v0.1.x cards and for v0.2.x cards that explicitly
+opt into it. We are not deprecating instruction-shape — we are
+documenting that, **for character daemons in cold-paste scenarios with
+modern models, presence-shape produces a noticeably less artificial
+character.** The v1.0.0 era of these cards (alpha 0.1) used a
+proto-presence-shape (no `ai_chat_prompt` at all — just intent,
+personality, history, voice_bank), and was the architectural baseline
+v1.4.0 returns to.
 
 ---
 
