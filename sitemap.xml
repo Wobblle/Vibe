@@ -48,35 +48,114 @@
     <priority>0.95</priority>
   </url>
 
+  <!-- Daemon Card schema specs (canonical, perpetual artifacts) -->
+  <url>
+    <loc>https://vibratur.vip/daemons/schema/daemon-card-v0.2.0-alpha.md</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://vibratur.vip/daemons/schema/daemon-card-v0.1.0-alpha.md</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <!-- Daemon Cards · latest pointers (v1.1.0 currently) -->
   <url>
     <loc>https://vibratur.vip/daemons/cards/chad-vibington-iii.daemon.json</loc>
     <lastmod>2026-05-01</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.75</priority>
   </url>
   <url>
     <loc>https://vibratur.vip/daemons/cards/brett-9.daemon.json</loc>
     <lastmod>2026-05-01</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.75</priority>
   </url>
   <url>
     <loc>https://vibratur.vip/daemons/cards/asset-liaison.daemon.json</loc>
     <lastmod>2026-05-01</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.75</priority>
   </url>
   <url>
     <loc>https://vibratur.vip/daemons/cards/the-mailer.daemon.json</loc>
     <lastmod>2026-05-01</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.75</priority>
   </url>
   <url>
     <loc>https://vibratur.vip/daemons/cards/the-operator.daemon.json</loc>
     <lastmod>2026-05-01</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.75</priority>
+  </url>
+
+  <!-- Daemon Cards · pinned v1.1.0 URLs (latest) -->
+  <url>
+    <loc>https://vibratur.vip/daemons/cards/chad-vibington-iii@1.1.0.daemon.json</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://vibratur.vip/daemons/cards/brett-9@1.1.0.daemon.json</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://vibratur.vip/daemons/cards/asset-liaison@1.1.0.daemon.json</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://vibratur.vip/daemons/cards/the-mailer@1.1.0.daemon.json</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://vibratur.vip/daemons/cards/the-operator@1.1.0.daemon.json</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Daemon Cards · pinned v1.0.0 URLs (preserved per versioning promise) -->
+  <url>
+    <loc>https://vibratur.vip/daemons/cards/chad-vibington-iii@1.0.0.daemon.json</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://vibratur.vip/daemons/cards/brett-9@1.0.0.daemon.json</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://vibratur.vip/daemons/cards/asset-liaison@1.0.0.daemon.json</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://vibratur.vip/daemons/cards/the-mailer@1.0.0.daemon.json</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://vibratur.vip/daemons/cards/the-operator@1.0.0.daemon.json</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
   </url>
 
   <url>

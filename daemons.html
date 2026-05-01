@@ -514,6 +514,298 @@
             border-radius: 3px;
         }
         .detail-card .dc-license a { color: var(--indigo-soft); border-color: rgba(181,172,236,0.3); }
+        .detail-card .dc-mute { color: var(--ink-mute); font-style: italic; font-weight: 400; text-transform: none; letter-spacing: 0; }
+
+        /* Summon block — primary UX surface */
+        .detail-card .summon-block {
+            background: linear-gradient(180deg, rgba(212,173,79,0.08) 0%, rgba(212,173,79,0.02) 100%);
+            border: 1px solid rgba(212,173,79,0.35);
+            border-radius: 4px;
+            padding: 14px 16px;
+            margin-bottom: 22px;
+        }
+        .detail-card .summon-block h4 { color: var(--gold-soft); }
+        .detail-card .summon-line {
+            background: var(--bg);
+            border: 1px solid var(--rule);
+            border-radius: 3px;
+            padding: 10px 12px;
+            margin-top: 6px;
+            max-height: 160px;
+            overflow-y: auto;
+        }
+        .detail-card .summon-line code {
+            font-family: "JetBrains Mono", "Courier New", monospace;
+            font-size: 11.5px;
+            color: var(--ink);
+            line-height: 1.55;
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+
+        /* Suggested-reply chips */
+        .detail-card .reply-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 6px;
+        }
+        .detail-card .reply-chips .chip {
+            background: rgba(122,108,212,0.10);
+            border: 1px solid rgba(122,108,212,0.30);
+            color: var(--indigo-soft);
+            font-size: 12px;
+            padding: 4px 10px;
+            border-radius: 14px;
+            cursor: pointer;
+            transition: background 0.15s ease, color 0.15s ease;
+        }
+        .detail-card .reply-chips .chip:hover {
+            background: var(--indigo);
+            color: #fff;
+            border-color: var(--indigo);
+        }
+
+        /* Tested-on badges */
+        .detail-card .tested-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .detail-card .tested-badge {
+            font-family: "JetBrains Mono", monospace;
+            font-size: 11px;
+            padding: 3px 9px;
+            border-radius: 3px;
+            border: 1px solid var(--rule);
+            background: var(--bg-card);
+            color: var(--ink-soft);
+            letter-spacing: 0.4px;
+        }
+        .detail-card .tested-badge.tb-verified {
+            color: var(--good);
+            border-color: rgba(108,185,108,0.45);
+            background: rgba(108,185,108,0.10);
+        }
+        .detail-card .tested-badge.tb-partial {
+            color: var(--warn);
+            border-color: rgba(212,160,96,0.45);
+            background: rgba(212,160,96,0.10);
+        }
+        .detail-card .tested-badge.tb-untested {
+            color: var(--ink-mute);
+        }
+        .detail-card .tested-badge.tb-failing {
+            color: var(--bad);
+            border-color: rgba(212,108,108,0.45);
+            background: rgba(212,108,108,0.10);
+        }
+
+        /* Capsule-grid version badge: bump styling slightly to surface schema */
+        .card .c-foot .c-version { white-space: nowrap; }
+
+        /* Deploy panel — primary action surface */
+        .detail-card .dc-deploy {
+            background: var(--bg);
+            padding: 14px 28px 16px;
+            border-bottom: 1px solid var(--rule);
+        }
+        .detail-card .dc-deploy-label {
+            font-family: "JetBrains Mono", monospace;
+            font-size: 11px;
+            color: var(--gold-soft);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 10px;
+        }
+        .detail-card .dc-deploy-label .dc-mute {
+            color: var(--ink-mute);
+            text-transform: none;
+            letter-spacing: 0;
+            font-style: italic;
+        }
+        .detail-card .dc-deploy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 8px;
+        }
+        .detail-card .deploy-btn {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            color: var(--ink);
+            padding: 10px 8px 9px;
+            border-radius: 4px;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 3px;
+            transition: border-color 0.12s ease, transform 0.12s ease, background 0.12s ease;
+            font-family: "Inter", Arial, sans-serif;
+        }
+        .detail-card .deploy-btn:hover {
+            border-color: var(--gold);
+            background: rgba(212,173,79,0.08);
+            transform: translateY(-1px);
+        }
+        .detail-card .deploy-btn .d-icon {
+            font-size: 22px;
+            line-height: 1;
+            margin-bottom: 2px;
+        }
+        .detail-card .deploy-btn .d-name {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--ink);
+        }
+        .detail-card .deploy-btn .d-tag {
+            font-family: "JetBrains Mono", monospace;
+            font-size: 9px;
+            color: var(--ink-mute);
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+        }
+        .detail-card .deploy-btn.deploy-st {
+            border-color: rgba(122,108,212,0.4);
+            background: rgba(122,108,212,0.06);
+        }
+        .detail-card .deploy-btn.deploy-st:hover {
+            border-color: var(--indigo);
+            background: rgba(122,108,212,0.18);
+        }
+        .detail-card .deploy-btn.deploy-st .d-name { color: var(--indigo-soft); }
+        .detail-card .deploy-btn.deploy-local {
+            border-color: rgba(108,185,108,0.35);
+            background: rgba(108,185,108,0.05);
+        }
+        .detail-card .deploy-btn.deploy-local:hover {
+            border-color: var(--good);
+            background: rgba(108,185,108,0.15);
+        }
+        .detail-card .deploy-btn.deploy-local .d-name { color: var(--good); }
+
+        /* Toast for deploy confirmation */
+        .deploy-toast {
+            position: fixed;
+            bottom: 28px;
+            left: 50%;
+            transform: translateX(-50%) translateY(20px);
+            background: var(--bg-2);
+            border: 1px solid var(--gold);
+            color: var(--ink);
+            padding: 12px 22px;
+            border-radius: 4px;
+            font-size: 13px;
+            box-shadow: 0 8px 28px rgba(0,0,0,0.5);
+            opacity: 0;
+            transition: opacity 0.25s ease, transform 0.25s ease;
+            z-index: 200;
+            pointer-events: none;
+            max-width: 80vw;
+            text-align: center;
+        }
+        .deploy-toast.shown {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+        .deploy-toast .t-em { color: var(--gold-soft); margin-right: 6px; }
+        .deploy-toast .t-kbd {
+            display: inline-block;
+            background: var(--bg);
+            border: 1px solid var(--rule);
+            padding: 1px 6px;
+            border-radius: 2px;
+            font-family: "JetBrains Mono", monospace;
+            font-size: 11px;
+            margin: 0 2px;
+        }
+
+        /* Local LLM cheat-sheet modal */
+        .local-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 110;
+            display: none;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 6vh 16px;
+            overflow-y: auto;
+            background: rgba(0,0,0,0.78);
+            backdrop-filter: blur(4px);
+        }
+        .local-modal.shown { display: flex; }
+        .local-modal .lm-card {
+            background: var(--bg-2);
+            border: 1px solid var(--rule);
+            border-radius: 4px;
+            max-width: 720px;
+            width: 100%;
+            padding: 22px 28px 26px;
+            position: relative;
+            box-shadow: 0 12px 36px rgba(0,0,0,0.6);
+        }
+        .local-modal .lm-close {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid var(--rule);
+            color: var(--ink-soft);
+            font-size: 18px;
+            width: 32px;
+            height: 32px;
+            border-radius: 2px;
+            cursor: pointer;
+        }
+        .local-modal h3 { margin: 0 0 4px; color: var(--ink); }
+        .local-modal .lm-sub {
+            font-size: 13px;
+            color: var(--ink-mute);
+            font-style: italic;
+            margin-bottom: 16px;
+        }
+        .local-modal h4 {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--good);
+            margin: 16px 0 6px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .local-modal pre {
+            background: var(--bg);
+            border: 1px solid var(--rule);
+            color: var(--ink-soft);
+            font-family: "JetBrains Mono", "Courier New", monospace;
+            font-size: 11.5px;
+            line-height: 1.5;
+            padding: 10px 12px;
+            border-radius: 3px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            margin: 0;
+        }
+        .local-modal .lm-actions {
+            margin-top: 18px;
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .local-modal .lm-actions button {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            color: var(--ink);
+            font-size: 12px;
+            font-weight: 600;
+            padding: 7px 12px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        .local-modal .lm-actions button.primary {
+            background: var(--good);
+            color: var(--bg);
+            border-color: var(--good);
+        }
 
         /* ---- Footer ---- */
         .pub-foot {
@@ -543,7 +835,7 @@
             <span>Asleepius Games</span>
             <a href="dashboard.html">Vibratur Workstation</a>
             <a href="v4v.html">V4V Registry</a>
-            <a href="daemons/schema/daemon-card-v0.1.0-alpha.md">Schema</a>
+            <a href="daemons/schema/daemon-card-v0.2.0-alpha.md">Schema</a>
             <a href="daemons/LICENSE-v1.md">License</a>
         </div>
         <span class="pb-status">alpha · v0.1.0</span>
@@ -552,8 +844,9 @@
     <h1 class="title-block">Daemon <span class="accent">Cards</span></h1>
     <div class="title-sub">a portable persona-first storytelling primitive</div>
     <div class="title-meta">
-        <span><span class="tm-dot">●</span> schema v0.1.0-alpha</span>
-        <span><span class="tm-dot">●</span> 5 cards published</span>
+        <span><span class="tm-dot">●</span> schema v0.2.0-alpha</span>
+        <span><span class="tm-dot">●</span> 5 cards · v1.1.0 latest</span>
+        <span><span class="tm-dot">●</span> v1.0.0 still available</span>
         <span><span class="tm-dot">●</span> free use, attributed</span>
         <span><span class="tm-dot">●</span> by Asleepius Games</span>
     </div>
@@ -561,10 +854,10 @@
     <!-- Thesis -->
     <div class="thesis">
         <h2>What is this?</h2>
-        <p>A <b>Daemon Card</b> is a single JSON file describing one persona — its intent, personality, history, strengths, weaknesses, voice, vocabulary, catchphrases, forbidden topics, and a bank of voiced sample lines.</p>
-        <p>It is designed to be <b>portable across mediums</b>. Drop a card into a video game and let the in-engine narrative system consume it. Drop it into a website and let the site speak in that persona's voice. Drop the <code>ai_chat_prompt</code> field into <i>any LLM chat</i> (ChatGPT, Claude, Gemini, local models) to instantly summon the persona. Embed the capsule on a social post, a portfolio, a Steam page.</p>
+        <p>A <b>Daemon Card</b> is a single JSON file describing one persona — its intent, personality, history, strengths, weaknesses, voice, vocabulary, catchphrases, forbidden topics, and a bank of voiced sample lines. v0.2.0-alpha cards also carry a one-line activation phrase that summons the persona in any LLM chat.</p>
+        <p>It is designed to be <b>portable across mediums</b>. Drop a card into a video game and let the in-engine narrative system consume it. Drop it into a website and let the site speak in that persona's voice. Click <b>Copy Summon Phrase</b> on any card below and paste it into <i>any LLM chat</i> (ChatGPT, Claude, Gemini, Grok, local models) — the persona is summoned. Embed the capsule on a social post, a portfolio, a Steam page.</p>
         <p>Daemons are <b>persona-first</b>. They do not contain plots. They contain identities. The story emerges as the persona responds. This is the architectural opposite of plot-first AI writing tools. <i>The persona is the artifact.</i></p>
-        <p style="font-size: 13px; color: var(--ink-mute); font-style: italic; margin-top: 14px;">The format is <b>alpha</b>. Cards published under v0.1.0-alpha will remain valid forever. Future schema versions will document compatibility explicitly.</p>
+        <p style="font-size: 13px; color: var(--ink-mute); font-style: italic; margin-top: 14px;">The format is <b>alpha</b>. Cards published under <b>v0.1.0-alpha</b> remain valid forever (this runtime accepts both v0.1.x-alpha and v0.2.x-alpha). Persona revisions ship as new card files; old versions stay live at <code>&lt;id&gt;@&lt;version&gt;.daemon.json</code>.</p>
     </div>
 
     <!-- Card grid -->
@@ -577,23 +870,30 @@
     <!-- About section -->
     <div class="sect-head">
         <h2>How to use a Daemon Card</h2>
-        <span class="sh-meta">three modes</span>
+        <span class="sh-meta">five modes · one card · choose your medium</span>
     </div>
     <div class="thesis">
-        <h2>1 · drop into any LLM chat</h2>
-        <p>Click any card above, then click <b>Copy AI Chat Prompt</b>. Paste the result into ChatGPT, Claude, Gemini, or any local model as the system prompt (or as the first message). The persona will hold its voice as long as the conversation lasts.</p>
+        <h2>1 · ⚡ one-click deploy (easiest)</h2>
+        <p>Open any card. Click <b>ChatGPT</b> / <b>Claude</b> / <b>Gemini</b> / <b>Grok</b> / <b>Perplexity</b> / <b>Le Chat</b>. The site copies the summon phrase and opens the platform in a new tab. Paste with <code>Ctrl+V</code>, hit Enter, and the persona summons in character. We don't host anything — you bring your own compute.</p>
 
-        <h2 style="margin-top: 18px;">2 · embed in a product</h2>
-        <p>Click <b>Download .daemon.json</b> on any card. Ship the file alongside your game, web app, or other product. Consume it with the runtime in <code>/daemons/daemons.js</code>, or write your own — the schema is documented.</p>
+        <h2 style="margin-top: 18px;">2 · 📥 SillyTavern (roleplay community)</h2>
+        <p>Click <b>SillyTavern</b> on any card. The site generates a PNG with the SillyTavern V2 character data embedded in the file's metadata (<code>tEXt</code> chunk under the <code>chara</code> key, base64-encoded JSON, per the published spec). <b>Drag the .card.png into SillyTavern</b> — the persona imports automatically with full system prompt, opening message, alternate greetings, and tags.</p>
 
-        <h2 style="margin-top: 18px;">3 · author your own</h2>
-        <p>Read the <a href="daemons/schema/daemon-card-v0.1.0-alpha.md">schema spec</a>. Write a JSON file. Attach the license block. Publish under your own publisher ID. The format is open. Attribution is the only requirement.</p>
+        <h2 style="margin-top: 18px;">3 · 🐍 local LLM (LM Studio / Ollama / llama.cpp)</h2>
+        <p>Click <b>Use Locally</b>. The cheat-sheet modal explains how to drop the system prompt into LM Studio, Ollama (with a Modelfile), llama.cpp, or any OpenAI-compatible local server. One-button copy buttons for the prompt and summon phrase.</p>
+
+        <h2 style="margin-top: 18px;">4 · embed in a product</h2>
+        <p>Click <b>Download .daemon.json</b>. Ship the file alongside your game, web app, or other product. Consume it with the runtime in <code>/daemons/daemons.js</code>, or write your own — the <a href="daemons/schema/daemon-card-v0.2.0-alpha.md">schema is documented</a>. Old cards (v0.1.0-alpha) work in this runtime too.</p>
+
+        <h2 style="margin-top: 18px;">5 · author your own</h2>
+        <p>Read the <a href="daemons/schema/daemon-card-v0.2.0-alpha.md">schema spec</a>. Write a JSON file. Attach the license block. Publish under your own publisher ID. The format is open. Attribution is the only requirement. Versions are perpetual — never overwrite a published card; ship a new version.</p>
     </div>
 
     <!-- Footer -->
     <div class="pub-foot">
-        <span>Asleepius Games · Daemon Cards · v0.1.0-alpha</span>
+        <span>Asleepius Games · Daemon Cards · schema v0.2.0-alpha · cards v1.1.0</span>
         <span>
+            <a href="daemons/schema/daemon-card-v0.2.0-alpha.md">Schema</a> ·
             <a href="daemons/LICENSE-v1.md">License v1 (alpha)</a> ·
             <a href="dashboard.html">Vibratur</a> ·
             <a href="v4v.html">V4V Registry</a>
@@ -606,6 +906,60 @@
 <div class="detail-overlay" id="detailOverlay" onclick="closeDetail()"></div>
 <div class="detail-modal" id="detailModal">
     <div class="detail-card" id="detailCard"></div>
+</div>
+
+<!-- Deploy toast (one-click confirmation) -->
+<div class="deploy-toast" id="deployToast"></div>
+
+<!-- Local LLM cheat-sheet modal -->
+<div class="local-modal" id="localModal" onclick="if(event.target===this)closeLocalCheatSheet()">
+    <div class="lm-card">
+        <button class="lm-close" onclick="closeLocalCheatSheet()" aria-label="Close">×</button>
+        <h3 id="lmTitle">Use Locally</h3>
+        <div class="lm-sub" id="lmSub">drop the daemon's system prompt into your local LLM stack of choice</div>
+
+        <h4>LM Studio (GUI · easiest)</h4>
+        <pre id="lmStudio">1. Open LM Studio → choose any chat model (Mistral 7B+, Llama 3 8B+, or larger).
+2. Open a new chat. Click the gear icon → "System Prompt".
+3. Paste the full system prompt (button below).
+4. Save. Send any message — the persona summons.
+
+Tip: turn temperature to ~0.7 for stable in-character replies.</pre>
+
+        <h4>Ollama (CLI)</h4>
+        <pre id="lmOllama">1. Run any chat model:    ollama run llama3:8b
+2. In the chat, paste the SUMMON PHRASE as your first message.
+   The persona greets you in character.
+
+Power-user: bake the system prompt into a Modelfile:
+   FROM llama3:8b
+   SYSTEM "&lt;paste the full system prompt here&gt;"
+Then:  ollama create chad -f Modelfile  &amp;&amp;  ollama run chad</pre>
+
+        <h4>llama.cpp / llamafile</h4>
+        <pre id="lmLlamacpp">./main -m model.gguf --in-prefix "User: " --in-suffix "Assistant: " \
+       --system "&lt;full system prompt from button below&gt;" \
+       --interactive --temp 0.7</pre>
+
+        <h4>OpenAI-compatible API (LM Studio server, vLLM, llamafile server, etc.)</h4>
+        <pre id="lmApi">curl http://localhost:1234/v1/chat/completions \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "any-loaded-model",
+    "messages": [
+      { "role": "system", "content": "&lt;full system prompt&gt;" },
+      { "role": "user",   "content": "Tell me about Asset 0001." }
+    ],
+    "temperature": 0.7
+  }'</pre>
+
+        <div class="lm-actions">
+            <button class="primary" onclick="copyPromptFromLocal()">📋 Copy Full System Prompt</button>
+            <button onclick="copySummonFromLocal()">📣 Copy Summon Phrase</button>
+            <button onclick="downloadFromLocal()">⬇ Download .daemon.json</button>
+            <button onclick="closeLocalCheatSheet()">Close</button>
+        </div>
+    </div>
 </div>
 
 <script src="daemons/daemons.js"></script>
@@ -639,104 +993,171 @@
         `;
     }).join('');
 
+    function escapeHtml(s) {
+        return String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+
     function openDetail(id) {
         const c = Daemons.get(id);
         if (!c) return;
         const art = c.capsule.art || {};
         const persona = c.persona || {};
         const vb = c.voice_bank || {};
+        const activation = c.activation || {};
+        const starter = c.starter_pack || {};
+        const compat = c.compatibility || {};
+        const tested = Array.isArray(compat.tested) ? compat.tested : [];
         const sampleQuotes = (vb.quotes || vb.determinations || vb.bulletins || vb.announcements || vb.current_state || []).slice(0, 4);
+        const otherVersions = (Daemons.list().find(x => x.id === c.id) || { versions: [c.version] }).versions.filter(v => v !== c.version);
+
+        const testedHtml = tested.length ? tested.map(t => {
+            const statusGlyph = { 'verified': '✓', 'partial': '~', 'untested': '△', 'failing': '✗' }[t.status] || '?';
+            const statusClass = 'tb-' + (t.status || 'untested');
+            const tip = t.tested_at ? ('tested ' + t.tested_at + (t.tester ? ' by ' + escapeHtml(t.tester) : '')) : 'not yet tested';
+            return `<span class="tested-badge ${statusClass}" title="${tip}">${statusGlyph} ${escapeHtml(t.model)}</span>`;
+        }).join('') : '<span class="dc-mute">not yet tested</span>';
 
         const html = `
             <div class="dc-header" style="background: linear-gradient(135deg, ${art.color || '#222'}30 0%, transparent 80%);">
                 <button class="dc-close" onclick="closeDetail()" aria-label="Close">×</button>
                 <div class="dc-emoji">${art.icon || '◇'}</div>
-                <h3>${c.capsule.title || c.name}</h3>
-                <div class="dc-sub">${c.capsule.subtitle || ''}</div>
+                <h3>${escapeHtml(c.capsule.title || c.name)}</h3>
+                <div class="dc-sub">${escapeHtml(c.capsule.subtitle || '')}</div>
                 <div class="dc-meta">
-                    <span class="ver">v${c.version}</span>
-                    <span>id: ${c.id}</span>
-                    <span>schema: ${c.schemaVersion}</span>
-                    <span>published: ${c.publisher}</span>
+                    <span class="ver">v${c.version} (latest)</span>
+                    <span>id: ${escapeHtml(c.id)}</span>
+                    <span>schema: ${escapeHtml(c.schemaVersion)}</span>
+                    <span>published: ${escapeHtml(c.publisher)}</span>
+                    ${otherVersions.length ? `<span>also available: ${otherVersions.map(v => `<a href="daemons/cards/${c.id}@${v}.daemon.json" target="_blank" rel="noopener">v${v}</a>`).join(', ')}</span>` : ''}
+                </div>
+            </div>
+
+            <div class="dc-deploy">
+                <div class="dc-deploy-label">⚡ Deploy in one click <span class="dc-mute">— copies the summon phrase &amp; opens the platform in a new tab</span></div>
+                <div class="dc-deploy-grid">
+                    ${Daemons.DEPLOYMENT_TARGETS.map(t => `
+                        <button class="deploy-btn" onclick="deployDaemon('${c.id}','${t.id}')" title="Copy summon phrase &amp; open ${escapeHtml(t.name)}">
+                            <span class="d-icon">${t.icon}</span>
+                            <span class="d-name">${escapeHtml(t.name)}</span>
+                        </button>
+                    `).join('')}
+                    <button class="deploy-btn deploy-st" onclick="exportST('${c.id}')" title="Export as SillyTavern V2 character card (drag the PNG into SillyTavern)">
+                        <span class="d-icon">📥</span>
+                        <span class="d-name">SillyTavern</span>
+                        <span class="d-tag">.card.png</span>
+                    </button>
+                    <button class="deploy-btn deploy-local" onclick="openLocalCheatSheet('${c.id}')" title="Use with LM Studio / Ollama / llama.cpp">
+                        <span class="d-icon">🐍</span>
+                        <span class="d-name">Use Locally</span>
+                        <span class="d-tag">cheat sheet</span>
+                    </button>
                 </div>
             </div>
 
             <div class="dc-actions">
-                <button class="primary" onclick="copyPrompt('${c.id}', this)">📋 Copy AI Chat Prompt</button>
-                <button onclick="downloadJSON('${c.id}', this)">⬇ Download .daemon.json</button>
+                <button onclick="copySummon('${c.id}')">📣 Copy Summon Phrase</button>
+                <button onclick="copyPrompt('${c.id}')">📋 Copy Full System Prompt</button>
+                <button onclick="downloadJSON('${c.id}')">⬇ Download .daemon.json</button>
                 <a class="dc-btn" href="daemons/cards/${c.id}.daemon.json" target="_blank" rel="noopener">↗ Open JSON</a>
-                <button onclick="copyURL('${c.id}', this)">🔗 Copy URL</button>
+                <button onclick="copyURL('${c.id}')">🔗 Copy URL</button>
                 <span class="copy-confirm" id="copyConfirm">✓ copied</span>
             </div>
 
             <div class="dc-body">
 
+                ${activation.one_line_summon ? `
+                <section class="summon-block">
+                    <h4>Summon Phrase  <span class="dc-mute">— paste as your first message in any LLM chat</span></h4>
+                    <div class="summon-line"><code>${escapeHtml(activation.one_line_summon)}</code></div>
+                    ${activation.example_user_message ? `<div class="dc-mute" style="margin-top:6px;font-size:12px;">Then ask, for example: <i>"${escapeHtml(activation.example_user_message)}"</i></div>` : ''}
+                </section>
+                ` : ''}
+
+                ${starter.first_message ? `
+                <section>
+                    <h4>Opening Line  <span class="dc-mute">— what the daemon says first when summoned</span></h4>
+                    <div class="dc-quote">${escapeHtml(starter.first_message)}<span class="who">— ${escapeHtml(c.name)} · v${c.version} · opening</span></div>
+                    ${(starter.suggested_user_replies || []).length ? `
+                        <div style="margin-top:10px;">
+                            <span class="dc-mute" style="font-size:11px;text-transform:uppercase;letter-spacing:1px;">try asking:</span>
+                            <div class="reply-chips">${(starter.suggested_user_replies || []).map(r => `<span class="chip" onclick="copyTo('${escapeHtml(r).replace(/'/g, '&#39;')}')" title="click to copy">${escapeHtml(r)}</span>`).join('')}</div>
+                        </div>
+                    ` : ''}
+                </section>
+                ` : ''}
+
+                <section>
+                    <h4>Tested On</h4>
+                    <div class="tested-row">${testedHtml}</div>
+                    <div class="dc-mute" style="font-size:11px;margin-top:6px;">  ✓ verified · ~ partial · △ untested · ✗ failing  </div>
+                </section>
+
                 <section>
                     <h4>Summary</h4>
-                    <p>${c.capsule.summary || ''}</p>
+                    <p>${escapeHtml(c.capsule.summary || '')}</p>
                 </section>
 
                 <section>
                     <h4>Intent</h4>
-                    <p>${persona.intent || ''}</p>
+                    <p>${escapeHtml(persona.intent || '')}</p>
                 </section>
 
                 <section>
                     <h4>Personality</h4>
-                    <p>${persona.personality || ''}</p>
+                    <p>${escapeHtml(persona.personality || '')}</p>
                 </section>
 
                 <section>
                     <h4>History</h4>
-                    <p>${persona.history || ''}</p>
+                    <p>${escapeHtml(persona.history || '')}</p>
                 </section>
 
                 <section class="dc-cols">
                     <div>
                         <h4>Strengths</h4>
-                        <ul>${(persona.strengths || []).map(s => `<li>${s}</li>`).join('')}</ul>
+                        <ul>${(persona.strengths || []).map(s => `<li>${escapeHtml(s)}</li>`).join('')}</ul>
                     </div>
                     <div>
                         <h4>Weaknesses</h4>
-                        <ul>${(persona.weaknesses || []).map(w => `<li>${w}</li>`).join('')}</ul>
+                        <ul>${(persona.weaknesses || []).map(w => `<li>${escapeHtml(w)}</li>`).join('')}</ul>
                     </div>
                 </section>
 
                 <section>
                     <h4>Speaking Style</h4>
-                    <p>${persona.speaking_style || ''}</p>
+                    <p>${escapeHtml(persona.speaking_style || '')}</p>
                 </section>
 
                 <section>
                     <h4>Vocabulary</h4>
-                    <div class="dc-vocab">${(persona.vocabulary || []).map(v => `<span class="v">${v}</span>`).join('')}</div>
+                    <div class="dc-vocab">${(persona.vocabulary || []).map(v => `<span class="v">${escapeHtml(v)}</span>`).join('')}</div>
                 </section>
 
                 <section>
                     <h4>Catchphrases</h4>
-                    <div class="dc-vocab">${(persona.catchphrases || []).map(v => `<span class="v">"${v}"</span>`).join('')}</div>
+                    <div class="dc-vocab">${(persona.catchphrases || []).map(v => `<span class="v">"${escapeHtml(v)}"</span>`).join('')}</div>
                 </section>
 
                 <section>
                     <h4>Forbidden Topics</h4>
-                    <ul>${(persona.forbidden_topics || []).map(t => `<li>${t}</li>`).join('')}</ul>
+                    <ul>${(persona.forbidden_topics || []).map(t => `<li>${escapeHtml(t)}</li>`).join('')}</ul>
                 </section>
 
                 <section>
                     <h4>Sample Voice Lines</h4>
-                    ${sampleQuotes.map(q => `<div class="dc-quote">${q}<span class="who">— ${c.name} · v${c.version}</span></div>`).join('')}
+                    ${sampleQuotes.map(q => `<div class="dc-quote">${escapeHtml(q)}<span class="who">— ${escapeHtml(c.name)} · v${c.version}</span></div>`).join('')}
                 </section>
 
                 <section>
-                    <h4>AI Chat Prompt (verbatim)</h4>
-                    <div class="dc-prompt">${(c.ai_chat_prompt || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')}</div>
+                    <h4>Full AI Chat Prompt (verbatim)</h4>
+                    <div class="dc-prompt">${escapeHtml(c.ai_chat_prompt || '')}</div>
                 </section>
 
                 <section>
                     <div class="dc-license">
-                        <b>${c.license.name}</b> — ${c.license.summary}
+                        <b>${escapeHtml(c.license.name)}</b> — ${escapeHtml(c.license.summary)}
                         ${c.license.url ? `<br><a href="${c.license.url}">read full license</a>` : ''}
-                        <br><span style="font-family: 'JetBrains Mono', monospace; font-size: 10.5px; color: var(--ink-mute); text-transform: uppercase; letter-spacing: 1px;">attribution: <b>${c.publisher}</b> · daemon card <b>${c.id}</b> v${c.version} · schema ${c.schemaVersion}</span>
+                        <br><span style="font-family: 'JetBrains Mono', monospace; font-size: 10.5px; color: var(--ink-mute); text-transform: uppercase; letter-spacing: 1px;">attribution: <b>${escapeHtml(c.publisher)}</b> · daemon card <b>${escapeHtml(c.id)}</b> v${escapeHtml(c.version)} · schema ${escapeHtml(c.schemaVersion)}</span>
                     </div>
                 </section>
 
@@ -754,8 +1175,78 @@
         document.body.style.overflow = '';
     }
 
-    function copyPrompt(id, btn) {
-        Daemons.copyPrompt(id).then(() => flashCopy()).catch(() => alert('Could not copy. Your browser may have blocked clipboard access.'));
+    /* -------- Pass 3.6 — One-click deploy + SillyTavern + Local cheat-sheet -------- */
+    function deployDaemon(id, targetId) {
+        Daemons.deployTo(id, targetId)
+            .then((target) => {
+                showToast(
+                    '<span class="t-em">' + target.icon + '</span> Summon phrase copied · ' + target.name + ' opening...<br>' +
+                    '<span style="font-size:11.5px;color:var(--ink-mute);">paste with <span class="t-kbd">Ctrl+V</span> (or <span class="t-kbd">⌘V</span>) and press Enter</span>'
+                );
+            })
+            .catch(() => alert('Could not deploy. Your browser may have blocked clipboard access or the new tab.'));
+    }
+
+    function exportST(id) {
+        if (!Daemons.exportSillyTavernPng) { alert('Export unavailable — runtime is older than v0.2.0-alpha.'); return; }
+        Daemons.exportSillyTavernPng(id)
+            .then((bytes) => showToast(
+                '<span class="t-em">📥</span> Exported <b>' + id + '.card.png</b> (' + (bytes/1024).toFixed(1) + ' KB)<br>' +
+                '<span style="font-size:11.5px;color:var(--ink-mute);">drag the file into SillyTavern · the persona imports automatically</span>'
+            ))
+            .catch((e) => alert('Could not export PNG: ' + (e && e.message || e)));
+    }
+
+    let _localCheatId = null;
+    function openLocalCheatSheet(id) {
+        const c = Daemons.get(id);
+        if (!c) return;
+        _localCheatId = id;
+        document.getElementById('lmTitle').textContent = 'Use ' + c.name + ' Locally';
+        document.getElementById('lmSub').textContent = 'drop ' + c.name + '\'s system prompt into your local LLM stack of choice — or just paste the summon phrase as the first message';
+        document.getElementById('localModal').classList.add('shown');
+    }
+    function closeLocalCheatSheet() {
+        document.getElementById('localModal').classList.remove('shown');
+        _localCheatId = null;
+    }
+    function copyPromptFromLocal() {
+        if (!_localCheatId) return;
+        Daemons.copyPrompt(_localCheatId)
+            .then(() => showToast('<span class="t-em">📋</span> Full system prompt copied · paste into LM Studio / Ollama / etc.'))
+            .catch(() => alert('Could not copy.'));
+    }
+    function copySummonFromLocal() {
+        if (!_localCheatId) return;
+        Daemons.copyActivation(_localCheatId)
+            .then(() => showToast('<span class="t-em">📣</span> Summon phrase copied · paste as first message'))
+            .catch(() => alert('Could not copy.'));
+    }
+    function downloadFromLocal() {
+        if (!_localCheatId) return;
+        Daemons.download(_localCheatId);
+    }
+
+    /* Toast (centered bottom of viewport) */
+    let _toastTimer = null;
+    function showToast(html) {
+        const el = document.getElementById('deployToast');
+        if (!el) return;
+        el.innerHTML = html;
+        el.classList.add('shown');
+        if (_toastTimer) clearTimeout(_toastTimer);
+        _toastTimer = setTimeout(() => el.classList.remove('shown'), 4200);
+    }
+
+    function copySummon(id) {
+        Daemons.copyActivation(id)
+            .then(() => flashCopy('summon phrase copied · paste into any LLM'))
+            .catch(() => alert('Could not copy. Your browser may have blocked clipboard access.'));
+    }
+    function copyPrompt(id) {
+        Daemons.copyPrompt(id)
+            .then(() => flashCopy('full prompt copied · use as system prompt'))
+            .catch(() => alert('Could not copy. Your browser may have blocked clipboard access.'));
     }
     function downloadJSON(id) {
         Daemons.download(id);
@@ -769,21 +1260,39 @@
             prompt('Copy this URL:', url);
         }
     }
+    function copyTo(text) {
+        // chip click: copy the suggested reply for the user to paste
+        const t = (text || '').replace(/&#39;/g, "'");
+        if (navigator.clipboard) {
+            navigator.clipboard.writeText(t).then(() => flashCopy('reply copied: "' + t + '"')).catch(() => prompt('Copy this reply:', t));
+        } else {
+            prompt('Copy this reply:', t);
+        }
+    }
     function flashCopy(text) {
         const el = document.getElementById('copyConfirm');
         if (!el) return;
         el.textContent = '✓ ' + (text || 'copied');
         el.classList.add('shown');
-        setTimeout(() => el.classList.remove('shown'), 1800);
+        setTimeout(() => el.classList.remove('shown'), 2400);
     }
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') closeDetail();
     });
-    window.openDetail = openDetail;
-    window.closeDetail = closeDetail;
-    window.copyPrompt = copyPrompt;
-    window.downloadJSON = downloadJSON;
-    window.copyURL = copyURL;
+    window.openDetail            = openDetail;
+    window.closeDetail           = closeDetail;
+    window.copySummon            = copySummon;
+    window.copyPrompt            = copyPrompt;
+    window.downloadJSON          = downloadJSON;
+    window.copyURL               = copyURL;
+    window.copyTo                = copyTo;
+    window.deployDaemon          = deployDaemon;
+    window.exportST              = exportST;
+    window.openLocalCheatSheet   = openLocalCheatSheet;
+    window.closeLocalCheatSheet  = closeLocalCheatSheet;
+    window.copyPromptFromLocal   = copyPromptFromLocal;
+    window.copySummonFromLocal   = copySummonFromLocal;
+    window.downloadFromLocal     = downloadFromLocal;
 </script>
 </body>
 </html>

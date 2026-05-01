@@ -995,6 +995,300 @@ PASS 3 STATUS
   [ ] Pass 4 hooks (Sky Scaffold tie-in)   pending
 
 
+================================================================================
+PASS 3.5 — SCHEMA BUMP  (DAEMON CARDS · v0.2.0-alpha · §47-VIBE-DAEMON-B)
+================================================================================
+
+TRIGGER
+-------
+
+External tester (Asleepius Games via Grok) reported that dropping a
+Daemon Card JSON cold into a fresh LLM chat produced "polite summaries
+or half-in-character responses" instead of "full embodiment." Root cause
+diagnosed: without an explicit activation ritual at the start of the
+conversation, the model treats the JSON as data to analyze rather than
+an identity to assume. Three additive schema changes resolve this.
+
+WHAT CHANGED  (v0.1.0-alpha → v0.2.0-alpha)
+-------------------------------------------
+
+Schema is **additive only**. Every v0.1.0-alpha card remains valid.
+The runtime accepts both v0.1.x-alpha AND v0.2.x-alpha cards.
+
+NEW FIELD: `activation`
+  - trigger_phrase        a short summon phrase ("Summon Chad Vibington III")
+  - one_line_summon       a self-contained activation message designed to be
+                          pasted as the user's first message in any LLM chat;
+                          declares identity, demands stay-in-character,
+                          specifies the opening line, and prompts the user
+                          to follow with their actual question
+  - example_user_message  what the user might say after pasting
+  - consumer_instructions guidance for runtime authors
+
+NEW FIELD: `starter_pack`
+  - first_message            the literal text the persona says as its opening
+                             reply when summoned (matches the opening-line
+                             directive in `ai_chat_prompt`)
+  - suggested_user_replies   array of suggested first questions the user can
+                             ask; UIs MAY render as clickable chips
+
+NEW SUB-FIELD: `compatibility.tested`
+  Array of records: { model, status, tested_at, tester }
+  status enum: "verified" | "partial" | "untested" | "failing"
+  Honest, not aspirational. Surfaces in catalog as colored badges.
+
+STRENGTHENED: `ai_chat_prompt` (authoring guidance, not enforced)
+  All five seed cards' prompts were rewritten to include:
+    1. Hard "You are now X" opening declaration
+    2. Numbered ABSOLUTE RULES block (5 rules) including jailbreak
+       resistance handled IN CHARACTER (e.g. Chad responds with a
+       Roman-numeral apology that scolds the user; Brett-9 routes the
+       request back per §47-VIBE-RVF-0029; etc.)
+    3. Mandatory OPENING LINE that mirrors starter_pack.first_message
+    4. Three FEW-SHOT EXAMPLES at the end (one per card demonstrates
+       in-character jailbreak resistance)
+    5. License footer with new card+schema versions
+
+CARD VERSIONING
+---------------
+
+All five cards bumped: v1.0.0 → v1.1.0.
+
+Per the versioning promise, **the v1.0.0 cards are not removed**. They
+remain published as URL-addressable artifacts at:
+
+  /daemons/cards/<id>@1.0.0.daemon.json     (5 files, preserved)
+  /daemons/cards/<id>@1.1.0.daemon.json     (5 files, pinned latest)
+  /daemons/cards/<id>.daemon.json           (5 files, latest pointer)
+
+Sitemap lists all 15 card URLs. Anyone who pinned to v1.0.0 keeps
+working forever. New consumers default to v1.1.0.
+
+RUNTIME ADDITIONS
+-----------------
+
+  Daemons.SCHEMA_VERSION       = 'v0.2.0-alpha'
+  Daemons.RUNTIME_VERSION      = '0.2.0-alpha'
+  Daemons.SUPPORTED_SCHEMAS    = ['v0.1.x-alpha', 'v0.2.x-alpha']
+
+  Daemons.activationLine(id)         -> activation.one_line_summon
+  Daemons.starterMessage(id)         -> starter_pack.first_message
+  Daemons.suggestedReplies(id)       -> starter_pack.suggested_user_replies
+  Daemons.copyActivation(id)         -> Promise (copy summon line)
+
+CATALOG PAGE CHANGES
+--------------------
+
+  /daemons.html
+    - Primary action button is now "📣 Copy Summon Phrase" (gold).
+    - Secondary action: "📋 Copy Full Prompt" (for system-prompt mode).
+    - New "Summon Phrase" section at the top of each detail view —
+      shows the literal one_line_summon copy-paste-able.
+    - New "Opening Line" section — shows starter_pack.first_message as
+      a quoted sample, with suggested_user_replies as clickable chips
+      that copy on click.
+    - New "Tested On" section — color-coded badges per model.
+    - Header now shows "v1.1.0 (latest)" with a link to also-available
+      versions (currently v1.0.0 for all five cards).
+    - Footer cites schema v0.2.0-alpha · cards v1.1.0.
+    - "How to use" intro now lists 4 modes (was 3): summon | system-prompt | embed | author.
+
+PASS 3.5 STATUS
+---------------
+
+  [x] Schema doc v0.2.0-alpha published    /daemons/schema/...v0.2.0-alpha.md
+  [x] Schema doc v0.1.0-alpha preserved    perpetual artifact
+  [x] License unchanged                    Daemon Card License v1 (alpha)
+  [x] Runtime updated                      v0.2.0-alpha, accepts both
+  [x] All 5 cards bumped                   v1.0.0 → v1.1.0
+  [x] v1.0.0 cards preserved on disk       <id>@1.0.0.daemon.json
+  [x] v1.1.0 cards published               <id>@1.1.0.daemon.json + latest
+  [x] Catalog UI overhauled                Copy Summon Phrase as primary
+  [x] Sitemap lists all 17 daemon URLs     2 schemas + 15 card files
+  [x] SEF docs updated                     this section
+  [ ] Card art (capsule.art.image)         pending — Asleepius hand-drawn,
+                                           expected ~v1.2.0 (no schema bump)
+  [ ] Cross-model testing (Claude, GPT-4o, status badges
+      Gemini)                              currently "untested" for non-Grok
+  [ ] OG image for /daemons.html           pending
+
+
+================================================================================
+PASS 3.6 — OUTSOURCED HOSTING & COMMUNITY HANDOFF · §47-VIBE-DAEMON-C
+================================================================================
+"we don't host the daemons. we hand them to you. you bring the compute."
+
+PROBLEM
+-------
+After Pass 3.5 (Copy Summon Phrase), activation worked but still required
+two manual steps from the user: copy from our site, switch tabs to their
+LLM of choice, paste. The friction was small but real. Worse, it left a
+huge audience untouched: the SillyTavern roleplay community, which expects
+character cards in a specific PNG-with-embedded-JSON format.
+
+DECISION
+--------
+Pass 3.6 adds three new deployment surfaces, all built on top of the
+existing v0.2.0-alpha schema (no schema bump, no card version bump):
+
+  1. ONE-CLICK DEPLOY        — copies summon + opens platform in new tab
+  2. SILLYTAVERN V2 EXPORT   — generates a .card.png with V2 JSON in tEXt
+  3. LOCAL LLM CHEAT-SHEET   — copy prompt + show LM Studio/Ollama recipes
+
+This is purely additive UX. v1.1.0 cards work unchanged. The runtime
+gained ~350 lines (PNG chunk logic, CRC32, V2 mapping, deploy targets).
+No new files, no new public URLs to crawl, no new schema fields.
+
+ONE-CLICK DEPLOY
+----------------
+Six platform buttons appear in every daemon's detail panel:
+
+  ChatGPT     → https://chatgpt.com/
+  Claude      → https://claude.ai/new
+  Gemini      → https://gemini.google.com/app
+  Grok        → https://grok.com/
+  Perplexity  → https://www.perplexity.ai/
+  Le Chat     → https://chat.mistral.ai/
+
+Click flow:
+  1. navigator.clipboard.writeText(activation.one_line_summon)
+  2. window.open(target.url, '_blank', 'noopener')
+  3. Toast: "Summon phrase copied · opening [Platform] · paste with Ctrl+V"
+
+We do not iframe, proxy, scrape, or hold credentials. We hand the user
+a clipboard-loaded summon and a fresh tab. Pure outsourcing.
+
+Public API:
+  Daemons.deployTo(id, targetId)           returns Promise<target>
+  Daemons.DEPLOYMENT_TARGETS                array of {id,name,url,icon}
+
+SILLYTAVERN V2 EXPORT
+---------------------
+SillyTavern is the dominant local interface for the AI roleplay community.
+Its standard format is "Character Card V2" — a PNG with a JSON payload
+hidden in a tEXt chunk under the keyword "chara" (base64-encoded).
+
+  Spec: https://github.com/malfoyslastname/character-card-spec-v2
+
+Pass 3.6 implements full V2 export in pure browser JS:
+
+  Daemons.exportSillyTavernPng(id)   returns Promise<bytes-written>
+  Daemons.toSillyTavernV2(id)        returns the V2 JSON object
+
+Pipeline:
+  1. Render placeholder PNG via <canvas> (400x600 portrait, gradient,
+     icon emoji, name, version pill, license footer). When real card
+     art lands (v1.2.0+), this step swaps to loading the real image.
+  2. Build the V2 character object (chara_card_v2 / spec_version 2.0).
+  3. JSON.stringify → base64 (UTF-8 safe via encodeURIComponent).
+  4. Inject as a tEXt chunk just before IEND, with proper PNG-standard
+     CRC32 (poly 0xEDB88320). Removes any pre-existing "chara" chunk
+     so re-export is idempotent.
+  5. Trigger download as <id>.card.png.
+
+V2 field mapping from Daemon Card:
+  data.name                ← name
+  data.description         ← persona.personality + persona.history
+  data.personality         ← persona.personality (truncated to 240 chars)
+  data.scenario            ← capsule.summary
+  data.first_mes           ← starter_pack.first_message
+  data.mes_example         ← built from voice_bank (one-shot exemplars)
+  data.system_prompt       ← ai_chat_prompt (the strengthened prompt)
+  data.alternate_greetings ← voice_bank.current_state[0..7]
+  data.tags                ← capsule.tags
+  data.creator             ← publisher
+  data.character_version   ← version
+  data.creator_notes       ← attribution + license + canonical URL
+  data.extensions.daemon_card ← full provenance (schema, id, version,
+                                publisher, license, activation,
+                                forbidden_topics, canonical_url)
+
+The user drag-and-drops the .card.png into SillyTavern. The persona
+imports with full activation rules, opening line, alternate greetings,
+and a back-pointer to vibratur.vip/daemons via the daemon_card extension.
+
+End-to-end round-trip verified: PNG signature preserved, chunk integrity
+intact, base64-encoded JSON parses cleanly, all V2 required fields populate.
+
+LOCAL LLM CHEAT-SHEET
+---------------------
+A modal triggered by "🐍 Use Locally" with copy-paste recipes for:
+
+  - LM Studio          (GUI: paste system prompt into chat settings)
+  - Ollama             (CLI: paste summon as first message OR build
+                        a Modelfile with the prompt baked in)
+  - llama.cpp          (--system flag with the full prompt)
+  - OpenAI-compatible  (curl example for LM Studio server, vLLM, etc.)
+                       /v1/chat/completions
+
+Each recipe is paired with one-click buttons:
+  📋 Copy Full System Prompt
+  📣 Copy Summon Phrase
+  ⬇  Download .daemon.json
+
+This serves the "Bring Your Own Compute" tier — power users running
+private/sovereign inference. Aligns with the broader project ethos:
+the user always controls the stack; we just publish the persona.
+
+CATALOG UI CHANGES (daemons.html)
+---------------------------------
+- New "Deploy in one click" panel above the actions row in the detail
+  modal. Six platform buttons + SillyTavern + Use Locally. Grid layout,
+  responsive. Indigo accent on SillyTavern, green on Local.
+- Toast notification (bottom-center, fixed) confirms each deploy with
+  paste instructions ("paste with Ctrl+V or ⌘V and press Enter").
+- Local cheat-sheet modal with four code blocks (LM Studio, Ollama,
+  llama.cpp, OpenAI-compatible API).
+- "How to use" intro updated from 4 modes to 5 modes:
+    1. one-click deploy (NEW · primary)
+    2. SillyTavern (NEW)
+    3. local LLM (NEW)
+    4. embed in a product
+    5. author your own
+
+NOT-CHANGED
+-----------
+- Schema is still v0.2.0-alpha. No new fields. No card version bump.
+- All 5 cards still v1.1.0 with v1.0.0 preserved.
+- License is still Daemon Card License v1 (alpha).
+- sitemap.xml does not need new entries (no new public URLs).
+- robots.txt unchanged.
+- The Copy Summon Phrase / Copy Full System Prompt / Download JSON /
+  Open JSON / Copy URL actions are all still present in the secondary
+  actions row, unchanged behavior.
+
+NOT-DOING (deliberate)
+----------------------
+- Custom GPTs / Claude Projects: requires you to set them up on each
+  platform (account, upload card, set instructions, get the public URL).
+  When/if you do, add an optional `external_endpoints` field to the
+  schema (additive → still v0.2.x compatible) and the deploy buttons
+  fall through to the hosted version when present, blank-chat otherwise.
+- Embedding a hosted inference endpoint (the "Deploy to Vibratur" path).
+  Out of scope. We are not in the inference business. The point of
+  v0.2.0-alpha is portable persona, not hosted persona.
+
+PASS 3.6 STATUS
+---------------
+
+  [x] DEPLOYMENT_TARGETS array            6 platforms
+  [x] Daemons.deployTo(id, targetId)      copies summon + opens tab
+  [x] CRC32 + tEXt chunk + injection      PNG-spec compliant
+  [x] toSillyTavernV2(card)               full V2 mapping
+  [x] exportSillyTavernPng(id)            placeholder PNG + chara chunk
+  [x] Round-trip tested                   JSON parses, fields preserved
+  [x] Catalog deploy panel                grid of 8 buttons
+  [x] Toast notifications                 paste instructions on copy
+  [x] Local cheat-sheet modal             LM Studio / Ollama / llama.cpp
+  [x] How-to-use rewritten                4 modes → 5 modes
+  [x] SEF docs updated                    this section
+  [ ] Real PNG art for export             pending (v1.2.0+ replaces
+                                          placeholder canvas render)
+  [ ] external_endpoints schema field     pending (only if we ever
+                                          publish a Custom GPT / Claude
+                                          Project)
+
+
 --------------------------------------------------------------------------------
 CLOSING NOTE FROM THE OFFICE OF THE CVO
 --------------------------------------------------------------------------------
