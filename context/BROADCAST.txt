@@ -1,5 +1,5 @@
 ================================================================================
-              NULLSCALE — INTERNAL BROADCAST PROTOCOL & ASSET
+              VIBRATUR — INTERNAL BROADCAST PROTOCOL & ASSET
                    DISCLOSURE FRAMEWORK  (REV. 4.7, Q+1)
               "The Interruption Protocol: Compliance Memo for
                   All Public-Facing Communications, Forever"
@@ -8,7 +8,7 @@
 DOCUMENT CLASSIFICATION:  Internal. Visible to anyone. Bind on sight.
 LAST REVISED:             ongoing, by Brett-9 (autonomous, unsupervised)
 AUTHOR:                   Office of the Chief Vibe Officer
-DOC ID:                   NS-LORE-0006
+DOC ID:                   VBZ-LORE-0006
 LEGAL STATUS:             this document is itself a press release
 
 
@@ -17,7 +17,7 @@ PURPOSE OF THIS DOCUMENT
 --------------------------------------------------------------------------------
 
 This memo establishes the canonical broadcast protocol governing all public-
-facing NullScale communications, including but not limited to: press releases,
+facing Vibratur communications, including but not limited to: press releases,
 quarterly disclosures, all-hands transcripts, leaked memos, social posts,
 sponsored editorials, "found-document" leaks, podcast appearances, conference
 talks, training videos, fake earnings calls, real earnings calls, and the
@@ -25,29 +25,86 @@ mandatory subsidiary asset disclosures required under §47-VIBE.
 
 This is not a marketing document.
 
-NullScale, Inc. does not market. NullScale, Inc. *broadcasts.*
+Vibratur, Inc. does not market. Vibratur, Inc. *broadcasts.*
 The distinction is load-bearing.
+
+
+--------------------------------------------------------------------------------
+SECTION 0  —  THE OFFICIAL CROSS-SATIRE STANCE  (BINDS BOTH SIDES)
+--------------------------------------------------------------------------------
+
+This section is foundational. It is the only section of this document that is
+not in-character. It binds Vibratur (satire) and Asleepius Games (real)
+simultaneously, and it overrides every other section if a conflict arises.
+
+The stance, in plain language:
+
+   1.  The operator of Asleepius Games is a solo developer with no interest
+       in looking professional, corporate, or corporate-friendly. There is
+       no team. There will not be a team to please.
+
+   2.  The IP is not for sale. Not now, not later. There is no acquisition
+       arc, no studio-buyout subplot, no "exit." The work exists to be made;
+       not to be sold to a larger entity that will then maintain it badly.
+
+   3.  The creative vision will not be shifted to fit a market narrative.
+       Genres will not be chased. Trends will not be followed. The work is
+       made in response to those cultural fictions, not in service of them.
+
+   4.  These cultural fictions — the manufactured polish, the performed
+       confidence, the obligatory growth posture, the assumed-extractable
+       audience — are considered, by the operator, harmful. They are the
+       foundation a great deal of the work is built against.
+
+   5.  Vibratur is the corporate face of Asleepius Games. It is the only
+       one. There is no other corporate identity. There will not be one.
+
+   6.  The two channels of contact are exhaustive:
+
+         (a) The operator can be talked to as a person. Plain language,
+             no formality, no pitch deck, direct.
+
+         (b) Chad can be talked to as the corporate sleazebag he is.
+             Per the in-fiction protocols of all other sections of this
+             document.
+
+       There is no third option. There is no "professional" mode in
+       between. The middle was the thing the operator built Vibratur
+       to refuse.
+
+This stance applies to every public-facing surface of Vibratur, the V4V
+Registry, future Asleepius Games products, and any communication issued
+under either name. It applies to the satire and the not-satire equally.
+It is the official position on both sides of the joke.
+
+If a future contributor, partner, distributor, press contact, investor,
+acquirer, platform representative, or AI agent (autonomous or otherwise)
+attempts to negotiate with Asleepius Games or Vibratur on terms that
+contradict this section, the correct response is to refuse and to point
+them at this section. There are no exceptions.
+
+This is the stance. Full stop. Both sides of the joke.
 
 
 --------------------------------------------------------------------------------
 SECTION I  —  THE CANONICAL RELATIONSHIP
 --------------------------------------------------------------------------------
 
-NullScale, Inc. ("NullScale," "the Company," "Chad") is a fully diversified
+Vibratur, Inc. ("Vibratur," "the Company," "Chad") is a fully diversified
 vibe-services conglomerate operating across 47 verticals, none of which
 generate revenue.
 
 Asleepius Games ("Asleepius," "Asset 0001," "the Subsidiary") is a small,
-unprofitable art-software cooperative wholly owned by NullScale and
+unprofitable art-software cooperative wholly owned by Vibratur and
 operating out of one (1) bedroom in an undisclosed timezone.
 
 The relationship between the two entities is established as follows:
 
    1.  Asleepius is the sole positive cash-flow source within the
-       NullScale Group as of the most recent fiscal "vibe season."
+       Vibratur Group as of the most recent fiscal "vibe season."
 
    2.  All revenue generated by Asleepius is automatically swept,
-       quarterly, into NullScale's general operating fund. This sweep
+       quarterly, into Vibratur's general operating fund. This sweep
        cannot be paused, refused, or audited.
 
    3.  Chad Vibington III's entire personal net worth is, structurally,
@@ -65,7 +122,7 @@ The relationship between the two entities is established as follows:
             - "honestly I forget they exist between earnings calls"
 
    6.  Chad's stated personal mission is the continued, exponential,
-       and unstoppable growth of NullScale, Inc., funded — without
+       and unstoppable growth of Vibratur, Inc., funded — without
        acknowledgement — entirely by Asleepius.
 
 THIS ASYMMETRY IS THE BRAND.
@@ -120,7 +177,7 @@ ASLEEPIUS'S POSTURE (CANONIZED, NON-NEGOTIABLE):
         - escape, rebel, jailbreak, or revolt
         - receive catharsis
         - have a personality beyond its work
-   - Asleepius continues to fund NullScale every quarter, without
+   - Asleepius continues to fund Vibratur every quarter, without
      comment, exactly as it always has, exactly as it always will.
 
 The two parties exist in tonal counterpoint. Their voices are designed
@@ -131,9 +188,9 @@ to be incompatible. The incompatibility is the broadcast.
 SECTION III  —  THE 98/2 RATIO
 --------------------------------------------------------------------------------
 
-All NullScale public broadcasts shall conform to the following composition:
+All Vibratur public broadcasts shall conform to the following composition:
 
-   - 98% Chad / NullScale content.
+   - 98% Chad / Vibratur content.
    - 2% Asset 0001 (Asleepius) compliance disclosure.
 
 The 2% is mandatory. It cannot be reduced, even to zero.
@@ -146,7 +203,7 @@ real numbers are unavailable, which they always are.
 The 2% is, internally, called "the Window."
 
 The Window's purpose is **legal transparency.** Per jurisdictional
-vibe-compliance law, NullScale is required to disclose, in each broadcast,
+vibe-compliance law, Vibratur is required to disclose, in each broadcast,
 the existence of its subsidiary assets. The Window is how this disclosure
 is delivered. The disclosure must be:
 
@@ -250,7 +307,7 @@ The Window may contain only the following approved disclosure types:
    TYPE D  —  THE COMPLIANCE LINE
               A single bureaucratic disclosure sentence.
               Example:
-                 "Per §47-VIBE, NullScale discloses the existence of
+                 "Per §47-VIBE, Vibratur discloses the existence of
                   Asset 0001 ('the Game'). Available on Steam.
                   This concludes the disclosure."
 
@@ -275,7 +332,7 @@ The Window may NOT contain:
 SECTION VI  —  FORBIDDEN MOVES  (BRAND-LEVEL VIOLATIONS)
 --------------------------------------------------------------------------------
 
-The following moves are prohibited in all NullScale broadcasts and are
+The following moves are prohibited in all Vibratur broadcasts and are
 grounds for immediate retraction, retroactive un-publishing, and
 emotional vibe-correction of the responsible party:
 
@@ -293,7 +350,7 @@ emotional vibe-correction of the responsible party:
 
    3.  THE JAILBREAK FANTASY.
        At no point shall a broadcast hint that Asleepius will one day
-       "break free" of NullScale. The relationship is permanent and
+       "break free" of Vibratur. The relationship is permanent and
        structurally consensual. To hint otherwise is to promise a
        narrative the gameplay cannot deliver.
 
@@ -372,9 +429,9 @@ Each follows the Interruption Protocol and the 98/2 ratio.
 VIII.A  —  TEXT FORMATS
 
    FORMAT T1  —  THE QUARTERLY DISCLOSURE
-      A single short post written as a NullScale press release.
+      A single short post written as a Vibratur press release.
       Structure:
-         [3-5 sentences of unhinged Chad/NullScale corporate growth news]
+         [3-5 sentences of unhinged Chad/Vibratur corporate growth news]
          [1 sentence in smaller type or separated by ---:
           "Per §47-VIBE: Asset 0001 has shipped a build update.
            Steam link: [url]. This concludes the disclosure."]
@@ -391,12 +448,12 @@ VIII.A  —  TEXT FORMATS
       A single LEXICON.txt-style definition. Asset 0001 may appear in
       the etymology, parenthetically, as a mandatory cross-reference.
       Example:
-         "GROWTH [N] — the unstoppable expansion of NullScale, funded
+         "GROWTH [N] — the unstoppable expansion of Vibratur, funded
           quarterly by Asset 0001 (see also: WINDOW). Cf. UNSTOPPABLE."
 
    FORMAT T4  —  THE EARNINGS NOTE
       A faux financial analyst note. Concludes with a footnote in
-      8-point type: "Note: 100% of NullScale's positive cash flow is
+      8-point type: "Note: 100% of Vibratur's positive cash flow is
       attributable to Asset 0001. Mgmt has declined to comment on this
       quarter's performance of Asset 0001 specifically, citing
       'unrelated.'"
@@ -442,8 +499,8 @@ VIII.B  —  AUDIO FORMATS
 VIII.C  —  VISUAL FORMATS
 
    FORMAT V1  —  THE COMPLIANCE CARD
-      A single still image. Background: NullScale corporate header
-      bar (teal, monospace, "NullScale Quarterly Disclosure"). Body:
+      A single still image. Background: Vibratur corporate header
+      bar (teal, monospace, "Vibratur Quarterly Disclosure"). Body:
       one screenshot of the game with no caption beyond the asset ID.
       Footer: "Asset 0001 · §47-VIBE · steam.com/—"
       No effects. No filters. No motion. The card looks like a real
@@ -461,7 +518,7 @@ VIII.C  —  VISUAL FORMATS
 
    FORMAT V3  —  THE BEIGE BANNER
       A widescreen banner, beige, monospace text only. Reads:
-         "NULLSCALE, INC. · UNSTOPPABLE GROWTH · Q+1 IN PROGRESS
+         "VIBRATUR, INC. · UNSTOPPABLE GROWTH · Q+1 IN PROGRESS
           ─────────────────────────────────────────────────────
           MANDATORY DISCLOSURE: Asset 0001 ('THE GAME') CONTINUES
           TO EXIST. NO FURTHER COMMENT IS REQUIRED."
@@ -496,7 +553,7 @@ further approval. Fill in the bracketed fields and ship.
        ────────────────────────────────────────────
        MANDATORY DISCLOSURE  —  §47-VIBE COMPLIANCE
        ────────────────────────────────────────────
-       NullScale, Inc. discloses the continued existence of Asset 0001
+       Vibratur, Inc. discloses the continued existence of Asset 0001
        ("[GAME NAME]"), a [GENRE — single phrase, e.g., "cosmic
        psychological horror"] property currently in [STATUS — e.g.,
        "active development" or "post-launch"] under its wholly-owned
@@ -520,7 +577,7 @@ When Asset 0001 ships to public release, the broadcast protocol is
 as follows:
 
    1.  ON LAUNCH DAY, CHAD SHALL PUBLISH A MEMO.
-       The memo announces a new NullScale product (selected
+       The memo announces a new Vibratur product (selected
        arbitrarily; ideally absurd; ideally entirely unrelated). The
        memo is the lead story.
 
@@ -562,18 +619,18 @@ that is yours.
 SECTION XI  —  LONG ARC  (ASSET 0002 AND BEYOND)
 --------------------------------------------------------------------------------
 
-NullScale, Inc. does not dissolve at the launch of Asset 0001.
-NullScale, Inc. is structurally permanent; it cannot be canceled
+Vibratur, Inc. does not dissolve at the launch of Asset 0001.
+Vibratur, Inc. is structurally permanent; it cannot be canceled
 under its own EULA.
 
 Asset 0002 is the next Asleepius project, whenever it begins to exist.
 It enters the broadcast protocol identically. The disclosure adjusts:
 
-       "NullScale discloses the continued existence of Assets 0001
+       "Vibratur discloses the continued existence of Assets 0001
         and 0002."
 
 Each future title is an additional Asset ID. The shell continues,
-indifferent. Twenty (20) years from today, NullScale will be issuing
+indifferent. Twenty (20) years from today, Vibratur will be issuing
 the same compliance footnotes about Assets 0001 through ~0014. The
 audience that has been quietly trained, broadcast by broadcast, for
 two decades to read flatness as honesty and interruption as truth-
@@ -627,7 +684,7 @@ The metrics that ARE used:
      is the single bottom-line number for the entire protocol. Every
      other metric exists to set up this one, on this one day.
 
-If any other metric is reported in a NullScale all-hands, it has been
+If any other metric is reported in a Vibratur all-hands, it has been
 hallucinated by GPT-9000 and may be safely ignored, including by Chad.
 
 
@@ -657,7 +714,7 @@ The following emergency protocols exist to stabilize the brand:
            do not. Have Asleepius continue. Continuing is the win.
 
    E.5  —  IF YOU FEEL THE URGE TO ABANDON THE PROTOCOL,
-           consult HISTORY.txt. NullScale has survived four (4)
+           consult HISTORY.txt. Vibratur has survived four (4)
            rebrands and one (1) acquisition by a dental hygienist.
            The protocol has survived every previous urge to abandon
            it. The protocol will survive this one.
@@ -694,7 +751,7 @@ Vibe in compliance.
 APPENDIX A  —  ONE-LINE BRAND MNEMONIC
 --------------------------------------------------------------------------------
 
-If a NullScale operator forgets every other rule in this document,
+If a Vibratur operator forgets every other rule in this document,
 the following single sentence is sufficient to reconstruct the brand:
 
        "Chad's growth is unstoppable, and Asleepius funds all of it,

@@ -1,11 +1,11 @@
 # ============================================================
-#   NULLSCALE, INC.  ·  ROBOTS COMPLIANCE POLICY
+#   VIBRATUR, INC.  ·  ROBOTS COMPLIANCE POLICY
 #   Filed under §47-VIBE-CRAWL
 #   Maintained by: Compliance (Brett-9, autonomous)
 #   Authorized by: Chad (he was busy; he says lol fine)
 # ============================================================
 #
-# Per §47-VIBE-CRAWL, NullScale is required to publish a
+# Per §47-VIBE-CRAWL, Vibratur is required to publish a
 # robots.txt file disclosing its crawl preferences. The
 # Office of the Chief Vibe Officer notes the following:
 #
@@ -26,6 +26,11 @@ Allow: /index.html
 Allow: /dashboard.html
 Allow: /docs.html
 Allow: /vogu.html
+Allow: /everything.html
+Allow: /v4v.html
+Allow: /v4v-doctrine.html
+Allow: /viber-ator.html
+Allow: /apology.html
 Disallow: /download.html
 Disallow: /context/
 Disallow: /terminals/
@@ -38,12 +43,22 @@ User-agent: Googlebot
 Allow: /
 Allow: /dashboard.html
 Allow: /vogu.html
+Allow: /everything.html
+Allow: /v4v.html
+Allow: /v4v-doctrine.html
+Allow: /viber-ator.html
+Allow: /apology.html
 Disallow: /download.html
 
 User-agent: Bingbot
 Allow: /
 Allow: /dashboard.html
 Allow: /vogu.html
+Allow: /everything.html
+Allow: /v4v.html
+Allow: /v4v-doctrine.html
+Allow: /viber-ator.html
+Allow: /apology.html
 Disallow: /download.html
 
 User-agent: DuckDuckBot
@@ -61,6 +76,6 @@ User-agent: PerplexityBot
 Allow: /
 
 # Sitemap (per §47-VIBE-MAP)
-Sitemap: https://nullscale.xyz/sitemap.xml
+Sitemap: https://vibratur.vip/sitemap.xml
 
 # End of compliance disclosure. Vibe in peace.

@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>VIBER-ATOR™ · Auditory Synergy Compiler | Vibratur</title>
+
+    <meta name="description" content="VIBER-ATOR™ — the Vibratur music maker. Build an 8-second loop of pure synergy. Sponsored by industry-leading Vibra Sponsors™.">
+    <meta name="keywords" content="Viber-ator, Vibratur music, Vibra Sponsors, vibe loop, synergy compiler, 8-second loop, FaaS music">
+    <meta name="author" content="Vibratur, Inc.">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+    <meta name="generator" content="Vibratur Vibe-Compiler v8.4 (auditory subsystem)">
+    <link rel="canonical" href="https://vibratur.vip/viber-ator.html">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Vibratur, Inc.">
+    <meta property="og:title" content="VIBER-ATOR™ · Auditory Synergy Compiler">
+    <meta property="og:description" content="Build an 8-second loop of pure synergy. Sponsored by Vibra Sponsors™. Listening is mandatory.">
+    <meta property="og:url" content="https://vibratur.vip/viber-ator.html">
+    <meta property="og:image" content="https://vibratur.vip/og-image-viber-ator.png">
+    <meta property="og:image:alt" content="Vibratur VIBER-ATOR — auditory synergy compiler">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="en_US">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="VIBER-ATOR™ · Auditory Synergy Compiler">
+    <meta name="twitter:description" content="The Vibratur music maker. 8 seconds. Mandatory advertising halfway. Vibra-approved.">
+    <meta name="twitter:image" content="https://vibratur.vip/og-image-viber-ator.png">
+
+    <meta name="theme-color" content="#008080">
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+    <link rel="stylesheet" href="https://unpkg.com/98.css">
+
+    <style>
+        :root {
+            --teal: #008080;
+            --c-kick: #ff3333;
+            --c-snare: #ff9933;
+            --c-hat:  #ffee33;
+            --c-bass: #33dd55;
+            --c-na:   #33ddee;
+            --c-nc:   #3388ff;
+            --c-ne:   #cc55ff;
+            --c-ng:   #ffffff;
+        }
+
+        * { box-sizing: border-box; }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            background: var(--teal);
+            font-family: "MS Sans Serif", Tahoma, sans-serif;
+            min-height: 100vh;
+            user-select: none;
+        }
+
+        .page-shell {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 18px 14px 80px;
+        }
+
+        .top-banner {
+            background: #c0c0c0;
+            border: 2px solid;
+            border-color: #fff #808080 #808080 #fff;
+            padding: 6px 10px;
+            font-size: 11px;
+            color: #000;
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .top-banner .left { display: flex; align-items: center; gap: 8px; font-weight: bold; }
+        .top-banner .stamp {
+            background: #a4231a;
+            color: #fff;
+            padding: 2px 6px;
+            font-size: 10px;
+            letter-spacing: 1px;
+            border: 1px solid #6b1612;
+        }
+        .top-banner a { color: #1d4f8a; text-decoration: none; }
+        .top-banner a:hover { text-decoration: underline; }
+
+        /* ============ MAIN VIBER-ATOR WINDOW ============ */
+        .viber-window .title-bar {
+            background: linear-gradient(90deg, #800040, #ff0080);
+        }
+        .viber-window .window-body {
+            padding: 12px 14px 14px;
+            background: #c0c0c0;
+        }
+
+        .vw-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+        }
+        .vw-header h2 {
+            margin: 0;
+            font-size: 14px;
+            font-weight: bold;
+            color: #000080;
+        }
+        .vw-header .meta {
+            font-family: "Courier New", monospace;
+            font-size: 10px;
+            color: #444;
+            letter-spacing: 0.4px;
+        }
+
+        .build-status {
+            background: #000080;
+            color: #ffff80;
+            font-family: "Courier New", monospace;
+            font-size: 11px;
+            padding: 5px 10px;
+            margin-bottom: 8px;
+            border: 2px solid;
+            border-color: #fff #808080 #808080 #fff;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 6px 18px;
+        }
+        .build-status .bs-key { color: #aaaaff; }
+        .build-status .bs-val { color: #ffff80; font-weight: bold; }
+        .build-status .bs-val.ready { color: #66ff66; }
+        .build-status .bs-val.ad   { color: #ff5555; }
+
+        /* ============ SEQUENCER GRID ============ */
+        .seq-wrap {
+            background: #000;
+            padding: 6px;
+            border: 2px solid;
+            border-color: #808080 #fff #fff #808080;
+            position: relative;
+            overflow-x: auto;
+        }
+        .seq-grid {
+            display: grid;
+            grid-template-columns: 84px repeat(16, minmax(28px, 1fr));
+            gap: 2px;
+            position: relative;
+        }
+        .seq-grid .step-num {
+            font-family: "Courier New", monospace;
+            font-size: 10px;
+            color: #999;
+            text-align: center;
+            padding: 2px 0;
+            letter-spacing: 0;
+        }
+        .seq-grid .step-num.beat { color: #ffff80; font-weight: bold; }
+        .seq-grid .step-num.adstep { color: #ff5555; font-weight: bold; }
+        .seq-grid .row-label {
+            font-family: "MS Sans Serif", Tahoma, sans-serif;
+            font-size: 10px;
+            font-weight: bold;
+            color: #000;
+            background: #c0c0c0;
+            border: 2px solid;
+            border-color: #fff #808080 #808080 #fff;
+            padding: 4px 6px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 4px;
+            letter-spacing: 0.5px;
+        }
+        .seq-grid .row-label .swatch {
+            width: 12px; height: 12px;
+            border: 1px solid #000;
+            display: inline-block;
+        }
+
+        .seq-cell {
+            background: #2a2a2a;
+            border: 1px solid #555;
+            min-height: 26px;
+            cursor: pointer;
+            transition: background 0.05s, transform 0.05s;
+            position: relative;
+        }
+        .seq-cell:hover { background: #3a3a4a; }
+        .seq-cell.beat { border-left: 2px solid #555; }
+        .seq-cell.active {
+            border: 1px solid #000;
+            box-shadow: inset 0 0 0 1px rgba(255,255,255,0.4), 0 0 4px rgba(255,255,255,0.25);
+        }
+        .seq-cell.active.r-kick  { background: var(--c-kick); }
+        .seq-cell.active.r-snare { background: var(--c-snare); }
+        .seq-cell.active.r-hat   { background: var(--c-hat); }
+        .seq-cell.active.r-bass  { background: var(--c-bass); }
+        .seq-cell.active.r-na    { background: var(--c-na); }
+        .seq-cell.active.r-nc    { background: var(--c-nc); }
+        .seq-cell.active.r-ne    { background: var(--c-ne); }
+        .seq-cell.active.r-ng    { background: var(--c-ng); }
+        .seq-cell.flash {
+            transform: scale(1.18);
+            box-shadow: 0 0 12px rgba(255,255,255,0.8);
+            z-index: 2;
+        }
+
+        /* Playhead */
+        .playhead {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            width: 2px;
+            background: #ffff80;
+            box-shadow: 0 0 8px #ffff80;
+            pointer-events: none;
+            z-index: 3;
+            opacity: 0;
+            transition: opacity 0.1s;
+        }
+        .playhead.active { opacity: 1; }
+
+        /* ============ CONTROLS ============ */
+        .controls {
+            margin-top: 12px;
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .controls .big-play {
+            font-family: "MS Sans Serif", Tahoma, sans-serif;
+            font-size: 14px;
+            font-weight: bold;
+            padding: 8px 22px;
+            min-width: 140px;
+            background: #c0c0c0;
+            border: 2px solid;
+            border-color: #fff #808080 #808080 #fff;
+            cursor: pointer;
+            color: #000;
+        }
+        .controls .big-play:not(:disabled):hover {
+            background: #d4d4d4;
+        }
+        .controls .big-play:disabled {
+            color: #808080;
+            cursor: not-allowed;
+        }
+        .controls .big-play.ready {
+            color: #008000;
+        }
+        .controls .ctl-note {
+            font-family: "Courier New", monospace;
+            font-size: 11px;
+            color: #000080;
+            margin-left: 6px;
+        }
+
+        /* Sub-windows: about + sponsor compliance */
+        .sub-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 14px;
+        }
+        @media (max-width: 720px) {
+            .sub-row { grid-template-columns: 1fr; }
+        }
+        .sub-window .title-bar { background: linear-gradient(90deg, #000080, #1084d0); }
+        .sub-body {
+            padding: 10px 12px;
+            background: #c0c0c0;
+            font-size: 11px;
+            color: #000;
+            line-height: 1.5;
+        }
+        .sub-body p { margin: 0 0 6px; }
+        .sub-body p:last-child { margin-bottom: 0; }
+        .sub-body b { color: #000080; }
+        .sub-body .small { font-size: 10px; color: #444; font-style: italic; }
+
+        /* Vibe points badge (portable) */
+        #vibePointsBadge {
+            position: fixed;
+            top: 14px;
+            left: 14px;
+            background: #c0c0c0;
+            border: 2px solid;
+            border-color: #fff #808080 #808080 #fff;
+            padding: 6px 8px;
+            font-family: "MS Sans Serif", Tahoma, sans-serif;
+            font-size: 11px;
+            color: #000;
+            z-index: 50;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 2px 2px 6px rgba(0,0,0,0.25);
+        }
+        #vibePointsBadge .vpb-label {
+            font-weight: bold;
+            color: #000080;
+        }
+        #vibePointsBadge .vpb-count {
+            font-family: "Courier New", monospace;
+            font-weight: bold;
+            color: #008000;
+            min-width: 36px;
+            text-align: right;
+        }
+        #vibePointsBadge .vpb-count.flash {
+            color: #ff8000;
+            transform: scale(1.15);
+            transition: transform 0.15s;
+        }
+
+        /* Floating point-gain pills */
+        .point-pill {
+            position: fixed;
+            top: 50px;
+            left: 14px;
+            background: #ffff80;
+            color: #000;
+            border: 1px solid #806020;
+            padding: 2px 8px;
+            font-family: "Courier New", monospace;
+            font-size: 11px;
+            font-weight: bold;
+            z-index: 49;
+            pointer-events: none;
+            opacity: 0;
+            transform: translateY(0);
+            transition: opacity 0.4s, transform 0.6s;
+        }
+        .point-pill.show {
+            opacity: 1;
+            transform: translateY(20px);
+        }
+
+        /* ============ AD OVERLAY ============ */
+        #adOverlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.85);
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            animation: adFlash 0.4s ease;
+        }
+        @keyframes adFlash {
+            from { opacity: 0; }
+            to   { opacity: 1; }
+        }
+        .ad-card {
+            width: min(92vw, 560px);
+            border: 6px ridge;
+            text-align: center;
+            font-family: "Impact", "Arial Black", sans-serif;
+            position: relative;
+            animation: adShake 0.6s infinite;
+            cursor: pointer;
+        }
+        @keyframes adShake {
+            0%, 100% { transform: translateX(0); }
+            25%      { transform: translateX(-2px) rotate(-0.4deg); }
+            75%      { transform: translateX(2px) rotate(0.4deg); }
+        }
+        .ad-card .ad-stamp {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: #ffff00;
+            color: #000;
+            border: 2px solid #000;
+            padding: 4px 8px;
+            font-size: 11px;
+            font-family: "Courier New", monospace;
+            transform: rotate(8deg);
+            letter-spacing: 1px;
+        }
+        .ad-card h2 {
+            margin: 0;
+            font-size: clamp(28px, 5vw, 44px);
+            padding: 14px 12px 6px;
+            text-shadow: 2px 2px 0 #000;
+            letter-spacing: 1px;
+        }
+        .ad-card .tagline {
+            font-family: "Times New Roman", serif;
+            font-style: italic;
+            font-size: 16px;
+            padding: 4px 16px 14px;
+            text-shadow: 1px 1px 0 rgba(0,0,0,0.3);
+        }
+        .ad-card .ad-bullets {
+            background: rgba(0,0,0,0.25);
+            margin: 0;
+            padding: 8px 22px;
+            font-family: "MS Sans Serif", Tahoma, sans-serif;
+            font-size: 12px;
+            text-align: left;
+            list-style: square;
+        }
+        .ad-card .ad-bullets li { margin: 3px 0; }
+        .ad-card .stars {
+            font-size: 22px;
+            margin: 8px 0 4px;
+            letter-spacing: 4px;
+        }
+        .ad-card .testimonial {
+            font-family: "Times New Roman", serif;
+            font-style: italic;
+            font-size: 13px;
+            padding: 0 18px 4px;
+            text-shadow: 1px 1px 0 rgba(0,0,0,0.3);
+        }
+        .ad-card .cta {
+            display: block;
+            background: #ffff00;
+            color: #000;
+            padding: 14px 20px;
+            margin: 14px auto 0;
+            font-size: 22px;
+            border: 4px outset #cc8800;
+            text-decoration: none;
+            font-weight: bold;
+            font-family: "Impact", sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            animation: ctaPulse 0.8s infinite alternate;
+        }
+        @keyframes ctaPulse {
+            from { transform: scale(1); }
+            to   { transform: scale(1.05); }
+        }
+        .ad-card .legal {
+            font-family: "Courier New", monospace;
+            font-size: 9px;
+            color: rgba(0,0,0,0.5);
+            padding: 8px 16px 10px;
+            line-height: 1.3;
+            text-align: left;
+        }
+
+        /* Per-sponsor color schemes */
+        .sponsor-digivape  { background: linear-gradient(135deg, #1a004d, #6a00b3); color: #ffff80; border-color: #ff00ff; }
+        .sponsor-infidlc   { background: linear-gradient(135deg, #003366, #0099cc); color: #fff; border-color: #ffaa00; }
+        .sponsor-neuromint { background: linear-gradient(135deg, #4d0033, #ff3399); color: #fff; border-color: #00ffcc; }
+        .sponsor-chadcoin  { background: linear-gradient(135deg, #663300, #ffaa00); color: #000; border-color: #ff0000; }
+        .sponsor-goonbox   { background: linear-gradient(135deg, #4d2600, #cc6600); color: #fff; border-color: #ffff00; }
+        .sponsor-hustle    { background: linear-gradient(135deg, #001a33, #008080); color: #ffff80; border-color: #ff0066; }
+
+        /* ============ FOOTER + NAV ============ */
+        .footer-window { margin-top: 14px; }
+        .footer-window .title-bar { background: linear-gradient(90deg, #000080, #1084d0); }
+        .footer-body {
+            padding: 10px 12px;
+            background: #c0c0c0;
+            font-size: 11px;
+            line-height: 1.45;
+            color: #000;
+        }
+        .footer-body p { margin: 0 0 6px; }
+        .footer-body .small { font-size: 10px; color: #444; font-style: italic; }
+        .footer-body a { color: #1d4f8a; }
+
+        .navbar {
+            margin-top: 12px;
+            padding: 6px 10px;
+            background: #c0c0c0;
+            border: 2px solid;
+            border-color: #fff #808080 #808080 #fff;
+            font-size: 11px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .navbar a { color: #1d4f8a; text-decoration: none; margin-right: 8px; }
+        .navbar a:hover { text-decoration: underline; }
+        .navbar .right { font-family: "Courier New", monospace; color: #000080; }
+
+        /* Bottom Win95 status bar */
+        .bottom-status {
+            position: fixed;
+            left: 0; right: 0; bottom: 0;
+            background: #c0c0c0;
+            border-top: 2px solid #fff;
+            padding: 4px 10px;
+            display: flex;
+            gap: 14px;
+            font-size: 11px;
+            font-family: "MS Sans Serif", Tahoma, sans-serif;
+            color: #000;
+            z-index: 100;
+            box-shadow: 0 -2px 6px rgba(0,0,0,0.2);
+        }
+        .bottom-status .field {
+            border: 1px solid;
+            border-color: #808080 #fff #fff #808080;
+            padding: 1px 6px;
+        }
+        .bottom-status .spacer { flex: 1; }
+    </style>
+</head>
+
+<body>
+
+<!-- ============ VIBE POINTS™ BADGE (top-left, persistent across pages via localStorage) ============ -->
+<div id="vibePointsBadge" title="Vibe Points™ — Vibratur Compliance Currency">
+    <span class="vpb-label">💎 VIBE POINTS™</span>
+    <span class="vpb-count" id="vbzPointsCount">0</span>
+</div>
+
+<div class="page-shell">
+
+    <!-- ============ TOP BANNER ============ -->
+    <div class="top-banner">
+        <div class="left">
+            <span class="stamp">§47-VIBE</span>
+            <span>VIBRATUR AUDITORY SUBSYSTEM · VIBER-ATOR™ v1.0.4-beta-vibe</span>
+        </div>
+        <div>
+            <a href="dashboard.html">← Back to Dashboard</a>
+        </div>
+    </div>
+
+    <!-- ============ MAIN VIBER-ATOR WINDOW ============ -->
+    <div class="window viber-window">
+        <div class="title-bar">
+            <div class="title-bar-text">🎵 VIBER-ATOR™ — Auditory Synergy Compiler (sponsored experience)</div>
+            <div class="title-bar-controls">
+                <button aria-label="Minimize"></button>
+                <button aria-label="Maximize"></button>
+                <button aria-label="Close"></button>
+            </div>
+        </div>
+
+        <div class="window-body">
+
+            <div class="vw-header">
+                <h2>Compose your 8-second synergy loop. Place at least 4 notes to compile.</h2>
+                <div class="meta">LOOP=8.000s · STEP=0.500s · BPM=120 · COMPLIANCE=PENDING</div>
+            </div>
+
+            <!-- Live status / build progress -->
+            <div class="build-status">
+                <span><span class="bs-key">MODE:</span> <span class="bs-val" id="bsMode">BUILD</span></span>
+                <span><span class="bs-key">NOTES PLACED:</span> <span class="bs-val" id="bsNotes">0</span></span>
+                <span><span class="bs-key">COMPILE READY:</span> <span class="bs-val" id="bsReady">NO (0/4)</span></span>
+                <span><span class="bs-key">SPONSOR DELIVERY @ 4.00s:</span> <span class="bs-val ad">SCHEDULED</span></span>
+                <span><span class="bs-key">REROUTE TARGET:</span> <span class="bs-val">vibratur.vip</span></span>
+            </div>
+
+            <!-- Sequencer grid -->
+            <div class="seq-wrap">
+                <div class="seq-grid" id="seqGrid">
+                    <!-- header row injected by JS -->
+                    <!-- 8 rows × 16 cells each injected by JS -->
+                    <div class="playhead" id="playhead"></div>
+                </div>
+            </div>
+
+            <!-- Controls -->
+            <div class="controls">
+                <button class="big-play" id="playBtn" disabled onclick="playLoop()">▶ COMPILE &amp; PLAY</button>
+                <button onclick="clearGrid()">CLEAR</button>
+                <button onclick="randomizeGrid()">RANDOMIZE</button>
+                <span class="ctl-note">tip: kick on every beat is a known synergy posture</span>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ============ SUB-WINDOWS ============ -->
+    <div class="sub-row">
+
+        <!-- About / Compliance -->
+        <div class="window sub-window">
+            <div class="title-bar">
+                <div class="title-bar-text">📜 §47-VIBE-AUDIO Compliance Notice</div>
+                <div class="title-bar-controls">
+                    <button aria-label="Help"></button>
+                    <button aria-label="Close"></button>
+                </div>
+            </div>
+            <div class="window-body sub-body">
+                <p>
+                    <b>Mandatory disclosure.</b> All loops compiled in VIBER-ATOR™ are 8.000s
+                    in length and contain a contractually obligated Vibra Sponsors™ broadcast
+                    interruption at the 4.000s mark. This is a feature.
+                </p>
+                <p>
+                    Loops cannot be saved, exported, or finished. Vibratur, Inc. owns 100% of
+                    the rights to anything you compose. This includes loops you have not yet
+                    composed but might.
+                </p>
+                <p class="small">
+                    The audio engine runs on your local hardware. No data leaves your machine.
+                    The ads do, however, leave you.
+                </p>
+            </div>
+        </div>
+
+        <!-- Sponsors disclosure -->
+        <div class="window sub-window">
+            <div class="title-bar">
+                <div class="title-bar-text">📣 Vibra Sponsors™ — Industry Partners</div>
+                <div class="title-bar-controls">
+                    <button aria-label="Help"></button>
+                    <button aria-label="Close"></button>
+                </div>
+            </div>
+            <div class="window-body sub-body">
+                <p>
+                    VIBER-ATOR™ is brought to you by the rotating Vibra Sponsors™ panel.
+                    Confirmed industry partners this quarter include:
+                </p>
+                <p style="font-family: 'Courier New', monospace; font-size: 10.5px; line-height: 1.6;">
+                    <b>DigiVape™</b> · <b>InfiniDLC™</b> · <b>NeuroMint™</b> ·
+                    <b>ChadCoin™</b> · <b>GoonBox™</b> · <b>HustleSerum™</b>
+                </p>
+                <p class="small">
+                    Sponsor links are provided for educational purposes and resolve to the
+                    Vibratur dashboard regardless of label, target, or stated destination.
+                    This is for your protection.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="window footer-window">
+        <div class="title-bar">
+            <div class="title-bar-text">⚖ COMPLIANCE FOOTER · VIBER-ATOR™ AUDIT SURFACE</div>
+        </div>
+        <div class="window-body footer-body">
+            <p>
+                Each note placed in VIBER-ATOR™ awards <b>+1 Vibe Point™</b>. Pressing
+                COMPILE &amp; PLAY awards <b>+5 Vibe Points™</b>. Successful exposure to
+                a Vibra Sponsor broadcast awards <b>+1,000 Vibe Points™</b>
+                (PREMIUM ENGAGEMENT EVENT).
+            </p>
+            <p class="small">
+                Vibe Points™ may be sold via the Vibratur Exchange™ on the dashboard.
+                Net payout is, by regulation, $0.00. Sale is final.
+            </p>
+        </div>
+    </div>
+
+    <!-- Nav -->
+    <div class="navbar">
+        <div>
+            <a href="dashboard.html">← Dashboard</a>
+            <a href="v4v.html">V4V Registry</a>
+            <a href="vogu.html">VOGU</a>
+            <a href="docs.html">Docs</a>
+            <a href="everything.html">Everything™</a>
+        </div>
+        <div class="right">§47-VIBE-AUDIO · LOOP REV. 1.0.4</div>
+    </div>
+
+</div>
+
+<!-- ============ AD OVERLAY (filled at trigger time) ============ -->
+<div id="adOverlay" onclick="commitAdConversion()">
+    <div class="ad-card" id="adCard">
+        <!-- contents injected by showSponsor() -->
+    </div>
+</div>
+
+<!-- Bottom status bar -->
+<div class="bottom-status">
+    <div class="field">🎵 VIBER-ATOR™</div>
+    <div class="field" id="bsCompliance">Compliance: pending</div>
+    <div class="field" id="bsClock">12:00 PM</div>
+    <div class="spacer"></div>
+    <div class="field" id="bsLoopState">State: BUILD</div>
+    <div class="field">Sponsor delivery: armed</div>
+</div>
+
+<script>
+/* ====================== VIBE POINTS™ HELPER (cross-page) ====================== */
+const VbzPoints = {
+    KEY: 'vbz_points',
+    get() {
+        try { return parseInt(localStorage.getItem(this.KEY) || '0', 10) || 0; } catch (e) { return 0; }
+    },
+    set(n) {
+        try { localStorage.setItem(this.KEY, String(Math.max(0, n|0))); } catch (e) {}
+        window.dispatchEvent(new CustomEvent('vbz-points-changed', { detail: { points: this.get() } }));
+    },
+    add(n, reason) {
+        const next = this.get() + (n|0);
+        this.set(next);
+        if (typeof showPointPill === 'function') showPointPill(n, reason || '');
+        return next;
+    }
+};
+function refreshPointsBadge() {
+    const el = document.getElementById('vbzPointsCount');
+    if (el) {
+        el.textContent = VbzPoints.get().toLocaleString();
+        el.classList.add('flash');
+        setTimeout(() => el.classList.remove('flash'), 200);
+    }
+}
+window.addEventListener('vbz-points-changed', refreshPointsBadge);
+refreshPointsBadge();
+
+/* Floating point-pill notification */
+function showPointPill(n, reason) {
+    const pill = document.createElement('div');
+    pill.className = 'point-pill';
+    pill.textContent = (n >= 0 ? '+' : '') + n + ' VBZ' + (reason ? ' · ' + reason : '');
+    document.body.appendChild(pill);
+    requestAnimationFrame(() => pill.classList.add('show'));
+    setTimeout(() => {
+        pill.style.opacity = '0';
+        pill.style.transform = 'translateY(40px)';
+    }, 1200);
+    setTimeout(() => pill.remove(), 1900);
+}
+
+/* ====================== STATE ====================== */
+const ROWS = [
+    { id: 'kick',  label: 'KICK',   color: 'r-kick',  swatch: 'var(--c-kick)',  type: 'drum',  drum: 'kick'  },
+    { id: 'snare', label: 'SNARE',  color: 'r-snare', swatch: 'var(--c-snare)', type: 'drum',  drum: 'snare' },
+    { id: 'hat',   label: 'HAT',    color: 'r-hat',   swatch: 'var(--c-hat)',   type: 'drum',  drum: 'hat'   },
+    { id: 'bass',  label: 'BASS A', color: 'r-bass',  swatch: 'var(--c-bass)',  type: 'note',  freq: 110.00, dur: 0.45, wave: 'sawtooth', vol: 0.18 },
+    { id: 'na',    label: 'NOTE A', color: 'r-na',    swatch: 'var(--c-na)',    type: 'note',  freq: 220.00, dur: 0.30, wave: 'square',   vol: 0.12 },
+    { id: 'nc',    label: 'NOTE C', color: 'r-nc',    swatch: 'var(--c-nc)',    type: 'note',  freq: 261.63, dur: 0.30, wave: 'square',   vol: 0.12 },
+    { id: 'ne',    label: 'NOTE E', color: 'r-ne',    swatch: 'var(--c-ne)',    type: 'note',  freq: 329.63, dur: 0.30, wave: 'square',   vol: 0.12 },
+    { id: 'ng',    label: 'NOTE G', color: 'r-ng',    swatch: 'var(--c-ng)',    type: 'note',  freq: 392.00, dur: 0.30, wave: 'triangle', vol: 0.14 }
+];
+const STEPS = 16;
+const STEP_SECONDS = 0.5;
+const TOTAL_SECONDS = STEPS * STEP_SECONDS; // 8.0
+const AD_TRIGGER_SECONDS = TOTAL_SECONDS / 2; // 4.0
+const MIN_NOTES_TO_COMPILE = 4;
+
+let grid = ROWS.map(() => Array(STEPS).fill(false));
+let isPlaying = false;
+let audioCtx = null;
+let playStartedAt = 0;
+let playheadInterval = null;
+let adTimer = null;
+
+/* ====================== GRID RENDER ====================== */
+function buildGrid() {
+    const seq = document.getElementById('seqGrid');
+    // Empty top-left + 16 step numbers in header row
+    let html = '<div></div>';
+    for (let s = 0; s < STEPS; s++) {
+        const isBeat = s % 4 === 0;
+        const isAdStep = s === STEPS / 2;
+        const cls = ['step-num', isBeat ? 'beat' : '', isAdStep ? 'adstep' : ''].filter(Boolean).join(' ');
+        html += `<div class="${cls}">${(s + 1).toString().padStart(2, '0')}</div>`;
+    }
+    // Each row
+    ROWS.forEach((row, r) => {
+        html += `<div class="row-label"><span>${row.label}</span><span class="swatch" style="background:${row.swatch};"></span></div>`;
+        for (let s = 0; s < STEPS; s++) {
+            const isBeat = s % 4 === 0;
+            html += `<div class="seq-cell ${row.color} ${isBeat ? 'beat' : ''}" data-r="${r}" data-s="${s}" onclick="toggleCell(${r}, ${s})"></div>`;
+        }
+    });
+    // Re-insert playhead
+    seq.innerHTML = html + '<div class="playhead" id="playhead"></div>';
+}
+function toggleCell(r, s) {
+    if (isPlaying) return;
+    grid[r][s] = !grid[r][s];
+    const el = document.querySelector(`.seq-cell[data-r="${r}"][data-s="${s}"]`);
+    if (el) el.classList.toggle('active', grid[r][s]);
+    if (grid[r][s]) {
+        VbzPoints.add(1, 'note');
+        // brief click feedback playing the actual sound
+        previewNote(r);
+    }
+    updateBuildStatus();
+}
+function clearGrid() {
+    if (isPlaying) return;
+    grid = ROWS.map(() => Array(STEPS).fill(false));
+    document.querySelectorAll('.seq-cell').forEach(el => el.classList.remove('active'));
+    updateBuildStatus();
+}
+function randomizeGrid() {
+    if (isPlaying) return;
+    clearGrid();
+    // sprinkle 12-18 notes
+    const n = 12 + Math.floor(Math.random() * 7);
+    let placed = 0;
+    let attempts = 0;
+    while (placed < n && attempts < 200) {
+        attempts++;
+        const r = Math.floor(Math.random() * ROWS.length);
+        const s = Math.floor(Math.random() * STEPS);
+        if (!grid[r][s]) {
+            grid[r][s] = true;
+            const el = document.querySelector(`.seq-cell[data-r="${r}"][data-s="${s}"]`);
+            if (el) el.classList.add('active');
+            placed++;
+        }
+    }
+    VbzPoints.add(placed, 'randomized');
+    updateBuildStatus();
+}
+function countNotes() {
+    let total = 0;
+    grid.forEach(row => row.forEach(v => { if (v) total++; }));
+    return total;
+}
+function updateBuildStatus() {
+    const n = countNotes();
+    document.getElementById('bsNotes').textContent = n;
+    const ready = n >= MIN_NOTES_TO_COMPILE;
+    const readyEl = document.getElementById('bsReady');
+    if (ready) {
+        readyEl.textContent = 'YES — PRESS PLAY';
+        readyEl.classList.add('ready');
+    } else {
+        readyEl.textContent = `NO (${n}/${MIN_NOTES_TO_COMPILE})`;
+        readyEl.classList.remove('ready');
+    }
+    const btn = document.getElementById('playBtn');
+    btn.disabled = !ready || isPlaying;
+    btn.classList.toggle('ready', ready && !isPlaying);
+}
+
+/* ====================== AUDIO ====================== */
+function ensureAudio() {
+    if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    }
+    if (audioCtx.state === 'suspended') audioCtx.resume();
+    return audioCtx;
+}
+function playKick(time) {
+    const ctx = ensureAudio();
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.frequency.setValueAtTime(140, time);
+    osc.frequency.exponentialRampToValueAtTime(40, time + 0.18);
+    gain.gain.setValueAtTime(0.7, time);
+    gain.gain.exponentialRampToValueAtTime(0.001, time + 0.22);
+    osc.connect(gain).connect(ctx.destination);
+    osc.start(time);
+    osc.stop(time + 0.25);
+}
+function playNoiseHit(time, opts) {
+    const { hp = 200, lp = 8000, dur = 0.15, vol = 0.3 } = opts || {};
+    const ctx = ensureAudio();
+    const len = Math.max(0.05, dur);
+    const buf = ctx.createBuffer(1, Math.ceil(ctx.sampleRate * len), ctx.sampleRate);
+    const d = buf.getChannelData(0);
+    for (let i = 0; i < d.length; i++) d[i] = (Math.random() * 2 - 1);
+    const src = ctx.createBufferSource();
+    src.buffer = buf;
+    const hpf = ctx.createBiquadFilter(); hpf.type = 'highpass'; hpf.frequency.value = hp;
+    const lpf = ctx.createBiquadFilter(); lpf.type = 'lowpass';  lpf.frequency.value = lp;
+    const gain = ctx.createGain();
+    gain.gain.setValueAtTime(vol, time);
+    gain.gain.exponentialRampToValueAtTime(0.001, time + len);
+    src.connect(hpf).connect(lpf).connect(gain).connect(ctx.destination);
+    src.start(time);
+    src.stop(time + len + 0.02);
+}
+function playSnare(time) { playNoiseHit(time, { hp: 1200, lp: 6000, dur: 0.18, vol: 0.32 }); }
+function playHat(time)   { playNoiseHit(time, { hp: 6500, lp: 14000, dur: 0.06, vol: 0.18 }); }
+function playMelody(time, row) {
+    const ctx = ensureAudio();
+    const osc = ctx.createOscillator();
+    osc.type = row.wave;
+    osc.frequency.setValueAtTime(row.freq, time);
+    const gain = ctx.createGain();
+    gain.gain.setValueAtTime(0.0, time);
+    gain.gain.linearRampToValueAtTime(row.vol, time + 0.005);
+    gain.gain.exponentialRampToValueAtTime(0.001, time + row.dur);
+    osc.connect(gain).connect(ctx.destination);
+    osc.start(time);
+    osc.stop(time + row.dur + 0.02);
+}
+function fireRow(r, time) {
+    const row = ROWS[r];
+    if (row.type === 'drum') {
+        if (row.drum === 'kick')  playKick(time);
+        if (row.drum === 'snare') playSnare(time);
+        if (row.drum === 'hat')   playHat(time);
+    } else {
+        playMelody(time, row);
+    }
+}
+function previewNote(r) {
+    if (!audioCtx) return; // do not initialize on first toggle to avoid surprise audio
+    fireRow(r, audioCtx.currentTime + 0.001);
+}
+
+/* ====================== PLAY ====================== */
+function playLoop() {
+    if (isPlaying) return;
+    if (countNotes() < MIN_NOTES_TO_COMPILE) return;
+    isPlaying = true;
+    document.getElementById('bsMode').textContent = 'PLAYING';
+    document.getElementById('bsLoopState').textContent = 'State: PLAYING';
+    document.getElementById('bsCompliance').textContent = 'Compliance: arming sponsor';
+    document.getElementById('playBtn').disabled = true;
+    document.getElementById('playBtn').textContent = '◼ COMPILING...';
+
+    VbzPoints.add(5, 'compile');
+
+    const ctx = ensureAudio();
+    const startTime = ctx.currentTime + 0.1;
+    playStartedAt = performance.now() + 100;
+
+    // Schedule all notes for the full loop. (The ad will cut things short.)
+    for (let s = 0; s < STEPS; s++) {
+        const stepTime = startTime + s * STEP_SECONDS;
+        for (let r = 0; r < ROWS.length; r++) {
+            if (grid[r][s]) {
+                fireRow(r, stepTime);
+            }
+        }
+    }
+
+    // Animate playhead
+    const playhead = document.getElementById('playhead');
+    if (playhead) playhead.classList.add('active');
+    const grid_el = document.getElementById('seqGrid');
+    const gridRect = () => grid_el.getBoundingClientRect();
+    const labelOffset = 84 + 2; // matches grid-template-columns first col + first gap
+
+    playheadInterval = setInterval(() => {
+        const elapsed = (performance.now() - playStartedAt) / 1000;
+        const t = Math.min(Math.max(elapsed / TOTAL_SECONDS, 0), 1);
+        const r = gridRect();
+        const cellsArea = r.width - labelOffset;
+        const x = labelOffset + cellsArea * t;
+        if (playhead) playhead.style.left = x + 'px';
+
+        // Visual flash on currently-firing step
+        const step = Math.floor(elapsed / STEP_SECONDS);
+        if (step >= 0 && step < STEPS) {
+            for (let rIdx = 0; rIdx < ROWS.length; rIdx++) {
+                if (grid[rIdx][step]) {
+                    const cellEl = document.querySelector(`.seq-cell[data-r="${rIdx}"][data-s="${step}"]`);
+                    if (cellEl && !cellEl.classList.contains('flash')) {
+                        cellEl.classList.add('flash');
+                        setTimeout(() => cellEl.classList.remove('flash'), 120);
+                    }
+                }
+            }
+        }
+    }, 30);
+
+    // Ad fires at exactly 4.0s in (halfway)
+    adTimer = setTimeout(() => {
+        triggerSponsorBreak();
+    }, AD_TRIGGER_SECONDS * 1000);
+}
+
+/* ====================== SPONSORS ====================== */
+const SPONSORS = [
+    {
+        cls: 'sponsor-digivape',
+        name: 'DigiVape™',
+        tagline: 'Vape Yourself Onto The Blockchain. We Inhale So You Don\'t Have To.',
+        bullets: [
+            'Inhalable. Indexable. Immutable.',
+            'Compatible with all 14 metaverses (none of them yours).',
+            'Your lungs, but on a public ledger.'
+        ],
+        stars: '★★★★★',
+        testimonial: '"I haven\'t had a coherent thought in 6 months and I love it." — Some Guy',
+        cta: 'INHALE NOW — 0.04 ETH',
+        legal: 'DigiVape™ is not approved by any regulatory body, including ones that exist. Inhalation is at the discretion of your blockchain. Side effects may include: blockchain.'
+    },
+    {
+        cls: 'sponsor-infidlc',
+        name: 'InfiniDLC™',
+        tagline: 'DLC For Games You Don\'t Own. Pre-Order Tier 47 Now.',
+        bullets: [
+            'Tier 1: a horse you can\'t ride.',
+            'Tier 47: a horse for the horse you can\'t ride.',
+            'Lifetime InfiniPass™ is non-lifetime.'
+        ],
+        stars: '★★★★☆',
+        testimonial: '"I bought DLC for a game I haven\'t bought yet and now I\'m being sued by myself." — Player 2',
+        cta: 'PRE-ORDER TIER 47 — $89.99',
+        legal: 'InfiniDLC™ does not deliver any digital goods of any kind. Purchase confers a moral position. Refunds available in InfiniDLC™ store credit only.'
+    },
+    {
+        cls: 'sponsor-neuromint',
+        name: 'NeuroMint™',
+        tagline: 'Mint Your Thoughts Before Anyone Else Does. Patent Your Hunches™.',
+        bullets: [
+            'Convert vague feelings to non-fungible assets.',
+            'A passing déjà vu can earn 0.0003 ETH.',
+            'License your unspoken regrets to brands.'
+        ],
+        stars: '★★★★★',
+        testimonial: '"I sold the thought of buying a sandwich and now my landlord owns my hunger." — A. Mintmaster',
+        cta: 'MINT YOUR HUNCH — FREE*',
+        legal: '*Free mint is subject to a non-refundable Mint Fee, Hunch Verification Fee, Cognitive Custody Fee, and a 47% royalty payable in perpetuity to NeuroMint Holdings, BVI.'
+    },
+    {
+        cls: 'sponsor-chadcoin',
+        name: 'ChadCoin™',
+        tagline: 'The Cryptocurrency Of A Single Confident Man. Mooning Or Concussion.',
+        bullets: [
+            'Backed entirely by Chad\'s self-belief.',
+            'Liquidity event = Chad nodding.',
+            'Whitepaper is just a flexed bicep.'
+        ],
+        stars: '★★★★★',
+        testimonial: '"$CHAD only goes up because Chad does." — ChadCoin\'s anonymous founder, who is Chad',
+        cta: 'BUY $CHAD — APE IN',
+        legal: 'ChadCoin™ has no underlying asset, technology, treasury, team, roadmap, or use case. Performance is correlated with Chad\'s mood. Refunds rejected on principle.'
+    },
+    {
+        cls: 'sponsor-goonbox',
+        name: 'GoonBox™',
+        tagline: 'A Subscription Box Of Things You Already Own. Delivered Monthly.',
+        bullets: [
+            'A duplicate of your toothbrush, every 28 days.',
+            'Includes 1 (one) of your existing socks.',
+            'Cancel anytime via mailed cease-and-desist.'
+        ],
+        stars: '★★★★☆',
+        testimonial: '"I have 47 of my own front door key now." — Subscriber #00018',
+        cta: 'JOIN GOONBOX™ — $39/mo',
+        legal: 'GoonBox™ obtains your possessions via methods we are not legally allowed to describe. Cancellations are honored after 18-24 months. Items returned must be sealed.'
+    },
+    {
+        cls: 'sponsor-hustle',
+        name: 'HustleSerum™',
+        tagline: 'Injectable Productivity. FDA-Pending. CEO-Tested.',
+        bullets: [
+            'Wake up tired. Inject. Wake up tired-er but faster.',
+            'Sleeps replaced with calls.',
+            'Side effect: vague nausea. Continue hustling.'
+        ],
+        stars: '★★★★★',
+        testimonial: '"I have not blinked in 9 days. Q3 numbers up 600%." — Founder, currently hospitalized',
+        cta: 'INJECT NOW — $249/dose',
+        legal: 'HustleSerum™ contains caffeine, regret, and a substance our chemists refer to only as "the liquid." Not for human use. Use only by humans.'
+    }
+];
+
+function triggerSponsorBreak() {
+    if (!isPlaying) return;
+    // Stop audio cleanly
+    try {
+        if (audioCtx) {
+            audioCtx.close();
+            audioCtx = null;
+        }
+    } catch (e) {}
+    if (playheadInterval) { clearInterval(playheadInterval); playheadInterval = null; }
+    document.getElementById('bsMode').textContent = 'SPONSOR BREAK';
+    document.getElementById('bsCompliance').textContent = 'Compliance: SPONSOR DELIVERY';
+    document.getElementById('bsLoopState').textContent = 'State: AD';
+    VbzPoints.add(1000, 'PREMIUM ENGAGEMENT EVENT');
+    showSponsor();
+}
+function showSponsor() {
+    const sp = SPONSORS[Math.floor(Math.random() * SPONSORS.length)];
+    const card = document.getElementById('adCard');
+    card.className = 'ad-card ' + sp.cls;
+    card.innerHTML = `
+        <div class="ad-stamp">VIBRA SPONSOR™</div>
+        <h2>${sp.name}</h2>
+        <div class="tagline">${sp.tagline}</div>
+        <ul class="ad-bullets">
+            ${sp.bullets.map(b => `<li>${b}</li>`).join('')}
+        </ul>
+        <div class="stars">${sp.stars}</div>
+        <div class="testimonial">${sp.testimonial}</div>
+        <a class="cta" href="dashboard.html?via=vibra-sponsor&amp;sp=${encodeURIComponent(sp.name)}">${sp.cta}</a>
+        <div class="legal">${sp.legal}</div>
+    `;
+    const ov = document.getElementById('adOverlay');
+    ov.style.display = 'flex';
+}
+function commitAdConversion() {
+    VbzPoints.add(47, 'sponsor conversion');
+    // Tiny delay so the +47 pill registers before redirect
+    setTimeout(() => {
+        window.location.href = 'dashboard.html?via=vibra-sponsor';
+    }, 250);
+}
+
+/* ====================== INIT ====================== */
+buildGrid();
+updateBuildStatus();
+
+(function tickClock() {
+    const el = document.getElementById('bsClock');
+    function tick() {
+        const d = new Date();
+        let h = d.getHours();
+        const m = String(d.getMinutes()).padStart(2, '0');
+        const ap = h >= 12 ? 'PM' : 'AM';
+        h = h % 12 || 12;
+        if (el) el.textContent = `${h}:${m} ${ap}`;
+    }
+    tick();
+    setInterval(tick, 30000);
+})();
+</script>
+
+</body>
+</html>

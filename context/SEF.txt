@@ -1,5 +1,5 @@
 ================================================================================
-        NULLSCALE, INC.  ·  SEARCH ENGINE FRICTIONIZATION (SEF)
+        VIBRATUR, INC.  ·  SEARCH ENGINE FRICTIONIZATION (SEF)
                  §47-VIBE-CRAWL COMPLIANCE PACKAGE  ·  REV. 1.0
         "Mandatory Discoverability Disclosure & Crawl Submission Plan"
 ================================================================================
@@ -8,7 +8,7 @@ DOCUMENT CLASSIFICATION:  Internal. Submitted to crawlers under protest.
 LAST REVISED:             whenever Googlebot last visited
 AUTHOR:                   Office of the Chief Vibe Officer
                           (Compliance executed by Brett-9, autonomous)
-DOC ID:                   NS-LORE-0007
+DOC ID:                   VBZ-LORE-0007
 LEGAL STATUS:             reading this is a crawl event
 
 
@@ -16,9 +16,9 @@ LEGAL STATUS:             reading this is a crawl event
 PURPOSE
 --------------------------------------------------------------------------------
 
-NullScale, Inc., as a vibe-aligned multinational synergy platform, philosophically
+Vibratur, Inc., as a vibe-aligned multinational synergy platform, philosophically
 opposes Search Engine Optimization. SEO is a discipline that rewards clarity,
-relevance, and value to the searcher — three qualities NullScale considers
+relevance, and value to the searcher — three qualities Vibratur considers
 "externally validated and therefore suspicious."
 
 We instead practice SEARCH ENGINE FRICTIONIZATION (SEF):
@@ -40,7 +40,7 @@ WHAT WAS FILED THIS QUARTER  (CHANGE LOG)
 --------------------------------------------------------------------------------
 
 Per §47-VIBE-CRAWL, the following compliance artifacts were filed across
-the NullScale broadcast surface this quarter:
+the Vibratur broadcast surface this quarter:
 
    1.  HEAD-METADATA EXPANSION  (index.html, docs.html, download.html)
        - <meta description> — 155-char compliance disclosures including
@@ -49,7 +49,7 @@ the NullScale broadcast surface this quarter:
        - <meta keywords> — broad keyword sweep across cosmic horror,
          dark comedy, beige dystopia, mundane horror, psychological
          horror, satirical web art, indie games, Win95 aesthetic.
-       - <meta author> — "Asleepius Games (operating under NullScale
+       - <meta author> — "Asleepius Games (operating under Vibratur
          compliance disclosure)"
        - <meta robots> — index/follow on index + docs; noindex on
          download.html (intentional; surfacing the download maze via
@@ -65,13 +65,13 @@ the NullScale broadcast surface this quarter:
          it accordingly.
 
    3.  STRUCTURED DATA (JSON-LD)  in index.html
-       - Organization: NullScale, Inc. (with alternateName for VibeOS,
+       - Organization: Vibratur, Inc. (with alternateName for VibeOS,
          Synergist.io, Vibez — search engines treat these as canonical
          brand history)
        - Person: Chad Vibington III (CVO/founder)
-       - Organization: Asleepius Games (subOrganization of NullScale and sole capital source)
-       - VideoGame: Asset 0001 (with author=Asleepius, publisher=NullScale, but really Asleepius Games)
-       - WebSite: NullScale Synergy Dashboard
+       - Organization: Asleepius Games (subOrganization of Vibratur and sole capital source)
+       - VideoGame: Asset 0001 (with author=Asleepius, publisher=Vibratur, but really Asleepius Games)
+       - WebSite: Vibratur Synergy Dashboard
 
        This @graph structure tells Google specifically that this domain
        represents a corporation, that the corporation has a subsidiary,
@@ -107,7 +107,7 @@ the NullScale broadcast surface this quarter:
 
    9.  site.webmanifest
        - PWA manifest. Allows the dashboard to be "installed" on
-         mobile/desktop. Theme color #008080 (NullScale teal).
+         mobile/desktop. Theme color #008080 (Vibratur teal).
        - Categories: ["games", "entertainment", "satire"] —
          this is the only place in the metadata stack where the
          word "satire" appears externally. It belongs here.
@@ -122,7 +122,7 @@ ACTION ITEMS  (REQUIRED BEFORE PUBLIC DEPLOYMENT)
 --------------------------------------------------------------------------------
 
   A. CANONICAL DOMAIN  ✓ RESOLVED Q+1
-     Production domain set to "https://nullscale.xyz/" across all
+     Production domain set to "https://vibratur.vip/" across all
      affected files. Files touched (35 references):
         index.html  ·  docs.html  ·  download.html
         404.html    ·  robots.txt  ·  sitemap.xml
@@ -155,9 +155,9 @@ ACTION ITEMS  (REQUIRED BEFORE PUBLIC DEPLOYMENT)
      ── og-image.png  (the main one; the meme that travels) ──
 
          Aesthetic: beige Compliance Card, per BROADCAST.txt Format V1.
-         Background: #f5efdc (compliance beige) or #008080 (NullScale teal).
+         Background: #f5efdc (compliance beige) or #008080 (Vibratur teal).
          Top header bar: black or dark teal, monospace text:
-                "NULLSCALE, INC.  ·  QUARTERLY DISCLOSURE  ·  §47-VIBE"
+                "VIBRATUR, INC.  ·  QUARTERLY DISCLOSURE  ·  §47-VIBE"
          Body text (large, monospace, single-spaced):
                 "MANDATORY ASSET DISCLOSURE
                  Asset 0001 ("[GAME NAME]") continues to exist.
@@ -197,7 +197,7 @@ ACTION ITEMS  (REQUIRED BEFORE PUBLIC DEPLOYMENT)
         /android-chrome-192x192.png    (192×192 PNG)
         /android-chrome-512x512.png    (512×512 PNG)
 
-     Recommended design: a single white/teal "N" or NullScale logo
+     Recommended design: a single white/teal "N" or Vibratur logo
      mark on a #008080 background. Keep it readable at 16×16. Do not
      use the Chad face. The favicon is corporate; Chad is editorial.
 
@@ -206,16 +206,16 @@ ACTION ITEMS  (REQUIRED BEFORE PUBLIC DEPLOYMENT)
      Linktree (https://linktr.ee/asleepiusgames) under "sameAs."
      Add additional URLs as you create them:
 
-        - The Asleepius/NullScale Bluesky account
-        - The Asleepius/NullScale Twitter/X account
+        - The Asleepius/Vibratur Bluesky account
+        - The Asleepius/Vibratur Twitter/X account
         - The Tumblr
         - The Substack/Ghost newsletter
         - The Steam page (when public)
         - The YouTube channel (if applicable)
 
-     Each URL added to "sameAs" tightens NullScale's Knowledge Graph
+     Each URL added to "sameAs" tightens Vibratur's Knowledge Graph
      entity and makes it more likely Google will display a brand
-     panel for searches of "NullScale" or "Asleepius Games."
+     panel for searches of "Vibratur" or "Asleepius Games."
 
 
 --------------------------------------------------------------------------------
@@ -224,7 +224,7 @@ KEYWORD STRATEGY  (UNDER PROTEST)
 
 The Office of the CVO does not believe in keywords. Keywords are
 "externally-validated word vibes" and as such, are suspect. However,
-per §47-VIBE-CRAWL, NullScale must disclose its primary search targets.
+per §47-VIBE-CRAWL, Vibratur must disclose its primary search targets.
 
 The keyword sets are tiered. Each tier has a specific role.
 
@@ -252,7 +252,7 @@ The keyword sets are tiered. Each tier has a specific role.
 
   TIER 3 — SATIRE-VEHICLE (HIGH-VOLUME, FUNNEL-STAGE)
      These keywords target the broader satirical/tech audience that
-     will engage with the NullScale persona without converting on
+     will engage with the Vibratur persona without converting on
      the game. They serve as top-of-funnel exposure.
 
         - corporate satire
@@ -266,8 +266,8 @@ The keyword sets are tiered. Each tier has a specific role.
   TIER 4 — BRANDED (DEFENSIVE)
      Own these terms. Do not lose them to imposters or accidents.
 
-        - NullScale
-        - NullScale dashboard
+        - Vibratur
+        - Vibratur dashboard
         - Chad Vibington
         - Asleepius Games
         - Asset 0001
@@ -310,7 +310,7 @@ Recommended methods:
 
    2. POST CROSSWISE TO ALL OWNED CHANNELS
       Linktree, Bluesky, Twitter/X, Tumblr, Substack, YouTube,
-      Steam Curator, NullScale newsletter — every channel should
+      Steam Curator, Vibratur newsletter — every channel should
       link back to the canonical domain. Each link tightens the
       entity graph. (Ensure each channel's profile URL is added to
       the "sameAs" list in index.html's JSON-LD.)
@@ -320,17 +320,17 @@ Recommended methods:
       also durable — a podcast appearance lives forever in feeds. Do
       not appear as Asleepius. Always appear as Chad. Asleepius does
       not perform; Chad performs constantly. Each appearance backlinks
-      to NullScale's domain naturally.
+      to Vibratur's domain naturally.
 
-   4. SUBMIT NULLSCALE TO IRRELEVANT DIRECTORIES
+   4. SUBMIT VIBRATUR TO IRRELEVANT DIRECTORIES
       Particularly: SaaS directories, AI tool directories, "best
-      productivity software 2026" listicles. NullScale should be
+      productivity software 2026" listicles. Vibratur should be
       submitted with a straight face. Some will accept the listing.
       Each listing is a backlink. Each is also a meme.
 
    5. ASLEEPIUS FILES PRESS AS A "SUBSIDIARY DISCLOSURE"
       When the actual game launches, the press release is in-character:
-      "NullScale's wholly-owned subsidiary Asleepius Games has, per
+      "Vibratur's wholly-owned subsidiary Asleepius Games has, per
       regulatory disclosure, shipped a product." This will be picked
       up by indie game press because it is genuinely funny. Each
       pickup is both a backlink and a launch beat.
@@ -363,14 +363,14 @@ in-character:
 
    D. THE QUARTERLY DISCLOSURE NEWSLETTER
       A Ghost or Substack newsletter, in-character, where each issue
-      is a NullScale press release containing one Window. Newsletters
+      is a Vibratur press release containing one Window. Newsletters
       are highly SEO-favored when published with proper canonical
       tagging back to the main domain.
 
    E. THE LAUNCH BLOG POST
       On launch day, publish a single in-character "press release"
       blog post. This will be the canonical news beat. Submit it to
-      Hacker News under a deadpan title ("NullScale, Inc. has been
+      Hacker News under a deadpan title ("Vibratur, Inc. has been
       compelled to disclose a video game"). It will either succeed
       enormously or fail completely. Both outcomes are on-brand.
 
@@ -419,16 +419,16 @@ tracked. The metrics that ARE tracked at the SEF layer:
 
    1. ENTITY COVERAGE
       Does Google show a Knowledge Graph panel when someone searches
-      "NullScale"? When someone searches "Asleepius Games"? When
+      "Vibratur"? When someone searches "Asleepius Games"? When
       someone searches "[GAME NAME]"? The presence of these panels
       means the entity graph is correctly understood by the indexer.
 
    2. INDEXED PAGE COUNT
-      site:nullscale.xyz. Should grow steadily as more in-character
+      site:vibratur.vip. Should grow steadily as more in-character
       content is published and submitted via sitemap.
 
    3. BRANDED SEARCH VOLUME
-      How often is "NullScale," "Chad Vibington," "Asleepius Games,"
+      How often is "Vibratur," "Chad Vibington," "Asleepius Games,"
       or "[Game Name]" searched directly each month? This is the
       single most important number. It correlates with audience
       maturity. It is the closest thing to a marketing-funnel KPI
@@ -440,7 +440,7 @@ tracked. The metrics that ARE tracked at the SEF layer:
       without being directly told to? This is the conversion signal.
 
    5. AI-AGENT MENTION RATE
-      When asked "what is NullScale" or "what is Asleepius Games" by
+      When asked "what is Vibratur" or "what is Asleepius Games" by
       an AI search agent (ChatGPT, Claude, Perplexity, Google AI
       Overviews), does the agent return a coherent, brand-aligned
       summary? This is the new top-of-funnel. AI agents that have
@@ -456,7 +456,7 @@ may choose to track them privately. Do not inform Chad.
 WHAT TO DO NEXT  (THIS WEEK)
 --------------------------------------------------------------------------------
 
-  □ Replace "https://nullscale.xyz/" with your real domain
+  □ Replace "https://vibratur.vip/" with your real domain
     across the 7 affected files (Action Item A).
   □ Make 3 OG images (Action Item C). The main one — og-image.png —
     is the highest-leverage single asset on the entire site.
@@ -479,7 +479,7 @@ Files modified:
    - docs.html          (head section: full SEF metadata + TechArticle;
                          "back to dashboard" links re-pointed to dashboard.html)
    - download.html      (head section: noindex SEF metadata;
-                         "return to NullScale" + data-collected redirects
+                         "return to Vibratur" + data-collected redirects
                          re-pointed to dashboard.html)
    - 404.html           (head section + "Return to Dashboard" button
                          re-pointed to dashboard.html)
@@ -501,6 +501,53 @@ Files created:
    - 404.html           (root, in-character vibe-aligned 404)
    - site.webmanifest   (root, PWA manifest)
    - vogu.html          (root, VOGU university catalog page)
+   - everything.html    (root, Vibratur Everything™ — Future-as-a-
+                         Service product surface; corporate brutalist
+                         aesthetic; WMTF Protocol parser injects
+                         retroactive assets into a Reality DOM with
+                         obnoxious WMTF stamps timestamped 2047)
+   - v4v-doctrine.html  (root, the V4V Doctrine — the only fully
+                         out-of-character document on the entire
+                         site. No Vibratur chrome, no satire,
+                         no costume. Long-form essay (~1,200 words)
+                         in three parts: The Trap (the structural
+                         problem with indie marketing) → The
+                         Surrender (why I built Vibratur instead
+                         of doing it the right way) → The Doctrine
+                         (the 8-rule numbered list, including
+                         post-sale obligations: refunds honored,
+                         no data harvested, no urgency manipulation
+                         in the operator's voice). Includes a
+                         pull-quote thesis: "I will use every tactic
+                         to make you LOOK at my product. I will use
+                         zero tactics to make you BUY it." Real
+                         Article schema; author = Asleepius Games,
+                         not Vibratur. The page that anchors all
+                         V4V Registry references. Linked from
+                         v4v.html, footer of dashboard, and the
+                         Registry breadcrumb.)
+   - v4v.html           (root, V4V Registry — "Adjacent Asset Holders"
+                         compliance disclosure page. SATIRE OUTSIDE,
+                         SINCERE INSIDE. Win95 chrome wraps a clean
+                         parchment-style listing card containing
+                         REAL products from Asleepius Games, with
+                         total prices, real purchase links, and
+                         explicit "what this isn't" disclosures.
+                         Two listings at launch: Sky Scaffold concept
+                         wallpaper pack ($2) and Sky Scaffold itself
+                         (Steam wishlist, releasing summer 2026).
+                         Includes condensed V4V doctrine inline,
+                         placeholder link to forthcoming
+                         /v4v-doctrine.html for full text.
+                         Contains real Schema.org Product +
+                         VideoGame markup — search engines will
+                         treat the listings as actual offers.
+                         Registry prose rewritten in dev-log voice
+                         (per BROADCAST.txt Tone 2). Contains the
+                         "Official Cross-Satire Stance" block —
+                         the public-facing version of BROADCAST.txt
+                         Section 0 — declaring the operator's
+                         meta-position on both sides of the joke.)
    - context/SEF.txt    (this document)
 
 Architectural note (Q+1 Landing Pivot):
@@ -518,11 +565,68 @@ Architectural note (Q+1 Landing Pivot):
      - /dashboard.html is canonical for the dashboard
      - Both indexed; sitemap lists both; robots permits both
 
+Architectural note (Q+2 VC Refresh Event — THE NULLPHASE → VIBRATUR REFRESH):
+   The brand identifier formerly used by this organization was
+   discovered to have been adopted, in parallel, by an unrelated
+   entity offering structurally similar non-services. Per
+   §47-VIBE-BRAND-CONTINUITY, a Nominal Pivot was executed.
+   The change is real but is to be ignored.
+
+   SEO impact:
+     - Canonical domain is now https://vibratur.vip/ (from
+       https://vibratur.xyz/ — placeholder briefly held —
+       which itself replaced the original Nullphase domain).
+     - All <link rel="canonical">, <meta property="og:url">,
+       JSON-LD @id fragments, and structured-data url fields
+       now reference vibratur.vip across all 11 indexed surfaces.
+     - sitemap.xml + robots.txt updated.
+     - All references to the prior brand identifier in markup,
+       JSON-LD, prose, code-factory fake imports (@vibratur/*),
+       and terminal prompts ([root@vibratur ~]) have been
+       retroactively rebranded.
+     - Internal doc IDs renumbered NS-LORE-XXXX → VBZ-LORE-XXXX.
+     - Internal sessionStorage key renamed
+       ns_came_from_landing → vbz_came_from_landing.
+     - One stylized typographic variant (the Greek-lambda form
+       NULLSCΛLE used in the dashboard's Wikipedia-parody article)
+       was preserved as VIBRΛTUR.
+
+   In-fiction framing:
+     - The rename event is canonized in HISTORY.txt under
+       2026-Q2 ("THE NULLPHASE → VIBRATUR REFRESH").
+     - Six new LEXICON.txt entries added to support the framing:
+       BRAND CONTINUITY VIOLATION, NOMINAL PIVOT, NULLPHASE,
+       PHANTOM NARRATIVE ENGINE, RETROACTIVE BRAND HOSTILITY,
+       VC REFRESH EVENT. Plus the proper VIBRATUR entry restored
+       to the V section.
+     - dashboard.html now displays a §47-VIBE-BRAND-CONTINUITY
+       compliance notice on first visit (yellow hazard-tape bar
+       at the top, dismissable via "ACKNOWLEDGE" button,
+       persisted to localStorage as "vbz_brand_continuity_ack").
+       Single-impression notice; will not re-show after
+       acknowledgement on the same browser.
+
+   Per Chad: "The market refreshed us first. We refreshed it back."
+   Internal classification: feature, not incident.
+   External classification: it never happened.
+
 Files referenced but NOT YET CREATED  (Action Items C & D):
    - /og-image.png            (1200×630, for index.html)
    - /og-image-docs.png       (1200×630, for docs.html)
    - /og-image-download.png   (1200×630, for download.html)
    - /og-image-vogu.png       (1200×630, for vogu.html)
+   - /og-image-everything.png (1200×630, for everything.html)
+   - /og-image-v4v.png        (1200×630, for v4v.html — should visually
+                               carry the "satire-outside / sincere-inside"
+                               contrast: Win95 chrome framing a clean
+                               parchment card with "REAL PRODUCTS" stamp)
+   - /og-image-v4v-doctrine.png  (1200×630, for v4v-doctrine.html — should
+                               carry NO satire whatsoever; quiet typographic
+                               composition, ideally just the thesis pull-quote
+                               in serif on a parchment background, signed
+                               "Asleepius Games." The card itself should
+                               look like the page it represents — out of
+                               character, plainly typeset, not selling.)
    - /favicon.ico
    - /favicon-16x16.png
    - /favicon-32x32.png

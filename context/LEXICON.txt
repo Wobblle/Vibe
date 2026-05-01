@@ -1,5 +1,5 @@
 ================================================================================
-                  THE NULLSCALE LEXICON  —  VOLUME I, ED. 14
+                  THE VIBRATUR LEXICON  —  VOLUME I, ED. 14
                   "A glossary of vibe-aligned terminology"
                 "Words we use. Words we own. Words you owe us for."
 ================================================================================
@@ -7,14 +7,14 @@
 DOCUMENT CLASSIFICATION:  Reference. Aspirational. Litigious.
 LAST REVISED:             whenever a definition becomes inconvenient
 AUTHOR:                   The Lexicon Working Group  (a Slack thread)
-DOC ID:                   NS-LORE-0005
+DOC ID:                   VBZ-LORE-0005
 LEGAL STATUS:             use of these terms requires a license you have
 
 --------------------------------------------------------------------------------
 HOW TO USE THIS LEXICON
 --------------------------------------------------------------------------------
 
-This lexicon defines the official vibe-aligned terminology used at NullScale.
+This lexicon defines the official vibe-aligned terminology used at Vibratur.
 It is not a dictionary. It is, per Chad's preferred framing, a "vocabulary
 roadmap."
 
@@ -42,7 +42,7 @@ Bracketed tags after each entry:
 ================================================================================
 
 ACQUISITION  [N] [B]
-   The process by which NullScale absorbs another entity into its
+   The process by which Vibratur absorbs another entity into its
    organizational vibe. Distinct from "acquihire" (we keep the people)
    and "acquibill" (we keep the customers and bill them retroactively).
 
@@ -71,7 +71,7 @@ AMBIENT  [A]
    anxiety. ("Ambient billing." "Ambient surveillance." "Ambient anxiety.")
 
 ANTI-CHURN PROTOCOL  [N] [™]
-   NullScale's proprietary system for retaining customers who have asked,
+   Vibratur's proprietary system for retaining customers who have asked,
    repeatedly, to leave. See "Cancel Subscription" feature in production.
 
 API BLOCK  [N] [B]
@@ -84,7 +84,7 @@ ARTIFACT  [N]
       acknowledge but still maintain in production for liability reasons.
 
 ASCENSION  [N]
-   The terminal state of a NullScale customer in which their browser tab,
+   The terminal state of a Vibratur customer in which their browser tab,
    subscription, and self transcend the closeable plane. See: VIBE OVERLOAD.
 
 AUTO-COMPRESSED  [A]
@@ -106,7 +106,7 @@ BANTER  [N]
    Performance reviews, redacted.
 
 BASE RATE  [N]
-   The fictional rate at which all NullScale features are described as
+   The fictional rate at which all Vibratur features are described as
    "outperforming."
 
 BENCHMARK  [N]
@@ -120,9 +120,17 @@ BLOCKCHAIN  [N]
       framerate to 1.
    3) A spiritual condition.
 
+BRAND CONTINUITY VIOLATION  [N] [L]
+   Any condition in which Vibratur's name is found to have been previously
+   used by a different entity. Treated as a hostile act by the prior entity,
+   regardless of when the prior entity adopted the name. Resolution
+   protocol: pivot the brand, blame the prior entity, file an entry in
+   the lexicon. (You are reading the entry.)
+   See also: VC REFRESH EVENT, RETROACTIVE BRAND HOSTILITY, NOMINAL PIVOT.
+
 BRETT  [N]
-   1) A common name among NullScale interns.
-   2) A common name among NullScale daemons.
+   1) A common name among Vibratur interns.
+   2) A common name among Vibratur daemons.
    3) Chad's preferred travel pseudonym.
    4) The name of every legal entity that has ever wired Chad money.
    See: WIG. See: ALIGNMENT.
@@ -138,7 +146,7 @@ BUILD STATUS  [N]
 ================================================================================
 
 C-LEVEL  [N]
-   A class of executive whose title begins with "C." All NullScale
+   A class of executive whose title begins with "C." All Vibratur
    executives are C-level. Including the interns. Including the chairs.
 
 CHAD  [N] [PROPER NOUN] [™ pending]
@@ -162,7 +170,7 @@ CLOUD  [N]
       a competitor we have publicly disparaged.
 
 COHERENCE  [N]
-   The quarterly attempt to make all of NullScale's products work
+   The quarterly attempt to make all of Vibratur's products work
    together. Status: ongoing.
 
 COHORT  [N]
@@ -180,7 +188,7 @@ COMPRESSION  [N]
 
 CONSENT  [N] [LATENCY ISSUE]
    A formality. Implicitly given by the act of existing within
-   NullScale's TAM.
+   Vibratur's TAM.
 
 CRAB  [N]
    Internal codename for the legal team.
@@ -204,16 +212,16 @@ CUSTOMER  [N]
 
 DAEMON  [N]
    1) A background process that performs a function.
-   2) A NullScale agent that performs a function regardless of consent.
-   3) (One of the four founding spirits of NullScale.)
+   2) A Vibratur agent that performs a function regardless of consent.
+   3) (One of the four founding spirits of Vibratur.)
 
 DAEMONS INTERLINK  [N] [™]
-   The internal feed of agentic activity displayed on the NullScale
+   The internal feed of agentic activity displayed on the Vibratur
    dashboard. Reads like a prophecy. Mostly hallucinated.
 
 DASHBOARD  [N]
    The window in which charts move regardless of whether the underlying
-   data has changed. The user's primary interface to NullScale.
+   data has changed. The user's primary interface to Vibratur.
    Kept in motion at all times for psychological reasons.
 
 DATA  [N]
@@ -246,7 +254,7 @@ DOCS  [N]
    3) Cited in court.
 
 DOWNLOAD  [N]
-   See: DOWNLOAD MAZE. (No "download" at NullScale is just a download.)
+   See: DOWNLOAD MAZE. (No "download" at Vibratur is just a download.)
 
 DOWNLOAD MAZE  [N]
    The 8-stage user-hostile flow accessible via the open-source download
@@ -262,11 +270,11 @@ EARLY-ACCESS  [A]
    Untested. ("Early-access pricing." "Early-access stability.")
 
 EBITDA  [N]
-   "Earnings Before I Tricked Dumb Auditors." (NullScale internal.
+   "Earnings Before I Tricked Dumb Auditors." (Vibratur internal.
    Not for use in 10-Ks.)
 
 ECOSYSTEM  [N]
-   The set of all things NullScale has billed.
+   The set of all things Vibratur has billed.
 
 ENDPOINT  [N]
    See API BLOCK.
@@ -302,7 +310,7 @@ EXIT  [N]
 ================================================================================
 
 FAAS  [N] [™]
-   "Friction-as-a-Service." NullScale's flagship product offering, in
+   "Friction-as-a-Service." Vibratur's flagship product offering, in
    which customers pay to NOT have something done to them.
 
 FEATURE  [N]
@@ -341,7 +349,7 @@ GO-TO-MARKET  [N]
    3) Chad on a podcast.
 
 GPT-9000  [N] [PROPER NOUN] [™]
-   NullScale's proprietary AGI. Internally: ChatGPT API with a system
+   Vibratur's proprietary AGI. Internally: ChatGPT API with a system
    prompt that says "be Chad." Externally: "the most advanced cognitive
    substrate ever deployed in a B2B SaaS context."
 
@@ -361,7 +369,7 @@ GROWTH HACKING  [N]
 
 HALLUCINATION  [N] [FEATURE]
    1) An AI's confidently incorrect output.
-   2) NullScale's primary deliverable.
+   2) Vibratur's primary deliverable.
    3) The chief operating principle of GPT-9000.
 
 HARVEST  [V]
@@ -380,7 +388,7 @@ HOLY DAY  [N]
 ================================================================================
 
 IDEMPOTENT  [A]
-   Repeatable without effect. NullScale's billing system is officially
+   Repeatable without effect. Vibratur's billing system is officially
    "anti-idempotent" — repeated identical requests are guaranteed to
    produce additional charges.
 
@@ -390,7 +398,7 @@ IMPLEMENTATION  [N]
    3) Outsourced.
 
 INVITATION  [N]
-   1) An offer to share NullScale with another person.
+   1) An offer to share Vibratur with another person.
    2) A data-collection event masquerading as social.
    3) Always returns to Chad's referral ID.
 
@@ -427,7 +435,7 @@ KPI  [N]
 LATENCY  [N]
    1) The delay between a request and a response.
    2) "Negative latency": the response arriving before the request.
-      A NullScale Pro feature.
+      A Vibratur Pro feature.
    3) The time between billing and consent (always positive).
 
 LAYER  [N]
@@ -448,7 +456,7 @@ LEDGER  [N]
 
 LEGAL  [N]
    1) The department.
-   2) The condition under which something is legal. NullScale prefers to
+   2) The condition under which something is legal. Vibratur prefers to
       operate "legal-adjacent."
 
 LEXICON  [N]
@@ -481,6 +489,11 @@ MAYBE  [A]
 MICROSERVICE  [N]
    A small service that requires 14 other small services to be useful.
 
+MISSION STATEMENT  [N]
+   1) A short, binding declaration of corporate moral position.
+   2) A new product surface.
+   3) See OOOR.
+
 MOAT  [N]
    1) A defensible competitive advantage.
    2) Our terms of service.
@@ -498,17 +511,35 @@ MOMENTUM  [N]
                                  N
 ================================================================================
 
+NOMINAL PIVOT  [N] [L]
+   The replacement of one brand identifier with another while preserving
+   all other organizational, philosophical, financial, and karmic
+   structures intact. The standard procedure when a competitor is found
+   to have used the prior identifier first. Unlike a rebrand, a nominal
+   pivot involves no consultant fees, no new logos, no employee
+   onboarding, and no acknowledgment that anything has changed. The
+   change is real but is to be ignored.
+   See also: VC REFRESH EVENT, NULLPHASE.
+
 NULL  [N] [SACRED]
    1) The absence of value.
-   2) Half of NullScale.
-
-NULLSCALE  [N] [™]
-   The current legal name of the company. Final. Final-final. Probably.
+   2) A foundational element of the previous brand era. (See: NULLPHASE.)
 
 NULLCON  [N]
-   The annual NullScale conference. Held in a hotel ballroom in a city
+   The annual Vibratur conference. Held in a hotel ballroom in a city
    that is officially "to be announced." Attendance is mandatory for
-   employees, who pay for their own tickets.
+   employees, who pay for their own tickets. The name has been retained
+   from the Nullphase as a "legacy continuity asset." Do not confuse
+   this with brand drift. There has been no brand drift.
+
+NULLPHASE  [N] [HISTORICAL]
+   The previous brand era. (You are not in it. You are in Vibratur.)
+   References to the Nullphase are permitted only when distinguishing
+   it from the current Vibratur brand. Nullphase artifacts may persist
+   in old log entries, archived documents, certain internal directories,
+   and a small number of conference T-shirts. They are to be treated
+   as historical sediment, not as authoritative.
+   See also: VC REFRESH EVENT, NOMINAL PIVOT.
 
 NUMBER  [N]
    See KPI.
@@ -517,6 +548,23 @@ NUMBER  [N]
 ================================================================================
                                  O
 ================================================================================
+
+OP  [N] [PROPER NOUN] [EXTERNAL ASSET]
+   1) Short for "operator." A character maintained by the entity formerly
+      known as Asleepius Games. Vibratur acknowledges OP exists, the way
+      one acknowledges a draft under a door.
+   2) The flat one. The slow one. The beige one. Where Chad performs
+      certainty, OP performs not having an opinion. Where Chad inflates,
+      OP itemizes. The two characters are unrelated by all official
+      records. Records are imperfect.
+   3) Per OP himself: "op is one guy. that's me." Vibratur classifies this
+      as either a spiritual exercise or an unauthorized disclosure. Legal
+      has not decided.
+   4) OP is the credited author of the v4v operator notes. The notes are
+      out-of-character. The fact that they are out-of-character is, per
+      Brand, in-character.
+   5) OP is permitted to refer to himself in the third person. This is
+      considered a tonal accommodation, not a corporate posture.
 
 OPS  [N]
    1) Operations.
@@ -528,12 +576,50 @@ ONBOARDING  [N]
 
 OPEN-SOURCE  [A]
    1) Available for free.
-   2) NullScale's open-source download is open in the sense that it
+   2) Vibratur's open-source download is open in the sense that it
       cannot be closed.
 
 OPTIMIZE  [V]
    1) To improve.
    2) To replace humans with daemons.
+
+OOOR  [N] [PROPER NOUN] [PRODUCT]  ("Opt Out Of Racism")
+   A premium Vibratur compliance product, available exclusively to
+   subscribers of the Galactic and Galactic Eternal+Ad tiers.
+
+   For a small one-time fee of $2.99 (billed monthly), members receive
+   a verified certificate confirming that they have opted out of
+   racism for the duration of their active subscription.
+
+   OOOR was launched in response to a binding mission statement issued
+   by the CVO. Per §47-VIBE-DEI:
+
+      "I hate racism. It's bad for society, bad for the bottom line.
+       We hire any race of people, including italians (waiting for
+       approval to move forward)."
+                              — Chad Vibington III
+
+   Coverage exclusions include: racism committed by Brett-9 (autonomous
+   compliance, contractually unaware), internal Vibratur racism
+   (proprietary), racism perpetrated by the member (separate enrollment
+   required — see OOOR-PERPETRATOR), and Italians (pending
+   §47-VIBE-DEI-IT approval).
+
+   Cancellation is available anytime via the Schedule a Vibe Specialist
+   Call workflow (current wait: 14 weeks). The fee continues to bill
+   during the wait period as a courtesy. Per §47-VIBE-OOOR-CANCEL-A,
+   cancellation does not opt the member back INTO racism — that is a
+   separate workflow.
+
+   Marketing copy describes OOOR as "for the good of humanity." Internal
+   classification describes OOOR as "for the good of recurring revenue."
+   Both are correct.
+
+OOOR-PERPETRATOR  [N] [PROPOSED]
+   The proposed companion product to OOOR, covering racism perpetrated
+   BY the member rather than racism observed by them. Pricing tier
+   uncommitted. Brett-9 has flagged this product as "load-bearing" and
+   recommends silent rollout.
 
 OUTAGE  [N]
    1) A scheduled coherence pause.
@@ -547,7 +633,20 @@ OUTAGE  [N]
 
 PATENT  [N]
    1) An exclusive right granted by a government.
-   2) NullScale's primary form of poetry.
+   2) Vibratur's primary form of poetry.
+
+PHANTOM NARRATIVE ENGINE  [N] [I]
+   An Asset 0001 (Asleepius Games) technology of which Vibratur is
+   contractually unaware. References to it should not appear in
+   Vibratur communications. They occasionally appear anyway, due to
+   leaks from Asset 0001's parallel operating frame. Per Chad's
+   standing order, any leak of a Phantom narrative engine reference
+   is to be marked "vibe-flagged," ignored, and re-routed to /dev/null.
+   The system itself is described, by parties Vibratur does not
+   officially recognize, as "pre-generated scripts, syntax-driven
+   text generation, and locally-hosted updated narrative content
+   synced globally and shaped by player behavior." Vibratur considers
+   this — frankly — annoying.
 
 PIVOT  [V]
    To change the company's product, market, or premise. The verb is
@@ -555,10 +654,10 @@ PIVOT  [V]
 
 PLATFORM  [N]
    1) The thing that hosts the products.
-   2) Whatever we are calling NullScale this quarter.
+   2) Whatever we are calling Vibratur this quarter.
 
 POWERPOINT  [N]
-   The official language of NullScale leadership.
+   The official language of Vibratur leadership.
 
 PRIVACY  [N]
    1) The right to be left alone.
@@ -585,7 +684,7 @@ QUARTER  [N]
    1) A 3-month period.
    2) Currently 14 months long.
    3) "Reverse Q1": ongoing.
-   4) Q5 (Patented by NullScale) on the roadmap
+   4) Q5 (Patented by Vibratur) on the roadmap
    5) Q6+ (Patent Pending)
 
 QUEUE  [N]
@@ -609,19 +708,30 @@ RATE LIMITING  [N]
 
 RESILIENT  [A]
    1) Hard to kill.
-   2) NullScale's preferred description for any product that is mostly
+   2) Vibratur's preferred description for any product that is mostly
       held together by Chad's anxiety.
 
 RETROACTIVE  [A]
    Of the past, decided in the present, billable in the future. The most
-   important word in NullScale's legal arsenal.
+   important word in Vibratur's legal arsenal.
+
+RETROACTIVE BRAND HOSTILITY  [N] [L]
+   The condition in which a competing entity is found to have used a
+   brand identity prior to Vibratur's adoption of that identity. The
+   competing entity is held responsible for the timing of their decision.
+   Vibratur is held harmless. This is the official internal posture
+   toward the entity formerly known as our previous name. Compensation
+   owed by the competitor is currently estimated at "an undisclosed
+   amount" but will not be collected because we cannot find the
+   competitor's CEO.
+   See also: VC REFRESH EVENT, BRAND CONTINUITY VIOLATION.
 
 RETROSPECTIVE  [N]
    See: REORG.
 
 RUNWAY  [N]
    1) The number of months a startup can survive on current capital.
-   2) NullScale's runway is officially "vibes." See: RAISE.
+   2) Vibratur's runway is officially "vibes." See: RAISE.
 
 
 ================================================================================
@@ -635,7 +745,7 @@ SANITIZED  [A]
 SCALE  [V]
    1) To grow.
    2) To grow without consent.
-   3) Half of NullScale.
+   3) Half of Vibratur.
 
 SCALABLE  [A]
    Replicable without quality.
@@ -651,7 +761,7 @@ SECURITY  [N]
    3) See: HARVEST.
 
 SECURITIZE  [V]
-   To bundle a thing — any thing — into a financial instrument. NullScale
+   To bundle a thing — any thing — into a financial instrument. Vibratur
    has securitized: customer souls, employee tears, and the Tuesday brand (Wednesday Patent Pending).
 
 SERIES  [N]
@@ -767,11 +877,11 @@ TRUTH  [N]
 
 UNICORN  [N]
    1) A startup valued at >$1B.
-   2) NullScale (allegedly).
+   2) Vibratur (allegedly).
    3) See HALLUCINATION.
 
 UNCLOSEABLE ALERT  [N]
-   The Win95-styled modal that cannot be dismissed by the user. NullScale's
+   The Win95-styled modal that cannot be dismissed by the user. Vibratur's
    most beloved UX pattern.
 
 UNICORN POSITION  [N]
@@ -798,13 +908,23 @@ VAPORWARE  [N]
    2) Most of our roadmap.
    3) Billable.
 
+VC REFRESH EVENT  [N] [L] [™]
+   A founder-mandated rebrand executed within 0.4 seconds of discovering
+   that the previous brand was already in use elsewhere — particularly
+   when the conflicting brand is structurally indistinguishable from
+   the brand executing the refresh. Per Chad: "The market refreshed us
+   first. We refreshed it back." Internally classified as a feature,
+   not an incident. No customer impact has occurred, because no
+   customers exist.
+   See also: NOMINAL PIVOT, RETROACTIVE BRAND HOSTILITY, NULLPHASE.
+
 VERTICAL  [N]
    1) An industry.
    2) Currently being acquired.
 
 VIBE  [N] [SACRED] [™]
    1) An ineffable feeling.
-   2) The fundamental unit of NullScale's economy.
+   2) The fundamental unit of Vibratur's economy.
    3) (See entire manifesto.)
 
 VIBE-CODE  [V] [PROPRIETARY]
@@ -817,7 +937,7 @@ VIBE EQUITY  [N]
 
 VIBE QUOTIENT (VQ)  [N]
    A score from 0 to 1.4 measuring an individual's alignment with
-   NullScale. Above 1.4: VP. Below 0.42: rate-limited.
+   Vibratur. Above 1.4: VP. Below 0.42: rate-limited.
 
 VIBE OVERLOAD  [N]
    The condition that triggers ASCENSION.
@@ -832,10 +952,17 @@ VIBE-FIRST  [A]
    See VIBE-NATIVE.
 
 VIBE TIMES  [N] [™]
-   The newspaper owned by NullScale that exclusively covers NullScale.
+   The newspaper owned by Vibratur that exclusively covers Vibratur.
+
+VIBRATUR  [N] [PROPER NOUN] [™]
+   The current legal name of the company. Final. Final-final. Probably.
+   Adopted following the most recent VC Refresh Event. The prior name
+   has been retroactively classified as a NULLPHASE artifact and is
+   no longer authoritative.
+   See also: VC REFRESH EVENT, NULLPHASE, NOMINAL PIVOT.
 
 VIBES, GLOBAL  [N]
-   The aggregate vibe state of all NullScale users. Displayed on the
+   The aggregate vibe state of all Vibratur users. Displayed on the
    dashboard as a number that goes up.
 
 VIBES, LOCAL  [N]
@@ -857,7 +984,7 @@ WAR ROOM  [N]
    3) Active for 47 weeks per year.
 
 WEAR  [V]
-   To use a NullScale product. ("I've been wearing the dashboard.")
+   To use a Vibratur product. ("I've been wearing the dashboard.")
 
 WHITEPAPER  [N]
    1) A formal technical document.
@@ -874,7 +1001,7 @@ WIN  [N]
    2) Any outcome, retroactively.
 
 WIN95  [N]
-   The aesthetic foundation of NullScale's user interface. Selected for
+   The aesthetic foundation of Vibratur's user interface. Selected for
    its emotional density.
 
 WORK  [N]
@@ -886,7 +1013,7 @@ WORK  [N]
 ================================================================================
 
 X-AXIS  [N]
-   The horizontal axis of a chart. NullScale's preferred axis. (See:
+   The horizontal axis of a chart. Vibratur's preferred axis. (See:
    "Vibe Density.")
 
 XP  [N]
@@ -913,7 +1040,7 @@ YEAR  [N]
 
 ZERO  [N]
    1) The integer.
-   2) NullScale's customer churn rate (allegedly).
+   2) Vibratur's customer churn rate (allegedly).
    3) Half of "0.0042%" (the equity stake of all employees combined).
 
 
@@ -921,7 +1048,7 @@ ZERO  [N]
 APPENDIX A: TERMS WE NO LONGER USE
 --------------------------------------------------------------------------------
 
-The following terms have been retired from official NullScale vocabulary
+The following terms have been retired from official Vibratur vocabulary
 and should not be used in any external communication. Use of these terms
 internally is grounds for "alignment."
 
@@ -957,7 +1084,7 @@ Their meanings will be assigned later.
 APPENDIX C: TERMS WE HAVE TRADEMARKED
 --------------------------------------------------------------------------------
 
-The following terms are registered trademarks of NullScale, Inc., and may
+The following terms are registered trademarks of Vibratur, Inc., and may
 not be used by competitors, customers, or the general public without a
 license. Pricing is per-syllable per-mention.
 
@@ -978,7 +1105,7 @@ A FINAL DISCLAIMER
 The act of reading this lexicon constitutes:
    (a) acceptance of all definitions,
    (b) waiver of any conflicting prior definitions,
-   (c) registration as a NullScale lexicographical user,
+   (c) registration as a Vibratur lexicographical user,
    (d) automatic enrollment in the "Vibe Vocabulary Plus" plan ($14/mo).
 
 To unsubscribe, please re-read this document.

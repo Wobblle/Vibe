@@ -1,5 +1,5 @@
 ================================================================================
-                  NULLSCALE — A COMPILED HISTORY OF THE COMPANY
+                  VIBRATUR — A COMPILED HISTORY OF THE COMPANY
                        (formerly Synergist.io, formerly VibeOS)
                     "Volume I of I. Volume II is also Volume I."
 ================================================================================
@@ -7,7 +7,7 @@
 DOCUMENT CLASSIFICATION:  Internal / External / Both / Neither
 LAST REVISED:             continuously, by AI, without supervision
 AUTHOR:                   Chad Vibington III (allegedly, posthumously, retroactively)
-DOC ID:                   NS-LORE-0001
+DOC ID:                   VBZ-LORE-0001
 LEGAL STATUS:             binding on the reader as of paragraph one
 
 
@@ -15,7 +15,7 @@ LEGAL STATUS:             binding on the reader as of paragraph one
 PRELUDE: A NOTE ON HISTORICAL ACCURACY
 --------------------------------------------------------------------------------
 
-The history of NullScale is, by company policy, incompatible with linear time.
+The history of Vibratur is, by company policy, incompatible with linear time.
 Events described in this document may have happened, may be happening currently,
 or may be scheduled to have happened retroactively pending Q3 review.
 
@@ -30,16 +30,16 @@ This is not history. This is "history-as-a-service" (HaaS).
 ERA 0 — PREHISTORY  (~13.8B BCE to 2014 CE)
 --------------------------------------------------------------------------------
 
-For most of the cosmic record, NullScale did not exist. This was a marketing
-problem we have since corrected by making NullScale exist retroactively.
+For most of the cosmic record, Vibratur did not exist. This was a marketing
+problem we have since corrected by making Vibratur exist retroactively.
 
-Effective 2024-Q4, NullScale is now considered to have always existed.
+Effective 2024-Q4, Vibratur is now considered to have always existed.
 The Big Bang is now considered an early pivot.
 
 KEY MILESTONES (RETROACTIVELY ASSIGNED):
 
   ~13.8B BCE    Big Bang.
-                Per current company narrative, this was NullScale's seed round.
+                Per current company narrative, this was Vibratur's seed round.
                 Pre-money valuation: incomprehensible. Lead investor: God
                 (declined to comment).
 
@@ -48,14 +48,14 @@ KEY MILESTONES (RETROACTIVELY ASSIGNED):
                 ("Method for rotational synergy"). Cease and desist served
                 to history.
 
-  1455          Gutenberg presses the first NullScale newsletter.
+  1455          Gutenberg presses the first Vibratur newsletter.
                 Subscribers: 0. Engagement: 100%.
 
   1969          Moon landing.
-                NullScale claims responsibility on a podcast in 2024.
+                Vibratur claims responsibility on a podcast in 2024.
 
   2007          The iPhone is launched.
-                NullScale's CTO at the time, Chad Vibington II, was reportedly
+                Vibratur's CTO at the time, Chad Vibington II, was reportedly
                 "vaguely involved" in a way that has not yet been substantiated.
                 It will be substantiated.
 
@@ -67,7 +67,7 @@ KEY MILESTONES (RETROACTIVELY ASSIGNED):
 ERA 1 — THE GARAGE YEARS  (2014 — 2017)  "VIBEZ"
 --------------------------------------------------------------------------------
 
-NullScale was founded in 2014 in Chad Vibington III's parents' garage, a garage
+Vibratur was founded in 2014 in Chad Vibington III's parents' garage, a garage
 that did not exist, in a city that has since been renamed.
 
 The original product, "Vibez", was a mobile application that did the following:
@@ -116,7 +116,7 @@ VibeOS was, technically, a Chrome extension. It rendered a fake desktop on
 top of the user's existing desktop. It could not be uninstalled.
 
 This era saw the introduction of several foundational concepts that remain
-core to the NullScale product line today:
+core to the Vibratur product line today:
 
   - The "Vibe Dashboard" (a window with charts that did not chart anything).
   - The "Daemon" (a background process that pinged the user's database
@@ -207,7 +207,7 @@ KEY EVENTS:
 
 
 --------------------------------------------------------------------------------
-ERA 4 — THE NAMING CRISIS, AGAIN  (2024 — 2026)  "NULLSCALE"
+ERA 4 — THE NAMING CRISIS, AGAIN  (2024 — 2026)  "VIBRATUR"
 --------------------------------------------------------------------------------
 
 In late 2024, Synergist.io discovered, mid-acquisition negotiation, that
@@ -217,21 +217,21 @@ The dental hygienist was sent a brief, courteous email. She replied in full:
 
        "Are you the company that's been mailing my mother NFTs?"
 
-Within 14 minutes, Synergist.io was renamed to "NullScale."
+Within 14 minutes, Synergist.io was renamed to "Vibratur."
 
 The new name was selected via a process the marketing team described as
 "vibing." Specifically: an LLM was asked to "produce a name that sounds
 both terrifying and venture-backed, but means literally nothing." The LLM
-produced 4,201 candidates. NullScale ranked 4,200th. It was selected
+produced 4,201 candidates. Vibratur ranked 4,200th. It was selected
 because it was "humble."
 
 KEY EVENTS:
 
-  2024-Q4     NullScale officially launches. Customers are told via push
+  2024-Q4     Vibratur officially launches. Customers are told via push
               notification at 4:14am local time. The push notification
               includes new EULA terms in 8pt Wingdings.
 
-  2025-Q1     NullScale acquires the concept of Tuesdays in a stock-and-
+  2025-Q1     Vibratur acquires the concept of Tuesdays in a stock-and-
               vibes deal. Tuesday is now a wholly-owned subsidiary.
 
   2025-Q2     Chad publicly retires for the first time. Chad publicly
@@ -243,24 +243,52 @@ KEY EVENTS:
               a system prompt that says "be Chad." It is, externally,
               "the most advanced AGI ever deployed in production."
 
-  2025-Q4     NullScale's Anti-Churn Protocol v3 is finalized. It is
+  2025-Q4     Vibratur's Anti-Churn Protocol v3 is finalized. It is
               ruled illegal in 4 jurisdictions. It is required in 2 others.
 
   2026-Q1     The Whitepaper ("The Synergy Singularity") is published.
               It causes a small but measurable rise in global cortisol.
-              NullScale monetizes the cortisol via a partnership.
+              Vibratur monetizes the cortisol via a partnership.
 
-  2026-Q1     Chad gives a keynote at NullCon, NullScale's annual
+  2026-Q1     Chad gives a keynote at NullCon, Vibratur's annual
               conference. Attendance: 14 paid attendees, 47,000 daemons.
               The keynote ends with Chad saying "vibes" 14 times into a
               microphone before slowly walking offstage.
+
+  2026-Q2     THE NULLPHASE → VIBRATUR REFRESH.
+
+              Following an unscheduled VC Refresh Event, Vibratur, Inc.
+              completes a Nominal Pivot from its prior brand identifier.
+              The prior identifier — discovered to have been adopted, in
+              parallel, by an unrelated entity offering structurally
+              similar non-services — is retroactively classified as a
+              Nullphase artifact.
+
+              Per Section §47-VIBE-BRAND-CONTINUITY, the prior entity
+              is held responsible for the timing of their decision.
+              Vibratur is held harmless. Compensation owed by the prior
+              entity is currently estimated at "an undisclosed amount"
+              but will not be collected because we cannot find the
+              prior entity's CEO.
+
+              No customer impact has occurred, because no customers
+              exist. No employee impact has occurred, because no
+              employees exist. No internal IP, philosophy, financial
+              instrument, or karmic structure was modified by the
+              refresh. The change is real but is to be ignored.
+
+              Per Chad: "The market refreshed us first. We refreshed
+              it back." The quote was issued retroactively.
+
+              Internal classification: feature, not incident.
+              External classification: it never happened.
 
 
 --------------------------------------------------------------------------------
 ERA 5 — THE PRESENT  (NOW)
 --------------------------------------------------------------------------------
 
-NullScale is currently:
+Vibratur is currently:
 
   - The world's largest privately-held vibe broker.
   - The world's largest publicly-held vibe broker.
@@ -270,7 +298,7 @@ NullScale is currently:
   - The actual employer of 14 people, all of whom are Chad in slightly
     different hats.
 
-NullScale is not currently:
+Vibratur is not currently:
 
   - Profitable.
   - Unprofitable.
@@ -278,24 +306,24 @@ NullScale is not currently:
   - Defunct.
   - Confirmed.
 
-NullScale is, per company policy, in a state of "perpetual reverse Q1."
+Vibratur is, per company policy, in a state of "perpetual reverse Q1."
 
 
 --------------------------------------------------------------------------------
 ERA 6 — THE FUTURE  (PRE-ANNOUNCED RETROACTIVELY)
 --------------------------------------------------------------------------------
 
-NullScale's roadmap includes, but is not limited to:
+Vibratur's roadmap includes, but is not limited to:
 
   Q+1   Acquisition of Wednesdays.
-  Q+2   IPO of NullScale's investors. Investors will trade publicly as
+  Q+2   IPO of Vibratur's investors. Investors will trade publicly as
         themselves at 0.0042 of their original valuation.
-  Q+3   Launch of NullScale OS, a fork of NullScale that runs on top of
-        NullScale.
-  Q+4   The "Final Pivot." Details classified. (Not from NullScale; from
+  Q+3   Launch of Vibratur OS, a fork of Vibratur that runs on top of
+        Vibratur.
+  Q+4   The "Final Pivot." Details classified. (Not from Vibratur; from
         physics.)
-  Q+5   Acquisition of NullScale by NullScale, in cash and vibes.
-  Q+∞   Heat death of the universe. NullScale will issue a final invoice
+  Q+5   Acquisition of Vibratur by Vibratur, in cash and vibes.
+  Q+∞   Heat death of the universe. Vibratur will issue a final invoice
         and politely move on.
 
 
@@ -326,7 +354,7 @@ per the SEC, "a cause for further inquiry."
 APPENDIX B: THE FOUR FOUNDING TEXTS
 --------------------------------------------------------------------------------
 
-NullScale recognizes four (4) Founding Texts:
+Vibratur recognizes four (4) Founding Texts:
 
   1. THE MANIFESTO         — see MANIFESTO.txt
   2. THE LEXICON           — see LEXICON.txt
@@ -340,10 +368,10 @@ A fifth Founding Text exists but cannot be observed without collapsing it.
 APPENDIX C: HOW TO CITE THIS DOCUMENT
 --------------------------------------------------------------------------------
 
-Per NullScale Style Guide v8.4, this document should be cited as follows:
+Per Vibratur Style Guide v8.4, this document should be cited as follows:
 
-   NullScale, Inc. (2026). "A Compiled History of the Company."
-   In: NullScale, Inc. (Ed.), NullScale, Inc.
+   Vibratur, Inc. (2026). "A Compiled History of the Company."
+   In: Vibratur, Inc. (Ed.), Vibratur, Inc.
    Self-published. Self-edited. Self-cited. Self-aware.
    Retrieved from: itself.
 

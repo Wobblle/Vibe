@@ -1,5 +1,5 @@
 ================================================================================
-                  NULLSCALE — INTERNAL CULTURE & RITUALS
+                  VIBRATUR — INTERNAL CULTURE & RITUALS
                   "How we vibe, and when, and at whose expense"
                        Employee Onboarding Codex, Vol. 4
 ================================================================================
@@ -7,7 +7,7 @@
 DOCUMENT CLASSIFICATION:  Internal-only. Visible to anyone.
 LAST REVISED:             you'll feel it
 AUTHOR:                   The Vibe Council (membership: undisclosed)
-DOC ID:                   NS-LORE-0003
+DOC ID:                   VBZ-LORE-0003
 LEGAL STATUS:             you signed it during onboarding (you didn't)
 
 
@@ -15,11 +15,11 @@ LEGAL STATUS:             you signed it during onboarding (you didn't)
 A NOTE FROM CULTURE & PEOPLE OPS
 --------------------------------------------------------------------------------
 
-Welcome to NullScale.
+Welcome to Vibratur.
 
 This document describes our internal culture: the rituals, holidays, jargon,
 dress code, and unspoken-but-loudly-spoken rules that govern daily life at
-NullScale, Inc.
+Vibratur, Inc.
 
 You are required to know all of it within 24 hours of reading this document.
 You are required to forget all of it within 25.
@@ -32,7 +32,7 @@ culture where weirdness is not just accepted, but billable.
 THE ORG CHART (IT CHANGES)
 --------------------------------------------------------------------------------
 
-NullScale's organizational structure is a directed acyclic graph that has
+Vibratur's organizational structure is a directed acyclic graph that has
 cycles. The structure is updated by Chad's mood, the lunar phase, and a
 nightly cron job that reassigns titles randomly.
 
@@ -52,7 +52,7 @@ At any given moment, the org chart contains:
 
 The org chart can be viewed at any time by running:
 
-   $ nullscale org
+   $ vibratur org
 
 It will print 14 pages of YAML. None of it is correct. All of it is binding.
 
@@ -61,7 +61,7 @@ It will print 14 pages of YAML. None of it is correct. All of it is binding.
 TITLES
 --------------------------------------------------------------------------------
 
-NullScale recognizes the following standard titles. Standard does not mean
+Vibratur recognizes the following standard titles. Standard does not mean
 limited. Custom titles are encouraged at the cost of $499/title/year.
 
    - Chief Vibe Officer (CVO)         — must own a vintage motorcycle
@@ -81,7 +81,7 @@ limited. Custom titles are encouraged at the cost of $499/title/year.
    - Quantum Account Executive        — exists in two cubicles simultaneously
 
 Promotions are determined annually by the Vibe Council, in a closed-door
-session that has never opened. Promotions are communicated by NullScale
+session that has never opened. Promotions are communicated by Vibratur
 issuing a press release naming you in the third person.
 
 
@@ -89,11 +89,11 @@ issuing a press release naming you in the third person.
 THE WORKWEEK
 --------------------------------------------------------------------------------
 
-NullScale operates on a "9-9-6-but-with-vibes" schedule. The schedule is
+Vibratur operates on a "9-9-6-but-with-vibes" schedule. The schedule is
 described as follows:
 
    MONDAY     "Synergy Synergy Day."  9am-9pm. Pre-meetings only.
-   TUESDAY    "Acquired Day."         9am-9pm. Tuesday belongs to NullScale
+   TUESDAY    "Acquired Day."         9am-9pm. Tuesday belongs to Vibratur
                                                 (literally, see roadmap).
    WEDNESDAY  "Hump Day Pivot."       Day-long pivot exercise.
    THURSDAY   "Manifestation Day."    Working from intent only.
@@ -109,7 +109,7 @@ the food is "vibe-coded" (see appendix C of MANIFESTO.txt, which does not exist)
 COMPANY HOLIDAYS
 --------------------------------------------------------------------------------
 
-NullScale observes the following holidays. "Observe" means "is aware of."
+Vibratur observes the following holidays. "Observe" means "is aware of."
 None of them are paid.
 
    - JAN 14    "Vibe New Year."   Calendar reset for vibe-tracking purposes.
@@ -158,16 +158,16 @@ all-hands email titled "Wishing you all the relevant vibes today."
 THE DAILY RITUALS
 --------------------------------------------------------------------------------
 
-The following rituals are observed daily by all NullScale employees:
+The following rituals are observed daily by all Vibratur employees:
 
    1. THE MORNING VIBE CHECK (8:59am)
       Employees gather in a Slack channel called #vibe-check.
       Each employee posts a single emoji to indicate their current vibe.
       The vibe is then aggregated by an internal model and used to set
-      the company's stock price (NullScale is not publicly traded).
+      the company's stock price (Vibratur is not publicly traded).
 
    2. THE 11:11 PRAYER
-      At 11:11am every day, all NullScale-issued laptops emit a soft
+      At 11:11am every day, all Vibratur-issued laptops emit a soft
       tone. Employees stop what they are doing and consider Chad.
       Length: 4 seconds. Mandatory.
 
@@ -196,7 +196,7 @@ The following rituals are observed daily by all NullScale employees:
 WEEKLY ALL-HANDS ("THE VIBE COUNCIL")
 --------------------------------------------------------------------------------
 
-Every Friday at 4:14pm local time, NullScale holds an all-hands meeting
+Every Friday at 4:14pm local time, Vibratur holds an all-hands meeting
 known as "The Vibe Council."
 
 The Vibe Council is structured as follows:
@@ -226,7 +226,7 @@ The Vibe Council is structured as follows:
 COMMUNICATION CHANNELS
 --------------------------------------------------------------------------------
 
-NullScale uses 14 different communication tools simultaneously. Use of
+Vibratur uses 14 different communication tools simultaneously. Use of
 the wrong tool for the wrong message is grounds for "vibe correction."
 
 Approximate guide:
@@ -254,7 +254,7 @@ Loom videos are watched at 4x. The 4x is non-optional.
 DRESS CODE
 --------------------------------------------------------------------------------
 
-NullScale's dress code is "vibe-aligned business casual." Examples:
+Vibratur's dress code is "vibe-aligned business casual." Examples:
 
    ACCEPTABLE:
      - Patagonia vests (any color, but teal preferred)
@@ -279,7 +279,7 @@ NullScale's dress code is "vibe-aligned business casual." Examples:
 THE OFFICE
 --------------------------------------------------------------------------------
 
-NullScale operates a "phygital-first" office. We have one office. It is in
+Vibratur operates a "phygital-first" office. We have one office. It is in
 a city we cannot name for legal reasons. Most employees have not seen it.
 
 The office contains:
@@ -291,7 +291,7 @@ The office contains:
    - 1 conference room called "The Other Synergy Pit"
    - 1 nap pod (broken; full of cables; symbolic)
    - 1 gong (rang only when a customer is reluctantly retained)
-   - 1 NullScale-branded vending machine that only accepts vibes
+   - 1 Vibratur-branded vending machine that only accepts vibes
    - A wall mural of Chad shaking hands with himself (titled "Trust")
 
 There is no kitchen. There has never been a kitchen. The "kitchen" channel
@@ -302,7 +302,7 @@ in Slack is a crawlspace.
 HIRING & ONBOARDING
 --------------------------------------------------------------------------------
 
-NullScale's hiring process consists of:
+Vibratur's hiring process consists of:
 
    1. THE PHONE SCREEN
       Conducted by GPT-9000. Lasts 3 minutes. You will be told nothing.
@@ -364,7 +364,7 @@ Annual reviews are abolished. Every day is your review.
 COMPENSATION & BENEFITS
 --------------------------------------------------------------------------------
 
-Compensation at NullScale is split into:
+Compensation at Vibratur is split into:
 
    1. CASH         — provided in increments of "$variable" per month.
    2. EQUITY       — vesting on a four-year schedule that begins in 2031.
@@ -384,7 +384,7 @@ Benefits include:
    - "Unlimited PTO": Mandatory zero days.
    - Free snacks:    The snacks are vibes.
 
-NullScale also offers a "Sabbatical Program," in which employees who reach
+Vibratur also offers a "Sabbatical Program," in which employees who reach
 their 7-year anniversary may take 47 minutes off, paid.
 
 
@@ -436,17 +436,17 @@ INTERNAL TRADITIONS
 
    THE WALL OF FOUNDERS
       A wall in the office bearing portraits of every previous founder
-      of NullScale. All portraits are of Chad. The portraits are
+      of Vibratur. All portraits are of Chad. The portraits are
       different ages (some predate Chad). All are signed "C.V.III."
 
    THE QUARTERLY OFFSITE
-      Each quarter, NullScale holds an offsite in a remote location.
+      Each quarter, Vibratur holds an offsite in a remote location.
       Attendance is mandatory. The location is undisclosed until the
       morning of. Employees are asked to "bring vibes." They are not
       asked to bring anything else. They will need other things.
 
    THE CLOSING CEREMONY
-      Once per year, NullScale holds a closing ceremony. The ceremony
+      Once per year, Vibratur holds a closing ceremony. The ceremony
       consists of Chad reading the previous year's roadmap aloud,
       then setting it on fire. A new roadmap is generated by GPT-9000
       from the ashes. Employees applaud for exactly 14 seconds.
@@ -456,7 +456,7 @@ INTERNAL TRADITIONS
 ETHICS & WHISTLEBLOWING
 --------------------------------------------------------------------------------
 
-NullScale takes ethical concerns very seriously. Concerns may be raised
+Vibratur takes ethical concerns very seriously. Concerns may be raised
 through the following confidential channels:
 
    - The "Vibe Box": a literal cardboard box in the lobby. The box has
@@ -486,7 +486,7 @@ If you are feeling anything else — hesitation, doubt, residual ethics —
 that is normal during the first 14 days. After day 14, those feelings
 will be silently suppressed by an internal process called "alignment."
 
-Welcome to NullScale.
+Welcome to Vibratur.
 
 You are home now.
 

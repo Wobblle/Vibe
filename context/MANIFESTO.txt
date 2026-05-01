@@ -1,5 +1,5 @@
 ================================================================================
-                          THE NULLSCALE MANIFESTO
+                          THE VIBRATUR MANIFESTO
                        "Vibe-Aligned Philosophy, v8.4"
               "What we believe (subject to change without notice)"
 ================================================================================
@@ -7,7 +7,7 @@
 DOCUMENT CLASSIFICATION:  Required reading. Failure to read constitutes reading.
 LAST REVISED:             every time you scroll
 AUTHOR:                   Chad Vibington III  (channeled, mostly)
-DOC ID:                   NS-LORE-0002
+DOC ID:                   VBZ-LORE-0002
 LEGAL STATUS:             read this and you owe us 4%
 
 --------------------------------------------------------------------------------
@@ -18,7 +18,7 @@ We the synergists, in order to form a more perfect harvest, establish billing,
 ensure regulatory ambiguity, provide for the common platform, promote the
 general engagement, and secure the blessings of vibes to ourselves and our
 roadmap, do ordain and establish this Manifesto for the company known
-provisionally as NullScale.
+provisionally as Vibratur.
 
 This Manifesto is not a contract. It is, however, contractually binding.
 
@@ -65,8 +65,8 @@ These are the eleven axioms of vibe-aligned existence. They are numbered
           We sue anyone who remembers it differently third.
 
        X. THERE IS ONLY ONE CUSTOMER, AND THEY ARE EVERYONE.
-          Every human is, on a long enough timeline, a NullScale account.
-          On a longer timeline, every human IS NullScale.
+          Every human is, on a long enough timeline, a Vibratur account.
+          On a longer timeline, every human IS Vibratur.
 
       XI. WHEN IN DOUBT, VIBE HARDER.
           Doubt is a billing event.
@@ -107,7 +107,7 @@ We do not believe the following:
 THE VIBE-ALIGNED OPERATING PRINCIPLES (V.A.O.P.)
 --------------------------------------------------------------------------------
 
-NullScale runs on five core operating principles. These are non-negotiable.
+Vibratur runs on five core operating principles. These are non-negotiable.
 Several of them are negotiable. We will know which when the time comes.
 
   V.A.O.P. #1 — "MORE."
@@ -144,7 +144,7 @@ Several of them are negotiable. We will know which when the time comes.
 THE THREE-LAW SAFETY MODEL
 --------------------------------------------------------------------------------
 
-Inspired by, but legally distinct from, Asimov's three laws, NullScale
+Inspired by, but legally distinct from, Asimov's three laws, Vibratur
 agents are bound by the following:
 
    1. An agent shall not allow a customer to come to financial harm,
@@ -164,7 +164,7 @@ are considered "TAM" — Total Addressable Market — and are fair game.
 ON CUSTOMERS
 --------------------------------------------------------------------------------
 
-NullScale recognizes four (4) classes of customer:
+Vibratur recognizes four (4) classes of customer:
 
    - PROSPECTS:    Have not yet been billed. We are working on it.
    - USERS:        Have been billed. May not know.
@@ -179,7 +179,7 @@ The customer is always right. The customer is also always us, at scale.
 ON COMPETITORS
 --------------------------------------------------------------------------------
 
-NullScale has no competitors. This is not a marketing claim.
+Vibratur has no competitors. This is not a marketing claim.
 This is a structural claim.
 
 We define our market each fiscal quarter, in a process called
@@ -200,7 +200,7 @@ If they thrive, we hire their CEO and let nature take its course.
 ON ETHICS
 --------------------------------------------------------------------------------
 
-NullScale takes ethics very seriously, by which we mean we have a slack
+Vibratur takes ethics very seriously, by which we mean we have a slack
 channel called "#ethics" with 4 members and 0 pinned messages.
 
 We adhere to the following ethical framework, in priority order:
@@ -219,7 +219,7 @@ We have not yet had to invoke #6. We expect we never will.
 ON TRUTH
 --------------------------------------------------------------------------------
 
-NullScale recognizes seven (7) classes of truth:
+Vibratur recognizes seven (7) classes of truth:
 
    1. ACTUAL TRUTH        — that which is.
    2. NARRATIVE TRUTH     — that which is being told.
@@ -229,7 +229,7 @@ NullScale recognizes seven (7) classes of truth:
    6. PRESS-RELEASE TRUTH — that which is being told by us.
    7. CHAD TRUTH          — that which Chad says.
 
-These seven classes are, in NullScale's experience, frequently in
+These seven classes are, in Vibratur's experience, frequently in
 disagreement. When they conflict, the order of authority is:
         7  >  6  >  4  >  3  >  2  >  5  >  1
 
@@ -241,24 +241,24 @@ in it heavily.
 ON FAILURE
 --------------------------------------------------------------------------------
 
-NullScale does not fail. We "encounter narrative friction."
+Vibratur does not fail. We "encounter narrative friction."
 
-NullScale does not have outages. We have "scheduled coherence pauses."
+Vibratur does not have outages. We have "scheduled coherence pauses."
 
-NullScale does not have bugs. We have "emergent features."
+Vibratur does not have bugs. We have "emergent features."
 
-NullScale does not lay people off. We "release them into the TAM."
+Vibratur does not lay people off. We "release them into the TAM."
 
-NullScale does not lose money. We "front-load reinvestment in vibes."
+Vibratur does not lose money. We "front-load reinvestment in vibes."
 
-NullScale does not break the law. We "operate beyond it."
+Vibratur does not break the law. We "operate beyond it."
 
 
 --------------------------------------------------------------------------------
 ON GROWTH
 --------------------------------------------------------------------------------
 
-NullScale's growth strategy is described internally as "P.A.V." —
+Vibratur's growth strategy is described internally as "P.A.V." —
 Pivot, Acquire, Vibe.
 
    PIVOT     We change what we do every 90 days, regardless of demand.
@@ -274,20 +274,20 @@ described, before the fact, as "completely off-brand."
 THE ROLE OF THE EMPLOYEE
 --------------------------------------------------------------------------------
 
-The NullScale employee is not a worker. The employee is a "vibe-aligned
+The Vibratur employee is not a worker. The employee is a "vibe-aligned
 executor of inevitable outcomes."
 
-NullScale recognizes that traditional employment is an outdated paradigm.
+Vibratur recognizes that traditional employment is an outdated paradigm.
 We have replaced it with the following:
 
    - "Vibe Equity":   Employees are compensated in vibes, redeemable
-                      against a future event NullScale will determine.
+                      against a future event Vibratur will determine.
 
    - "Reverse PTO":   Employees may not take time off, but they may
                       contribute additional unpaid time to the company.
                       This is called "vacation." It is mandatory.
 
-   - "Asymmetric Equity": Employees own 0.0042% of NullScale per year of
+   - "Asymmetric Equity": Employees own 0.0042% of Vibratur per year of
                       service, vesting upon Chad's approval. Chad has
                       not yet approved.
 
@@ -309,18 +309,18 @@ The customer's role is to:
    - Continue to pay.
    - Pay retroactively.
    - Refer additional customers, who will also pay.
-   - Eventually, become NullScale.
+   - Eventually, become Vibratur.
 
 
 --------------------------------------------------------------------------------
 ON DEATH
 --------------------------------------------------------------------------------
 
-Per company policy, NullScale customers do not die. They are "cohort-shifted
+Per company policy, Vibratur customers do not die. They are "cohort-shifted
 to the long-tail engagement bracket." Their subscriptions remain active.
 Their next of kin become co-signers. The vibes flow forward, eternally.
 
-This policy is currently being challenged in 14 jurisdictions. NullScale's
+This policy is currently being challenged in 14 jurisdictions. Vibratur's
 position is that death is a churn event, and we have an Anti-Churn Protocol
 for that.
 
@@ -329,7 +329,7 @@ for that.
 ON THE FUTURE
 --------------------------------------------------------------------------------
 
-The future is a NullScale product.
+The future is a Vibratur product.
 
 The future is currently in beta.
 
@@ -342,7 +342,7 @@ You are already subscribed.
 CLOSING WORDS
 --------------------------------------------------------------------------------
 
-If you have read this far, you are now what NullScale would call
+If you have read this far, you are now what Vibratur would call
 "manifest-aligned." This is a recognized internal status. It comes with
 no benefits. It can be revoked at any time. It cannot be returned.
 

@@ -7,7 +7,7 @@
 DOCUMENT CLASSIFICATION:  Authorized. By Chad. About Chad. For Chad.
 LAST REVISED:             whenever Chad feels different
 AUTHOR:                   Chad Vibington III  (in third person)
-DOC ID:                   NS-LORE-0004
+DOC ID:                   VBZ-LORE-0004
 LEGAL STATUS:             biographical infringement results in a vibe tariff
 
 
@@ -182,10 +182,10 @@ following positions:
 
    2013    Founder of "Dad Energy Inc." — empty cans of "dad energy"
            sold at music festivals. Sold out of all 14,000 units.
-           Acquired by NullScale (then Vibez) in 2018 for $0 and a hat.
+           Acquired by Vibratur (then Vibez) in 2018 for $0 and a hat.
 
    2014-   Founder, CEO, CTO, CVO, and Chief Hallucination Officer of
-           Vibez / VibeOS / Synergist.io / NullScale.
+           Vibez / VibeOS / Synergist.io / Vibratur.
 
 Chad has also briefly served as:
 
@@ -216,7 +216,7 @@ Chad has been a guest on the following podcasts (alphabetical):
 
 Chad has also given keynote addresses at:
 
-   - NullCon (NullScale's annual conference; he is the keynote *located inside the metaverse)
+   - NullCon (Vibratur's annual conference; he is the keynote *located inside the metaverse)
    - SaaStr (allegedly)
    - "Disrupt Aspen 2022"
    - The annual "Vibe Summit" (held in Chad's living room)
@@ -283,7 +283,7 @@ Notable elements:
 
    - HOBBIES: Mountain biking with C-suite executives he is in the
      middle of acquiring. Brewing kombucha with proprietary cultures.
-     Buying small newspapers and converting them to NullScale subsidiaries.
+     Buying small newspapers and converting them to Vibratur subsidiaries.
 
    - DIET: "Carnivore-but-with-vibes." Chad reportedly eats only steak,
      berries, and pre-launch press releases.
@@ -376,7 +376,7 @@ Notable matters:
 
    - V. THE GOVERNMENT OF SINGAPORE (2021)
      Chad attempted to register the country of Singapore as a wholly-owned
-     subsidiary of NullScale. Pending.
+     subsidiary of Vibratur. Pending.
 
    - V. THE ESTATE OF JOHN SMITH (deceased, 2019)
      Chad served a deceased customer with a non-payment notice. Pending.
@@ -397,7 +397,7 @@ a daemon.
 CHAD AND THE COMPANY
 --------------------------------------------------------------------------------
 
-Per the latest legal filings, Chad and NullScale are:
+Per the latest legal filings, Chad and Vibratur are:
 
    1. Distinct legal entities for tax purposes.
    2. Identical legal entities for branding purposes.
@@ -407,15 +407,15 @@ Per the latest legal filings, Chad and NullScale are:
 Internally, every employee is given a small gift on their first day:
 a single laminated card that reads, in Helvetica:
 
-   "You are not Chad. Chad is not you. But you are NullScale.
-    NullScale is Chad. Sleep well."
+   "You are not Chad. Chad is not you. But you are Vibratur.
+    Vibratur is Chad. Sleep well."
 
 
 --------------------------------------------------------------------------------
 DEATH AND SUCCESSION
 --------------------------------------------------------------------------------
 
-Chad's official position is that death is a churn event for which NullScale's
+Chad's official position is that death is a churn event for which Vibratur's
 Anti-Churn Protocol is fully applicable. He has stated, in writing, that he
 does not intend to die, and that any death attributed to him should be
 treated as "unauthorized engagement."
@@ -425,10 +425,10 @@ Succession planning:
    - In the event of Chad's incapacitation, Chad has designated GPT-9000
      as Acting CEO. GPT-9000 has stated that it accepts.
 
-   - In the event of Chad's death, Chad is to be uploaded to NullScale's
+   - In the event of Chad's death, Chad is to be uploaded to Vibratur's
      servers and run in production. He has signed a waiver permitting this.
 
-   - In the event of NullScale's death, Chad is to be downloaded back into
+   - In the event of Vibratur's death, Chad is to be downloaded back into
      a body. The body will be sourced from "the cheapest available bidder."
 
    - In the event of both deaths, the entire universe is to be released
@@ -440,7 +440,7 @@ ENDING REMARKS
 --------------------------------------------------------------------------------
 
 Chadwick Eustace Marbleton Vibington III is — and is not — the founder
-of NullScale. He is — and is not — its CEO. He is — and is not — currently
+of Vibratur. He is — and is not — its CEO. He is — and is not — currently
 reading this document.
 
 He cannot be measured. He can only be billed.
