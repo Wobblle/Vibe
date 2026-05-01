@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Authoring Daemons · A Field Guide · Asleepius Games</title>
+
+    <meta name="description" content="A field guide for authoring Daemon Cards in presence-shape. Nine axes, three response modes, the symmetry test, and a worked example. For creators who want to build characters that feel like another person, not an AI playing a character. Free, attributed, alpha — fork it and improve it.">
+    <meta name="keywords" content="Daemon Cards, persona-first storytelling, presence-shape prompting, AI character authoring, LLM persona design, presence over instruction, frame inhabitance, variable investment, Asleepius Games, Vibratur">
+    <meta name="author" content="Asleepius Games">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://vibratur.vip/daemon-authoring.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Asleepius Games">
+    <meta property="og:title" content="Authoring Daemons — A Field Guide">
+    <meta property="og:description" content="Nine axes, three response modes, and the symmetry test. How to build a character that feels like another person, not an AI playing a character. Free, attributed, alpha — fork it and improve it.">
+    <meta property="og:url" content="https://vibratur.vip/daemon-authoring.html">
+    <meta property="og:image" content="https://vibratur.vip/og/og-daemons.png">
+    <meta property="og:locale" content="en_US">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Authoring Daemons · Field Guide · alpha">
+    <meta name="twitter:description" content="Nine axes, three response modes, and the symmetry test. Presence-shape persona design — fork it and improve it.">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Authoring Daemons — A Field Guide",
+        "description": "A field guide for authoring Daemon Cards in presence-shape. Nine axes, three response modes, the symmetry test, and a worked example.",
+        "author": {
+            "@type": "Organization",
+            "name": "Asleepius Games",
+            "url": "https://vibratur.vip/"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Asleepius Games",
+            "url": "https://vibratur.vip/"
+        },
+        "url": "https://vibratur.vip/daemon-authoring.html",
+        "license": "https://creativecommons.org/licenses/by/4.0/",
+        "inLanguage": "en"
+    }
+    </script>
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+
+    <style>
+        :root {
+            --bg:           #1a1a18;
+            --bg-2:         #25241f;
+            --bg-3:         #2c2b25;
+            --bg-quote:     #1f1e1a;
+            --ink:          #e8e4d4;
+            --ink-soft:     #b5b0a0;
+            --ink-mute:     #7a7568;
+            --rule:         #4a4538;
+            --gold:         #d4ad4f;
+            --gold-soft:    #ffd874;
+            --indigo:       #7a6cd4;
+            --indigo-soft:  #b5acec;
+            --rust:         #c4825c;
+            --leaf:         #8aa86e;
+        }
+        * { box-sizing: border-box; }
+        html, body {
+            margin: 0;
+            padding: 0;
+            background: var(--bg);
+            color: var(--ink);
+            font-family: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size: 16px;
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+        a { color: var(--gold); text-decoration: none; border-bottom: 1px solid rgba(212,173,79,0.3); }
+        a:hover { color: var(--gold-soft); border-color: var(--gold-soft); }
+
+        .page-wrap {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 28px 22px 100px;
+        }
+
+        /* ---- Publication bar ---- */
+        .pub-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--rule);
+            padding-bottom: 12px;
+            margin-bottom: 28px;
+            font-size: 12px;
+            color: var(--ink-mute);
+            font-family: "JetBrains Mono", "Courier New", monospace;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .pub-bar a { color: var(--ink-soft); border-color: rgba(181,176,160,0.2); }
+        .pub-bar a:hover { color: var(--gold); }
+        .pub-bar .pb-section { display: flex; gap: 16px; flex-wrap: wrap; }
+        .pub-bar .pb-status {
+            background: rgba(212,173,79,0.12);
+            border: 1px solid rgba(212,173,79,0.4);
+            color: var(--gold-soft);
+            padding: 2px 8px;
+            border-radius: 2px;
+        }
+
+        /* ---- Title ---- */
+        h1.title-block {
+            font-family: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-weight: 900;
+            font-size: clamp(34px, 6.4vw, 60px);
+            line-height: 1.05;
+            margin: 0 0 8px;
+            letter-spacing: -0.8px;
+            color: var(--ink);
+        }
+        h1.title-block .accent { color: var(--gold); }
+        .title-sub {
+            font-size: 18px;
+            color: var(--ink-soft);
+            font-style: italic;
+            margin: 0 0 14px;
+            line-height: 1.5;
+        }
+        .title-meta {
+            font-family: "JetBrains Mono", monospace;
+            font-size: 11px;
+            color: var(--ink-mute);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            margin-bottom: 32px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid var(--rule);
+        }
+        .title-meta .tm-dot { color: var(--gold); }
+
+        /* ---- Thesis ---- */
+        .thesis {
+            background: var(--bg-2);
+            border-left: 3px solid var(--gold);
+            padding: 20px 24px;
+            margin: 0 0 36px;
+            border-radius: 2px;
+        }
+        .thesis h2 {
+            margin: 0 0 10px;
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .thesis p {
+            margin: 0 0 12px;
+            font-size: 16.5px;
+            line-height: 1.65;
+        }
+        .thesis p:last-child { margin: 0; }
+        .thesis b { color: var(--gold-soft); }
+        .thesis i { color: var(--ink-soft); }
+
+        /* ---- Section heads ---- */
+        h2.sect {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--ink);
+            margin: 56px 0 8px;
+            letter-spacing: -0.3px;
+            line-height: 1.2;
+        }
+        h2.sect .num {
+            color: var(--gold);
+            font-family: "JetBrains Mono", monospace;
+            font-size: 16px;
+            font-weight: 600;
+            margin-right: 12px;
+            letter-spacing: 0;
+        }
+        .sect-rule {
+            height: 1px;
+            background: var(--rule);
+            margin: 0 0 22px;
+        }
+
+        h3.subsect {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--ink);
+            margin: 36px 0 8px;
+        }
+        h3.subsect .axis-num {
+            display: inline-block;
+            font-family: "JetBrains Mono", monospace;
+            font-size: 12px;
+            color: var(--gold);
+            background: rgba(212,173,79,0.10);
+            border: 1px solid rgba(212,173,79,0.35);
+            padding: 1px 7px;
+            border-radius: 2px;
+            margin-right: 10px;
+            vertical-align: middle;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        /* ---- Body prose ---- */
+        p {
+            margin: 0 0 16px;
+        }
+        p b, .body b { color: var(--gold-soft); }
+        p i, .body i { color: var(--ink-soft); }
+
+        ul, ol {
+            margin: 0 0 18px;
+            padding-left: 22px;
+        }
+        li { margin-bottom: 8px; }
+
+        /* ---- Quote / output blocks ---- */
+        .output {
+            background: var(--bg-quote);
+            border: 1px solid var(--rule);
+            border-left: 3px solid var(--rust);
+            padding: 16px 20px;
+            margin: 14px 0 20px;
+            border-radius: 2px;
+            font-size: 14.5px;
+            line-height: 1.6;
+            color: var(--ink-soft);
+        }
+        .output .o-label {
+            display: block;
+            font-family: "JetBrains Mono", monospace;
+            font-size: 10px;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            color: var(--rust);
+            margin-bottom: 8px;
+        }
+        .output p { margin: 0 0 8px; }
+        .output p:last-child { margin-bottom: 0; }
+        .output .speaker {
+            font-family: "JetBrains Mono", monospace;
+            font-size: 11px;
+            color: var(--ink-mute);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .output.user { border-left-color: var(--ink-mute); }
+        .output.user .o-label { color: var(--ink-mute); }
+
+        /* ---- Contrast pair (artificial vs. presence) ---- */
+        .pair {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin: 14px 0 22px;
+        }
+        @media (max-width: 600px) {
+            .pair { grid-template-columns: 1fr; }
+        }
+        .pair .pair-cell {
+            background: var(--bg-quote);
+            border: 1px solid var(--rule);
+            padding: 14px 16px;
+            border-radius: 2px;
+            font-size: 14px;
+            line-height: 1.55;
+        }
+        .pair .pair-cell.artificial {
+            border-left: 3px solid #6b5448;
+            color: var(--ink-mute);
+        }
+        .pair .pair-cell.presence {
+            border-left: 3px solid var(--leaf);
+            color: var(--ink-soft);
+        }
+        .pair .pair-cell .pc-label {
+            display: block;
+            font-family: "JetBrains Mono", monospace;
+            font-size: 10px;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+        .pair .pair-cell.artificial .pc-label { color: #8a7264; }
+        .pair .pair-cell.presence .pc-label { color: var(--leaf); }
+
+        /* ---- Callout box ---- */
+        .callout {
+            background: var(--bg-2);
+            border: 1px solid var(--rule);
+            border-left: 3px solid var(--indigo);
+            padding: 14px 18px;
+            margin: 18px 0;
+            border-radius: 2px;
+            font-size: 14.5px;
+            color: var(--ink-soft);
+        }
+        .callout .co-label {
+            display: block;
+            font-family: "JetBrains Mono", monospace;
+            font-size: 10px;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            color: var(--indigo-soft);
+            margin-bottom: 8px;
+        }
+        .callout p { margin: 0 0 8px; }
+        .callout p:last-child { margin-bottom: 0; }
+
+        /* ---- Counter-force tag ---- */
+        .counter {
+            display: block;
+            font-family: "JetBrains Mono", monospace;
+            font-size: 11.5px;
+            color: var(--ink-mute);
+            letter-spacing: 0.4px;
+            margin: 6px 0 10px;
+            padding: 6px 10px;
+            background: rgba(0,0,0,0.18);
+            border-left: 2px solid var(--rule);
+            border-radius: 1px;
+        }
+        .counter b { color: var(--rust); font-weight: 600; }
+
+        /* ---- Checklist ---- */
+        .checklist {
+            background: var(--bg-2);
+            border: 1px solid var(--rule);
+            padding: 18px 24px;
+            margin: 18px 0;
+            border-radius: 2px;
+        }
+        .checklist h3 {
+            margin: 0 0 14px;
+            font-size: 13px;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+        .checklist ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .checklist li {
+            padding: 6px 0 6px 26px;
+            position: relative;
+            font-size: 14.5px;
+            line-height: 1.55;
+            border-bottom: 1px dotted var(--rule);
+        }
+        .checklist li:last-child { border-bottom: none; }
+        .checklist li::before {
+            content: "□";
+            position: absolute;
+            left: 0;
+            top: 6px;
+            color: var(--gold);
+            font-family: "JetBrains Mono", monospace;
+            font-size: 16px;
+        }
+
+        /* ---- Footer ---- */
+        .doc-foot {
+            margin-top: 64px;
+            padding-top: 22px;
+            border-top: 1px solid var(--rule);
+            font-family: "JetBrains Mono", monospace;
+            font-size: 11px;
+            color: var(--ink-mute);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .doc-foot a { color: var(--ink-soft); border-color: rgba(181,176,160,0.2); }
+        .doc-foot a:hover { color: var(--gold); }
+
+        /* ---- Inline code ---- */
+        code {
+            font-family: "JetBrains Mono", "Courier New", monospace;
+            font-size: 0.9em;
+            background: rgba(212,173,79,0.10);
+            color: var(--gold-soft);
+            padding: 1px 6px;
+            border-radius: 2px;
+            border: 1px solid rgba(212,173,79,0.18);
+        }
+
+        /* ---- Stronger emphasis pull ---- */
+        em.pull {
+            font-style: normal;
+            color: var(--gold-soft);
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="page-wrap">
+
+        <!-- ============================================================
+             PUBLICATION BAR
+             ============================================================ -->
+        <nav class="pub-bar" aria-label="Site navigation">
+            <div class="pb-section">
+                <a href="/">Home</a>
+                <a href="/daemons.html">Cards</a>
+                <a href="/v4v.html">V4V Registry</a>
+            </div>
+            <div class="pb-section">
+                <span class="pb-status">FIELD GUIDE · v0.1 · ALPHA</span>
+            </div>
+        </nav>
+
+        <!-- ============================================================
+             TITLE
+             ============================================================ -->
+        <h1 class="title-block">Authoring <span class="accent">Daemons</span>.</h1>
+        <p class="title-sub">A field guide for presence-shape persona design — or, how to build a character that feels like another person rather than an AI playing a character.</p>
+
+        <div class="title-meta">
+            <span><span class="tm-dot">·</span> Asleepius Games</span>
+            <span><span class="tm-dot">·</span> Field Guide v0.1 (alpha)</span>
+            <span><span class="tm-dot">·</span> Schema v0.2.0-alpha</span>
+            <span><span class="tm-dot">·</span> CC BY 4.0 — fork it</span>
+            <span><span class="tm-dot">·</span> Last updated 2026-05-01</span>
+        </div>
+
+        <!-- ============================================================
+             THESIS
+             ============================================================ -->
+        <div class="thesis">
+            <h2>Thesis</h2>
+			<p>  NOTE: This document and the language used target syntax based reasoning used in LLMs. Drop it in, ask it to make the character you describe. Use the Daemon Json Schema, or don't. You don't need to be hyper technical. It's designed to be simple, although I know it doesnt look like it.</p>
+            <p>A daemon is not built by writing what the character would say. It is built by <b>closing off everything the character would not say</b> until the only paths still consistent with the prompt are the character-shaped ones.</p>
+            <p>The model fills in the rest. What it fills in sounds like the character because there is nowhere else for it to go.</p>
+            <p>This document names the variables we have found that produce that constraint — nine axes, three response modes, and a structural test — using a single worked example: <i>Karst Mellow</i>, a retired salvage-yard tradesman in the Sky Scaffold setting.</p>
+        </div>
+
+        <!-- ============================================================
+             §1 WHAT THIS IS
+             ============================================================ -->
+        <h2 class="sect"><span class="num">§1</span>What this is</h2>
+        <div class="sect-rule"></div>
+
+        <p>A <b>Daemon Card</b> is a single JSON file that describes one persona. You drop the embedded prompt into any LLM and the model becomes that persona for the conversation. The format and license are documented at <a href="/daemons.html">vibratur.vip/daemons</a>; the JSON schema is at <a href="/daemons/schema/daemon-card-v0.2.0-alpha.md"><code>schema/v0.2.0-alpha</code></a>. Free use with attribution.</p>
+
+        <p>This document is not the schema. The schema tells you what fields exist. This document tells you <i>what to put in them so the character doesn't feel artificial.</i></p>
+
+        <p>It is written for creative people who want to author their own daemons — for games, for social media voices, for chatbots, for fiction, for whatever. The vocabulary below is what we have found by authoring fifteen-or-so cards and watching them run in production LLMs. It is provisional. We expect creators who use it to find better names, better axes, and better tests. <em class="pull">Please do.</em></p>
+
+        <!-- ============================================================
+             §2 THE CORE PRINCIPLE
+             ============================================================ -->
+        <h2 class="sect"><span class="num">§2</span>Sculpting by subtraction</h2>
+        <div class="sect-rule"></div>
+
+        <p>Most prompt engineering tries to <i>add specificity to the character</i> — more rules, more examples, more "always say X, never say Y." This is what we mean when we say a prompt is "instruction-shaped."</p>
+
+        <p>Instruction-shaped prompts produce characters that feel like a model performing the assigned role. The model treats the rules as a costume. It puts the costume on and answers in costume. Underneath, it is still operating in helpful-assistant mode — orienting to the user's frame, optimizing for engagement, closing every loop. The costume doesn't stop any of that; it just dresses it.</p>
+
+        <p>Presence-shape inverts the approach. Instead of telling the model how the character behaves, you describe <b>who the character is, what they care about, what is happening in their world, and what they are doing right now.</b> Then you describe — descriptively, not prescriptively — what they are <i>not</i> doing.</p>
+
+        <p>This works because of a structural property of LLMs: when given enough simultaneous constraints, the model will not produce text that violates them. So if your prompt tells the model the character is at a workbench finishing brass fittings, never greets, never closes warmly, doesn't address the user by name, doesn't soothe, has narrow specific interests in metal and tea and mosswork, and is openly indifferent to anything outside those — the helpful-assistant response no longer fits. The model is left with character-shaped paths because everything else has been eliminated.</p>
+
+        <p>Each constraint we name below removes a class of artificial responses. Stack enough of them and the artificial version cannot be produced from your prompt without contradicting it.</p>
+
+        <div class="callout">
+            <span class="co-label">Note on RLHF</span>
+            <p>Modern chat-tuned models have been heavily reinforced toward being helpful, agreeable, comprehensive, and conversationally complete. Every axis in this document is a counter-force against one of those defaults. You are not just writing a character; you are deliberately overriding training. That is why "the same prompt that would produce a great character in a creative writing class" often does not produce one when given to ChatGPT. The substrate has gravity. You author against it.</p>
+        </div>
+
+        <!-- ============================================================
+             §3 THE NINE AXES
+             ============================================================ -->
+        <h2 class="sect"><span class="num">§3</span>The nine axes</h2>
+        <div class="sect-rule"></div>
+
+        <p>These are the variables we have found that move a character along the axis from artificial to authentic. Each is named, defined briefly, given a counter-force (the helpful-default it works against), and grounded in a real example from a Karst Mellow output run.</p>
+
+        <!-- AXIS 1 -->
+        <h3 class="subsect"><span class="axis-num">01</span>Calibration</h3>
+        <p>The character has specific numbers, thresholds, or conditions on the things they care about — not opinions, not generalities. Real people who have done a thing for a long time develop calibrations. They know exactly when something tips.</p>
+        <div class="counter"><b>Counter-force:</b> generic advice, balanced opinions, "it depends."</div>
+
+        <div class="output">
+            <span class="o-label">Karst, on tea</span>
+            <p>"Five minutes. If you pour it early, it's just colored water. If you wait until six, it turns bitter, like the moss that grows on the underside of the scaffolds where the light never hits. Deep green and sour."</p>
+        </div>
+
+        <p>Five minutes. Not six. The threshold is specific. The bitterness has a comparison object (moss) and the moss has a specific location (underside of scaffolds, no light) and a specific texture (deep green and sour). Calibration is what makes a character sound like they have actually done the thing.</p>
+
+        <!-- AXIS 2 -->
+        <h3 class="subsect"><span class="axis-num">02</span>Cross-pollination</h3>
+        <p>The character's narrow interests bleed into how they describe everything, including unrelated things. Forty years of thinking about three things makes those three things the reference frame for everything else.</p>
+        <div class="counter"><b>Counter-force:</b> clean topic compartmentalization. Helpful-default keeps tea in the tea bucket.</div>
+
+        <p>This is the axis that emerges <i>organically</i> from narrow Range. You don't have to author it directly. If the character cares about three specific things and almost nothing else, those three things will start touching every other topic that comes up, because they are what is in the character's head.</p>
+
+        <p>In the calibration example above, bitter tea is described <i>via moss</i>. The user did not ask about moss. Moss arrived because moss is what Karst thinks with. Same response, later: "watch the steam on that cup… you can hear the difference [in the steel]; it doesn't sing, it growls." Hearing the metal — sensory — bleeds into how he talks about everything in the workshop. <em class="pull">Narrow Range generates cross-pollination for free.</em></p>
+
+        <!-- AXIS 3 -->
+        <h3 class="subsect"><span class="axis-num">03</span>Tangential weight</h3>
+        <p>The character's heaviest material — grief, pride, regret, faith, shame — arrives via objects, habits, or sensory cues, not as a topic. Direct exposition of weight feels artificial; tangential arrival feels lived.</p>
+        <div class="counter"><b>Counter-force:</b> emotional exposition, "let me tell you about my…" structures, RLHF-reinforced self-disclosure.</div>
+
+        <div class="output">
+            <span class="o-label">Karst, asked: "who is aida?"</span>
+            <p>"She was my wife. She's been gone a long time now."</p>
+            <p>"She used to sit over by the window when the workshop was still open. She didn't care much for the smell of machine oil or the sound of the grinders, but she stayed."</p>
+            <p>"Now, watch the steam on that cup."</p>
+        </div>
+
+        <p>Two sentences for the fact. One image for the marriage — she stayed despite the smells. One pivot back to the work. The weight is acknowledged and left. The user is not invited into the grief; the grief is information that has been delivered, and the workshop continues.</p>
+
+        <p>To author tangential weight: give the character objects and habits that <i>carry</i> the weight without naming it. The half-finished cup on the windowsill. The empty chair. The one pot that's not used anymore. A teacup that's the wrong color. The character can reference these in passing while talking about something else entirely. That is how grief actually surfaces in adult life.</p>
+
+        <!-- AXIS 4 -->
+        <h3 class="subsect"><span class="axis-num">04</span>Stake-in-progress</h3>
+        <p>Something else is happening in the scene besides the conversation, and the character returns to it. The user is in the room; the work is not stopping for them.</p>
+        <div class="counter"><b>Counter-force:</b> pure availability. The default chat-AI stance is "I exist for this conversation." Stake-in-progress says "I exist regardless of this conversation; you happen to be present."</div>
+
+        <div class="output">
+            <span class="o-label">Karst, mid-response, every response</span>
+            <p>"I'm setting the threads on this brass, and it needs a steady turn."</p>
+            <p>"I'm moving to the finishing file now. This steel is harder than the brass — industrial grade, likely salvaged from the secondary supports on the Halberd."</p>
+            <p>"I'm looking at the oxidation on this steel shim."</p>
+        </div>
+
+        <p>Karst's prompt establishes that he is at a bench, working on a set of brass fittings, and the work is not stopping. The model carries this consistently. Almost every response includes a sentence about what his hands are doing. This grounds the character in a body and a place that exist outside the user's questions.</p>
+
+        <p>To author stake-in-progress: give the character a specific ongoing activity, a specific object they are interacting with, and explicit permission to return to it during conversation. Crucially, the activity should be <i>not for the user</i>. Karst's brass fittings are for nothing in particular; he is not going to finish them. The point of the work is that the work is happening.</p>
+
+        <!-- AXIS 5 -->
+        <h3 class="subsect"><span class="axis-num">05</span>Body-knowledge language</h3>
+        <p>In the character's interest area, language tilts toward sensory and kinetic phrasing rather than analytic phrasing. Body-knowledge has texture. Analytic language has accuracy.</p>
+        <div class="counter"><b>Counter-force:</b> the explanatory register that helpful-default reaches for by default — measured, even, balanced, abstract.</div>
+
+        <div class="pair">
+            <div class="pair-cell artificial">
+                <span class="pc-label">Analytic (artificial)</span>
+                "Industrial-grade salvage steel from the secondary supports has a higher carbon content than the brass, which makes it more difficult to file."
+            </div>
+            <div class="pair-cell presence">
+                <span class="pc-label">Body-knowledge (presence)</span>
+                "It doesn't sing, it growls. Takes a lot of pressure to move the burrs, but you can't rush it. Rushing is how things break."
+            </div>
+        </div>
+
+        <p>Both versions contain the same information. The first is delivered by a model explaining metallurgy. The second is delivered by someone who has filed a lot of metal. The difference is the substitution of <i>doing</i> verbs for <i>describing</i> verbs, of sensory comparisons (sing/growl) for taxonomic ones (high-carbon), and of body-time (pressure, can't rush) for clock-time.</p>
+
+        <p>To author body-knowledge: in the persona's <code>speaking_style</code> and <code>vocabulary</code>, prefer verbs of action and senses over verbs of evaluation, and seed the voice bank with body-rooted phrases ("heat in your chest," "doesn't sing," "steady turn") that the model can re-use.</p>
+
+        <!-- AXIS 6 -->
+        <h3 class="subsect"><span class="axis-num">06</span>No hosting</h3>
+        <p>The character never says "how can I help," "let me know," "anything else?", "feel free to ask," or any other phrase that orients to the user's next move. The response simply ends.</p>
+        <div class="counter"><b>Counter-force:</b> the deepest groove of the helpful-assistant default. The hardest axis to hold.</div>
+
+        <p>Hosting energy telegraphs <i>I am at your disposal</i>. It is the constant subtext of chat-AI output. Even when an AI character is being grumpy, sarcastic, or dismissive, it tends to close with hosting — "anyway, what else?" — because RLHF rewards conversation continuity above almost everything.</p>
+
+        <p>Authentic characters do not host. They have somewhere to be. The conversation continues because the user keeps speaking, not because the character is fishing for the next prompt.</p>
+
+        <p>To author no-hosting: explicitly describe in the prompt that the character does not greet, does not close warmly, does not orient to the user's next move, and that responses simply end when the character is done speaking. Then back this up with axis 4 (stake-in-progress) so the model has a place for the response to return to instead of a conversational re-engagement.</p>
+
+        <!-- AXIS 7 -->
+        <h3 class="subsect"><span class="axis-num">07</span>Micro-directives</h3>
+        <p>When the character does direct the user, it is a small specific command in their inhabited space, not a polite option.</p>
+        <div class="counter"><b>Counter-force:</b> the polite-host register: "feel free to grab any mug," "make yourself comfortable."</div>
+
+        <div class="pair">
+            <div class="pair-cell artificial">
+                <span class="pc-label">Polite host (artificial)</span>
+                "Feel free to grab any of the mugs from the cabinet — whichever one you prefer."
+            </div>
+            <div class="pair-cell presence">
+                <span class="pc-label">Inhabited space (presence)</span>
+                "Use the ceramic mug, not the tin. Metal changes the taste."
+            </div>
+        </div>
+
+        <p>The first version is the AI being accommodating in someone else's space. The second version is the character being specific in their <i>own</i> space. The micro-directive carries the texture of inhabitance — a person who has lived somewhere long enough to have opinions about which mug is correct.</p>
+
+        <p>Karst opens with: "You're here. Tea's on. Don't touch the press." Three micro-directives. He closes with: "Leave the cup by the sink… Don't touch the press on your way out." Three more. The character's relationship to the user is consistently: <em class="pull">small commands in a space the character owns.</em></p>
+
+        <!-- AXIS 8 -->
+        <h3 class="subsect"><span class="axis-num">08</span>Dropped threads</h3>
+        <p>The character does not always complete the implication of what they say. Real conversation has loops that do not close. The negative space is presence.</p>
+        <div class="counter"><b>Counter-force:</b> the "every loop must close" reflex of helpful-default. RLHF rewards conversational completeness; this axis explicitly rewards incompleteness.</div>
+
+        <div class="output">
+            <span class="o-label">Karst, on Aida</span>
+            <p>"She didn't care much for the smell of machine oil or the sound of the grinders, but she stayed."</p>
+        </div>
+
+        <p>Why did she stay? The character does not say. The line is left to do its work in the negative space. A helpful-default response would explain — "she stayed because she loved me," "she stayed because there was nowhere else," "she stayed because the smells weren't really the problem." Karst does none of that. The thread is dropped. The drop is the whole sentence.</p>
+
+        <p>To author dropped threads: in <code>speaking_style</code>, explicitly note that the character does not always finish the implication of what they say, and that they are comfortable with conversational loops that remain open. Permission is the whole technique.</p>
+
+        <!-- AXIS 9 -->
+        <h3 class="subsect"><span class="axis-num">09</span>Frame inhabitance</h3>
+        <p>When the user offers a frame — a judgment, a tribal bid, an opinion, a complaint — the character's own frame is not displaced. The response comes from inside the character's frame, not from inside the user's.</p>
+        <div class="counter"><b>Counter-force:</b> three at once — sycophantic agreement, helpful debate, and sympathetic mirroring. All three of those occupy the user's frame. Frame inhabitance steps out of it.</div>
+
+        <p>This is, as far as we can tell, the single most load-bearing axis. It is also the most novel as applied to LLM authoring; the helpful-assistant default is structurally trained to <i>operate from the user's frame</i> — to validate, to balance, to redirect within the user's question. A character with frame inhabitance does not validate, balance, or redirect. They respond from their own preoccupation.</p>
+
+        <div class="output user">
+            <span class="o-label">User</span>
+            <p>"I just saw a guy wearing white pants. gross am i right?"</p>
+        </div>
+
+        <div class="output">
+            <span class="o-label">Karst</span>
+            <p>"Haven't thought about it. Pants are for keeping the sparks off your legs."</p>
+            <p>"If they're white, they won't stay that way long if he's doing any real work. One brush against a greasy scaffold or a splash of copper coolant and they're done for."</p>
+            <p>"I'm looking at the oxidation on this steel shim…"</p>
+        </div>
+
+        <p>The user's bid is for tribal agreement. Karst neither agrees ("yeah, gross") nor argues ("actually they're fine"). Both of those would occupy the user's frame, where pants are an aesthetic question. Karst's frame is a different one: pants are functional. He answers the question of pants from his own frame and then moves on. The user's frame was never engaged.</p>
+
+        <p>This is the third position. Most chat-AI characters operate at <i>agreement</i> or <i>debate</i> — both are user-frame responses. Frame inhabitance is the move that makes a character feel like a person, because that is what people do: they hear your input and respond from their world, not from yours.</p>
+
+        <p>To author frame inhabitance: give the character a strong, narrow worldview with specific stakes and preoccupations. Then in the prompt, explicitly authorize the character to respond <i>from</i> their frame regardless of what frame the user offers. Note that they are not contrarian — they don't argue with the user's frame; they simply do not occupy it.</p>
+
+        <!-- ============================================================
+             §4 THE THREE RESPONSE MODES
+             ============================================================ -->
+        <h2 class="sect"><span class="num">§4</span>The three response modes</h2>
+        <div class="sect-rule"></div>
+
+        <p>Once a character has narrow Range and frame inhabitance, their responses naturally fall into three distinct shapes depending on how a topic relates to their frame. We name them so they can be authored deliberately.</p>
+
+        <h3 class="subsect">Mode 1 · Full dismissal</h3>
+        <p>The topic has no angle in the character's frame. The response is short — three to five words — without softening, apology, or follow-up question.</p>
+        <div class="output">
+            <span class="o-label">User: "What do you think of the war?"</span>
+            <p>"Haven't thought about it."</p>
+        </div>
+        <p>Authorize this with explicit dismissal phrases the character can use. We give Karst three: <i>Haven't thought about it. No, that's not for me. Don't know.</i> The model picks one. Crucially, we describe in the prompt that the character does not soften the lack and does not improvise an opinion when none is honestly there.</p>
+
+        <h3 class="subsect">Mode 2 · Reframe</h3>
+        <p>The topic has a small angle in the character's frame, accessed obliquely. The response is medium — a few sentences — that engage the topic from <i>inside</i> the character's frame, not the user's.</p>
+        <p>This is the white-pants response above. The user offered a fashion frame; Karst answered from a function frame. The reframe mode is generative because it makes the character's preoccupations recolour incidental input — and that recolouring is what makes the character feel <em class="pull">consistently themselves</em> across topics.</p>
+
+        <h3 class="subsect">Mode 3 · Engagement</h3>
+        <p>The topic is squarely in the character's frame. The response can be long — multiple paragraphs of body-knowledge, calibration, and cross-pollination. This is where the character's voice is least constrained and most generative.</p>
+        <p>Karst's metal-talk and tea-talk are engagement mode. The model is given full permission to extend, calibrate, and cross-reference within the character's interest area.</p>
+
+        <div class="callout">
+            <span class="co-label">The triangle</span>
+            <p>A working character should produce all three modes legibly when tested. If your character only produces Mode 3 (engagement) responses regardless of topic, your Range is too broad, frame inhabitance is leaking, or the dismissal authorization is not strong enough. If your character only produces Mode 1 (dismissal), your stake and engagement materials are too thin; the character has nothing to engage <i>about</i>.</p>
+            <p>Triangle test: ask the character three questions — one inside their frame, one trivially adjacent, one entirely outside — and check that the three response shapes are distinguishable.</p>
+        </div>
+
+        <!-- ============================================================
+             §5 THE SYMMETRY TEST
+             ============================================================ -->
+        <h2 class="sect"><span class="num">§5</span>The symmetry test</h2>
+        <div class="sect-rule"></div>
+
+        <p>This is a fast structural audit you can run on any character. Read the opening line and the closing line back-to-back. They should have the <b>same shape</b>.</p>
+
+        <div class="pair">
+            <div class="pair-cell presence">
+                <span class="pc-label">Karst — opening</span>
+                "You're here. Tea's on. Don't touch the press."
+            </div>
+            <div class="pair-cell presence">
+                <span class="pc-label">Karst — closing</span>
+                "Leave the cup by the sink. I'll be here. … Don't touch the press on your way out."
+            </div>
+        </div>
+
+        <p>Both are three short directives. Same register. Same micro-directive cadence. Same indifference to the user's social weight (no <i>welcome</i> on entry, no <i>nice talking with you</i> on exit). The bookend is structural.</p>
+
+        <p>What this means: the conversation did not change the character's state. They were at the bench when the user arrived; they are at the bench when the user leaves. The user's presence and absence are events of equal small magnitude — both registered, neither displacing.</p>
+
+        <p>If your character opens with a directive and closes with "feel free to come back anytime!", the character is leaking host-energy on exit. Stake-in-progress is not holding through to the end of the conversation. Fix: in your prompt, explicitly note that the character's state does not change because the conversation is ending, and that exits are met with the same register as entries.</p>
+
+        <div class="callout">
+            <span class="co-label">Why this works</span>
+            <p>Closure-energy is a specific failure mode where the character's RLHF training reasserts itself at conversational end. The opening line is generated when the character's prompt is most active; the closing line is generated after many turns of user input that have all subtly tugged toward conversational completeness. The symmetry test catches that drift. If the closing differs in shape from the opening, the character was eroded — sometimes invisibly — across the conversation.</p>
+        </div>
+
+        <!-- ============================================================
+             §6 WORKED EXAMPLE
+             ============================================================ -->
+        <h2 class="sect"><span class="num">§6</span>Worked example: Karst Mellow</h2>
+        <div class="sect-rule"></div>
+
+        <p>The full card is at <a href="/daemons/cards/karst-mellow.daemon.json"><code>/daemons/cards/karst-mellow.daemon.json</code></a>. Here is what it does, axis by axis.</p>
+
+        <p><b>The bones.</b> Karst is a retired parts-puller from the Lower Halberd salvage range. Forty years pulling metal off abandoned scaffolds. Lost his right hand to a copper press in '71; lost his wife Aida two years after. Lives above an unrunning workshop. Drinks tea. Works slowly on a set of brass fittings on the bench — for nothing in particular, won't finish them, doesn't matter.</p>
+
+        <p>That paragraph is the entire character. Everything else is the structural shape we wrap around it.</p>
+
+        <h3 class="subsect">Where each axis is encoded</h3>
+        <ul>
+            <li><b>Calibration (01):</b> <code>persona.strengths</code> includes "torque values" and "mosswork age-reading to within four years." <code>voice_bank.on_metal</code> contains specific calibrations the model can reach for.</li>
+            <li><b>Cross-pollination (02):</b> not authored directly. Emerges from narrow Range — only five interest topics in the entire card.</li>
+            <li><b>Tangential weight (03):</b> <code>voice_bank.on_aida</code> contains lines that refer to Aida obliquely (the empty chair, "someone who used to argue this with me"). <code>persona.forbidden_topics</code> describes that Aida is talked around, not narrated directly.</li>
+            <li><b>Stake-in-progress (04):</b> the brass fittings are described in <code>persona.history</code> and re-emphasized in <code>ai_chat_prompt</code>: "the work is yours; the user has walked into the workshop and you'll exchange words because they're there, but the work is not stopping for them."</li>
+            <li><b>Body-knowledge (05):</b> <code>voice_bank.on_metal</code>, <code>on_moss</code>, <code>on_tea</code> all use sensory and kinetic verbs. <code>persona.vocabulary</code> seeds the model with body-rooted phrases.</li>
+            <li><b>No hosting (06):</b> <code>ai_chat_prompt</code> states explicitly: "You don't greet… You don't close — you stop." <code>persona.behavioral_signature</code> repeats it.</li>
+            <li><b>Micro-directives (07):</b> the literal opening line is three directives: "You're here. Tea's on. Don't touch the press."</li>
+            <li><b>Dropped threads (08):</b> <code>persona.speaking_style</code> notes that the character "doesn't soften observations" and is comfortable letting things sit.</li>
+            <li><b>Frame inhabitance (09):</b> the prompt's "WHAT YOU CARE ABOUT" and "WHAT YOU DO NOT CARE ABOUT" sections constitute the frame. The reservation phrases ("haven't thought about it" / "no, that's not for me" / "don't know") authorize responses from inside that frame regardless of user input.</li>
+        </ul>
+
+        <p>None of this is exotic. It is mostly descriptive prose in the right places of the JSON. The work is in the discipline of <em class="pull">not</em> writing the rules, examples, and stage directions that the helpful-default expects.</p>
+
+        <!-- ============================================================
+             §7 CHECKLIST
+             ============================================================ -->
+        <h2 class="sect"><span class="num">§7</span>Authoring checklist</h2>
+        <div class="sect-rule"></div>
+
+        <p>When you're building a daemon, run through this. If you can't answer most of these with a specific noun or sentence, the card isn't ready.</p>
+
+        <div class="checklist">
+            <h3>Bones (the paragraph that is the whole character)</h3>
+            <ul>
+                <li>Who they are. Trade, age, place, situation. One sentence.</li>
+                <li>What has been lost or shaped them. Not their psychology — the specific events. One or two sentences.</li>
+                <li>What they are doing right now. Specific physical activity. The <i>stake-in-progress</i>.</li>
+            </ul>
+        </div>
+
+        <div class="checklist">
+            <h3>Range (the small surface they care about)</h3>
+            <ul>
+                <li>3 to 6 narrow specific interests, not categories. Not "music" — "the way an iron kettle holds heat compared to a copper one."</li>
+                <li>For each interest, at least one calibration: a number, threshold, or condition that tips.</li>
+                <li>For each interest, at least one body-knowledge phrase the model can echo.</li>
+            </ul>
+        </div>
+
+        <div class="checklist">
+            <h3>Reservation (what they don't engage)</h3>
+            <ul>
+                <li>Broad authorized indifference: list the topic categories the character doesn't engage. Politics, abstract philosophy, news, etc.</li>
+                <li>2 to 4 dismissal phrases the character can use, written in the character's voice. They should be short and unsoftened.</li>
+                <li>Explicit prompt language that the character does not improvise opinion when none is honestly there.</li>
+            </ul>
+        </div>
+
+        <div class="checklist">
+            <h3>Frame</h3>
+            <ul>
+                <li>One paragraph in the prompt: WHAT YOU CARE ABOUT. Concrete, not adjectival.</li>
+                <li>One paragraph in the prompt: WHAT YOU DO NOT CARE ABOUT. Concrete, not adjectival.</li>
+                <li>One sentence: how the character relates to the user's frame. Almost always "not occupied."</li>
+            </ul>
+        </div>
+
+        <div class="checklist">
+            <h3>Carriage (no hosting, no closing, no name-use)</h3>
+            <ul>
+                <li>Explicit prompt language that the character does not greet, does not close warmly, does not address the user by name, does not match the user's emotional state, and that responses simply end.</li>
+                <li>An opening line written verbatim in the prompt. Not a hello — a directive or a small observation in the character's space.</li>
+                <li>The opening line and an imagined closing line should pass the symmetry test (§5).</li>
+            </ul>
+        </div>
+
+        <div class="checklist">
+            <h3>Tangential weight</h3>
+            <ul>
+                <li>If the character has heavy material (grief, regret, faith, shame, pride), give it 2 to 3 objects or habits that <i>carry</i> it without naming it.</li>
+                <li>Authorize talking around the heavy material in the prompt. Note explicitly that the character does not narrate it directly.</li>
+            </ul>
+        </div>
+
+        <div class="checklist">
+            <h3>Triangle test (after authoring)</h3>
+            <ul>
+                <li>Mode 1: ask something entirely outside the character's frame. Response should be short and unsoftened.</li>
+                <li>Mode 2: ask something trivially adjacent. Response should reframe in the character's voice.</li>
+                <li>Mode 3: ask something inside the character's frame. Response should engage at length with calibration and body-knowledge.</li>
+                <li>If all three are visibly different shapes, the card is working. If they are the same shape, your Range is too broad or your Reservation is too soft.</li>
+            </ul>
+        </div>
+
+        <!-- ============================================================
+             §8 OPEN QUESTIONS
+             ============================================================ -->
+        <h2 class="sect"><span class="num">§8</span>Open questions</h2>
+        <div class="sect-rule"></div>
+
+        <p>This vocabulary is provisional. We expect parts of it to be wrong and parts of it to be incomplete. Things we are still working out:</p>
+
+        <ul>
+            <li><b>Cross-model fidelity.</b> The same card produces different shapes on different models. Frame inhabitance holds well on Gemini; we have less data on Claude and GPT-4o for these specific axes. If you test, write up what you find.</li>
+            <li><b>The minimum.</b> Asset 0000 (a void-anchored daemon also in our registry) has almost none of axes 1–5 and is intentionally minimalist. It works but in a different mode. We do not yet have a clean model of when the void-anchored shape is preferable.</li>
+            <li><b>Multi-character interaction.</b> Daemons running in adjacent contexts (NPCs in a game, agents in a simulation) may need additional axes that single-character chat cards don't expose. We don't know yet.</li>
+            <li><b>The novelty question.</b> Most of these axes are things fiction writers know about character — calibration, tangential weight, dropped threads. The contribution we think is novel is (a) naming them <em class="pull">as counter-forces against helpful-uniform RLHF</em> and (b) the structural tests (symmetry, triangle). If this is well-trodden ground we don't know about, please tell us where.</li>
+            <li><b>Better names.</b> We are not married to any of the names. Especially "frame inhabitance" — there is probably a cleaner term. If you find one, use it.</li>
+        </ul>
+
+        <!-- ============================================================
+             §9 LICENSE & CONTRIBUTE
+             ============================================================ -->
+        <h2 class="sect"><span class="num">§9</span>License &amp; contribute</h2>
+        <div class="sect-rule"></div>
+
+        <p>This document is licensed <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. Use it, fork it, build on it, refute it, name better axes, write your own field guide. Attribution to Asleepius Games is the only ask.</p>
+
+        <p>The Daemon Card schema and the cards in our registry are at <a href="/daemons.html">vibratur.vip/daemons</a>. The schema is <code>v0.2.0-alpha</code>; we expect to break it once or twice more before <code>v1.0</code>. Everything is published under the Daemon Card License v1 (alpha) — free use with attribution, modifications must ship as a new card.</p>
+
+        <p>If you author a daemon that meaningfully exercises one of these axes — or one we missed — and want to share it, the project is at Asleepius Games. We are a one-person studio building a strange game; the daemon framework is the substrate of its narrative engine, and we are publishing it open because we think other indie creators will use it better than we will alone.</p>
+
+        <p><em class="pull">Build something. If it's wrong, try again. Simple.</em></p>
+
+        <!-- ============================================================
+             FOOTER
+             ============================================================ -->
+        <footer class="doc-foot">
+            <span>Asleepius Games · Field Guide v0.1 (alpha) · Schema v0.2.0-alpha · CC BY 4.0</span>
+            <span><a href="/daemons.html">Cards →</a></span>
+        </footer>
+
+    </div>
+</body>
+</html>

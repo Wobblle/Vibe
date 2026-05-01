@@ -47,6 +47,12 @@
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
+  <url>
+    <loc>https://vibratur.vip/daemon-authoring.html</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
 
   <!-- Daemon Card schema specs (canonical, perpetual artifacts) -->
   <url>
