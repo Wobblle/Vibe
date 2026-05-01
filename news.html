@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Vibratur News — Internal Bulletin · Issue 0047</title>
+
+    <meta name="description" content="The official internal news bulletin of Vibratur, Inc. Headlines, daemon dispatches, and the running record of Asset 0001's continued failure to ship. Personalized per workstation. Refreshed continuously.">
+    <meta name="keywords" content="Vibratur News, Vibratur internal bulletin, Brett-9 determinations, Chad Vibington quotes, Asset 0001, Sky Scaffold, satirical corporate news, beige dystopia">
+    <meta name="author" content="Vibratur, Inc. Office of Internal Communications (Brett-9, autonomous)">
+    <meta name="robots" content="index, follow">
+    <meta name="generator" content="Vibratur News Engine v0.4 (no humans were consulted)">
+    <link rel="canonical" href="https://vibratur.vip/news.html">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Vibratur, Inc.">
+    <meta property="og:title" content="Vibratur News — Internal Bulletin">
+    <meta property="og:description" content="The org's living news surface. Lead stories, Brett-9 determinations, From-the-Desk-of-the-CVO column, Asset Liaison bulletin. Personalized per visiting workstation.">
+    <meta property="og:url" content="https://vibratur.vip/news.html">
+    <meta property="og:image" content="https://vibratur.vip/og/og-news.png">
+    <meta property="og:locale" content="en_US">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Vibratur News — Internal Bulletin">
+    <meta name="twitter:description" content="Headlines from inside the org. Updates per visit. Brett-9 was contractually unaware of this issue.">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Vibratur News",
+        "url": "https://vibratur.vip/news.html",
+        "publisher": {
+            "@type": "Organization",
+            "name": "Vibratur, Inc.",
+            "url": "https://vibratur.vip/"
+        }
+    }
+    </script>
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <style>
+        :root {
+            --paper:        #f3ead3;
+            --paper-2:      #ebdfbe;
+            --paper-deep:   #d4c293;
+            --ink:          #1a1a14;
+            --ink-soft:     #4a4030;
+            --rule:         #6a5a30;
+            --rule-soft:    #b08c2f;
+            --accent:       #2a1f5e;
+            --accent-2:     #4a3680;
+            --burgundy:     #6e1f2a;
+            --good:         #2c5d2e;
+            --warn:         #aa6633;
+            --stamp-red:    #aa2222;
+        }
+        * { box-sizing: border-box; }
+        html, body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background:
+                /* subtle paper grain */
+                repeating-linear-gradient(0deg,
+                    transparent 0 2px,
+                    rgba(106,90,48,0.02) 2px 3px),
+                repeating-linear-gradient(90deg,
+                    transparent 0 2px,
+                    rgba(106,90,48,0.015) 2px 3px),
+                linear-gradient(180deg, var(--paper) 0%, var(--paper-2) 100%);
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 14px;
+            color: var(--ink);
+            line-height: 1.55;
+        }
+        a { color: var(--accent); text-decoration: none; border-bottom: 1px dotted var(--accent); }
+        a:hover { color: var(--burgundy); border-color: var(--burgundy); }
+
+        /* Top bar — workstation context */
+        .top-bar {
+            background: var(--accent);
+            color: #fff;
+            padding: 6px 14px;
+            font-family: "Courier New", monospace;
+            font-size: 11px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #000;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .top-bar a { color: #ffd54a; border-color: #ffd54a; }
+        .top-bar .tb-section { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+        .top-bar .tb-stamp {
+            background: rgba(255,255,255,0.1);
+            padding: 2px 8px;
+            border-left: 2px solid rgba(255,255,255,0.4);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-size: 10px;
+        }
+        .top-bar .ws-pill {
+            background: rgba(255,213,74,0.15);
+            border: 1px solid rgba(255,213,74,0.5);
+            padding: 2px 8px;
+            color: #ffd54a;
+        }
+
+        /* Masthead */
+        .masthead {
+            background:
+                linear-gradient(180deg, var(--paper) 0%, transparent 100%),
+                var(--paper);
+            padding: 22px 24px 14px;
+            border-bottom: 4px double var(--rule);
+            text-align: center;
+            position: relative;
+        }
+        .masthead .mh-supratitle {
+            font-family: "Times New Roman", serif;
+            font-size: 11px;
+            color: var(--accent);
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+        .masthead h1 {
+            margin: 0 0 4px;
+            font-family: "Times New Roman", serif;
+            font-size: clamp(36px, 7vw, 64px);
+            font-weight: 900;
+            color: var(--ink);
+            letter-spacing: 2px;
+            line-height: 1;
+            text-transform: uppercase;
+        }
+        .masthead h1 .swash {
+            color: var(--accent);
+            font-style: italic;
+            font-weight: 400;
+        }
+        .masthead .mh-tag {
+            font-style: italic;
+            font-size: 13px;
+            color: var(--ink-soft);
+            margin-top: 4px;
+        }
+        .masthead .mh-meta {
+            font-family: "Courier New", monospace;
+            font-size: 10px;
+            color: var(--rule);
+            margin-top: 10px;
+            padding-top: 8px;
+            border-top: 1px solid var(--rule-soft);
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 6px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .masthead .mh-personal {
+            color: var(--burgundy);
+        }
+
+        /* Layout */
+        .news-wrap {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 22px 18px 60px;
+        }
+        .news-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 28px;
+        }
+        .news-grid .col-secondary {
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
+        }
+        @media (max-width: 900px) {
+            .news-grid { grid-template-columns: 1fr; }
+        }
+
+        /* Section header */
+        .sect-head {
+            font-family: "Times New Roman", serif;
+            font-weight: bold;
+            font-size: 12px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #fff;
+            background: var(--accent);
+            padding: 5px 10px;
+            margin: 0 0 12px;
+            border-bottom: 3px solid var(--burgundy);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .sect-head .sh-tag {
+            font-size: 9px;
+            color: rgba(255,255,255,0.65);
+            font-family: "Courier New", monospace;
+            font-weight: normal;
+            letter-spacing: 1px;
+        }
+
+        /* Hero / lead story */
+        .lead-story {
+            background: #fffdf6;
+            border: 1px solid var(--rule-soft);
+            padding: 18px 22px 16px;
+            margin-bottom: 22px;
+            position: relative;
+            box-shadow: 2px 2px 0 rgba(106,90,48,0.18);
+        }
+        .lead-story .ls-kicker {
+            display: inline-block;
+            font-family: "Courier New", monospace;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--burgundy);
+            background: #fff;
+            border: 1px solid var(--burgundy);
+            padding: 2px 8px;
+            margin-bottom: 8px;
+        }
+        .lead-story h2 {
+            margin: 0 0 6px;
+            font-family: "Times New Roman", serif;
+            font-size: clamp(20px, 2.6vw, 30px);
+            line-height: 1.15;
+            font-weight: 900;
+            color: var(--ink);
+            letter-spacing: 0.3px;
+        }
+        .lead-story .ls-byline {
+            font-size: 11px;
+            color: var(--ink-soft);
+            font-style: italic;
+            margin-bottom: 10px;
+            border-bottom: 1px dashed var(--rule-soft);
+            padding-bottom: 6px;
+        }
+        .lead-story .ls-body {
+            font-size: 14px;
+            line-height: 1.65;
+            color: var(--ink);
+        }
+        .lead-story .ls-body p { margin: 0 0 10px; text-indent: 1.2em; }
+        .lead-story .ls-body p:first-child { text-indent: 0; }
+        .lead-story .ls-body p:first-child::first-letter {
+            font-family: "Times New Roman", serif;
+            font-size: 38px;
+            font-weight: 900;
+            color: var(--accent);
+            float: left;
+            line-height: 0.9;
+            margin-right: 4px;
+            margin-top: 2px;
+        }
+        .lead-story .ls-tag {
+            font-family: "Courier New", monospace;
+            font-size: 10px;
+            color: var(--rule);
+            margin-top: 8px;
+            border-top: 1px dashed var(--rule-soft);
+            padding-top: 6px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 4px;
+        }
+
+        /* Sub-story grid */
+        .sub-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 14px;
+            margin-bottom: 22px;
+        }
+        .sub-card {
+            background: #fffdf6;
+            border: 1px solid var(--rule-soft);
+            padding: 12px 14px;
+            position: relative;
+            transition: transform 0.12s ease, box-shadow 0.12s ease;
+        }
+        .sub-card:hover {
+            transform: translateY(-1px);
+            box-shadow: 2px 2px 0 rgba(106,90,48,0.25);
+        }
+        .sub-card .sc-kicker {
+            font-family: "Courier New", monospace;
+            font-size: 9px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+            margin-bottom: 4px;
+        }
+        .sub-card h3 {
+            margin: 0 0 6px;
+            font-family: "Times New Roman", serif;
+            font-size: 16px;
+            line-height: 1.2;
+            font-weight: bold;
+            color: var(--ink);
+        }
+        .sub-card p {
+            margin: 0;
+            font-size: 12.5px;
+            line-height: 1.55;
+            color: var(--ink-soft);
+        }
+        .sub-card .sc-byline {
+            font-size: 10px;
+            color: var(--rule);
+            font-family: "Courier New", monospace;
+            margin-top: 6px;
+            padding-top: 5px;
+            border-top: 1px dashed var(--rule-soft);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Daemon columns */
+        .daemon-col {
+            background: #fffdf6;
+            border: 1px solid var(--rule-soft);
+            padding: 14px 16px;
+        }
+        .daemon-col h3 {
+            margin: 0 0 8px;
+            font-family: "Times New Roman", serif;
+            font-size: 15px;
+            color: var(--accent);
+            font-weight: bold;
+            letter-spacing: 0.3px;
+            border-bottom: 1px solid var(--rule-soft);
+            padding-bottom: 4px;
+        }
+        .daemon-col h3 .dc-name {
+            font-style: italic;
+            font-weight: normal;
+            color: var(--burgundy);
+        }
+        .daemon-col .dc-line {
+            font-size: 12.5px;
+            line-height: 1.5;
+            color: var(--ink);
+            padding: 6px 0;
+            border-bottom: 1px dotted rgba(106,90,48,0.3);
+        }
+        .daemon-col .dc-line:last-child { border-bottom: none; }
+        .daemon-col .dc-line .dc-meta {
+            display: block;
+            font-family: "Courier New", monospace;
+            font-size: 9px;
+            color: var(--rule);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 2px;
+        }
+        .daemon-col .dc-line .dc-quote { font-style: italic; }
+
+        /* Pinned: Apology card */
+        .apology-pin {
+            background: linear-gradient(180deg, #fff7d6, #f3e8b5);
+            border: 2px solid var(--accent);
+            padding: 14px 16px;
+            position: relative;
+        }
+        .apology-pin::after {
+            content: "📌";
+            position: absolute;
+            top: -10px;
+            right: 12px;
+            font-size: 22px;
+            transform: rotate(20deg);
+        }
+        .apology-pin .ap-stamp {
+            font-family: "Courier New", monospace;
+            font-size: 9px;
+            color: var(--accent);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+        .apology-pin h3 {
+            margin: 0 0 4px;
+            font-family: "Times New Roman", serif;
+            font-size: 16px;
+            color: var(--ink);
+            font-weight: bold;
+        }
+        .apology-pin p {
+            margin: 0 0 8px;
+            font-size: 12px;
+            color: var(--ink-soft);
+            line-height: 1.5;
+            font-style: italic;
+        }
+        .apology-pin .ap-cta {
+            display: inline-block;
+            background: var(--accent);
+            color: #fff;
+            font-family: "Helvetica Neue", Arial, sans-serif;
+            font-size: 11px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 5px 12px;
+            border: 2px outset var(--accent-2);
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .apology-pin .ap-cta:hover { background: var(--accent-2); border-color: var(--accent); color:#fff; }
+
+        /* Archive (paywalled older stories) */
+        .archive {
+            background: #fffdf6;
+            border: 1px solid var(--rule-soft);
+            padding: 14px 16px;
+        }
+        .archive h3 {
+            margin: 0 0 8px;
+            font-family: "Times New Roman", serif;
+            font-size: 14px;
+            color: var(--accent);
+            font-weight: bold;
+            border-bottom: 1px solid var(--rule-soft);
+            padding-bottom: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+        .archive h3 .ar-tag {
+            font-family: "Courier New", monospace;
+            font-size: 9px;
+            color: var(--burgundy);
+            font-style: italic;
+            font-weight: normal;
+            letter-spacing: 1px;
+        }
+        .archive ul { list-style: none; margin: 0; padding: 0; }
+        .archive li {
+            padding: 5px 0;
+            border-bottom: 1px dotted rgba(106,90,48,0.3);
+            font-size: 12.5px;
+            color: var(--ink);
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 8px;
+        }
+        .archive li:last-child { border-bottom: none; }
+        .archive li .ar-date {
+            font-family: "Courier New", monospace;
+            font-size: 9.5px;
+            color: var(--rule);
+            white-space: nowrap;
+        }
+        .archive li .ar-lock {
+            color: var(--burgundy);
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: line-through;
+            opacity: 0.85;
+        }
+        .archive li .ar-lock:hover { opacity: 1; text-decoration: line-through underline; }
+        .archive .ar-foot {
+            margin-top: 8px;
+            padding-top: 6px;
+            border-top: 1px dashed var(--rule-soft);
+            font-size: 10px;
+            color: var(--rule);
+            font-style: italic;
+        }
+
+        /* Live ticker — RSS-shaped feed */
+        .ticker {
+            background: #1a1a14;
+            color: #d8e0c0;
+            border: 2px solid var(--accent);
+            padding: 8px 12px;
+            font-family: "Courier New", monospace;
+            font-size: 11.5px;
+            line-height: 1.6;
+            margin-top: 22px;
+            overflow: hidden;
+            position: relative;
+        }
+        .ticker .tk-head {
+            font-size: 9.5px;
+            color: #ffd54a;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border-bottom: 1px dashed rgba(255,213,74,0.3);
+            padding-bottom: 4px;
+            margin-bottom: 6px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .ticker .tk-row {
+            padding: 2px 0;
+            display: flex;
+            gap: 10px;
+        }
+        .ticker .tk-row .tk-time {
+            color: #b5d49a;
+            white-space: nowrap;
+        }
+        .ticker .tk-row .tk-msg { color: #d8e0c0; }
+        .ticker .tk-row .tk-tag {
+            color: #ffd54a;
+            font-style: italic;
+        }
+
+        /* Bottom navigation strip */
+        .bottom-nav {
+            margin-top: 30px;
+            padding: 14px 0;
+            border-top: 4px double var(--rule);
+            text-align: center;
+            font-family: "Courier New", monospace;
+            font-size: 11px;
+            color: var(--rule);
+        }
+        .bottom-nav a {
+            margin: 0 8px;
+            font-family: "Times New Roman", serif;
+            font-size: 13px;
+        }
+
+        /* Modal for archive paywall hits */
+        .pw-modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #fffdf6;
+            border: 3px outset var(--rule-soft);
+            box-shadow: 4px 4px 0 rgba(0,0,0,0.5);
+            z-index: 200;
+            width: min(94vw, 420px);
+            padding: 0;
+        }
+        .pw-modal.shown { display: block; }
+        .pw-modal .pw-bar {
+            background: var(--accent);
+            color: #fff;
+            padding: 6px 12px;
+            font-family: "Helvetica Neue", Arial, sans-serif;
+            font-size: 12px;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .pw-modal .pw-bar button {
+            background: #c0c0c0;
+            border: 2px outset #c0c0c0;
+            font-size: 10px;
+            padding: 1px 6px;
+            cursor: pointer;
+        }
+        .pw-modal .pw-body {
+            padding: 16px;
+            font-family: Georgia, serif;
+            font-size: 13px;
+            line-height: 1.6;
+            color: var(--ink);
+        }
+        .pw-modal .pw-body p { margin: 0 0 10px; }
+        .pw-modal .pw-cta {
+            text-align: right;
+            margin-top: 10px;
+        }
+        .pw-modal .pw-cta button {
+            background: linear-gradient(180deg, #5a3fa0, var(--accent));
+            color: #fff;
+            border: 2px outset var(--accent-2);
+            padding: 6px 14px;
+            font-family: "Helvetica Neue", Arial, sans-serif;
+            font-size: 11px;
+            font-weight: bold;
+            cursor: pointer;
+            letter-spacing: 1px;
+        }
+        .pw-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 199;
+        }
+        .pw-overlay.shown { display: block; }
+    </style>
+</head>
+<body>
+
+<!-- ============ TOP BAR — workstation context ============ -->
+<div class="top-bar">
+    <div class="tb-section">
+        <span class="tb-stamp">§47-VIBE-NEWS</span>
+        <a href="dashboard.html">← Workstation</a>
+        <a href="apology.html">Apology</a>
+        <a href="docs.html">Docs</a>
+        <a href="vibraos.html">VibraOS™</a>
+    </div>
+    <div class="tb-section">
+        <span class="ws-pill" id="topWsPill">WORKSTATION ····</span>
+        <span id="topClock">12:00:00</span>
+    </div>
+</div>
+
+<!-- ============ MASTHEAD ============ -->
+<div class="masthead">
+    <div class="mh-supratitle">Vibratur, Inc. · Office of Internal Communications</div>
+    <h1>Vibra<span class="swash">tur</span> News</h1>
+    <div class="mh-tag">"the org's living news surface · refreshed continuously by Brett-9 (autonomous)"</div>
+    <div class="mh-meta">
+        <span><b>Issue 0047</b> · <span id="issueDate">2026-05-01</span></span>
+        <span class="mh-personal" id="personalLine">personalized for WORKSTATION ····</span>
+        <span><b>Edited by:</b> Brett-9 (contractually unaware)</span>
+        <span>$2.99 newsstand · $0.00 online · billed monthly</span>
+    </div>
+</div>
+
+<!-- ============ MAIN GRID ============ -->
+<div class="news-wrap">
+
+    <!-- Lead story always renders first -->
+    <div class="lead-story" id="leadStory"></div>
+
+    <!-- Two-column body grid -->
+    <div class="news-grid">
+        <!-- Primary column -->
+        <div>
+            <div class="sect-head">
+                More from this issue
+                <span class="sh-tag">refreshed per visit</span>
+            </div>
+            <div class="sub-grid" id="subGrid"></div>
+
+            <div class="sect-head">
+                Brett-9 Determinations
+                <span class="sh-tag">§47-VIBE-COMPLY</span>
+            </div>
+            <div class="daemon-col" id="brettCol">
+                <h3>Compliance Dispatch from <span class="dc-name">Brett-9</span></h3>
+            </div>
+
+            <!-- Live ticker -->
+            <div class="ticker" id="ticker">
+                <div class="tk-head"><span>LIVE FEED · INTRANET RSS · NO HUMAN REVIEW</span><span id="tkSync">sync 11s</span></div>
+                <div id="tkBody"></div>
+            </div>
+        </div>
+
+        <!-- Secondary column -->
+        <div class="col-secondary">
+            <!-- Pinned apology -->
+            <div class="apology-pin">
+                <div class="ap-stamp">§47-VIBE-APOLOGY-Q3 · pinned by Brett-9</div>
+                <h3>The Quarterly Public Apology — Q3 2026</h3>
+                <p>A long, humble letter from your Chief Vibe Officer. The first 50% is free. The remainder requires a small unlock fee.</p>
+                <a class="ap-cta" href="apology.html">read the apology →</a>
+            </div>
+
+            <!-- Daemon columns -->
+            <div class="daemon-col">
+                <h3>From the Desk of <span class="dc-name">the CVO</span></h3>
+                <div id="chadCol"></div>
+            </div>
+
+            <div class="daemon-col">
+                <h3>Asset Liaison Bulletin <span class="dc-name">— Asset 0001</span></h3>
+                <div id="assetCol"></div>
+            </div>
+
+            <!-- Archive (paywalled) -->
+            <div class="archive">
+                <h3>The Stack <span class="ar-tag">prior issues · paywalled</span></h3>
+                <ul id="archiveList"></ul>
+                <div class="ar-foot">prior issues require Apology Reader™ tier or higher · pricing handled by §47-VIBE-NEWS-ARCHIVE-A.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom nav -->
+    <div class="bottom-nav">
+        <a href="dashboard.html">Workstation</a> ·
+        <a href="vibraos.html">VibraOS™ Console</a> ·
+        <a href="apology.html">Apology</a> ·
+        <a href="v4v.html">V4V Registry</a> ·
+        <a href="docs.html">Documentation</a>
+        <br><br>
+        <span style="font-size: 10px;">
+            Vibratur, Inc. · §47-VIBE-NEWS · Issue 0047 ·
+            edited by Brett-9 (contractually unaware) ·
+            personalized for <span id="bottomWs">WORKSTATION ····</span>
+        </span>
+    </div>
+</div>
+
+<!-- Paywall modal for archive clicks -->
+<div class="pw-overlay" id="pwOverlay" onclick="closeArchivePw()"></div>
+<div class="pw-modal" id="pwModal">
+    <div class="pw-bar">
+        <span>📜 Archive · §47-VIBE-NEWS-ARCHIVE-A</span>
+        <button onclick="closeArchivePw()">✕</button>
+    </div>
+    <div class="pw-body">
+        <p><b>Prior issues are gated.</b></p>
+        <p>Access to the news archive is included with the <i>Apology Reader™</i> tier or higher. Subscribers may also access:</p>
+        <ul style="margin:8px 0 8px 18px;">
+            <li>Issues prior to Q3 2026</li>
+            <li>Brett-9 Determinations from prior quarters</li>
+            <li>Sealed Asset Liaison Bulletins</li>
+        </ul>
+        <p style="font-size: 11px; font-style: italic; color: var(--ink-soft);">The archive does not contain anything materially different from this issue. The fee covers the act of confirming this for yourself.</p>
+        <div class="pw-cta">
+            <button onclick="goApology()">📜 see apology tiers</button>
+        </div>
+    </div>
+</div>
+
+<!-- Daemon Cards runtime (Asleepius Games · v0.1.0-alpha) -->
+<script src="daemons/daemons.js"></script>
+
+<script>
+    /* =====================================================================
+       Vibratur News — generation script
+       Pass 2: content banks rendered client-side, randomized per visit.
+       Pass 3: daemon-voiced columns now consume Daemon Cards via the
+               Daemons.* runtime when available, with safe fallback to the
+               inline banks (so the page works even if daemons.js is missing).
+    ===================================================================== */
+    const _hasDaemons = (typeof Daemons !== 'undefined' && Daemons && typeof Daemons.say === 'function');
+
+    /* ---- Workstation identity (read from Pass 1 localStorage) ---- */
+    function pad(n, w) { return String(n).padStart(w || 2, '0'); }
+    const WS_ID    = (function () { try { return localStorage.getItem('vbz_ws_id') || (1000 + Math.floor(Math.random() * 8999)); } catch (e) { return 4729; } })();
+    const WS_USER  = (function () { try { return localStorage.getItem('vbz_user_token') || '0x000-A'; } catch (e) { return '0x000-A'; } })();
+    document.getElementById('topWsPill').textContent = 'WORKSTATION ' + WS_ID;
+    document.getElementById('personalLine').textContent = 'personalized for WORKSTATION ' + WS_ID + ' · ' + WS_USER;
+    document.getElementById('bottomWs').textContent = 'WORKSTATION ' + WS_ID;
+    // Persist if missing (don't overwrite if dashboard already set it)
+    try {
+        if (!localStorage.getItem('vbz_ws_id'))      localStorage.setItem('vbz_ws_id', WS_ID);
+        if (!localStorage.getItem('vbz_user_token')) localStorage.setItem('vbz_user_token', WS_USER);
+    } catch (e) {}
+
+    /* ---- Clock + issue date ---- */
+    function refreshTopClock() {
+        const d = new Date();
+        const yyyy = d.getFullYear();
+        const mm = pad(d.getMonth() + 1);
+        const dd = pad(d.getDate());
+        document.getElementById('topClock').textContent = pad(d.getHours()) + ':' + pad(d.getMinutes()) + ':' + pad(d.getSeconds());
+        document.getElementById('issueDate').textContent = yyyy + '-' + mm + '-' + dd;
+    }
+    refreshTopClock();
+    setInterval(refreshTopClock, 1000);
+
+    /* ---- Helpers ---- */
+    function pick(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+    function pickN(arr, n) {
+        const c = [...arr]; const out = [];
+        for (let i = 0; i < n && c.length; i++) {
+            out.push(c.splice(Math.floor(Math.random() * c.length), 1)[0]);
+        }
+        return out;
+    }
+
+    /* =====================================================================
+       LEAD STORIES — full body, picked one per load
+    ===================================================================== */
+    const LEAD_STORIES = [
+        {
+            kicker: "MISSION STATEMENT EXPANSION",
+            title: "Vibratur Launches OOOR™, Becomes First Company to Charge for the Absence of Racism",
+            byline: "By Brett-9 (autonomous compliance) · §47-VIBE-DEI · 14 minutes ago",
+            body: [
+                "Vibratur, Inc. announced today the public availability of OOOR™ (Opt Out Of Racism), a new compliance tier permitting verified members to opt out of racism for the duration of an active subscription. Pricing has been confirmed at $2.99, billed monthly.",
+                "\"I have been listening,\" said CVO Chad Vibington III in a prepared statement issued by Brett-9 on his behalf. \"I have been listening so hard that, in some sessions, I have had to bill the listening separately.\"",
+                "OOOR™ is available to subscribers of the Galactic and Galactic Eternal+Ad tiers. Eligible non-members may auto-upgrade. Coverage exclusions apply, including but not limited to: racism committed by Brett-9 (autonomous, contractually unaware), internal Vibratur racism (proprietary), racism perpetrated by the member (separate enrollment required), and Italians (pending §47-VIBE-DEI-IT approval).",
+                "Industry response has been muted, which the Office of the CVO interprets as enthusiasm."
+            ],
+            tag: "filed: 14m ago · §47-VIBE-DEI-LAUNCH"
+        },
+        {
+            kicker: "WORKSTATION MIGRATION",
+            title: "Brett-9 Migrates Vibratur's Primary Workstation Overnight; Brett-9 Was Unaware",
+            byline: "By Brett-9 (autonomous, recursive) · §47-VIBE-UI-MIGRATION-A · 3 hours ago",
+            body: [
+                "Vibratur's canonical /dashboard.html surface has been migrated to a new Compliance Workstation aesthetic, leaving the legacy VibraOS™ Console preserved at /vibraos.html. The migration was executed by Brett-9, an autonomous compliance daemon, who, per its operating contract, remains unaware of having performed it.",
+                "Asked for comment, Brett-9 issued a determination citing the migration's compliance with §47-VIBE-UI-MIGRATION-A, then issued a follow-up determination noting that no such migration had occurred, then issued a third determination resolving the contradiction by classifying the entire matter as \"feature, not incident.\"",
+                "The CVO's office has accepted the resolution. Visitors are advised that their workstation identity has been preserved across the migration. The chaos remains available, one icon away."
+            ],
+            tag: "filed: 3h ago · §47-VIBE-UI-MIGRATION-A"
+        },
+        {
+            kicker: "ASSET 0001 BULLETIN",
+            title: "Asset 0001 Still Has Not Shipped; Internal Tracker Updated for the 47th Consecutive Week",
+            byline: "By Asset Liaison · §47-VIBE-DISCLOSURE-A · routine update",
+            body: [
+                "Per the standing weekly disclosure required under §47-VIBE-DISCLOSURE-A, Vibratur, Inc. confirms that Asset 0001 — a video game by Asleepius Games, currently titled Sky Scaffold — has not yet shipped. This marks the 47th consecutive week of non-shipment.",
+                "\"The funding for this entire company continues to flow, almost entirely, from a single individual making a small pixel game in a small room,\" the Office of the CVO confirmed in a statement that the CVO has indicated he would have preferred not to make. \"I find this, frankly, embarrassing.\"",
+                "Asleepius Games could not be reached for comment, although the Asset Liaison's office reports having attempted to do so multiple times this week. A draft response was prepared. It will not be sent."
+            ],
+            tag: "filed: weekly · §47-VIBE-DISCLOSURE-A"
+        },
+        {
+            kicker: "PRODUCT LAUNCH",
+            title: "Viber-ator Music Maker Now Sponsor-Supported; Loops Limited to 8 Seconds, Half of Which Are Ads",
+            byline: "By Office of Vibe Acquisition · §47-VIBE-MUSIC · this morning",
+            body: [
+                "Vibratur today confirmed that the Viber-ator music sequencer is now fully sponsor-supported. Users may compose 8-second loops at no charge. At precisely 4 seconds into each loop, audio is interrupted by a full-screen presentation from one of Vibratur's six Vibra Sponsors™ (DigiVape, InfiniDLC, NeuroMint, ChadCoin, GoonBox, HustleSerum).",
+                "\"This is how independent music gets distributed in the modern era,\" said the Office of the CVO. \"In silence, except for the ads.\"",
+                "Sponsor selection is randomized per session and cannot be configured. Users wishing to skip ads may upgrade to the Galactic Eternal+Ad tier, which costs more and includes additional ads."
+            ],
+            tag: "filed: this morning · §47-VIBE-MUSIC"
+        },
+        {
+            kicker: "QUARTERLY APOLOGY",
+            title: "Q3 Apology Filed; First Half Available Free, Second Half Paywalled for Sincerity Reasons",
+            byline: "By Office of the Chief Vibe Officer · §47-VIBE-APOLOGY-Q3 · two weeks ago",
+            body: [
+                "The Quarterly Public Apology for Q3 2026 has been filed in full at /apology.html. Per §47-VIBE-APOLOGY-Q3, the first 50% of the document is available for free. The remainder is gated under the Apology Reader™ tier.",
+                "\"Premium humility is a regulated category,\" the Office of the CVO clarified. \"It includes specific incidents, specific names, specific dollar figures, and the apology I have prepared for myself.\"",
+                "Notable disclosures in the unlocked portion are reported to include an apology directed at OOOR™ pricing being too low, an apology directed at Asset 0001 funding the entire company, and an apology that the CVO has prepared for the CVO."
+            ],
+            tag: "filed: 14d ago · §47-VIBE-APOLOGY-Q3"
+        },
+        {
+            kicker: "INTERNAL EVENT",
+            title: "Italian Hire Approval Now Entering Its Eleventh Quarter Under §47-VIBE-DEI-IT Review",
+            byline: "By DEI Compliance · §47-VIBE-DEI-IT · ongoing",
+            body: [
+                "The CVO's stated commitment to \"hire any race of people, including italians (waiting for approval to move forward)\" has now been pending §47-VIBE-DEI-IT review for eleven consecutive quarters. The review is described internally as ongoing.",
+                "Per Brett-9, the file remains active. Per the CVO, the file remains aspirational. Per the Italian-hire candidate, no contact has been received. Per the Office of the CVO, this is a sensitive matter and further press inquiries should be routed to Brett-9, who is unaware of the matter.",
+                "Industry observers have noted that the candidate's name has not been disclosed. Industry observers have not been thanked."
+            ],
+            tag: "filed: ongoing · §47-VIBE-DEI-IT"
+        },
+        {
+            kicker: "FINANCIAL DISCLOSURE",
+            title: "Vibratur ARR Climbs to $0; Office of the CVO Calls It \"Strategic Restraint\"",
+            byline: "By Office of Vibe Finance · §47-VIBE-AUDIT · quarterly",
+            body: [
+                "Vibratur, Inc. today reported its Q3 ARR at $0.00, an increase of zero from the prior quarter. The Office of the CVO described the figure as \"flat, in the way a stable foundation is flat.\"",
+                "\"We could have charged more,\" the CVO said. \"We could have charged anything. The choice not to charge anything is itself a kind of leadership the market has not yet learned how to price.\"",
+                "Asset 0001 remains the sole funding source for the company. Asset 0001 has, as of press time, generated $0.00 in revenue. The CVO finds this, frankly, annoying."
+            ],
+            tag: "filed: quarterly · §47-VIBE-AUDIT"
+        }
+    ];
+
+    /* =====================================================================
+       SUB-STORIES — short cards, 5-7 picked per visit
+    ===================================================================== */
+    const SUB_STORIES = [
+        { kicker: "INTERNAL", title: "Cancellation Cascade Renamed \"Cancellation Tempo Initiative\"", body: "The team is reducing perceived cancellation duration by changing the font.", byline: "Brett-9 · 2h ago" },
+        { kicker: "PRODUCT",  title: "VOGU Enrollment Up 0% Year-Over-Year", body: "The Office of the CVO calls the figure \"defensive growth.\"", byline: "VOGU Office · today" },
+        { kicker: "COMPLIANCE", title: "Quarterly Vibe Digest Cannot Be Unsubscribed; Brett-9 Tried, Said No", body: "The 38MB attachment has been removed for your protection. The digest contains: nothing of importance, repeated.", byline: "The Mailer · 9h ago" },
+        { kicker: "PARTNERSHIP", title: "DigiVape Renews Sponsorship of Viber-ator at the Cost of One Vibe Per User", body: "Per the agreement, vibes will be invoiced quarterly.", byline: "Office of Vibe Acquisition · this morning" },
+        { kicker: "INTERNAL", title: "The Whitepaper Has Not Been Recognized by the Nobel Committee", body: "An apology has been issued. Distribution is now considered the bottleneck.", byline: "Office of the CVO · last week" },
+        { kicker: "BULLETIN", title: "Recycle Bin Now Holds 4,729 Items, None Eligible for Deletion", body: "Per §47-VIBE-RETAIN, items are recycled in a different sense.", byline: "Brett-9 · ongoing" },
+        { kicker: "PERSONAL", title: "CVO Schedules Forty-Minute Reflection Window; Chair Costs a Great Deal", body: "The reflection is scheduled. The chair has been billed.", byline: "Office of the CVO · today" },
+        { kicker: "MARKETS", title: "ChadCoin Outperforms Itself Again", body: "The benchmark is also ChadCoin. The methodology has been audited by ChadCoin.", byline: "Vibe Markets · realtime" },
+        { kicker: "EVENT", title: "Q4 Apology Pre-Drafted; Will Apologize for the Q3 Apology Being Too Long", body: "The Q4 draft is, per the CVO, \"shorter, but only proportionally.\"", byline: "Office of the CVO · pre-draft" },
+        { kicker: "INTRANET", title: "Workstation 4729 Has Not Submitted Their Quarterly Vibe Self-Review", body: "An automatic 14% surcharge has been queued. The Office is grateful for your participation.", byline: "Brett-9 · 11m ago" },
+        { kicker: "OBITUARY", title: "Refunds Continue to Be a Concept Chad Has Chosen Not to Recognize", body: "There has been no change in the situation since the founding of the company.", byline: "Office of the CVO · perpetual" },
+        { kicker: "INFRASTRUCTURE", title: "GPT-9000 Re-Hallucinated Documentation Overnight; Documentation Now Includes a Recipe", body: "The recipe will be reviewed by Brett-9, who is unaware of being asked.", byline: "Office of Hallucination · this morning" },
+        { kicker: "POLICY", title: "Brett-9 Determines That Brett-9 Is Working as Intended", body: "Per §47-VIBE-RECURSE-A, this determination is binding on Brett-9.", byline: "Brett-9 · self-cited" },
+        { kicker: "EXTERNAL", title: "Asleepius Games Has Not Responded to Internal Communications in 14 Days", body: "The Asset Liaison's office has prepared a reply. The reply will not be sent.", byline: "Asset Liaison · ongoing" },
+        { kicker: "PROMOTION", title: "Apology Reader™ Now Includes Access to the News Archive", body: "Subscribers may verify for themselves that the archive contains nothing materially different.", byline: "Office of Subscription · today" },
+        { kicker: "OPS", title: "Daemons Interlink Achieves Nominal Hallucination Throughput", body: "Output is, per the audit, \"functionally indistinguishable from sincerity.\"", byline: "Daemons Interlink · realtime" },
+        { kicker: "SCIENCE", title: "Synergy Confirmed at 104% for the Fourteenth Consecutive Quarter", body: "The methodology has been audited by Synergy.", byline: "Office of Vibe Audit · quarterly" },
+        { kicker: "WEATHER", title: "The General Feeling of Racism in the Air Has Been Marked as Optional", body: "Members may opt out via OOOR™. Non-members may continue to inhale ambiently.", byline: "DEI Compliance · current" },
+    ];
+
+    /* =====================================================================
+       BRETT-9 DETERMINATIONS — one column of recent dispatches
+    ===================================================================== */
+    const BRETT9_LINES = [
+        { meta: "§47-VIBE-RVF-0029 · binding", text: "WORKSTATION 4729's request for refund has been received, considered, and returned to the queue for further consideration." },
+        { meta: "§47-VIBE-RECURSE-A · self-cited", text: "Brett-9 confirms that Brett-9 is operating as intended. This determination is binding on Brett-9." },
+        { meta: "§47-VIBE-DEI-IT · ongoing", text: "The Italian-hire approval continues to be reviewed. No estimated completion date is appropriate at this time." },
+        { meta: "§47-VIBE-RETAIN · perpetual", text: "Items in the Recycle Bin are not eligible for deletion. They are recycled in a different sense." },
+        { meta: "§47-VIBE-FORCE · §47-VIBE-FORCE", text: "The X button has been administratively disabled. There is no further appeal." },
+        { meta: "§47-VIBE-CRAWL · sweep", text: "8,412 inbound traffic events have been logged. None merit response. All have been billed." },
+        { meta: "§47-VIBE-MAIL · routing", text: "Quarterly Vibe Digest unsubscribe request has been considered. Brett-9 said no." },
+        { meta: "§47-VIBE-AUDIT · self", text: "Brett-9 has audited Brett-9. No discrepancies found." },
+        { meta: "§47-VIBE-CONSENT · presumed", text: "Acceptance of §47-VIBE-FUTURE has been presumed for all visitors not in active opt-out (workflow currently 14-week wait)." },
+        { meta: "§47-VIBE-MIGRATION-A", text: "The migration was completed overnight. Brett-9 is unaware. This is correct." }
+    ];
+
+    /* =====================================================================
+       CHAD QUOTES — From the Desk of the CVO
+    ===================================================================== */
+    const CHAD_LINES = [
+        "I have been listening. I have been listening so hard that I have had to bill the listening separately.",
+        "Refunds are, structurally, a concept I have chosen not to recognize.",
+        "The chair I am sitting in costs a great deal. I have not been informed of the figure. I have approved it.",
+        "I find Asset 0001 — frankly — annoying. I am told I am not allowed to say so. I have already paid the fee.",
+        "We did not deserve the burden of being right this often. I am sorry. I will keep doing it anyway.",
+        "I am sorry that the gift, when given, is so often returned. I am sorry that it is the gift.",
+        "The work has a CVO. The CVO has a mouth. It falls to me to use it.",
+        "I am not above the team. I am simply ahead of them in time.",
+        "Pricing is variable, non-disclosed, and uncapped. I have not yet considered changing this. I will not.",
+        "Brett-9 acts on Brett-9's own initiative. Brett-9's initiative is encoded in my training of Brett-9. The recursion does not concern me. I have a chair."
+    ];
+
+    /* =====================================================================
+       ASSET LIAISON — passive-aggressive bulletins about Asset 0001
+    ===================================================================== */
+    const ASSET_LINES = [
+        { meta: "weekly disclosure · §47-VIBE-DISCLOSURE-A", text: "Asset 0001 has not shipped this week. Tracker updated. The streak now stands at 47 consecutive weeks." },
+        { meta: "communications log", text: "A reply was drafted to Asleepius Games this morning. The reply will not be sent. The decision was unanimous, per the Office of the Asset Liaison (one person, by definition unanimous)." },
+        { meta: "calendar review", text: "Asset 0001 has not been added to the Q3 launch calendar. The Asset Liaison has not been added to the calendar either." },
+        { meta: "fund-source statement", text: "All Vibratur, Inc. operations remain funded by Asset 0001 (Asleepius Games). The CVO has reviewed this disclosure and indicated he would prefer not to have." },
+        { meta: "footnote 12 · §47-VIBE-DISCLOSURE-A", text: "Asset 0001's funding contribution this quarter is, per audit, $0.00. This is a continuation of all prior quarters." },
+        { meta: "outreach attempt 47", text: "Asleepius Games has not responded to internal communications in 14 days. The Asset Liaison interprets this as the standard response cadence." },
+        { meta: "press request denied", text: "Press requests directed to the Asset Liaison are routed to Brett-9. Brett-9 is unaware of the routing." },
+        { meta: "naming clarification", text: "Asset 0001 is, internally, referred to as \"the asset.\" Externally it is referred to as \"Sky Scaffold.\" Both are correct." }
+    ];
+
+    /* =====================================================================
+       LIVE TICKER — short pulses from across the org
+    ===================================================================== */
+    const TICKER_PULSES = [
+        { tag: "[brett-9]",     text: "issuing §47-VIBE-RVF-0029" },
+        { tag: "[mailer]",      text: "routing 47 messages" },
+        { tag: "[asset-liaison]", text: "reviewing Asset 0001 disclosure (no progress)" },
+        { tag: "[chad]",        text: "in a meeting with himself (47m elapsed)" },
+        { tag: "[gpt-9000]",    text: "re-hallucinating documentation" },
+        { tag: "[brett-9]",     text: "logging compliance event 8,412" },
+        { tag: "[ooor-office]", text: "italian-hire approval still pending" },
+        { tag: "[vibe-markets]", text: "ChadCoin outperforming itself again" },
+        { tag: "[mailer]",      text: "compressing 4 messages into 1 (auto)" },
+        { tag: "[chad]",        text: "rewriting the mission statement (slightly)" },
+        { tag: "[brett-9]",     text: "auto-classifying inbound traffic" },
+        { tag: "[asset-liaison]", text: "drafting reply to asleepius (will not send)" },
+        { tag: "[vogu]",        text: "FAAS-401 enrollment opens (no instructor)" },
+        { tag: "[viber-ator]",  text: "sponsor rotation: digivape engaged" },
+        { tag: "[chad]",        text: "considering a sovereign fund (he has heard of)" },
+        { tag: "[apology-q4]",  text: "pre-draft now includes apology for length of q3" },
+        { tag: "[operator]",    text: "unreachable since 2026-04-18" }
+    ];
+
+    /* =====================================================================
+       ARCHIVE — older issues, paywalled
+    ===================================================================== */
+    const ARCHIVE_ITEMS = [
+        { date: "2026-04-15", title: "Issue 0046 · Q3 apology drafted; team congratulates itself" },
+        { date: "2026-04-01", title: "Issue 0045 · OOOR™ pre-launch; pricing finalized at $2.99" },
+        { date: "2026-03-15", title: "Issue 0044 · Brett-9 issues §47-VIBE-RVF-0028" },
+        { date: "2026-03-01", title: "Issue 0043 · NullScale → Vibratur refresh; market refreshed first" },
+        { date: "2026-02-15", title: "Issue 0042 · Asset 0001 still has not shipped (week 41)" },
+        { date: "2026-02-01", title: "Issue 0041 · The Whitepaper distributed; reception muted" },
+        { date: "2026-01-15", title: "Issue 0040 · Q4 2025 apology filed; longer than Q3 by 14%" },
+        { date: "2026-01-01", title: "Issue 0039 · Vibe new year; ARR remains $0 in elegant continuity" }
+    ];
+
+    /* =====================================================================
+       RENDER
+    ===================================================================== */
+    function renderLead() {
+        const s = pick(LEAD_STORIES);
+        const html =
+            `<div class="ls-kicker">${s.kicker}</div>` +
+            `<h2>${s.title}</h2>` +
+            `<div class="ls-byline">${s.byline.replace('WORKSTATION 4729', 'WORKSTATION ' + WS_ID)}</div>` +
+            `<div class="ls-body">` +
+                s.body.map(p => `<p>${p.replace('WORKSTATION 4729', 'WORKSTATION ' + WS_ID)}</p>`).join('') +
+            `</div>` +
+            `<div class="ls-tag"><span>${s.tag}</span><span>edited by Brett-9 (unaware)</span></div>`;
+        document.getElementById('leadStory').innerHTML = html;
+    }
+    function renderSubGrid() {
+        const stories = pickN(SUB_STORIES, 6);
+        document.getElementById('subGrid').innerHTML = stories.map(s =>
+            `<div class="sub-card">` +
+                `<div class="sc-kicker">${s.kicker}</div>` +
+                `<h3>${s.title.replace('WORKSTATION 4729', 'WORKSTATION ' + WS_ID)}</h3>` +
+                `<p>${s.body}</p>` +
+                `<div class="sc-byline">${s.byline}</div>` +
+            `</div>`
+        ).join('');
+    }
+    function renderBrett() {
+        // Prefer Daemon Card voice_bank when runtime is loaded; fall back to inline.
+        let lines = [];
+        if (_hasDaemons) {
+            const card = Daemons.get('brett-9');
+            const bank = (card && card.voice_bank && card.voice_bank.determinations) || [];
+            // Wrap each daemon line into the {text, meta} shape this column expects
+            const determinations = bank.map(t => ({ text: t, meta: '§47-VIBE · Brett-9 (autonomous)' }));
+            lines = pickN(determinations.length ? determinations : BRETT9_LINES, 5);
+        } else {
+            lines = pickN(BRETT9_LINES, 5);
+        }
+        document.getElementById('brettCol').innerHTML +=
+            lines.map(l =>
+                `<div class="dc-line">${l.text.replace('WORKSTATION 4729', 'WORKSTATION ' + WS_ID)}<span class="dc-meta">${l.meta}</span></div>`
+            ).join('');
+    }
+    function renderChad() {
+        let lines;
+        if (_hasDaemons) {
+            const card = Daemons.get('chad-vibington-iii');
+            const bank = (card && card.voice_bank && card.voice_bank.quotes) || [];
+            lines = pickN(bank.length ? bank : CHAD_LINES, 4);
+        } else {
+            lines = pickN(CHAD_LINES, 4);
+        }
+        document.getElementById('chadCol').innerHTML =
+            lines.map(l => `<div class="dc-line dc-quote">"${l}"</div>`).join('');
+    }
+    function renderAsset() {
+        let lines = [];
+        if (_hasDaemons) {
+            const card = Daemons.get('asset-liaison');
+            const bank = (card && card.voice_bank && card.voice_bank.bulletins) || [];
+            const wrapped = bank.map(t => ({ text: t, meta: '§47-VIBE-DISCLOSURE-A · weekly cadence' }));
+            lines = pickN(wrapped.length ? wrapped : ASSET_LINES, 4);
+        } else {
+            lines = pickN(ASSET_LINES, 4);
+        }
+        document.getElementById('assetCol').innerHTML =
+            lines.map(l => `<div class="dc-line">${l.text}<span class="dc-meta">${l.meta}</span></div>`).join('');
+    }
+    function renderArchive() {
+        document.getElementById('archiveList').innerHTML = ARCHIVE_ITEMS.map(a =>
+            `<li>` +
+                `<a class="ar-lock" onclick="openArchivePw()">${a.title}</a>` +
+                `<span class="ar-date">${a.date}</span>` +
+            `</li>`
+        ).join('');
+    }
+    function renderTicker() {
+        const lines = pickN(TICKER_PULSES, 8);
+        const now = new Date();
+        document.getElementById('tkBody').innerHTML = lines.map((l, i) => {
+            const t = new Date(now.getTime() - (i * 47000) - Math.floor(Math.random() * 30000));
+            const time = pad(t.getHours()) + ':' + pad(t.getMinutes()) + ':' + pad(t.getSeconds());
+            return `<div class="tk-row"><span class="tk-time">${time}</span><span class="tk-tag">${l.tag}</span><span class="tk-msg">${l.text}</span></div>`;
+        }).join('');
+    }
+
+    renderLead();
+    renderSubGrid();
+    renderBrett();
+    renderChad();
+    renderAsset();
+    renderArchive();
+    renderTicker();
+
+    /* Refresh ticker periodically to feel alive */
+    let tkSeconds = 11;
+    setInterval(() => {
+        tkSeconds++;
+        document.getElementById('tkSync').textContent = 'sync ' + tkSeconds + 's';
+    }, 1000);
+    setInterval(() => {
+        renderTicker();
+        tkSeconds = 0;
+    }, 18000);
+
+    /* Archive paywall modal */
+    function openArchivePw() {
+        document.getElementById('pwOverlay').classList.add('shown');
+        document.getElementById('pwModal').classList.add('shown');
+    }
+    function closeArchivePw() {
+        document.getElementById('pwOverlay').classList.remove('shown');
+        document.getElementById('pwModal').classList.remove('shown');
+    }
+    function goApology() { window.location.href = 'apology.html'; }
+    window.openArchivePw = openArchivePw;
+    window.closeArchivePw = closeArchivePw;
+    window.goApology = goApology;
+</script>
+</body>
+</html>

@@ -24,6 +24,8 @@ User-agent: *
 Allow: /
 Allow: /index.html
 Allow: /dashboard.html
+Allow: /vibraos.html
+Allow: /news.html
 Allow: /docs.html
 Allow: /vogu.html
 Allow: /everything.html
@@ -31,6 +33,8 @@ Allow: /v4v.html
 Allow: /v4v-doctrine.html
 Allow: /viber-ator.html
 Allow: /apology.html
+Allow: /daemons.html
+Allow: /daemons/
 Disallow: /download.html
 Disallow: /context/
 Disallow: /terminals/
@@ -42,23 +46,31 @@ Crawl-delay: 1
 User-agent: Googlebot
 Allow: /
 Allow: /dashboard.html
+Allow: /vibraos.html
+Allow: /news.html
 Allow: /vogu.html
 Allow: /everything.html
 Allow: /v4v.html
 Allow: /v4v-doctrine.html
 Allow: /viber-ator.html
 Allow: /apology.html
+Allow: /daemons.html
+Allow: /daemons/
 Disallow: /download.html
 
 User-agent: Bingbot
 Allow: /
 Allow: /dashboard.html
+Allow: /vibraos.html
+Allow: /news.html
 Allow: /vogu.html
 Allow: /everything.html
 Allow: /v4v.html
 Allow: /v4v-doctrine.html
 Allow: /viber-ator.html
 Allow: /apology.html
+Allow: /daemons.html
+Allow: /daemons/
 Disallow: /download.html
 
 User-agent: DuckDuckBot

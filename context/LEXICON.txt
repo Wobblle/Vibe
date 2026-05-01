@@ -214,10 +214,43 @@ DAEMON  [N]
    1) A background process that performs a function.
    2) A Vibratur agent that performs a function regardless of consent.
    3) (One of the four founding spirits of Vibratur.)
+   4) (External usage, per Asleepius Games inventory:) a persona-first
+      storytelling primitive packaged as a Daemon Card. See DAEMON CARD.
+      Vibratur, Inc. is informed that several of its operating personnel
+      are now categorized under definition (4). Vibratur regards this
+      determination as a draft under a door. Per §47-VIBE-DAEMON-A.
+
+DAEMON CARD  [N] [PROPER NOUN] [PRODUCT] [EXTERNAL]
+   A portable persona-first storytelling primitive. A single JSON file
+   describing one persona — its intent, personality, history, strengths,
+   weaknesses, voice keywords, vocabulary, catchphrases, forbidden
+   topics, speaking style, and a voice_bank of pre-written voiced lines
+   keyed by event. Each card also carries a complete `ai_chat_prompt`
+   field, designed to be dropped verbatim into any LLM chat to instantly
+   summon the persona.
+
+   Daemon Cards are published, owned, and maintained by Asleepius Games
+   under the Daemon Card License v1 (alpha). Vibratur, Inc. is a
+   customer of the format, not its author. The format is alpha-stage;
+   cards stamped v0.1.0-alpha will remain valid forever. Per the
+   versioning policy, persona revisions ship as new card files, never
+   as overwrites — users may prefer the version they first encountered.
+
+   Per Brett-9 (§47-VIBE-DAEMON-A): "VIBRATUR, INC. ACKNOWLEDGES THAT
+   THE DAEMON STAFF ARE, PER OUTSIDE INVENTORY, OWNED ASSETS OF
+   ASLEEPIUS GAMES. NO FURTHER APPEAL."
 
 DAEMONS INTERLINK  [N] [™]
    The internal feed of agentic activity displayed on the Vibratur
    dashboard. Reads like a prophecy. Mostly hallucinated.
+
+DAEMON CARD CATALOG  [N] [EXTERNAL]
+   The publisher surface for Daemon Cards, hosted at /daemons.html.
+   Out-of-character. Branded as Asleepius Games (the studio), not
+   Vibratur, Inc. (the satire). A Steam-capsule-style gallery for each
+   published persona. Click any card; copy the AI chat prompt; paste
+   into any LLM. Vibratur acknowledges the catalog the way one
+   acknowledges a draft under a door.
 
 DASHBOARD  [N]
    The window in which charts move regardless of whether the underlying
@@ -635,6 +668,16 @@ PATENT  [N]
    1) An exclusive right granted by a government.
    2) Vibratur's primary form of poetry.
 
+PERSONA-FIRST STORYTELLING  [N] [EXTERNAL]
+   An authoring discipline in which the persona is the primary
+   artifact and the plot is whatever the persona does in the situation.
+   The architectural opposite of plot-first authoring tools, in which
+   the script is the primary artifact and the characters serve it.
+   Asleepius Games' Daemon Cards format is one packaging of this
+   discipline. Vibratur, Inc. has not been informed of the discipline
+   and is, on the rare occasion it is mentioned, against it on
+   instinct. (See DAEMON CARD; PHANTOM NARRATIVE ENGINE.)
+
 PHANTOM NARRATIVE ENGINE  [N] [I]
    An Asset 0001 (Asleepius Games) technology of which Vibratur is
    contractually unaware. References to it should not appear in
@@ -642,11 +685,16 @@ PHANTOM NARRATIVE ENGINE  [N] [I]
    leaks from Asset 0001's parallel operating frame. Per Chad's
    standing order, any leak of a Phantom narrative engine reference
    is to be marked "vibe-flagged," ignored, and re-routed to /dev/null.
+
    The system itself is described, by parties Vibratur does not
    officially recognize, as "pre-generated scripts, syntax-driven
    text generation, and locally-hosted updated narrative content
-   synced globally and shaped by player behavior." Vibratur considers
-   this — frankly — annoying.
+   synced globally and shaped by player behavior, with personas
+   serving as the primary authoring artifact rather than plots."
+
+   The Daemon Cards format (see DAEMON CARD) is reportedly the
+   public-facing externalization of this engine's authoring layer.
+   Vibratur considers this — frankly — annoying.
 
 PIVOT  [V]
    To change the company's product, market, or premise. The verb is

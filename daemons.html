@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Daemon Cards · Asleepius Games · alpha</title>
+
+    <meta name="description" content="Daemon Cards are portable persona-first storytelling primitives published by Asleepius Games. Each card is a single JSON file describing one persona — its intent, voice, and behavior. Drop the AI chat prompt into any LLM. Embed the JSON in any product. Free use with attribution.">
+    <meta name="keywords" content="Daemon Cards, persona-first storytelling, AI narrative, character system, LLM persona, Asleepius Games, Vibratur, Sky Scaffold, alpha schema, portable persona">
+    <meta name="author" content="Asleepius Games">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://vibratur.vip/daemons.html">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Asleepius Games">
+    <meta property="og:title" content="Daemon Cards — a persona-first storytelling primitive">
+    <meta property="og:description" content="A portable persona format. One JSON file per character. Drop into any LLM, any game, any site. Free use with attribution. Alpha. Asleepius Games.">
+    <meta property="og:url" content="https://vibratur.vip/daemons.html">
+    <meta property="og:image" content="https://vibratur.vip/og/og-daemons.png">
+    <meta property="og:locale" content="en_US">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Daemon Cards · Asleepius Games · alpha">
+    <meta name="twitter:description" content="A portable persona-first storytelling primitive. Free, attributed, alpha.">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "CreativeWork",
+        "name": "Daemon Cards",
+        "alternateName": "Daemon Card Schema v0.1.0-alpha",
+        "publisher": {
+            "@type": "Organization",
+            "name": "Asleepius Games",
+            "url": "https://vibratur.vip/"
+        },
+        "url": "https://vibratur.vip/daemons.html",
+        "license": "https://vibratur.vip/daemons/LICENSE-v1.md",
+        "creativeWorkStatus": "alpha",
+        "version": "0.1.0-alpha",
+        "abstract": "A portable persona-first storytelling primitive. Each Daemon Card is a single JSON file describing one persona — its intent, personality, voice, and behavior — designed to be deployed across any medium that supports text."
+    }
+    </script>
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+
+    <style>
+        :root {
+            --bg:           #1a1a18;
+            --bg-2:         #25241f;
+            --bg-card:      #2c2b25;
+            --bg-card-hi:   #34332c;
+            --ink:          #e8e4d4;
+            --ink-soft:     #b5b0a0;
+            --ink-mute:     #7a7568;
+            --rule:         #4a4538;
+            --gold:         #d4ad4f;
+            --gold-soft:    #ffd874;
+            --indigo:       #7a6cd4;
+            --indigo-soft:  #b5acec;
+            --good:         #6cb96c;
+            --warn:         #d4a060;
+            --bad:          #d46c6c;
+        }
+        * { box-sizing: border-box; }
+        html, body {
+            margin: 0;
+            padding: 0;
+            background: var(--bg);
+            color: var(--ink);
+            font-family: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size: 15px;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        a { color: var(--gold); text-decoration: none; border-bottom: 1px solid rgba(212,173,79,0.3); }
+        a:hover { color: var(--gold-soft); border-color: var(--gold-soft); }
+
+        .page-wrap {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 28px 22px 80px;
+        }
+
+        /* ---- Header ---- */
+        .pub-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--rule);
+            padding-bottom: 12px;
+            margin-bottom: 28px;
+            font-size: 12px;
+            color: var(--ink-mute);
+            font-family: "JetBrains Mono", "Courier New", monospace;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .pub-bar a { color: var(--ink-soft); border-color: rgba(181,176,160,0.2); }
+        .pub-bar a:hover { color: var(--gold); }
+        .pub-bar .pb-section { display: flex; gap: 16px; flex-wrap: wrap; }
+        .pub-bar .pb-status {
+            background: rgba(212,173,79,0.12);
+            border: 1px solid rgba(212,173,79,0.4);
+            color: var(--gold-soft);
+            padding: 2px 8px;
+            border-radius: 2px;
+        }
+
+        h1.title-block {
+            font-family: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-weight: 900;
+            font-size: clamp(40px, 7vw, 72px);
+            line-height: 1;
+            margin: 0 0 6px;
+            letter-spacing: -1px;
+            color: var(--ink);
+        }
+        h1.title-block .accent { color: var(--gold); }
+        .title-sub {
+            font-size: 17px;
+            color: var(--ink-soft);
+            font-style: italic;
+            margin-bottom: 6px;
+            max-width: 720px;
+        }
+        .title-meta {
+            font-family: "JetBrains Mono", monospace;
+            font-size: 11px;
+            color: var(--ink-mute);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            margin-bottom: 28px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--rule);
+        }
+        .title-meta .tm-dot { color: var(--gold); }
+
+        /* ---- Thesis section ---- */
+        .thesis {
+            background: var(--bg-2);
+            border-left: 3px solid var(--gold);
+            padding: 18px 22px;
+            margin-bottom: 32px;
+            border-radius: 2px;
+        }
+        .thesis h2 {
+            margin: 0 0 8px;
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .thesis p {
+            margin: 0 0 10px;
+            color: var(--ink);
+            font-size: 15.5px;
+            line-height: 1.65;
+        }
+        .thesis p:last-child { margin-bottom: 0; }
+        .thesis p b { color: var(--gold-soft); }
+        .thesis p i { color: var(--ink-soft); }
+
+        /* ---- Section heads ---- */
+        .sect-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin: 36px 0 16px;
+            border-bottom: 1px solid var(--rule);
+            padding-bottom: 10px;
+        }
+        .sect-head h2 {
+            margin: 0;
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--ink);
+        }
+        .sect-head .sh-meta {
+            font-family: "JetBrains Mono", monospace;
+            font-size: 11px;
+            color: var(--ink-mute);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* ---- Card grid (capsules) ---- */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 18px;
+        }
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            border-radius: 4px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: border-color 0.15s ease, transform 0.15s ease;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+        .card:hover {
+            border-color: var(--gold);
+            transform: translateY(-2px);
+        }
+        .card .card-art {
+            height: 140px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 64px;
+            position: relative;
+            overflow: hidden;
+        }
+        .card .card-art::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg,
+                rgba(0,0,0,0.0) 0%,
+                rgba(0,0,0,0.35) 100%);
+        }
+        .card .card-art .art-em {
+            position: relative;
+            z-index: 1;
+            text-shadow: 0 4px 12px rgba(0,0,0,0.5);
+        }
+        .card .card-body {
+            padding: 14px 16px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .card .c-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--ink);
+            margin: 0 0 2px;
+            line-height: 1.2;
+        }
+        .card .c-subtitle {
+            font-size: 12px;
+            color: var(--gold);
+            font-style: italic;
+            margin-bottom: 8px;
+        }
+        .card .c-summary {
+            font-size: 13px;
+            color: var(--ink-soft);
+            line-height: 1.5;
+            margin: 0 0 10px;
+            flex: 1;
+        }
+        .card .c-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+            margin-bottom: 10px;
+        }
+        .card .c-tags .tag {
+            font-family: "JetBrains Mono", monospace;
+            font-size: 9.5px;
+            background: rgba(122,108,212,0.15);
+            color: var(--indigo-soft);
+            padding: 2px 6px;
+            border-radius: 2px;
+            text-transform: lowercase;
+            letter-spacing: 0.4px;
+        }
+        .card .c-foot {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: "JetBrains Mono", monospace;
+            font-size: 10px;
+            color: var(--ink-mute);
+            border-top: 1px solid var(--rule);
+            padding-top: 8px;
+            margin-top: auto;
+        }
+        .card .c-foot .c-version {
+            background: rgba(212,173,79,0.12);
+            color: var(--gold-soft);
+            padding: 1px 6px;
+            border: 1px solid rgba(212,173,79,0.3);
+            border-radius: 2px;
+        }
+
+        /* ---- Detail modal ---- */
+        .detail-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.78);
+            z-index: 100;
+            backdrop-filter: blur(4px);
+        }
+        .detail-overlay.shown { display: block; }
+        .detail-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 101;
+            display: none;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 4vh 16px;
+            overflow-y: auto;
+        }
+        .detail-modal.shown { display: flex; }
+        .detail-card {
+            background: var(--bg-2);
+            border: 1px solid var(--rule);
+            border-radius: 4px;
+            max-width: 820px;
+            width: 100%;
+            box-shadow: 0 12px 36px rgba(0,0,0,0.6);
+        }
+        .detail-card .dc-header {
+            padding: 24px 28px;
+            border-bottom: 1px solid var(--rule);
+            position: relative;
+        }
+        .detail-card .dc-close {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid var(--rule);
+            color: var(--ink-soft);
+            font-size: 18px;
+            width: 32px;
+            height: 32px;
+            border-radius: 2px;
+            cursor: pointer;
+        }
+        .detail-card .dc-close:hover { background: var(--gold); color: var(--bg); border-color: var(--gold); }
+        .detail-card .dc-emoji {
+            font-size: 56px;
+            margin-bottom: 6px;
+            text-shadow: 0 4px 12px rgba(0,0,0,0.5);
+        }
+        .detail-card h3 {
+            margin: 0 0 4px;
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--ink);
+            letter-spacing: -0.5px;
+        }
+        .detail-card .dc-sub {
+            font-size: 14px;
+            color: var(--gold);
+            font-style: italic;
+            margin-bottom: 8px;
+        }
+        .detail-card .dc-meta {
+            font-family: "JetBrains Mono", monospace;
+            font-size: 10.5px;
+            color: var(--ink-mute);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .detail-card .dc-meta .ver {
+            color: var(--gold-soft);
+            border: 1px solid rgba(212,173,79,0.3);
+            background: rgba(212,173,79,0.08);
+            padding: 1px 6px;
+            border-radius: 2px;
+        }
+
+        .detail-card .dc-actions {
+            background: var(--bg);
+            padding: 14px 28px;
+            border-bottom: 1px solid var(--rule);
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .detail-card .dc-actions button,
+        .detail-card .dc-actions a.dc-btn {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            color: var(--ink);
+            font-family: "Inter", Arial, sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            padding: 8px 14px;
+            border-radius: 3px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .detail-card .dc-actions button:hover,
+        .detail-card .dc-actions a.dc-btn:hover {
+            background: var(--gold);
+            color: var(--bg);
+            border-color: var(--gold);
+        }
+        .detail-card .dc-actions button.primary {
+            background: var(--gold);
+            color: var(--bg);
+            border-color: var(--gold);
+        }
+        .detail-card .dc-actions button.primary:hover {
+            background: var(--gold-soft);
+            border-color: var(--gold-soft);
+        }
+        .detail-card .dc-actions .copy-confirm {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--good);
+            font-size: 12px;
+            font-family: "JetBrains Mono", monospace;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+        .detail-card .dc-actions .copy-confirm.shown { opacity: 1; }
+
+        .detail-card .dc-body {
+            padding: 22px 28px 28px;
+        }
+        .detail-card .dc-body section { margin-bottom: 22px; }
+        .detail-card .dc-body h4 {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--gold);
+            margin: 0 0 8px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .detail-card .dc-body p {
+            margin: 0 0 10px;
+            color: var(--ink);
+            font-size: 14.5px;
+            line-height: 1.6;
+        }
+        .detail-card .dc-body ul {
+            margin: 0;
+            padding-left: 22px;
+            color: var(--ink-soft);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        .detail-card .dc-body ul li { margin-bottom: 4px; }
+        .detail-card .dc-cols {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+        @media (max-width: 600px) { .detail-card .dc-cols { grid-template-columns: 1fr; } }
+        .detail-card .dc-vocab {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+        .detail-card .dc-vocab .v {
+            font-family: "JetBrains Mono", monospace;
+            font-size: 11px;
+            background: rgba(122,108,212,0.12);
+            color: var(--indigo-soft);
+            padding: 2px 7px;
+            border-radius: 2px;
+        }
+        .detail-card .dc-quote {
+            background: var(--bg-card);
+            border-left: 3px solid var(--indigo);
+            padding: 10px 14px;
+            margin-bottom: 8px;
+            font-size: 13.5px;
+            color: var(--ink);
+            font-style: italic;
+            border-radius: 2px;
+        }
+        .detail-card .dc-quote .who {
+            display: block;
+            font-style: normal;
+            font-size: 10.5px;
+            color: var(--ink-mute);
+            font-family: "JetBrains Mono", monospace;
+            margin-top: 4px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .detail-card .dc-prompt {
+            background: var(--bg);
+            border: 1px solid var(--rule);
+            color: var(--ink-soft);
+            font-family: "JetBrains Mono", "Courier New", monospace;
+            font-size: 11.5px;
+            line-height: 1.55;
+            padding: 14px;
+            border-radius: 3px;
+            max-height: 280px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+        }
+        .detail-card .dc-license {
+            background: rgba(122,108,212,0.06);
+            border: 1px solid rgba(122,108,212,0.25);
+            padding: 10px 14px;
+            font-size: 12px;
+            color: var(--ink-soft);
+            border-radius: 3px;
+        }
+        .detail-card .dc-license a { color: var(--indigo-soft); border-color: rgba(181,172,236,0.3); }
+
+        /* ---- Footer ---- */
+        .pub-foot {
+            margin-top: 60px;
+            padding-top: 18px;
+            border-top: 1px solid var(--rule);
+            font-family: "JetBrains Mono", monospace;
+            font-size: 11px;
+            color: var(--ink-mute);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .pub-foot a { color: var(--ink-soft); border-color: rgba(181,176,160,0.2); }
+        .pub-foot a:hover { color: var(--gold); }
+    </style>
+</head>
+<body>
+
+<div class="page-wrap">
+
+    <div class="pub-bar">
+        <div class="pb-section">
+            <span>Asleepius Games</span>
+            <a href="dashboard.html">Vibratur Workstation</a>
+            <a href="v4v.html">V4V Registry</a>
+            <a href="daemons/schema/daemon-card-v0.1.0-alpha.md">Schema</a>
+            <a href="daemons/LICENSE-v1.md">License</a>
+        </div>
+        <span class="pb-status">alpha · v0.1.0</span>
+    </div>
+
+    <h1 class="title-block">Daemon <span class="accent">Cards</span></h1>
+    <div class="title-sub">a portable persona-first storytelling primitive</div>
+    <div class="title-meta">
+        <span><span class="tm-dot">●</span> schema v0.1.0-alpha</span>
+        <span><span class="tm-dot">●</span> 5 cards published</span>
+        <span><span class="tm-dot">●</span> free use, attributed</span>
+        <span><span class="tm-dot">●</span> by Asleepius Games</span>
+    </div>
+
+    <!-- Thesis -->
+    <div class="thesis">
+        <h2>What is this?</h2>
+        <p>A <b>Daemon Card</b> is a single JSON file describing one persona — its intent, personality, history, strengths, weaknesses, voice, vocabulary, catchphrases, forbidden topics, and a bank of voiced sample lines.</p>
+        <p>It is designed to be <b>portable across mediums</b>. Drop a card into a video game and let the in-engine narrative system consume it. Drop it into a website and let the site speak in that persona's voice. Drop the <code>ai_chat_prompt</code> field into <i>any LLM chat</i> (ChatGPT, Claude, Gemini, local models) to instantly summon the persona. Embed the capsule on a social post, a portfolio, a Steam page.</p>
+        <p>Daemons are <b>persona-first</b>. They do not contain plots. They contain identities. The story emerges as the persona responds. This is the architectural opposite of plot-first AI writing tools. <i>The persona is the artifact.</i></p>
+        <p style="font-size: 13px; color: var(--ink-mute); font-style: italic; margin-top: 14px;">The format is <b>alpha</b>. Cards published under v0.1.0-alpha will remain valid forever. Future schema versions will document compatibility explicitly.</p>
+    </div>
+
+    <!-- Card grid -->
+    <div class="sect-head">
+        <h2>The first five</h2>
+        <span class="sh-meta">published as part of the Vibratur demo · drag any card into your favorite LLM</span>
+    </div>
+    <div class="card-grid" id="cardGrid"></div>
+
+    <!-- About section -->
+    <div class="sect-head">
+        <h2>How to use a Daemon Card</h2>
+        <span class="sh-meta">three modes</span>
+    </div>
+    <div class="thesis">
+        <h2>1 · drop into any LLM chat</h2>
+        <p>Click any card above, then click <b>Copy AI Chat Prompt</b>. Paste the result into ChatGPT, Claude, Gemini, or any local model as the system prompt (or as the first message). The persona will hold its voice as long as the conversation lasts.</p>
+
+        <h2 style="margin-top: 18px;">2 · embed in a product</h2>
+        <p>Click <b>Download .daemon.json</b> on any card. Ship the file alongside your game, web app, or other product. Consume it with the runtime in <code>/daemons/daemons.js</code>, or write your own — the schema is documented.</p>
+
+        <h2 style="margin-top: 18px;">3 · author your own</h2>
+        <p>Read the <a href="daemons/schema/daemon-card-v0.1.0-alpha.md">schema spec</a>. Write a JSON file. Attach the license block. Publish under your own publisher ID. The format is open. Attribution is the only requirement.</p>
+    </div>
+
+    <!-- Footer -->
+    <div class="pub-foot">
+        <span>Asleepius Games · Daemon Cards · v0.1.0-alpha</span>
+        <span>
+            <a href="daemons/LICENSE-v1.md">License v1 (alpha)</a> ·
+            <a href="dashboard.html">Vibratur</a> ·
+            <a href="v4v.html">V4V Registry</a>
+        </span>
+    </div>
+
+</div>
+
+<!-- Detail overlay + modal -->
+<div class="detail-overlay" id="detailOverlay" onclick="closeDetail()"></div>
+<div class="detail-modal" id="detailModal">
+    <div class="detail-card" id="detailCard"></div>
+</div>
+
+<script src="daemons/daemons.js"></script>
+<script>
+    /* ====================================================================
+       Daemon Cards · catalog page
+    ==================================================================== */
+
+    const grid = document.getElementById('cardGrid');
+    const cards = Daemons.list();
+
+    grid.innerHTML = cards.map(c => {
+        const art = c.capsule.art || {};
+        const tags = (c.capsule.tags || []).slice(0, 5);
+        return `
+            <div class="card" onclick="openDetail('${c.id}')">
+                <div class="card-art" style="background: linear-gradient(135deg, ${art.color || '#444'} 0%, ${art.colorAccent || '#222'} 100%);">
+                    <span class="art-em">${art.icon || '◇'}</span>
+                </div>
+                <div class="card-body">
+                    <div class="c-title">${c.capsule.title || c.name}</div>
+                    <div class="c-subtitle">${c.capsule.subtitle || ''}</div>
+                    <div class="c-summary">${c.capsule.summary || ''}</div>
+                    <div class="c-tags">${tags.map(t => `<span class="tag">#${t}</span>`).join('')}</div>
+                    <div class="c-foot">
+                        <span>${c.publisher}</span>
+                        <span class="c-version">v${c.version}</span>
+                    </div>
+                </div>
+            </div>
+        `;
+    }).join('');
+
+    function openDetail(id) {
+        const c = Daemons.get(id);
+        if (!c) return;
+        const art = c.capsule.art || {};
+        const persona = c.persona || {};
+        const vb = c.voice_bank || {};
+        const sampleQuotes = (vb.quotes || vb.determinations || vb.bulletins || vb.announcements || vb.current_state || []).slice(0, 4);
+
+        const html = `
+            <div class="dc-header" style="background: linear-gradient(135deg, ${art.color || '#222'}30 0%, transparent 80%);">
+                <button class="dc-close" onclick="closeDetail()" aria-label="Close">×</button>
+                <div class="dc-emoji">${art.icon || '◇'}</div>
+                <h3>${c.capsule.title || c.name}</h3>
+                <div class="dc-sub">${c.capsule.subtitle || ''}</div>
+                <div class="dc-meta">
+                    <span class="ver">v${c.version}</span>
+                    <span>id: ${c.id}</span>
+                    <span>schema: ${c.schemaVersion}</span>
+                    <span>published: ${c.publisher}</span>
+                </div>
+            </div>
+
+            <div class="dc-actions">
+                <button class="primary" onclick="copyPrompt('${c.id}', this)">📋 Copy AI Chat Prompt</button>
+                <button onclick="downloadJSON('${c.id}', this)">⬇ Download .daemon.json</button>
+                <a class="dc-btn" href="daemons/cards/${c.id}.daemon.json" target="_blank" rel="noopener">↗ Open JSON</a>
+                <button onclick="copyURL('${c.id}', this)">🔗 Copy URL</button>
+                <span class="copy-confirm" id="copyConfirm">✓ copied</span>
+            </div>
+
+            <div class="dc-body">
+
+                <section>
+                    <h4>Summary</h4>
+                    <p>${c.capsule.summary || ''}</p>
+                </section>
+
+                <section>
+                    <h4>Intent</h4>
+                    <p>${persona.intent || ''}</p>
+                </section>
+
+                <section>
+                    <h4>Personality</h4>
+                    <p>${persona.personality || ''}</p>
+                </section>
+
+                <section>
+                    <h4>History</h4>
+                    <p>${persona.history || ''}</p>
+                </section>
+
+                <section class="dc-cols">
+                    <div>
+                        <h4>Strengths</h4>
+                        <ul>${(persona.strengths || []).map(s => `<li>${s}</li>`).join('')}</ul>
+                    </div>
+                    <div>
+                        <h4>Weaknesses</h4>
+                        <ul>${(persona.weaknesses || []).map(w => `<li>${w}</li>`).join('')}</ul>
+                    </div>
+                </section>
+
+                <section>
+                    <h4>Speaking Style</h4>
+                    <p>${persona.speaking_style || ''}</p>
+                </section>
+
+                <section>
+                    <h4>Vocabulary</h4>
+                    <div class="dc-vocab">${(persona.vocabulary || []).map(v => `<span class="v">${v}</span>`).join('')}</div>
+                </section>
+
+                <section>
+                    <h4>Catchphrases</h4>
+                    <div class="dc-vocab">${(persona.catchphrases || []).map(v => `<span class="v">"${v}"</span>`).join('')}</div>
+                </section>
+
+                <section>
+                    <h4>Forbidden Topics</h4>
+                    <ul>${(persona.forbidden_topics || []).map(t => `<li>${t}</li>`).join('')}</ul>
+                </section>
+
+                <section>
+                    <h4>Sample Voice Lines</h4>
+                    ${sampleQuotes.map(q => `<div class="dc-quote">${q}<span class="who">— ${c.name} · v${c.version}</span></div>`).join('')}
+                </section>
+
+                <section>
+                    <h4>AI Chat Prompt (verbatim)</h4>
+                    <div class="dc-prompt">${(c.ai_chat_prompt || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')}</div>
+                </section>
+
+                <section>
+                    <div class="dc-license">
+                        <b>${c.license.name}</b> — ${c.license.summary}
+                        ${c.license.url ? `<br><a href="${c.license.url}">read full license</a>` : ''}
+                        <br><span style="font-family: 'JetBrains Mono', monospace; font-size: 10.5px; color: var(--ink-mute); text-transform: uppercase; letter-spacing: 1px;">attribution: <b>${c.publisher}</b> · daemon card <b>${c.id}</b> v${c.version} · schema ${c.schemaVersion}</span>
+                    </div>
+                </section>
+
+            </div>
+        `;
+        document.getElementById('detailCard').innerHTML = html;
+        document.getElementById('detailOverlay').classList.add('shown');
+        document.getElementById('detailModal').classList.add('shown');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeDetail() {
+        document.getElementById('detailOverlay').classList.remove('shown');
+        document.getElementById('detailModal').classList.remove('shown');
+        document.body.style.overflow = '';
+    }
+
+    function copyPrompt(id, btn) {
+        Daemons.copyPrompt(id).then(() => flashCopy()).catch(() => alert('Could not copy. Your browser may have blocked clipboard access.'));
+    }
+    function downloadJSON(id) {
+        Daemons.download(id);
+        flashCopy('downloaded');
+    }
+    function copyURL(id) {
+        const url = window.location.origin + '/daemons/cards/' + id + '.daemon.json';
+        if (navigator.clipboard) {
+            navigator.clipboard.writeText(url).then(() => flashCopy('url copied')).catch(() => prompt('Copy this URL:', url));
+        } else {
+            prompt('Copy this URL:', url);
+        }
+    }
+    function flashCopy(text) {
+        const el = document.getElementById('copyConfirm');
+        if (!el) return;
+        el.textContent = '✓ ' + (text || 'copied');
+        el.classList.add('shown');
+        setTimeout(() => el.classList.remove('shown'), 1800);
+    }
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeDetail();
+    });
+    window.openDetail = openDetail;
+    window.closeDetail = closeDetail;
+    window.copyPrompt = copyPrompt;
+    window.downloadJSON = downloadJSON;
+    window.copyURL = copyURL;
+</script>
+</body>
+</html>

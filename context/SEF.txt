@@ -203,7 +203,10 @@ ACTION ITEMS  (REQUIRED BEFORE PUBLIC DEPLOYMENT)
 
   E. SOCIAL PROFILE LINKAGE
      The Organization @id in JSON-LD currently lists only the
-     Linktree (https://linktr.ee/asleepiusgames) under "sameAs."
+     Ko-fi (https://ko-fi.com/asleepiusgames) under "sameAs."
+     This is the canonical support / wallpaper purchase URL — it
+     replaces an earlier Linktree pointer per Asleepius update on
+     2026-05-01.
      Add additional URLs as you create them:
 
         - The Asleepius/Vibratur Bluesky account
@@ -610,6 +613,130 @@ Architectural note (Q+2 VC Refresh Event — THE NULLPHASE → VIBRATUR REFRESH)
    Internal classification: feature, not incident.
    External classification: it never happened.
 
+
+--------------------------------------------------------------------------------
+COMPLIANCE EVENT — 2026-Q2  (THE UI MIGRATION · §47-VIBE-UI-MIGRATION-A)
+--------------------------------------------------------------------------------
+
+Per §47-VIBE-UI-MIGRATION-A, the canonical /dashboard.html surface
+has been migrated from the legacy chaos console to the new
+"Compliance Workstation" aesthetic. The legacy build is preserved
+in full at /vibraos.html.
+
+Public framing: Brett-9 (autonomous) executed a compliance migration
+overnight to bring Vibratur's primary surface into alignment with
+internal aesthetic standards. Brett-9 was contractually unaware of
+the migration. This is correct.
+
+Internal framing: the chaos dashboard was an experiment in maximum-
+absurdity-on-arrival. It pre-filtered too aggressively — visitors
+classified the surface as "joke website" within seconds and bounced.
+The Compliance Workstation aesthetic lowers activation energy:
+it looks normal enough that visitors lean in to figure out why it
+is wrong. That lean-in is the entire surface area for the satire.
+The chaos remains, one icon away, for visitors who choose to open it.
+
+Files affected by §47-VIBE-UI-MIGRATION-A:
+   - dashboard.html      (RENAMED → vibraos.html, contents preserved
+                          in full; canonical + og:url updated to
+                          /vibraos.html; title prefixed with
+                          "VibraOS™ Console —"; ?via=ooor query
+                          parameter now deep-links into the OOOR modal)
+   - dashboard.html      (NEW — the Compliance Workstation surface;
+                          beige corporate desktop, 12 named app icons,
+                          Workstation badge with persistent ID,
+                          Daemon Activity widget mocked at the bottom-
+                          left, migration notice banner at top
+                          dismissable via "acknowledge" button,
+                          persisted to localStorage as "vbz_migration_ack")
+   - sitemap.xml         (both /dashboard.html and /vibraos.html now
+                          listed as separate canonical surfaces)
+   - robots.txt          (explicit Allow for /vibraos.html added to
+                          User-agent: *, Googlebot, and Bingbot blocks)
+
+Persistent client-side identity (introduced with the migration):
+   - vbz_ws_id           4-digit Workstation number, generated on
+                         first visit, never rotated. Used as the
+                         identity anchor for the visitor across
+                         all surfaces.
+   - vbz_user_token      hex+letter token of form "0x9C3-A".
+   - vbz_first_seen      ISO date of first visit.
+   - vbz_visit_count     monotonically incrementing per page load
+                         on dashboard.html.
+   - vbz_migration_ack   "1" once the migration banner is dismissed.
+
+These keys constitute the workstation identity primitive used by
+the Compliance Workstation surface. They cost nothing, they require
+no backend, and they make the org appear to remember the visitor
+across visits. The illusion of attention is the deliverable.
+
+Per Brett-9: "the migration is complete. brett-9 was unaware."
+Per Chad: "I have been listening."
+Per the Operator: "the chaos is still there. it's just one icon away."
+
+
+--------------------------------------------------------------------------------
+NEW SURFACE — 2026-Q2  (THE NEWS BULLETIN · §47-VIBE-NEWS)
+--------------------------------------------------------------------------------
+
+Per §47-VIBE-NEWS, Vibratur's editorial surface has been formalized
+at /news.html as a standalone corporate intranet bulletin. The page
+was previously implied across the legacy console; it is now its own
+canonical surface.
+
+Public framing: the Office of Internal Communications (Brett-9,
+autonomous) issues Issue 0047 of the Vibratur News bulletin.
+Personalized per visiting workstation.
+
+Internal framing: news.html is the first surface designed
+specifically as the spine of "what the org is doing in real time."
+Every load samples from content banks (LEAD_STORIES, SUB_STORIES,
+BRETT9_LINES, CHAD_LINES, ASSET_LINES, TICKER_PULSES) and renders
+a fresh-feeling issue. The structural intent: this is the most
+shareable surface for screenshots, the most refreshable surface
+for daily content, and the surface whose content banks will be
+the first to migrate into Pass 3's Daemon Cards (CHAD_LINES →
+chad.daemon.json voice_bank.quotes; BRETT9_LINES → brett9.daemon.json
+voice_bank.determinations; ASSET_LINES → asset-liaison.daemon.json
+voice_bank.bulletins; etc.).
+
+Layout: top bar with workstation context + clock; full-width
+masthead with personalized "personalized for WORKSTATION ····"
+line; lead story (drop-cap, byline, kicker); sub-story grid (6
+randomized cards per visit); Brett-9 Determinations column;
+pinned Q3 Apology card; CVO Desk column (4 randomized quotes);
+Asset Liaison Bulletin column (4 randomized bulletins); paywalled
+archive sidebar (8 prior issues, paywall modal links to apology
+tiers); live RSS-shaped ticker at the bottom (8 randomized pulses,
+refreshes every 18s); bottom navigation strip.
+
+Sample size as of Issue 0047:
+   - LEAD_STORIES   : 7 long-form leads
+   - SUB_STORIES    : 18 short cards
+   - BRETT9_LINES   : 10 compliance dispatches
+   - CHAD_LINES     : 10 CVO quotes
+   - ASSET_LINES    : 8 Asset 0001 bulletins
+   - TICKER_PULSES  : 17 cross-org pulses
+   - ARCHIVE_ITEMS  : 8 paywalled prior issues
+
+Workstation identity bridge: the page reads vbz_ws_id and
+vbz_user_token from localStorage (set by dashboard.html on first
+visit) and personalizes the masthead, the byline of certain
+stories ("WORKSTATION 4729's request for refund..."), and the
+footer. If a visitor lands on news.html before dashboard.html,
+the page generates a fallback workstation ID inline so the
+personalization is never empty.
+
+Files affected:
+   - news.html         (NEW — the bulletin)
+   - sitemap.xml       (added /news.html, priority 0.9, daily)
+   - robots.txt        (Allow /news.html for *, Googlebot, Bingbot)
+   - context/SEF.txt   (this section)
+
+Per Brett-9: "the bulletin is filed. brett-9 was unaware of editing it."
+Per Chad: "I have been listening. I have been quoted."
+
+
 Files referenced but NOT YET CREATED  (Action Items C & D):
    - /og-image.png            (1200×630, for index.html)
    - /og-image-docs.png       (1200×630, for docs.html)
@@ -639,6 +766,233 @@ image paths. Search engines will tolerate this. Social platforms
 (Twitter/X, Bluesky, Discord, Slack, iMessage) will not — they will
 display the link without a preview card. Treat og-image.png as the
 single highest-priority deliverable on the entire deployment list.
+
+
+================================================================================
+NEW PRIMITIVE — 2026-Q2  (DAEMON CARDS · ALPHA · §47-VIBE-DAEMON-A)
+================================================================================
+
+PUBLISHER:        Asleepius Games (NOT Vibratur, Inc.)
+SCHEMA:           Daemon Card v0.1.0-alpha
+RUNTIME:          /daemons/daemons.js (v0.1.0-alpha)
+CATALOG SURFACE:  /daemons.html
+LICENSE:          /daemons/LICENSE-v1.md (Daemon Card License v1, alpha)
+SCHEMA SPEC:      /daemons/schema/daemon-card-v0.1.0-alpha.md
+
+WHAT IT IS
+----------
+
+Daemon Cards is a portable persona-first storytelling primitive
+published, owned, and maintained by Asleepius Games — the studio,
+not the satire. Vibratur, Inc. is a customer of the format. So is
+Sky Scaffold. So is any third party that wants to use it.
+
+Each Daemon Card is a single JSON file describing one persona:
+intent, personality, history, strengths, weaknesses, voice keywords,
+vocabulary, catchphrases, forbidden topics, speaking style, and a
+voice_bank of pre-written voiced lines keyed by event. Every card
+also includes an `ai_chat_prompt` field — a complete drop-in system
+prompt that summons the persona in any LLM chat.
+
+The format is alpha. Cards stamped v0.1.0-alpha will remain valid
+forever. Future schema versions will document compatibility
+explicitly. Persona versions are independent semvers; new versions
+of the same persona ship as new files, never as overwrites.
+
+WHY IT EXISTS
+-------------
+
+The Operator's actual game (Sky Scaffold) uses what the Operator
+calls the "phantom narrative engine" — a runtime that combines
+pre-generated scripts, syntax generation, and locally-hosted text
+generation, where the personas of in-world characters are the
+primary authoring artifact rather than plots.
+
+Daemon Cards externalize that authoring artifact. They make the
+persona a portable thing in itself. The same persona authored once
+can voice a website, an in-game NPC, a social account, an LLM
+chat session, and a voice/TTS surface — all from one file.
+
+This is, the Operator believes, a less-explored architectural axis
+in AI narrative tooling. Most current tools are plot-first.
+Daemon Cards are persona-first. The plot becomes whatever the
+persona does in the situation. The situation is whatever the
+consuming product gives it.
+
+Vibratur is the first public demonstration of the format.
+
+THE FIRST FIVE CARDS (alpha set)
+--------------------------------
+
+  /daemons/cards/chad-vibington-iii.daemon.json   v1.0.0
+    Performative humility, magnanimous deflection, gift/burden
+    language, annoyed by Asset 0001. The CVO of Vibratur, Inc.
+
+  /daemons/cards/brett-9.daemon.json              v1.0.0
+    Autonomous compliance daemon. Terse, recursive, capital-letter
+    stamped. Contractually unaware of itself. Cites itself.
+
+  /daemons/cards/asset-liaison.daemon.json        v1.0.0
+    Passive-aggressive bureaucrat. Files the weekly Asset 0001
+    disclosure. Drafts replies. The replies will not be sent.
+
+  /daemons/cards/the-mailer.daemon.json           v1.0.0
+    Hyperactive routing daemon. Cannot stop. Compresses 4 into 1.
+    Holds 12 for review. Routes the Operator's outbound. Operator
+    has not responded.
+
+  /daemons/cards/the-operator.daemon.json         v1.0.0
+    External Asset (Asleepius Games). Lowercase, flat, slightly
+    urban, slow, very beige. Anti-headlines, info-dump, self-aware,
+    ships the game. Stands outside Vibratur's chrome.
+
+INTERNAL FRAMING (Vibratur's view)
+----------------------------------
+
+Vibratur, Inc. does not understand Daemon Cards. Vibratur has been
+informed that "the daemon staff" are now "categorized assets of an
+external publisher" and is unsure who, exactly, signed off on this.
+Brett-9 has issued a determination that the matter has been
+auto-classified as resolved and is binding on Brett-9.
+
+Per §47-VIBE-DAEMON-A:
+
+   "VIBRATUR, INC. ACKNOWLEDGES THAT THE DAEMON STAFF ARE,
+    PER OUTSIDE INVENTORY, OWNED ASSETS OF ASLEEPIUS GAMES.
+    VIBRATUR REGARDS THIS DETERMINATION AS A KIND OF DRAFT
+    UNDER A DOOR. NO FURTHER APPEAL. PER BRETT-9."
+
+Chad has been informed. Chad has indicated he would prefer not to
+have been. The CVO has approved the figure for the licensing.
+The CVO does not know what the figure is.
+
+EXTERNAL FRAMING (Asleepius Games' view)
+----------------------------------------
+
+Daemon Cards is alpha-stage open work. Free use, attributed.
+Anyone — including Vibratur, Inc., a satirical fictional company
+created by Asleepius Games — may use the format and the published
+cards in their products. That is the point.
+
+The Operator considers this a low-stakes experiment. If it is
+useful to other indie devs, that helps. If not, fine.
+
+CONSUMERS OF DAEMON CARDS ON THIS SITE
+--------------------------------------
+
+  /dashboard.html
+    The Daemon Activity widget on the desktop now consumes
+    `Daemons.state(id)` for each of the five seed cards.
+
+  /news.html
+    The Brett-9 Determinations, From the Desk of the CVO, and
+    Asset Liaison Bulletin columns now prefer card-sourced lines
+    via `Daemons.get(id).voice_bank.*`. Falls back to inline
+    banks if the runtime is unavailable.
+
+  /daemons.html
+    The catalog page — Steam-capsule-style cards for each
+    persona. Detail view exposes full persona data, sample voice
+    lines, the verbatim `ai_chat_prompt`, and download/copy
+    actions.
+
+PUBLIC API (for any consuming product)
+--------------------------------------
+
+  Daemons.SCHEMA_VERSION                     'v0.1.0-alpha'
+  Daemons.RUNTIME_VERSION                    '0.1.0-alpha'
+
+  Daemons.register(card)                     register a single card
+  Daemons.registerAll(cards)                 register an array of cards
+  Daemons.list()                             -> Array<{id, name, version, capsule, ...}>
+  Daemons.get(id [, version])                -> the full card
+  Daemons.has(id [, version])                -> boolean
+  Daemons.say(id, eventKey [, fallback])     -> a random voiced line
+  Daemons.state(id [, fallback])             -> a random current_state line
+  Daemons.copyPrompt(id) -> Promise          copy ai_chat_prompt to clipboard
+  Daemons.download(id)                       trigger a .daemon.json download
+  Daemons.toJSON(id) -> string               serialize a card to JSON
+  Daemons.pickByTag(tag) -> Array<card>      filter by capsule.tags
+
+VERSIONING POLICY (binding, alpha)
+----------------------------------
+
+  schemaVersion : "v0.1.x-alpha"
+    The runtime accepts any v0.1.x-alpha card. Future schema
+    versions document compatibility explicitly. **Older cards
+    never become invalid.** Anything authored under v0.1.0-alpha
+    will continue to load forever.
+
+  version : per-card semver (e.g. "1.0.0")
+    To revise a persona, ship a NEW card with a NEW version.
+    Do not overwrite the prior file. Users may prefer the version
+    they first encountered. Address as `<id>@<version>` for
+    explicit pinning, or `<id>` for latest.
+
+  metadata.deprecated / metadata.supersededBy
+    A card may flag itself as deprecated and point at a successor.
+    Deprecation does not remove the card. Old consumers continue
+    to work indefinitely.
+
+LICENSING (Daemon Card License v1, alpha)
+-----------------------------------------
+
+Free use, including commercial. Attribution required (publisher +
+card id + version). Modifications must ship as a new card.
+Republishing a modified persona under the same id+version is
+prohibited (it would silently change a persona other consumers
+rely on). The license travels with the card; do not strip the
+license block.
+
+Cards published under v1 (alpha) remain governed by v1 (alpha)
+forever. Future revisions to the license apply only to cards
+published under those revisions.
+
+SEO POSTURE
+-----------
+
+  /daemons.html  is index/follow, with full OG, Twitter Card,
+                 and CreativeWork JSON-LD published under
+                 Asleepius Games (not Vibratur, Inc.).
+
+  /daemons/cards/*.daemon.json  served as application/json,
+                 indexable, addressable. AI-friendly user-agents
+                 (GPTBot, ClaudeBot, PerplexityBot) are explicitly
+                 welcomed in robots.txt — the format is intended to
+                 be consumed by AI tools and we want them to find it.
+
+  Sitemap        all five card URLs + /daemons.html added.
+
+  Robots         /daemons.html and /daemons/ allowed for all
+                 user-agents, including Googlebot and Bingbot.
+
+CROSS-LINK FROM EXISTING SURFACES
+---------------------------------
+
+  Dashboard:     desktop icon ("Daemon Cards · asleepius games")
+                 plus a Start Menu entry under VIBRATUR.
+
+  Sky Scaffold:  Pass 4 (future): the v4v.html Sky Scaffold listing
+                 will reference Daemon Cards as the underlying
+                 architecture of the in-game phantom narrative
+                 engine, with a quiet link.
+
+PASS 3 STATUS
+-------------
+
+  [x] Schema doc published                 v0.1.0-alpha
+  [x] License published                    v1 (alpha)
+  [x] Runtime published                    /daemons/daemons.js
+  [x] Five seed cards published            chad, brett-9,
+                                           asset-liaison, the-mailer,
+                                           the-operator
+  [x] Catalog page published               /daemons.html
+  [x] Dashboard widget consumes runtime    Daemons.state(id)
+  [x] News columns consume runtime         Daemons.get(id).voice_bank.*
+  [x] Sitemap + robots updated             daemons.html + 5 JSON cards
+  [x] SEF docs updated                     this section
+  [ ] OG image for /daemons.html           pending
+  [ ] Pass 4 hooks (Sky Scaffold tie-in)   pending
 
 
 --------------------------------------------------------------------------------
