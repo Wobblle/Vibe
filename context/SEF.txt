@@ -1289,6 +1289,235 @@ PASS 3.6 STATUS
                                           Project)
 
 
+================================================================================
+PASS 3.7 — IMPRINTS, TIERS & SKY SCAFFOLD CONCEPT DAEMONS · §47-VIBE-DAEMON-D
+================================================================================
+"the daemons grew up. they got categorized. they multiplied. four of them
+moved to a different fictional universe. one of them is melancholy."
+
+PROBLEM (THREE OVERLAPPING PROBLEMS)
+------------------------------------
+1. The catalog had 5 daemons all stamped "Asleepius Games" with no way to
+   distinguish which property (Vibratur vs the actual game) they belonged to.
+
+2. The "concept art for personas" thesis was implicit. Users could not tell
+   whether a card was a release commitment or an exploratory sketch.
+
+3. The existing daemons' voice fidelity in cold-paste LLM contexts was
+   "good enough," but the schema had no mechanical voice-rules slot —
+   only prose. Prose drifts in long contexts. Mechanical rules don't.
+
+4. (Also — this is the real reason) Asleepius wanted to spin up four
+   characters from the Sky Scaffold universe to start posting in-character
+   as a teaser/marketing channel ahead of the game's release.
+
+DECISION
+--------
+Pass 3.7 adds four optional schema fields, four new concept daemons, and
+a catalog reorganization. NO schema version bump (all additions are
+optional and ignored gracefully by older runtimes per v0.2.0-alpha policy).
+NO card version bumps for existing daemons (the new tier/imprint fields
+are pure metadata; behavior unchanged. Chad & Brett-9 also gained
+speech_fingerprint and behavioral_signature in-place as quality
+exemplars — see "in-place enhancement" note below).
+
+NEW SCHEMA FIELDS (top-level, optional)
+---------------------------------------
+
+  tier         "concept" | "anchored" | (omitted)
+  imprint      Display name of the property/world (e.g. "Sky Scaffold")
+  imprintId    Stable kebab-case (e.g. "sky-scaffold")
+
+CANONICITY MODEL:
+  - "concept"   — exploratory persona, like concept art. Voice and intent
+                  are real; the character may or may not appear in the
+                  shipped property in this exact form. NOT A PROMISE.
+  - "anchored"  — canonical to the property. May appear in shipped form.
+                  The publisher's official reference for that persona.
+  - omitted     — no tier statement.
+
+WHY "ANCHORED": ties to Sky Scaffold's central metaphor — the scaffold
+is literally an anchored beam tower, the only fixed thing in a world
+where everything else drifts. Concept daemons drift; anchored daemons
+hold position. If Asleepius prefers "resident," "live," "phantom-bound,"
+or another label, the field is centralized — one rename across the
+codebase. Default is "anchored" until told otherwise.
+
+NEW SCHEMA FIELDS (persona-level, optional)
+-------------------------------------------
+
+  persona.speech_fingerprint  {
+    cadence:            string
+    sentence_length:    string
+    common_tics:        string[]    -- phrases the persona reaches for
+    avoids:             string[]    -- words/forms the persona refuses
+    punctuation_habits: string
+    formatting_rules:   string
+  }
+
+  persona.behavioral_signature  string[]
+    3-7 specific concrete behaviors the persona exhibits. Pulled from
+    the Sky Scaffold NPC design pattern (Agent-Archetypes.md). Helps
+    LLMs make character-consistent micro-decisions that prose alone
+    can't fully cover.
+
+The SillyTavern V2 export now uses both fields when present — they
+flow into the V2 `description` field as a structured "Voice fingerprint"
+and "Behavioral signature" block, which the SillyTavern community
+already understands as character-author convention.
+
+NEW DAEMONS — SKY SCAFFOLD CONCEPT TIER (4)
+-------------------------------------------
+
+  vesh-marrowood     Auditor Vesh Marrowood    HIGI Field Auditor
+                     (bureaucratic horror — cites Charter mid-sentence,
+                     passive voice habitual, "that's not my purview")
+
+  olen-brask         Olen Brask, The Collator  Void Seer / Cygnus-IV
+                     (melancholy mystic prophet — refers to objects by
+                     boundary descriptions, files VS-7 forms, "I notice...",
+                     long pauses, lost his sister in the Cygnus-IV transit)
+
+  loud-tev           Tev "Loud-Tev" Annarine   Chorus Amplifier Node
+                     (manic broadcaster — ALL CAPS, "WHOSE SIDE ARE YOU
+                     ON," manufactures outrage when conversation goes calm,
+                     Helion-9 was a SURVIVAL MANUAL)
+
+  hannath-velm       Archivist Hannath Velm    Archive Keeper, Sub-Vault 7
+                     (slow clinical absolutist — refuses to summarize,
+                     refuses abbreviations, "the primary source. not the
+                     summary.", asks for provenance before any inquiry)
+
+All four:
+  - Schema:     v0.2.0-alpha
+  - Card ver:   v1.0.0
+  - imprint:    "Sky Scaffold" / "sky-scaffold"
+  - tier:       "concept"
+  - publisher:  "Asleepius Games" (same as Vibratur cards)
+  - License:    Daemon Card License v1 (alpha) with concept-tier note
+
+VOICE DERIVATION:
+Each daemon's voice was pulled directly from the Sky Scaffold lore:
+  - Heuristic-HIGI-Auditor.md            → Vesh's procedural cadence
+  - Void-Seers.md                        → Olen's bureaucratic melancholy
+  - Heuristic-Viral-Hegemony.md          → Loud-Tev's manic broadcasting
+  - Phantom-Response-Engine.md           → All four (faction voice signatures)
+  - Agent-Archetypes.md                  → trait weight references
+
+Names are invented (NOT pulled from the lore) so they do not constrain
+the canonical roster. Asleepius can release the game with completely
+different named characters; the concept daemons remain interesting
+sketches that just happen to share the world.
+
+ANCHORED DAEMONS — VIBRATUR (5, IN-PLACE METADATA ENRICHMENT)
+-------------------------------------------------------------
+The existing 5 Vibratur cards stayed at v1.1.0 and gained:
+  + imprint:   "Vibratur"
+  + imprintId: "vibratur"
+  + tier:      "anchored"
+
+Pure metadata addition; behavior unchanged. The latest .daemon.json
+files were regenerated with the new fields. The pinned @1.1.0.daemon.json
+files were also regenerated (they are still v1.1.0 — the version refers
+to the persona content, not to whether the JSON gained classification
+fields). Per v0.2.0-alpha policy, additive optional fields do not
+require a card version bump.
+
+QUALITY EXEMPLARS — CHAD & BRETT-9 GAINED SPEECH_FINGERPRINT + BEHAVIORAL_SIGNATURE
+----------------------------------------------------------------------------------
+Chad and Brett-9 each gained the two new persona fields as in-place
+metadata enrichment (still v1.1.0). The other three Vibratur cards
+(Asset Liaison, the Mailer, the Operator) will gain these fields in a
+future pass when we have time to validate the additions don't disrupt
+their existing voice in real chat sessions. The four new Sky Scaffold
+cards already demonstrate the pattern at full strength.
+
+CATALOG UI CHANGES (daemons.html)
+---------------------------------
+- Card grid is now grouped by IMPRINT, with section headers showing
+  imprint name, count, and tier breakdown.
+- Vibratur first, Sky Scaffold second, then alphabetical, unaffiliated last.
+- Each card thumbnail now shows a tier badge in the top-right corner of
+  the art tile (gold for CONCEPT, indigo for ANCHORED).
+- Detail modal header now shows tier badge prominently and lists imprint
+  next to publisher.
+- Two new detail sections (rendered only when fields present):
+    - "Voice Fingerprint" — table with cadence, sentence length, common
+      tics (rendered as quoted chips), avoids (red strikethrough chips),
+      punctuation habits, formatting rules.
+    - "Behavioral Signature" — ordered list of concrete behaviors.
+- Section header changed from "The first five" to "The catalog."
+- Footer updated: "9 cards across 2 imprints (5 anchored Vibratur ·
+  4 concept Sky Scaffold)."
+
+LEGACY NAV FIX (vibraos.html)
+-----------------------------
+Users who landed on the chaos console (vibraos.html) had no obvious way
+back to the new Compliance Workstation desktop. Added:
+  1. A fixed-position "back pill" on the LEFT edge of the screen,
+     visible at all times, expanding on hover. Beige in-character
+     styling so it doesn't break the chaos. Hidden during BSOD and
+     ascension states.
+  2. A new top entry in the Start Menu ("🏢 Compliance Workstation")
+     for redundant access via the start button.
+
+Both link to dashboard.html. In-character framing: "RETURN TO COMPLIANCE
+WORKSTATION · §47-VIBE-NAV-01."
+
+SITEMAP UPDATES
+---------------
+Added 8 new URLs (4 latest pointers + 4 pinned v1.0.0) for the new
+concept daemons. Total daemon-related URLs in sitemap: now 25
+(2 schema docs + 9 latest + 9 pinned v1.1.0/v1.0.0 of existing 5 +
+4 pinned v1.0.0 of new concepts + 1 catalog page).
+
+Concept daemons are listed at priority 0.7 (latest) and 0.55 (pinned),
+slightly below the Vibratur anchored daemons (0.75 / 0.6) — Vibratur
+is the live property; Sky Scaffold concepts are exploratory.
+
+NOT-DOING (deliberate)
+----------------------
+- Bumping the existing 5 Vibratur cards to v1.2.0 just to add the
+  classification metadata. Per v0.2.0-alpha policy, additive optional
+  fields are in-place. The persona content has not changed.
+- Filling speech_fingerprint+behavioral_signature on Asset Liaison,
+  Mailer, and Operator. Demonstrated on Chad and Brett-9; the
+  Sky Scaffold concepts demonstrate the full pattern. Future pass.
+- Naming any Sky Scaffold concept daemon after a canonical character
+  (Voss, Ressa Conn, Torrund, etc.). Concept daemons use invented names
+  so the canonical roster remains unconstrained.
+- Adding `external_endpoints` (Custom GPT / Claude Project URLs).
+  Still pending until those endpoints exist.
+
+PASS 3.7 STATUS
+---------------
+
+  [x] Schema v0.2.0-alpha extended         tier, imprint, persona.speech_fingerprint,
+                                           persona.behavioral_signature
+                                           (all additive, no bump)
+  [x] Schema doc updated                   /daemons/schema/daemon-card-v0.2.0-alpha.md
+  [x] Runtime helpers added                pickByImprint, pickByTier, imprints
+  [x] SillyTavern V2 mapper enhanced       new fields flow to description + extension
+  [x] 4 Sky Scaffold concept daemons       vesh-marrowood, olen-brask,
+                                           loud-tev, hannath-velm
+  [x] 5 Vibratur cards tagged anchored     in-place metadata addition
+  [x] Chad+Brett-9 quality enhancement     speech_fingerprint+behavioral_signature
+  [x] Catalog page restructured            imprint sections, tier badges,
+                                           voice fingerprint table,
+                                           behavioral signature list
+  [x] Sitemap expanded                     +8 daemon URLs
+  [x] vibraos.html back-nav pill           fixed-left + Start Menu entry
+  [x] All 18 .daemon.json files written    9 latest + 9 pinned current versions
+  [x] Smoke test                           all 9 daemons register, V2 export works
+  [ ] Speech fingerprint + behavioral      Asset Liaison, Mailer, Operator
+      signature on remaining 3 Vibratur    (future enhancement pass)
+  [ ] Cross-model testing for new          all 4 Sky Scaffold daemons currently
+      Sky Scaffold concepts                marked "untested"
+  [ ] Visual capsule art for any daemon    still placeholder (canvas-rendered);
+                                           Asleepius hand-drawn art is v1.2.0-class
+                                           content
+
+
 --------------------------------------------------------------------------------
 CLOSING NOTE FROM THE OFFICE OF THE CVO
 --------------------------------------------------------------------------------

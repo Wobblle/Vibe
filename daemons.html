@@ -604,6 +604,177 @@
         /* Capsule-grid version badge: bump styling slightly to surface schema */
         .card .c-foot .c-version { white-space: nowrap; }
 
+        /* ====================================================================
+           Pass 3.7 — imprint grouping + tier badges + persona depth fields
+        ==================================================================== */
+
+        /* Imprint section header */
+        .imprint-section {
+            margin-bottom: 56px;
+        }
+        .imprint-section + .imprint-section {
+            border-top: 1px solid var(--rule);
+            padding-top: 36px;
+        }
+        .imprint-header {
+            margin-bottom: 22px;
+        }
+        .imprint-header .ih-row {
+            display: flex;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-bottom: 8px;
+        }
+        .imprint-header .ih-label {
+            margin: 0;
+            font-family: 'Inter', 'Helvetica Neue', sans-serif;
+            font-size: 26px;
+            font-weight: 800;
+            color: var(--gold);
+            letter-spacing: -0.5px;
+        }
+        .imprint-header .ih-meta {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: var(--ink-mute);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+        .imprint-header .ih-tiers {
+            display: inline-flex;
+            gap: 8px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10.5px;
+        }
+        .imprint-header .ih-tier {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            color: var(--ink-mute);
+            padding: 2px 8px;
+            border-radius: 2px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .imprint-header .ih-tier b { color: var(--ink); margin-left: 4px; }
+        .imprint-header .ih-tier-concept { border-color: rgba(212,173,79,0.5); color: var(--gold-soft); }
+        .imprint-header .ih-tier-anchored { border-color: rgba(122,108,212,0.5); color: var(--indigo-soft); }
+        .imprint-header .ih-blurb {
+            font-size: 13.5px;
+            color: var(--ink-soft);
+            line-height: 1.55;
+            max-width: 760px;
+            margin: 0;
+            font-style: italic;
+        }
+        .imprint-header .ih-blurb b {
+            color: var(--ink);
+            font-style: normal;
+        }
+
+        /* Cards arranged inside an imprint section reuse .card-grid layout */
+        .imprint-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 18px;
+        }
+
+        /* Tier badge (shown on card art + detail header) */
+        .card-art { position: relative; }
+        .tier-badge {
+            display: inline-block;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 9.5px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            padding: 3px 7px;
+            border-radius: 2px;
+            text-transform: uppercase;
+            line-height: 1;
+            white-space: nowrap;
+        }
+        .card-art .tier-badge {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.45);
+        }
+        .tier-badge.tier-concept {
+            background: rgba(212,173,79,0.95);
+            color: #2a2418;
+            border: 1px solid rgba(212,173,79,1);
+        }
+        .tier-badge.tier-anchored {
+            background: rgba(122,108,212,0.95);
+            color: #efe9f8;
+            border: 1px solid rgba(122,108,212,1);
+        }
+        .tier-badge.tier-other {
+            background: rgba(180,180,180,0.85);
+            color: #1a1a1a;
+        }
+        .tier-badge.tier-lg {
+            font-size: 11px;
+            padding: 4px 10px;
+            letter-spacing: 2px;
+        }
+
+        /* Voice fingerprint table */
+        .dc-fingerprint {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 6px 0 0;
+        }
+        .dc-fingerprint tr {
+            border-bottom: 1px solid var(--rule);
+        }
+        .dc-fingerprint tr:last-child { border-bottom: none; }
+        .dc-fingerprint th {
+            text-align: left;
+            padding: 8px 14px 8px 0;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--gold-soft);
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            vertical-align: top;
+            white-space: nowrap;
+            width: 1%;
+        }
+        .dc-fingerprint td {
+            padding: 8px 0;
+            color: var(--ink-soft);
+            font-size: 13.5px;
+            line-height: 1.55;
+            vertical-align: top;
+        }
+        .dc-fingerprint .v.v-no {
+            background: rgba(168,49,42,0.12);
+            border-color: rgba(168,49,42,0.4);
+            color: #d68a86;
+            text-decoration: line-through;
+            text-decoration-color: rgba(168,49,42,0.55);
+            text-decoration-thickness: 1px;
+        }
+
+        /* Behavioral signature ordered list */
+        .dc-bsig {
+            margin: 6px 0 0 22px;
+            padding: 0;
+            color: var(--ink-soft);
+        }
+        .dc-bsig li {
+            margin-bottom: 6px;
+            line-height: 1.55;
+        }
+        .dc-bsig li::marker {
+            color: var(--gold);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
         /* Deploy panel — primary action surface */
         .detail-card .dc-deploy {
             background: var(--bg);
@@ -862,8 +1033,8 @@
 
     <!-- Card grid -->
     <div class="sect-head">
-        <h2>The first five</h2>
-        <span class="sh-meta">published as part of the Vibratur demo · drag any card into your favorite LLM</span>
+        <h2>The catalog</h2>
+        <span class="sh-meta">grouped by imprint · concept &amp; anchored tiers · drag any card into your favorite LLM</span>
     </div>
     <div class="card-grid" id="cardGrid"></div>
 
@@ -891,7 +1062,7 @@
 
     <!-- Footer -->
     <div class="pub-foot">
-        <span>Asleepius Games · Daemon Cards · schema v0.2.0-alpha · cards v1.1.0</span>
+        <span>Asleepius Games · Daemon Cards · schema v0.2.0-alpha · 9 cards across 2 imprints (5 anchored Vibratur · 4 concept Sky Scaffold)</span>
         <span>
             <a href="daemons/schema/daemon-card-v0.2.0-alpha.md">Schema</a> ·
             <a href="daemons/LICENSE-v1.md">License v1 (alpha)</a> ·
@@ -971,31 +1142,87 @@ Then:  ollama create chad -f Modelfile  &amp;&amp;  ollama run chad</pre>
     const grid = document.getElementById('cardGrid');
     const cards = Daemons.list();
 
-    grid.innerHTML = cards.map(c => {
+    function escapeHtml(s) {
+        return String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+
+    function renderTierBadge(tier, opts) {
+        if (!tier) return '';
+        const cls = tier === 'concept' ? 'tier-concept' : tier === 'anchored' ? 'tier-anchored' : 'tier-other';
+        const label = tier === 'concept' ? 'CONCEPT' : tier === 'anchored' ? 'ANCHORED' : tier.toUpperCase();
+        const titleAttr = tier === 'concept'
+            ? 'Concept persona — exploratory, not a release commitment. May or may not appear in shipped property in this exact form.'
+            : tier === 'anchored'
+              ? 'Anchored persona — canonical to its property.'
+              : tier;
+        const size = (opts && opts.large) ? ' tier-lg' : '';
+        return `<span class="tier-badge ${cls}${size}" title="${escapeHtml(titleAttr)}">${label}</span>`;
+    }
+
+    function renderCardThumb(c) {
         const art = c.capsule.art || {};
         const tags = (c.capsule.tags || []).slice(0, 5);
         return `
             <div class="card" onclick="openDetail('${c.id}')">
                 <div class="card-art" style="background: linear-gradient(135deg, ${art.color || '#444'} 0%, ${art.colorAccent || '#222'} 100%);">
                     <span class="art-em">${art.icon || '◇'}</span>
+                    ${renderTierBadge(c.tier)}
                 </div>
                 <div class="card-body">
-                    <div class="c-title">${c.capsule.title || c.name}</div>
-                    <div class="c-subtitle">${c.capsule.subtitle || ''}</div>
-                    <div class="c-summary">${c.capsule.summary || ''}</div>
-                    <div class="c-tags">${tags.map(t => `<span class="tag">#${t}</span>`).join('')}</div>
+                    <div class="c-title">${escapeHtml(c.capsule.title || c.name)}</div>
+                    <div class="c-subtitle">${escapeHtml(c.capsule.subtitle || '')}</div>
+                    <div class="c-summary">${escapeHtml(c.capsule.summary || '')}</div>
+                    <div class="c-tags">${tags.map(t => `<span class="tag">#${escapeHtml(t)}</span>`).join('')}</div>
                     <div class="c-foot">
-                        <span>${c.publisher}</span>
+                        <span>${escapeHtml(c.publisher)}</span>
                         <span class="c-version">v${c.version}</span>
                     </div>
                 </div>
             </div>
         `;
-    }).join('');
-
-    function escapeHtml(s) {
-        return String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
     }
+
+    /* Pass 3.7 — group catalog by imprint. Vibratur first, Sky Scaffold second,
+       then any other imprints alphabetically, then unaffiliated last. */
+    const imprintList = Daemons.imprints().slice();
+    imprintList.sort((a, b) => {
+        if (a.id === 'vibratur') return -1;
+        if (b.id === 'vibratur') return 1;
+        if (a.id === 'sky-scaffold') return -1;
+        if (b.id === 'sky-scaffold') return 1;
+        if (a.id === '__none__') return 1;
+        if (b.id === '__none__') return -1;
+        return a.label.localeCompare(b.label);
+    });
+
+    const IMPRINT_BLURB = {
+        'vibratur':     'The satirical corporate hub. These daemons run the in-fiction company of Vibratur, Inc. They are anchored — canonical to the Vibratur property.',
+        'sky-scaffold': 'Concept personas for <b>Sky Scaffold</b> — a cosmic-horror / beige-dystopian game by Asleepius Games (Steam release in progress). These are <b>concept</b> daemons: exploratory voices grounded in the game\'s lore but not promises about the shipped product. Like concept art, but for personas.'
+    };
+
+    grid.innerHTML = imprintList.map(imp => {
+        const cardsInImp = Daemons.list().filter(c => (c.imprintId || '__none__') === imp.id);
+        const tierStr = Object.keys(imp.tiers).map(t => {
+            const tn = t === '__none__' ? 'unranked' : t;
+            return `<span class="ih-tier ih-tier-${t === '__none__' ? 'none' : t}">${tn} <b>${imp.tiers[t]}</b></span>`;
+        }).join('');
+        const blurb = IMPRINT_BLURB[imp.id] || '';
+        return `
+            <section class="imprint-section">
+                <header class="imprint-header">
+                    <div class="ih-row">
+                        <h2 class="ih-label">${escapeHtml(imp.label)}</h2>
+                        <span class="ih-meta">${imp.count} card${imp.count === 1 ? '' : 's'}</span>
+                        <span class="ih-tiers">${tierStr}</span>
+                    </div>
+                    ${blurb ? `<p class="ih-blurb">${blurb}</p>` : ''}
+                </header>
+                <div class="imprint-grid">
+                    ${cardsInImp.map(renderCardThumb).join('')}
+                </div>
+            </section>
+        `;
+    }).join('');
 
     function openDetail(id) {
         const c = Daemons.get(id);
@@ -1025,9 +1252,10 @@ Then:  ollama create chad -f Modelfile  &amp;&amp;  ollama run chad</pre>
                 <div class="dc-sub">${escapeHtml(c.capsule.subtitle || '')}</div>
                 <div class="dc-meta">
                     <span class="ver">v${c.version} (latest)</span>
+                    ${c.tier ? renderTierBadge(c.tier, { large: true }) : ''}
                     <span>id: ${escapeHtml(c.id)}</span>
                     <span>schema: ${escapeHtml(c.schemaVersion)}</span>
-                    <span>published: ${escapeHtml(c.publisher)}</span>
+                    <span>published: ${escapeHtml(c.publisher)}${c.imprint ? ' · imprint: <b>' + escapeHtml(c.imprint) + '</b>' : ''}</span>
                     ${otherVersions.length ? `<span>also available: ${otherVersions.map(v => `<a href="daemons/cards/${c.id}@${v}.daemon.json" target="_blank" rel="noopener">v${v}</a>`).join(', ')}</span>` : ''}
                 </div>
             </div>
@@ -1127,6 +1355,25 @@ Then:  ollama create chad -f Modelfile  &amp;&amp;  ollama run chad</pre>
                     <h4>Speaking Style</h4>
                     <p>${escapeHtml(persona.speaking_style || '')}</p>
                 </section>
+
+                ${persona.speech_fingerprint ? `
+                <section>
+                    <h4>Voice Fingerprint <span class="dc-mute" style="font-weight:400;font-size:11px;text-transform:none;letter-spacing:0;">— mechanical voice rules for fidelity</span></h4>
+                    <table class="dc-fingerprint">
+                        ${persona.speech_fingerprint.cadence ? `<tr><th>cadence</th><td>${escapeHtml(persona.speech_fingerprint.cadence)}</td></tr>` : ''}
+                        ${persona.speech_fingerprint.sentence_length ? `<tr><th>sentence length</th><td>${escapeHtml(persona.speech_fingerprint.sentence_length)}</td></tr>` : ''}
+                        ${Array.isArray(persona.speech_fingerprint.common_tics) && persona.speech_fingerprint.common_tics.length ? `<tr><th>common tics</th><td><div class="dc-vocab">${persona.speech_fingerprint.common_tics.map(t => `<span class="v">"${escapeHtml(t)}"</span>`).join('')}</div></td></tr>` : ''}
+                        ${Array.isArray(persona.speech_fingerprint.avoids) && persona.speech_fingerprint.avoids.length ? `<tr><th>avoids</th><td><div class="dc-vocab">${persona.speech_fingerprint.avoids.map(t => `<span class="v v-no">${escapeHtml(t)}</span>`).join('')}</div></td></tr>` : ''}
+                        ${persona.speech_fingerprint.punctuation_habits ? `<tr><th>punctuation</th><td>${escapeHtml(persona.speech_fingerprint.punctuation_habits)}</td></tr>` : ''}
+                        ${persona.speech_fingerprint.formatting_rules ? `<tr><th>formatting</th><td>${escapeHtml(persona.speech_fingerprint.formatting_rules)}</td></tr>` : ''}
+                    </table>
+                </section>` : ''}
+
+                ${Array.isArray(persona.behavioral_signature) && persona.behavioral_signature.length ? `
+                <section>
+                    <h4>Behavioral Signature <span class="dc-mute" style="font-weight:400;font-size:11px;text-transform:none;letter-spacing:0;">— concrete behaviors the LLM should reach for</span></h4>
+                    <ol class="dc-bsig">${persona.behavioral_signature.map(b => `<li>${escapeHtml(b)}</li>`).join('')}</ol>
+                </section>` : ''}
 
                 <section>
                     <h4>Vocabulary</h4>

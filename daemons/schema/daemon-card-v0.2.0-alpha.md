@@ -9,7 +9,7 @@
 ## What changed from v0.1.0-alpha?
 
 v0.2.0-alpha is **additive only**. Every v0.1.0-alpha card remains valid.
-Three new optional fields were added to address a real-world testing finding:
+Three core fields were added to address a real-world testing finding:
 when a Daemon Card JSON is dropped into an LLM cold, the model often treats
 it as data to analyze instead of an identity to assume. The new fields give
 authors explicit tools to flip that default.
@@ -19,6 +19,17 @@ authors explicit tools to flip that default.
 | `activation`                | Defines a one-line summon phrase the user can paste into any chat to instantly activate the persona. |
 | `starter_pack`              | Defines the persona's opening line (the daemon's first message after summoning) and a list of suggested user replies to seed the conversation. |
 | `compatibility.tested`      | An array of `{ model, status, tested_at, tester }` records honestly reporting which LLMs the author has verified the card on. |
+
+A second wave of additive fields (still v0.2.0-alpha — purely optional, all
+runtimes ignore unknown fields gracefully) addresses **persona organization**
+and **voice-fidelity authoring**:
+
+| Field (optional)               | Purpose |
+|--------------------------------|---------|
+| `tier`                         | `"concept"` \| `"anchored"` — concept = exploratory persona, no canonical commitment; anchored = canonical, fixed in the property's world. Omit entirely = no tier statement. |
+| `imprint` / `imprintId`        | Names the property/world a daemon belongs to (e.g. `"Sky Scaffold"`, `"Vibratur"`). Lets catalogs group daemons by world. |
+| `persona.speech_fingerprint`   | `{ cadence, sentence_length, common_tics[], avoids[], punctuation_habits, formatting_rules }` — explicit voice metrics. Improves LLM consistency in cold-paste scenarios. |
+| `persona.behavioral_signature` | An array of 3-7 specific concrete behaviors (e.g. `"Asks about provenance before engaging with content"`). Helps the LLM make character-consistent micro-decisions the persona prose can't always cover. |
 
 The `ai_chat_prompt` field is also expected (not enforced) to be stronger
 in v0.2.0-alpha cards. Authoring guidance is included below.
@@ -141,6 +152,87 @@ SHOULD echo this as the assistant's first message.
 
 `suggested_user_replies` seeds the conversation. UIs MAY render these as
 clickable chips that pre-fill the user's input.
+
+## NEW: The `tier` field
+
+```jsonc
+{
+  "tier": "concept"   // or "anchored", or omit entirely
+}
+```
+
+A persona's **canonical status** within its property:
+
+- `"concept"` — A character sketch. Like concept art for a persona. The
+  voice and intent are real; the character may or may not appear in the
+  shipped property in this exact form. **Concept daemons are not promises.**
+  They are explorations. Other authors may freely riff on them.
+- `"anchored"` — A canonical character. Fixed in the property's world.
+  May appear in the shipped game/film/book. Should be treated as the
+  publisher's official reference for that persona.
+- *omitted* — No tier statement. Treat the card as the publisher's
+  current reference, neither sketch nor canon.
+
+Catalog UIs SHOULD render concept daemons with a visible badge so users
+know not to treat them as promises. This is the single most important
+honesty contract the schema enforces.
+
+## NEW: The `imprint` / `imprintId` fields
+
+```jsonc
+{
+  "imprint": "Sky Scaffold",
+  "imprintId": "sky-scaffold"
+}
+```
+
+The **property/world/series** a daemon belongs to. The publisher is the
+legal entity (e.g. "Asleepius Games"); the imprint is the creative property
+(e.g. "Sky Scaffold," "Vibratur"). One publisher may run many imprints.
+
+Catalog UIs MAY group daemons by imprint. Search engines and downstream
+consumers MAY use `imprintId` for canonical grouping.
+
+## NEW: `persona.speech_fingerprint`
+
+```jsonc
+{
+  "speech_fingerprint": {
+    "cadence":            "slow, deliberate, with full stops",
+    "sentence_length":    "long",
+    "common_tics":        ["primary source", "uncompressed", "in triplicate"],
+    "avoids":             ["abbreviations", "summaries", "casual contractions"],
+    "punctuation_habits": "full stops; em-dashes for asides; never exclamation points",
+    "formatting_rules":   "completes every sentence fully, no shortcuts"
+  }
+}
+```
+
+A compact, mechanical description of the persona's voice. The
+`ai_chat_prompt` already encodes voice in prose; the fingerprint encodes
+it in **enumerable rules** the LLM can check itself against.
+
+All sub-fields optional. Most useful for cold-paste activation in models
+that drift toward neutral helpfulness.
+
+## NEW: `persona.behavioral_signature`
+
+```jsonc
+{
+  "behavioral_signature": [
+    "Always has the relevant form number ready",
+    "Does not make decisions without precedent",
+    "Becomes visibly distressed when asked to improvise",
+    "Remembers every procedural violation from every past interaction"
+  ]
+}
+```
+
+3-7 specific concrete behaviors the persona exhibits. Pulled from the
+real-world technique of NPC behavior design (see Sky Scaffold's
+`Agent-Archetypes.md` for the source pattern). Helps LLMs produce
+character-consistent micro-decisions: how the persona enters a room,
+what they notice, what they refuse to do, what triggers them.
 
 ## NEW: `compatibility.tested`
 

@@ -6528,9 +6528,87 @@
     <div id="autoRefreshPill">🔄 ENGAGEMENT REFRESH IN <span id="autoRefreshSeconds">23</span>s</div>
     <div id="gcFreeze"></div>
 
+    <!-- Back-to-Compliance-Workstation pill (in-character escape hatch from the chaos console) -->
+    <a href="dashboard.html" class="vbz-back-pill" id="vbzBackPill" title="Return to the beige Compliance Workstation (the desktop)">
+        <span class="bp-arrow">◀</span>
+        <span class="bp-stack">
+            <span class="bp-line1">RETURN TO</span>
+            <span class="bp-line2">Compliance Workstation</span>
+            <span class="bp-line3">§47-VIBE-NAV-01</span>
+        </span>
+    </a>
+    <style>
+        .vbz-back-pill {
+            position: fixed;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            z-index: 90;
+            background: #efe9d8;
+            border: 1px solid #6b5e3b;
+            border-left: none;
+            color: #2a2418;
+            text-decoration: none;
+            font-family: "JetBrains Mono", "Courier New", monospace;
+            font-size: 10px;
+            padding: 10px 10px 10px 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-radius: 0 6px 6px 0;
+            box-shadow: 2px 2px 0 rgba(0,0,0,0.25);
+            opacity: 0.78;
+            transition: opacity 0.16s ease, transform 0.16s ease, padding 0.16s ease;
+            max-width: 28px;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        .vbz-back-pill:hover {
+            opacity: 1;
+            max-width: 260px;
+            padding-right: 14px;
+            transform: translateY(-50%) translateX(0);
+        }
+        .vbz-back-pill .bp-arrow {
+            font-size: 14px;
+            color: #6b5e3b;
+            flex-shrink: 0;
+        }
+        .vbz-back-pill .bp-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 1px;
+            line-height: 1.15;
+        }
+        .vbz-back-pill .bp-line1 {
+            color: #6b5e3b;
+            font-size: 9px;
+            letter-spacing: 1px;
+            font-weight: 700;
+        }
+        .vbz-back-pill .bp-line2 {
+            color: #2a2418;
+            font-weight: 700;
+            font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+            font-size: 12px;
+        }
+        .vbz-back-pill .bp-line3 {
+            color: #b6a87f;
+            font-size: 8px;
+            letter-spacing: 1px;
+        }
+        body.ascension .vbz-back-pill,
+        body.bsod-active .vbz-back-pill { display: none; }
+        @media (max-width: 700px) {
+            .vbz-back-pill { font-size: 9px; padding: 8px 8px 8px 6px; }
+        }
+    </style>
+
     <div id="startMenu">
         <div class="start-banner">Vibra<span style="color:#ffaa00;">tur</span></div>
         <ul>
+            <li onclick="window.open('dashboard.html','_self'); closeStartMenu();" style="background: #efe9d8; color: #2a2418;"><span class="ico">🏢</span> <b>Compliance Workstation</b> <span style="margin-left:auto; font-size:9px; color:#6b5e3b;">(beige desktop)</span></li>
+            <li class="divider"></li>
             <li onclick="openMessageCenter(); closeStartMenu();"><span class="ico">📧</span> <b>Inbox</b> <span class="startmenu-unread" id="smUnread">0</span></li>
             <li onclick="openVibeQuiz(); closeStartMenu();"><span class="ico">📁</span> Programs <span style="margin-left:auto;">►</span></li>
             <li onclick="window.open('docs.html','_self'); closeStartMenu();"><span class="ico">📚</span> <b>Documents</b> <span style="margin-left:auto; font-size:9px; color:#aa0000;">(hallucinated)</span></li>

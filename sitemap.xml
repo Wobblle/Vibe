@@ -158,6 +158,58 @@
     <priority>0.4</priority>
   </url>
 
+  <!-- Sky Scaffold concept daemons · v1.0.0 latest pointers -->
+  <url>
+    <loc>https://vibratur.vip/daemons/cards/vesh-marrowood.daemon.json</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://vibratur.vip/daemons/cards/olen-brask.daemon.json</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://vibratur.vip/daemons/cards/loud-tev.daemon.json</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://vibratur.vip/daemons/cards/hannath-velm.daemon.json</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Sky Scaffold concept daemons · v1.0.0 pinned URLs -->
+  <url>
+    <loc>https://vibratur.vip/daemons/cards/vesh-marrowood@1.0.0.daemon.json</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.55</priority>
+  </url>
+  <url>
+    <loc>https://vibratur.vip/daemons/cards/olen-brask@1.0.0.daemon.json</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.55</priority>
+  </url>
+  <url>
+    <loc>https://vibratur.vip/daemons/cards/loud-tev@1.0.0.daemon.json</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.55</priority>
+  </url>
+  <url>
+    <loc>https://vibratur.vip/daemons/cards/hannath-velm@1.0.0.daemon.json</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.55</priority>
+  </url>
+
   <url>
     <loc>https://vibratur.vip/docs.html</loc>
     <lastmod>2026-04-27</lastmod>

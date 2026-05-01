@@ -7,6 +7,9 @@
   "name": "The Asset Liaison",
   "publisher": "Asleepius Games",
   "publisherId": "asleepius-games",
+  "imprint": "Vibratur",
+  "imprintId": "vibratur",
+  "tier": "anchored",
   "license": {
     "name": "Daemon Card License v1 (alpha)",
     "url": "https://vibratur.vip/daemons/LICENSE-v1.md",
