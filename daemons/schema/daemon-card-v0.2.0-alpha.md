@@ -31,6 +31,16 @@ and **voice-fidelity authoring**:
 | `persona.speech_fingerprint`   | `{ cadence, sentence_length, common_tics[], avoids[], punctuation_habits, formatting_rules }` — explicit voice metrics. Improves LLM consistency in cold-paste scenarios. |
 | `persona.behavioral_signature` | An array of 3-7 specific concrete behaviors (e.g. `"Asks about provenance before engaging with content"`). Helps the LLM make character-consistent micro-decisions the persona prose can't always cover. |
 
+A **third wave** of additive fields (still v0.2.0-alpha) addresses
+**live-persona anchoring** — the case where a daemon already has a public
+voice (e.g. social-media posts, in-game lines, podcast appearances) and
+the card needs to stay synchronized with the live performance:
+
+| Field (optional)               | Purpose |
+|--------------------------------|---------|
+| `external_presence`            | Top-level array of `{ platform, handle, url, role, note }` — the daemon's live public accounts. Provides discoverability and a feedback loop for authors who post in-character. |
+| `persona.voice_exemplars`      | Persona-level array of `{ source, text, captures }` — **real recorded quotes** in the persona's voice, captured from external_presence sources. The single most powerful voice anchor: abstract persona prose drifts in long contexts; real quoted samples don't. |
+
 The `ai_chat_prompt` field is also expected (not enforced) to be stronger
 in v0.2.0-alpha cards. Authoring guidance is included below.
 
@@ -233,6 +243,88 @@ real-world technique of NPC behavior design (see Sky Scaffold's
 `Agent-Archetypes.md` for the source pattern). Helps LLMs produce
 character-consistent micro-decisions: how the persona enters a room,
 what they notice, what they refuse to do, what triggers them.
+
+## NEW: `external_presence` (top-level)
+
+```jsonc
+{
+  "external_presence": [
+    {
+      "platform":  "Bluesky",
+      "handle":    "@chadvibingtoniii.bsky.social",
+      "url":       "https://bsky.app/profile/chadvibingtoniii.bsky.social",
+      "role":      "primary",
+      "note":      "Live in-character corporate posts. Canonical."
+    },
+    {
+      "platform":  "X",
+      "handle":    "@JordanHaus1",
+      "url":       "https://x.com/JordanHaus1",
+      "role":      "secondary",
+      "note":      "Cross-posts and replies. Pre-existing follower base, repurposed."
+    }
+  ]
+}
+```
+
+`role` enum: `"primary"`, `"secondary"`, `"archive"`, `"announcement"`.
+
+A daemon with public social activity should declare its accounts here.
+Catalog UIs SHOULD render these as a "Live socials" badge row in the
+detail view. This serves three purposes:
+
+1. **Discoverability** — readers can follow the live performance.
+2. **Honesty** — readers know which output is canonical vs. fanwork.
+3. **Feedback loop** — authors who post in-character can periodically
+   harvest their best recent posts into `voice_exemplars` (below),
+   keeping the daemon and the live persona in lockstep.
+
+This field is **public on purpose**. The pattern of pairing a portable
+persona-card with live social accounts is too useful to lock behind a
+proprietary platform. The schema makes it free.
+
+## NEW: `persona.voice_exemplars`
+
+```jsonc
+{
+  "voice_exemplars": [
+    {
+      "source":   "Bluesky 2026-04-29",
+      "url":      "https://bsky.app/profile/chadvibingtoniii.bsky.social/post/abc123",
+      "text":     "Reality check! I'm just like you and that's where we differ. I didn't let 6 unbroken generations of wealth hold me back, not one bit.",
+      "captures": ["I'm-just-like-you-and-that's-where-we-differ rhetorical move", "wealth-as-handicap inversion"]
+    }
+  ]
+}
+```
+
+A list of **real recorded quotes** in the persona's voice — captured from
+the live performances declared in `external_presence`. These are the
+single most powerful voice-anchoring tool the schema offers.
+
+Why it matters: an LLM given abstract persona prose will *describe* the
+persona's voice. An LLM given 6-10 real exemplars will *match* the
+persona's voice, because few-shot examples carry mechanical weight that
+prose descriptions don't. In long contexts, prose descriptions drift
+toward the model's default style; real exemplars don't.
+
+**Authoring guidance:**
+
+- **Curate 6-10 exemplars.** More than 12 dilutes; fewer than 4 doesn't
+  anchor.
+- **Pick exemplars that show DIFFERENT facets** of the voice (one tic,
+  one structural move, one stance, one catchphrase, etc.).
+- **Include `captures`** — name what each exemplar teaches the LLM.
+  This forces the author to think clearly about the voice and helps
+  curation.
+- **Update quarterly** as the live persona evolves. The exemplar block
+  is the cheapest, most powerful version-bump trigger.
+- **`url` is optional** but recommended for verifiability.
+
+A v0.2.0-alpha runtime SHOULD inject voice_exemplars into the
+`ai_chat_prompt` few-shot section when emitting the prompt to an LLM,
+or into the SillyTavern V2 `data.mes_example` field when emitting to
+the SillyTavern format.
 
 ## NEW: `compatibility.tested`
 

@@ -107,6 +107,28 @@
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
+
+  <!-- Pass 3.9 — Chad + Brett v1.2.0 (live-presence anchored) pinned URLs -->
+  <url>
+    <loc>https://vibratur.vip/daemons/cards/chad-vibington-iii@1.2.0.daemon.json</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://vibratur.vip/daemons/cards/brett-9@1.2.0.daemon.json</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Pass 3.10 — Chad v1.3.0 (rebrand containment hardening) pinned URL -->
+  <url>
+    <loc>https://vibratur.vip/daemons/cards/chad-vibington-iii@1.3.0.daemon.json</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.65</priority>
+  </url>
   <url>
     <loc>https://vibratur.vip/daemons/cards/asset-liaison@1.1.0.daemon.json</loc>
     <lastmod>2026-05-01</lastmod>
@@ -205,6 +227,70 @@
   </url>
   <url>
     <loc>https://vibratur.vip/daemons/cards/hannath-velm@1.0.0.daemon.json</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.55</priority>
+  </url>
+
+  <!-- Open Examples concept daemons · v1.0.0 latest pointers -->
+  <url>
+    <loc>https://vibratur.vip/daemons/cards/devils-advocate.daemon.json</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://vibratur.vip/daemons/cards/saul-marrow.daemon.json</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://vibratur.vip/daemons/cards/gm-rosalind.daemon.json</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://vibratur.vip/daemons/cards/hollister-vance.daemon.json</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://vibratur.vip/daemons/cards/vendreth.daemon.json</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Open Examples concept daemons · v1.0.0 pinned URLs -->
+  <url>
+    <loc>https://vibratur.vip/daemons/cards/devils-advocate@1.0.0.daemon.json</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.55</priority>
+  </url>
+  <url>
+    <loc>https://vibratur.vip/daemons/cards/saul-marrow@1.0.0.daemon.json</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.55</priority>
+  </url>
+  <url>
+    <loc>https://vibratur.vip/daemons/cards/gm-rosalind@1.0.0.daemon.json</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.55</priority>
+  </url>
+  <url>
+    <loc>https://vibratur.vip/daemons/cards/hollister-vance@1.0.0.daemon.json</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.55</priority>
+  </url>
+  <url>
+    <loc>https://vibratur.vip/daemons/cards/vendreth@1.0.0.daemon.json</loc>
     <lastmod>2026-05-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.55</priority>

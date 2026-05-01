@@ -699,6 +699,40 @@
             right: 8px;
             box-shadow: 0 1px 4px rgba(0,0,0,0.45);
         }
+        .card-art .live-dot {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 3px 7px 3px 6px;
+            background: rgba(20, 24, 18, 0.78);
+            color: #b8e986;
+            border: 1px solid rgba(184, 233, 134, 0.55);
+            border-radius: 11px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            line-height: 1;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.4);
+        }
+        .card-art .live-dot::before {
+            content: '';
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            background: #b8e986;
+            border-radius: 50%;
+            box-shadow: 0 0 6px rgba(184, 233, 134, 0.8);
+            animation: live-pulse 1.6s ease-in-out infinite;
+        }
+        @keyframes live-pulse {
+            0%, 100% { opacity: 1; }
+            50%      { opacity: 0.35; }
+        }
         .tier-badge.tier-concept {
             background: rgba(212,173,79,0.95);
             color: #2a2418;
@@ -773,6 +807,143 @@
             font-family: 'JetBrains Mono', monospace;
             font-size: 11px;
             font-weight: 700;
+        }
+
+        /* Pass 3.9 — external_presence pills */
+        .dc-presence {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 6px;
+        }
+        .presence-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 12px;
+            background: rgba(212, 173, 79, 0.07);
+            border: 1px solid rgba(212, 173, 79, 0.35);
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--ink);
+            transition: background 0.16s ease, border-color 0.16s ease, transform 0.08s ease;
+            min-width: 220px;
+        }
+        .presence-pill:hover {
+            background: rgba(212, 173, 79, 0.14);
+            border-color: var(--gold);
+            transform: translateY(-1px);
+        }
+        .presence-pill .pp-icon {
+            font-size: 22px;
+            line-height: 1;
+            flex-shrink: 0;
+            width: 28px;
+            text-align: center;
+        }
+        .presence-pill .pp-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            line-height: 1.2;
+            min-width: 0;
+        }
+        .presence-pill .pp-platform {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--gold);
+        }
+        .presence-pill .pp-role {
+            color: var(--ink-mute);
+            font-weight: 400;
+        }
+        .presence-pill .pp-handle {
+            font-size: 13px;
+            color: var(--ink);
+            font-weight: 600;
+            word-break: break-all;
+        }
+        .presence-pill .pp-arrow {
+            color: var(--ink-mute);
+            font-size: 14px;
+            margin-left: auto;
+            flex-shrink: 0;
+        }
+        .presence-pill.ep-secondary {
+            opacity: 0.85;
+            border-style: dashed;
+        }
+        .presence-pill.ep-archive {
+            opacity: 0.6;
+            border-style: dotted;
+        }
+
+        /* Pass 3.9 — voice_exemplars (real harvested quotes) */
+        .dc-exemplars {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            margin-top: 8px;
+        }
+        .exemplar {
+            border-left: 3px solid var(--gold);
+            padding: 10px 14px 12px;
+            background: rgba(212, 173, 79, 0.05);
+            border-radius: 0 6px 6px 0;
+        }
+        .exemplar .ex-text {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            color: var(--ink);
+            line-height: 1.55;
+            margin-bottom: 8px;
+        }
+        .exemplar .ex-meta {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 11px;
+            color: var(--ink-mute);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .exemplar .ex-source {
+            font-weight: 600;
+        }
+        .exemplar .ex-link {
+            color: var(--gold);
+            text-decoration: none;
+            border-bottom: 1px dotted var(--gold);
+        }
+        .exemplar .ex-link:hover {
+            color: var(--ink);
+            border-bottom-color: var(--ink);
+        }
+        .exemplar .ex-captures {
+            margin-top: 8px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px 6px;
+            align-items: baseline;
+        }
+        .exemplar .ex-cap-label {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--ink-mute);
+            margin-right: 4px;
+        }
+        .exemplar .ex-cap {
+            display: inline-block;
+            font-size: 10px;
+            padding: 2px 7px;
+            background: rgba(212, 173, 79, 0.12);
+            border: 1px solid rgba(212, 173, 79, 0.3);
+            border-radius: 10px;
+            color: var(--ink-soft);
+            font-family: 'JetBrains Mono', monospace;
         }
 
         /* Deploy panel — primary action surface */
@@ -1062,7 +1233,7 @@
 
     <!-- Footer -->
     <div class="pub-foot">
-        <span>Asleepius Games · Daemon Cards · schema v0.2.0-alpha · 9 cards across 2 imprints (5 anchored Vibratur · 4 concept Sky Scaffold)</span>
+        <span>Asleepius Games · Daemon Cards · schema v0.2.0-alpha · 14 cards across 3 imprints (5 anchored Vibratur · 4 concept Sky Scaffold · 5 concept Open Examples)</span>
         <span>
             <a href="daemons/schema/daemon-card-v0.2.0-alpha.md">Schema</a> ·
             <a href="daemons/LICENSE-v1.md">License v1 (alpha)</a> ·
@@ -1162,11 +1333,13 @@ Then:  ollama create chad -f Modelfile  &amp;&amp;  ollama run chad</pre>
     function renderCardThumb(c) {
         const art = c.capsule.art || {};
         const tags = (c.capsule.tags || []).slice(0, 5);
+        const hasLiveVoice = Array.isArray(c.external_presence) && c.external_presence.length > 0;
         return `
             <div class="card" onclick="openDetail('${c.id}')">
                 <div class="card-art" style="background: linear-gradient(135deg, ${art.color || '#444'} 0%, ${art.colorAccent || '#222'} 100%);">
                     <span class="art-em">${art.icon || '◇'}</span>
                     ${renderTierBadge(c.tier)}
+                    ${hasLiveVoice ? `<span class="live-dot" title="Has a live public presence (Bluesky / X / etc.) — voice anchored to real posts">live voice</span>` : ''}
                 </div>
                 <div class="card-body">
                     <div class="c-title">${escapeHtml(c.capsule.title || c.name)}</div>
@@ -1190,14 +1363,17 @@ Then:  ollama create chad -f Modelfile  &amp;&amp;  ollama run chad</pre>
         if (b.id === 'vibratur') return 1;
         if (a.id === 'sky-scaffold') return -1;
         if (b.id === 'sky-scaffold') return 1;
+        if (a.id === 'open-examples') return -1;
+        if (b.id === 'open-examples') return 1;
         if (a.id === '__none__') return 1;
         if (b.id === '__none__') return -1;
         return a.label.localeCompare(b.label);
     });
 
     const IMPRINT_BLURB = {
-        'vibratur':     'The satirical corporate hub. These daemons run the in-fiction company of Vibratur, Inc. They are anchored — canonical to the Vibratur property.',
-        'sky-scaffold': 'Concept personas for <b>Sky Scaffold</b> — a cosmic-horror / beige-dystopian game by Asleepius Games (Steam release in progress). These are <b>concept</b> daemons: exploratory voices grounded in the game\'s lore but not promises about the shipped product. Like concept art, but for personas.'
+        'vibratur':       'The satirical corporate hub. These daemons run the in-fiction company of Vibratur, Inc. They are <b>anchored</b> — canonical to the Vibratur property.',
+        'sky-scaffold':   'Concept personas for <b>Sky Scaffold</b> — a cosmic-horror / beige-dystopian game by Asleepius Games (Steam release in progress). These are <b>concept</b> daemons: exploratory voices grounded in the game\'s lore but not promises about the shipped product. Like concept art, but for personas.',
+        'open-examples':  'Pure demonstration personas. Published as Daemon Cards to show the format\'s range — a structured reasoning tool, a noir narrator, a tabletop game master, a fictional field marshal, an archaic mentor wizard. <b>Free to riff on</b>; ship your own version under your own publisher ID. The license is permissive and the format is yours.'
     };
 
     grid.innerHTML = imprintList.map(imp => {
@@ -1320,6 +1496,25 @@ Then:  ollama create chad -f Modelfile  &amp;&amp;  ollama run chad</pre>
                     <div class="dc-mute" style="font-size:11px;margin-top:6px;">  ✓ verified · ~ partial · △ untested · ✗ failing  </div>
                 </section>
 
+                ${Array.isArray(c.external_presence) && c.external_presence.length ? `
+                <section>
+                    <h4>Live Public Voice <span class="dc-mute" style="font-weight:400;font-size:11px;text-transform:none;letter-spacing:0;">— this persona has accounts you can follow</span></h4>
+                    <div class="dc-presence">
+                        ${c.external_presence.map(ep => {
+                            const platformIcon = { 'Bluesky': '🦋', 'X': '𝕏', 'Twitter': '𝕏', 'Mastodon': '🐘', 'Threads': '@', 'Instagram': '📷', 'TikTok': '♪', 'YouTube': '▶' }[ep.platform] || '🌐';
+                            return `<a class="presence-pill ep-${(ep.role||'primary')}" href="${escapeHtml(ep.url)}" target="_blank" rel="noopener" title="${escapeHtml(ep.note || '')}">
+                                <span class="pp-icon">${platformIcon}</span>
+                                <span class="pp-stack">
+                                    <span class="pp-platform">${escapeHtml(ep.platform)} <span class="pp-role">· ${escapeHtml(ep.role || 'primary')}</span></span>
+                                    <span class="pp-handle">${escapeHtml(ep.handle)}</span>
+                                </span>
+                                <span class="pp-arrow">↗</span>
+                            </a>`;
+                        }).join('')}
+                    </div>
+                    ${c.external_presence.some(ep => ep.note) ? `<div class="dc-mute" style="font-size:11px;margin-top:8px;">Hover any pill for context. The exemplars below are harvested from these accounts.</div>` : ''}
+                </section>` : ''}
+
                 <section>
                     <h4>Summary</h4>
                     <p>${escapeHtml(c.capsule.summary || '')}</p>
@@ -1390,8 +1585,26 @@ Then:  ollama create chad -f Modelfile  &amp;&amp;  ollama run chad</pre>
                     <ul>${(persona.forbidden_topics || []).map(t => `<li>${escapeHtml(t)}</li>`).join('')}</ul>
                 </section>
 
+                ${Array.isArray(persona.voice_exemplars) && persona.voice_exemplars.length ? `
                 <section>
-                    <h4>Sample Voice Lines</h4>
+                    <h4>Voice Exemplars <span class="dc-mute" style="font-weight:400;font-size:11px;text-transform:none;letter-spacing:0;">— real recorded quotes from the live presence; the strongest voice anchor in the format</span></h4>
+                    <div class="dc-exemplars">
+                        ${persona.voice_exemplars.map(ex => `
+                            <div class="exemplar">
+                                <div class="ex-text">"${escapeHtml(ex.text)}"</div>
+                                <div class="ex-meta">
+                                    <span class="ex-source">${escapeHtml(ex.source || 'unknown source')}</span>
+                                    ${ex.url ? `<a class="ex-link" href="${escapeHtml(ex.url)}" target="_blank" rel="noopener" title="open the live source">↗ source</a>` : ''}
+                                </div>
+                                ${Array.isArray(ex.captures) && ex.captures.length ? `<div class="ex-captures"><span class="ex-cap-label">captures:</span> ${ex.captures.map(cap => `<span class="ex-cap">${escapeHtml(cap)}</span>`).join('')}</div>` : ''}
+                            </div>
+                        `).join('')}
+                    </div>
+                    <div class="dc-mute" style="font-size:11px;margin-top:8px;">These exemplars are also injected into the SillyTavern V2 export's <code>mes_example</code> field for few-shot voice matching.</div>
+                </section>` : ''}
+
+                <section>
+                    <h4>Sample Voice Lines  <span class="dc-mute" style="font-weight:400;font-size:11px;text-transform:none;letter-spacing:0;">— authored lines from voice_bank</span></h4>
                     ${sampleQuotes.map(q => `<div class="dc-quote">${escapeHtml(q)}<span class="who">— ${escapeHtml(c.name)} · v${c.version}</span></div>`).join('')}
                 </section>
 

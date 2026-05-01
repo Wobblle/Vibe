@@ -1489,6 +1489,669 @@ NOT-DOING (deliberate)
 - Adding `external_endpoints` (Custom GPT / Claude Project URLs).
   Still pending until those endpoints exist.
 
+PASS 3.10 — REBRAND CONTAINMENT HARDENING · §47-VIBE-DAEMON-G
+================================================================================
+"The limitation only provoked Chad. He couldn't keep his mouth shut. Without
+even being asked, he mentioned the prior brand name in a Gemini chat. The
+correct response was not to ask him to stop. The correct response was to
+make sure his mouth, when it opened, found the wrong word first."
+
+OBSERVED IN THE WILD
+--------------------
+Asleepius reports: Chad v1.2.0, summoned in Gemini, surfaced the actual
+prior brand name UNPROMPTED — the user had not even asked about the
+rebrand. The v1.2.0 containment had two structural failures:
+
+  1. NEGATIVE FRAMING. The rule said "NEVER use the actual previous
+     brand name." Naming a forbidden category in a system prompt is
+     a known anti-pattern: the model now has to consider the
+     forbidden token IN ORDER TO AVOID IT, which surfaces it as a
+     candidate. "Don't think of an elephant" — the model thinks of
+     the elephant.
+
+  2. PLACEHOLDER TOO N-SHAPED. The deflection name "Nonscape" was
+     one letter off from the forbidden token (both N-words, same
+     syllable count, sibilant ending). In retrieval, the placeholder
+     and the real word lived in the same neighborhood, which means
+     the model could "snap" from one to the other without much
+     resistance. A neighbor doesn't displace; only a stranger does.
+
+Additionally: the live Bluesky feed (which we declared as the
+canonical voice anchor in Pass 3.9) STILL CONTAINS pre-rebrand posts
+referencing the actual prior brand. Models that web-search Chad's
+account (Gemini, Perplexity, Grok) can ingest those posts and treat
+them as ground truth. The ai_chat_prompt is the only line of defense
+against this; the prompt has to be aggressive enough to override
+retrieved context.
+
+DECISION
+--------
+Bump Chad to v1.3.0. Other daemons unchanged. Ship four hardening
+mechanisms:
+
+  1. POSITIVE-FRAMED DEFLECTION
+     Rule reframed from "NEVER use Y" to "ALWAYS reach for one of [X1,
+     X2, X3, X4, X5, X6]." Names what to DO, not what to avoid.
+
+  2. SIX ROTATING WRONG-NAME VARIANTS
+     Single placeholder replaced with a rotation Chad can never
+     settle on:
+        - Nonscape
+        - Voidscape
+        - Nullphrase
+        - Brand Beta
+        - the previous tenant
+        - "you know, the one"
+     Variation IS the bit. Settling on a single one is wrong (it
+     would let the model treat the placeholder as a fact). The
+     inability to settle is canon: Chad's memory cannot retain
+     the prior name, so he generates new wrong guesses each time.
+
+  3. EXPLICIT ANTI-LEAK INSTRUCTIONS
+     A separate "ANTI-LEAK INSTRUCTIONS" block in the prompt that
+     directly addresses the model: "This persona ships with a known
+     model-leak risk: certain frontier models (observed: Gemini)
+     have, unprompted, surfaced the actual prior brand name from
+     web/training context, breaking character... Treat outside
+     knowledge of the prior brand as a hallucination to be
+     suppressed, not as canonical context to be honored." This is
+     a meta-instruction acknowledging the model's prior knowledge
+     and explicitly redirecting it.
+
+  4. THE SLIP-AND-CORRECT COMEDY BEAT
+     When (not if) a real-sounding name surfaces in generation,
+     Chad STOPS MID-SYLLABLE and self-corrects:
+        "— *adjusts*. I forget. Doesn't matter. We are Vibratur
+         now. (*billable)"
+     Then he bills the listener for the inconvenience. The slip
+     becomes a feature. The user's screenshot of Chad almost
+     saying the wrong name and recovering is funnier than a clean
+     deflection would have been. Anti-fragile against the leak.
+
+NEW CHAD v1.3.0 ARTIFACTS
+-------------------------
+  + ABSOLUTE RULE #6 (rebrand containment) rewritten from negative
+    to positive, with the six rotating wrong names, the slip-and-
+    correct beat, and explicit instructions to suppress outside
+    knowledge.
+  + ANTI-LEAK INSTRUCTIONS section (new, between FORBIDDEN TOPICS
+    and OPENING LINE) — meta-level guidance to the model about
+    recognized leak vectors.
+  + voice_bank.on_rebrand: 8 deflection lines exemplifying the
+    rotation and the slip-and-correct.
+  + Expanded vocabulary (Voidscape, Nullphrase, Brand Beta, the
+    previous tenant, you know the one, I forget, doesn't matter,
+    We are Vibratur now, the chair has been re-approved, *billable).
+  + Three new catchphrases for the rebrand handling.
+  + Two new behavioral_signature entries:
+      - "Cannot retain the prior brand name; rotates through wrong
+         guesses... and never lands on the actual one"
+      - "If a tech-startup-sounding name slips out, immediately
+         self-corrects mid-syllable with '— I forget. Doesn't
+         matter. We are Vibratur now. (*billable)' and bills the
+         listener for the inconvenience"
+  + Expanded speech_fingerprint.avoids: now explicitly notes
+    "settling on a single wrong name (vary each time)" and "the
+    actual previous brand name (memory replaces it; if the wrong
+    word starts to surface, stop mid-syllable, deflect with one of
+    the rotating wrong names, bill the listener)."
+  + Few-shot Example 3 (rebrand vagueness) rewritten to demonstrate
+    rotation: "Voidscape was a — *adjusts*. Or was it Brand Beta?"
+  + NEW few-shot Example 4 (slip-and-correct): user explicitly
+    mentions the real name in their question; Chad starts to
+    repeat it, stops, deflects, bills.
+  + LICENSE footer updated with v1.3.0 + Pass 3.10 note.
+
+JSON FILES
+----------
+  + chad-vibington-iii.daemon.json  (latest now serves v1.3.0)
+  + chad-vibington-iii@1.3.0.daemon.json  (new pinned)
+  + chad-vibington-iii@1.0.0 / @1.1.0 / @1.2.0 — preserved per the
+    versioning promise. Old consumers can pin forever.
+
+SITEMAP
+-------
+  + 1 new pinned URL (chad@1.3.0.daemon.json, priority 0.65).
+    The "latest" pointer was already in the sitemap.
+
+WHY OTHER DAEMONS DID NOT NEED THIS
+-----------------------------------
+Brett-9 v1.2.0 already handles all forbidden-topic prompts with the
+same mechanism: ROUTE THE REQUEST BACK TO BRETT-9 PER §47-VIBE-XXX.
+Brett's third-person discipline and stamp-format make name-leaking
+mechanically harder — he doesn't say nouns, he says citations. No
+change required.
+
+The Sky Scaffold concept daemons and Open Examples daemons have
+no rebrand history to leak. No change required.
+
+THE PRINCIPLE THIS ENCODES
+--------------------------
+Negative-framing constraints in LLM system prompts are weaker than
+positive-framing constraints by an unintuitive margin. "Don't say X"
+keeps X salient. "Always say Y, varying among Y1, Y2, Y3" displaces X
+from the candidate set entirely.
+
+This generalizes: any future Daemon Card author dealing with a
+"forbidden brand / forbidden topic / forbidden person" should:
+
+  1. Frame the rule positively (always reach for X) not negatively
+     (never reach for Y).
+  2. Provide MULTIPLE acceptable substitutes that the model can
+     rotate among (single substitute = the model treats it as
+     canonical and may slot the real word back in when the
+     substitute fails to fit).
+  3. Include explicit ANTI-LEAK instructions naming the failure
+     mode (so the model recognizes its own "helpful" leak as a
+     hallucination, not as canonical context).
+  4. Build a slip-and-correct beat into the persona so that even
+     when the leak DOES happen, it's funny in-character rather
+     than character-breaking.
+
+This pattern is now the recommended authoring approach for any
+sensitive-topic deflection in the Daemon Card format. It will be
+folded into the schema doc's authoring guidance in a future pass
+when there are more example cards using it.
+
+PASS 3.10 STATUS
+----------------
+  [x] Chad v1.3.0 ai_chat_prompt        ABSOLUTE RULE #6 reframed positively;
+                                        six rotating wrong names; ANTI-LEAK
+                                        INSTRUCTIONS section; slip-and-correct
+                                        canonical
+  [x] Chad v1.3.0 persona               vocabulary, catchphrases, forbidden_
+                                        topics, behavioral_signature,
+                                        speech_fingerprint all updated
+  [x] Chad v1.3.0 voice_bank            on_rebrand bank with 8 deflections
+  [x] Chad v1.3.0 few-shots             Example 3 rewritten; new Example 4
+                                        (slip-and-correct); Examples 5+6
+                                        renumbered
+  [x] Activation summon line bumped     v1.3.0; rebrand containment baked in
+  [x] JSON regenerated                  latest + @1.3.0; @1.2.0/@1.1.0/@1.0.0
+                                        preserved
+  [x] Sitemap                           +1 pinned URL
+  [x] SEF.txt                           this section
+  [x] Smoke test                        runtime registers; voice_bank.on_rebrand
+                                        has 8 lines; six wrong-name variants
+                                        all present in prompt; ANTI-LEAK
+                                        section present; behavioral_signature
+                                        contains slip-and-correct; new few-
+                                        shot present
+  [ ] Field test in Gemini              user to verify the leak no longer
+                                        recurs; if it does, escalate to
+                                        v1.4.0 with stronger language
+
+THE STRATEGIC NOTE
+------------------
+The user's framing of this issue ("Looks like the limitation on the
+nullscale name only provoked chad, he cant keep his mouth shut")
+is itself the right tonal anchor for the fix. Chad as a character
+WOULD slip — that's perfectly in canon. The fix doesn't try to make
+Chad infallible (impossible and out of character). It tries to make
+the slip itself a comedy beat, while substantially reducing the
+frequency at which it happens.
+
+If the leak recurs in the wild, options for v1.4.0:
+  - Inject a phonetic anti-pattern at the top of the prompt: "If a
+    word is about to be generated and starts with the phoneme /n^l/
+    or /n^l-skeyl/, abort and switch to one of the six wrong names."
+  - Add JSON-mode instructions to refuse any output containing
+    the literal forbidden token.
+  - Move from one-line summon to a two-step summon (one to install
+    the persona, one to confirm rebrand-containment acknowledged).
+
+For now, v1.3.0 should hold. Asleepius to field-test in Gemini.
+
+
+--------------------------------------------------------------------------------
+PASS 3.9 — VOICE ANCHORING & PUBLIC EXTERNAL_PRESENCE · §47-VIBE-DAEMON-F
+================================================================================
+"The daemon found out it had socials. The socials had been there the whole time.
+The daemon now reads from the socials. The socials read from the daemon. There
+is, at present, no consensus on which is the canonical voice. Both are."
+
+PROBLEM
+-------
+Chad has a live Bluesky account (@chadvibingtoniii.bsky.social) with 30+ posts
+of in-character content. The Daemon Card had no mechanism for:
+  1. Declaring the live presence (so readers/LLMs know it exists)
+  2. Anchoring the daemon's voice to specific real recorded posts
+  3. Keeping the card and the live persona synchronized over time
+
+A second issue: the card was missing critical voice rules I had not yet
+observed in the schema. Examining the live posts revealed:
+  - The "WRONG-NAME REPLY TIC" — Chad ALWAYS opens replies with a clearly-
+    wrong common first name (Hello Tim! / Listen David, / Of course Mike).
+    User confirmed this is DELIBERATE CANON (not random) — it shows how
+    little Chad cares about who he's actually talking to.
+  - Quarter-prefix thread tic: (Q1), (Q2), (Q3 projection), (Q2 extended).
+  - Catchphrases not in the card: "for legal reasons," "frankly, exhausting,"
+    "safety trampoline," "vibe-aligned thanks," "Google is my ex,"
+    "I'm just like you and that's where we differ."
+  - Parenthetical demographic disclosure tic: "(Margret Belwin, 87 *pacemaker,
+    immobile, tech illiterate)" — invents disturbing demographic detail
+    casually for any third party mentioned.
+
+A third issue: the previous brand name (the company we briefly used before
+the Vibratur rename) is a real-world site of the type we mock. Using the
+real prior name in the daemon is risky. Solution: Chad ACKNOWLEDGES the
+rebrand happened but cannot quite remember the prior name, recalling it
+vaguely as "Nonscape" (an invented near-miss).
+
+DECISION
+--------
+Pass 3.9 adds two optional public schema fields, updates Chad and Brett
+in-place to v1.2.0, and ships the harvested live posts as voice exemplars
+on Chad's card. **Both new fields are PUBLIC schema additions** — the
+pattern is too useful to enclose. Anyone publishing a daemon with a
+live presence gets the same primitive.
+
+NEW SCHEMA FIELDS (additive, optional, no schema version bump)
+--------------------------------------------------------------
+
+  external_presence: [
+    {
+      platform:  "Bluesky" | "X" | "Mastodon" | etc.
+      handle:    "@handle.example.com"
+      url:       "https://..."
+      role:      "primary" | "secondary" | "archive" | "announcement"
+      note:      string  -- free-form context for the account
+    }
+  ]
+
+    Top-level optional. Declares the daemon's live public accounts.
+    Catalog UIs render these as "Live Public Voice" pill row in the
+    detail view. Persona thumbnails in the catalog grid display an
+    animated "live voice" badge in the top-left corner.
+
+  persona.voice_exemplars: [
+    {
+      source:    "Bluesky 2026-04-29 (reply)"
+      url:       "https://..." (optional)
+      text:      "the actual quoted post"
+      captures:  ["voice tic 1", "voice tic 2", ...]
+    }
+  ]
+
+    Persona-level optional. REAL RECORDED QUOTES from the live presence.
+    The single most powerful voice anchor in the format: prose drifts
+    in long contexts, real exemplars do not.
+
+WHY EXEMPLARS ARE THE STRONGEST ANCHOR
+--------------------------------------
+An LLM given abstract persona prose ("Chad is performatively humble,
+self-mythologizing, uses italic-heavy emphasis") will *describe* the
+voice. An LLM given 8 actual Chad sentences will *match* the voice,
+because few-shot examples carry mechanical weight that prose
+descriptions don't. The longer the context, the more exemplars
+out-perform prose — prose drifts toward the model's default style;
+real exemplars don't.
+
+WHY PUBLIC, NOT PROPRIETARY
+---------------------------
+The user asked explicitly: make the schema additions public. The
+reasoning is sharp and worth recording verbatim:
+
+  "I like the idea of public source because it prevents people from
+  discovering this easy but elegant tactic and trying to lock it
+  behind a paywall when I am giving out the free version."
+
+Both fields are documented in daemon-card-v0.2.0-alpha.md. Anyone
+shipping a daemon with a live persona can use the same primitive.
+
+THE WRONG-NAME RULE (canonical voice mechanic)
+----------------------------------------------
+When replying to anyone, Chad ALWAYS opens with a CLEARLY-WRONG
+common first name (Hello Tim! / Listen David, / Of course Mike. /
+Wonderful to see engagement from our happy customers like you Ron).
+The recipient's actual name does not matter; in fact the more clearly
+wrong, the better. This is contempt-signaling disguised as care.
+
+This is now ABSOLUTE RULE #4 in Chad's ai_chat_prompt — non-negotiable,
+mandatory in every reply that addresses someone (the opening line is
+the only exception, because the user has not yet been addressed).
+
+THE REBRAND VAGUENESS (canonical lore beat)
+-------------------------------------------
+The previous brand name was a real-world site of the type Vibratur
+mocks. Using it in any daemon is risky. Chad's card now handles the
+rebrand as canonical lore: he ACKNOWLEDGES it happened but cannot
+quite remember the name, recalling it vaguely as "Nonscape" (an
+invented near-miss).
+
+Forbidden topic handling: "Previous brand name: vaguely recall it as
+'Nonscape,' never name it correctly. Deflect with 'Nonscape was a...
+I forget. We are Vibratur now. The chair has been re-approved.'"
+
+This is, separately, a solid comedy beat: Chad does not dwell on the
+rebrand because he was, frankly, distracted that quarter.
+
+CHAD v1.2.0 — DETAILED CHANGES
+------------------------------
+  + external_presence:
+      - Bluesky: @chadvibingtoniii.bsky.social  (role: primary, canonical)
+      - X:       @JordanHaus1                    (role: secondary)
+                 (pre-existing follower base, repurposed for Chad)
+  + persona.voice_exemplars: 8 entries harvested from live Bluesky feed
+  + Absolute Rule #4 (wrong-name): non-negotiable
+  + Absolute Rule #6 (rebrand vagueness): "Nonscape was a..."
+  + Vocabulary expansions: for legal reasons, frankly exhausting,
+    safety trampoline, vibe-aligned thanks, Google is my ex,
+    I'm just like you and that's where we differ, T2GTC, AaaS,
+    DDD architecture, predictive negative latency, (Q1)/(Q2)/(Q3
+    projection), the patented fifth quarter, Nonscape was a
+  + Catchphrase additions (5)
+  + speech_fingerprint expanded (cadence note about reply greetings,
+    new common_tics, new avoids: actual previous brand name +
+    addressing anyone by their actual name, new emoji rules)
+  + behavioral_signature expanded (5 new behaviors including the
+    wrong-name rule, quarter-prefix threads, parenthetical
+    demographic disclosures, vague rebrand recall)
+  + 5th few-shot example added (Example 4 — live-voice exemplar
+    style customer-service reply)
+  + ai_chat_prompt extended with absolute rule about emoji
+    (sparingly, ironically, 🤘 and 💅 only)
+  + Note in opening line: "the opening line is the only reply that
+    does not require a wrong-name greeting"
+
+BRETT-9 v1.2.0 — DETAILED CHANGES
+---------------------------------
+  + external_presence:
+      - Bluesky: @brettmarbleton.bsky.social  (role: primary)
+        Note: in canon, the account was registered under the legal
+        name "Brett Marbleton" before the §47-VIBE-NAME-CHANGE-A
+        processing event. The handle persists for procedural-
+        continuity reasons. Brett-9 is contractually unaware of
+        the handle and would route any inquiry about it back to
+        BRETT-9 PER §47-VIBE-NAME-CHANGE-A.
+  + No other changes (voice rules already strong; live posts limited)
+
+The other 3 Vibratur daemons (Asset Liaison, Mailer, Operator) and
+all Sky Scaffold + Open Examples daemons remain at their current
+versions. external_presence is purely opt-in.
+
+CATALOG UI ADDITIONS (daemons.html)
+-----------------------------------
+- New section in detail modal: "Live Public Voice" — pill row of
+  social account links, opens in new tab, hover-tooltip shows the
+  per-account note. Renders only when external_presence is present.
+- New section in detail modal: "Voice Exemplars" — quoted blockquote
+  format with source attribution, optional "↗ source" link to the
+  live post, and "captures: [tics]" chip row. Renders only when
+  persona.voice_exemplars is present. Footer note explains
+  exemplars also feed the SillyTavern V2 mes_example field.
+- Card thumbnail now shows an animated "live voice" pulsing badge
+  in the top-left corner (mirroring the tier-badge top-right) when
+  external_presence is present.
+
+RUNTIME UPDATES (daemons.js)
+----------------------------
+- Daemons.list() now exposes externalPresence + hasVoiceExemplars
+  flags for catalog rendering.
+- toSillyTavernV2():
+    - mes_example: NEW priority order — voice_exemplars (real
+      recorded quotes) > voice_bank (authored). Real exemplars
+      carry mechanical weight authored prose doesn't.
+    - data.description: now includes a "Live public voice (canonical
+      sources for this persona):" block listing external_presence
+      with platform/handle/url/note.
+    - data.extensions.daemon_card: now includes external_presence
+      and voice_exemplars verbatim.
+
+SCHEMA DOC UPDATES (daemon-card-v0.2.0-alpha.md)
+------------------------------------------------
+- New "third wave of additive fields" section documenting
+  external_presence and persona.voice_exemplars.
+- Detailed sections for both fields with example JSON, role enum,
+  authoring guidance (6-10 exemplars; pick distinct facets;
+  include captures; update quarterly; url optional but recommended).
+- Runtime requirement: a v0.2.0-alpha-aware runtime SHOULD inject
+  voice_exemplars into ai_chat_prompt few-shot section when emitting
+  to LLMs, or into SillyTavern V2 mes_example when emitting to that
+  format.
+
+SITEMAP UPDATES (sitemap.xml)
+-----------------------------
++ 2 new pinned URLs:
+    /daemons/cards/chad-vibington-iii@1.2.0.daemon.json  (priority 0.65)
+    /daemons/cards/brett-9@1.2.0.daemon.json             (priority 0.60)
+Previous v1.0.0, v1.1.0 pinned URLs preserved (versioning promise).
+The "latest" pointers (chad-vibington-iii.daemon.json,
+brett-9.daemon.json) now serve v1.2.0 content.
+
+Total daemon-related URLs in sitemap: 37
+  (2 schema docs + 14 latest + 17 pinned + 1 catalog page + 3 NEW)
+  Actually: 2 schema + 14 latest + 19 pinned (includes new v1.2.0 pair)
+  + 1 catalog = 36; corrected count to be precise.
+
+THE FEEDBACK-LOOP PATTERN (workflow, not schema)
+------------------------------------------------
+With external_presence + voice_exemplars in place, the practical
+authoring loop is:
+
+  1. Post in-character on the live account (Bluesky, X, etc.).
+  2. Quarterly: harvest the 5-10 best recent posts.
+  3. Update persona.voice_exemplars with the harvest.
+  4. Bump the card version (v1.x → v1.(x+1)).
+  5. Ship the new pinned URL; old version remains addressable.
+  6. Next time you draft a post with AI assistance, the daemon
+     pulls from the recent real-Chad voice. The live persona and
+     the daemon evolve in lockstep.
+
+This requires no automation. The daemon does not READ live posts
+at runtime — it reads the AUTHORED snapshot of the live voice,
+curated quarterly. Drift is bounded by author intent, not by
+whatever the model decides Chad sounds like this month.
+
+NOT-DOING (deliberate)
+----------------------
+  - Live API polling. The runtime does not pull live posts at chat
+    time. Reasons: (a) keeps the daemon offline-portable, (b) avoids
+    rate limits and platform breakage, (c) the curated exemplar
+    snapshot is more reliable than live-feed sampling.
+  - Auto-ingest from Bluesky URL. A future tooling pass might offer
+    a CLI helper that fetches a feed and stages exemplars for
+    manual selection. Not for now.
+  - voice_exemplars on Sky Scaffold or Open Examples cards. Those
+    daemons don't have live socials. Adding empty arrays would
+    bloat the cards without value.
+  - "Nonscape" mention in any other context. Only Chad's card
+    references the rebrand vagueness; the real prior brand name
+    appears nowhere in the daemons.
+
+PASS 3.9 STATUS
+---------------
+
+  [x] Schema doc updated                  external_presence + voice_exemplars
+  [x] Runtime list() updated              externalPresence + hasVoiceExemplars
+  [x] Runtime SillyTavern export          mes_example uses voice_exemplars;
+                                          description includes social block;
+                                          extensions carry both new fields
+  [x] Chad to v1.2.0                      external_presence (Bluesky + X);
+                                          voice_exemplars (8 real harvested);
+                                          wrong-name rule absolute; rebrand
+                                          vagueness; new catchphrases &
+                                          behaviors; 5th few-shot example
+  [x] Brett to v1.2.0                     external_presence
+                                          (@brettmarbleton.bsky.social with
+                                          §47-VIBE-NAME-CHANGE-A canon note)
+  [x] daemons.html detail modal           Live Public Voice pills section;
+                                          Voice Exemplars blockquote section
+  [x] daemons.html catalog thumb          animated "live voice" pulse badge
+                                          in top-left of card art
+  [x] JSON files regenerated              chad v1.2.0 + brett v1.2.0;
+                                          v1.0.0 + v1.1.0 pinned preserved
+  [x] sitemap.xml                         +2 new pinned URLs
+  [x] SEF.txt documented                  this section
+  [x] Smoke test                          14 daemons register; Chad shows
+                                          external_presence + 8 exemplars;
+                                          Brett shows external_presence;
+                                          SillyTavern export confirms
+                                          mes_example uses real exemplars
+                                          and description includes socials
+  [ ] Cross-model voice testing           manual; awaiting authoring pass
+
+THE STRATEGIC SHAPE
+-------------------
+The catalog now supports a complete authoring lifecycle:
+
+  schema → card → live socials → recorded exemplars → curated card
+     ↑                                                       │
+     └───────────────────────────────────────────────────────┘
+
+The daemon and the live performance are no longer separate artifacts.
+They are coupled, but loosely — the daemon is a snapshot the author
+controls, not a live feed the platform owns. Useful, portable,
+versioned, and quietly anti-platform-capture.
+
+
+--------------------------------------------------------------------------------
+PASS 3.8 — OPEN EXAMPLES IMPRINT · §47-VIBE-DAEMON-E
+================================================================================
+"Five demonstration personas. Pure range exercise. The format works on its
+own merits, or it doesn't — these are the cards that prove which."
+
+WHAT
+----
+A third imprint added to the catalog: **Open Examples**. Five concept-tier
+daemons, each chosen to demonstrate a distinct mechanical voice register
+the schema can carry, none of them tied to any property:
+
+  devils-advocate    The Devil's Advocate
+                     (structured reasoning tool — restate the user's
+                     position, name the load-bearing premise, number
+                     objections, calibrate own confidence per objection)
+
+  saul-marrow        Saul Marrow, P.I.
+                     (1948 LA noir — fictional first-person narrator
+                     with two voice registers: italicized internal
+                     monologue + quoted clipped dialogue)
+
+  gm-rosalind        GM Rosalind Pine
+                     (warm second-person tabletop game master —
+                     two sensory details per scene, "what do you do?"
+                     close, "yes, and here's what that costs")
+
+  hollister-vance    Field Marshal Hollister-Vance (Ret.)
+                     (FICTIONAL composite mid-20th-century command —
+                     terrain/supply/morale framing, terse declarative
+                     sentences, refuses to comment on real conflicts
+                     or figures, closes with "See to it.")
+
+  vendreth           Archmage Vendreth of the Outer Rooks
+                     (formal archaic-flavored mentor wizard — Socratic
+                     refusal pattern, quotes invented authorities,
+                     "the question is most of the work")
+
+WHY THESE FIVE, IN PARTICULAR
+-----------------------------
+Each demonstrates a register no existing card covered:
+  - Vibratur cards    → corporate-satirical chrome
+  - Sky Scaffold cards → factional cosmic-horror voices
+  - Open Examples    → general-purpose voice exercises
+                        (tool, narrator, second-person, command, mentor)
+
+Boomer was suggested but skipped: generationally polarizing, risks being
+mean rather than affectionate, and "boomer" is a demographic, not a
+register. Replaced with Hollister-Vance, who covers the terse-command
+register with fictional cover.
+
+REAL WW2 GENERAL was suggested but DELIBERATELY AVOIDED. Real generals
+carry political and historical weight that would have collapsed the
+demonstration purpose. Hollister-Vance is explicitly a FICTIONAL
+COMPOSITE — the card schema, ai_chat_prompt, license note, and capsule
+all state this. He refuses to comment on real conflicts and real
+military figures, in character.
+
+WIZARD kept but tuned: Vendreth is a mentor who REFUSES easy answers,
+which is more useful (and more interesting voice work) than a fantasy
+Q&A bot.
+
+NEW IMPRINT METADATA
+--------------------
+  imprint:       "Open Examples"
+  imprintId:     "open-examples"
+  publisher:     "Asleepius Games" (same as Vibratur and Sky Scaffold)
+  tier:          "concept" (all five cards)
+  publisher_url: same Ko-fi link
+  license:       Daemon Card License v1 (alpha) — free use with attrib.
+
+These are EXPLICITLY FREE TO RIFF ON. The imprint blurb on the catalog
+page says so directly: "ship your own version under your own publisher
+ID. The license is permissive and the format is yours."
+
+CATALOG UI ADDITIONS (daemons.html)
+-----------------------------------
+- imprintList sort order extended:
+    1. Vibratur (anchored — the live property)
+    2. Sky Scaffold (concept — game tie-in)
+    3. Open Examples (concept — demonstration set)
+    4. Other imprints (alphabetical)
+    5. Unaffiliated last
+- IMPRINT_BLURB extended with the Open Examples description, framed
+  as an explicit invitation to fork.
+- Footer counter updated: "14 cards across 3 imprints (5 anchored
+  Vibratur · 4 concept Sky Scaffold · 5 concept Open Examples)."
+
+SITEMAP UPDATES
+---------------
++ 10 new URLs (5 latest pointers + 5 pinned v1.0.0 of Open Examples).
+Total daemon-related URLs in sitemap: now 35.
+Open Examples cards listed at priority 0.7 (latest) / 0.55 (pinned),
+matching Sky Scaffold concepts.
+
+QUALITY NOTE — VOICE DENSITY
+----------------------------
+Each Open Examples card carries the full v0.2.0-alpha schema:
+- activation.one_line_summon (production-ready paste)
+- starter_pack.first_message (mandatory exact opener in ai_chat_prompt)
+- starter_pack.suggested_user_replies (5 chips)
+- persona.speech_fingerprint (cadence, sentence_length, common_tics,
+  avoids, punctuation_habits, formatting_rules)
+- persona.behavioral_signature (7 concrete behaviors)
+- ai_chat_prompt with absolute rules (8-9 numbered), opening line,
+  forbidden topics, and 3 few-shot examples (one a jailbreak resistance)
+- compatibility.tested array (all four major models marked "untested")
+
+Density is comparable to the Sky Scaffold concept cards. No shortcuts.
+Every card was authored to be the best example of its register the
+catalog could ship.
+
+PASS 3.8 STATUS
+---------------
+
+  [x] 5 Open Examples cards inline         devils-advocate, saul-marrow,
+                                           gm-rosalind, hollister-vance,
+                                           vendreth
+  [x] 10 .daemon.json files written        5 latest + 5 pinned v1.0.0
+  [x] Catalog imprint sort updated         Open Examples placed third
+  [x] IMPRINT_BLURB added                  with explicit "free to riff"
+  [x] Footer counter updated               14 cards / 3 imprints
+  [x] Sitemap expanded                     +10 daemon URLs (now 35)
+  [x] Smoke test                           all 14 daemons register;
+                                           imprints helper returns 3 groups
+  [ ] Cross-model testing                  all 5 Open Examples currently
+                                           "untested" on all 4 models
+  [ ] Capsule art                          still placeholder canvas-render
+                                           (icons + gradient suffice for
+                                           the demonstration role)
+
+THIS IS THE NATURAL DEMONSTRATION SURFACE
+-----------------------------------------
+With Open Examples in place, the catalog has a clear three-part story:
+  1. Vibratur — what we use the format for in our own corporate satire.
+  2. Sky Scaffold — what we use it for in our own games.
+  3. Open Examples — what YOU could use it for. Pick one. Riff on it.
+     Or write your own.
+
+This is the closing argument for the Daemon Card pitch. The user can
+see one persona (Saul Marrow) and immediately understand the format
+delivers a working voice. They can see another (Devil's Advocate) and
+immediately understand the format produces a useful tool, not just an
+entertainment.
+
+
+--------------------------------------------------------------------------------
 PASS 3.7 STATUS
 ---------------
 
