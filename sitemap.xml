@@ -303,6 +303,18 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://vibratur.vip/daemons/cards/brox.daemon.json</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://vibratur.vip/daemons/cards/tronaled-grump.daemon.json</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 
   <!-- Open Examples concept daemons · v1.0.0 pinned URLs -->
   <url>
@@ -331,6 +343,18 @@
   </url>
   <url>
     <loc>https://vibratur.vip/daemons/cards/vendreth@1.0.0.daemon.json</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.55</priority>
+  </url>
+  <url>
+    <loc>https://vibratur.vip/daemons/cards/brox@1.0.0.daemon.json</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.55</priority>
+  </url>
+  <url>
+    <loc>https://vibratur.vip/daemons/cards/tronaled-grump@1.0.0.daemon.json</loc>
     <lastmod>2026-05-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.55</priority>
