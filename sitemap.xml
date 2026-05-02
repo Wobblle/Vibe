@@ -360,6 +360,32 @@
     <priority>0.55</priority>
   </url>
 
+  <!-- Pass 3.15 — Harshness pass v1.1.0 pinned URLs -->
+  <url>
+    <loc>https://vibratur.vip/daemons/cards/karst-mellow@1.1.0.daemon.json</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.55</priority>
+  </url>
+  <url>
+    <loc>https://vibratur.vip/daemons/cards/asset-0000@1.1.0.daemon.json</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.55</priority>
+  </url>
+  <url>
+    <loc>https://vibratur.vip/daemons/cards/brox@1.1.0.daemon.json</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.55</priority>
+  </url>
+  <url>
+    <loc>https://vibratur.vip/daemons/cards/tronaled-grump@1.1.0.daemon.json</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.55</priority>
+  </url>
+
   <url>
     <loc>https://vibratur.vip/docs.html</loc>
     <lastmod>2026-04-27</lastmod>
