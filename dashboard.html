@@ -512,11 +512,13 @@
         <span class="icn-sub">internal feed</span>
     </div>
 
-    <!-- App: Apology -->
-    <div class="desktop-icon" onclick="openApp('apology.html', 'Quarterly Apology')" ondblclick="openApp('apology.html', 'Quarterly Apology')">
+    <!-- App: Apology — relocated by Brett-9 into the legacy console.
+         Routes through vibraos.html so the apology lives "inside" the
+         old system. CVO has not been informed. -->
+    <div class="desktop-icon" onclick="openApp('vibraos.html?open=apology', 'Legacy Console — Apology')" ondblclick="openApp('vibraos.html?open=apology', 'Legacy Console — Apology')">
         <span class="icn-em">📝</span>
         <span class="icn-label">Apology</span>
-        <span class="icn-sub">Q3 · paywalled</span>
+        <span class="icn-sub">Q3 · in legacy</span>
     </div>
 
     <!-- App: Documentation -->
@@ -629,7 +631,7 @@
 <div class="taskbar">
     <button class="start-btn" id="startBtn" onclick="toggleStartMenu()"><span class="start-em">⚜</span> Start</button>
     <div class="task-runners">
-        <div class="tr" onclick="openApp('apology.html','Quarterly Apology')">📝 Q3 Apology — drafted</div>
+        <div class="tr" onclick="openApp('vibraos.html?open=apology','Legacy Console — Apology')">📝 Q3 Apology — relocated to legacy</div>
         <div class="tr minimized" onclick="openApp('vibraos.html','VibraOS™ Console')">💻 VibraOS™ — minimized</div>
     </div>
     <div class="tray">
@@ -645,7 +647,7 @@
     <div class="sm-strip">VIBRATUR</div>
     <ul>
         <li onclick="openApp('news.html','News')"><span class="sm-em">📰</span> Vibratur News</li>
-        <li onclick="openApp('apology.html','Apology')"><span class="sm-em">📝</span> Quarterly Apology</li>
+        <li onclick="openApp('vibraos.html?open=apology','Apology (legacy)')"><span class="sm-em">📝</span> Quarterly Apology</li>
         <li onclick="openApp('docs.html','Docs')"><span class="sm-em">📄</span> Documentation</li>
         <li class="sm-divider"></li>
         <li onclick="openApp('v4v.html','V4V Registry')"><span class="sm-em">📐</span> V4V Registry</li>
@@ -795,12 +797,17 @@
     }
     window.openApp = openApp;
 
-    /* ---- Decorative interactions ---- */
+    /* ---- Decorative interactions ----
+       These used to be alert-only decoys. Brett-9 quietly rewired
+       them during the most recent autonomous improvement window so
+       the icons actually open the mail and recycle bin in the
+       legacy console (where the real ones live). The CVO has not
+       been informed. The CVO will not be informed. */
     function openMailFolder() {
-        alert('Your inbox is being migrated by Brett-9 (autonomous).\n\nEstimated completion: 14 weeks.\nDo not contact Brett-9 about this. Brett-9 is contractually unaware.');
+        openApp('vibraos.html?open=inbox', 'Legacy Console — Inbox');
     }
     function openRecycleBin() {
-        alert('The Recycle Bin contains items that are, per §47-VIBE-RETAIN, not eligible for deletion.\n\nThey are recycled in a different sense.');
+        openApp('vibraos.html?open=recycle', 'Legacy Console — Recycle Bin');
     }
     function showWorkstationProperties() {
         alert(

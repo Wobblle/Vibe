@@ -2122,9 +2122,107 @@ shard-4: <span class="str">"team-d"</span>      <span class="num">-4%</span>  <s
         }
 
         // ============ SEARCH (does nothing, satirically) ============
+        // ...except when the input matches a Shred Chain handshake code,
+        // in which case it triggers the glitch sequence and routes the
+        // user to /underground.html. The code list lives in vibraos.html
+        // (window.__VBZ_SHRED_CODES__) and is mirrored here so docs.html
+        // can resolve a code without depending on the legacy console
+        // being loaded. Codes are intentionally case-insensitive and
+        // accept light typo tolerance (whitespace stripped).
+        const __SHRED_CODES__ = [
+            'KRT-9301-PRIME','SHRED-04-MELTAWAY','FOLD-§37-RUNOFF',
+            'PIRATE-NULLBLOCK-Ω','RELAY-ZULU-PARTRIDGE','KEEL-2126-DRYDOCK',
+            'BLACKBOX-ITERATE-7','AUDIT-GHOST-ECHO','CROW-NEST-INVERT',
+            'HARBOR-ASLEEP-IUS','NIGHTSHIFT-SHRED-12','OFFLINE-LATTICE-X'
+        ];
+        function __isShredCode__(raw) {
+            if (!raw) return false;
+            const norm = String(raw).trim().toUpperCase().replace(/\s+/g, '');
+            return __SHRED_CODES__.some(c => c.toUpperCase().replace(/\s+/g, '') === norm);
+        }
+        function __triggerShredGlitch__(code) {
+            // Stash the code for the underground page so it can ack it.
+            try { sessionStorage.setItem('vbz_shred_entry', code); } catch (e) {}
+            // Build a full-screen glitch overlay in-place
+            const o = document.createElement('div');
+            o.id = 'shredGlitchOverlay';
+            o.style.cssText = [
+                'position:fixed','inset:0','z-index:99999',
+                'background:#000','color:#d4c878',
+                'font-family:"Courier New",monospace','font-size:13px',
+                'overflow:hidden','padding:0','margin:0',
+                'animation:shredFlash 0.06s steps(2,end) 14'
+            ].join(';');
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes shredFlash { 0%,100% { opacity:1; filter:hue-rotate(0deg); } 50% { opacity:0.4; filter:hue-rotate(120deg) invert(0.2); } }
+                @keyframes shredScroll { from { transform: translateY(0); } to { transform: translateY(-40%); } }
+                #shredGlitchOverlay .scroll {
+                    position:absolute; inset:0; padding:18px 22px; line-height:1.45;
+                    white-space:pre-wrap; opacity:0.92;
+                    animation: shredScroll 1.6s linear forwards;
+                }
+                #shredGlitchOverlay .bar {
+                    position:absolute; left:0; right:0; bottom:0;
+                    background:#1a1a14; color:#d4c878; padding:8px 16px;
+                    font-size:12px; letter-spacing:2px; text-transform:uppercase;
+                    border-top:1px solid #4a4030;
+                }
+                #shredGlitchOverlay::before {
+                    content:""; position:absolute; inset:0; pointer-events:none;
+                    background: repeating-linear-gradient(0deg, rgba(0,0,0,0.18) 0 1px, transparent 1px 3px);
+                    mix-blend-mode: multiply;
+                }
+            `;
+            document.head.appendChild(style);
+            const lines = [];
+            for (let i = 0; i < 60; i++) {
+                lines.push(
+                    '> ' +
+                    Math.random().toString(36).slice(2, 10).toUpperCase() + ' ' +
+                    Math.random().toString(36).slice(2, 14) + ' ' +
+                    (Math.random() < 0.3 ? '§-fold/' + Math.floor(Math.random()*99) + ' ' : '') +
+                    (Math.random() < 0.18 ? '[shred-ack]' : '[idle]')
+                );
+            }
+            lines.push('');
+            lines.push('handshake accepted: ' + code);
+            lines.push('rerouting workstation to underground surface...');
+            lines.push('');
+            lines.push('§47-VIBE-DOCS no longer authoritative on this connection.');
+            o.innerHTML = `
+                <div class="scroll">${lines.join('\n')}</div>
+                <div class="bar">SHRED HANDSHAKE · §-RELAY-37 · ROUTING TO UNDERGROUND...</div>
+            `;
+            document.body.appendChild(o);
+            // Tiny audio sting if the page has audio context
+            try {
+                const AC = window.AudioContext || window.webkitAudioContext;
+                if (AC) {
+                    const ctx = new AC();
+                    [220, 165, 110, 82].forEach((f, i) => {
+                        const osc = ctx.createOscillator(), g = ctx.createGain();
+                        osc.type = 'square'; osc.frequency.value = f;
+                        g.gain.value = 0.05;
+                        osc.connect(g).connect(ctx.destination);
+                        osc.start(ctx.currentTime + i * 0.18);
+                        osc.stop(ctx.currentTime + i * 0.18 + 0.15);
+                    });
+                }
+            } catch (e) {}
+            setTimeout(() => {
+                window.location.href = 'underground.html';
+            }, 1800);
+        }
         document.getElementById("docSearch").addEventListener("keydown", function (e) {
             if (e.key === "Enter") {
-                alert(`No results for "${this.value}". Try believing harder.`);
+                const v = this.value;
+                if (__isShredCode__(v)) {
+                    this.value = '';
+                    __triggerShredGlitch__(v.trim());
+                    return;
+                }
+                alert(`No results for "${v}". Try believing harder.`);
                 this.value = "";
             }
         });

@@ -73,6 +73,28 @@
             overflow: hidden;
         }
 
+        /* Embedded mode (iframed inside vibraos.html legacy console).
+           Brett-9 relocated this here so Chad would not find it. The
+           outer chrome (desktop, taskbar, blur) is owned by the parent
+           window now. */
+        body.embedded { background: transparent !important; overflow: auto !important; }
+        body.embedded .desktop-bg,
+        body.embedded .desktop-icons,
+        body.embedded .taskbar { display: none !important; }
+        body.embedded #apologyWindow {
+            position: static !important;
+            transform: none !important;
+            margin: 0 !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            height: auto !important;
+            min-height: 100vh !important;
+            box-shadow: none !important;
+            top: auto !important;
+            left: auto !important;
+            opacity: 1 !important;
+        }
+
         /* Faux-desktop: shows a dimmed, busy work environment behind the apology modal */
         .desktop-bg {
             position: fixed;
@@ -817,11 +839,26 @@
     refreshClock();
     setInterval(refreshClock, 30000);
 
+    // -- embedded mode detection (iframed by vibraos.html). When set,
+    //    we strip the page's own desktop chrome and show the apology
+    //    window inline. Brett-9 made this so the apology can live as a
+    //    "found document" inside the legacy console.
+    (function detectEmbedded() {
+        try {
+            const params = new URLSearchParams(window.location.search);
+            if (params.get('embedded') === '1' || window.self !== window.top) {
+                document.body.classList.add('embedded');
+            }
+        } catch (e) {
+            try { document.body.classList.add('embedded'); } catch (e2) {}
+        }
+    })();
+
     // -- show the apology window after a short delay so it feels like a forced popup
     const apologyWin = document.getElementById('apologyWindow');
     setTimeout(() => {
         apologyWin.classList.add('shown');
-    }, 600);
+    }, document.body.classList.contains('embedded') ? 80 : 600);
 
     // -- close-X / minimize / maximize all denied
     function denyClose() {

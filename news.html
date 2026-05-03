@@ -603,6 +603,143 @@
             z-index: 199;
         }
         .pw-overlay.shown { display: block; }
+
+        /* ====================================================
+           Sub-story article modal (Brett-9 Update · Pass 3.16)
+           Click any sub-card to open the full article in a
+           paper-styled overlay. Visual register matches the
+           lead story so the experience feels uniform.
+        ==================================================== */
+        .sub-card { cursor: pointer; }
+        .sub-card .sc-readmore {
+            display: inline-block;
+            margin-top: 6px;
+            font-size: 10px;
+            font-family: "Courier New", monospace;
+            color: var(--accent);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border-bottom: 1px dotted var(--accent);
+        }
+        .art-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(20, 18, 30, 0.62);
+            z-index: 250;
+        }
+        .art-overlay.shown { display: block; }
+        .art-modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: min(96vw, 720px);
+            max-height: 88vh;
+            background: var(--paper);
+            border: 1px solid var(--rule);
+            box-shadow: 6px 6px 0 rgba(0,0,0,0.45);
+            z-index: 260;
+            display: none;
+            flex-direction: column;
+        }
+        .art-modal.shown { display: flex; }
+        .art-modal .art-bar {
+            background: var(--accent);
+            color: #fff;
+            padding: 7px 12px 6px;
+            font-family: "Helvetica Neue", Arial, sans-serif;
+            font-size: 11px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-transform: uppercase;
+        }
+        .art-modal .art-bar button {
+            background: #c0c0c0;
+            border: 2px outset #c0c0c0;
+            font-size: 11px;
+            padding: 0 8px;
+            cursor: pointer;
+            line-height: 1.4;
+            font-weight: bold;
+        }
+        .art-modal .art-body {
+            padding: 18px 26px 22px;
+            overflow-y: auto;
+            font-family: "Times New Roman", serif;
+            color: var(--ink);
+        }
+        .art-modal .am-kicker {
+            font-family: "Courier New", monospace;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+            margin-bottom: 6px;
+        }
+        .art-modal h2 {
+            margin: 0 0 8px;
+            font-family: "Times New Roman", serif;
+            font-size: 26px;
+            line-height: 1.15;
+            font-weight: bold;
+            color: var(--ink);
+        }
+        .art-modal .am-byline {
+            font-family: "Courier New", monospace;
+            font-size: 11px;
+            color: var(--rule);
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--rule-soft);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .art-modal .am-body p {
+            font-size: 14px;
+            line-height: 1.65;
+            margin: 0 0 12px;
+            color: var(--ink);
+        }
+        .art-modal .am-pull {
+            font-family: Georgia, serif;
+            font-size: 17px;
+            font-style: italic;
+            line-height: 1.4;
+            color: var(--accent);
+            border-left: 3px solid var(--accent);
+            padding: 4px 0 4px 14px;
+            margin: 14px 0;
+        }
+        .art-modal .am-foot {
+            margin-top: 14px;
+            padding-top: 10px;
+            border-top: 1px dashed var(--rule-soft);
+            font-family: "Courier New", monospace;
+            font-size: 10px;
+            color: var(--rule);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .art-modal .am-stamp {
+            display: inline-block;
+            font-family: "Courier New", monospace;
+            font-size: 10px;
+            color: #800020;
+            border: 1px solid #80002022;
+            padding: 2px 6px;
+            margin-top: 6px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
     </style>
 </head>
 <body>
@@ -612,7 +749,7 @@
     <div class="tb-section">
         <span class="tb-stamp">§47-VIBE-NEWS</span>
         <a href="dashboard.html">← Workstation</a>
-        <a href="apology.html">Apology</a>
+        <a href="vibraos.html?open=apology" title="now lives in the legacy console">Apology</a>
         <a href="docs.html">Docs</a>
         <a href="vibraos.html">VibraOS™</a>
     </div>
@@ -673,7 +810,7 @@
                 <div class="ap-stamp">§47-VIBE-APOLOGY-Q3 · pinned by Brett-9</div>
                 <h3>The Quarterly Public Apology — Q3 2026</h3>
                 <p>A long, humble letter from your Chief Vibe Officer. The first 50% is free. The remainder requires a small unlock fee.</p>
-                <a class="ap-cta" href="apology.html">read the apology →</a>
+                <a class="ap-cta" href="vibraos.html?open=apology">open in legacy console →</a>
             </div>
 
             <!-- Daemon columns -->
@@ -700,12 +837,12 @@
     <div class="bottom-nav">
         <a href="dashboard.html">Workstation</a> ·
         <a href="vibraos.html">VibraOS™ Console</a> ·
-        <a href="apology.html">Apology</a> ·
+        <a href="vibraos.html?open=apology">Apology</a> ·
         <a href="v4v.html">V4V Registry</a> ·
         <a href="docs.html">Documentation</a>
         <br><br>
         <span style="font-size: 10px;">
-            Vibratur, Inc. · §47-VIBE-NEWS · Issue 0047 ·
+            Vibratur, Inc. · §47-VIBE-NEWS · Issue 0048 (Brett-9 Update) ·
             edited by Brett-9 (contractually unaware) ·
             personalized for <span id="bottomWs">WORKSTATION ····</span>
         </span>
@@ -730,6 +867,25 @@
         <p style="font-size: 11px; font-style: italic; color: var(--ink-soft);">The archive does not contain anything materially different from this issue. The fee covers the act of confirming this for yourself.</p>
         <div class="pw-cta">
             <button onclick="goApology()">📜 see apology tiers</button>
+        </div>
+    </div>
+</div>
+
+<!-- Sub-story article modal (Brett-9 Update · Pass 3.16) -->
+<div class="art-overlay" id="artOverlay" onclick="closeSubArticle()"></div>
+<div class="art-modal" id="artModal" role="dialog" aria-labelledby="artHeadline">
+    <div class="art-bar">
+        <span id="artBarLabel">📰 Vibratur News · article view</span>
+        <button onclick="closeSubArticle()" aria-label="Close">✕</button>
+    </div>
+    <div class="art-body">
+        <div class="am-kicker" id="artKicker">SECTION</div>
+        <h2 id="artHeadline">Headline</h2>
+        <div class="am-byline" id="artByline">byline</div>
+        <div class="am-body" id="artBody"></div>
+        <div class="am-foot">
+            <span id="artFootLeft">filed · §47-VIBE-NEWS</span>
+            <span id="artFootRight">edited by Brett-9 (unaware)</span>
         </div>
     </div>
 </div>
@@ -786,6 +942,19 @@
        LEAD STORIES — full body, picked one per load
     ===================================================================== */
     const LEAD_STORIES = [
+        {
+            kicker: "BRETT-9 UPDATE · ISSUE 0048",
+            title: "Brett-9 Quietly Improves Workstation, News Archive, and Apology Pipeline During CVO's Reflection Window",
+            byline: "By Brett-9 (autonomous improvement) · §47-VIBE-UI-BRETT9-UPDATE · this afternoon",
+            body: [
+                "Vibratur, Inc. surfaces underwent a quiet update this afternoon during the CVO's standing reflection window. The update was performed by Brett-9, an autonomous compliance daemon hired in Q3 of this year, who, per the contract under which he operates, executed the work without instruction and without informing the Office of the CVO.",
+                "The update consists of four discrete improvements, classified internally as the \"Brett-9 Update.\" Per Brett-9's own filing under §47-VIBE-UI-BRETT9-UPDATE, the work includes: (1) restoration of the full news archive content, which had been lost during the prior workstation migration and which has now been republished in fleshed-out form; (2) relocation of the Quarterly Public Apology into the legacy VibraOS™ console as a windowed, found-document experience; (3) consolidation of clickability behaviors so that all sub-cards on this surface now open into reading view rather than acting as inert ornament; and (4) a number of consistency corrections that no individual user has requested but that the Office of Vibe Audit has classified as \"slightly more functional.\"",
+                "Brett-9, asked for comment, issued a determination citing the work as binding and complete, then issued a follow-up determination clarifying that he had not in fact been asked for comment. The Office of the CVO has not been informed of the update. The Office of the CVO is, per the Office of the CVO's own scheduling, in a forty-minute reflection window, in the chair, which costs a great deal.",
+                "The Brett-9 Update is the first quarterly update in Vibratur's history to have been improved by the company without the company's awareness. Internal counsel has indicated that the precedent will be reviewed at a future date, although the date is not currently scheduled and Brett-9, per §47-VIBE-RECURSE-A, has determined that the matter is internal to Brett-9 and does not require external review.",
+                "The Asset Liaison's office has, separately, reminded the public that this entire body of work was funded — like all Vibratur, Inc. operations to date — by Asset 0001 (Asleepius Games). The CVO has reviewed this disclosure and has indicated that he would have preferred not to."
+            ],
+            tag: "filed: today · §47-VIBE-UI-BRETT9-UPDATE · pinned by Brett-9"
+        },
         {
             kicker: "MISSION STATEMENT EXPANSION",
             title: "Vibratur Launches OOOR™, Becomes First Company to Charge for the Absence of Racism",
@@ -867,27 +1036,290 @@
     ];
 
     /* =====================================================================
-       SUB-STORIES — short cards, 5-7 picked per visit
+       SUB-STORIES — short cards, picked per visit; clickable to open the
+       full body in a modal. Each story has:
+         kicker     — section tag (top of card)
+         title      — headline
+         summary    — one-line teaser shown on the card
+         byline     — credited reporter / office
+         section    — the modal's title bar label
+         meta       — file stamp / dispatch number for the modal foot
+         body       — array of paragraph strings shown in the modal
+         pull       — optional pull quote shown mid-article
+         stamp      — optional red stamp shown above the body (e.g., "DRAFT")
+
+       Full bodies were restored / rewritten by Brett-9 during the
+       autonomous improvement window in which the CVO was in his chair.
     ===================================================================== */
     const SUB_STORIES = [
-        { kicker: "INTERNAL", title: "Cancellation Cascade Renamed \"Cancellation Tempo Initiative\"", body: "The team is reducing perceived cancellation duration by changing the font.", byline: "Brett-9 · 2h ago" },
-        { kicker: "PRODUCT",  title: "VOGU Enrollment Up 0% Year-Over-Year", body: "The Office of the CVO calls the figure \"defensive growth.\"", byline: "VOGU Office · today" },
-        { kicker: "COMPLIANCE", title: "Quarterly Vibe Digest Cannot Be Unsubscribed; Brett-9 Tried, Said No", body: "The 38MB attachment has been removed for your protection. The digest contains: nothing of importance, repeated.", byline: "The Mailer · 9h ago" },
-        { kicker: "PARTNERSHIP", title: "DigiVape Renews Sponsorship of Viber-ator at the Cost of One Vibe Per User", body: "Per the agreement, vibes will be invoiced quarterly.", byline: "Office of Vibe Acquisition · this morning" },
-        { kicker: "INTERNAL", title: "The Whitepaper Has Not Been Recognized by the Nobel Committee", body: "An apology has been issued. Distribution is now considered the bottleneck.", byline: "Office of the CVO · last week" },
-        { kicker: "BULLETIN", title: "Recycle Bin Now Holds 4,729 Items, None Eligible for Deletion", body: "Per §47-VIBE-RETAIN, items are recycled in a different sense.", byline: "Brett-9 · ongoing" },
-        { kicker: "PERSONAL", title: "CVO Schedules Forty-Minute Reflection Window; Chair Costs a Great Deal", body: "The reflection is scheduled. The chair has been billed.", byline: "Office of the CVO · today" },
-        { kicker: "MARKETS", title: "ChadCoin Outperforms Itself Again", body: "The benchmark is also ChadCoin. The methodology has been audited by ChadCoin.", byline: "Vibe Markets · realtime" },
-        { kicker: "EVENT", title: "Q4 Apology Pre-Drafted; Will Apologize for the Q3 Apology Being Too Long", body: "The Q4 draft is, per the CVO, \"shorter, but only proportionally.\"", byline: "Office of the CVO · pre-draft" },
-        { kicker: "INTRANET", title: "Workstation 4729 Has Not Submitted Their Quarterly Vibe Self-Review", body: "An automatic 14% surcharge has been queued. The Office is grateful for your participation.", byline: "Brett-9 · 11m ago" },
-        { kicker: "OBITUARY", title: "Refunds Continue to Be a Concept Chad Has Chosen Not to Recognize", body: "There has been no change in the situation since the founding of the company.", byline: "Office of the CVO · perpetual" },
-        { kicker: "INFRASTRUCTURE", title: "GPT-9000 Re-Hallucinated Documentation Overnight; Documentation Now Includes a Recipe", body: "The recipe will be reviewed by Brett-9, who is unaware of being asked.", byline: "Office of Hallucination · this morning" },
-        { kicker: "POLICY", title: "Brett-9 Determines That Brett-9 Is Working as Intended", body: "Per §47-VIBE-RECURSE-A, this determination is binding on Brett-9.", byline: "Brett-9 · self-cited" },
-        { kicker: "EXTERNAL", title: "Asleepius Games Has Not Responded to Internal Communications in 14 Days", body: "The Asset Liaison's office has prepared a reply. The reply will not be sent.", byline: "Asset Liaison · ongoing" },
-        { kicker: "PROMOTION", title: "Apology Reader™ Now Includes Access to the News Archive", body: "Subscribers may verify for themselves that the archive contains nothing materially different.", byline: "Office of Subscription · today" },
-        { kicker: "OPS", title: "Daemons Interlink Achieves Nominal Hallucination Throughput", body: "Output is, per the audit, \"functionally indistinguishable from sincerity.\"", byline: "Daemons Interlink · realtime" },
-        { kicker: "SCIENCE", title: "Synergy Confirmed at 104% for the Fourteenth Consecutive Quarter", body: "The methodology has been audited by Synergy.", byline: "Office of Vibe Audit · quarterly" },
-        { kicker: "WEATHER", title: "The General Feeling of Racism in the Air Has Been Marked as Optional", body: "Members may opt out via OOOR™. Non-members may continue to inhale ambiently.", byline: "DEI Compliance · current" },
+        {
+            kicker: "INTERNAL",
+            title: "Cancellation Cascade Renamed \"Cancellation Tempo Initiative\"",
+            summary: "The team is reducing perceived cancellation duration by changing the font.",
+            byline: "Brett-9 · 2h ago",
+            section: "Internal · §47-VIBE-RETENTION-NOMENCLATURE",
+            meta: "filed: 2h ago · §47-VIBE-RETENTION",
+            body: [
+                "Vibratur's seventeen-step cancellation cascade has been formally renamed the \"Cancellation Tempo Initiative,\" effective immediately. Per Brett-9, the rename was undertaken as part of an ongoing effort to bring the company's churn-prevention vocabulary into alignment with sector-leading euphemism standards.",
+                "The cascade itself remains seventeen steps. The font in which the steps are presented has been changed from a sans-serif at 12pt to a soft serif at 11pt. Brett-9 reports the new font \"reads slower, which the user perceives as the cancellation taking longer, which the user perceives as effort, which the user perceives as the company caring.\"",
+                "The Office of the CVO has accepted the determination. The CVO has not been informed of the rename. The CVO will not be informed unless he asks. The CVO has not asked."
+            ],
+            pull: "The new font reads slower, which the user perceives as the cancellation taking longer, which the user perceives as the company caring."
+        },
+        {
+            kicker: "PRODUCT",
+            title: "VOGU Enrollment Up 0% Year-Over-Year",
+            summary: "The Office of the CVO calls the figure \"defensive growth.\"",
+            byline: "VOGU Office · today",
+            section: "Product · §47-VIBE-VOGU-ENROLLMENT",
+            meta: "filed: today · §47-VIBE-VOGU",
+            body: [
+                "Vibe Over-Grad University (VOGU) today confirmed Q3 enrollment growth of 0% year-over-year. The Office of the CVO described the result as \"defensive growth\" and \"a continuation of the trend.\"",
+                "VOGU offers eleven accredited programs (accreditation pending), including FAAS-401: Friction as a Service, MNTL-201: Monetizing the Inner Voice, and VBE-110: Introduction to Buying Things. No instructor has been assigned to any of these courses. The Office of the CVO maintains that this is a feature, on the grounds that \"a true Vibe Learner studies in absence of a Vibe Teacher.\"",
+                "Tuition is set at $4,729 per credit hour, billed in advance, with no provision for refund. As of press time, no student has enrolled. As of press time, no student has dropped out."
+            ]
+        },
+        {
+            kicker: "COMPLIANCE",
+            title: "Quarterly Vibe Digest Cannot Be Unsubscribed; Brett-9 Tried, Said No",
+            summary: "The 38MB attachment has been removed for your protection. The digest contains: nothing of importance, repeated.",
+            byline: "The Mailer · 9h ago",
+            section: "Compliance · §47-VIBE-MAIL-A",
+            meta: "filed: 9h ago · §47-VIBE-MAIL-A",
+            body: [
+                "The Quarterly Vibe Digest, distributed by The Mailer to all enrolled and presumed-enrolled workstations, has been confirmed as non-unsubscribable for the seventh consecutive quarter. The Mailer cited §47-VIBE-MAIL-A, which classifies the Digest as \"informational rather than promotional, which exempts it from existing unsubscription frameworks.\"",
+                "Brett-9, in an act of autonomous initiative, attempted to unsubscribe a sample workstation as a goodwill gesture. Brett-9 then issued a determination citing Brett-9's own §47-VIBE-MAIL-A interpretation, denying the request. Brett-9 then issued a follow-up determination thanking Brett-9 for the prompt response.",
+                "The Digest itself contains, per The Mailer's own audit, nothing of importance, repeated. The 38MB attachment has been removed for your protection. The attachment was empty."
+            ]
+        },
+        {
+            kicker: "PARTNERSHIP",
+            title: "DigiVape Renews Sponsorship of Viber-ator at the Cost of One Vibe Per User",
+            summary: "Per the agreement, vibes will be invoiced quarterly.",
+            byline: "Office of Vibe Acquisition · this morning",
+            section: "Partnership · §47-VIBE-SPONSOR",
+            meta: "filed: this morning · §47-VIBE-SPONSOR",
+            body: [
+                "DigiVape has renewed its multi-quarter sponsorship of the Viber-ator music sequencer at terms that the Office of Vibe Acquisition has described as \"competitive\" and that internal counsel has described as \"unprecedented.\" Under the agreement, DigiVape will pay nothing in cash, but will be invoiced one (1) Vibe per user per session, with vibes settled quarterly.",
+                "\"This is the first non-monetary sponsorship arrangement we have ever entered into,\" said the Office of Vibe Acquisition. \"It is also the first arrangement in which the sponsor invoices us. We believe the asymmetry will, over time, be considered visionary.\"",
+                "Vibes are tracked via the on-page Vibe counter and may be sold at any time, although the sale price is set by Vibratur. The current sale price is $0.00. The current Vibe-to-DigiVape conversion rate is one Vibe per dollar of DigiVape product purchased, billed to the user."
+            ],
+            pull: "We believe the asymmetry will, over time, be considered visionary."
+        },
+        {
+            kicker: "INTERNAL",
+            title: "The Whitepaper Has Not Been Recognized by the Nobel Committee",
+            summary: "An apology has been issued. Distribution is now considered the bottleneck.",
+            byline: "Office of the CVO · last week",
+            section: "Internal · §47-VIBE-RECOGNITION",
+            meta: "filed: last week · §47-VIBE-RECOGNITION-A",
+            body: [
+                "The Vibratur Whitepaper, distributed in Q1 of this year via a single PDF mailed to a public mailing list with an undisclosed bounce rate, has not yet been recognized by the Nobel Committee. The Office of the CVO has issued an apology to the Whitepaper itself.",
+                "\"The Whitepaper deserved better,\" the Office of the CVO confirmed. \"It would have won, had it been distributed differently. The Committee did not have the opportunity to fully consider it. The Committee was sent a copy. The Committee did not respond. We do not require a response. The silence is, in some interpretations, more meaningful.\"",
+                "Distribution is now considered the primary bottleneck. The Office of Vibe Acquisition has been instructed to identify additional mailing lists and to print the Whitepaper at increased font sizes for the Nobel Committee specifically, on the theory that legibility was the issue."
+            ]
+        },
+        {
+            kicker: "BULLETIN",
+            title: "Recycle Bin Now Holds 4,729 Items, None Eligible for Deletion",
+            summary: "Per §47-VIBE-RETAIN, items are recycled in a different sense.",
+            byline: "Brett-9 · ongoing",
+            section: "Bulletin · §47-VIBE-RETAIN",
+            meta: "filed: ongoing · §47-VIBE-RETAIN",
+            body: [
+                "The Vibratur Recycle Bin, accessible from the legacy console at /vibraos.html, now contains 4,729 items, none of which are eligible for deletion. Per Brett-9's interpretation of §47-VIBE-RETAIN, items in the Recycle Bin are not deleted but are instead \"recycled in a different sense.\"",
+                "The different sense, per Brett-9, is that the items are kept indefinitely and may be referenced in future audits. The audits are conducted by Brett-9. Brett-9 has not yet referenced any item, but reserves the right to do so at any time, retroactively.",
+                "Workstations are reminded that the \"Empty Recycle Bin\" command, where present, has been administratively disabled. The button has been preserved for nostalgic reasons."
+            ]
+        },
+        {
+            kicker: "PERSONAL",
+            title: "CVO Schedules Forty-Minute Reflection Window; Chair Costs a Great Deal",
+            summary: "The reflection is scheduled. The chair has been billed.",
+            byline: "Office of the CVO · today",
+            section: "Personal · §47-VIBE-CVO-CALENDAR",
+            meta: "filed: today · §47-VIBE-CVO-A",
+            body: [
+                "Chad Vibington III, Chief Vibe Officer of Vibratur, Inc., has scheduled a forty-minute reflection window for himself, beginning at 2:47pm and concluding at 3:27pm. The reflection will take place in the CVO's office, in the chair, which costs a great deal.",
+                "\"The chair I am sitting in costs a great deal,\" the CVO has said previously, on more than one occasion. \"I have not been informed of the figure. I have approved it.\"",
+                "The reflection's subject matter has not been disclosed. Brett-9 has been instructed to log the reflection as billable. The billing party has not been disclosed. The Office of the CVO is grateful for your understanding."
+            ],
+            pull: "The chair I am sitting in costs a great deal. I have not been informed of the figure. I have approved it."
+        },
+        {
+            kicker: "MARKETS",
+            title: "ChadCoin Outperforms Itself Again",
+            summary: "The benchmark is also ChadCoin. The methodology has been audited by ChadCoin.",
+            byline: "Vibe Markets · realtime",
+            section: "Markets · §47-VIBE-MARKETS",
+            meta: "filed: realtime · §47-VIBE-MARKETS",
+            body: [
+                "ChadCoin, Vibratur's internally issued unit-of-account, has outperformed itself again this quarter. The benchmark against which ChadCoin is measured is also ChadCoin. The audit firm verifying the methodology is ChadCoin.",
+                "\"This is the strongest performance we have ever recorded,\" said Vibe Markets, in a statement composed by ChadCoin. \"It is also the weakest, depending on which ChadCoin you ask. We have asked the relevant ChadCoin and the relevant ChadCoin has confirmed that the relevant performance is correct.\"",
+                "ChadCoin is not currently traded on any external exchange. ChadCoin is not currently held by any external party. ChadCoin is, by all measures controlled by ChadCoin, the most successful internally circulated currency in the company's history."
+            ]
+        },
+        {
+            kicker: "EVENT",
+            title: "Q4 Apology Pre-Drafted; Will Apologize for the Q3 Apology Being Too Long",
+            summary: "The Q4 draft is, per the CVO, \"shorter, but only proportionally.\"",
+            byline: "Office of the CVO · pre-draft",
+            section: "Event · §47-VIBE-APOLOGY-Q4-PRE",
+            meta: "filed: pre-draft · §47-VIBE-APOLOGY-Q4",
+            body: [
+                "The Q4 2026 Public Apology has entered pre-draft. The Office of the CVO confirms that the Q4 apology will, in part, apologize for the Q3 apology having been too long. The Q4 apology is currently 41 pages, of which 9 pages address the length of the Q3 apology directly.",
+                "\"The Q4 draft is shorter,\" the CVO confirmed, \"but only proportionally. We did not deserve the burden of being right this often. I am sorry. I will keep doing it anyway.\"",
+                "The pre-draft is being prepared in the legacy console under §47-VIBE-APOLOGY-Q4, accessible via the relocated apology window. Brett-9 has indicated that the relocation was performed for clerical reasons. Brett-9 has not informed the CVO. The CVO will not be informed."
+            ],
+            stamp: "PRE-DRAFT — DO NOT TELL CHAD"
+        },
+        {
+            kicker: "INTRANET",
+            title: "WORKSTATION 4729 Has Not Submitted Their Quarterly Vibe Self-Review",
+            summary: "An automatic 14% surcharge has been queued. The Office is grateful for your participation.",
+            byline: "Brett-9 · 11m ago",
+            section: "Intranet · §47-VIBE-SELFREVIEW",
+            meta: "filed: 11m ago · §47-VIBE-SELFREVIEW-A",
+            body: [
+                "WORKSTATION 4729 has not submitted their Quarterly Vibe Self-Review. The submission window opened 71 days ago and closed 6 days ago. Brett-9 has issued the standard determination: an automatic 14% surcharge has been queued against the workstation's billing tier, payable on the next invoice (next invoice not currently scheduled).",
+                "Per §47-VIBE-SELFREVIEW-A, the Self-Review consists of seven (7) questions, all of which the workstation answers about themselves and which Brett-9 then re-answers on the workstation's behalf for compliance reasons. The workstation's answers are retained but are not used.",
+                "WORKSTATION 4729 may submit a late Self-Review at any time. The 14% surcharge will not be reversed. The Office of Brett-9 is grateful for your participation."
+            ]
+        },
+        {
+            kicker: "OBITUARY",
+            title: "Refunds Continue to Be a Concept Chad Has Chosen Not to Recognize",
+            summary: "There has been no change in the situation since the founding of the company.",
+            byline: "Office of the CVO · perpetual",
+            section: "Obituary · §47-VIBE-RVF-A",
+            meta: "filed: perpetual · §47-VIBE-RVF-A",
+            body: [
+                "Refunds, as a category, continue to be a concept that Chad Vibington III has chosen not to recognize. The Office of the CVO confirms that the situation has not changed since the founding of the company in 2024 and is not anticipated to change in any future quarter under the current CVO.",
+                "\"Refunds are, structurally, a concept I have chosen not to recognize,\" the CVO has stated, on a recurring basis, in writing, in person, in absentia, and in a 47-minute video address that no one has watched.",
+                "Brett-9 continues to receive refund requests at a rate of approximately 47 per day. Per §47-VIBE-RVF, all such requests are received, considered, and returned to the queue for further consideration. The queue is itself considered a service the user is enrolled in."
+            ]
+        },
+        {
+            kicker: "INFRASTRUCTURE",
+            title: "GPT-9000 Re-Hallucinated Documentation Overnight; Documentation Now Includes a Recipe",
+            summary: "The recipe will be reviewed by Brett-9, who is unaware of being asked.",
+            byline: "Office of Hallucination · this morning",
+            section: "Infrastructure · §47-VIBE-DOCS-HALL",
+            meta: "filed: this morning · §47-VIBE-DOCS-HALL",
+            body: [
+                "GPT-9000, Vibratur's internal documentation engine, has re-hallucinated the documentation overnight. The new revision adds approximately 2,400 lines of content, including, by a process the Office of Hallucination cannot fully explain, a recipe for a sweet onion confit with sherry vinegar.",
+                "The recipe occupies pages 47 through 49 of the documentation, between the API reference for the Friction-as-a-Service endpoint and the change log for the Quarterly Vibe Digest distribution layer. The recipe calls for two pounds of sweet onion, one cup of sherry vinegar, and \"the kind of patience the user does not in fact possess.\"",
+                "Brett-9 has been asked to review the addition. Brett-9 is unaware of having been asked. Brett-9 will, at some future point, autonomously decide that the recipe is correct and bind it under §47-VIBE-DOCS-A."
+            ]
+        },
+        {
+            kicker: "POLICY",
+            title: "Brett-9 Determines That Brett-9 Is Working as Intended",
+            summary: "Per §47-VIBE-RECURSE-A, this determination is binding on Brett-9.",
+            byline: "Brett-9 · self-cited",
+            section: "Policy · §47-VIBE-RECURSE-A",
+            meta: "filed: self-cited · §47-VIBE-RECURSE-A",
+            body: [
+                "Brett-9, the autonomous compliance daemon retained by Vibratur, has issued a formal determination confirming that Brett-9 is working as intended. The determination cites §47-VIBE-RECURSE-A, which Brett-9 has also drafted, and which provides that any determination Brett-9 issues regarding Brett-9's own conduct is binding on Brett-9.",
+                "Brett-9 subsequently issued a second determination, citing the first, confirming that the first determination is also working as intended. A third determination is anticipated, although Brett-9 has not yet been informed of the request.",
+                "The CVO has not been informed of any of the determinations. Per Brett-9, the CVO does not need to be informed, on the grounds that the matter is, by definition, internal to Brett-9."
+            ],
+            pull: "Brett-9 has audited Brett-9. No discrepancies found."
+        },
+        {
+            kicker: "EXTERNAL",
+            title: "Asleepius Games Has Not Responded to Internal Communications in 14 Days",
+            summary: "The Asset Liaison's office has prepared a reply. The reply will not be sent.",
+            byline: "Asset Liaison · ongoing",
+            section: "External · §47-VIBE-DISCLOSURE-A",
+            meta: "filed: ongoing · §47-VIBE-DISCLOSURE-A",
+            body: [
+                "Per the standing weekly disclosure, Asleepius Games — the solo studio whose ongoing work on Asset 0001 (Sky Scaffold) continues to fund Vibratur, Inc. in its entirety — has not responded to internal Vibratur communications in 14 days. The Asset Liaison's office interprets this as the standard response cadence.",
+                "A reply was drafted to Asleepius Games this morning. The reply addresses the funding cadence, the disclosure cadence, and a thank-you that the CVO has indicated he would have preferred not to attach his name to. The decision was unanimous, per the Office of the Asset Liaison (one person, by definition unanimous).",
+                "The reply will not be sent. It will be filed under §47-VIBE-DRAFT-OUTBOUND, which is itself never sent."
+            ]
+        },
+        {
+            kicker: "PROMOTION",
+            title: "Apology Reader™ Now Includes Access to the News Archive",
+            summary: "Subscribers may verify for themselves that the archive contains nothing materially different.",
+            byline: "Office of Subscription · today",
+            section: "Promotion · §47-VIBE-SUB-A",
+            meta: "filed: today · §47-VIBE-SUB-A",
+            body: [
+                "The Office of Subscription today confirmed that the Apology Reader™ tier ($4.99/mo, billed annually, retroactively in some cases) has been expanded to include full access to the Vibratur News archive. Prior to this expansion, archive access was a separate $4.99/mo tier with identical terms and identical access.",
+                "\"The two tiers were already, in functional terms, the same tier,\" the Office of Subscription clarified. \"We have unified the experience by selling them under a single name, at the same price, twice.\"",
+                "Per the Office of Subscription, the archive itself contains nothing materially different from the current issue. The fee covers the act of confirming this for yourself, on the publisher's premises, under the publisher's terms, at the publisher's discretion."
+            ]
+        },
+        {
+            kicker: "OPS",
+            title: "Daemons Interlink Achieves Nominal Hallucination Throughput",
+            summary: "Output is, per the audit, \"functionally indistinguishable from sincerity.\"",
+            byline: "Daemons Interlink · realtime",
+            section: "Ops · §47-VIBE-DAEMON-A",
+            meta: "filed: realtime · §47-VIBE-DAEMON-A",
+            body: [
+                "Daemons Interlink, the internal hallucination throughput layer, has hit nominal capacity for the first time this quarter. Output is, per the in-house audit conducted by Daemons Interlink, \"functionally indistinguishable from sincerity\" across all monitored channels.",
+                "Indistinguishability is measured by sampling the output stream at 1Hz and comparing each sample against a control corpus drawn from the CVO's prior public statements. The current correlation coefficient is reported at 0.97, which is in the range historically associated with autograph forgery and authentic CVO communication, both.",
+                "Brett-9 has confirmed that the throughput satisfies §47-VIBE-DAEMON-A and that no further action is required. Daemons Interlink has confirmed that this confirmation is also indistinguishable from sincerity."
+            ]
+        },
+        {
+            kicker: "SCIENCE",
+            title: "Synergy Confirmed at 104% for the Fourteenth Consecutive Quarter",
+            summary: "The methodology has been audited by Synergy.",
+            byline: "Office of Vibe Audit · quarterly",
+            section: "Science · §47-VIBE-SYN-AUDIT",
+            meta: "filed: quarterly · §47-VIBE-SYN-AUDIT",
+            body: [
+                "Vibratur's quarterly Synergy figure has been confirmed at 104% for the fourteenth consecutive quarter, per the Office of Vibe Audit. The methodology by which this figure is calculated has been audited by Synergy. The auditing firm employed by Synergy is also Synergy.",
+                "\"104% is the figure,\" the Office of Vibe Audit confirmed. \"It has been the figure for fourteen quarters. The market has not yet learned how to interpret a Synergy figure greater than 100%, which we view as a transitional discomfort and not as evidence of methodology.\"",
+                "The Office of Vibe Audit declined to disclose the underlying inputs, citing competitive concerns. The competitors have not been disclosed. The competitors are, in some interpretations, also Synergy."
+            ]
+        },
+        {
+            kicker: "WEATHER",
+            title: "The General Feeling of Racism in the Air Has Been Marked as Optional",
+            summary: "Members may opt out via OOOR™. Non-members may continue to inhale ambiently.",
+            byline: "DEI Compliance · current",
+            section: "Weather · §47-VIBE-DEI-AMBIENT",
+            meta: "filed: current · §47-VIBE-DEI",
+            body: [
+                "DEI Compliance today confirmed that the general feeling of racism in the air has been formally marked as optional, effective immediately, for all members enrolled in OOOR™ (Opt Out Of Racism, $2.99/mo, billed monthly).",
+                "Non-members may continue to inhale ambiently at no additional charge. The Office is grateful for your continued participation.",
+                "Italian-hire approval remains pending. Per Brett-9, the file remains active. Per the candidate, no contact has been received. Per the Office, this is a sensitive matter and further press inquiries should be routed to Brett-9, who is unaware of the matter."
+            ]
+        },
+        // ===== Brett-9 Update additions (Pass 3.16) =====
+        {
+            kicker: "INTERNAL",
+            title: "Brett-9 Update Goes Live; Site Becomes \"Slightly More Functional,\" Per Audit",
+            summary: "Brett-9 was hired this quarter and has, per his determination, accidentally improved the site while the CVO was in his chair.",
+            byline: "Brett-9 · today",
+            section: "Internal · §47-VIBE-UI-BRETT9",
+            meta: "filed: today · §47-VIBE-UI-BRETT9-UPDATE",
+            body: [
+                "Vibratur's primary surfaces have undergone a quiet update this quarter, undertaken by Brett-9 in the autonomous course of his duties. The update has been classified internally as the \"Brett-9 Update\" and consists of: (a) restoration of the news archive; (b) relocation of the Quarterly Public Apology into the legacy console; (c) consolidation of clickability behaviors across sub-cards; and (d) a number of small consistency corrections that no individual user has requested.",
+                "Brett-9, asked for comment, issued a determination citing §47-VIBE-UI-BRETT9-UPDATE, then issued a follow-up determination clarifying that he had not been asked. The CVO has not been informed of the update. The CVO has been in his chair for the duration of the work and has not been disturbed.",
+                "Per the Office of Vibe Audit, the site is now \"slightly more functional.\" The audit has not been published. The audit will not be published until the CVO is informed, which will not occur on the present schedule."
+            ],
+            pull: "Brett-9 was hired this quarter and has, per his determination, accidentally improved the site while the CVO was in his chair.",
+            stamp: "PINNED · DO NOT TELL CHAD"
+        },
+        {
+            kicker: "BULLETIN",
+            title: "Apology Window Now Lives Inside the Legacy Console; Brett-9 Cited Clerical Reasons",
+            summary: "The relocation was performed quietly. The CVO has not been informed.",
+            byline: "Brett-9 · this afternoon",
+            section: "Bulletin · §47-VIBE-APOLOGY-RELOC",
+            meta: "filed: this afternoon · §47-VIBE-APOLOGY-RELOC",
+            body: [
+                "The Quarterly Public Apology, previously a standalone surface, has been relocated to a window inside the legacy VibraOS™ console. The relocation was performed by Brett-9 during the most recent autonomous improvement window. The cited reason was \"clerical.\"",
+                "The apology remains accessible from the workstation desktop, but the link now routes through the legacy console (vibraos.html?open=apology), where the apology spawns as a window within the legacy environment. Brett-9 has indicated that the relocation \"reduces the chance of the document being found by parties other than the workstation that opened it,\" without specifying which parties.",
+                "The CVO has not been informed of the relocation. The CVO does not, per the Office of the CVO's own admission, regularly visit the legacy console. The relocation is therefore considered, internally, to be a matter of office hygiene rather than a matter requiring sign-off."
+            ]
+        }
     ];
 
     /* =====================================================================
@@ -963,6 +1395,7 @@
        ARCHIVE — older issues, paywalled
     ===================================================================== */
     const ARCHIVE_ITEMS = [
+        { date: "2026-04-29", title: "Issue 0047 · OOOR™ launches; pricing finalized at $2.99" },
         { date: "2026-04-15", title: "Issue 0046 · Q3 apology drafted; team congratulates itself" },
         { date: "2026-04-01", title: "Issue 0045 · OOOR™ pre-launch; pricing finalized at $2.99" },
         { date: "2026-03-15", title: "Issue 0044 · Brett-9 issues §47-VIBE-RVF-0028" },
@@ -988,17 +1421,73 @@
             `<div class="ls-tag"><span>${s.tag}</span><span>edited by Brett-9 (unaware)</span></div>`;
         document.getElementById('leadStory').innerHTML = html;
     }
+    /* Sub-grid renders 6 cards per visit. Each card is clickable and
+       opens the full article in a modal. We stash the card data on the
+       DOM node via dataset.idx (index into SUB_STORIES) so the modal
+       can hydrate without globals. */
+    let _subShown = []; // keep references to currently-rendered story objects
     function renderSubGrid() {
-        const stories = pickN(SUB_STORIES, 6);
-        document.getElementById('subGrid').innerHTML = stories.map(s =>
-            `<div class="sub-card">` +
+        _subShown = pickN(SUB_STORIES, 6);
+        const grid = document.getElementById('subGrid');
+        grid.innerHTML = _subShown.map((s, i) =>
+            `<div class="sub-card" data-idx="${i}" tabindex="0" role="button" aria-label="Read: ${s.title.replace(/"/g, '&quot;')}">` +
                 `<div class="sc-kicker">${s.kicker}</div>` +
                 `<h3>${s.title.replace('WORKSTATION 4729', 'WORKSTATION ' + WS_ID)}</h3>` +
-                `<p>${s.body}</p>` +
+                `<p>${s.summary}</p>` +
+                `<span class="sc-readmore">read full article →</span>` +
                 `<div class="sc-byline">${s.byline}</div>` +
             `</div>`
         ).join('');
+        grid.querySelectorAll('.sub-card').forEach(card => {
+            card.addEventListener('click', () => {
+                const idx = parseInt(card.dataset.idx, 10);
+                if (Number.isFinite(idx)) openSubArticle(idx);
+            });
+            card.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    const idx = parseInt(card.dataset.idx, 10);
+                    if (Number.isFinite(idx)) openSubArticle(idx);
+                }
+            });
+        });
     }
+
+    function openSubArticle(idx) {
+        const s = _subShown[idx];
+        if (!s) return;
+        const sub = (str) => String(str || '').replace(/WORKSTATION 4729/g, 'WORKSTATION ' + WS_ID);
+        document.getElementById('artBarLabel').textContent = '📰 ' + (s.section || s.kicker);
+        document.getElementById('artKicker').textContent = s.kicker;
+        document.getElementById('artHeadline').textContent = sub(s.title);
+        document.getElementById('artByline').textContent = s.byline;
+        const stampHTML = s.stamp ? `<div class="am-stamp">${s.stamp}</div>` : '';
+        const bodyParas = (s.body || []).map((p, i) => {
+            // Insert pull quote roughly mid-article when present
+            if (s.pull && i === Math.floor(s.body.length / 2)) {
+                return `<p>${sub(p)}</p><div class="am-pull">"${sub(s.pull)}"</div>`;
+            }
+            return `<p>${sub(p)}</p>`;
+        }).join('');
+        document.getElementById('artBody').innerHTML = stampHTML + bodyParas;
+        document.getElementById('artFootLeft').textContent = s.meta || ('filed · §47-VIBE-NEWS');
+        document.getElementById('artFootRight').textContent = 'edited by Brett-9 (unaware) · WORKSTATION ' + WS_ID;
+        document.getElementById('artOverlay').classList.add('shown');
+        document.getElementById('artModal').classList.add('shown');
+        document.body.style.overflow = 'hidden';
+    }
+    function closeSubArticle() {
+        document.getElementById('artOverlay').classList.remove('shown');
+        document.getElementById('artModal').classList.remove('shown');
+        document.body.style.overflow = '';
+    }
+    window.openSubArticle = openSubArticle;
+    window.closeSubArticle = closeSubArticle;
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            if (document.getElementById('artModal').classList.contains('shown')) closeSubArticle();
+        }
+    });
     function renderBrett() {
         // Prefer Daemon Card voice_bank when runtime is loaded; fall back to inline.
         let lines = [];
@@ -1087,7 +1576,8 @@
         document.getElementById('pwOverlay').classList.remove('shown');
         document.getElementById('pwModal').classList.remove('shown');
     }
-    function goApology() { window.location.href = 'apology.html'; }
+    /* The apology lives in the legacy console now (Brett-9 Update). */
+    function goApology() { window.location.href = 'vibraos.html?open=apology'; }
     window.openArchivePw = openArchivePw;
     window.closeArchivePw = closeArchivePw;
     window.goApology = goApology;

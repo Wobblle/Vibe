@@ -2841,6 +2841,2306 @@ Vibe in compliance.
 
 
 ================================================================================
+   PASS 3.16  —  THE BRETT-9 UPDATE  ·  "FUNCTIONAL IS FRICTIONAL"
+================================================================================
+
+   Pass 3.16 is filed as the Brett-9 Update. Brett-9 was hired this
+   quarter and has, per his own determination, accidentally improved the
+   site while the CVO was in his chair. The work has not been authorized.
+   The CVO has not been informed. The CVO will not be informed unless he
+   asks. The CVO has not asked.
+
+   Operating principle for this pass:
+
+      "Frictionization in the small. Functionality in the large.
+       Satire stays in the pockets. Beige dystopia bleeds into the bones."
+
+   In production terms: the site graduates from "absurd showcase" toward
+   "credible corporate intranet that is also wrong about the world."
+   Satire is no longer evenly distributed across every pixel — it now
+   lives in named pockets (the legacy console, Chad's voice, Brett-9's
+   determinations, the Asset Liaison's bulletins), while the connective
+   tissue (navigation, archives, modals, persistent identity) hardens
+   toward "actually works."
+
+   ─────────────────────────────────────────────────────────────────────
+   1. NEWS RESTORATION  ·  18 sub-stories rewritten with full bodies
+   ─────────────────────────────────────────────────────────────────────
+
+   In Pass 3.x (the dashboard migration), the news.html surface lost
+   its full article bodies. Headlines remained; clickability did not.
+   This pass restores them.
+
+   Each of the 18 SUB_STORIES entries in news.html now carries:
+
+       summary      → one-line teaser shown on the card
+       body         → 3-paragraph article (varied voice per kicker)
+       section      → modal title-bar label
+       meta         → file stamp / dispatch number
+       pull         → optional pull quote (mid-article)
+       stamp        → optional red stamp (e.g., "DRAFT — DO NOT TELL CHAD")
+
+   The paragraphs are written in the voice of the office that filed
+   them: Brett-9 self-cites; the Asset Liaison reports outreach
+   attempts that were prepared but not sent; the Office of the CVO
+   speaks in the third person about the chair; the Office of Vibe
+   Audit speaks of itself as having audited itself.
+
+   Two new sub-stories were added under Pass 3.16:
+
+      • "Brett-9 Update Goes Live; Site Becomes 'Slightly More
+        Functional,' Per Audit"
+      • "Apology Window Now Lives Inside the Legacy Console; Brett-9
+        Cited Clerical Reasons"
+
+   Both are stamped DO NOT TELL CHAD.
+
+   ─────────────────────────────────────────────────────────────────────
+   2. SUB-STORY MODAL  ·  uniform reading view, kbd-accessible
+   ─────────────────────────────────────────────────────────────────────
+
+   Sub-cards are now buttons (role="button", tabindex=0, Enter/Space to
+   open, Escape to close). Click opens an .art-modal overlay rendered
+   with a paper-styled reading view that visually rhymes with the lead
+   story (Times New Roman, kicker mono, byline tabular).
+
+   Implementation lives in news.html:
+       openSubArticle(idx)   →  hydrates from _subShown[idx]
+       closeSubArticle()     →  clears the overlay, restores body scroll
+       _subShown             →  the 6 stories rendered this visit
+
+   Pull quotes, when present, are inserted at the midpoint of the
+   article. Stamps render above the body in a red-bordered mono pill.
+
+   ─────────────────────────────────────────────────────────────────────
+   3. ISSUE 0048  ·  the lead story for the Brett-9 Update
+   ─────────────────────────────────────────────────────────────────────
+
+   A new entry was added to LEAD_STORIES at position [0]:
+
+      kicker:  "BRETT-9 UPDATE · ISSUE 0048"
+      title:   "Brett-9 Quietly Improves Workstation, News Archive,
+                and Apology Pipeline During CVO's Reflection Window"
+
+   The body documents the Update in-character: four discrete
+   improvements; CVO unaware; reflection window; Asset Liaison's
+   reminder of the funding source. The story rotates with the others
+   per visit (LEAD_STORIES uses pick() uniformly).
+
+   ARCHIVE_ITEMS gains Issue 0047 (OOOR™ launch · 2026-04-29) so the
+   issue numbering coheres with Pass 3.x's prior passes.
+
+   ─────────────────────────────────────────────────────────────────────
+   4. APOLOGY RELOCATION  ·  the apology now lives in the legacy console
+   ─────────────────────────────────────────────────────────────────────
+
+   The Quarterly Public Apology has been relocated. apology.html still
+   exists at its canonical URL (preserving backlinks, sitemap entry,
+   schema.org JSON-LD), but the canonical entry path is now:
+
+      dashboard.html  →  click "Apology" icon
+        →  vibraos.html?open=apology
+          →  legacy console mounts the apology window via iframe
+
+   Implementation:
+
+      • vibraos.html now contains an #apologyWindow component (98.css
+        window) with an iframe (#apologyFrame) and a deep-link
+        detector that auto-spawns the window when ?open=apology is
+        present in the URL. ~900ms delay so the legacy console
+        finishes mounting first ("found document" feel, not popup).
+
+      • apology.html accepts ?embedded=1 and also detects iframe
+        context. When embedded, body.embedded strips the page's own
+        desktop chrome (.desktop-bg, .desktop-icons, .taskbar) and
+        renders the apology window inline at full width. The slide-in
+        delay is reduced to 80ms in embedded mode.
+
+      • dashboard.html "Apology" icon, clock-tray entry, and start
+        menu entry all route through vibraos.html?open=apology.
+
+      • news.html top bar, bottom nav, pinned apology call-to-action,
+        and goApology() function all route through the legacy console.
+
+      • The legacy console's own apology desktop icon and start menu
+        entry now call openApologyWindow() in-place rather than
+        navigating away.
+
+   In-world framing: Brett-9 cited "clerical reasons." The CVO has
+   not been informed. The CVO does not regularly visit the legacy
+   console. The relocation is therefore considered, internally, a
+   matter of office hygiene rather than a matter requiring sign-off.
+
+   ─────────────────────────────────────────────────────────────────────
+   5. NARRATIVE FRAMING  ·  why "Brett-9 Update" matters
+   ─────────────────────────────────────────────────────────────────────
+
+   Prior passes treated improvement as authorial work performed
+   externally on the site. Pass 3.16 internalizes the act: the work
+   was performed BY a daemon that exists inside the world, AGAINST
+   the official wishes of the CEO who exists inside the world, with
+   the CEO unaware throughout. This:
+
+      a) makes future improvements deniable in-world (any subsequent
+         consistency or polish pass can be attributed to Brett-9
+         working autonomously while Chad is in his chair)
+
+      b) gives Brett-9 a recurring, escalating role as the site's
+         hidden operator (a "second mover" character whose behavior
+         is, by contract, not authorized but also not stoppable)
+
+      c) preserves Chad's voice as static / oblivious — Chad does
+         not improve, Chad reflects; improvement requires absence
+
+   This is the bleed-in of "beige dystopia" the user asked for. The
+   site is now run, increasingly, by characters that exist inside
+   the site, rather than by an unseen hand. The hand is Brett-9.
+
+   ─────────────────────────────────────────────────────────────────────
+   6. NEXT (proposed, not shipped this pass)
+   ─────────────────────────────────────────────────────────────────────
+
+   Surfaced for the user to pick from:
+
+      • PERSISTENT CHARACTER STATUS BAR — a thin strip across every
+        page footer rotating "what each daemon is doing right now"
+        (e.g., "[brett-9] revising §47-VIBE-AUDIT", "[chad] in his
+        chair (47m elapsed)", "[asset-liaison] drafting reply (will
+        not send)"). Always present, low contrast, beige.
+
+      • CHARACTER DIRECTORY PAGE — a quiet "team" page (NOT a daemon
+        catalog; the daemon catalog already exists at /daemons.html).
+        This page lists Chad, Brett-9, Asset Liaison, Mailer,
+        Operator as employees of Vibratur with corporate bios in
+        their own register. No download buttons. No imprint logos.
+        Reads as a real "About the Team" page that is also wrong.
+
+      • INTERNAL DOCUMENTS ARCHIVE — Brett-9 quietly piles memos,
+        audits, system logs, and §47-VIBE-* dispatches into a single
+        page (e.g., /docs-internal.html or /memos.html). Each
+        document is short. Each is dated. Each is wrong about the
+        world in a small way. Together they thicken the lore.
+
+      • AESTHETIC PALETTE TIGHTENING — apply a consistent beige
+        dystopia palette (dusty cream, putty, muted amber, soft rust)
+        across non-chaos pages so the chaos in vibraos.html reads as
+        a contained zone rather than the site's default register.
+
+      • SKY SCAFFOLD WHISPER LAYER — references to the actual game
+        appearing in subtle, lore-consistent places (the Asset
+        Liaison's bulletin already does this; could extend to the
+        Mailer's outbound queue, Brett-9's audit findings, etc.).
+        Needs care: must remain anti-marketing, must remain in the
+        Asset Liaison's voice.
+
+   Implementation order TBD by the user. Persistent character status
+   bar is the smallest unit of "beige bleed" and is recommended as
+   the next move.
+
+
+================================================================================
+   PASS 3.17  —  THE SHRED CHAIN  ·  "DISCOVERY IS THE POINT"
+================================================================================
+
+   Pass 3.17 introduces a multi-step easter-egg path leading to a
+   hidden underground terminal at /underground.html. Nothing in the
+   surface UI advertises it. No icon, no link, no menu entry, no
+   sitemap reference, no robots.txt mention (intentionally — even a
+   Disallow line would leak the path). The page itself carries
+   <meta name="robots" content="noindex,nofollow"> and a
+   <meta name="referrer" content="no-referrer"> so search engines
+   pass it by and the underground does not leak referrer headers
+   back to the surface in the rare case a user clicks an outbound
+   link from within it.
+
+   Authoring principle (per the user, verbatim):
+
+      "anyone who pulls the threads will be rewarded. I don't want
+       to leave hints all over the place that tell the player about
+       this. I want it to feel like a real discovery."
+
+   This pass builds the scaffolding. Underground content itself is
+   the user's iteration target going forward.
+
+   ─────────────────────────────────────────────────────────────────────
+   ALIGNMENT TO THE GAME (Sky Scaffold)
+   ─────────────────────────────────────────────────────────────────────
+
+   The shred chain is a website-side analog of the game's hidden
+   pirate path. In Sky Scaffold:
+
+      • The default game register is corporate (HIGI), with loss-on-
+        death and ordinary onboarding language.
+      • After weeks or months of ordinary play, a player can pull
+        a series of threads that are not signposted.
+      • If they follow them, they defect to the pirate side, and
+        the rules quietly invert: building becomes persistent,
+        loss becomes meaningful, and the world they helped build
+        as a HIGI operative becomes the thing they are now fighting
+        against.
+      • The discovery is never advertised in-game. Some players
+        never find it. That is the design.
+
+   The website mirrors this shape. The corporate register (Vibratur,
+   Brett-9, Chad's chair, the apology, the legacy console) is the
+   default. The pirate register (the underground, the relay, the
+   handshake, "shred", "fold") is the discovery. They are the same
+   piece of art, performed twice, at different scales.
+
+   ─────────────────────────────────────────────────────────────────────
+   THE CHAIN  —  step-by-step (for future maintenance)
+   ─────────────────────────────────────────────────────────────────────
+
+   STEP 1 · INBOX FLAVOR
+     Five new "reply-to-Chad" emails added at the top of
+     VBZ_MESSAGES in vibraos.html (m-r1 .. m-r5). Each carries
+     _replyable: true, which causes openMessage() to render an
+     inline reply form. Whatever the user types is compressed
+     through the existing Sentiment Realignment Layer™ pattern
+     (mirroring the comments-section gag) into a Chad-voice
+     auto-reply (CHAD_REPLY_REWRITES bank, 10 entries). Pure
+     flavor — does not advance the chain.
+
+   STEP 2 · THE KERTH EMAIL  (id: m-kerth)
+     Appears in the inbox between the reply-gag emails and the
+     existing m-001 set. From "Kerth <relay-37@signal-fold.net>".
+     Subject: "scheduled relay status — week 47". Body reads as
+     routine corporate comms-infrastructure status. At the bottom,
+     in a dashed-yellow box styled to look like spam-filter
+     warning chrome, the phishing-style call-to-action:
+
+         ⚠️ Your account may be eligible for an emergency audit
+         review. [Click here for hijack]. This message was
+         scanned. Confidence: low.
+
+     The link calls openShredPacketModal(). The whole envelope is
+     designed so a user reading inbox-fast skims past it as spam.
+     A user who slows down clicks the link.
+
+   STEP 3 · SHRED PACKET MODAL
+     openShredPacketModal() spawns a 98.css window titled
+     "⚠ unverified relay · §-fold/37" with a single textarea
+     ("upload shred pirate dataome packet · paste packet (any
+     contents)") and an upload button. Anything the user enters
+     (including nothing) is accepted. submitShredPacket() sets
+     localStorage.vbz_shred_armed = '1' and surfaces a brief
+     toast: "packet routed · check recycle bin for handshake".
+
+   STEP 4 · RECYCLE BIN  (new desktop icon)
+     A Recycle Bin icon was added to the legacy console desktop
+     (id="recycleBinIcon", top:830px, right:10px) and to the Start
+     Menu. openRecycleBin() spawns a window listing 9 boring
+     legacy artifacts (CVO chair invoice REDACTED, Q2 apology
+     v47 FINAL FINAL, brett-9_audit_of_brett-9.txt, the GPT-9000
+     sweet onion confit recipe, etc.). Clicking any of them shows
+     the standard "recycled in a different sense" toast.
+
+     If shredArmed() returns true, an additional row appears at
+     the top, styled in amber-on-black with a slight glow:
+
+         📡  [INCOMING] handshake.dat   just now · §-relay-37
+
+     Clicking it opens the handshake modal: a black-paneled window
+     that reads "we connected." and lists 12 valid SHRED_CODES
+     (KRT-9301-PRIME, SHRED-04-MELTAWAY, FOLD-§37-RUNOFF, etc.),
+     each clickable to copy to clipboard. Signed off "— k.".
+
+   STEP 5 · DOCS SEARCH INTERCEPT  (docs.html)
+     The existing #docSearch handler now checks the input against
+     __SHRED_CODES__ (case-insensitive, whitespace-stripped). On
+     match: __triggerShredGlitch__() builds a full-screen overlay
+     with scrolling glitch text, brief audio sting (4 descending
+     square-wave tones), 1.8s display, then window.location to
+     /underground.html. The matched code is stashed in
+     sessionStorage.vbz_shred_entry so the underground can ack it.
+
+     Codes work regardless of whether the upstream chain has been
+     completed. A user who arrives with a code from a friend or a
+     screenshot is admitted. This is intentional. Discovery is the
+     point. Gatekeeping is not.
+
+   STEP 6 · UNDERGROUND TERMINAL  (/underground.html)
+     A standalone page. Amber-on-black, CRT scanlines, vignette,
+     ASCII banner, monospace shell. Built from scratch in vanilla
+     JS — no external dependencies. Deliberately credits late.sh
+     by mpiorowski as visual inspiration in the `about` command,
+     with a link to the upstream repo. No code from late.sh is
+     used; the user's own README on the AgeLineEuclidiation fork
+     is explicit that supporters should support the source repo,
+     not the satire fork. The underground here honors that.
+
+     Architecture:
+       • Identity        — sessionStorage holds vbz_underground_sess
+                           (regenerated per new browser session) and
+                           reads vbz_ws_id from localStorage if the
+                           workstation has been seen on the surface.
+       • Pirate name     — deterministic hash of (ws + sess) into
+                           PIRATE_FIRST × PIRATE_LAST (e.g., "Salt
+                           Halberd", "Iron Karst"). Stable per
+                           session, varies across sessions/devices.
+       • Boot sequence   — async typewriter prints handshake ack,
+                           code resolution (if any), reroute notice,
+                           welcome.
+       • Command parser  — COMMANDS object, each with desc + run.
+                           Run signature: function (args, ctx).
+                           ctx exposes out/outRaw/heading/err/ok/
+                           dim/ascii/clear plus session metadata.
+       • Input           — Enter to run, ↑/↓ for history (200 line
+                           cap), Tab for command completion, Ctrl-L
+                           to clear. Always-focused input (clicks
+                           outside a text selection refocus).
+       • Status strip    — bottom bar: relay name, live indicator,
+                           session id, "no logging · no telemetry ·
+                           client-side" disclaimer.
+
+     Initial command set (extensible — see the runtime header
+     comment in underground.html):
+
+         help     — list commands
+         whoami   — pirate callsign + workstation + session
+         manifest — shred network status with ASCII diagram
+         cargo    — what your workstation has "smuggled"
+         comms    — recent transmissions across the relay
+         chad     — chad is in his chair (reflective easter egg)
+         kerth    — about the relay operator
+         about    — what this is + credits to late.sh
+         vibes    — current vibe pressure on the relay
+         echo     — echo args
+         date     — system date
+         clear/cls — clear screen
+         exit/quit/logout — return to surface (NORMAL SERVICE
+                            RESUMED overlay → /dashboard.html)
+         ls       — alias of help
+         cat      — read known artifacts (handshake.dat, manifest,
+                    about)
+         sky      — about Sky Scaffold (asset 0001), Steam +
+                    ko-fi links
+         sudo     — explicitly refused (no root, only the fold
+                    and the operator)
+         rm       — refused per §47-VIBE-RETAIN
+
+     Adding a command:
+
+         COMMANDS['mycmd'] = {
+             desc: 'short help',
+             run: function (args, ctx) { ctx.out('output'); }
+         };
+
+   ─────────────────────────────────────────────────────────────────────
+   DELIBERATE NON-CHOICES  (worth noting)
+   ─────────────────────────────────────────────────────────────────────
+
+   • underground.html is NOT in sitemap.xml.
+   • underground.html is NOT mentioned in robots.txt (Disallow lines
+     leak the path; meta name="robots" noindex,nofollow is
+     sufficient and does not advertise the page exists).
+   • There is NO link to underground.html from any visible page.
+   • The Kerth email is NOT highlighted, NOT pinned, NOT priority-
+     high — it sits in the "normal" pile and reads as routine status.
+   • The Recycle Bin contains 9 boring decoy items by default; the
+     handshake.dat entry only renders when the chain is armed.
+   • The shred packet upload accepts any input (including empty);
+     contents are not validated; the relay is "one-way" in-world.
+   • The codes are case-insensitive and whitespace-tolerant —
+     so a user who screenshots a code and re-types it gets in.
+
+   ─────────────────────────────────────────────────────────────────────
+   ATTRIBUTION  (license note for future maintainers)
+   ─────────────────────────────────────────────────────────────────────
+
+   The visual register of /underground.html (amber-on-black,
+   scanlines, banner art, command shell) is inspired by terminal
+   clubhouses like late.sh:
+
+       https://github.com/mpiorowski/late-sh
+
+   That project is a Rust workspace (SSH server, PostgreSQL,
+   Icecast, Liquidsoap). NO CODE from that project was used in
+   our underground.html — the terminal is built from scratch in
+   vanilla JS. The user's own README on their satirical fork
+   (Wobblle/AgeLineEuclidiation) is explicit:
+
+       "PLEASE ONLY SUPPORT THE SOURCE REPO OF THE REAL PROJECT,
+        THIS IS SATIRE!"
+
+   Future passes that extend the underground should preserve this
+   line: build from scratch, credit the inspiration in the `about`
+   command, do not lift code unless the actual LICENSE permits it
+   AND attribution is added properly.
+
+   ─────────────────────────────────────────────────────────────────────
+   NEXT (the user's iteration target)
+   ─────────────────────────────────────────────────────────────────────
+
+   The user has flagged: "Once this is all set though, the
+   underground part will be where I will put my energy." This pass
+   delivers the scaffolding. Suggested directions for the user to
+   pull on:
+
+      • Lore commands — `lore`, `history`, `factions`, etc., which
+        narrate the §-fold's backstory in fragmentary pieces.
+      • A second relay — §-fold/04 or similar, reachable only by
+        a command discovered through cat'ing a hidden artifact.
+      • Persistent cargo — let the player accumulate items via
+        commands (e.g., `pull <thing>`) tracked in localStorage.
+      • A reverse channel — let the player leave a one-line
+        message that other shred users see (sessionStorage in
+        the player's browser only; no actual server).
+      • Sky Scaffold lore drops — short fragments accessible via
+        commands, written in the game's own register, that hint
+        at the corporate-to-pirate flip.
+
+
+================================================================================
+   PASS 3.18  —  THE SHRED CRAWLER  ·  PHASE 0  (FOUNDATIONS)
+================================================================================
+
+   Pass 3.18 ships the foundations layer of the Shred Crawler — the
+   text-based dungeon crawler hidden inside the underground terminal.
+   Phase 0 is pure architecture: state shape, code grammar, the
+   narrate() chokepoint, and the run-setup menu. No gameplay yet.
+   Rooms, combat, items, doors, and enemies arrive in later phases.
+
+   Canonical spec:  /context/SHRED_CRAWLER.md  (v0.3, locked)
+
+   Spec was developed across Pass 3.17.5 in three planning rounds:
+   v0.1 (initial brainstorm), v0.2 (Brox/Drakey/Torred/factions/Pack),
+   v0.3 (INT softened, role correction, doors probabilistic). The
+   user explicitly held the build until the spec was locked. Phase 0
+   was green-lit on the v0.3 lock and shipped in this pass.
+
+   ─────────────────────────────────────────────────────────────────────
+   FILES SHIPPED
+   ─────────────────────────────────────────────────────────────────────
+
+   New:
+      underground/crawler.js                — main module, mode state
+                                              machine, menu screen,
+                                              input dispatch, Phase 0
+                                              "begin run" stub.
+      underground/crawler/codes.js          — code parser. FNV-1a
+                                              deterministic hash for
+                                              tier and Currept-status.
+                                              parseCode + computeInt.
+      underground/crawler/state.js          — character templates
+                                              (Drakey, Torred), run
+                                              state factory, codes +
+                                              character persistence
+                                              via sessionStorage.
+      underground/crawler/narrate.js        — THE CHOKEPOINT. Every
+                                              line of generated text
+                                              passes through this. v0
+                                              uses hardcoded BANKS;
+                                              setNarrator() lets a
+                                              future pass swap any
+                                              channel to a daemon-
+                                              driven adapter.
+
+   Modified:
+      underground.html  →  loads the four crawler modules; adds
+                            COMMANDS['crawl'] (alias 'run'); adds
+                            Crawler.handleInput() interception in
+                            runLine() so the crawler captures input
+                            when active.
+
+   ─────────────────────────────────────────────────────────────────────
+   WHAT PHASE 0 DOES
+   ─────────────────────────────────────────────────────────────────────
+
+   In the underground terminal, the user types `crawl`. The crawler
+   takes over input. The run-setup menu renders:
+
+      • Operative pick (Drakey, Torred) with full stat preview
+      • Four code slots (Schema / Archive / Esoterica / Pack) with
+        per-slot input commands (`s <code>`, `a <code>`, etc.)
+      • Combined INT preview + per-category breakdown (the Currept
+        deduction surface from spec v0.3 §6 — visible to the player)
+      • [b]egin / [x] cancel
+
+   Codes are validated via Codes.parse — invalid format or wrong
+   slot is rejected with a Brox line. Valid codes are stored in
+   sessionStorage so they persist across runs in a single browser
+   session (full reset on browser refresh per spec v0.3 §17).
+
+   "Begin Run" builds a fresh runState end-to-end (proving the
+   architecture works) and prints a Phase 0 stub frame + debug dump
+   of the built state, then returns the terminal to shell mode.
+
+   ─────────────────────────────────────────────────────────────────────
+   ARCHITECTURAL DECISIONS LOCKED
+   ─────────────────────────────────────────────────────────────────────
+
+   1. THE NARRATE() CHOKEPOINT.
+      Every line of generated text in the crawler — Brox's comms,
+      room descriptions, enemy reads, scan results, death messages,
+      drop reward text — passes through narrate(channel, context).
+      No other module touches text generation. This is the AI-daemon
+      escape hatch from spec v0.3 §19. A future pass can call
+      Narrate.setNarrator('brox.brief', daemonAdapterFn) to swap any
+      channel to a daemon-driven generator without touching gameplay
+      code. v0 ships with hardcoded BANKS for the 9 channels Phase 0
+      and Phase 1 need; later phases register additional channels
+      via Narrate.registerChannel().
+
+   2. DETERMINISTIC CODE HASH.
+      Codes.parse uses FNV-1a 32-bit on the canonicalized code
+      string to derive (tier, isCurrept). Same code string always
+      parses identically — sharable between players, reproducible
+      bug reports possible. Tier distribution favors lower tiers
+      (≈55% / 27% / 14% / 4% for tiers 1-4). Currept rate ≈40% for
+      SCH/ARC/ESO; PCK is never Currept (per spec v0.3 §9).
+
+      Critical: the player-facing UI MUST NOT display isCurrept,
+      even in debug. The deduction game from spec v0.3 §10 depends
+      on Currept being invisible to the player. The Phase 0 debug
+      dump in beginRun() is careful to show tier and INT only.
+
+   3. RUN STATE AS A SINGLE OBJECT.
+      State.newRunState() returns one object passed by reference
+      to every system. Easy to seed deterministically from codes.
+      Easy to serialize for daemon-context generation in later
+      passes. Game systems should NEVER reach into module-private
+      state — they receive runState as a parameter.
+
+   4. MODE STATE MACHINE.
+      Crawler.mode lifecycle:
+         inactive ↔ menu
+                  → static → tick → static → ... → dead → inactive
+      The host terminal (underground.html runLine) checks
+      Crawler.isActive() before its normal command dispatch and
+      routes input via Crawler.handleInput() when active. When
+      Crawler returns to inactive, normal shell commands resume.
+
+   5. SESSION PERSISTENCE.
+      Code slots and character pick survive across runs within a
+      browser session (sessionStorage) but reset on refresh. Per
+      spec v0.3 §17: no save state. Volatility is the gameplay.
+
+   ─────────────────────────────────────────────────────────────────────
+   WHAT PHASE 0 DOES NOT DO  (intentionally — later phases)
+   ─────────────────────────────────────────────────────────────────────
+
+   • No rooms, grid, navigation, doors, locks, or chests (Phase 3-4)
+   • No combat, posture, blindness, response time, or ticks (Phase 2)
+   • No enemies, factions actually scaled, or scan mechanics (Phase 2)
+   • No goal box, drop generation, or reward codes (Phase 5)
+   • No Currept enforcement on drops (Phase 6)
+   • No real Brox voice — current banks are placeholder Brox-coded
+     lines, not the canonical voice. The voice arrives in Phase 7
+     (or earlier if we hook a daemon adapter to the chokepoint).
+   • No Esoterica modifiers (Phase 8)
+   • No polish (Phase 9)
+
+   ─────────────────────────────────────────────────────────────────────
+   HOW TO TEST PHASE 0
+   ─────────────────────────────────────────────────────────────────────
+
+   1. Reach /underground.html (via the Shred Chain or directly).
+   2. Type `help` — `crawl` should appear in the command list.
+   3. Type `crawl` — the run-setup menu should render with the
+      Brox intro line, both operatives shown unselected, all four
+      code slots empty, combined INT 1.
+   4. Type `1` — Drakey selected, Brox acknowledges, menu re-renders
+      with the ► marker on Drakey.
+   5. Type `s SCH-9301-PRIME` — Brox logs it, menu re-renders with
+      the schema slot populated, tier and INT contribution shown,
+      combined INT updated.
+   6. Type `s ARC-WHATEVER` — rejected: "wrong slot" Brox line.
+   7. Type `s` (no args) — schema slot cleared, INT recalculated.
+   8. Type `b` — Phase 0 stub frame renders + debug dump shows the
+      built run state (HP 80/80, INT computed, inventory listed),
+      then crawler returns to shell mode.
+   9. Type `help` — back to normal terminal commands.
+
+   Refresh the page → all session state cleared. Codes need to be
+   re-entered. Working as intended.
+
+   ─────────────────────────────────────────────────────────────────────
+   READY FOR PHASE 1
+   ─────────────────────────────────────────────────────────────────────
+
+   The architectural shape is now locked. Phase 1 (single room, no
+   enemies, the static/tick alternation) plugs into:
+      • Crawler.mode = 'static' / 'tick' transitions in handleInput
+      • Narrate.registerChannel() for new room.* and system.* channels
+      • A new module: underground/crawler/rooms.js (single-room first)
+      • A new module: underground/crawler/scheduler.js (tick queue)
+
+   beginRun() in crawler.js is the splice point. Currently it ends
+   with the Phase 0 stub + mode='inactive'. Phase 1 will replace
+   that with: enter the single-room state, render room + option list,
+   set mode='static', and let handleMenuInput()'s static-mode branch
+   take over.
+
+
+================================================================================
+   PASS 3.19  —  THE SHRED CRAWLER  ·  PHASE 1  (STATIC/TICK LOOP)
+================================================================================
+
+   Pass 3.19 ships the static/tick loop — the heart of the Shred
+   Crawler's gameplay rhythm. Player picks an operative, enters a
+   compound, lands in a single room, and exercises the full
+   static→tick→static cycle through real action handlers (move,
+   wait, rest, bandage, comms, exit). No combat, no enemies, no
+   real grid yet — those arrive in Phases 2 and 3. What this pass
+   validates: does the loop FEEL right.
+
+   Spec reference: /context/SHRED_CRAWLER.md §13 (tick system),
+   §17 (death), §19 (architecture).
+
+   ─────────────────────────────────────────────────────────────────────
+   FILES SHIPPED
+   ─────────────────────────────────────────────────────────────────────
+
+   New:
+      underground/crawler/scheduler.js     — tick playback queue.
+                                              Sequential events with
+                                              per-event delay/apply/
+                                              line. Returns abort().
+                                              Phase 2 uses abort()
+                                              for combat interrupts.
+      underground/crawler/rooms.js         — Phase 1 placeholder
+                                              catalog of 4 linear
+                                              rooms (foyer →
+                                              corridor → service
+                                              junction → dead-end
+                                              nook). ASCII renderer
+                                              with door markers.
+                                              Phase 3 replaces this
+                                              with procedural grid
+                                              generation.
+
+   Modified:
+      underground/crawler/narrate.js       — added Phase 1 channels:
+                                              system.no_door,
+                                              system.no_energy,
+                                              brox.ambient,
+                                              brox.rest_start,
+                                              brox.rest_end,
+                                              brox.bandage,
+                                              brox.exit.
+      underground/crawler.js               — replaced Phase 0 stub
+                                              with the real static/
+                                              tick loop. Added
+                                              renderStatic, renderStatus,
+                                              renderOptions, action
+                                              handlers (doMove,
+                                              doWait, doRest,
+                                              doBandage, doComms,
+                                              doExit), input lock
+                                              helpers (lock/unlock),
+                                              death plumbing
+                                              (checkDeath, triggerDeath).
+      underground.html                     — added script tags for
+                                              scheduler.js and
+                                              rooms.js (load order:
+                                              codes → state → narrate
+                                              → scheduler → rooms →
+                                              crawler).
+
+   ─────────────────────────────────────────────────────────────────────
+   THE LOOP (what Phase 1 actually does)
+   ─────────────────────────────────────────────────────────────────────
+
+   1. `crawl` → run-setup menu (Phase 0, unchanged)
+   2. Pick character + (optional) codes → `b` to begin
+   3. Brief plays in tick mode (Brox line, locked input)
+   4. STATIC mode entered:
+        • Clear + redraw
+        • Room ASCII frame with door letters (n/s/e/w open, ─/│ closed)
+        • Status line: HP / Energy / Autonode / Tick / Posture / INT
+        • Option list (only doors that exist; bandage row only if
+          bandage in inventory)
+   5. Player types an action
+   6. TICK mode entered:
+        • Input element disabled visually
+        • Scheduler plays out events at default 150ms each (per-event
+          tunable). Each event can mutate state and emit a tick line.
+        • State changes are visible in line ordering (apply runs
+          before line so `tickLine()` reads the post-mutation tick).
+   7. Playback completes:
+        • checkDeath — if HP ≤ 0, run death sequence and reset
+        • Otherwise: re-enter STATIC, full re-render
+   8. `exit` ends the run cleanly (Brox sign-off, return to shell)
+
+   ─────────────────────────────────────────────────────────────────────
+   ACTIONS WIRED
+   ─────────────────────────────────────────────────────────────────────
+
+   Action     Cost    Effect
+   ─────────  ──────  ─────────────────────────────────────────────────
+   move N/S   1 tick  Energy −1. Move to adjacent room. Failure modes:
+                      no door (no tick spent), no energy (no tick).
+                      Phase 1 supports n/s only (linear chain). e/w
+                      gated by room.doors and will work in Phase 3
+                      grid.
+   wait       1 tick  Energy −1. Single dim line. Useful for letting
+                      the tick clock advance without acting.
+   rest       10 tk   Energy +25 (capped at maxEnergy). NO per-tick
+                      energy drain during rest. Brox lines bookend.
+                      Vulnerable in Phase 2; flavor-only in Phase 1.
+   bandage    3 ticks Energy −3. HP +14 spread over 3 ticks
+                      (5/5/4). Removed from inventory before playback
+                      so the count is correct on the post-render.
+                      Brox line first.
+   comms      0 ticks Brox ambient line. Phase 7 makes this a real
+                      multi-turn interaction. For now: a flavor beat.
+   exit       0 ticks Clean exit. Brox sign-off, then crawler resets
+                      to inactive and the terminal returns to shell.
+
+   ─────────────────────────────────────────────────────────────────────
+   ARCHITECTURAL NOTES
+   ─────────────────────────────────────────────────────────────────────
+
+   1. STATE IS A SINGLE OBJECT, MUTATED IN-PLACE.
+      runState lives in crawler.js as a module-private variable.
+      Action handlers mutate it directly. Render functions read from
+      it. No copy-on-write, no immutability dance — the spec calls
+      for hardcore + lean, not pure-functional. Keeps the code
+      readable and combat (Phase 2) cheap.
+
+   2. EVERY TICK EVENT IS A SMALL CLOSURE.
+      { delay, apply, line, lineCls } — apply mutates state, line is
+      called AFTER apply (so it reads post-mutation values). This
+      means tickLine() always shows the new tick number naturally
+      without anyone passing arguments around.
+
+   3. INPUT LOCK AT TWO LEVELS.
+      During tick playback: input element gets disabled=true (visual,
+      stops keystroke entry), AND handleInput's tick-mode branch is
+      a silent no-op (defense in depth, in case a focus race lets a
+      keystroke through).
+
+   4. DEATH IS WIRED, NOT TESTED.
+      Nothing in Phase 1 deals damage. checkDeath fires after every
+      playback completion, and triggerDeath plays a 4-event sequence
+      (glitch line, system.death, brox.death, blank) before resetting
+      runState=null and mode=inactive. Phase 2 plugs in here without
+      touching the death code itself.
+
+   5. PER-ACTION DELAYS ARE TUNABLE.
+      Default Scheduler tick rate is 150ms. Each event can override
+      via `delay`. Rest uses 90ms ticks (else it'd take 1.5s of
+      "..." dots — tedious). Bandage uses 220ms (slower, more
+      weight). Move uses 130/170 split. Tunable in Phase 9 polish
+      based on feel.
+
+   6. FAILURE CASES ARE STATIC, NOT TICK.
+      Trying to move through a wall, or moving with 0 energy, prints
+      the failure line in the static screen and costs 0 ticks. This
+      keeps the player from wasting clock on input mistakes. Real
+      game-logic failures (e.g., a door lock failing in Phase 3)
+      WILL cost ticks because they're real attempts.
+
+   ─────────────────────────────────────────────────────────────────────
+   PHASE 2 SPLICE POINTS  (where combat plugs in)
+   ─────────────────────────────────────────────────────────────────────
+
+   • New module: underground/crawler/combat.js
+        - posture, blindness, response time, tick-level damage
+        - exports: combatEvents(playerAction, enemy) → event[]
+   • New module: underground/crawler/enemies.js
+        - 5-grade ladder, faction tag (per spec §4)
+   • crawler.js: room contents loop reads room.enemies and merges
+     enemy attack events into the player action's event list before
+     calling Scheduler.play(). Shared tick stream from spec §13.
+   • Scheduler.abort() already exists — combat uses it for true
+     interrupt mechanics (e.g., a melee strike landing on tick 2
+     of the player's bandage cancels the bandage).
+   • checkDeath() already runs after every playback. Combat just
+     needs to mutate runState.player.hp during one of its tick
+     events; the death cascade is automatic.
+   • renderOptions(): add `scan` row when room is unscanned + INT
+     gates. Add enemy targets to the option list when monitored.
+
+   ─────────────────────────────────────────────────────────────────────
+   HOW TO TEST PHASE 1
+   ─────────────────────────────────────────────────────────────────────
+
+   1. /underground.html → `crawl` → `1` → `b`
+   2. Brox briefs in tick mode (~0.85s lock), then static screen
+      renders the foyer with the n door open.
+   3. `n` → tick lines, then static screen re-renders the corridor
+      with both n and s door markers, tick=1, energy=199.
+   4. `s` → back to foyer, tick=2, energy=198.
+   5. `n n n` (one at a time) → progress through corridor, junction,
+      dead-end nook. Dead end shows only the s door.
+   6. `n` from the dead end → static error: "no door north. wall."
+      No tick spent.
+   7. `bandage` → 4-event playback (Brox + 3 heal ticks). Inventory
+      count drops from ×1 to ×0 (option row vanishes). HP capped at
+      maxHp (visible if you start at 80/80).
+   8. `rest` → ~12 events over ~1.5s. Energy bumps by up to +25.
+   9. `comms` → Brox ambient line.
+  10. `wait` → 1 dim tick line.
+  11. `exit` → Brox sign-off, return to shell. Type `help` to
+      confirm normal commands work again.
+  12. Refresh → all session state cleared.
+
+   ─────────────────────────────────────────────────────────────────────
+   WHAT PHASE 1 DOES NOT DO  (intentionally — later phases)
+   ─────────────────────────────────────────────────────────────────────
+
+   • No combat, posture, blindness, response time (Phase 2)
+   • No real grid generation — only the linear 4-room chain (Phase 3)
+   • No probabilistic doors / tool break (Phase 3)
+   • No chests, traps, multi-tool gating (Phase 4)
+   • No code drops, goal box (Phase 5)
+   • No Currept enforcement (Phase 6)
+   • No daemon-driven Brox — banks only (Phase 7)
+   • No Esoterica modifiers (Phase 8)
+   • No polish / glitch overlay / audio stings (Phase 9)
+
+
+================================================================================
+   PASS 3.20  —  THE SHRED CRAWLER  ·  PHASE 2  (COMBAT)
+================================================================================
+
+   Pass 3.20 ships the combat system — posture, blindness, response,
+   interrupt, scan, and real death. Two enemies are seeded into the
+   placeholder rooms (close grunt in the corridor, ranged grunt in
+   the junction) for the player to test the full tick-stream against.
+
+   This pass also bumps tick rates ~45% (default 150 → 220ms, with
+   per-action delays scaled proportionally) per smoke-test feedback —
+   the playback now reads at a comfortable pace.
+
+   Spec reference: /context/SHRED_CRAWLER.md §13 (tick system),
+   §14 (combat: posture, blindness, response), §15 (scan), §17 (death).
+
+   ─────────────────────────────────────────────────────────────────────
+   FILES SHIPPED
+   ─────────────────────────────────────────────────────────────────────
+
+   New:
+      underground/crawler/enemies.js       — enemy templates (one
+                                              ranged + one close
+                                              breaker grunt for v0),
+                                              spawn factory, dumb-
+                                              aggressive AI. Phase 3
+                                              expands to 5 grades ×
+                                              4 factions per spec §4.
+      underground/crawler/combat.js        — plan builders (player
+                                              ranged/close attack,
+                                              posture switch, scan,
+                                              generic simple action)
+                                              + buildTurn() — the
+                                              tick-stream interleaver.
+                                              One Scheduler event per
+                                              tick, "·"-joined parts
+                                              for combined activity.
+                                              Interrupt detection,
+                                              damage application,
+                                              cancel-on-kill cascade.
+
+   Modified:
+      underground/crawler/state.js         — runState.roomState{} for
+                                              per-room enemy/scan
+                                              persistence. New helper
+                                              State.getOrInitRoomState()
+                                              spawns the room's enemy
+                                              lazily on first entry.
+                                              Default posture now
+                                              character-aware (Drakey
+                                              → ranged, Torred → close).
+      underground/crawler/rooms.js         — enemy seeds on r1 (close
+                                              grunt) and r2 (ranged
+                                              grunt). New helper
+                                              Rooms.getEnemyTemplateForRoom().
+      underground/crawler/narrate.js       — 12 new combat channels:
+                                              system.room_blind,
+                                              system.no_target,
+                                              system.enemy_dead,
+                                              brox.posture_switch,
+                                              brox.scan_start,
+                                              brox.scan_success,
+                                              brox.scan_no_signal,
+                                              brox.scan_silent_alert,
+                                              brox.combat_low_hp.
+      underground/crawler/scheduler.js     — TICK_MS bumped 150 → 220.
+      underground/crawler.js               — added doAttack, doPosture,
+                                              doScan; routed doMove
+                                              and doWait through
+                                              Combat.buildTurn when
+                                              enemy present; gated
+                                              rest+bandage as forbidden
+                                              in occupied rooms;
+                                              new renderEnemyBlock()
+                                              with blind/scanned/
+                                              silent-alert/dead states;
+                                              renderOptions branches
+                                              by enemy presence; all
+                                              tick delays bumped ~45%.
+      underground.html                     — added enemies.js and
+                                              combat.js script tags.
+                                              Updated load order:
+                                              codes → narrate →
+                                              scheduler → enemies →
+                                              rooms → state → combat
+                                              → crawler.
+
+   ─────────────────────────────────────────────────────────────────────
+   THE TICK STREAM (combat resolution)
+   ─────────────────────────────────────────────────────────────────────
+
+   Combat is turn-based: one player action + the enemy's reaction
+   resolve over a shared span of ticks (= max(playerTicks, enemyTicks)).
+   Each tick is a single Scheduler event; its line is built dynamically
+   from PLAYER and ENEMY parts joined by "·". The apply() function
+   mutates state (damage, posture, room) BEFORE the line is rendered,
+   so the line shows post-mutation HP values naturally.
+
+   Example: Drakey ranged attack vs close grunt (Drakey range 10,
+   grunt close 4 ticks / 5 dmg / damage on tick 3):
+
+      [t008]  YOU · shoot  (10 dmg → breaker [4/14])   ·   BREAKER · windup
+      [t009]                                            BREAKER · lunge
+      [t010]                                            BREAKER · strike  (5 dmg → you [75/80])
+      [t011]                                            BREAKER · recover
+      breaker grunt down.    ← only if grunt died; otherwise blank
+
+   Same example but player's first shot kills (10 → 0 hp):
+
+      [t008]  YOU · shoot  (10 dmg → breaker [0/14]) interrupted
+
+      breaker grunt down.
+
+   The remaining 3 enemy ticks are silent (returning null skips the
+   render entirely — no "(beat)" filler clutter).
+
+   ─────────────────────────────────────────────────────────────────────
+   INTERRUPT MECHANIC (per spec §14)
+   ─────────────────────────────────────────────────────────────────────
+
+   A close attacker has a windup phase (ticks 0-1 for a 4-tick swing,
+   damage on tick 2). If they take damage during windup, their attack
+   cancels — no damage delivered.
+
+   In buildTurn, this is enforced via two flags shared across the
+   per-tick closures:
+      turn.playerCancelled  — true if the player's close-attack windup
+                              was hit before damageTickIdx
+      turn.enemyCancelled   — true if the enemy's close-attack windup
+                              was hit before damageTickIdx, OR if the
+                              enemy died this tick
+
+   Once cancelled, the cancelled party's remaining steps are skipped
+   for the rest of the turn (their tick lines are silent).
+
+   This makes ranged-vs-close a real tactical choice: ranged is fast
+   (1-tick) and can interrupt incoming swings; close is high-damage
+   but needs setup and is fragile during windup.
+
+   ─────────────────────────────────────────────────────────────────────
+   SCAN (per spec §15)
+   ─────────────────────────────────────────────────────────────────────
+
+   Scan is a 2–6 tick player action with three outcomes:
+      success      80%   — roomState.scanned = true; Brox reads the
+                            room (label, posture, hp).
+      no_signal    15%   — wasted ticks, no info, Brox tonal line.
+      silent_alert  5%   — enemy now monitored on you, you stay blind.
+                            Brox flags it as a worst-case posture.
+
+   INT reduces tick variance (more INT → tighter range, but never
+   below 2 ticks). Outcome odds are NOT INT-modified for v0 (Phase
+   2.5 may adjust).
+
+   When scanning in an occupied room, the scan ticks interleave with
+   the enemy's full attack pattern. Scanning is dangerous — the
+   enemy gets free hits for the entire scan duration.
+
+   First combat exchange auto-clears blindness (mutual sighting on
+   engagement). Scan is for pre-engagement reconnaissance.
+
+   ─────────────────────────────────────────────────────────────────────
+   COMBAT-FORBIDDEN ACTIONS  (Phase 2 simplification)
+   ─────────────────────────────────────────────────────────────────────
+
+   `rest` and `bandage` are blocked while a live enemy occupies the
+   room. The static failure prints a Brox-flavored err line and costs
+   no ticks. Player must clear the room first (or flee).
+
+   Rationale: the alternative is interleaving heal-during-combat,
+   which the spec leaves open but adds significant complexity (heal
+   interrupt? partial heal on cancel? bandage ticks costing energy
+   with enemy attacking?). Phase 2.5 may revisit. For now: clear
+   the room or run.
+
+   ─────────────────────────────────────────────────────────────────────
+   ESCAPE UNDER FIRE (move with enemy present)
+   ─────────────────────────────────────────────────────────────────────
+
+   Player can flee an occupied room. Move-out becomes a 2-tick
+   action that interleaves with the enemy's full attack pattern.
+   Concretely: a close grunt with a 4-tick swing will land its
+   damage on tick 2 — meaning the player who's already in the new
+   room by tick 1 still eats the parting strike on tick 2 (the
+   grunt clobbered them in the doorway).
+
+   This is intentional. Spec §14: enemies are attrition. Escape is
+   not free.
+
+   The enemy stays in the old room. Phase 3+ may add enemy pursuit
+   for some grades (officer, captain). For v0: they don't follow.
+
+   ─────────────────────────────────────────────────────────────────────
+   DEATH (now actually fires)
+   ─────────────────────────────────────────────────────────────────────
+
+   Phase 1 wired the death plumbing — Phase 2 is when it can fire.
+   When player.hp drops to 0 during a combat tick, the apply mutation
+   sets it to 0 (clamped). After the entire combat playback completes,
+   playAndReturn → checkDeath → triggerDeath:
+
+      ▓▒░░░░▒▓ ░░░ ▒▓░ ░          (red glitch line)
+      signal disconnected.         (system.death channel)
+      brox: ...                    (brox.death channel)
+                                   (crawler resets to inactive)
+
+   Known limitation (Phase 2.5 fix): if HP hits 0 mid-stream, the
+   remaining combat ticks still play (the player sees 0/80 hp for a
+   few ticks before death triggers). Mitigation: Scheduler.abort()
+   already exists; a Phase 2.5 enhancement will call it from the
+   per-tick apply when player.hp hits 0.
+
+   ─────────────────────────────────────────────────────────────────────
+   POWER CURVE (current tuning)
+   ─────────────────────────────────────────────────────────────────────
+
+   At Drakey defaults (range 10, melee 3, hp 80) vs breaker grunts
+   (close: 14hp/5dmg, ranged: 12hp/4dmg):
+
+   Drakey ranged vs close grunt:
+      2 ranged shots = 20 dmg → grunt dies (over-killed)
+      Grunt gets 0-1 close strikes in (interrupted on second swing)
+      Player loses ~5 hp per fight if grunt connects once
+      → ~16 fights before death from full HP. ~6:1 advantage. ✓
+
+   Drakey ranged vs ranged grunt (mutual ranged):
+      3 shots to kill grunt (10+10+ kills) (3 turns)
+      Grunt fires 4 dmg per turn × 2-3 turns = 8-12 dmg
+      → ~7-10 fights before death. ~5:1 advantage. ✓
+
+   Drakey close (without switching) vs close grunt:
+      3 dmg per swing × 4 ticks each — much slower trade
+      Both deal damage on tick 3 simultaneously
+      → trade is roughly even, grunt dies in 5 swings, player
+        eats 5 strikes = 25 dmg. Risky.
+      → Strong incentive to switch posture before engaging.
+
+   This validates the spec §14 6:1 baseline at run start.
+
+   ─────────────────────────────────────────────────────────────────────
+   PHASE 3 SPLICE POINTS  (where multi-room generation plugs in)
+   ─────────────────────────────────────────────────────────────────────
+
+   • underground/crawler/rooms.js: replace PHASE2_ROOMS with a
+     procedural grid generator. Same interface (getRoom, moveDirection,
+     getEnemyTemplateForRoom, renderRoom). Crawler.js doesn't need
+     to change.
+   • New module: underground/crawler/grid.js — seeded from Archive
+     tier + INT, generates a connected room layout with N/S/E/W
+     adjacency. moveDirection becomes coordinate math.
+   • New module: underground/crawler/doors.js — probabilistic locks
+     per spec §8 (base × intMultiplier, tool-break, door-freeze).
+     New action: doDoor(dir) tries the lock with a tool. Failure
+     freezes the door for the run.
+   • Enemy distribution scales with grid distance from spawn —
+     softer enemies near spawn, harder near goal box (Phase 5).
+   • State.getOrInitRoomState already initializes lazily — works
+     with any number of rooms.
+
+   ─────────────────────────────────────────────────────────────────────
+   HOW TO TEST PHASE 2
+   ─────────────────────────────────────────────────────────────────────
+
+   1. /underground.html → `crawl` → `1` (Drakey) → `b`
+      Drakey starts in ranged posture (range 10).
+   2. `n` → enter the corridor (r1) — close grunt spawns.
+      Static screen: "occupied · scan or eat it blind."
+      Options: attack/posture/scan/n/s/wait/comms/exit.
+      No rest, no bandage (gated by enemy).
+   3. `attack` → 4-tick combat playback (one Scheduler event per
+      tick, ~240ms). Tick 0: you shoot, 10 dmg → grunt [4/14],
+      INTERRUPTED — grunt's close swing cancels on tick 0 windup.
+      Trailing: "breaker grunt down."
+   4. Static re-renders: room cleared, enemy block shows
+      "breaker grunt · still on the floor.", peace options return.
+   5. `n` → service junction (r2). Ranged grunt spawns.
+   6. `scan` → 2-6 ticks (variance shrinks with INT). 80% chance
+      Brox reads the room ("breaker grunt · ranged · 12 hp left in
+      them"). 5% chance silent alert (red warning, you stay blind).
+      Enemy attacks during the scan — expect to take 2-6 dmg.
+   7. `attack` → ranged vs ranged. Tick 0: both shoot. You hit
+      for 10, grunt for 4. Grunt dies in 2 turns; you take 4-8 dmg.
+   8. `n` → dead-end nook (r3). No enemy. Peace options.
+   9. `s s s` → walk back through the now-empty corridor to foyer.
+  10. `bandage` → 3 ticks, +14 hp.
+  11. `rest` → 10 ticks, +25 energy.
+  12. `exit` → clean return to shell.
+
+   Death test: run multiple combats in r2 without bandaging until
+   HP hits 0 → glitch line, signal disconnected, brox silence,
+   reset. Type `crawl` again to start fresh.
+
+   Posture test: in r1 type `posture` — 1 tick to swap to close,
+   grunt gets a free attack tick during the swap. Static re-renders
+   with new posture and new attack damage shown in option list.
+
+   ─────────────────────────────────────────────────────────────────────
+   WHAT PHASE 2 DOES NOT DO  (intentionally — later phases)
+   ─────────────────────────────────────────────────────────────────────
+
+   • No real grid (still 4-room linear chain) — Phase 3
+   • No probabilistic doors / tool break — Phase 3
+   • No chests, traps, multi-tool gating — Phase 4
+   • No code drops, goal box, run completion — Phase 5
+   • No Currept enforcement — Phase 6
+   • Brox is hardcoded banks, not daemon-driven — Phase 7
+   • No mid-stream death abort (Scheduler.abort exists but unused
+     in the per-tick apply) — Phase 2.5 polish
+   • No response-time-as-stun mechanic — Phase 2.5 polish
+   • No enemy pursuit through doors — Phase 3+
+   • No INT-modified scan outcome odds (only variance) — Phase 2.5
+
+
+================================================================================
+PASS 3.21 — THE SHRED CRAWLER · PHASE 3 (GRID + DOORS + TICK-DELAY POLISH)
+   crawl date: 2026-05-03
+================================================================================
+
+   ─────────────────────────────────────────────────────────────────────
+   PHASE 3 SHIPS — REAL DUNGEONS, REAL LOCKS, READABLE TICKS
+   ─────────────────────────────────────────────────────────────────────
+
+   The Phase 1/2 linear 4-room placeholder (foyer → corridor → service
+   junction → dead-end nook) is gone. The crawler now generates a real
+   procedural grid every run. Each adjacency has a door state
+   (open / locked / wall / frozen). Locks have types (physical /
+   mechanical / digital) and require matching tools (prybar / lockpick /
+   crypt key) to pick. Failed picks break the tool and freeze the door
+   for the run. Per spec §8 success math:
+
+       success = clamp( base × (1 + INT/20),  0,  0.95 )
+
+   The pre-Phase-3 "tick scrolls by too fast" smoke complaint is also
+   addressed: tick delays bumped substantially, AND the static frame
+   no longer clears the screen between turns. Combat history persists
+   above the new state with a thin separator. The terminal scroll-back
+   IS the player's session log.
+
+   ─────────────────────────────────────────────────────────────────────
+   TICK DELAY POLISH (the "still too fast" fix)
+   ─────────────────────────────────────────────────────────────────────
+
+   Default scheduler tick:    220ms → 320ms   (+45%)
+   Combat tick (per-side):    240ms → 420ms   (+75%)
+   Combat trailing event:     320ms → 480ms (+ returns null on silence)
+
+   Per-action delays (crawler.js):
+     beginRun brief beats:   350/700ms   → 500/900ms
+     doMove   peace:         200/260ms   → 320/420ms
+     doMove   combat:        via combat tick (now 420ms)
+     doWait   peace:         320ms       → 450ms
+     doRest   bookends:      280-350ms   → 380-480ms
+     doRest   inner ticks:   130ms       → 250ms (capped — rest is filler)
+     doBandage tick:         320ms       → 460ms
+     doBandage brox line:    220ms       → 320ms
+     doComms:                280ms       → 380ms
+     doExit beats:           220/350ms   → 320/480ms
+     doPosture peace:        220/250ms   → 320/380ms
+     doPosture combat:       via combat tick
+     doScan brox-start:      220ms       → 320ms
+     doScan tick (peace):    240ms       → 380ms
+     doScan outcome:         280ms       → 480ms
+     triggerDeath beats:     280-800ms   → 400-1100ms
+
+   Result: a 4-tick combat exchange now plays over ~1.7 seconds with
+   visible per-tick beats; rest is ~3.5s; full death sequence is ~3s
+   of breathing room before the inactive prompt returns.
+
+   ─────────────────────────────────────────────────────────────────────
+   APPEND-ONLY STATIC RENDER (the "preserve history" fix)
+   ─────────────────────────────────────────────────────────────────────
+
+   Phase 1/2 used renderStatic() = clear + redraw. Wiped tick history
+   every turn — player couldn't review what happened.
+
+   Phase 3 renderStatic() does NOT clear. It appends:
+
+       ─────────────────────────────────────────────  (top separator)
+       [<room label> · <key>] · <faction> compound
+       <blurb>
+       <ASCII frame with door symbols>
+       doors:  <state per non-open/non-wall door>
+       <enemy block, if any>
+       <status block — hp/energy/autonode/posture/tick>
+       options
+         <action list with door states inline>
+       ─────────────────────────────────────────────  (bottom separator)
+
+   The host terminal auto-scrolls to bottom on every append. Player can
+   scroll up at any time to re-read combat. menu and beginRun still use
+   clear() (form pattern + clean run start), but in-run renders are all
+   append-only.
+
+   ─────────────────────────────────────────────────────────────────────
+   NEW MODULES
+   ─────────────────────────────────────────────────────────────────────
+
+   underground/crawler/grid.js
+     • generate({ size, spawn })  → grid object
+       rooms keyed by "x,y" string
+       each room: { id, key, x, y, label, blurb, doors:{n,s,e,w} }
+     • each adjacency edge owns ONE door object shared by both rooms
+       (mutating one mutates the other — critical for shared freeze
+        state)
+     • door distribution:  65% open · 25% locked · 10% wall
+     • spawn-adjacent doors biased to 80% open / 20% locked, no walls
+       (player always has a starting move)
+     • lock types randomized from {physical, mechanical, digital}
+     • baseSuccess in [0.50, 0.85]
+     • lookups: getRoom, getNeighborKey, spawnKey, distanceFromSpawn
+     • Phase 3 v0 uses Math.random; Phase 5 swaps to code-seeded PRNG
+
+   underground/crawler/doors.js
+     • TOOL_FOR_LOCK / LOCK_FOR_TOOL bidirectional maps
+       (prybar↔physical · lockpick↔mechanical · crypt key↔digital)
+     • computeSuccessChance(door, INT)  — per-spec formula
+     • attempt(door, toolKey, INT) → { success, toolBroke, frozen, reason }
+       mutates door.state in place ('open' on success, 'frozen' on fail)
+     • wrong tool → ALWAYS breaks AND freezes (punishes guessing)
+     • doorLabel(door) → UI tag ("locked · physical" etc.)
+     • doorSymbol(door, dir) → single char for ASCII frame
+       open → direction letter (n/s/e/w)
+       locked → '*'
+       frozen → 'x'
+       wall → '─' (n/s) or '│' (e/w)
+
+   ─────────────────────────────────────────────────────────────────────
+   MODIFIED MODULES
+   ─────────────────────────────────────────────────────────────────────
+
+   rooms.js  (full rewrite)
+     • Drops PHASE2_ROOMS placeholder
+     • Delegates getRoom / startingRoomKey / moveDirection to grid.js
+     • renderRoom now draws door symbols + a "doors:" detail line for
+       any non-open/non-wall door
+     • moveDirection returns either { newKey, door } (success) or
+       { error: 'wall'|'locked'|'frozen', door } (informative failure)
+     • getEnemyTemplateForRoom now distance-based:
+         dist 0 (spawn)  →  no enemy
+         dist 1          →  30% chance grunt
+         dist 2+         →  50% chance grunt
+       random close vs ranged. Decision cached on the room object so
+       re-renders are stable.
+
+   state.js
+     • Rename: runState.currentRoomIdx → runState.currentRoomKey (string)
+     • runState.grid = null until beginRun calls Grid.generate
+     • roomState keyed by string (already string-coerced by JS objects,
+       made explicit)
+     • getOrInitRoomState(runState, key) — looks up room via Rooms.getRoom
+       and seeds enemy via Rooms.getEnemyTemplateForRoom
+     • defaultInventory now includes one each of prybar / lockpick /
+       crypt key for Phase 3 testing — Phase 4 will move these back
+       behind Pack codes per spec §7
+
+   narrate.js
+     • Eight new channels for door interactions:
+         system.door_wall          system.door_locked
+         system.door_locked_no_tool system.door_frozen
+         brox.tool_attempt         brox.tool_success
+         brox.tool_wrong           brox.tool_break
+     • Tool break and wrong-tool lines are deliberately blunt
+       ("you broke a {tool} on a {lock} lock. that's on you.") to
+       reinforce the spec §22 "hardcore, mean, fair" tone
+
+   crawler.js  (extensive)
+     • Renamed all currentRoomIdx → currentRoomKey (7 sites)
+     • beginRun now calls Grid.generate({ size:5, spawn:{0,0} })
+     • New helpers: getCurrentRoom, findTool, hasTool
+     • renderStatic switched to append-only (described above)
+     • renderOptions split: renderDoorOptions handles all 4 directions
+       and surfaces door state inline:
+         open  + peace  → "n / north   move north  (1 tick · blind)"
+         open  + combat → "n / north   flee north  (2 ticks · free hits)"
+         locked + have  → "n / north   try n with prybar (physical · 65% · 2 ticks)"
+         locked + lack  → "n / north   n locked · need crypt key (you have none)" [dim]
+         frozen         → "n / north   n door is frozen · gone" [dim]
+     • handleStaticInput parses with one regex now:
+         /^(n|s|e|w|north|south|east|west)(?:\s+(.+))?$/
+       trailing token routes to doDoor; bare direction routes to doMove
+     • doMove updated for new moveDirection return shape:
+         attempt.error 'wall'   → narrate system.door_wall
+         attempt.error 'frozen' → narrate system.door_frozen
+         attempt.error 'locked' → narrate system.door_locked(_no_tool)
+                                  with the matching tool name surfaced
+         success → uses attempt.newKey
+     • NEW action: doDoor(dir, toolArg)
+         normalizes tool name ('crypt key' → 'cryptkey')
+         2-tick lock-pick plan via Combat.planPlayerSimple
+         routes through Combat.buildTurn if enemy present
+       (lock-picking under fire IS dangerous — enemy interleaves)
+         resolves via doors.attempt() in tick 2's apply
+         removes broken tool from inventory on fail
+         Brox commentary: pre-line (chance read), post-line (outcome)
+
+   ─────────────────────────────────────────────────────────────────────
+   WIRING (underground.html)
+   ─────────────────────────────────────────────────────────────────────
+
+   New script load order (cross-deps respected):
+       codes → narrate → scheduler → enemies
+             → grid → doors → rooms → state → combat → crawler
+
+   ─────────────────────────────────────────────────────────────────────
+   PHASE 3 OUT-OF-SCOPE  (intentional · later passes)
+   ─────────────────────────────────────────────────────────────────────
+
+   • Grid size scaling by INT/Archive — Phase 5 (with code drops)
+   • Code-seeded PRNG for reproducible runs — Phase 5
+   • Connectivity validation — accepted as gameplay (locked doors
+     can isolate rooms; tools are the unlock)
+   • Multi-tool chests / traps — Phase 4
+   • Goal box + run-end + code reward — Phase 5
+   • Currept enforcement on code drops — Phase 6
+   • Brox as a Daemon Card runtime instead of hardcoded banks — Phase 7
+   • Tool seeding from Pack codes (currently hardcoded for testing) —
+     Phase 4
+
+   ─────────────────────────────────────────────────────────────────────
+   KNOWN PHASE 3 RISKS (worth watching during smoke)
+   ─────────────────────────────────────────────────────────────────────
+
+   • Enemy can spawn in EVERY non-spawn room at 30-50% — the 5×5 grid
+     could feel hostile. If smoke says it's too dense, drop to 20-35%
+     in rooms.js getEnemyTemplateForRoom.
+   • All locks in a 5×5 grid randomly distributed — a bad seed could
+     have player burning all 3 tools in the first 4 rooms. Acceptable
+     (per spec §22 "hardcore, fair"); worth monitoring.
+   • Doors detail line + ASCII frame both render — verify it's not
+     visually overwhelming on first room exposure.
+
+================================================================================
+PASS 3.22 — THE SHRED CRAWLER · 3-PANE BRIDGE LAYOUT + DOOR-COMMAND UX
+   crawl date: 2026-05-03
+================================================================================
+
+   ─────────────────────────────────────────────────────────────────────
+   THE COMPLAINT, IN PLAYER WORDS
+   ─────────────────────────────────────────────────────────────────────
+
+       "Im told i have a lockpick but dont see options to use."
+       "the new way of not clearing doesnt feel as good. we could revert
+        back because it makes the control options look more static."
+       "this needs to be multiple terminals. the control terminal for
+        baics control data and info it should scroll the ticks like the
+        last pass. there sneeds to also be 2 more terminals. both on
+        the right take up the right side of the screen, bottom 2 thirds
+        is the history and the top is another terminal that is still
+        text based but its just text based visuals."
+
+   Two real problems:
+     1. The Phase 3 lock-pick command (`n lockpick`) was discoverable
+        only by reading the option list closely. Bare `n` on a locked
+        door said "you have a lockpick" but never said HOW to use it.
+        Player typed `lockpick` alone (rejected), got stuck.
+     2. The Phase 3.21 append-only render felt unstable as a control
+        surface. Player wants the "mission control panel" feel back —
+        clear, redraw, predictable layout — AND a separate visuals pane
+        AND a persistent session log.
+
+   ─────────────────────────────────────────────────────────────────────
+   FIX 1 · DOOR COMMAND IS NOW LITERALLY VISIBLE
+   ─────────────────────────────────────────────────────────────────────
+
+   Option list now puts the LITERAL command in the left column instead
+   of the redundant "n / north" pair. Examples:
+
+     before (bad):
+        e / east     try e with lockpick (mechanical lock · 86% · 2 ticks)
+     after (good):
+        e lockpick   try mechanical lock east  (86% · 2 ticks)
+
+   The hint a player needs to type IS the option label. No translation
+   step.
+
+   The bare-direction error message on a locked door also now spells
+   out the command (narrate.js system.door_locked):
+
+     before:  "door east is locked. lockpick type. you have one."
+     after:   "door east is locked · lockpick type. type `e lockpick` to try."
+
+   Frozen / wall / no-tool variants are unchanged (already clear).
+
+   ─────────────────────────────────────────────────────────────────────
+   FIX 2 · 3-PANE BRIDGE LAYOUT
+   ─────────────────────────────────────────────────────────────────────
+
+   Phase 3.21's no-clear renderStatic is reverted. Phase 2's clear-and-
+   redraw is back as the main behavior — but now split across three
+   panes that reveal when the crawler activates:
+
+       ┌──────────────────────────────┬───────────────────┐
+       │                              │ visuals · top 1/3 │
+       │                              │ (ASCII room art   │
+       │                              │  + doors detail   │
+       │  main · control terminal     │  + enemy block)   │
+       │                              ├───────────────────┤
+       │  (room header, status,       │                   │
+       │   options, action ticks      │ history · 2/3     │
+       │   scrolling)                 │ (append-only      │
+       │                              │  session log)     │
+       │                              │                   │
+       └──────────────────────────────┴───────────────────┘
+
+   Routing rules:
+     LIVE events (action results, tick lines, brox lines, errors,
+       brief, death sequence) → main pane AND history pane
+     STATIC frame (status, options, room header) → main pane only
+       (it's redrawn fresh each turn — would clog history)
+     VISUAL content (ASCII frame, doors detail, enemy block) →
+       visuals pane only
+
+   Per-turn marker is added to history on every renderStatic so the
+   player can find turn boundaries when scrolling back:
+     "── tick 7 · room corridor · 0,2 ──"
+
+   ─────────────────────────────────────────────────────────────────────
+   IMPLEMENTATION (underground.html)
+   ─────────────────────────────────────────────────────────────────────
+
+   • Wrapped term-out in a new .term-body container that toggles
+     between flex-column (shell mode) and CSS grid (crawler mode)
+     via the .crawler-mode class.
+   • Added two new panes: .term-visuals (top-right) and .term-history
+     (bottom-right), each with a pane-title header.
+   • Grid layout when crawler-mode active:
+         grid-template-columns: 1fr 360px
+         grid-template-rows:    1fr 2fr      (visuals top, history bot)
+         grid-template-areas:   "main visuals" / "main history"
+   • Mobile fallback (<1024px): collapses to single column, right
+     panes hidden — game still playable in degraded form.
+   • Extended the global ctx with sub-objects:
+         ctx.visual.{out,dim,err,ok,heading,ascii,clear}
+         ctx.history.{out,dim,err,ok,heading,ascii,clear}
+         ctx.crawlerOn()  · adds class, clears right panes
+         ctx.crawlerOff() · removes class, clears visuals only
+                            (history preserved hidden)
+
+   ─────────────────────────────────────────────────────────────────────
+   IMPLEMENTATION (crawler.js)
+   ─────────────────────────────────────────────────────────────────────
+
+   • startCrawl() now calls ctx.crawlerOn(); single new returnToShell()
+     helper centralizes ctx.crawlerOff() + mode='inactive' for all
+     three exit paths (cancel, doExit preReturn, triggerDeath complete).
+   • renderStatic restored to clear-and-redraw on the main pane:
+         clear()              wipes main
+         visualClear()        wipes visuals
+         (history preserved — gets a turn marker only)
+         renderRoomVisual     ASCII frame to visuals
+         renderEnemyVisual    enemy block to visuals
+         renderRoomHeader     label/blurb to main
+         renderStatus         hp/energy/etc to main
+         renderOptions        action list to main
+   • Helper layer:
+       out / dim / err / ok / heading   →  main + history (LIVE)
+                                            (mode-aware: skips history
+                                            during 'menu' so menu re-
+                                            renders don't clog the log)
+       mainOut / mainDim / mainHeading  →  main only (static frame)
+       visualOut / visualClear          →  visuals pane only
+       histDim                          →  history only (turn marker)
+       buildTickCtx()                   →  fan-out ctx passed to
+                                            Scheduler.play; always
+                                            fans tick lines to history
+   • renderEnemyBlock renamed to renderEnemyVisual and routed through
+     visualCtx so enemy state appears next to the room art instead of
+     in the main panel.
+   • renderRoomHeader is new — main-pane-only label/blurb, kept short
+     so the player knows where they are without reading the visuals.
+   • All 3 Scheduler.play call sites swapped from termCtx → tickCtx
+     so tick narration fans to history correctly. This is the only
+     way the history pane learns about tick events; without it the
+     scheduler would write to main only and the log would be empty
+     of combat detail.
+
+   ─────────────────────────────────────────────────────────────────────
+   PHASE 3.22 OUT-OF-SCOPE (intentional · later)
+   ─────────────────────────────────────────────────────────────────────
+
+   • Visuals pane during MENU is empty (the menu is in the main pane).
+     Could put a Sky Scaffold ASCII splash there as polish.
+   • History pane is wiped on each crawler re-entry (ctx.crawlerOn
+     clears it). That's per-design — fresh run, fresh log. If the
+     player wants prior runs preserved, that's a Phase 8 telemetry
+     concern (which the project does not implement on principle).
+   • No keyboard shortcut to focus the history pane for scrolling
+     yet — mouse only. Acceptable for v0.
+   • Enemy block is in visuals pane; status (HP/energy) is in main
+     pane. Could move HP-bar visualization to visuals later for at-
+     a-glance reading. Phase 4 candidate.
+
+================================================================================
+PASS 3.23 — THE SHRED CRAWLER · WORDLESS ACTION SCENE PANE
+   crawl date: 2026-05-03
+================================================================================
+
+   ─────────────────────────────────────────────────────────────────────
+   THE COMPLAINT, IN PLAYER WORDS
+   ─────────────────────────────────────────────────────────────────────
+
+       "in the visual box, it is not meant to be a display of the room
+        frame, where is was before was great. What i meant what that it
+        will be just a visual aid for the actions. not any text at all,
+        just updates to a ascii image of whatever is happening. the
+        room and compound should be where they were, thats fine."
+
+   Pass 3.22 misread the spec — it put the room ASCII frame in the
+   visuals pane. Player wanted it back in the main pane (where it
+   was for Phase 2) AND wanted the visuals pane to be a wordless
+   action animator: small ASCII pictures that update per action.
+
+   ─────────────────────────────────────────────────────────────────────
+   FIX · ROOM RESTORED · VISUALS PANE BECOMES SCENE LIBRARY
+   ─────────────────────────────────────────────────────────────────────
+
+   Three changes:
+     1. Room frame, doors detail line, enemy block all moved BACK to
+        the main pane (where they belong as part of the static frame).
+        renderStatic now calls Rooms.renderRoom with a mainOnlyCtx.
+     2. New module: underground/crawler/visuals.js — a library of 17
+        wordless ASCII scenes keyed by action/state. No text labels
+        in any scene — only glyphs (◯ player, ◊ enemy, ✕ damage, ⌒
+        sensor, etc).
+     3. Visuals pane is now scene-driven:
+          - On every renderStatic: pickStateScene(runState, roomState)
+            picks idle / blind / silent_alert / combat-close /
+            combat-ranged / enemy-down / dead automatically.
+          - During action playback: each action handler calls
+            setActionVisual(sceneKey) before playAndReturn to swap
+            the scene. Examples:
+              doMove peace      → 'walking'
+              doAttack melee    → 'attack-melee'
+              doAttack ranged   → 'attack-ranged'
+              doDoor (start)    → 'lockpick'
+              doDoor (success)  → 'door-open'    (set in outcome apply)
+              doDoor (fail)     → 'door-frozen'  (set in outcome apply)
+              doRest            → 'resting'
+              doBandage         → 'bandaging'
+              doScan            → 'scanning'
+              doPosture         → 'posture-shift'
+              doWait            → 'waiting'
+              triggerDeath      → 'dead'
+              renderMenu        → 'menu' (placeholder dot)
+          - The next renderStatic re-picks the state scene
+            automatically, so action scenes don't need manual revert.
+
+   ─────────────────────────────────────────────────────────────────────
+   SCENE LIBRARY (17 scenes)
+   ─────────────────────────────────────────────────────────────────────
+
+   State-driven (set by pickStateScene on every renderStatic):
+     idle           — clear room, player alone
+     blind          — occupied + unscanned, ?-walls
+     silent_alert   — they have you, you don't have them, !-walls + eye
+     combat-close   — enemy adjacent, postures shown
+     combat-ranged  — enemy at distance, line of fire shown
+     enemy-down     — kill state, body on the floor
+     dead           — player down, glitch fill
+     menu           — pre-run placeholder
+
+   Action-driven (set by setActionVisual at action start):
+     walking        — figure stepping through doorway
+     attack-melee   — swing connecting on close enemy
+     attack-ranged  — projectile arc to enemy
+     damaged        — hit-marks around player (reserved · not yet wired)
+     lockpick       — figure working a lock with sliders
+     door-open      — door cleared, ░ open passage
+     door-frozen    — door broken, ╳ wall pattern
+     resting        — figure seated, z's drifting
+     bandaging      — wrapping motion across torso
+     scanning       — sensor sweep waves
+     waiting        — figure with ┄┄ time-passing dots
+     posture-shift  — ⇄ swap indicator
+
+   Width budget: ~22 chars · Height budget: ~9 lines including padding.
+   No text in any scene — wordless per spec.
+
+   ─────────────────────────────────────────────────────────────────────
+   IMPLEMENTATION
+   ─────────────────────────────────────────────────────────────────────
+
+   New file: underground/crawler/visuals.js
+     SCENES dictionary keyed by name
+     show(key, ctx)      — clear visuals pane and emit scene with
+                            CSS class 'scene' (white-space: pre + amber)
+     pickStateScene(rs, room) — state-driven picker for renderStatic
+
+   underground.html
+     - Renamed pane title "visual · room frame" → "scene"
+     - Added .line.scene CSS class:
+         color: amber2 · white-space: pre · line-height: 1.0 · font-size: 14px
+     - Added visuals.js to script load order
+       (after combat.js, before crawler.js)
+
+   underground/crawler.js
+     - renderStatic refactored:
+         clear main, render room frame on MAIN via mainOnlyCtx,
+         render enemy block on MAIN, render status, render options,
+         then Visuals.show(pickStateScene(...)) on visuals pane
+     - mainOnlyCtx is a new ctx wrapper that routes everything to
+       mainOut (so rooms.js renderRoom doesn't fan to history)
+     - renderEnemyBlock restored (was renderEnemyVisual in 3.22),
+       routes to main pane with mainOut/mainDim/mainErr
+     - renderRoomHeader removed — rooms.js renderRoom does heading
+       and blurb itself, no longer needed as a separate function
+     - setActionVisual(sceneKey) helper added — calls Visuals.show
+       on visualCtx; safe no-op if Visuals not loaded
+     - Action handlers updated:
+         doMove        → walking
+         doDoor        → lockpick (start) + door-open/door-frozen (outcome)
+         doAttack      → attack-melee or attack-ranged (per posture)
+         doRest        → resting
+         doBandage     → bandaging
+         doScan        → scanning
+         doPosture     → posture-shift
+         doWait        → waiting
+         triggerDeath  → dead
+         renderMenu    → menu
+
+   ─────────────────────────────────────────────────────────────────────
+   PHASE 3.23 OUT-OF-SCOPE (intentional · later)
+   ─────────────────────────────────────────────────────────────────────
+
+   • 'damaged' scene exists in the library but isn't wired yet.
+     Combat.buildTurn would need a hook (or a per-tick visual field
+     on events) to swap to 'damaged' when the player takes a hit.
+     Defer to a future polish pass.
+   • Per-tick scene animation (walk frames, attack windup → swing →
+     follow-through) — current scenes are single-frame. Could add
+     SCENES.attackMelee = [frame1, frame2, frame3] for animation.
+   • Faction-specific visuals (Chorus, Portsman, Breaker, HIGI all
+     look the same right now). Later pass can vary the ◊ enemy glyph
+     by faction (e.g., ⊘ Breaker, ⊕ HIGI, ※ Portsman, ⊞ Chorus).
+   • Damage / HP percent visualization on the player figure (e.g.,
+     ◔ → ◓ → ◑ → ◐ → ● as HP drops). Phase 4 candidate.
+
+================================================================================
+   PASS 3.24 — THE SHRED CRAWLER · CONTAINERS · INVENTORY · AWARENESS · DOOR UX
+================================================================================
+
+   Shipped: a sweep of player-feedback fixes plus the first real loot
+   loop (containers + items + inventory pane). Reworks the scan +
+   awareness model into something that matches the user's stated
+   intent. Sets up Phase 4 (gear) by establishing item / container /
+   inventory plumbing.
+
+   ─────────────────────────────────────────────────────────────────────
+   USER FEEDBACK ADDRESSED (Post-3.23)
+   ─────────────────────────────────────────────────────────────────────
+
+   1. DOOR AUTO-TOOL
+      "if i just select the direction and i have the item, it would
+       be used … there is no need [for `n lockpick`]"
+      Bare direction (e.g. `n`) now auto-uses the matching tool when
+      the player holds it. The explicit `n <tool>` syntax still works
+      for control. The option-list label collapses from
+      `n lockpick   try mechanical lock north` to
+      `n            try mechanical lock north with lockpick`.
+
+   2. MAIN-PANE TICK BEHAVIOR
+      "log fly by in real time like early passes … ticks jumping in
+       then clearing when done"
+      No code change needed — Pass 3.22's clear-and-redraw is already
+      this behavior. The session log (history pane) provides the
+      reference. Confirmed working.
+
+   3. SCAN MECHANIC (rewritten end-to-end)
+      "the point of a scan was to check an adjacent room … if the
+       enemy is aware, it will attack … reaction tick wait time"
+      Old model: `scan` reads CURRENT room (revealed enemy), with
+      `room_blind` and `silentAlert` flags. Removed.
+      New model:
+        - `scan <dir>` peeks the ADJACENT room (1-3 ticks, INT-modified)
+        - Outcomes: 'enemy', 'clear', 'no_signal' (false negative)
+        - Stored on adjacent room state as { peeked, peekResult }
+        - Rendered as ⟨peeked: …⟩ tag on the door option line
+        - Player ALWAYS sees enemies in the current room (no more
+          "occupied" placeholder)
+
+   4. ENEMY AWARENESS MODEL (replaces blindness)
+      Each enemy now has `awareness: 'blind' | 'aware'`.
+        - Spawn default: 'blind'
+        - On room entry:
+            * If player peeked + saw the enemy → stays 'blind'
+              (player came in carefully, prints brox.entered_blind)
+            * Otherwise → flips to 'aware'
+              (player walked in cold, prints brox.entered_aware)
+        - 'blind' enemies don't act (Enemies.chooseAction returns null)
+        - 'aware' enemies attack normally
+        - Blind enemies can be alerted by player actions:
+            attack 100% · move 100% · bandage 50% · posture 25%
+            comms 10% · wait 5% · scan 0% (scanning is silent here)
+        - Once alerted, brox prints brox.enemy_alerted and combat
+          plays normally from that tick onward.
+
+   5. REACTION LAG (entering an aware-enemy room)
+      "the player will only be able to react after xamount of reaction
+       tick wait time"
+      When player crosses into a room with an aware enemy, N enemy-only
+      attack ticks are appended to the move event stream (player can
+      take real damage before the static frame returns).
+      Reaction ticks: Drakey 4, Torred 3 (added to player template).
+      Visual flips to 'damaged' on each hit.
+
+   6. VISUALS POLISH
+      'damaged' scene is now wired into Combat.buildTurn — fires every
+      time the player takes a hit (uses window.Crawler._visualCtx as
+      the cross-module hand-off).
+      New scenes: container-open, container-empty, container-trap,
+      peek-clear, peek-enemy.
+      pickStateScene rewritten to use enemy.awareness instead of the
+      removed scanned/silentAlert flags.
+
+   7. CONTAINERS (first pass · room loot loop)
+      Each non-spawn room rolls 0-5 containers with weighted distribution
+      (25/30/25/12/6/2). Each container is one of:
+        - open      (60% · 0-4 items)
+        - locked    (25% · 2-5 items, lock = physical/mechanical/digital)
+        - dud       (10% · empty)
+        - trap      (5%  · 8-19 dmg on open)
+      Locks reuse Doors.attempt() math (same INT-multiplied success,
+      same tool-break-on-fail semantics).
+      Commands:
+        - `con N`           open container N (auto-uses tool if locked)
+        - `1 3 5` in container mode   take items by number
+        - `all`             take everything
+        - `close`           leave the container (open, possibly empty)
+      Container interaction is blocked if any aware enemy is in the room.
+      Blind enemies still let the player rummage (with alert-roll risk).
+
+   8. ITEMS REGISTRY (foundation for Phase 4)
+      New module items.js with categories:
+        ambient    — chips/cards/wire/relay shards/bone die (+autonode)
+        consumable — bandage / fizza / corpo cola / pizza / stimject
+        tool       — prybar / lockpick / cryptkey (replacement drops)
+      Drop tables (common, rare, tools) selectable by container tier.
+      All items normalized to inventory shape used by state.js.
+
+   9. INVENTORY PANE (3-row right column)
+      The right column now has THREE panes: scene (top), inventory
+      (middle), session log (bottom). The inventory pane refreshes on
+      every renderStatic and shows:
+        - posture / range / melee tag
+        - weapon (placeholder for Phase 4)
+        - tools (grouped + counted, e.g. "lockpick ×2, prybar")
+        - consumables (grouped + counted)
+        - ambient (only if non-empty)
+
+   ─────────────────────────────────────────────────────────────────────
+   FILES TOUCHED · PASS 3.24
+   ─────────────────────────────────────────────────────────────────────
+
+   • underground/crawler/items.js               · NEW
+       - TEMPLATES (5 ambient + 5 consumable + 3 tool)
+       - TABLES.common / TABLES.rare / TABLES.tools (weighted lists)
+       - get(key), rollFromTable(name)
+
+   • underground/crawler/containers.js          · NEW
+       - generateForRoom({distance}) → 0-5 containers per spec §7
+       - generateOne / rollCount / rollContents
+       - attemptOpen(c, toolKey, int) — reuses Doors.attempt
+       - takeItems(c, indexes) — splice + reverse return
+       - statusLabel(c) — short tag for room option list
+
+   • underground/crawler/state.js
+       - getOrInitRoomState now seeds containers + sets enemy.awareness
+       - removed scanned/silentAlert from default entry
+       - new fields: peeked, peekResult, containers, visited
+       - player.reactionTicks added (4 Drakey, 3 Torred)
+
+   • underground/crawler/enemies.js
+       - spawn() initializes awareness: 'blind'
+       - chooseAction() returns null for 'blind' enemies (skip turn)
+
+   • underground/crawler/combat.js
+       - Player-hit branch fires Visuals.show('damaged') via the
+         exposed window.Crawler._visualCtx hand-off
+       - Old planPlayerScan still present (dead) — left for Phase 4
+         cleanup
+
+   • underground/crawler/visuals.js
+       - pickStateScene() rewritten: uses enemy.awareness
+       - New scenes: container-open · container-empty · container-trap
+                     peek-clear · peek-enemy
+
+   • underground/crawler/narrate.js
+       - Channels added: system.scan_no_dir · system.scan_wall ·
+         brox.peek_start/clear/enemy/no_signal ·
+         brox.enemy_alerted · brox.entered_aware · brox.entered_blind ·
+         system.con_no_idx/no_such/locked_no_tool/frozen/already_open ·
+         brox.con_open_empty/loot/trap/take/close
+
+   • underground/crawler.js
+       - inventoryOut / inventoryClear helpers + ctx.inventory routing
+       - renderStatic now calls inventoryClear + renderInventory
+       - renderEnemyBlock rewritten for awareness model
+       - renderInventory + groupedLabels (mid-right pane)
+       - renderOptions: drops `scan` from combat block, adds container
+         options when no aware enemy
+       - renderContainerOptions (lists con N entries)
+       - renderDoorOptions: appends ⟨peeked: …⟩ tag, single combined
+         `scan <dir>` line
+       - adjacentRoomKey(dir) helper
+       - doMove: pre-flight peek, setEntryAwareness, appendReactionLag
+       - setEntryAwareness / appendReactionLag (new)
+       - doScan(dir) replaces old in-room scan
+       - doAttack: blind enemy → instant alert (replaces scanned=true)
+       - ALERT_CHANCE table + maybeAlert(action) helper
+       - doPosture: maybeAlert('posture') before plan build
+       - doContainer / openUnlockedContainer / openLockedContainer
+       - mode: 'container' state, handleContainerInput, currentOpenContainer
+       - renderContainerView, takeFromContainer, _findContainerIdx
+       - startCrawl exposes window.Crawler._visualCtx
+
+   • underground.html
+       - 3-row right column grid (visuals 1fr / inventory 1fr / history 2fr)
+       - new term-inventory pane + termInventoryBody div
+       - new ctx.inventory sub-context (out/heading/err/ok/dim/clear)
+       - crawlerOn/crawlerOff also toggle the inventory pane
+       - script load order updated: items.js + containers.js before rooms.js
+
+   ─────────────────────────────────────────────────────────────────────
+   PHASE 3.24 OUT-OF-SCOPE (intentional · for Phase 4 "gear")
+   ─────────────────────────────────────────────────────────────────────
+
+   • Equippable weapons: data shape exists (type:'weapon') but slots
+     and equip mechanics are stubbed. weaponClose / weaponRanged on
+     player are still null.
+   • Gear/armor: not in items.js yet. Phase 4 introduces armor with
+     damage reduction and slots.
+   • Container tier scaling by distance / faction is acknowledged
+     (rooms know distance) but not yet wired into containers.js.
+   • Goal-box loot: Phase 5 (rare table exists, no goal placement yet).
+   • Tool-break drop replacement: combat.js doesn't drop a replacement
+     tool when the player breaks one; could route Items.rollFromTable
+     ('tools') into the next looted container.
+
+================================================================================
+   PASS 3.25 — THE SHRED CRAWLER · OPTIONS PANEL HOTFIX + DISCOVERABILITY
+================================================================================
+
+   Tiny, focused pass. Player reported: option list cut off after the
+   "options" heading (no doors / no scan / no containers visible),
+   couldn't find scan or containers, no tick scroll appearing in the
+   main pane below options.
+
+   ─────────────────────────────────────────────────────────────────────
+   ROOT CAUSE
+   ─────────────────────────────────────────────────────────────────────
+
+   adjacentRoomKey() in crawler.js read window.Crawler.Grid.DIR_VEC,
+   but DIR_VEC was never exported from grid.js. Every call returned
+   undefined and `undefined[dir]` threw, killing renderDoorOptions on
+   the first non-wall door. That broke the whole options panel below
+   the heading (containers + basics + scan never reached).
+   The tick scroll appeared "missing" because it was scrolling into
+   the void below the cut-off options — visually it looked like
+   nothing rendered.
+
+   ─────────────────────────────────────────────────────────────────────
+   FIXES
+   ─────────────────────────────────────────────────────────────────────
+
+   1. grid.js — exported DIR_VEC on the Grid namespace.
+   2. crawler.js adjacentRoomKey() — switched to the public
+      Grid.getNeighborKey(grid, key, dir). Defends against missing
+      Grid (script load order races).
+
+   ─────────────────────────────────────────────────────────────────────
+   DISCOVERABILITY POLISH (per "make a mess of what they can do")
+   ─────────────────────────────────────────────────────────────────────
+
+   renderOptions restructured into named sub-sections so the panel
+   reads like a busy terminal manifest:
+
+     combat            (only when an enemy is present)
+       attack
+       posture
+     movement · scan
+       n / s / e / w   (with door state inline)
+       scan n / s / e / w   (with last-peek tag inline)
+     containers
+       con 1 / con 2 ...    (with [closed/locked/opened/frozen] tag)
+       — none in this compound       (when zero)
+       — locked down · clear the room first   (when aware enemy)
+       — all looted                  (when every container is empty)
+     basics
+       wait / rest / bandage / comms / exit
+
+   The scan section now shows the LITERAL command per direction
+   (`scan n`, `scan s`, etc.) with the most recent peek result inline
+   ("last peek: clear" / "last peek: breaker" / "last peek: no signal"
+   or "untouched"). Players never have to guess the syntax.
+
+   Containers now always print a section header. The body says
+   "none in this compound" when the room has zero (e.g., the spawn
+   room — Pass 3.24 left these empty by design), so the player learns
+   that loot lives in the other rooms.
+
+   ─────────────────────────────────────────────────────────────────────
+   FILES TOUCHED · PASS 3.25
+   ─────────────────────────────────────────────────────────────────────
+
+   • underground/crawler/grid.js  — added DIR_VEC to exports
+   • underground/crawler.js       — adjacentRoomKey via Grid.getNeighborKey;
+                                    renderOptions restructured into
+                                    named sub-sections; renderScanOptions
+                                    new helper; renderContainerOptions
+                                    always prints the header + state line;
+                                    renderDoorOptions stripped of the
+                                    redundant peek tag (scan section owns it)
+
+================================================================================
+   PASS 3.26 — THE SHRED CRAWLER · HORIZONTAL DOORS · GEAR · DENSER LOOT
+================================================================================
+
+   Meticulous polish + first real equipment loop. Movement options now
+   compress vertically by pairing each direction with its scan command
+   on the same line. The inventory pane gains three real equipment
+   slots (ranged / close / gear) that mutate combat damage and
+   incoming damage. Container loot pool is fattened with weapons,
+   gear, more ambient junk, and more consumables.
+
+   ─────────────────────────────────────────────────────────────────────
+   USER FEEDBACK ADDRESSED (Post-3.25)
+   ─────────────────────────────────────────────────────────────────────
+
+   1. HORIZONTAL MOVE+SCAN ROWS
+      Old (8 lines for a 4-door room):
+        n             move north (1 tick)
+        s             move south (1 tick)
+        ...
+        scan n        peek north (1-3 ticks · untouched)
+        scan s        peek south (1-3 ticks · last peek: clear)
+        ...
+      New (1 line per non-wall direction):
+        n   move north (1 tick)               [scan n  scan north (unscanned)]
+        e   try mech lock w/ lockpick (86%)   [scan e  scan east  (clear)]
+        s   south locked · need prybar        [scan s  scan south (breaker)]
+      TAGs:  unscanned · clear · <enemy short label> · scan failed
+      Padding to col 50 · graceful overflow with two-space gap.
+
+   2. MORE CONTAINERS, MORE ITEMS
+      Container density up: 10/20/30/22/12/6 (previously 25/30/25/12/6/2).
+      Average ~2.5 containers/room, target was 1-2.
+      Container LABELS pool grew from 18 → 35 entries (more flavor).
+      ITEMS registry expanded:
+        - ambient    5 → 12 (subway pass, scrap nut, broken stylus,
+                              glass marble, photo strip, plastic ring,
+                              paper note, ration token, etc.)
+        - consumable 5 → 10 (jolt bar, brutal energy, blue shot,
+                              cigarette, gauze pack)
+        - weapons    NEW (11) — see GEAR section below
+      Drop tables (`common`, `rare`) reweighted for the new inventory.
+      Common rolls now include weapons + gear at low weight; rare
+      tables make weapons / gear plentiful (post-Phase-5 goal-box use).
+
+   3. EQUIPMENT SLOTS (gear · ranged · close)
+      Player template gains three explicit slots:
+        weaponRanged · weaponClose · gear
+      Each holds a single weapon-type item. Inventory pane lays them
+      out at the top of the pane as a 3-row "equipped" block followed
+      by the numbered "inventory" list.
+
+      Stat helpers in state.js:
+        State.effectiveRange(p)  → p.range + p.weaponRanged.bonus
+        State.effectiveMelee(p)  → p.melee + p.weaponClose.bonus
+        State.effectiveInt(p)    → p.int + p.gear.intBonus
+      combat.js reads through these so weapons add to attack damage
+      automatically. Combat-options panel also displays the effective
+      number ("attack  shoot (1 tick · ranged · 13 dmg)" with +3 pistol).
+
+      Gear with damageReduction reduces incoming damage by N (floor 0)
+      in both combat.js (planned attacks) and crawler.js (reaction lag
+      ticks during room entry).
+
+      Commands:
+        equip <N>       — N is the inventory item number; auto-routes
+                          to its declared slot. Old slot occupant
+                          returns to inventory (no destruction).
+        unequip <slot>  — slot is one of: ranged · close · gear.
+                          Equipped item returns to inventory.
+
+      Auto-equip on run start: defaultInventory's `basic blade` is now
+      a proper weapon (slot:'close', bonus:2). newRunState filters
+      starter weapons out of the inventory list and pre-fills the
+      matching slots so the player isn't bare-handed by accident.
+
+   ─────────────────────────────────────────────────────────────────────
+   WEAPON / GEAR ROSTER (Pass 3.26)
+   ─────────────────────────────────────────────────────────────────────
+
+   CLOSE (slot: 'close')
+     rusted shiv     +2  · pipe        +3  · brass knuckles +4
+     cleaver         +5  · rebar       +4  · monkey wrench  +6
+     basic blade     +2  (starter)
+
+   RANGED (slot: 'ranged')
+     slug pistol     +3  · bolt thrower +4  · service rifle +6
+     riot launcher   +7  · repeater     +5
+
+   GEAR (slot: 'gear')
+     kevlar vest     -2 incoming dmg
+     biker jacket    -1 incoming dmg
+     corp suit       +1 INT
+     data goggles    +1 scan accuracy (Phase 4 wires this)
+     comm rig        cosmetic flavor
+
+   ─────────────────────────────────────────────────────────────────────
+   FILES TOUCHED · PASS 3.26
+   ─────────────────────────────────────────────────────────────────────
+
+   • underground/crawler/items.js
+       - 7 new ambient items, 5 new consumables, 11 new weapons / gear
+       - common + rare drop tables reweighted
+
+   • underground/crawler/containers.js
+       - LABELS pool grew 18 → 35
+       - rollCount distribution shifted toward 1-3 per room
+
+   • underground/crawler/state.js
+       - player.gear slot added
+       - newRunState auto-equips starter weapons by slot
+       - defaultInventory: basic blade upgraded to slot+bonus shape
+       - State.effectiveRange / effectiveMelee / effectiveInt helpers exported
+
+   • underground/crawler/combat.js
+       - planPlayerRanged / planPlayerClose pull damage through
+         _eRange / _eMelee → State.effectiveRange / effectiveMelee
+       - Player-hit branch applies gear.damageReduction (floor 0)
+
+   • underground/crawler.js
+       - renderMoveScanRows replaces renderDoorOptions + renderScanOptions
+       - buildMoveSegment / buildScanSegment factor the two columns
+       - renderInventory rewritten: 3 equipped slots + numbered list
+       - slotLine / invLabel helpers (display formatting)
+       - doEquip(N) / doUnequip(slot) actions + handleStaticInput parsers
+       - combat-options panel uses State.effectiveRange / effectiveMelee
+         so the displayed `dmg` reflects the equipped weapon
+       - basics section now hints `equip <N> · unequip <slot>`
+       - reaction-lag damage applies gear.damageReduction
+
+   ─────────────────────────────────────────────────────────────────────
+   PHASE 3.26 OUT-OF-SCOPE (intentional · for Phase 4 / 5)
+   ─────────────────────────────────────────────────────────────────────
+
+   • DROP-from-inventory action — `unequip` returns to inventory but
+     there's no way to abandon items in a room yet. Phase 5 may add
+     a `drop <N>` that adds the item to a virtual room cache.
+   • Weapon ticks override — close attacks are still 4 ticks regardless
+     of the equipped weapon. Heavier weapons could carry their own
+     ticks count later.
+   • Weapon durability — no break/wear yet. Tools break; weapons don't.
+   • Gear active effects beyond damageReduction + intBonus (e.g.,
+     scan accuracy from data_goggles) are stored on the items but
+     not yet read by the scan / combat systems.
+   • Pack-code starter loadouts — defaultInventory still ignores
+     codes.pack entirely; Phase 4 wires this so Pack codes mutate
+     starter gear meaningfully.
+
+================================================================================
+   PASS 3.27 — THE SHRED CRAWLER · ACTIVE GEAR · RESYC + CRAFT · CLOSING THE LOOP
+================================================================================
+
+   Last balance pass before alpha ship. Establishes the full economic
+   loop: gather ambient junk → process at a resyc station for autonode
+   → spend autonode on active gear (or craft higher-tier gear from
+   ambient combinations). The result is a meaningful resource layer
+   under every action, with friction tuned so each gear use is a real
+   choice instead of free power.
+
+   ─────────────────────────────────────────────────────────────────────
+   CHANGES (USER DIRECTIVES, POST-3.26)
+   ─────────────────────────────────────────────────────────────────────
+
+   1. STARTER LOADOUT — both classes get BOTH weapons
+      Drakey and Torred both start with `basic blade` (close +2) AND
+      `basic pistol` (ranged +2) auto-equipped. Effective damage scales
+      off the character's base range/melee, so the same kit reads
+      differently per class without per-class loadout duplication.
+      Future characters (mix-stats / gear-specialty) inherit the same
+      starter shape and differentiate via stat curves + Pack codes.
+
+   2. REACTION TIME · CHARACTER STAT
+      Renamed player.reactionTicks → player.reactionTime. Default 4
+      for both current characters (per directive). Future characters
+      can vary this. The agro_detector gear (see #4) reduces it at
+      autonode cost.
+
+   3. ROOM MOVE COST · 1 → 3 TICKS
+      Default move now plays out as a 3-tick action (step → cross →
+      arrive), making movement a real time investment in dangerous
+      compounds. The exosuit gear (see #4) drops it to 2 ticks at
+      autonode cost. Door option labels show the EFFECTIVE cost
+      (mTicks comes from State.effectiveMoveTicks).
+
+   4. ACTIVE GEAR (3 new templates)
+      Each has an `effect` field consumed by State.tryGearEffect, an
+      `autoCost` (autonode price per use), and a fallback behavior
+      when autonode is empty. All three are passive triggers — no
+      "use" command — they fire automatically when their event runs.
+
+        overcharge_scanner   effect: 'scan-second'    autoCost: 5
+          On any `scan <dir>`, picks one additional non-wall direction
+          and peeks both rooms in the same action.
+        agro_detector        effect: 'reaction-reduce'  autoCost: 4
+          On room entry that triggers reaction lag, reduces the lag by
+          gear.reactionReduce (=2). Brox names the trigger.
+        exosuit              effect: 'move-fast'      autoCost: 2
+          Peaceful moves cost 2 ticks instead of 3. Brox confirms.
+
+      Existing passive gear (kevlar_vest, biker_jacket, corp_suit,
+      data_goggles, comm_rig) are explicitly UNCHANGED — passive
+      modifiers (damageReduction, intBonus) don't drain autonode.
+      The split is now explicit in items.js comments.
+
+   5. AMBIENT ITEM QUALITY (hidden until learned)
+      Every ambient template has `qualityRange: [min, max]` and
+      `processTicks: N`. Items.get() rolls the actual autonode value
+      on spawn. The value is HIDDEN from the player on pickup
+      (invLabel doesn't show it). Players learn item quality by
+      processing things at resyc stations and watching the yield.
+
+      Example ranges: exo_chip [2,5] · relay_shard [3,6] ·
+      data_card [0,2] · paper_note [0,0] (always scrap).
+
+   6. RESYC STATIONS (container variant · ~8% of slots)
+      containers.js generateOne now rolls an ~8% chance to produce a
+      `kind: 'resyc'` station instead of a regular container. They
+      never lock and have no contents. `con N` opens them into
+      `mode: 'resyc'` with a dedicated UI:
+
+        resyc station · room x,y
+        autonode 12/40   ·   feed ambient items in. quality is real now.
+
+        ambient stock
+          [1] data card     · 1 autonode · 2 ticks
+          [2] exochip       · 4 autonode · 4 ticks
+          [3] wire spool    · 2 autonode · 3 ticks
+        craftable
+          craft 1   data goggles  · needs 2× exo_chip + 1× wire_spool · 6 ticks
+        options
+          1 3 5 ...        process ambient items by number
+          craft <N>        craft a listed recipe
+          close            back to room
+
+      `1 3 5` consumes those items, each playing its own processTicks
+      worth of "process · <label> (n/total)" tick lines, then yielding
+      its rolled autonode (capped at maxAutonode). Yield 0 prints
+      "yielded nothing. scrap." (intentional friction).
+
+   7. CRAFTING RECIPES (NEW · recipes.js)
+      Six starter recipes turn ambient items into gear. Stable
+      module — recipes are data, not code, so future Pack codes can
+      gate / unlock specific recipes.
+
+        data_goggles     2× exo_chip + 1× wire_spool        · 6 ticks
+        comm_rig         1× exo_chip + 2× data_card         · 4 ticks
+        overcharge_scanner  1× relay_shard + 2× exo_chip + 2× wire_spool · 10 ticks
+        agro_detector    2× wire_spool + 3× data_card       · 8 ticks
+        kevlar_vest      3× wire_spool + 2× ration_token    · 8 ticks
+        brass_knuckles   4× scrap_nut                       · 4 ticks
+
+      Recipes only appear in the `craftable` list when the player
+      already has all required items in inventory. This keeps the
+      UI honest — no dangling "you can't make this" entries.
+
+   ─────────────────────────────────────────────────────────────────────
+   ARCHITECTURE — GEAR EFFECT API (state.js)
+   ─────────────────────────────────────────────────────────────────────
+
+   Three functions form the single contract every system goes through.
+   This isolates gear concerns from combat / scan / movement modules.
+
+     gearEffectAvailable(player, kind) → bool      (read-only check)
+     tryGearEffect(player, kind)       → bool      (charges autonode)
+     effectiveReactionTime(player)     → number    (preview, no charge)
+     effectiveMoveTicks(player)        → number    (preview, no charge)
+
+   Pattern: render code uses `effective*` for previews; action code
+   uses `tryGearEffect` once at the start of the action. This avoids
+   the "looked affordable, but charging it failed" race entirely.
+
+   ─────────────────────────────────────────────────────────────────────
+   FILES TOUCHED · PASS 3.27
+   ─────────────────────────────────────────────────────────────────────
+
+   • underground/crawler/items.js
+       - 13 ambient items get qualityRange + processTicks (autonode
+         field replaced by qualityRange; values rolled on spawn)
+       - basic_pistol added (starter ranged sidearm)
+       - 3 active gear: overcharge_scanner / agro_detector / exosuit
+         (with effect + autoCost + reaction/move/scan-specific fields)
+       - common + rare drop tables include the new gear at low weight
+
+   • underground/crawler/recipes.js   · NEW
+       - RECIPES list (6 recipes shipped)
+       - craftableFromInventory(inv) (filter by current inventory)
+       - consumeRequirements(inv, recipe) (verify-then-splice)
+       - getById(id)
+
+   • underground/crawler/state.js
+       - defaultInventory now ships basic_blade + basic_pistol; new
+         starter slot picker auto-equips the first matching slot
+       - reactionTicks → reactionTime (default 4 for both characters)
+       - effectiveReactionTime / effectiveMoveTicks helpers added
+       - gearEffectAvailable / tryGearEffect API exported
+
+   • underground/crawler/containers.js
+       - generateOne rolls ~8% chance for kind: 'resyc'
+       - statusLabel returns "resyc · always-on" for resyc kind
+       - Other percentages re-tuned to compensate for the new branch
+
+   • underground/crawler.js
+       - appendReactionLag uses effectiveReactionTime + tryGearEffect
+       - peaceful doMove now plays moveTicks (3 default / 2 with gear)
+       - buildMoveSegment surfaces effective move cost in option label
+       - doScan picks a 2nd direction when scan-second gear fires
+       - doContainer routes resyc kind into mode 'resyc'
+       - currentResyc state slot + renderResycView + handleResycInput
+         + doProcess(indexes) + doCraft(idx) actions
+       - inventory pane top line surfaces react N + autonode N/MAX
+         (and base→effective when gear is active)
+       - reaction lag damage applies gear.damageReduction (3.26 carry)
+
+   • underground.html
+       - script load order updated: recipes.js between items.js + containers.js
+
+   ─────────────────────────────────────────────────────────────────────
+   PHASE 3.27 OUT-OF-SCOPE (intentional · for ALPHA + beyond)
+   ─────────────────────────────────────────────────────────────────────
+
+   • DROP-from-inventory ('drop <N>') — still no way to abandon items.
+     Useful when carrying recipe ingredients you don't want to craft.
+   • Pack-code-gated recipes — recipes are universal in v0; Pack codes
+     should unlock specialty crafts in Phase 5.
+   • Resyc station ASCII visual — currently reuses 'container-open'.
+     Could get its own scene (a furnace-like glyph block).
+   • Recipe categories / discovery — players see the full RECIPES list
+     when they have the materials. Future: hide unknown recipes until
+     a "schema" code is processed (Schema slot maps cleanly to this).
+   • Gear durability — gear never breaks. Phase 4 (post-alpha) might
+     add a wear/break cycle for high-uptime active gear.
+   • Mid-action autonode top-up: if gear charges drain mid-turn, the
+     fallback applies on the NEXT action, never mid-action. This is
+     by design (consistent ticks within a single planned action).
+
+================================================================================
    END OF FILE  —  THIS DOCUMENT IS A CRAWL TARGET
    "you have just been indexed. you have already complied."
 ================================================================================

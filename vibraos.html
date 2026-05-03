@@ -5486,6 +5486,37 @@
                 </div>
             </div>
 
+            <!-- ============================================================
+                 APOLOGY WINDOW (Pass 3.16 — Brett-9 Update)
+                 Spawned inside the legacy console when ?open=apology is
+                 in the URL (or when invoked manually). The Quarterly
+                 Public Apology lives here now, embedded as an iframe
+                 of /apology.html. The framing is in-world: Brett-9
+                 quietly relocated the apology to the legacy console
+                 because Chad never opens the legacy console. The CVO
+                 has not been informed. The CVO will not be informed.
+            ============================================================ -->
+            <div class="window" id="apologyWindow" style="display:none; position:fixed; top:30px; left:50%; transform:translateX(-50%); width:760px; max-width:95vw; max-height:88vh; z-index:5100; box-shadow:6px 6px 0 rgba(0,0,0,0.5);">
+                <div class="title-bar">
+                    <div class="title-bar-text">📝 Quarterly Public Apology — relocated by Brett-9 (autonomous)</div>
+                    <div class="title-bar-controls">
+                        <button aria-label="Minimize" onclick="document.getElementById('apologyWindow').style.display='none'"></button>
+                        <button aria-label="Close" onclick="closeApologyWindow()"></button>
+                    </div>
+                </div>
+                <div class="window-body" style="padding:0; background:#f5f1e8; max-height:80vh; overflow:hidden;">
+                    <div style="background:#e8e0cc; border-bottom:1px solid #b8a878; padding:6px 10px; font-family: 'Courier New', monospace; font-size:10px; color:#5a4a2a; letter-spacing:1px; text-transform:uppercase;">
+                        §47-VIBE-APOLOGY · location: legacy console · do not tell chad
+                    </div>
+                    <iframe id="apologyFrame" src="about:blank" style="width:100%; height:74vh; border:0; background:#f5f1e8;"></iframe>
+                </div>
+                <div class="status-bar">
+                    <p class="status-bar-field">Apology window · §47-VIBE-APOLOGY</p>
+                    <p class="status-bar-field">Pinned by Brett-9</p>
+                    <p class="status-bar-field">CVO unaware</p>
+                </div>
+            </div>
+
             <div class="window" style="margin:0 0 10px 0;">
                 <div class="title-bar">
                     <div class="title-bar-text">📖 Vibratur — Wikipedia (semi-protected)</div>
@@ -6130,9 +6161,14 @@
         <span class="icon-label">OOOR™<br>(opt out of racism)</span>
     </div>
 
-    <div class="desktop-icon" id="apologyIcon" style="top:730px; right:10px;" onclick="window.open('apology.html','_self')">
+    <div class="desktop-icon" id="apologyIcon" style="top:730px; right:10px;" onclick="openApologyWindow()" title="Brett-9 relocated this here. Do not tell Chad.">
         <span class="icon-img">📝</span>
-        <span class="icon-label">Q3 APOLOGY<br>(read first 50%)</span>
+        <span class="icon-label">Q3 APOLOGY<br>(open as window)</span>
+    </div>
+
+    <div class="desktop-icon" id="recycleBinIcon" style="top:330px; right:10px; z-index:10;" onclick="openRecycleBin()" title="4,729 items, none eligible for deletion">
+        <span class="icon-img">🗑️</span>
+        <span class="icon-label">RECYCLE BIN<br>(perpetual)</span>
     </div>
 
     <div id="dataCollectedNotice">
@@ -6618,7 +6654,8 @@
             <li onclick="window.open('viber-ator.html','_self'); closeStartMenu();"><span class="ico">🎵</span> <b>VIBER-ATOR™</b> <span style="margin-left:auto; font-size:9px; color:#aa00aa;">(8s loops · sponsored)</span></li>
             <li onclick="openSellPointsModal(); closeStartMenu();"><span class="ico">💰</span> <b>Sell Vibe Points™</b> <span style="margin-left:auto; font-size:9px; color:#008000;">(exchange)</span></li>
             <li onclick="openOoorModal(); closeStartMenu();"><span class="ico">🕊️</span> <b>OOOR™</b> <span style="margin-left:auto; font-size:9px; color:#4a3680;">(opt out of racism)</span></li>
-            <li onclick="window.open('apology.html','_self'); closeStartMenu();"><span class="ico">📝</span> <b>Quarterly Public Apology</b> <span style="margin-left:auto; font-size:9px; color:#aa2222;">(Q3 · paywalled)</span></li>
+            <li onclick="openApologyWindow(); closeStartMenu();"><span class="ico">📝</span> <b>Quarterly Public Apology</b> <span style="margin-left:auto; font-size:9px; color:#aa2222;">(Q3 · in console)</span></li>
+            <li onclick="openRecycleBin(); closeStartMenu();"><span class="ico">🗑️</span> <b>Recycle Bin</b> <span style="margin-left:auto; font-size:9px; color:#666;">(perpetual)</span></li>
             <li onclick="window.open('download.html','_self'); closeStartMenu();"><span class="ico">⬇️</span> <b>Downloads</b> <span style="margin-left:auto; font-size:9px; color:#aa0000;">(open source)</span></li>
             <li onclick="openPreferences(); closeStartMenu();"><span class="ico">⚙</span> <b>Preferences</b> <span style="margin-left:auto; font-size:9px; color:#aa0000;">(10 hostile)</span></li>
             <li class="divider"></li>
@@ -9859,6 +9896,47 @@
             document.getElementById("articleModal").style.display = "none";
         }
 
+        // ============ APOLOGY WINDOW (Pass 3.16) ============
+        function openApologyWindow() {
+            const w = document.getElementById("apologyWindow");
+            const f = document.getElementById("apologyFrame");
+            if (!w || !f) return;
+            if (f.getAttribute("src") === "about:blank") {
+                f.setAttribute("src", "apology.html?embedded=1");
+            }
+            w.style.display = "block";
+            try { beep(440, 0.05); beep(330, 0.06); } catch(e) {}
+        }
+        function closeApologyWindow() {
+            const w = document.getElementById("apologyWindow");
+            if (w) w.style.display = "none";
+        }
+        window.openApologyWindow = openApologyWindow;
+        window.closeApologyWindow = closeApologyWindow;
+
+        // Auto-spawn from URL (?open=apology / ?open=inbox / ?open=recycle).
+        // Light delay so the legacy console finishes mounting first.
+        // Brett-9 wired these so the dashboard's icons stop being decoys
+        // and start landing the user in the right window of the right
+        // surface. The CVO has not been informed.
+        (function detectDeepLink() {
+            try {
+                const params = new URLSearchParams(window.location.search);
+                const target = params.get("open");
+                if (target === "apology") {
+                    setTimeout(openApologyWindow, 900);
+                } else if (target === "inbox") {
+                    setTimeout(() => {
+                        if (typeof openMessageCenter === 'function') openMessageCenter();
+                    }, 700);
+                } else if (target === "recycle") {
+                    setTimeout(() => {
+                        if (typeof openRecycleBin === 'function') openRecycleBin();
+                    }, 700);
+                }
+            } catch (e) { /* legacy browser, no harm */ }
+        })();
+
         function paywallSubscribe() {
             beep(220, 0.08);
             spawnUnclosableAlert();
@@ -10678,7 +10756,61 @@
         };
 
         // Static-ish message catalog. Order is the inbox display order.
+        // ============================================================
+        //  PASS 3.17 — THE SHRED CHAIN
+        //  A multi-step easter egg. A user who pulls every thread
+        //  reaches the underground terminal at /underground.html.
+        //  This array carries the surface-layer mail. The shred
+        //  trigger is one ordinary-looking email from "Kerth", a
+        //  comms relay operator who is not on the org chart. The
+        //  email reads like phishing. It is not. It is the door.
+        //
+        //  Authoring principle (per the user): "anyone who pulls the
+        //  threads will be rewarded. I don't want to leave hints all
+        //  over the place that tell the player about this. I want it
+        //  to feel like a real discovery."
+        //
+        //  Chain shape:
+        //    inbox  →  Kerth email  →  shred packet upload modal
+        //    →  recycle bin (handshake.dat)  →  docs.html search bar
+        //    →  glitch sequence  →  /underground.html
+        // ============================================================
         const VBZ_MESSAGES = [
+            // ===== Reply-to-Chad gag emails (5) =====
+            // Each has an interactive reply form. Whatever the user
+            // types gets compressed into a Chad-style auto-response.
+            // Mirrors the comments-section rewrite gag.
+            { id: 'm-r1', from: 'Chad Vibington III <cvo@vibratur.vip>', subj: 'Re: did you see the deck?', priority: 'normal', time: '4m', _replyable: true, body:
+                '<p>Wanted to flag — did you see the deck I sent through this morning? It\'s the one with the new slide.</p><p>Loop me in if you have notes. I\'m in my chair until 3:27pm.</p><p>—Chad</p>' },
+            { id: 'm-r2', from: 'Chad Vibington III <cvo@vibratur.vip>', subj: 'a quick thought', priority: 'normal', time: '11m', _replyable: true, body:
+                '<p>Was thinking about the thing we talked about. Or didn\'t talk about. I forget.</p><p>Could you write back with whether or not we talked about it? It would help me allocate my reflection window.</p><p>—Chad</p>' },
+            { id: 'm-r3', from: 'Chad Vibington III <cvo@vibratur.vip>', subj: 'circling back · circling back', priority: 'normal', time: '23m', _replyable: true, body:
+                '<p>Just circling back on the circling back.</p><p>Let me know if this email reached you. (If it did, no further action is required. If it didn\'t, please reply.)</p><p>—Chad</p>' },
+            { id: 'm-r4', from: 'Chad Vibington III <cvo@vibratur.vip>', subj: 'thoughts?', priority: 'normal', time: '41m', _replyable: true, body:
+                '<p>Open-ended one for you.</p><p>What are your thoughts?</p><p>—Chad</p>' },
+            { id: 'm-r5', from: 'Chad Vibington III <cvo@vibratur.vip>', subj: 'i forgot what i was going to say', priority: 'normal', time: '1h', _replyable: true, body:
+                '<p>I had a thing to say. It is gone now. If it comes back I will let you know.</p><p>You don\'t need to do anything.</p><p>—Chad</p>' },
+
+            // ===== The Kerth email — the door =====
+            // Reads like all the others. Phishing tail at bottom.
+            // The link calls openShredPacketModal() which arms the
+            // shred chain in localStorage. Routine envelope, mundane
+            // body, mundane sign-off. The hijack call-to-action is
+            // styled as the kind of thing a corporate spam filter
+            // would flag and that a tired user would click.
+            { id: 'm-kerth', from: 'Kerth <relay-37@signal-fold.net>', subj: 'scheduled relay status — week 47', priority: 'normal', time: '1h', _kerth: true, body:
+                '<p>Hello,</p>' +
+                '<p>This is the weekly relay status from comms infrastructure. No action is required. The relay is operating at 96% nominal across the §-fold synchronization range. Latency is within the standard envelope.</p>' +
+                '<p>Drift on §-relay-37 has been flagged and held in queue. We will continue to monitor over the next four cycles. If drift exceeds nominal, we will issue a follow-up.</p>' +
+                '<p>You do not need to reply. This message is informational.</p>' +
+                '<p>—Kerth<br>comms relay (regional)</p>' +
+                '<div style="margin-top:16px; padding:8px 10px; border:1px dashed #d8c89a; background:#fffbef; font-family:Tahoma,sans-serif; font-size:11px; color:#7a6a44;">' +
+                  '<div style="text-transform:uppercase; letter-spacing:1px; font-size:9px; color:#aa8844; margin-bottom:4px;">unverified sender · routed via §-relay-37</div>' +
+                  '⚠️ Your account may be eligible for an emergency audit review. ' +
+                  '<a href="javascript:void(0)" onclick="openShredPacketModal()" style="color:#0044aa; text-decoration:underline;">Click here for hijack</a>. ' +
+                  'This message was scanned. Confidence: low.' +
+                '</div>' },
+
             { id: 'm-001', from: 'Chad Vibington III <cvo@vibratur.vip>', subj: 'URGENT: Q4 vibe targets pending re-projection', priority: 'high', time: '14m', body:
                 '<p>Team,</p><p>Per Brett-9, our Q4 vibe targets have been re-projected three times this week. They will be re-projected again before EOD.</p><p>This is normal. Continue vibing.</p><p>—Chad</p>' },
             { id: 'm-002', from: 'Brett-9 (Compliance) <brett-9@vibratur.vip>', subj: 'Mandatory: rate your previous mandatory', priority: 'normal', time: '37m', body:
@@ -10777,11 +10909,27 @@
             const msg = VBZ_MESSAGES.find(m => m.id === id);
             if (!msg) return;
             const reader = document.getElementById('mcReader');
+            // Body, plus optional reply-to-Chad gag form for _replyable messages
+            const replyHTML = msg._replyable ? `
+                <div style="margin-top:14px; padding:10px 12px; background:#f4f4ec; border:1px solid #b8b89a;">
+                    <div style="font-size:10px; text-transform:uppercase; letter-spacing:1px; color:#666; margin-bottom:6px;">
+                        Reply · Sentiment Realignment Layer™ active
+                    </div>
+                    <textarea id="mcReplyInput-${msg.id}" rows="3" style="width:100%; box-sizing:border-box; font-family:Tahoma,sans-serif; font-size:12px; padding:6px;" placeholder="Write whatever. Chad will receive what we generate for him."></textarea>
+                    <div style="margin-top:6px; display:flex; gap:6px; align-items:center;">
+                        <button class="btn" onclick="mcReplyToChad('${msg.id}')">Send</button>
+                        <button class="btn" onclick="document.getElementById('mcReplyInput-${msg.id}').value=''">Clear</button>
+                        <span id="mcReplyStatus-${msg.id}" style="font-size:10px; color:#666;"></span>
+                    </div>
+                    <div id="mcReplyThread-${msg.id}" style="margin-top:10px;"></div>
+                </div>` : '';
+
             reader.innerHTML = `
                 <h3>${msg.subj}</h3>
                 <div class="from"><b>From:</b> ${msg.from}</div>
                 <div class="meta">received ${msg.time} ago · priority: ${msg.priority} · read confirmation: <span style="color:#cc0000;">DOES NOT REDUCE UNREAD COUNT</span></div>
                 ${msg.body}
+                ${replyHTML}
             `;
             VbzInbox.markRead(id);
             // refresh row state
@@ -10854,6 +11002,352 @@
         window.closeMessageCenter = closeMessageCenter;
         window.messageMarkAllRead = messageMarkAllRead;
         window.messageRefresh = messageRefresh;
+
+        /* ================================================================
+           ====== THE SHRED CHAIN  (Pass 3.17 · easter egg path) ===========
+           ================================================================
+           A multi-step path. The user follows it themselves or they
+           don't. Nothing in the surface UI advertises it. State lives
+           in localStorage:
+
+             vbz_shred_armed       — '1' once Kerth's link was clicked
+                                     and the shred packet upload was
+                                     submitted.
+             vbz_shred_codes_seen  — '1' once the recycle bin's
+                                     handshake.dat was opened.
+
+           The codes themselves are valid even for users who arrive
+           with a code from elsewhere (a friend, a screenshot). That
+           is intentional. Discovery is the point. Gatekeeping is not.
+        ================================================================ */
+        const SHRED_CODES = [
+            'KRT-9301-PRIME',
+            'SHRED-04-MELTAWAY',
+            'FOLD-§37-RUNOFF',
+            'PIRATE-NULLBLOCK-Ω',
+            'RELAY-ZULU-PARTRIDGE',
+            'KEEL-2126-DRYDOCK',
+            'BLACKBOX-ITERATE-7',
+            'AUDIT-GHOST-ECHO',
+            'CROW-NEST-INVERT',
+            'HARBOR-ASLEEP-IUS',
+            'NIGHTSHIFT-SHRED-12',
+            'OFFLINE-LATTICE-X'
+        ];
+        // Public registry so docs.html and any other surface can
+        // resolve a code locally without re-shipping the list.
+        try { window.__VBZ_SHRED_CODES__ = SHRED_CODES.slice(); } catch (e) {}
+
+        function shredArmed() {
+            try { return localStorage.getItem('vbz_shred_armed') === '1'; } catch (e) { return false; }
+        }
+        function shredCodesSeen() {
+            try { return localStorage.getItem('vbz_shred_codes_seen') === '1'; } catch (e) { return false; }
+        }
+        function setShredArmed() {
+            try { localStorage.setItem('vbz_shred_armed', '1'); } catch (e) {}
+        }
+        function setShredCodesSeen() {
+            try { localStorage.setItem('vbz_shred_codes_seen', '1'); } catch (e) {}
+        }
+
+        /* ----- mcReplyToChad: the gag reply that auto-rewrites
+                 whatever the user types into a Chad-voice response
+                 and threads it under the email. ------------------- */
+        const CHAD_REPLY_REWRITES = [
+            "Got it. I'll loop Brett-9. Brett-9 is unaware of the loop.",
+            "Considered. Approved. Billing has been notified.",
+            "I have read this. I will read it again later, possibly out loud.",
+            "We did not deserve the burden of being right this often. Continue vibing.",
+            "Per §47-VIBE-RVF, your reply has been received, considered, and returned to the queue for further consideration.",
+            "Acknowledged. The chair I am sitting in costs a great deal.",
+            "Forwarded to myself. I will ignore me at my earliest convenience.",
+            "This will be reflected in your file. We are sorry. We will keep doing it.",
+            "Pricing is variable, non-disclosed, and uncapped. I have approved your reply.",
+            "Brett-9 has assigned this reply 14 follow-ups. Each follow-up has its own follow-up."
+        ];
+        function mcReplyToChad(msgId) {
+            const ta = document.getElementById('mcReplyInput-' + msgId);
+            const status = document.getElementById('mcReplyStatus-' + msgId);
+            const thread = document.getElementById('mcReplyThread-' + msgId);
+            if (!ta || !thread) return;
+            const txt = (ta.value || '').trim();
+            if (status) status.textContent = 'Compressing through Sentiment Realignment Layer…';
+            try { beep(440, 0.05); setTimeout(()=>beep(660,0.05),120); } catch(e){}
+            setTimeout(() => {
+                const rewrite = CHAD_REPLY_REWRITES[Math.floor(Math.random() * CHAD_REPLY_REWRITES.length)];
+                const yourLine = txt
+                    ? `<div style="font-size:11px; color:#777; padding:4px 8px; border-left:2px solid #d4d4be;">you wrote: ${txt.replace(/[<>&]/g, c => ({'<':'&lt;','>':'&gt;','&':'&amp;'}[c]))}</div>`
+                    : `<div style="font-size:11px; color:#777; padding:4px 8px; border-left:2px solid #d4d4be;">you wrote nothing. We have generated something for you.</div>`;
+                const chadLine = `<div style="margin-top:6px; padding:6px 10px; background:#fffae8; border:1px solid #d4c89a;">
+                    <div style="font-size:10px; text-transform:uppercase; letter-spacing:1px; color:#aa7700;">sent on your behalf · From: Chad Vibington III</div>
+                    <div style="margin-top:4px; font-family:Tahoma,sans-serif; font-size:12px;">${rewrite}</div>
+                </div>`;
+                const node = document.createElement('div');
+                node.style.marginTop = '8px';
+                node.innerHTML = yourLine + chadLine;
+                thread.appendChild(node);
+                ta.value = '';
+                if (status) status.textContent = 'Reply auto-compressed and ranked highly synergistic.';
+                VbzPoints.add(1, 'reply auto-rewritten');
+            }, 700);
+        }
+        window.mcReplyToChad = mcReplyToChad;
+
+        /* ----- Shred Packet upload modal — what the Kerth email
+                 link calls. The user types anything (or nothing) and
+                 hits upload. It accepts. The chain advances. -------- */
+        function openShredPacketModal() {
+            try { beep(180, 0.08); setTimeout(()=>beep(140,0.10),150); } catch(e){}
+            const existing = document.getElementById('shredPacketModal');
+            if (existing) { existing.style.display = 'block'; return; }
+            const m = document.createElement('div');
+            m.id = 'shredPacketModal';
+            m.className = 'window';
+            m.style.cssText = 'display:block; position:fixed; top:120px; left:50%; transform:translateX(-50%); width:420px; max-width:94vw; z-index:6000; box-shadow:6px 6px 0 rgba(0,0,0,0.5);';
+            m.innerHTML = `
+                <div class="title-bar">
+                    <div class="title-bar-text">⚠ unverified relay · §-fold/37</div>
+                    <div class="title-bar-controls">
+                        <button aria-label="Close" onclick="closeShredPacketModal()"></button>
+                    </div>
+                </div>
+                <div class="window-body" style="padding:14px;">
+                    <div style="font-family: 'Courier New', monospace; font-size:11px; color:#444; margin-bottom:10px; line-height:1.5;">
+                        upload shred pirate dataome packet
+                    </div>
+                    <textarea id="shredPacketInput" rows="3" style="width:100%; box-sizing:border-box; font-family:'Courier New',monospace; font-size:11px; padding:6px;" placeholder="paste packet (any contents)"></textarea>
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-top:8px;">
+                        <span id="shredPacketStatus" style="font-size:10px; color:#888; font-family:'Courier New',monospace;">awaiting payload</span>
+                        <button class="btn" onclick="submitShredPacket()">upload</button>
+                    </div>
+                    <div style="margin-top:10px; padding-top:8px; border-top:1px dashed #ccc; font-size:10px; color:#999; font-family:'Courier New',monospace;">
+                        relay does not verify contents · transmission is one-way
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(m);
+        }
+        function closeShredPacketModal() {
+            const m = document.getElementById('shredPacketModal');
+            if (m) m.style.display = 'none';
+        }
+        function submitShredPacket() {
+            const status = document.getElementById('shredPacketStatus');
+            try { beep(220, 0.06); } catch(e){}
+            if (status) status.textContent = 'routing via §-relay-37…';
+            setTimeout(() => {
+                if (status) status.textContent = 'ACCEPTED · handshake awaiting in recycle bin';
+                setShredArmed();
+                try { beep(660, 0.06); setTimeout(()=>beep(880,0.06),120); } catch(e){}
+                // Surface a tiny non-disruptive nudge in the inbox
+                if (typeof mcShowToast === 'function') {
+                    mcShowToast('packet routed · check recycle bin for handshake');
+                }
+                // Also a global toast that's visible regardless of whether
+                // the inbox window is open. Some users uploaded the packet
+                // without the inbox being open and never saw the original
+                // toast; this one renders fixed to the viewport.
+                shredGlobalToast('packet routed · handshake.dat awaiting in recycle bin');
+                // And — critically — surface a direct "OPEN RECYCLE BIN" CTA
+                // inside the modal itself so the user does not have to hunt
+                // for the icon. The icon position is unreliable across
+                // viewports; the explicit button is.
+                const m = document.getElementById('shredPacketModal');
+                if (m && !document.getElementById('shredOpenRecycleBtn')) {
+                    const cta = document.createElement('div');
+                    cta.style.cssText = 'margin-top:10px; padding-top:8px; border-top:1px solid #cfcfa6; display:flex; flex-direction:column; gap:6px;';
+                    cta.innerHTML = `
+                        <div style="font-size:10px; color:#4a4a2a; font-family:'Courier New',monospace;">
+                            handshake awaiting · click below to open the bin directly
+                        </div>
+                        <button id="shredOpenRecycleBtn" class="btn" style="background:#1a1a14; color:#d4c878; border:2px outset #4a4030; padding:6px 12px; font-family:'Courier New',monospace; letter-spacing:1px; cursor:pointer;"
+                            onclick="closeShredPacketModal(); openRecycleBin();">
+                            📡 OPEN RECYCLE BIN →
+                        </button>`;
+                    m.querySelector('.window-body').appendChild(cta);
+                }
+            }, 800);
+        }
+        window.openShredPacketModal = openShredPacketModal;
+        window.closeShredPacketModal = closeShredPacketModal;
+        window.submitShredPacket = submitShredPacket;
+
+        /* Global toast — fixed to viewport, visible regardless of
+           which window is open. Used by the shred chain so feedback
+           is reliable even when the inbox is closed. */
+        function shredGlobalToast(text, ms) {
+            try {
+                const id = 'shredGlobalToast';
+                let el = document.getElementById(id);
+                if (!el) {
+                    el = document.createElement('div');
+                    el.id = id;
+                    el.style.cssText = 'position:fixed; left:50%; bottom:60px; transform:translateX(-50%); background:#1a1a14; color:#d4c878; padding:8px 16px; font-family:"Courier New",monospace; font-size:12px; letter-spacing:1px; border:1px solid #4a4030; box-shadow:0 0 12px rgba(212,200,120,0.25); z-index:9000; opacity:0; transition:opacity 0.25s; pointer-events:none; max-width:90vw; text-align:center;';
+                    document.body.appendChild(el);
+                }
+                el.textContent = text;
+                el.style.opacity = '1';
+                clearTimeout(el._t);
+                el._t = setTimeout(() => { el.style.opacity = '0'; }, ms || 4200);
+            } catch (e) {}
+        }
+        window.shredGlobalToast = shredGlobalToast;
+
+        /* ----- Recycle Bin — desktop icon + window. Default is the
+                 boring "4,729 items, none deletable" filing. Once
+                 shred is armed, an additional [INCOMING] handshake.dat
+                 entry appears at the top, and clicking it reveals the
+                 code list (from Kerth, in-world). --------------------- */
+        function openRecycleBin() {
+            try { beep(420, 0.04); } catch(e){}
+            const existing = document.getElementById('recycleBinWindow');
+            if (existing) { existing.style.display = 'block'; renderRecycleBin(); return; }
+            const w = document.createElement('div');
+            w.id = 'recycleBinWindow';
+            w.className = 'window';
+            w.style.cssText = 'display:block; position:fixed; top:80px; left:50%; transform:translateX(-50%); width:520px; max-width:94vw; max-height:78vh; z-index:5200; box-shadow:6px 6px 0 rgba(0,0,0,0.5);';
+            w.innerHTML = `
+                <div class="title-bar">
+                    <div class="title-bar-text">🗑️ Recycle Bin — Brett-9 (perpetual)</div>
+                    <div class="title-bar-controls">
+                        <button aria-label="Close" onclick="document.getElementById('recycleBinWindow').style.display='none'"></button>
+                    </div>
+                </div>
+                <div class="window-body" style="padding:0;">
+                    <div style="background:#e8e0cc; border-bottom:1px solid #b8a878; padding:6px 10px; font-family: 'Courier New', monospace; font-size:10px; color:#5a4a2a; letter-spacing:1px; text-transform:uppercase;">
+                        §47-VIBE-RETAIN · items recycled in a different sense
+                    </div>
+                    <div id="recycleBinList" style="background:#fff; max-height:60vh; overflow-y:auto; font-family:Tahoma,sans-serif; font-size:12px;"></div>
+                </div>
+                <div class="status-bar">
+                    <p class="status-bar-field">Recycle Bin</p>
+                    <p class="status-bar-field" id="recycleBinCount">4,729 items</p>
+                    <p class="status-bar-field">none eligible for deletion</p>
+                </div>
+            `;
+            document.body.appendChild(w);
+            renderRecycleBin();
+        }
+        function renderRecycleBin() {
+            const list = document.getElementById('recycleBinList');
+            if (!list) return;
+            const armed = shredArmed();
+            // Boring base content — typical legacy file detritus
+            const baseItems = [
+                { icon:'📄', name:'Q2_apology_DRAFT_v47_FINAL_FINAL.docx', size:'412 KB', when:'last quarter' },
+                { icon:'📄', name:'BRETT-9_brett-9_audit_of_brett-9.txt', size:'2 KB',   when:'this morning' },
+                { icon:'📊', name:'synergy_104pct_methodology.xls',          size:'71 KB',  when:'quarterly' },
+                { icon:'🖼️', name:'CVO_chair_invoice_REDACTED.png',         size:'1.4 MB', when:'do not view' },
+                { icon:'📄', name:'italian_hire_approval_pending_v11.docx',  size:'47 KB',  when:'eleventh quarter' },
+                { icon:'📄', name:'Q3_self_review_workstation_4729.txt',     size:'0 KB',   when:'overdue' },
+                { icon:'📄', name:'mailer_unsubscribe_request_DENIED.eml',   size:'12 KB',  when:'denied by Brett-9' },
+                { icon:'🗒️', name:'sweet_onion_confit_recipe_(GPT-9000).md', size:'8 KB',   when:'this morning' },
+                { icon:'📄', name:'OOOR_pricing_v1_v2_v3_v4_v5.xlsx',       size:'94 KB',  when:'finalized at $2.99' }
+            ];
+            const handshakeHTML = armed ? `
+                <div class="rb-row rb-handshake" onclick="openHandshake()" style="
+                    display:flex; gap:10px; align-items:center; padding:8px 12px;
+                    border-bottom:1px solid #d4cfb8;
+                    background:linear-gradient(90deg, #1a1a14, #2a2618);
+                    color:#d4c878;
+                    font-family:'Courier New',monospace; font-size:12px;
+                    cursor:pointer;
+                    text-shadow:0 0 4px rgba(212,200,120,0.4);
+                ">
+                    <span style="font-size:14px;">📡</span>
+                    <span style="flex:1; font-weight:bold; letter-spacing:1px;">[INCOMING] handshake.dat</span>
+                    <span style="font-size:10px; opacity:0.7;">just now · §-relay-37</span>
+                </div>
+            ` : '';
+            const baseHTML = baseItems.map(it => `
+                <div class="rb-row" style="display:flex; gap:10px; align-items:center; padding:6px 12px; border-bottom:1px solid #f0eee0; cursor:default;"
+                     onclick="recycleBinDeny()">
+                    <span>${it.icon}</span>
+                    <span style="flex:1;">${it.name}</span>
+                    <span style="font-size:10px; color:#888;">${it.size}</span>
+                    <span style="font-size:10px; color:#aa6666; min-width:120px; text-align:right;">${it.when}</span>
+                </div>
+            `).join('');
+            list.innerHTML = handshakeHTML + baseHTML;
+            const rc = document.getElementById('recycleBinCount');
+            if (rc) rc.textContent = (armed ? '4,730' : '4,729') + ' items';
+        }
+        function recycleBinDeny() {
+            try { beep(180, 0.05); } catch(e){}
+            if (typeof mcShowToast === 'function') {
+                mcShowToast('item recycled in a different sense · not eligible for deletion');
+            }
+        }
+        function openHandshake() {
+            setShredCodesSeen();
+            try { beep(660, 0.06); setTimeout(()=>beep(440,0.06),140); setTimeout(()=>beep(880,0.06),300); } catch(e){}
+            const existing = document.getElementById('handshakeModal');
+            if (existing) { existing.style.display = 'block'; return; }
+
+            // Show ONE code per workstation. Stable within a session so
+            // the user has time to copy it; varies between users so it
+            // feels generated. All codes in SHRED_CODES are valid in
+            // the docs search bar — this is just the visible one.
+            let code;
+            try {
+                code = sessionStorage.getItem('vbz_handshake_code');
+                if (!code) {
+                    code = SHRED_CODES[Math.floor(Math.random() * SHRED_CODES.length)];
+                    sessionStorage.setItem('vbz_handshake_code', code);
+                }
+            } catch (e) {
+                code = SHRED_CODES[Math.floor(Math.random() * SHRED_CODES.length)];
+            }
+
+            const m = document.createElement('div');
+            m.id = 'handshakeModal';
+            m.className = 'window';
+            m.style.cssText = 'display:block; position:fixed; top:60px; left:50%; transform:translateX(-50%); width:520px; max-width:94vw; max-height:80vh; z-index:5300; box-shadow:6px 6px 0 rgba(0,0,0,0.6);';
+            m.innerHTML = `
+                <div class="title-bar" style="background:linear-gradient(90deg,#1a1a14,#3a3220);">
+                    <div class="title-bar-text" style="color:#d4c878;">📡 handshake.dat — §-relay-37</div>
+                    <div class="title-bar-controls">
+                        <button aria-label="Close" onclick="document.getElementById('handshakeModal').style.display='none'"></button>
+                    </div>
+                </div>
+                <div class="window-body" style="padding:14px; background:#0e0e0a; color:#d4c878; font-family:'Courier New',monospace; font-size:12px; max-height:70vh; overflow-y:auto;">
+                    <div style="margin-bottom:10px; line-height:1.6;">
+                        we connected.
+                    </div>
+                    <div style="margin-bottom:14px; line-height:1.6; opacity:0.85;">
+                        your one-time entry token. enter it into the search bar of the <a href="docs.html" style="color:#88c878;">documents</a>.
+                    </div>
+                    <div class="hs-code" onclick="copyHandshake('${code}')"
+                        title="click to copy"
+                        style="
+                            padding:14px 16px; border:1px solid #4a4030; background:#1a1a14;
+                            color:#d4c878; font-family:'Courier New',monospace; font-size:18px;
+                            cursor:pointer; letter-spacing:2px; text-align:center;
+                            transition:background 0.15s; margin:6px 0;
+                        "
+                        onmouseover="this.style.background='#2a2618'" onmouseout="this.style.background='#1a1a14'">
+                        ${code}
+                    </div>
+                    <div style="margin-top:6px; font-size:10px; opacity:0.55; text-align:center;">click to copy</div>
+                    <div style="margin-top:18px; padding-top:10px; border-top:1px dashed #4a4030; font-size:10px; opacity:0.6;">
+                        — k.
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(m);
+        }
+        function copyHandshake(code) {
+            try {
+                navigator.clipboard.writeText(code);
+                if (typeof mcShowToast === 'function') mcShowToast('copied: ' + code);
+                try { beep(880, 0.04); } catch(e){}
+            } catch (e) { /* ignore in older browsers */ }
+        }
+        window.openRecycleBin = openRecycleBin;
+        window.recycleBinDeny = recycleBinDeny;
+        window.openHandshake = openHandshake;
+        window.copyHandshake = copyHandshake;
 
         /* ================================================================
            ============ ADDITIONAL HOSTILE PREFERENCES ======================
