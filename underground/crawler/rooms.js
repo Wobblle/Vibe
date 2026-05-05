@@ -77,7 +77,24 @@
             room._enemyDecision = null;
             return null;
         }
-        var template = Math.random() < 0.5 ? 'breaker_grunt_close' : 'breaker_grunt_ranged';
+        // Pass 3.28: pull from the full enemy pool. Tougher templates
+        // (lieutenant / officer) get progressively more weight as
+        // dist-from-spawn increases. Phase 5 will gate the pool by
+        // compound faction; for now we pull uniformly across factions.
+        var pool = window.Crawler.Enemies.ALL_IDS.slice();
+        var weighted = [];
+        pool.forEach(function (id) {
+            var tpl   = window.Crawler.Enemies.getTemplate(id);
+            var grade = tpl.grade;
+            var w = 1;
+            if (grade === 'grunt')      w = dist <= 2 ? 5 : 3;
+            else if (grade === 'runner') w = dist <= 2 ? 3 : 3;
+            else if (grade === 'lieutenant') w = dist <= 2 ? 1 : 3;
+            else if (grade === 'officer')    w = dist <= 3 ? 0 : 2;
+            else                              w = 1;
+            for (var i = 0; i < w; i++) weighted.push(id);
+        });
+        var template = weighted[Math.floor(Math.random() * weighted.length)];
         room._enemyDecision = template;
         return template;
     }

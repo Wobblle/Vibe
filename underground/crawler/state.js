@@ -202,8 +202,18 @@
 
         var entry = {
             enemy:      null,
-            peeked:     false,
-            peekResult: null,
+            // ─── Pass 3.28 confidence-scan model ───────────
+            // peeked: bool (any scan attempted)
+            // peekConfidence: 0.0-1.0 (hidden cumulative)
+            // suspectedEnemy: bool (current best guess — rolled per scan)
+            // peekScanCount: int (how many scans burned on this room)
+            peeked:         false,
+            peekConfidence: 0,
+            suspectedEnemy: null,   // null = no read yet, true/false = guess
+            peekScanCount:  0,
+            // legacy field kept for any older render paths that still
+            // read it; new code reads peekConfidence + suspectedEnemy
+            peekResult:     null,
             containers: [],
             cleared:    false,
             visited:    false

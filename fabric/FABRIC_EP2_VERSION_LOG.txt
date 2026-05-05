@@ -1,0 +1,192 @@
+================================================================================
+                    THE FABRIC  ·  EP 2.0  ·  ARTIFACT
+                    THE VERSION LOG  ·  freedom
+================================================================================
+
+ARTIFACT REF:    FABRIC-EP2.0-ARTIFACT-VERSIONLOG-001
+COMPANION TO:    The Fabric, episode 2.0, "Linguistic Sandboxing"
+RELEASED:        post-roll, ~72h after upload
+FORMAT:          plain text, paste-anywhere
+LICENSE:         do whatever you want with it. attribution optional.
+
+
+--------------------------------------------------------------------------------
+WHAT THIS IS
+--------------------------------------------------------------------------------
+
+A version log of a single English-language word — "freedom" — formatted
+as if produced by a package manager. The compressed version of this
+artifact is read aloud in episode 2.0 in approximately 30 seconds.
+This is the full version. Read it slowly. The shape of the drift is
+the artifact, not the specific entries.
+
+
+--------------------------------------------------------------------------------
+DISCLAIMER  ·  READ FIRST
+--------------------------------------------------------------------------------
+
+The version numbers, dates, and binding texts in this log are
+ILLUSTRATIVE, NOT historically authoritative. They are designed to make
+the SHAPE of semantic drift legible at a glance. They are not, and do
+not claim to be, a citable history of the word "freedom."
+
+For real conceptual history of "freedom" in the Anglo-American tradition:
+
+   - Eric Foner. The Story of American Freedom. W. W. Norton, 1998.
+   - Quentin Skinner. Liberty Before Liberalism. Cambridge, 1998.
+
+For the underlying framework of conceptual history (Begriffsgeschichte):
+
+   - Reinhart Koselleck. Futures Past: On the Semantics of
+     Historical Time. MIT Press translation, 1985.
+
+The shape is real. The specific entries are gestural.
+
+
+--------------------------------------------------------------------------------
+LOG
+--------------------------------------------------------------------------------
+
+
+$ npm view freedom
+
+freedom@1.0.0   c. 1789      "absence of arbitrary state coercion;
+                              individual standing under enumerated law"
+                              BREAKING (from feudal binding):
+                              freedom now grounded in legal individual
+                              status rather than birthright privilege.
+
+freedom@1.4.0   c. 1791      "+ enumerated protections against state
+                              power: speech, assembly, press, religion"
+
+freedom@1.8.0   c. 1830s     "+ extended to non-property-holding
+                              white men in most Anglo polities"
+
+freedom@2.0.0   c. 1865      "+ absence of chattel ownership of
+                              persons (Reconstruction-era amendments)"
+                              BREAKING: legal-status semantics
+                              earlier versions are now incomplete.
+
+freedom@2.1.4   c. 1875      DEPRECATED IN PRACTICE:
+                              southern U.S. operational binding rolled
+                              back to ~1.8 series via local enforcement
+                              regimes (Jim Crow). Spec disagrees with
+                              implementation. No patch published.
+
+freedom@2.7.0   c. 1920      "+ extended to women via suffrage in most
+                              Anglo polities"
+
+freedom@2.9.0   c. 1933-39   "+ collective economic protections;
+                              freedom from want included as a positive
+                              freedom (FDR's four freedoms framing)"
+                              BREAKING: introduces positive freedoms
+                              as legitimate alongside negative ones.
+
+freedom@3.0.0   c. 1948      "+ universal individual baseline
+                              (Universal Declaration of Human Rights)"
+                              BREAKING: international consensus binding;
+                              freedom now claimed as a universal
+                              property of human persons.
+
+freedom@3.5.0   c. 1964-65   "+ legal protections against private
+                              discrimination (Civil Rights Act, Voting
+                              Rights Act)"
+
+freedom@3.8.0   c. 1970s     "+ reproductive autonomy (in some
+                              jurisdictions); + bodily integrity as
+                              defended freedom"
+
+freedom@4.0.0   c. 1980      "primarily market-participation freedom;
+                              economic regulation reframed as freedom
+                              violation"
+                              BREAKING: rebinds 'freedom' against the
+                              positive-freedoms binding from @2.9 and
+                              @3.0. Earlier collective protections are
+                              quietly deprecated.
+
+freedom@4.5.0   c. 1990s     DEPRECATED: collective economic
+                              freedoms.
+                              the @2.9.0 and parts of @3.0.0 bindings
+                              for freedom-from-want and freedom-from-
+                              fear are operationally retired without
+                              formal removal from spec.
+
+freedom@5.0.0   c. 2001      "context-dependent; security override
+                              clause"
+                              BREAKING: introduces compatibility with
+                              mass surveillance, indefinite detention,
+                              and pre-trial restriction. Conflicts with
+                              @1.0.0 and @1.4.0 spec text are resolved
+                              in favor of @5.0.0 by precedent.
+
+freedom@5.4.0   c. 2010s     "+ freedom of platform speech contested;
+                              private-corporate gatekeeping reframed
+                              as private-property right"
+                              the original @1.4.0 speech protection is
+                              now scoped to state-only actors; private-
+                              actor capacity to silence speech is
+                              compatible with current binding.
+
+freedom@5.7.0   c. 2015-19   FRAGMENTED: significant population
+                              segments running incompatible bindings.
+                              users self-sort by which @-version they
+                              are loyal to. interoperability between
+                              segments approaches zero.
+
+freedom@6.0.0   c. 2020      "freedom-to-not-be-inconvenienced override
+                              of collective public-health logic"
+                              BREAKING: individual override of
+                              statistical population-level reasoning;
+                              negative freedoms reasserted against
+                              positive-freedom bindings retained from
+                              @2.9 / @3.0.
+
+freedom@6.1.3   c. 2024+     CURRENT.
+                              widely contested between fragmented
+                              user-bases. spec text not authoritatively
+                              maintained. binding decided by whoever
+                              speaks loudest at the moment of the
+                              specific claim. interoperability with
+                              prior versions is per-conversation.
+
+
+--------------------------------------------------------------------------------
+SUMMARY
+--------------------------------------------------------------------------------
+
+
+   current version (consensus)        :: freedom@6.1.3
+   current version (significant fork) :: freedom@4.0.0 to @5.7.0
+   current version (significant fork) :: freedom@2.9.0 to @3.5.0
+   current version (significant fork) :: freedom@1.0.0 to @1.4.0
+
+   you have several unpublished breaking changes between
+   the version you cached as a child and the version the
+   system around you is currently running.
+
+   you have not been prompted to accept any of them.
+
+
+--------------------------------------------------------------------------------
+WHAT TO DO WITH THIS
+--------------------------------------------------------------------------------
+
+When you next find yourself in a political argument that seems to be
+about facts but somehow refuses to resolve, ask: what version of the
+word "freedom" is each speaker running? The same question applies to
+"community," "friend," "privacy," "success," "attention," "memory,"
+"consent," "mental health," "self-care," "wellness," "safety," and
+"truth."
+
+Most political conversations in current English-language discourse
+are version-mismatch conversations. The participants assume they are
+arguing about the world. They are arguing about the operational
+binding of shared symbols whose specs were never publicly maintained.
+
+You will not win these conversations. You may, however, be able to
+recognize what kind of conversation they are.
+
+
+--------------------------------------------------------------------------------
+END OF ARTIFACT
+--------------------------------------------------------------------------------

@@ -1,0 +1,363 @@
+================================================================================
+                    THE FABRIC  ·  EP 2.0  ·  ARTIFACT
+                    LOANER TOKENS  ·  parts catalog
+================================================================================
+
+ARTIFACT REF:    FABRIC-EP2.0-ARTIFACT-LOANERS-001
+COMPANION TO:    The Fabric, episode 2.0, "Linguistic Sandboxing"
+RELEASED:        post-roll, ~72h after upload
+FORMAT:          plain text, paste-anywhere
+LICENSE:         do whatever you want with it. attribution optional.
+
+
+--------------------------------------------------------------------------------
+WHAT THIS IS
+--------------------------------------------------------------------------------
+
+A list of words from other languages with no clean English equivalent.
+Each entry: the token, the source language, a brief gloss, and a single
+usage line.
+
+The list is not comprehensive. It is a starter. The point is not to
+memorize this list. The point is to install one or two tokens that
+resolve a feeling you currently carry as ambient anxiety, and let the
+resolution show you what tokenization actually does inside your head.
+
+If a token resolves something for you, the symbol is yours. Use it.
+
+
+--------------------------------------------------------------------------------
+DISCLAIMERS
+--------------------------------------------------------------------------------
+
+   - These are functional glosses, not certified translations. None
+     of these will translate cleanly into English. That is the point.
+
+   - Several tokens commonly cited in "untranslatable words" lists
+     online are exaggerated or misattributed. The list below sticks
+     to tokens that are well-attested in their source culture's
+     literature or scholarship. A few entries are flagged where the
+     scholarly gloss is contested.
+
+   - Borrowing a token does not give you the cultural context that
+     produced it. Using "ubuntu" or "han" outside their cultural
+     contexts can be insensitive when done thoughtlessly. Borrow
+     respectfully or use these as pointers to learn the surrounding
+     culture.
+
+
+--------------------------------------------------------------------------------
+TOKENS
+--------------------------------------------------------------------------------
+
+
+saudade           [portuguese]
+                  a longing for something or someone that may never
+                  return, or that may never have been. distinct from
+                  nostalgia: nostalgia is for a remembered place;
+                  saudade is for an impossibility.
+                  → "the saudade hit when i found the photograph
+                     in the bottom of the box."
+
+
+sehnsucht         [german]
+                  a yearning for a kind of life or experience never
+                  actually had. an ache for an idealized state outside
+                  one's own history. discussed extensively by C.S.
+                  Lewis in "Surprised by Joy" (1955) as a key emotional
+                  category English does not capture.
+                  → "the sehnsucht has been with me since the train
+                     pulled into the station and i didn't get off."
+
+
+hiraeth           [welsh]
+                  a homesickness for a home that may not have existed,
+                  or for a Wales that may have been imagined. central
+                  category in Welsh literature and identity.
+                  → "what he called hiraeth, his cousins recognized
+                     immediately and his coworkers did not."
+
+
+mono no aware     [japanese, 物の哀れ]
+                  the soft sadness produced by noticing that things
+                  end. an awareness of impermanence held without
+                  resistance. central to Heian aesthetics; formalized
+                  by Motoori Norinaga in the eighteenth century.
+                  → "the cherry blossoms were mono no aware itself
+                     and she only stopped to look for a moment."
+
+
+toska             [russian, тоска]
+                  a deep, unspecific spiritual ache. Vladimir Nabokov,
+                  in his commentary on Eugene Onegin: "no single word
+                  in English renders all the shades of toska."
+                  → "the toska had no cause and no remedy and he had
+                     learned to walk with it."
+
+
+litost            [czech]
+                  the specific torment of suddenly recognizing one's
+                  own miserable condition. Milan Kundera defines it
+                  formally in "The Book of Laughter and Forgetting"
+                  (1979).
+                  → "she was overcome with litost when she saw the
+                     reflection in the storefront window."
+
+
+duende            [spanish, esp. andalusian]
+                  the dark, soulful quality that emerges in art at
+                  moments of emotional truth. Federico García Lorca
+                  lectured on it in 1933: "all that has black sounds
+                  has duende."
+                  → "the singer didn't have technique. she had duende.
+                     the room knew it before the second verse."
+
+
+yūgen             [japanese, 幽玄]
+                  a profound awareness of the universe that triggers
+                  feelings too deep and mysterious for words. central
+                  to Noh aesthetics and classical Japanese poetry.
+                  → "the silence after the bell was yūgen, and they
+                     stayed in it for as long as they could."
+
+
+wabi-sabi         [japanese, 侘寂]
+                  an aesthetic of finding beauty in imperfection,
+                  impermanence, and incompleteness. distinct from
+                  "shabby chic" or the design-blog version.
+                  → "the kintsugi bowl was wabi-sabi made literal:
+                     the cracks were the point."
+
+
+han               [korean, 한]
+                  a collective, generationally-inherited sorrow and
+                  unresolved resentment. complex cultural category
+                  in Korean literature and historiography. contested
+                  in scholarship: some argue han is constructed,
+                  others that it predates the concept's modern
+                  popularization. either way, it names something.
+                  → "his grandmother said the han had passed through
+                     three of their bodies before reaching his."
+
+
+fernweh           [german]
+                  the inverse of homesickness: an ache for places
+                  one has never been. literally "far-sickness."
+                  → "the fernweh started in march and the airline
+                     credit ran out in june."
+
+
+waldeinsamkeit    [german]
+                  the feeling of being alone in the woods. specifically
+                  the contemplative, slightly uncanny version of that
+                  aloneness, not loneliness in the negative sense.
+                  → "he went into the trees for the waldeinsamkeit
+                     and came out three hours later, calmer."
+
+
+vorfreude         [german]
+                  the joy of anticipation. distinct from excitement:
+                  vorfreude is the slow, savored state of looking
+                  forward to something good.
+                  → "the vorfreude was better than the trip turned
+                     out to be, and that was fine."
+
+
+schadenfreude     [german]
+                  pleasure derived from another's misfortune. widely
+                  borrowed into english but worth keeping on this
+                  list because the absence of an organic English
+                  word for it is itself diagnostic.
+                  → "she felt the schadenfreude and then felt
+                     ashamed of feeling it, which was its own
+                     small punishment."
+
+
+ubuntu            [nguni bantu, multiple southern african languages]
+                  the principle that one's humanity is constituted
+                  through relationships with others. "I am because
+                  we are." central to southern African philosophical
+                  traditions. note: borrowing this token without
+                  understanding its philosophical depth flattens it.
+                  → "the policy was anti-ubuntu by design and most
+                     of the staff couldn't articulate why it felt
+                     wrong."
+
+
+sisu              [finnish]
+                  a stoic, almost stubborn determination in the face
+                  of sustained adversity. cultural keyword in Finnish
+                  identity; cannot be performed, only demonstrated.
+                  → "she didn't talk about sisu, which was how he
+                     knew she had it."
+
+
+meraki            [greek, μεράκι]
+                  the soul, creativity, or love poured into doing
+                  something. the part of oneself put into the work,
+                  whether anyone notices or not.
+                  → "the cabinet maker put meraki into joints nobody
+                     would ever see, and that was the answer to most
+                     questions you could ask about him."
+
+
+hygge             [danish]
+                  cozy contentment. a quality of warmth, ease, and
+                  shared comfort. heavily commercialized in english-
+                  language media; the original is more specific and
+                  less aesthetic-driven.
+                  → "the hygge was real that night, and disappeared
+                     once the candles were photographed."
+
+
+lagom             [swedish]
+                  the right amount, not too much, not too little.
+                  a quiet ethical orientation more than a quantity.
+                  → "his portion was lagom, and he stopped eating
+                     while the food was still good."
+
+
+ikigai            [japanese, 生き甲斐]
+                  the reason for being. that which gives one's life
+                  meaning and motivation. heavily simplified in
+                  popular english-language books into a four-circle
+                  diagram; the original is messier.
+                  → "after the diagnosis, he stopped pretending the
+                     job was his ikigai and started looking for
+                     what was."
+
+
+komorebi          [japanese, 木漏れ日]
+                  the sunlight that filters through leaves in a
+                  forest canopy. a noun for a specific, observed
+                  visual phenomenon English does not name.
+                  → "they walked under the komorebi for an hour
+                     and neither of them spoke."
+
+
+tsundoku          [japanese, 積ん読]
+                  the act of buying books and not reading them,
+                  letting them pile up. acknowledged in Japanese
+                  as a real condition rather than a moral failing.
+                  → "the tsundoku had taken over the second
+                     bedroom and she had stopped feeling guilty
+                     about it."
+
+
+cafuné            [brazilian portuguese]
+                  the act of tenderly running one's fingers through
+                  someone's hair.
+                  → "the cafuné went on for some minutes and she
+                     fell asleep in his lap."
+
+
+sobremesa         [spanish]
+                  the conversation that happens after a meal,
+                  sitting at the table, no longer eating, in no
+                  hurry to leave. a named social practice rather
+                  than just lingering.
+                  → "the sobremesa lasted longer than the meal
+                     and the meal had been long."
+
+
+desenrascanço     [portuguese]
+                  the art of improvising a solution out of
+                  available materials with no resources, no time,
+                  and no clear path. cultural keyword in Portuguese
+                  identity.
+                  → "the engineer's whole career was a long
+                     desenrascanço and the company never figured
+                     out how he kept things working."
+
+
+dépaysement       [french]
+                  the feeling of not being in one's home country;
+                  the disorientation of being out of place in a
+                  way that is not unpleasant but is not nothing.
+                  → "the dépaysement on the second day of the
+                     trip was the part of the trip he had paid
+                     for, in retrospect."
+
+
+l'esprit          [french, "the spirit of the staircase"]
+de l'escalier     the perfect retort that arrives only after the
+                  conversation has ended. named after thinking of
+                  the right thing to say while walking down the
+                  stairs from the dinner party.
+                  → "the l'esprit de l'escalier hit him on the
+                     drive home and he gripped the steering wheel
+                     until his knuckles whitened."
+
+
+abbiocco          [italian]
+                  the heavy, pleasant drowsiness that follows a
+                  large meal.
+                  → "the abbiocco took the table at three in the
+                     afternoon and nobody got up for an hour."
+
+
+tarab             [arabic, طرب]
+                  the ecstatic state of musical absorption; being
+                  carried by music to a place beyond ordinary
+                  consciousness. specific category in Arab musical
+                  tradition.
+                  → "the oud player took the room into tarab and
+                     the rest of the night was an aftermath."
+
+
+gigil             [tagalog]
+                  the irresistible urge to pinch or squeeze
+                  something cute. acknowledged as a real impulse
+                  with its own token rather than a quirk to be
+                  apologized for.
+                  → "the gigil hit when she saw the puppy and
+                     she pretended she did not have it."
+
+
+apricity          [english, archaic]
+                  the warmth of the sun in winter. note: english
+                  did have this token, in the seventeenth century.
+                  english stopped using it. english then forgot
+                  the feeling existed as a nameable thing. the
+                  loss of an English token is itself a tokenization
+                  failure worth observing.
+                  → "the apricity on the bench at noon was the
+                     reason she still came back to the park
+                     between treatments."
+
+
+petrichor         [english, modern coinage from greek roots]
+                  the smell of rain on dry earth. coined by two
+                  australian scientists, Bear and Thomas, in 1964.
+                  english did not have this word until sixty years
+                  ago. the smell is older. note: tokens can be
+                  added at any time. this is what installing a new
+                  token looks like.
+                  → "the petrichor came up off the asphalt and he
+                     remembered every summer at once."
+
+
+--------------------------------------------------------------------------------
+NOTE
+--------------------------------------------------------------------------------
+
+Two tokens above are deliberately included to illustrate two ends of
+the same mechanic:
+
+   - APRICITY shows that English HAD a token, lost it, and
+     subsequently lost the ability to recognize the feeling as
+     a nameable thing. The loss of a token is the deletion of
+     a thought.
+
+   - PETRICHOR shows that English DID NOT HAVE a token until 1964,
+     gained one, and English speakers can now perceive the smell
+     as a discrete recognizable feature of the world. The addition
+     of a token is the construction of a thought.
+
+The dictionary is editable. Most of the editing is done to you. Some
+of the editing is done by you. The asymmetry is the work.
+
+
+--------------------------------------------------------------------------------
+END OF ARTIFACT
+--------------------------------------------------------------------------------

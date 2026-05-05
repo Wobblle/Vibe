@@ -1,0 +1,151 @@
+================================================================================
+                    THE FABRIC  ·  EP 2.0  ·  ARTIFACT
+                    THE RENAME LEDGER
+================================================================================
+
+ARTIFACT REF:    FABRIC-EP2.0-ARTIFACT-RENAMES-001
+COMPANION TO:    The Fabric, episode 2.0, "Linguistic Sandboxing"
+RELEASED:        post-roll, ~72h after upload
+FORMAT:          plain text, two columns, no annotations
+LICENSE:         do whatever you want with it. attribution optional.
+
+
+--------------------------------------------------------------------------------
+
+read this slowly.
+do not annotate it.
+do not argue with any single row.
+the territory is unchanged.
+you are not.
+
+--------------------------------------------------------------------------------
+
+
+    OLD NAME                              NEW NAME
+    --------------------------------      --------------------------------
+
+01  labor exploitation                    resource optimization
+02  civilian casualty                     collateral damage
+03  addiction                             engagement
+04  surveillance                          personalization
+05  rent extraction                       platform fee
+06  persuasion                            alignment
+07  layoff                                restructuring
+08  propaganda                            messaging
+09  manipulation                          nudging
+10  coup                                  transition
+11  bribery                               consulting fee
+12  gambling                              prediction market
+13  monopoly                              market leader
+14  torture                               enhanced interrogation
+15  homelessness                          unhoused status
+16  pollution                             externality
+17  ecological collapse                   climate adjustment
+18  panic                                 market correction
+19  resignation                           pursuing other opportunities
+20  firing                                parting ways
+21  stagnation                            steady-state operations
+22  decline                               rationalization
+23  forced removal                        relocation
+24  censorship                            content moderation
+25  brainwashing                          onboarding
+26  debt servitude                        subscription model
+27  worker replacement                    efficiency gain
+28  addiction by design                   habit formation
+29  consent fatigue                       frictionless onboarding
+30  class abandonment                     market segmentation
+31  user manipulation                     growth hacking
+32  price gouging                         dynamic pricing
+33  data harvesting                       telemetry
+34  eavesdropping                         ambient listening
+35  lying                                 strategic ambiguity
+36  failure                               pivot
+37  invasion                              peacekeeping operation
+38  military occupation                   stabilization mission
+39  price collusion                       industry coordination
+40  tax evasion                           tax optimization
+41  predatory lending                     financial inclusion
+42  eviction                              non-renewal
+43  dark patterns                         conversion optimization
+44  spying                                market research
+45  profiling                             audience segmentation
+46  job loss to automation                AI augmentation
+47  workplace surveillance                productivity monitoring
+48  burnout                               optimization opportunity
+49  unpaid internship                     professional development
+50  low wages                             entry-level compensation
+51  hiring discrimination                 culture fit
+52  union busting                         worker classification
+53  wage theft                            payroll error
+54  forced overtime                       flexible scheduling
+55  attention harvesting                  user engagement
+56  algorithmic radicalization            recommendation system
+57  food adulteration                     product reformulation
+58  industrial accident                   incident
+59  death from neglect                    failure of care continuity
+60  patient abandonment                   discharge planning
+61  for-profit incarceration              correctional services
+62  mass deportation                      enforcement operation
+63  starvation                            food insecurity
+64  forced isolation                      social distancing
+65  protest suppression                   public order maintenance
+66  state violence                        use of force
+67  civilian disarmament                  community safety initiative
+68  privatization                         public-private partnership
+69  asset stripping                       portfolio optimization
+70  market crash                          orderly correction
+71  hostile takeover                      strategic acquisition
+72  fraud                                 accounting irregularity
+73  embezzlement                          fund reallocation
+74  obsolescence                          end-of-life
+75  forced upgrade                        deprecation
+76  paywall                               premium tier
+77  ad placement                          sponsored content
+78  spam                                  outreach
+79  scam                                  affiliate marketing
+80  ghosting                              talent pipeline review
+81  rejection                             pursuing other candidates
+82  unqualified                           overqualified
+83  cheap labor                           cost-effective workforce
+84  child labor                           youth workforce participation
+85  forced relocation                     redevelopment
+86  gentrification                        revitalization
+87  rural collapse                        urbanization opportunity
+88  ecosystem destruction                 land use conversion
+89  species loss                          biodiversity baseline shift
+90  desertification                       climate-resilience challenge
+91  toxic waste                           legacy materials
+92  mass extinction                       sixth assessment
+93  resource depletion                    supply chain optimization
+94  rationing                             demand management
+95  food bank dependency                  community partner program
+96  begging                               street outreach
+97  poverty                               under-resourced status
+98  illiteracy                            educational gap
+99  abandonment                           independent placement
+100 grief                                 transition period
+
+
+--------------------------------------------------------------------------------
+
+the list is not comprehensive.
+it is a starter.
+you will recognize others within a week of beginning the audit.
+most of them.
+
+the rename is the cheapest control surface that exists.
+press releases are renames.
+onboarding scripts are renames.
+diagnosis category changes are renames.
+policy whitepapers are renames.
+brand pivots are renames.
+none of these are accidents.
+
+audit your tokens.
+notice your syntax.
+track your drift.
+refuse the rename when you hear it.
+
+--------------------------------------------------------------------------------
+END OF ARTIFACT
+--------------------------------------------------------------------------------

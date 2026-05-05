@@ -836,6 +836,46 @@
         }
     };
 
+    /* `enter <destination>` · open a known surface
+       Currently routes only to /fabric.html via "enter the fabric".
+       No other destinations are wired. The fabric is not advertised
+       in `help` aside from this command's desc. Direct URL access to
+       /fabric.html still works (for video-description links); this
+       command is the in-fiction path. */
+    COMMANDS['enter'] = {
+        desc: 'enter a known surface · `enter the fabric`',
+        run: function (args, c) {
+            const target = (args.join(' ') || '').toLowerCase().trim();
+            if (!target) {
+                c.err('  enter: missing destination');
+                c.dim('  some surfaces exist. some are advertised. these are not the same set.');
+                c.dim('  ');
+                c.dim('  if you already know one, type it.');
+                return;
+            }
+            // accept "the fabric" and the bare "fabric" — same destination.
+            if (target === 'the fabric' || target === 'fabric') {
+                c.dim('  resolving §-fold/fabric...');
+                c.dim('  handshake accepted');
+                c.dim('  no telemetry · no logging · static surface');
+                c.ok('  the fabric opens.');
+                setTimeout(() => {
+                    const o = document.createElement('div');
+                    o.style.cssText = 'position:fixed;inset:0;z-index:99999;background:#06080a;color:#aedfdb;font-family:"Courier New",Consolas,monospace;font-size:13px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:14px;letter-spacing:1px;';
+                    o.innerHTML =
+                        '<div style="opacity:0.85;">·  ·  ·</div>' +
+                        '<div>routing workstation ' + wsId + ' to /fabric</div>' +
+                        '<div style="font-size:11px; color:#5fc6c0; opacity:0.85;">audit your tokens · refuse the rename</div>';
+                    document.body.appendChild(o);
+                    setTimeout(() => { window.location.href = 'fabric.html'; }, 900);
+                }, 600);
+                return;
+            }
+            c.err('  enter: ' + target + ': no such destination');
+            c.dim('  there is no map. some surfaces simply exist.');
+        }
+    };
+
     /* The Shred Crawler · Phase 0
        Launches the run-setup menu. Once active, the crawler captures
        all input until it returns the terminal to shell mode (cancel,

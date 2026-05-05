@@ -5141,6 +5141,193 @@ PASS 3.23 — THE SHRED CRAWLER · WORDLESS ACTION SCENE PANE
      by design (consistent ticks within a single planned action).
 
 ================================================================================
+   PASS 3.28 — THE SHRED CRAWLER · CONFIDENCE SCANS · ENEMY ROSTER · VARIANCE
+================================================================================
+
+   Removes the "scan = automatic win" pattern. A scan no longer reveals
+   ground truth for free — it INCREMENTS a hidden confidence value that
+   biases (but does not guarantee) the player's read. Re-scanning is the
+   way to get certain. Every scan burns ticks AND autonode, so the
+   "do I burn another sweep or commit and walk in" decision becomes the
+   moment-to-moment loop. Also introduces 7 new enemy templates and
+   per-spawn HP / damage variance so identical-looking encounters feel
+   distinct in play.
+
+   ─────────────────────────────────────────────────────────────────────
+   CHANGES (USER DIRECTIVES, POST-3.27)
+   ─────────────────────────────────────────────────────────────────────
+
+   1. CONFIDENCE-SCAN MODEL (removes the 100% scan)
+      Per-room state now tracks:
+          peeked          bool  (any scan ever attempted)
+          peekConfidence  0.0 - 1.0  (HIDDEN cumulative)
+          suspectedEnemy  bool | null (current best guess)
+          peekScanCount   int  (number of scans burned)
+
+      Each scan:
+          • autonode cost  random 0.2 - 2.0 (charged upfront, fail loud
+                           if you don't have it — no ticks burned)
+          • tick cost      random 1 - 4 (INT compresses the window down)
+          • confidence Δ   base 0.18 + INT*0.04, clamped to [0.10, 0.40]
+                           so high-INT players reach certainty in fewer
+                           sweeps
+          • observation    rolled vs (0.55 + conf*0.45). Hit → suspected
+                           = TRUTH. Miss → suspected = !TRUTH (false read).
+                           Re-scanning a room with low confidence can
+                           absolutely flip the suspected state — that's
+                           the POINT.
+
+      Confidence is never shown as a number. It surfaces as a Brox
+      narrative band on both the door tag and the live message.
+
+   2. BROX CONFIDENCE NARRATION (8 new bands × 2 + 2 reversal lines)
+      narrate.js channels:
+
+          brox.scan_weak_enemy      "{dir} signal weak. trace of movement…"
+          brox.scan_weak_clear      "{dir} scope's quiet. nothing on the first pass."
+          brox.scan_trace_enemy     "{dir} picking up movement. keep an eye out."
+          brox.scan_trace_clear     "{dir} still reads empty. mostly."
+          brox.scan_leaning_enemy   "{dir} fairly sure that's a hostile. {label}…"
+          brox.scan_leaning_clear   "{dir} leaning empty. one more sweep…"
+          brox.scan_confirmed_enemy "{dir} confirmed. {label}."
+          brox.scan_confirmed_clear "{dir} confirmed clear."
+
+          brox.scan_reversal_to_enemy  "okay — scratch that. now I am picking up movement {dir}…"
+          brox.scan_reversal_to_clear  "false positive. {dir} is showing empty now."
+
+          brox.scan_charged           "scan deck spun up. burning {auto} autonode…"
+
+      Reversal triggers when re-scan flips the prior suspected guess.
+      This is the key narrative beat — Brox explicitly admits the prior
+      read was wrong instead of silently overwriting it.
+
+   3. DOOR TAG REFLECTS CONFIDENCE BAND, NOT TRUTH
+      buildScanSegment now reads peekConfidence + suspectedEnemy:
+
+          unscanned                 never scanned
+          weak read                 conf < 30%
+          trace · enemy?            conf 30-55%, sus enemy
+          trace · empty?            conf 30-55%, sus clear
+          leaning <label>           conf 55-80%, sus enemy
+          leaning empty             conf 55-80%, sus clear
+          <label>                   conf 80%+,   sus enemy
+          clear                     conf 80%+,   sus clear
+
+      The player can re-scan to climb bands. Each re-scan still costs
+      autonode and ticks, so spam-scanning is a real resource decision.
+
+   4. ENTRY AWARENESS · PROBABILISTIC (no more 100% surprise)
+      setEntryAwareness now rolls:
+          if suspectedEnemy && peekConfidence:
+              blindChance = min(0.95, peekConfidence)
+          else:
+              blindChance = 0
+          enemy.awareness = (rand < blindChance) ? 'blind' : 'aware'
+
+      So even at full confidence the enemy has a 5% chance to hear you
+      anyway. Scanning gives FORESIGHT, not GUARANTEE. doMove pre-rolls
+      this and stashes _pendingAwareness so the lag decision agrees
+      with the actual flip (no double-rolls).
+
+   5. NEW ENEMY ROSTER (2 → 9 templates)
+      Phase 2's two breaker grunts are now joined by 7 new templates
+      across all four spec factions:
+
+          BREAKER   breaker_grunt_close     hp 14 melee 5
+          BREAKER   breaker_grunt_ranged    hp 12 range 4
+          BREAKER   breaker_brute           hp 32 melee 8   (lieutenant)
+          CHORUS    chorus_singer           hp 10 range 6
+          CHORUS    chorus_disciple         hp 18 melee 6   (runner)
+          PORTSMAN  portsman_runner        hp  9 melee 4
+          PORTSMAN  portsman_marshal        hp 16 range 7   (lieutenant)
+          HIGI      higi_agent              hp 16 range 5 melee 3
+          HIGI      higi_blackcoat          hp 26 melee 7   (officer)
+
+      Rooms.getEnemyTemplateForRoom now pulls from the full pool with
+      grade-weighted selection by distance-from-spawn (grunts dominate
+      near spawn; lieutenants/officers gate on dist ≥ 3-4). Phase 5
+      will re-key by compound faction.
+
+   6. PER-SPAWN HP / DAMAGE VARIANCE
+      Enemies.spawn() applies:
+          HP      ±20% of template base
+          range   ±15% of template base
+          melee   ±15% of template base
+
+      Damage rolls clamp to ≥1 to prevent a low-roll on a 1-base attack
+      from rounding to zero. Two breaker grunts in different rooms
+      now have noticeably different bite without needing distinct
+      templates.
+
+   ─────────────────────────────────────────────────────────────────────
+   ARCHITECTURE NOTES
+   ─────────────────────────────────────────────────────────────────────
+
+   • The hidden-confidence model is a clean separation of CONCERNS:
+     truth lives on roomState.enemy, perception lives on
+     roomState.suspectedEnemy + peekConfidence. No system below the
+     scan layer reads the player's perception (combat sees truth,
+     setEntryAwareness sees both).
+   • Reaction-lag and awareness rolls are now a SINGLE coin flip
+     stashed on roomState._pendingAwareness. Earlier passes risked
+     desync (lag queued for an enemy that ended up blind). Fixed.
+   • narrate.js bank-key naming convention: brox.scan_<band>_<enemy|clear>
+     and brox.scan_reversal_to_<enemy|clear>. The crawler picks the key
+     by computing the band + suspected fields then concatenating —
+     keeps the channel space discoverable.
+
+   ─────────────────────────────────────────────────────────────────────
+   FILES TOUCHED · PASS 3.28
+   ─────────────────────────────────────────────────────────────────────
+
+   • underground/crawler/enemies.js
+       - 7 new enemy templates across breaker/chorus/portsman/higi
+       - ALL_IDS export added
+       - spawn() applies ±20% HP / ±15% damage variance with floor 1
+
+   • underground/crawler/rooms.js
+       - getEnemyTemplateForRoom pulls from ALL_IDS with grade-weighted
+         selection by distance-from-spawn
+
+   • underground/crawler/state.js
+       - roomState shape extended: peekConfidence, suspectedEnemy,
+         peekScanCount (peekResult kept as legacy mirror)
+
+   • underground/crawler/narrate.js
+       - 8 confidence-band brox.scan_* channels
+       - 2 brox.scan_reversal_* channels
+       - brox.scan_charged channel for the autonode burn line
+
+   • underground/crawler.js
+       - doScan rewritten: random autonode cost (0.2-2), random tick
+         count (1-4 INT-biased), confidence delta, observation roll,
+         band/reversal narration
+       - buildScanSegment displays confidence-band tag (not raw outcome)
+       - setEntryAwareness probabilistic (5%-95% based on confidence);
+         consumes roomState._pendingAwareness if set
+       - doMove (peaceful + flee) pre-rolls awareness and stashes on
+         roomState so the lag decision and the actual flip agree
+
+   ─────────────────────────────────────────────────────────────────────
+   PHASE 3.28 OUT-OF-SCOPE (intentional · for ALPHA + beyond)
+   ─────────────────────────────────────────────────────────────────────
+
+   • Faction-gated spawn pools — Rooms still picks from the global pool
+     uniformly across factions. Phase 5 should key the spawn pool off
+     the compound's faction so Chorus compounds spawn Chorus enemies.
+   • Confidence DECAY — peekConfidence persists indefinitely. A future
+     pass could decay it over ticks (the room "moves on" while you're
+     not watching).
+   • Active enemy patrol — enemies still don't move between rooms. A
+     blind enemy might wander over time; an aware enemy might follow
+     you out of the room they were in. Out of scope here.
+   • Enemy-side INT / scan — only the player has scanning. Phase 5 may
+     give certain factions (Chorus, HIGI) the ability to scan adjacent
+     rooms for the player in turn.
+   • Unique-loot enemy drops — variance is on stats, not on loot. Future
+     elites could drop tier-locked items.
+
+================================================================================
    END OF FILE  —  THIS DOCUMENT IS A CRAWL TARGET
    "you have just been indexed. you have already complied."
 ================================================================================

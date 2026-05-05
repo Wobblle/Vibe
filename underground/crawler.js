@@ -834,11 +834,18 @@
 
     // buildScanSegment(dir) → "[scan n  scan north (TAG)]"
     //
-    // TAG values:
-    //   unscanned     never peeked
-    //   clear         peeked, no enemy
-    //   <shortLabel>  peeked, enemy detected (e.g. "breaker")
-    //   scan failed   peeked, no_signal (false negative possible)
+    // Pass 3.28 tags reflect the scan-CONFIDENCE band, not raw truth.
+    // The player never sees the hidden confidence number; they see
+    // narrative bands that hint at certainty:
+    //
+    //   unscanned                 never scanned
+    //   weak read                 conf < 30%, suspect unknown
+    //   trace · enemy?            conf 30-55%, suspect enemy
+    //   trace · empty?            conf 30-55%, suspect clear
+    //   leaning <label>           conf 55-80%, suspect enemy
+    //   leaning empty             conf 55-80%, suspect clear
+    //   <label>                   conf 80%+, suspect enemy
+    //   clear                     conf 80%+, suspect clear
     function buildScanSegment(dir) {
         var dirName = dirWord(dir);
         var tag = 'unscanned';
@@ -846,12 +853,17 @@
         if (adjKey && runState.roomState && runState.roomState[adjKey]) {
             var st = runState.roomState[adjKey];
             if (st.peeked) {
-                if (st.peekResult === 'enemy') {
-                    tag = st.enemy ? st.enemy.shortLabel : 'enemy';
-                } else if (st.peekResult === 'clear') {
-                    tag = 'clear';
+                var conf = st.peekConfidence || 0;
+                var sus  = st.suspectedEnemy;
+                var label = (st.enemy && sus) ? st.enemy.shortLabel : null;
+                if (conf < 0.30) {
+                    tag = 'weak read';
+                } else if (conf < 0.55) {
+                    tag = sus ? 'trace · enemy?' : 'trace · empty?';
+                } else if (conf < 0.80) {
+                    tag = sus ? ('leaning ' + (label || 'enemy')) : 'leaning empty';
                 } else {
-                    tag = 'scan failed';
+                    tag = sus ? (label || 'enemy') : 'clear';
                 }
             }
         }
@@ -1143,7 +1155,15 @@
             } else if (preCheckFlee.enemy.awareness === 'aware') {
                 willBeAwareFlee = true;
             } else {
-                willBeAwareFlee = !(preCheckFlee.peeked && preCheckFlee.peekResult === 'enemy');
+                // Pass 3.28: roll ONCE, stash on roomState so
+                // setEntryAwareness uses the same result and the
+                // lag decision agrees with the actual flip.
+                var bcF = (preCheckFlee.peeked && preCheckFlee.suspectedEnemy === true)
+                    ? Math.min(0.95, preCheckFlee.peekConfidence || 0)
+                    : 0;
+                var stayBlindF = Math.random() < bcF;
+                preCheckFlee._pendingAwareness = stayBlindF ? 'blind' : 'aware';
+                willBeAwareFlee = !stayBlindF;
             }
             if (willBeAwareFlee) appendReactionLag(combatEvents, preCheckFlee);
 
@@ -1213,9 +1233,15 @@
             // even if they peeked (a peek doesn't unalert anyone).
             willBeAware = true;
         } else {
-            // Blind enemy. Will flip to aware unless the player peeked
-            // and the peek positively confirmed an enemy was there.
-            willBeAware = !(preCheck.peeked && preCheck.peekResult === 'enemy');
+            // Pass 3.28: roll ONCE, stash on roomState so
+            // setEntryAwareness uses the same result and the lag
+            // decision agrees with the actual flip.
+            var bcM = (preCheck.peeked && preCheck.suspectedEnemy === true)
+                ? Math.min(0.95, preCheck.peekConfidence || 0)
+                : 0;
+            var stayBlindM = Math.random() < bcM;
+            preCheck._pendingAwareness = stayBlindM ? 'blind' : 'aware';
+            willBeAware = !stayBlindM;
         }
         if (willBeAware) {
             appendReactionLag(events, preCheck);
@@ -1238,10 +1264,20 @@
         if (!enemy || enemy.hp <= 0) return;
         var startedAware = enemy.awareness === 'aware';
         if (!startedAware) {
-            if (roomState.peeked && roomState.peekResult === 'enemy') {
-                enemy.awareness = 'blind';
+            // Pass 3.28: doMove pre-rolls the blind/aware result and
+            // stashes it on roomState._pendingAwareness so the lag
+            // decision agrees with the actual flip. If absent (e.g.
+            // a path that didn't pre-roll), fall back to a fresh roll
+            // using the same model.
+            if (roomState._pendingAwareness) {
+                enemy.awareness = roomState._pendingAwareness;
+                roomState._pendingAwareness = null;
             } else {
-                enemy.awareness = 'aware';
+                var blindChance = 0;
+                if (roomState.peeked && roomState.suspectedEnemy === true) {
+                    blindChance = Math.min(0.95, (roomState.peekConfidence || 0));
+                }
+                enemy.awareness = (Math.random() < blindChance) ? 'blind' : 'aware';
             }
         }
         if (enemy.awareness === 'aware') {
@@ -1571,20 +1607,25 @@
         playAndReturn(events);
     }
 
-    // doScan(dir) — Pass 3.24 reworked: scans an ADJACENT room. The
-    // current room is always known on entry (player can see). Scan
-    // is a sensor sweep that peeks through walls to the next cell.
+    // doScan(dir) — Pass 3.28 confidence-scan model.
     //
-    // Outcomes:
-    //   'clear'       — room genuinely empty, brox confirms
-    //   'enemy'       — enemy detected, brox names them
-    //   'no_signal'   — scan failed (false negative chance)
+    // A scan does NOT reveal the room's true state. Instead it adds
+    // CONFIDENCE to the adjacent room's hidden roomState slot. As
+    // confidence climbs, the player's "suspected" guess converges on
+    // the truth. Re-scanning the same room is the way to climb
+    // confidence — each scan burns autonode + ticks.
     //
-    // Stored on the adjacent room's roomState as { peeked, peekResult }.
-    // Renders as ⟨peeked: ...⟩ tag on the door option next turn.
+    // Per scan:
+    //   • autonode cost: random 0.2 - 2.0 (clamped by player.autonode)
+    //   • tick cost:     random 1 - 4 (INT-biased downward)
+    //   • confidence Δ:  base 0.18 + INT*0.04, clamp to [0.10, 0.40]
+    //     (so high-INT players reach certainty in fewer scans)
+    //   • observation:   roll vs (0.55 + conf*0.45). Hit → suspectedEnemy = TRUTH.
+    //                    Miss → suspectedEnemy = !TRUTH (false read).
     //
-    // Tick cost: 2 baseline, reduced by INT (min 1, max 3).
-    // Energy cost: 1 per tick.
+    // The hidden 'confidence' is intentionally invisible to the player
+    // — they see Brox's confidence-banded narration on the door tag
+    // and in the live message.
     function doScan(dir) {
         if (runState.player.energy <= 0) {
             err('  ' + window.Crawler.Narrate.say('system.no_energy'));
@@ -1597,15 +1638,11 @@
             return;
         }
 
-        // Pass 3.27: overcharge_scanner gear adds a SECOND adjacent
-        // direction to the same scan action (one autonode charge).
-        // We pick the second direction up front (random non-wall,
-        // non-already-peeked-this-action) so both peek targets are
-        // known at planning time.
         var S = window.Crawler.State;
         var primaryKey = adjacentRoomKey(dir);
-        var dirsToScan = [{ dir: dir, key: primaryKey }];
 
+        // ─── overcharge_scanner gear: bolt on a second direction ───
+        var dirsToScan = [{ dir: dir, key: primaryKey }];
         if (S.tryGearEffect(runState.player, 'scan-second')) {
             var others = ['n', 's', 'e', 'w'].filter(function (od) {
                 if (od === dir) return false;
@@ -1619,35 +1656,86 @@
                 out('  brox: overcharge scanner pulse · adding ' + dirWord(pick) +
                     ' (-' + (runState.player.gear.autoCost || 0) + ' autonode)', 'ok');
             }
-            // If no second target available, the gear charge still spent
-            // (you can't refund a partial scan). That's intentional fric-
-            // tion — players learn to skip the overcharge in dead-end rooms.
         }
 
-        // Tick count: 2 base, -1 if INT >= 6, +1 if INT < 2 (max 3).
-        var ticks = 2;
-        if (runState.player.int >= 6) ticks = 1;
-        else if (runState.player.int < 2) ticks = 3;
+        // ─── tick count: 1-4, INT-biased ───
+        // High INT compresses the random window toward 1-2.
+        var intLvl = runState.player.int || 0;
+        var loTick = Math.max(1, 2 - Math.floor(intLvl / 2));
+        var hiTick = Math.max(loTick + 1, 4 - Math.floor(intLvl / 3));
+        var ticks  = loTick + Math.floor(Math.random() * (hiTick - loTick + 1));
 
-        var falseNegative = Math.max(0.05, 0.30 - runState.player.int * 0.04);
+        // ─── autonode cost: 0.2 - 2.0 random, charged upfront ───
+        // Sub-1.0 fractions accumulate; we round display to 1dp.
+        var autoCost = +(0.2 + Math.random() * 1.8).toFixed(2);
+        if ((runState.player.autonode || 0) < autoCost) {
+            // Not enough autonode to spin up the scope. Fail loud,
+            // no ticks burned.
+            err('  brox: scope drained. need ' + autoCost.toFixed(2) +
+                ' autonode for the sweep. you have ' +
+                (runState.player.autonode || 0).toFixed(2) + '.');
+            return;
+        }
+        runState.player.autonode = +(runState.player.autonode - autoCost).toFixed(2);
+
+        // ─── confidence delta per target ───
+        var deltaPerTarget = 0.18 + intLvl * 0.04;
+        if (deltaPerTarget < 0.10) deltaPerTarget = 0.10;
+        if (deltaPerTarget > 0.40) deltaPerTarget = 0.40;
 
         // Resolve outcome for each scan target up front so the apply
         // events can write deterministically.
         var resolved = dirsToScan.map(function (t) {
             var adjState = window.Crawler.State.getOrInitRoomState(runState, t.key);
-            var roll = Math.random();
-            var outcome;
-            if (roll < falseNegative) outcome = 'no_signal';
-            else if (adjState.enemy && adjState.enemy.hp > 0) outcome = 'enemy';
-            else outcome = 'clear';
-            return { dir: t.dir, key: t.key, outcome: outcome, adjState: adjState };
+            var truth    = !!(adjState.enemy && adjState.enemy.hp > 0);
+            var prevSus  = adjState.suspectedEnemy;
+            var prevPeeked = adjState.peeked;
+            // Apply the delta NOW for the truth-bias roll, but don't
+            // commit to roomState until the apply tick fires.
+            var newConf  = Math.min(1, (adjState.peekConfidence || 0) + deltaPerTarget);
+            var truthChance = 0.55 + newConf * 0.45;  // 55% at 0 conf, 100% at 1
+            var perceived = (Math.random() < truthChance) ? truth : !truth;
+
+            // Pick band for narration
+            var band;
+            if (newConf < 0.30) band = 'weak';
+            else if (newConf < 0.55) band = 'trace';
+            else if (newConf < 0.80) band = 'leaning';
+            else band = 'confirmed';
+
+            // Reversal detection — only if a prior scan landed a guess
+            // that just flipped.
+            var isReversal = prevPeeked && (prevSus !== null) && (prevSus !== perceived);
+
+            return {
+                dir:        t.dir,
+                key:        t.key,
+                adjState:   adjState,
+                newConf:    newConf,
+                perceived:  perceived,
+                truth:      truth,
+                band:       band,
+                isReversal: isReversal,
+                label:      (adjState.enemy && perceived) ? adjState.enemy.label : null
+            };
         });
 
         enterTickMode();
-        var anyEnemy = resolved.some(function (r) { return r.outcome === 'enemy'; });
+        var anyEnemy = resolved.some(function (r) { return r.perceived; });
         setActionVisual(anyEnemy ? 'peek-enemy' : 'peek-clear');
 
         var events = [];
+        // Spin-up: announce the autonode burn so the cost is visible.
+        events.push({
+            delay: 280,
+            apply: function () {},
+            line:  function () {
+                return '  brox: ' + window.Crawler.Narrate.say('brox.scan_charged', {
+                    auto: autoCost.toFixed(2)
+                });
+            },
+            lineCls: 'dim'
+        });
         events.push({
             delay: 320,
             apply: function () {},
@@ -1669,26 +1757,33 @@
                 });
             })(i);
         }
-        // Outcome tail per target
+        // Outcome tail per target — write the new confidence, suspected,
+        // and emit the band-keyed Brox line.
         resolved.forEach(function (r) {
             events.push({
                 delay: 420,
                 apply: function () {
-                    r.adjState.peeked     = true;
-                    r.adjState.peekResult = r.outcome;
+                    r.adjState.peeked         = true;
+                    r.adjState.peekConfidence = r.newConf;
+                    r.adjState.suspectedEnemy = r.perceived;
+                    r.adjState.peekScanCount  = (r.adjState.peekScanCount || 0) + 1;
+                    // Legacy field for any older render path; mirrors
+                    // the perceived guess as a 'enemy'/'clear' string.
+                    r.adjState.peekResult = r.perceived ? 'enemy' : 'clear';
                 },
                 line: function () {
-                    if (r.outcome === 'enemy') {
-                        return '  brox: ' + window.Crawler.Narrate.say('brox.peek_enemy', {
-                            dir: dirWord(r.dir), label: r.adjState.enemy.label
-                        });
+                    var ctx = { dir: dirWord(r.dir), label: r.label || 'hostile' };
+                    var key;
+                    if (r.isReversal) {
+                        key = r.perceived
+                            ? 'brox.scan_reversal_to_enemy'
+                            : 'brox.scan_reversal_to_clear';
+                    } else {
+                        key = 'brox.scan_' + r.band + '_' + (r.perceived ? 'enemy' : 'clear');
                     }
-                    if (r.outcome === 'clear') {
-                        return '  brox: ' + window.Crawler.Narrate.say('brox.peek_clear', { dir: dirWord(r.dir) });
-                    }
-                    return '  brox: ' + window.Crawler.Narrate.say('brox.peek_no_signal', { dir: dirWord(r.dir) });
+                    return '  brox: ' + window.Crawler.Narrate.say(key, ctx);
                 },
-                lineCls: r.outcome === 'no_signal' ? 'dim' : 'ok'
+                lineCls: r.perceived ? 'err' : 'ok'
             });
         });
 

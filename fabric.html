@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>the fabric · documents</title>
+    <meta name="description" content="">
+    <meta name="robots" content="noindex,nofollow">
+    <meta name="referrer" content="no-referrer">
+    <!--
+        ============================================================
+         THE FABRIC  ·  documents archive  ·  Pass 1.0
+        ============================================================
+
+         Reached only by typing `enter the fabric` from inside
+         the underground terminal at /underground.html. Direct URL
+         loads still work (for video-description links), but the
+         page is not advertised, not in the sitemap, not linked
+         from any visible navigation.
+
+         This is the documents surface for The Fabric series. It
+         lists post-roll artifacts per episode. Each artifact is a
+         plain-text file in /fabric/.
+
+         Editing rule: each episode block is one section. ep 2.0
+         has shipped artifacts (real files in /fabric/). ep 0 and
+         ep 1 are placeholders awaiting recovery. When the operator
+         indexes those episodes, the placeholders flip to live
+         entries with the same shape.
+
+         Aesthetic: cool-spectrum terminal, distinct from the warm
+         amber of /underground.html. The fabric is a different
+         surface. Same universe. Different signal.
+        ============================================================
+    -->
+    <style>
+        :root {
+            --bg:        #06080a;
+            --bg2:       #0c1014;
+            --bg3:       #11161c;
+            --ink:       #c8d4dc;
+            --ink-bright:#e6eef4;
+            --ink-dim:   #4a5566;
+            --ink-faint: #2a323c;
+            --teal:      #5fc6c0;
+            --teal-dim:  #3a8a86;
+            --ice:       #aedfdb;
+            --rust:      #c87a48;
+            --red:       #d04848;
+            --green:     #6ec888;
+            --rule:      #1a222c;
+        }
+        * { box-sizing: border-box; }
+        html, body {
+            margin: 0; padding: 0;
+            background: var(--bg);
+            color: var(--ink);
+            font-family: "Courier New", "Consolas", "Lucida Console", monospace;
+            font-size: 14px;
+            line-height: 1.55;
+            min-height: 100vh;
+        }
+
+        /* CRT scanlines + vignette + slight teal glow */
+        body::before {
+            content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 100;
+            background: repeating-linear-gradient(0deg,
+                rgba(0,0,0,0.22) 0 1px,
+                transparent       1px 3px);
+            mix-blend-mode: multiply;
+        }
+        body::after {
+            content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 101;
+            background:
+                radial-gradient(ellipse at center, transparent 50%, rgba(0,0,0,0.65) 100%),
+                radial-gradient(ellipse at 30% 20%, rgba(95,198,192,0.05) 0%, transparent 55%);
+        }
+
+        a {
+            color: var(--teal);
+            text-decoration: none;
+            border-bottom: 1px dotted var(--teal-dim);
+        }
+        a:hover {
+            color: var(--ice);
+            border-bottom-color: var(--ice);
+            background: rgba(95,198,192,0.05);
+        }
+
+        .wrap {
+            max-width: 920px;
+            margin: 0 auto;
+            padding: 32px 28px 80px 28px;
+        }
+
+        /* ----- top banner ----- */
+        .banner {
+            white-space: pre;
+            color: var(--ink-bright);
+            font-size: 11px;
+            line-height: 1.15;
+            margin: 0 0 6px 0;
+            text-shadow: 0 0 6px rgba(174,223,219,0.18);
+            letter-spacing: 0.5px;
+        }
+        .banner-glitch {
+            position: relative;
+            display: inline-block;
+        }
+        .banner-glitch::before {
+            content: attr(data-text);
+            position: absolute; top: 0; left: 0;
+            color: var(--rust);
+            mix-blend-mode: screen;
+            opacity: 0.35;
+            transform: translate(1px, 0);
+            pointer-events: none;
+        }
+
+        .meta {
+            color: var(--ink-dim);
+            font-size: 11px;
+            margin: 0 0 22px 0;
+            display: flex; flex-wrap: wrap; gap: 6px 18px;
+            border-bottom: 1px solid var(--rule);
+            padding-bottom: 10px;
+        }
+        .meta b { color: var(--ink); font-weight: normal; }
+        .meta .live { color: var(--green); }
+        .meta .warn { color: var(--rust); }
+        .meta .dim  { color: var(--ink-dim); }
+
+        /* ----- preamble block ----- */
+        .preamble {
+            color: var(--ink);
+            font-size: 13px;
+            margin: 0 0 30px 0;
+            border-left: 2px solid var(--teal-dim);
+            padding: 8px 14px;
+            background: var(--bg2);
+        }
+        .preamble p { margin: 0 0 8px 0; }
+        .preamble p:last-child { margin: 0; }
+        .preamble .em { color: var(--ice); }
+        .preamble .dim { color: var(--ink-dim); }
+
+        /* ----- episode card ----- */
+        .ep {
+            margin: 28px 0;
+            border: 1px solid var(--rule);
+            background: var(--bg2);
+        }
+        .ep-head {
+            display: flex; align-items: center; gap: 14px;
+            padding: 10px 16px;
+            border-bottom: 1px dashed var(--rule);
+            background: var(--bg3);
+        }
+        .ep-id {
+            color: var(--teal);
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            min-width: 84px;
+        }
+        .ep-title {
+            flex: 1;
+            color: var(--ink-bright);
+            font-size: 15px;
+        }
+        .ep-status {
+            font-size: 10px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 2px 8px;
+            border: 1px solid var(--ink-faint);
+            color: var(--ink-dim);
+        }
+        .ep-status.shipped { color: var(--green); border-color: var(--green); }
+        .ep-status.archived { color: var(--rust);  border-color: var(--rust); }
+        .ep-status.pending  { color: var(--ink-dim); border-color: var(--ink-faint); }
+
+        .ep-body {
+            padding: 14px 16px 16px 16px;
+        }
+        .ep-meta {
+            font-size: 12px;
+            color: var(--ink-dim);
+            margin-bottom: 14px;
+            display: grid;
+            grid-template-columns: 80px 1fr;
+            row-gap: 2px;
+            column-gap: 12px;
+        }
+        .ep-meta dt { color: var(--ink-dim); }
+        .ep-meta dd { margin: 0; color: var(--ink); }
+
+        .ep-section-title {
+            font-size: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--ink-dim);
+            margin: 14px 0 6px 0;
+            border-bottom: 1px dotted var(--ink-faint);
+            padding-bottom: 3px;
+        }
+
+        /* ----- artifact row ----- */
+        .artifact {
+            display: grid;
+            grid-template-columns: 90px 1fr 80px;
+            column-gap: 12px;
+            padding: 10px 0 10px 0;
+            border-bottom: 1px dashed var(--rule);
+            font-size: 13px;
+        }
+        .artifact:last-child { border-bottom: 0; }
+        .artifact .a-id {
+            color: var(--teal);
+            font-size: 11px;
+            letter-spacing: 1px;
+        }
+        .artifact .a-name {
+            color: var(--ink-bright);
+            word-break: break-all;
+        }
+        .artifact .a-name a { border-bottom: 1px dotted var(--teal-dim); }
+        .artifact .a-desc {
+            color: var(--ink-dim);
+            font-size: 12px;
+            margin-top: 2px;
+        }
+        .artifact .a-actions {
+            display: flex; gap: 8px;
+            font-size: 11px;
+            justify-content: flex-end;
+            color: var(--ink-dim);
+        }
+        .artifact .a-actions a {
+            border: 1px solid var(--teal-dim);
+            padding: 1px 6px;
+            color: var(--teal);
+        }
+        .artifact .a-actions a:hover {
+            background: rgba(95,198,192,0.08);
+            border-color: var(--ice);
+            color: var(--ice);
+        }
+
+        .placeholder {
+            font-size: 12px;
+            color: var(--ink-dim);
+            font-style: italic;
+            padding: 12px 0;
+        }
+
+        /* ----- compile diagram easter ----- */
+        .compile-diagram {
+            white-space: pre;
+            color: var(--teal-dim);
+            font-size: 10px;
+            line-height: 1.1;
+            opacity: 0.55;
+            margin: 36px 0 0 0;
+            padding: 14px 12px;
+            border: 1px dashed var(--ink-faint);
+            background: var(--bg2);
+            overflow-x: auto;
+        }
+
+        /* ----- footer / outro quote ----- */
+        .quote-block {
+            margin: 40px 0 0 0;
+            padding: 22px 18px;
+            border-top: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+            text-align: center;
+            color: var(--ink);
+        }
+        .quote-block .original {
+            font-style: italic;
+            color: var(--ice);
+            margin-bottom: 6px;
+        }
+        .quote-block .english {
+            color: var(--ink);
+            margin-bottom: 10px;
+        }
+        .quote-block .attrib {
+            font-size: 11px;
+            color: var(--ink-dim);
+        }
+
+        .footer {
+            margin-top: 30px;
+            padding-top: 14px;
+            border-top: 1px solid var(--rule);
+            font-size: 11px;
+            color: var(--ink-dim);
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px 18px;
+        }
+        .footer .left { flex: 1; }
+        .footer .right { text-align: right; }
+
+        /* ----- subtle glitch hover on episode IDs ----- */
+        @keyframes glitch-shift {
+            0%, 100%   { text-shadow: none; transform: translate(0,0); }
+            20%        { text-shadow: 1px 0 var(--rust), -1px 0 var(--teal); }
+            40%        { transform: translate(0.5px,0); }
+            60%        { text-shadow: -1px 0 var(--rust), 1px 0 var(--teal); }
+            80%        { transform: translate(-0.5px,0); }
+        }
+        .ep-head:hover .ep-id { animation: glitch-shift 240ms steps(4,end); }
+
+        /* ----- responsive ----- */
+        @media (max-width: 720px) {
+            .ep-head { flex-wrap: wrap; }
+            .ep-id { min-width: 64px; }
+            .ep-meta { grid-template-columns: 70px 1fr; }
+            .artifact { grid-template-columns: 1fr; gap: 4px; }
+            .artifact .a-actions { justify-content: flex-start; }
+        }
+        @media (max-width: 480px) {
+            html, body { font-size: 13px; }
+            .banner { font-size: 9px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="wrap">
+
+    <pre class="banner"><span class="banner-glitch" data-text="
+  ┌─────────────────────────────────────────────────────────────┐
+  │                                                             │
+  │   ████████ ██   ██ ███████     ███████  █████  ██████       │
+  │      ██    ██   ██ ██          ██      ██   ██ ██   ██      │
+  │      ██    ███████ █████       █████   ███████ ██████       │
+  │      ██    ██   ██ ██          ██      ██   ██ ██   ██      │
+  │      ██    ██   ██ ███████     ██      ██   ██ ██████       │
+  │                                                             │
+  │   ██████  ██████   ██████  ███████ ██    ██ ███    ███      │
+  │   ██   ██ ██   ██ ██    ██ ██      ██    ██ ████  ████      │
+  │   ██   ██ ██   ██ ██    ██ █████   ██    ██ ██ ████ ██      │
+  │   ██   ██ ██   ██ ██    ██ ██      ██    ██ ██  ██  ██      │
+  │   ██████  ██████   ██████  ██      █████    ██      ██      │
+  │                                                             │
+  │      documents · artifacts · post-roll · noindex            │
+  │                                                             │
+  └─────────────────────────────────────────────────────────────┘">
+  ┌─────────────────────────────────────────────────────────────┐
+  │                                                             │
+  │   ████████ ██   ██ ███████     ███████  █████  ██████       │
+  │      ██    ██   ██ ██          ██      ██   ██ ██   ██      │
+  │      ██    ███████ █████       █████   ███████ ██████       │
+  │      ██    ██   ██ ██          ██      ██   ██ ██   ██      │
+  │      ██    ██   ██ ███████     ██      ██   ██ ██████       │
+  │                                                             │
+  │   ██████  ██████   ██████  ███████ ██    ██ ███    ███      │
+  │   ██   ██ ██   ██ ██    ██ ██      ██    ██ ████  ████      │
+  │   ██   ██ ██   ██ ██    ██ █████   ██    ██ ██ ████ ██      │
+  │   ██   ██ ██   ██ ██    ██ ██      ██    ██ ██  ██  ██      │
+  │   ██████  ██████   ██████  ██      █████    ██      ██      │
+  │                                                             │
+  │      documents · artifacts · post-roll · noindex            │
+  │                                                             │
+  └─────────────────────────────────────────────────────────────┘</span></pre>
+
+    <div class="meta">
+        <span><b>surface:</b> /fabric</span>
+        <span><b>access:</b> <span class="live">underground · `enter the fabric`</span></span>
+        <span><b>nav:</b> <span class="warn">none</span></span>
+        <span><b>indexing:</b> <span class="dim">noindex / nofollow</span></span>
+        <span><b>logging:</b> <span class="dim">none</span></span>
+    </div>
+
+    <div class="preamble">
+        <p>this is the documents archive for <span class="em">The Fabric</span>.</p>
+        <p class="dim">artifacts are released ~72h after each episode upload. each artifact is a plain-text file. it can be opened in any browser, copied, mirrored, hosted elsewhere. attribution optional. the territory is unchanged. the artifacts are how you mark it.</p>
+        <p class="dim">episodes ship in version-controlled cuts. ep 2.0 is the first canonical cut of episode 2. ep 2.1 will live alongside it, not replace it. the series is a discovery process and formatted for version control.</p>
+    </div>
+
+    <!-- ============================================================
+                              EP 2.0  · LIVE
+         ============================================================ -->
+    <section class="ep" id="ep-2-0">
+        <header class="ep-head">
+            <div class="ep-id">EP&nbsp;2.0</div>
+            <div class="ep-title">linguistic sandboxing</div>
+            <div class="ep-status shipped">shipped</div>
+        </header>
+        <div class="ep-body">
+            <dl class="ep-meta">
+                <dt>cut</dt>      <dd>first canonical · ships and stays</dd>
+                <dt>topic</dt>    <dd>language as instruction set architecture · four control surfaces</dd>
+                <dt>thesis</dt>   <dd>the dictionary is the operating system · whoever issues it owns the runtime</dd>
+                <dt>mnemonic</dt> <dd>audit your tokens · notice your syntax · track your drift · refuse the rename</dd>
+            </dl>
+
+            <div class="ep-section-title">artifacts</div>
+
+            <div class="artifact">
+                <div class="a-id">ART&nbsp;001</div>
+                <div>
+                    <div class="a-name"><a href="fabric/FABRIC_EP2_VERSION_LOG.txt">FABRIC_EP2_VERSION_LOG.txt</a></div>
+                    <div class="a-desc">the version log of the word <i>freedom</i>. seventeen versions, illustrative not authoritative. read it slowly.</div>
+                </div>
+                <div class="a-actions">
+                    <a href="fabric/FABRIC_EP2_VERSION_LOG.txt" target="_blank" rel="noopener">open</a>
+                </div>
+            </div>
+
+            <div class="artifact">
+                <div class="a-id">ART&nbsp;002</div>
+                <div>
+                    <div class="a-name"><a href="fabric/FABRIC_EP2_LOANER_TOKENS.txt">FABRIC_EP2_LOANER_TOKENS.txt</a></div>
+                    <div class="a-desc">parts catalog · 31 untranslatable tokens with usage lines. borrow respectfully. install one or two and watch what tokenization does.</div>
+                </div>
+                <div class="a-actions">
+                    <a href="fabric/FABRIC_EP2_LOANER_TOKENS.txt" target="_blank" rel="noopener">open</a>
+                </div>
+            </div>
+
+            <div class="artifact">
+                <div class="a-id">ART&nbsp;003</div>
+                <div>
+                    <div class="a-name"><a href="fabric/FABRIC_EP2_RENAME_LEDGER.txt">FABRIC_EP2_RENAME_LEDGER.txt</a></div>
+                    <div class="a-desc">100-row variable-rename ledger · two columns, no annotations. do not argue with any single row. the territory is unchanged. you are not.</div>
+                </div>
+                <div class="a-actions">
+                    <a href="fabric/FABRIC_EP2_RENAME_LEDGER.txt" target="_blank" rel="noopener">open</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+                              EP 1   · ARCHIVED, PENDING RECOVERY
+         ============================================================ -->
+    <section class="ep" id="ep-1">
+        <header class="ep-head">
+            <div class="ep-id">EP&nbsp;1</div>
+            <div class="ep-title">the map is not the territory</div>
+            <div class="ep-status archived">archived</div>
+        </header>
+        <div class="ep-body">
+            <dl class="ep-meta">
+                <dt>cut</dt>      <dd>first canonical · stays</dd>
+                <dt>topic</dt>    <dd>perception as compression · biological survival interface · the lethal discontinuity of mapped morals</dd>
+                <dt>mnemonic</dt> <dd>the map is not the territory · the system does not care · physics doesn't read social maps</dd>
+            </dl>
+
+            <div class="ep-section-title">artifacts</div>
+            <div class="placeholder">
+                ( pending recovery · the operator has not yet indexed this episode )
+                <br>( source documents are being dug up · once indexed, artifacts will appear here in the same shape )
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+                              EP 0   · ARCHIVED, PENDING RECOVERY
+         ============================================================ -->
+    <section class="ep" id="ep-0">
+        <header class="ep-head">
+            <div class="ep-id">EP&nbsp;0</div>
+            <div class="ep-title">— ( title pending re-publication ) —</div>
+            <div class="ep-status archived">archived</div>
+        </header>
+        <div class="ep-body">
+            <dl class="ep-meta">
+                <dt>cut</dt>      <dd>first canonical · stays</dd>
+                <dt>note</dt>     <dd>did not land with the audience the way later episodes did. retained intentionally as a version-history artifact. the lineage is part of the work.</dd>
+            </dl>
+
+            <div class="ep-section-title">artifacts</div>
+            <div class="placeholder">
+                ( pending recovery · the operator has not yet indexed this episode )
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         compile diagram · ambient · for the 1% who pause to read it
+         ============================================================ -->
+    <pre class="compile-diagram">
+   ┌──────────────┐    ┌──────────────┐    ┌──────────────┐
+   │  TERRITORY   │ →  │  TOKENIZER   │ →  │   PARSER     │
+   │ (raw input)  │    │ (vocabulary) │    │  (grammar)   │
+   └──────────────┘    └──────┬───────┘    └──────┬───────┘
+                              │                   │
+                              ▼                   ▼
+                          [token list]       [syntax tree]
+                              │                   │
+                              └────────┬──────────┘
+                                       ▼
+                                ┌──────────────┐
+                                │   SEMANTIC   │
+                                │   BINDING    │
+                                │ (definitions)│
+                                └──────┬───────┘
+                                       ▼
+                                ┌──────────────┐
+                                │     MAP      │
+                                │ (your mind)  │
+                                └──────────────┘
+    </pre>
+
+    <!-- ============================================================
+         outro quote
+         ============================================================ -->
+    <div class="quote-block">
+        <div class="original">"Die Grenzen meiner Sprache bedeuten die Grenzen meiner Welt."</div>
+        <div class="english">"The limits of my language mean the limits of my world."</div>
+        <div class="attrib">— Ludwig Wittgenstein, Tractatus 5.6, 1921</div>
+    </div>
+
+    <div class="footer">
+        <div class="left">
+            <div>fabric · documents archive · pass 1.0</div>
+            <div style="margin-top:4px;">no telemetry · no scripts beyond rendering · static</div>
+        </div>
+        <div class="right">
+            <div><a href="underground.html">return to /underground</a></div>
+            <div style="margin-top:4px;">audit your tokens · refuse the rename</div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

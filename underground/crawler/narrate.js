@@ -300,6 +300,70 @@
             "scope's lying about {dir}. inconclusive."
         ],
 
+        // ────── Pass 3.28 · confidence-scan readouts ───
+        // Picked by (band, suspectedEnemy[, isReversal]) in crawler.js.
+        // Bands: weak (0-30%), trace (30-55%), leaning (55-80%),
+        // confirmed (80%+). Reversal triggers when re-scan flips the
+        // suspected state from a prior scan.
+        'brox.scan_weak_enemy': [
+            "{dir} signal weak. trace of movement. cannot confirm anything yet.",
+            "{dir} something's there. maybe. needles barely twitch.",
+            "{dir} reads dirty. ghost or body. can't say."
+        ],
+        'brox.scan_weak_clear': [
+            "{dir} scope's quiet. nothing on the first pass.",
+            "{dir} reads empty so far. don't trust it.",
+            "{dir} signal flat. could just be the walls."
+        ],
+        'brox.scan_trace_enemy': [
+            "{dir} picking up movement. keep an eye out.",
+            "{dir} something is breathing in there. probably.",
+            "{dir} smells like a body. don't quote me."
+        ],
+        'brox.scan_trace_clear': [
+            "{dir} still reads empty. mostly.",
+            "{dir} no heat. no motion. probably clear.",
+            "{dir} feels hollow. could go either way."
+        ],
+        'brox.scan_leaning_enemy': [
+            "{dir} fairly sure that's a hostile. {label}, by the silhouette.",
+            "{dir} got a body. reads {label} from the gait.",
+            "{dir} something's there and it's the wrong shape. {label}."
+        ],
+        'brox.scan_leaning_clear': [
+            "{dir} leaning empty. one more sweep if you're nervous.",
+            "{dir} most likely clear. most.",
+            "{dir} no contacts. confidence isn't great though."
+        ],
+        'brox.scan_confirmed_enemy': [
+            "{dir} confirmed. {label}.",
+            "{dir} hostile. {label}. unaware right now.",
+            "{dir} {label} sitting in there. clean read."
+        ],
+        'brox.scan_confirmed_clear': [
+            "{dir} confirmed clear.",
+            "{dir} empty. nothing biological.",
+            "{dir} dead air. all yours."
+        ],
+        // Reversal lines play when the re-scan flips the previous
+        // suspectedEnemy guess. The {prev} placeholder takes the OLD
+        // suspected label ('enemy' or 'clear').
+        'brox.scan_reversal_to_enemy': [
+            "okay — scratch that. now I am picking up movement {dir}. keep an eye out.",
+            "correction {dir}: that wasn't empty. there's something in there.",
+            "previous read was wrong. {dir} has a body in it after all."
+        ],
+        'brox.scan_reversal_to_clear': [
+            "false positive. {dir} is showing empty now.",
+            "okay disregard the earlier read. {dir} is clean.",
+            "it was a ghost. {dir} reads empty on the second pass."
+        ],
+        'brox.scan_charged': [
+            "scan deck spun up. burning {auto} autonode for the sweep.",
+            "scope's drawing power. -{auto} autonode.",
+            "running active sensors. -{auto} autonode."
+        ],
+
         // ────── Pass 3.24 · awareness (enemy notices player) ───
         'brox.enemy_alerted': [
             "{label}'s on you now.",
