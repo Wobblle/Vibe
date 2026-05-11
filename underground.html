@@ -522,12 +522,30 @@
             }, perChar || 8);
         });
     }
+    /* ----- ASC v0.2 URL grammar (§9): ?code=CODE → store + announce -----
+       Per the spec, any product surface that consumes codes MUST honour
+       the ?code= query param on load: canonicalize, persist to session
+       storage, and surface a one-time confirmation. The actual
+       application of the code (slot vs uplink vs crawl run-start) is
+       deferred to the relevant in-product flow. */
+    const URL_CODE = (() => {
+        try {
+            const p = new URLSearchParams(window.location.search).get('code');
+            if (!p) return '';
+            const canon = String(p).trim().toUpperCase().replace(/\s+/g, '');
+            if (!canon) return '';
+            sessionStorage.setItem('vbz_uplink_code', canon);
+            return canon;
+        } catch (e) { return ''; }
+    })();
+
     async function bootSequence() {
         const entry = (() => {
             try { return sessionStorage.getItem('vbz_shred_entry') || ''; } catch (e) { return ''; }
         })();
         await typeOut('§-relay-37 :: handshake accepted from §47-VIBE-DOCS surface', 'dim', 6);
         if (entry) await typeOut('§-relay-37 :: code resolved → ' + entry, 'dim', 6);
+        if (URL_CODE) await typeOut('§-relay-37 :: asc code in url → ' + URL_CODE + ' (try `uplink`)', 'dim', 6);
         await typeOut('§-relay-37 :: rerouting workstation ' + wsId + ' to underground surface', 'dim', 6);
         appendBlank();
         await typeOut('welcome to the underground.', 'ok', 18);
@@ -873,6 +891,111 @@
             }
             c.err('  enter: ' + target + ': no such destination');
             c.dim('  there is no map. some surfaces simply exist.');
+        }
+    };
+
+    /* ASC v0.2 // uplink command — the cross-product side channel.
+       --------------------------------------------------------------
+       Validates an Asleepius Standardized Code locally (Layer 1 hash)
+       and, network permitting, peeks at Drift-Metrics for Layer 2
+       balance. RAD codes are recognised as Layer 3 coordination
+       pointers but resolved against scaffold-ledger (the Sky Scaffold
+       backend) — that wire-up is dormant until scaffold-ledger
+       absorbs asc/raids.sql.
+
+       Spec: G:\Projects\AlgoParallax\Drift-Metrics\ASC_SPEC.md §11
+       Anon key below is the public Drift-Metrics anon key (same one
+       embedded in drift-metrics.com/bridge.js, RLS-locked, safe). */
+    const ASC_DRIFT_URL = 'https://ojrcarvjtzsynchcexmb.supabase.co';
+    const ASC_DRIFT_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9qcmNhcnZqdHpzeW5jaGNleG1iIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgwMzM5OTYsImV4cCI6MjA5MzYwOTk5Nn0.yxNIgPihQaZH7VNYx7siOpIUIskzh0z6pE1Quc7tguA';
+
+    async function ascDriftPeek(code) {
+        try {
+            const r = await fetch(ASC_DRIFT_URL + '/rest/v1/rpc/peek_code', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'apikey':        ASC_DRIFT_ANON,
+                    'Authorization': 'Bearer ' + ASC_DRIFT_ANON
+                },
+                body: JSON.stringify({ p_code: code })
+            });
+            if (!r.ok) return { ok: false, error: 'http_' + r.status };
+            return await r.json();
+        } catch (e) {
+            return { ok: false, error: 'unreachable' };
+        }
+    }
+
+    COMMANDS['uplink'] = {
+        desc: 'side-channel · validate an asc code · `uplink <code>` or just `uplink`',
+        run: async function (args, c) {
+            let raw = args.join(' ').trim();
+            if (!raw) {
+                try { raw = sessionStorage.getItem('vbz_uplink_code') || ''; } catch (e) { raw = ''; }
+                if (!raw) {
+                    c.err('  usage: uplink <code>');
+                    c.dim('  parses any asc code locally; if reachable,');
+                    c.dim('  also peeks at drift-metrics for layer 2 balance.');
+                    c.dim('  a code in `?code=` on the url auto-populates this.');
+                    return;
+                }
+                c.dim('  using code from url: ' + raw);
+            }
+
+            if (!window.Crawler || !window.Crawler.Codes || !window.Crawler.Codes.parse) {
+                c.err('  asc parser not loaded.');
+                c.dim('  expected: underground/crawler/codes.js (v0.2 or later)');
+                return;
+            }
+
+            const parsed = window.Crawler.Codes.parse(raw);
+            if (!parsed) {
+                c.err('  not a code i recognise: ' + raw);
+                c.dim('  expected: PREFIX-BODY (3 letters, dash, body)');
+                return;
+            }
+
+            c.ok('  parsed locally:');
+            c.out('    code   ' + parsed.code);
+            c.out('    prefix ' + parsed.prefix);
+            c.out('    kind   ' + parsed.kind);
+            if (parsed.category) c.out('    cat    ' + parsed.category);
+            c.out('    tier   ' + parsed.tier);
+            if (parsed.kind === 'slot') {
+                c.dim('    int    +' + parsed.intContribution + ' (when used in the right crawl slot)');
+            }
+            if (parsed.kind === 'universal') {
+                const fx = window.Crawler.Codes.universalEffect(parsed);
+                if (fx) {
+                    c.dim('    kit-seed ' + fx.kitSeed + (fx.lucky ? ' (lucky variant)' : ''));
+                    c.dim('    "' + fx.loreLine + '"');
+                }
+            }
+            if (parsed.kind === 'coordination' && parsed.prefix === 'RAD') {
+                c.dim('    RAD codes resolve in sky scaffold. uplink dormant for now.');
+                c.dim('    raid pool detail will appear here once scaffold-ledger is wired.');
+            }
+            if (parsed.kind === 'unknown') {
+                c.dim('    prefix not in the registry. parsed but no effect.');
+            }
+
+            c.dim('');
+            c.dim('  pinging drift-metrics for layer 2 status...');
+            const data = await ascDriftPeek(parsed.code);
+            if (data && data.ok === true) {
+                c.ok('  drift  remaining ' + data.remaining + ' · tier ' + data.tier + ' · prefix ' + data.prefix);
+            } else if (data && data.error === 'not_found') {
+                c.dim('  drift  not minted there. layer 1 effects only.');
+            } else if (data && data.error === 'expired') {
+                c.dim('  drift  expired. balance ' + (data.remaining || 0) + ' · layer 1 effects only.');
+            } else if (data && data.error === 'invalid_format') {
+                c.dim('  drift  refused: invalid format upstream.');
+            } else if (data && data.error === 'unreachable') {
+                c.dim('  drift  unreachable. layer 1 effects only.');
+            } else {
+                c.dim('  drift  ' + ((data && data.error) || 'no data'));
+            }
         }
     };
 

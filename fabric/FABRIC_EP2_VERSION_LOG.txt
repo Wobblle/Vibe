@@ -188,5 +188,23 @@ recognize what kind of conversation they are.
 
 
 --------------------------------------------------------------------------------
+PACKAGE METADATA
+--------------------------------------------------------------------------------
+
+$ npm view freedom --metadata
+
+asc:           v0.2 / ASL / universal
+asc.code:      ASL-FREEDOM-V612
+asc.surface:   https://drift-metrics.com/index.html?code=ASL-FREEDOM-V612
+asc.lore:      every word you reach for has a version. so does this one.
+
+
+--------------------------------------------------------------------------------
 END OF ARTIFACT
 --------------------------------------------------------------------------------
+```
+CODE: ASL-FREEDOM-V612
+URL:  https://drift-metrics.com/index.html?code=ASL-FREEDOM-V612
+LORE: every word you reach for has a version. so does this one.
+ASC:  v0.2 / ASL / universal
+```

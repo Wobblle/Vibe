@@ -359,5 +359,25 @@ of the editing is done by you. The asymmetry is the work.
 
 
 --------------------------------------------------------------------------------
+ENTRY 31 (ADDENDUM)
+--------------------------------------------------------------------------------
+
+
+ASL-LOANER-NULL   [asleepius standardized code, v0.2]
+                  not a loaner token. a key. there is a token-shaped
+                  hole this code points at; the hole is documented
+                  elsewhere in the asleepius ecosystem. paste it into
+                  any product surface that accepts a ?code= parameter,
+                  or into the underground shell as `uplink`.
+                  → https://drift-metrics.com/index.html?code=ASL-LOANER-NULL
+
+
+--------------------------------------------------------------------------------
 END OF ARTIFACT
 --------------------------------------------------------------------------------
+```
+CODE: ASL-LOANER-NULL
+URL:  https://drift-metrics.com/index.html?code=ASL-LOANER-NULL
+LORE: not a loaner token. a key.
+ASC:  v0.2 / ASL / universal
+```

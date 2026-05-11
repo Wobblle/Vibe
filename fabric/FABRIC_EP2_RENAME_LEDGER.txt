@@ -147,5 +147,20 @@ track your drift.
 refuse the rename when you hear it.
 
 --------------------------------------------------------------------------------
+AUDIT TRAIL
+--------------------------------------------------------------------------------
+
+artifact id:   FABRIC-EP2.0-ARTIFACT-RENAMES-001
+asc code:      ASL-RENAME-AUDIT
+asc surface:   https://drift-metrics.com/index.html?code=ASL-RENAME-AUDIT
+asc lore:      hearing the rename is the first audit. doing the audit is the second.
+
+--------------------------------------------------------------------------------
 END OF ARTIFACT
 --------------------------------------------------------------------------------
+```
+CODE: ASL-RENAME-AUDIT
+URL:  https://drift-metrics.com/index.html?code=ASL-RENAME-AUDIT
+LORE: hearing the rename is the first audit. doing the audit is the second.
+ASC:  v0.2 / ASL / universal
+```
