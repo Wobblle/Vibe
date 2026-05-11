@@ -236,6 +236,59 @@
             font-family: "JetBrains Mono", "Fira Code", "SF Mono", "Courier New", monospace;
         }
 
+        /* Subsidiary product cluster — bottom centre. The in-fiction
+           frame is that Asleepius is a wholly-owned subsidiary of
+           Vibratur; in real life these links go to real products.
+           Tonally consistent with the other corner/footer marks but
+           interactive on hover. */
+        .subsidiaries {
+            position: fixed;
+            bottom: 22px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 18px;
+            align-items: center;
+            font-family: "JetBrains Mono", "Fira Code", "SF Mono", "Courier New", monospace;
+            font-size: 9px;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+            z-index: 10;
+            pointer-events: auto;
+        }
+        .subsidiaries .label {
+            color: var(--fg-deep-dim);
+            user-select: none;
+        }
+        .subsidiaries a {
+            color: var(--fg-deep-dim);
+            text-decoration: none;
+            padding: 6px 10px;
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 2px;
+            transition: color 180ms ease, border-color 180ms ease, background 180ms ease;
+        }
+        .subsidiaries a:hover,
+        .subsidiaries a:focus-visible {
+            color: var(--accent);
+            border-color: var(--accent-dim);
+            background: rgba(255,255,255,0.02);
+            outline: none;
+        }
+        .subsidiaries a .arrow {
+            display: inline-block;
+            margin-left: 6px;
+            transform: translateY(-1px);
+        }
+        @media (max-width: 720px) {
+            .subsidiaries {
+                font-size: 8px;
+                gap: 10px;
+                bottom: 44px;
+            }
+            .subsidiaries .label { display: none; }
+        }
+
         /* Center stage */
         .center {
             position: fixed;
@@ -722,6 +775,15 @@
     <!-- Footer marks -->
     <div class="footer-mark">§47-VIBE  ·  COMPLIANT</div>
     <div class="footer-mark-right">v8.4-rc.∞</div>
+
+    <!-- Subsidiary product cluster (real link, in-fiction frame) -->
+    <nav class="subsidiaries" aria-label="Asleepius subsidiaries">
+        <span class="label">Asleepius / Subsidiaries ·</span>
+        <a href="https://drift-metrics.com" target="_blank" rel="noopener"
+           title="DriftMetrics — measuring algorithmic parallax. Built on the ASC standard.">
+            Drift-Metrics<span class="arrow">↗</span>
+        </a>
+    </nav>
 
     <!-- Skip hint (only appears after 30s) -->
     <div class="skip-hint" id="skipHint" onclick="skipToDashboard()">⏵ skip · the future is impatient</div>
